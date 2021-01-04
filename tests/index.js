@@ -1,0 +1,2 @@
+import './Core'
+import './SecvisogramPage'
