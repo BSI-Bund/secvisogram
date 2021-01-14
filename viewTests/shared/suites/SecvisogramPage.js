@@ -37,7 +37,15 @@ export const tests = [
     render: () => <View {...props} />,
   },
   {
-    title: 'Source',
-    render: () => <View {...props} activeTab="SOURCE" />,
+    title: 'Advisory',
+    render: () => <View {...props} activeTab="ADVISORY" />,
+  },
+  {
+    title: 'HTML',
+    render: () => <View {...props} activeTab="HTML" />,
+  },
+  {
+    title: 'CSAF-JSON',
+    render: () => <View {...props} activeTab="CSAF-JSON" />,
   },
 ]
