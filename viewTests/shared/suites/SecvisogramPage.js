@@ -37,6 +37,10 @@ export const tests = [
     render: () => <View {...props} />,
   },
   {
+    title: 'Source',
+    render: () => <View {...props} activeTab="SOURCE" />,
+  },
+  {
     title: 'Advisory',
     render: () => <View {...props} activeTab="ADVISORY" />,
   },
