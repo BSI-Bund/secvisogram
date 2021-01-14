@@ -15,7 +15,7 @@ module.exports = {
     browser: true,
     node: true,
   },
-  globals: { suite: true, test: true, mocha: true },
+  globals: { suite: true, test: true, mocha: true, ace: true },
   rules: {
     'no-unused-params': 0,
     'no-empty-pattern': 0,

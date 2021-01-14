@@ -40,4 +40,8 @@ export const tests = [
     title: 'Editor',
     render: () => <View {...props} />,
   },
+  {
+    title: 'Source',
+    render: () => <View {...props} activeTab="SOURCE" />,
+  },
 ]

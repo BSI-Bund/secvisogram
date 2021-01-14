@@ -67,6 +67,6 @@
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["**/*.js"],
-  "exclude": ["node_modules", "dist", "postcss.config.js"]
+  "include": ["**/*.js", "*.d.ts"],
+  "exclude": ["node_modules", "dist", "postcss.config.js", "vendor"]
 }

@@ -1,5 +1,6 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -34,7 +35,18 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin(),
-    new HTMLWebpackPlugin({ chunks: ['secvisogram'] }),
+    new HTMLWebpackPlugin({
+      chunks: ['secvisogram'],
+      template: './lib/index.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'vendor/ace-builds/src-min-noconflict',
+          to: 'vendor/ace',
+        },
+      ],
+    }),
     ...(process.env.NODE_ENV === 'production'
       ? []
       : [
@@ -45,6 +57,7 @@ module.exports = {
           new HTMLWebpackPlugin({
             chunks: ['view-tests-canvas'],
             filename: 'view-tests-canvas.html',
+            template: './lib/index.html',
           }),
           new HTMLWebpackPlugin({
             chunks: ['tests'],

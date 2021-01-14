@@ -42,6 +42,12 @@ React is used to implement the views. This JavaScript library is suitable for ma
 
 ## Installation
 
+This repository includes git submodules for vendor modules like Ace. Make sure to initialise and check them out before interactive with the repository.
+
+    git submodule update --init
+
+Afterwards the npm dependencies need to be installed.
+
     npm ci
 
 ## Starting
