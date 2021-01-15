@@ -1,5 +1,7 @@
 import React from 'react'
 import View from '../../../lib/SecvisogramPage/View'
+import seed1 from './SecvisogramPage/seed-1.json'
+import seed2 from './SecvisogramPage/seed-2.json'
 
 export const title = 'SecvisogramPage'
 
@@ -38,6 +40,24 @@ export const tests = [
   {
     title: 'Editor',
     render: () => <View {...props} />,
+  },
+  {
+    title: 'Editor (seed-1)',
+    render: () => (
+      <View
+        {...props}
+        data={{ ...props.data, doc: /** @type {any} */ (seed1) }}
+      />
+    ),
+  },
+  {
+    title: 'Editor (seed-2)',
+    render: () => (
+      <View
+        {...props}
+        data={{ ...props.data, doc: /** @type {any} */ (seed2) }}
+      />
+    ),
   },
   {
     title: 'Source',
