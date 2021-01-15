@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint . && tsc -b . && BABEL_ENV=test electron-mocha -r @babel/register -u tdd --renderer tests/index.js",
+    "test": "eslint . && tsc -b . && node scripts/test.js",
     "build": "node scripts/build.js",
     "dev": "webpack serve --mode development"
   },
