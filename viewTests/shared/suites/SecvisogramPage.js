@@ -11,6 +11,9 @@ const props = {
       acknowledgments: [
         {
           names: [''],
+          organizations: [''],
+          summary: '',
+          urls: [''],
         },
       ],
     },
