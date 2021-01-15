@@ -9,6 +9,8 @@ const props = {
   isLoading: false,
   isSaving: false,
   data: {
+    documentIsValid: null,
+    errors: [],
     doc: {
       acknowledgments: [
         {
@@ -31,11 +33,29 @@ const props = {
 export const tests = [
   {
     title: 'Is loading',
-    render: () => <View {...props} isLoading={true} />,
+    render: () => <View {...props} data={null} isLoading={true} />,
   },
   {
     title: 'Is saving',
     render: () => <View {...props} isSaving={true} />,
+  },
+  {
+    title: 'With valid document',
+    render: () => (
+      <View
+        {...props}
+        data={{ ...props.data, documentIsValid: true, errors: [] }}
+      />
+    ),
+  },
+  {
+    title: 'With invalid document',
+    render: () => (
+      <View
+        {...props}
+        data={{ ...props.data, documentIsValid: false, errors: [{}] }}
+      />
+    ),
   },
   {
     title: 'Editor',
