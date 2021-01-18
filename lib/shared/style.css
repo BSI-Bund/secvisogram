@@ -85,3 +85,7 @@ input:invalid {
     opacity: 0;
   }
 }
+
+.advisory h1 {
+  @apply text-xl font-bold;
+}
