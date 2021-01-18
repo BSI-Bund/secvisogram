@@ -12,14 +12,36 @@ const props = {
     documentIsValid: null,
     errors: [],
     doc: {
-      acknowledgments: [
-        {
-          names: [''],
-          organizations: [''],
-          summary: '',
-          urls: [''],
+      document: {
+        csaf_version: '',
+        title: '',
+        publisher: {
+          type: '',
         },
-      ],
+        type: '',
+        tracking: {
+          current_release_date: '',
+          id: '',
+          initial_release_date: '',
+          revision_history: [
+            {
+              number: '',
+              date: '',
+              summary: '',
+            },
+          ],
+          status: '',
+          version: '',
+        },
+        acknowledgments: [
+          {
+            names: [],
+            organizations: [],
+            summary: '',
+            urls: [],
+          },
+        ],
+      },
     },
   },
   activeTab: /** @type {'EDITOR'} */ ('EDITOR'),
