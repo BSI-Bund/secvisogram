@@ -10,6 +10,7 @@ export default async function createCoreFixture() {
       { valid: true, content: valid1 },
       { valid: true, content: valid2 },
       { valid: false, content: {} },
+      { valid: false, content: { document: {} } },
     ],
   }
 }
