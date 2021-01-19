@@ -1,4 +1,6 @@
-# BSI Secvisogram
+# BSI Secvisogram CSAF 2.0 Web Editor
+
+TODO: Chapter aus der Leistungsbeschreibung anskizzieren.
 
 ## The basic concept of Secvisogram
 
