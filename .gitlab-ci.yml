@@ -1,5 +1,5 @@
 default:
-  image: node:14
+  image: node:lts-buster
   cache:
     paths:
       - .npm
@@ -29,7 +29,7 @@ eslint:
     - npx eslint --max-warnings 0
 
 test:
-  stage: build
+  stage: test
   script:
     - npx tsc -v
     - npx tsc -b . && node scripts/test.js
