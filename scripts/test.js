@@ -1,6 +1,6 @@
 const { spawn } = require('child_process')
 
-spawn('electron-mocha -r @babel/register -u tdd --renderer tests/index.js', {
+spawn('npx electron-mocha -r @babel/register -u tdd --renderer tests/index.js', {
   env: {
     ...process.env,
     BABEL_ENV: 'test',
