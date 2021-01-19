@@ -50,6 +50,7 @@ const props = {
   onOpen: console.log.bind(console, 'onOpen'),
   onSave: console.log.bind(console, 'onSave'),
   onChangeTab: console.log.bind(console, 'onChangeTab'),
+  onValidate: console.log.bind(console, 'onValidate'),
 }
 
 export const tests = [
