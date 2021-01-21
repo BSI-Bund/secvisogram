@@ -31,6 +31,7 @@ module.exports = {
           { loader: 'postcss-loader' },
         ],
       },
+      { test: /\.html$/, use: 'raw-loader' },
     ],
   },
   plugins: [
