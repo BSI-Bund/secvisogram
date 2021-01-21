@@ -1,5 +1,9 @@
+variables:
+  # The ACE Editor is included as submodule
+  GIT_SUBMODULE_STRATEGY: recursive
+
 default:
-  image: node:lts-buster
+  image: node:lts-slim
   cache:
     paths:
       - .npm
