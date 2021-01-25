@@ -14,8 +14,16 @@ module.exports = {
   env: {
     browser: true,
     node: true,
+    es6: true,
   },
-  globals: { suite: true, test: true, mocha: true, ace: true },
+  globals: {
+    suite: true,
+    setup: true,
+    teardown: true,
+    test: true,
+    mocha: true,
+    ace: true,
+  },
   rules: {
     'no-unused-params': 0,
     'no-empty-pattern': 0,

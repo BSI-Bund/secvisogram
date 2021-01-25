@@ -51,6 +51,12 @@ const props = {
   onSave: console.log.bind(console, 'onSave'),
   onChangeTab: console.log.bind(console, 'onChangeTab'),
   onValidate: console.log.bind(console, 'onValidate'),
+  onStrip: (/** @type {any[]} */ ...args) => {
+    console.log('onStrip', ...args)
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({}), 1000)
+    })
+  },
 }
 
 export const tests = [

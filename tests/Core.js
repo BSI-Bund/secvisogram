@@ -1,15 +1,16 @@
 import { expect } from 'chai'
-import createCore from '../lib/shared/Core'
 import createCoreFixture from './shared/CoreFixture'
 
 suite('Core', () => {
+  const fixture = createCoreFixture()
+
+  setup(() => fixture.setup())
+  teardown(() => fixture.teardown())
+
   suite('DocumentService', () => {
     test('The document can be validated against the JSON-schema', async () => {
-      const coreFixture = await createCoreFixture()
-      const core = await createCore(coreFixture.params)
-
-      for (const document of coreFixture.documents) {
-        const result = await core.document.validate({
+      for (const document of fixture.documents) {
+        const result = await fixture.core.document.validate({
           document: document.content,
         })
         expect(result.isValid).to.equal(document.valid)
@@ -18,6 +19,17 @@ suite('Core', () => {
         } else {
           expect(result.errors).have.length.greaterThan(0)
         }
+      }
+    })
+
+    test('The document can be minified using the CSAF-strip algorithm', async () => {
+      for (const document of fixture.documents) {
+        if (document.strippedVersion === undefined) continue
+        const result = await fixture.core.document.strip({
+          document: document.content,
+        })
+
+        expect(result).to.deep.equal(document.strippedVersion)
       }
     })
   })
