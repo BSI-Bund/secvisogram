@@ -82,7 +82,40 @@ export const tests = [
     render: () => (
       <View
         {...props}
-        data={{ ...props.data, documentIsValid: false, errors: [{}] }}
+        data={{
+          ...props.data,
+          documentIsValid: false,
+          errors: [
+            { dataPath: '/document', message: '' },
+            { dataPath: '/document/acknowledgments', message: '' },
+            { dataPath: '/document/acknowledgments/0', message: '' },
+            { dataPath: '/document/acknowledgments/0/names', message: '' },
+            {
+              dataPath: '/document/acknowledgments/0/organizations',
+              message: '',
+            },
+            {
+              dataPath: '/document/acknowledgments/0/urls',
+              message: '',
+            },
+            {
+              dataPath: '/document/publisher',
+              message: '',
+            },
+            {
+              dataPath: '/document/tracking',
+              message: '',
+            },
+            {
+              dataPath: '/document/tracking/revision_history',
+              message: '',
+            },
+            {
+              dataPath: '/document/tracking/revision_history/0',
+              message: '',
+            },
+          ],
+        }}
       />
     ),
   },
