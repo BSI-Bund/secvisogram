@@ -6,6 +6,10 @@ input:invalid {
   @apply border-red-500;
 }
 
+textarea:invalid {
+  @apply border-red-500;
+}
+
 /* Loading Indicator */
 .lds-spinner {
   color: official;
