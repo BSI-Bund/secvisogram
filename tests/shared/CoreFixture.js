@@ -51,7 +51,33 @@ export default function createCoreFixture() {
       { valid: true, content: valid1, strippedVersion: valid1 },
       { valid: true, content: valid2, strippedVersion: valid2 },
       { valid: false, content: {}, strippedVersion: {} },
-      { valid: false, content: { document: {} }, strippedVersion: {} },
+      {
+        valid: false,
+        content: {
+          document: {
+            csaf_version: '2.0',
+            title: 'Minimal valid',
+            publisher: {
+              type: 'other',
+            },
+            type: 'Test Report',
+            tracking: {
+              current_release_date: '2021-01-14T00:00:00.000Z',
+              id: '1',
+              initial_release_date: '2021-01-14T00:00:00.000Z',
+              revision_history: [
+                {
+                  date: '2021-01-14T00:00:00.000Z',
+                  summary: 'Summary',
+                },
+              ],
+              status: 'draft',
+              version: '1',
+            },
+          },
+        },
+        strippedVersion: {},
+      },
       {
         valid: true,
         content: {
