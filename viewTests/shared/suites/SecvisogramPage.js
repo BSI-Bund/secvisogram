@@ -152,8 +152,48 @@ export const tests = [
     render: () => <View {...props} activeTab="ADVISORY" />,
   },
   {
+    title: 'Advisory (seed-1)',
+    render: () => (
+      <View
+        {...props}
+        data={{ ...props.data, doc: /** @type {any} */ (seed1) }}
+        activeTab="ADVISORY"
+      />
+    ),
+  },
+  {
+    title: 'Advisory (seed-2)',
+    render: () => (
+      <View
+        {...props}
+        data={{ ...props.data, doc: /** @type {any} */ (seed2) }}
+        activeTab="ADVISORY"
+      />
+    ),
+  },
+  {
     title: 'HTML',
     render: () => <View {...props} activeTab="HTML" />,
+  },
+  {
+    title: 'HTML (seed-1)',
+    render: () => (
+      <View
+        {...props}
+        data={{ ...props.data, doc: /** @type {any} */ (seed1) }}
+        activeTab="HTML"
+      />
+    ),
+  },
+  {
+    title: 'HTML (seed-2)',
+    render: () => (
+      <View
+        {...props}
+        data={{ ...props.data, doc: /** @type {any} */ (seed2) }}
+        activeTab="HTML"
+      />
+    ),
   },
   {
     title: 'CSAF-JSON',

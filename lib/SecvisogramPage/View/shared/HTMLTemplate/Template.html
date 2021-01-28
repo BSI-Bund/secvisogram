@@ -1,3 +1,14 @@
-<h1>HTML View</h1>
-<p>This is the stringified version of the document:</p>
-<pre>{{ documentStringified }}</pre>
+<h1 class="text-2xl font-bold">
+  {{data.json.document.type}} (CSAF-{{data.json.document.csaf_version}})
+</h1>
+<h2 class="text-lg font-bold">{{data.json.document.title}}</h2>
+<div>
+  <p class="text-gray-500 text-sm">
+    Original Release Date:
+    {{#formatDateTime}}{{data.json.document.tracking.initial_release_date}}{{/formatDateTime}}
+  </p>
+</div>
+{{#data.json.document.notes}}
+<h3 class="text-md font-bold mt-4 mb-2">{{title}}</h3>
+<pre class="font-sans whitespace-pre-wrap">{{text}}</pre>
+{{/data.json.document.notes}}
