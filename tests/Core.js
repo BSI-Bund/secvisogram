@@ -1,4 +1,6 @@
+import Ajv from 'ajv'
 import { expect } from 'chai'
+import DocumentEntity from '../lib/shared/Core/DocumentEntity'
 import createCoreFixture from './shared/CoreFixture'
 
 suite('Core', () => {
@@ -29,8 +31,41 @@ suite('Core', () => {
           document: document.content,
         })
 
-        expect(result).to.deep.equal(document.strippedVersion)
+        expect(result.document).to.deep.equal(document.strippedVersion)
       }
+    })
+  })
+
+  suite('DocumentEntity', () => {
+    test('When stripping a json document properties with errors are removed', () => {
+      const schemaValidator = new Ajv({ allErrors: true }).compile({
+        type: 'object',
+        properties: { title: { type: 'string' } },
+        required: ['title'],
+      })
+      const documentEntity = new DocumentEntity({ schemaValidator })
+
+      const result = documentEntity.strip({ document: { title: 4 } })
+
+      expect(result.document).to.deep.equal({})
+      expect(result.strippedPaths).to.deep.equal([
+        { dataPath: '/title', error: true, message: 'should be string' },
+      ])
+    })
+
+    test('When stripping a json document empty properties are removed', () => {
+      const schemaValidator = new Ajv({ allErrors: true }).compile({
+        type: 'object',
+        properties: { title: { type: 'string' } },
+      })
+      const documentEntity = new DocumentEntity({ schemaValidator })
+
+      const result = documentEntity.strip({ document: { title: '' } })
+
+      expect(result.document).to.deep.equal({})
+      expect(result.strippedPaths).to.deep.equal([
+        { dataPath: '/title', error: false, message: 'value was empty' },
+      ])
     })
   })
 })

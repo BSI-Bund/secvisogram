@@ -56,7 +56,25 @@ const props = {
   onStrip: (/** @type {any[]} */ ...args) => {
     console.log('onStrip', ...args)
     return new Promise((resolve) => {
-      setTimeout(() => resolve({}), 1000)
+      setTimeout(
+        () =>
+          resolve({
+            document: seed1,
+            strippedPaths: [
+              {
+                message: 'value is empty',
+                dataPath: '/my/data/path',
+                error: false,
+              },
+              {
+                message: 'value is invalid',
+                dataPath: '/my/data/path',
+                error: true,
+              },
+            ],
+          }),
+        500
+      )
     })
   },
 }
@@ -198,5 +216,17 @@ export const tests = [
   {
     title: 'CSAF-JSON',
     render: () => <View {...props} activeTab="CSAF-JSON" />,
+  },
+  {
+    title: 'CSAF-JSON without deletions',
+    render: () => (
+      <View
+        {...props}
+        activeTab="CSAF-JSON"
+        onStrip={async () => {
+          return { document: seed1, strippedPaths: [] }
+        }}
+      />
+    ),
   },
 ]
