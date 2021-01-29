@@ -42,6 +42,17 @@ const props = {
           },
         ],
       },
+      product_tree: {},
+      vulnerabilities: [
+        {
+          notes: [
+            {
+              type: '',
+              text: '',
+            },
+          ],
+        },
+      ],
     },
   },
   activeTab: /** @type {'EDITOR'} */ ('EDITOR'),
