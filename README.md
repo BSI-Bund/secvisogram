@@ -2,17 +2,44 @@
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
+- [Introduction](#introduction)
+- [Getting started](#getting-started)
+  - [Deployment for production with nginx](#deployment-for-production-with-nginx)
 - [Usage](#usage)
   - [The basic concept of Secvisogram](#the-basic-concept-of-secvisogram)
-- [Build & Development](#build--development)
-  - [Installation](#installation)
+- [Developing](#developing)
   - [Automated Tests](#automated-tests)
   - [Folder structure scheme](#folder-structure-scheme)
-  - [3rd party libraries & Technologies](#3rd-party-libraries--technologies)
+- [Dependencies: 3rd party Libraries & Technologies](#dependencies-3rd-party-libraries--technologies)
 
 <!-- /TOC -->
 
-TODO: Chapter aus der Leistungsbeschreibung anskizzieren.
+## Introduction
+
+## Getting started
+
+Assure that you have Node 14 (LTS) and npm 6 or newer installed.
+[Nodesource](https://github.com/nodesource/distributions/blob/master/README.md) provides binary distributions for various Linux distributions.
+
+      $ node --version ; npm --version
+      v14.15.4
+      6.14.10
+
+This repository includes git submodules for vendor modules like Ace. Make sure to initialise and check them out before interactive with the repository.
+
+    git submodule update --init --recursive
+
+Afterwards the npm dependencies need to be installed.
+
+    npm ci
+
+Now you can start a development server via
+
+    npm run dev
+
+The application is now running on http://localhost:8080.
+
+### Deployment for production with nginx
 
 ## Usage
 
@@ -45,30 +72,7 @@ Thus, there are four ways to modify the data of a CSAF 2.0 document in the local
 - Saving the editor-view
 - Saving the source-view
 
-## Build & Development
-
-### Installation
-
-Assure that you have Node 14 (LTS) and npm 6 or newer installed.
-[Nodesource](https://github.com/nodesource/distributions/blob/master/README.md) provides binary distributions for various Linux distributions.
-
-      $ node --version ; npm --version
-      v14.15.4
-      6.14.10
-
-This repository includes git submodules for vendor modules like Ace. Make sure to initialise and check them out before interactive with the repository.
-
-    git submodule update --init --recursive
-
-Afterwards the npm dependencies need to be installed.
-
-    npm ci
-
-Now you can start a development server via
-
-    npm run dev
-
-The application is now running on http://localhost:8080.
+## Developing
 
 ### Automated Tests
 
@@ -94,16 +98,16 @@ Source files may only access folders that have the same name as themselves and a
 
 It is not allowed to reach in any deeper file level than one.
 
-### 3rd party libraries & Technologies
+## Dependencies: 3rd party Libraries & Technologies
 
-**AJV for JSON schema validation**
+##### AJV for JSON schema validation
 
 To validate the input data against the JSON schema the package "ajv" is used. |
 
-**Typescript**
+##### Typescript
 
 Typescript is used to type and document the source code. This means, for example, that variables that can be used in templates are directly documented and statically checked. But typescript is not used as a language but as a type-checker only, which means that types are declared using source-code comments. This keeps the configuration of related tools simpler.
 
-**React**
+##### React
 
 React is used to implement the views. This JavaScript library is suitable for mapping data structures to the DOM in the browser and keeping it synchronized when the structure changes. In doing so, it offers an easily customizable template language. In addition, React prevents the accidental insertion of executable code in the DOM and therefore already offers basic protection against cross-site scripting.
