@@ -91,12 +91,12 @@ textarea:invalid {
 }
 
 .advisory h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-h7 {
+.advisory h2,
+.advisory h3,
+.advisory h4,
+.advisory h5,
+.advisory h6,
+.advisory h7 {
   @apply font-bold block mb-2 mt-4;
 }
 
