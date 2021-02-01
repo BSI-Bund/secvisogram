@@ -41,6 +41,7 @@ const props = {
             urls: [],
           },
         ],
+        notes: [],
       },
       product_tree: {},
       vulnerabilities: [
