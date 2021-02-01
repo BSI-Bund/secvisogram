@@ -55,7 +55,7 @@ function generateSchemaHTML(entries) {
       case 'string':
         return (
           html +
-          `<h${headingLevel}>${entry.schema.title}</h${headingLevel}>\n<p>{{${entry.path}}}</p>\n`
+          `{{#${entry.path}}}<h${headingLevel}>${entry.schema.title}</h${headingLevel}>\n<p>{{${entry.path}}}</p>{{/${entry.path}}}\n`
         )
 
       case 'object':
