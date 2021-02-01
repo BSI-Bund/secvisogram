@@ -63,7 +63,10 @@ const props = {
   onChangeTab: console.log.bind(console, 'onChangeTab'),
   onValidate: console.log.bind(console, 'onValidate'),
   onNewFormDoc: console.log.bind(console, 'onNewFormDoc'),
-  onNewSourceDoc: console.log.bind(console, 'onNewSourceDoc'),
+  onNewSourceDoc: () => {
+    console.log.bind(console, 'onNewSourceDoc')
+    return new Promise(() => {})
+  },
   onStrip: (/** @type {any[]} */ ...args) => {
     console.log('onStrip', ...args)
     return new Promise((resolve) => {
