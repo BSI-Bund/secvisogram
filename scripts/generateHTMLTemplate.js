@@ -11,12 +11,12 @@ const rootSchema = schema
  * @returns {Array<Entry>}
  */
 function generateSchemaPaths(schema, dataPath = [], headingLevel = 1) {
-  if (headingLevel > 8)
-    return [{ path: dataPath.join('.'), schema, headingLevel }]
+  const path = dataPath.length ? dataPath.join('.') : '.'
+  if (headingLevel > 8) return [{ path, schema, headingLevel }]
   switch (schema.type) {
     case 'object':
       return [
-        { path: dataPath.join('.'), schema, headingLevel },
+        { path, schema, headingLevel },
         ...Object.entries(schema.properties || {}).flatMap(([key, value]) =>
           generateSchemaPaths(value, dataPath.concat([key]), headingLevel + 1)
         ),
@@ -24,7 +24,7 @@ function generateSchemaPaths(schema, dataPath = [], headingLevel = 1) {
     case 'array':
       return [
         {
-          path: dataPath.join('.'),
+          path,
           schema,
           items: generateSchemaPaths(schema.items, [], headingLevel + 1),
           headingLevel,
@@ -39,7 +39,7 @@ function generateSchemaPaths(schema, dataPath = [], headingLevel = 1) {
           headingLevel
         )
       }
-      return [{ schema, path: dataPath.join('.'), headingLevel }]
+      return [{ schema, path, headingLevel }]
   }
 }
 

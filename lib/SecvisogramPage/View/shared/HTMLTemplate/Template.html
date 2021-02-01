@@ -4,17 +4,17 @@
 {{#data.json.document.acknowledgments}}<h4>Acknowledgment</h4>
 <h5>List of acknowledged names</h5>
 {{#names}}<h6>Name of entity being recognized</h6>
-<p>{{}}</p>
+<p>{{.}}</p>
 {{/names}}
 <h5>List of contributing organizations</h5>
 {{#organizations}}<h6>Contributing organization</h6>
-<p>{{}}</p>
+<p>{{.}}</p>
 {{/organizations}}
 <h5>Summary of the acknowledgment</h5>
 <p>{{summary}}</p>
 <h5>List of URLs</h5>
 {{#urls}}<h6>URL of acknowledgment</h6>
-<p>{{}}</p>
+<p>{{.}}</p>
 {{/urls}}
 {{/data.json.document.acknowledgments}}
 <h3>Aggregate severity</h3>
@@ -72,7 +72,7 @@
 <p>{{data.json.document.tracking.id}}</p>
 <h4>Aliases</h4>
 {{#data.json.document.tracking.aliases}}<h5>Alternate name</h5>
-<p>{{}}</p>
+<p>{{.}}</p>
 {{/data.json.document.tracking.aliases}}
 <h4>Current release date</h4>
 <p>{{data.json.document.tracking.current_release_date}}</p>
@@ -151,7 +151,7 @@
 <p>{{group_id}}</p>
 <h5>List of Product IDs</h5>
 {{#product_ids}}<h6>Reference token for product instance</h6>
-<p>{{}}</p>
+<p>{{.}}</p>
 {{/product_ids}}
 {{/data.json.product_tree.product_groups}}
 <h3>List of relationships</h3>
@@ -176,17 +176,17 @@
 {{#acknowledgments}}<h5>Acknowledgment</h5>
 <h6>List of acknowledged names</h6>
 {{#names}}<h7>Name of entity being recognized</h7>
-<p>{{}}</p>
+<p>{{.}}</p>
 {{/names}}
 <h6>List of contributing organizations</h6>
 {{#organizations}}<h7>Contributing organization</h7>
-<p>{{}}</p>
+<p>{{.}}</p>
 {{/organizations}}
 <h6>Summary of the acknowledgment</h6>
 <p>{{summary}}</p>
 <h6>List of URLs</h6>
 {{#urls}}<h7>URL of acknowledgment</h7>
-<p>{{}}</p>
+<p>{{.}}</p>
 {{/urls}}
 {{/acknowledgments}}
 <h4>CVE</h4>
@@ -246,11 +246,11 @@
 <p>{{details}}</p>
 <h6>List of entitlements</h6>
 {{#entitlements}}<h7>Entitlement of the remediation</h7>
-<p>{{}}</p>
+<p>{{.}}</p>
 {{/entitlements}}
 <h6>List of product_group_ids</h6>
 {{#group_ids}}<h7>Reference token for product group instance</h7>
-<p>{{}}</p>
+<p>{{.}}</p>
 {{/group_ids}}
 <h6>Restart required by remediation</h6>
 <h7>Type of restart</h7>
@@ -272,7 +272,7 @@
 <p>{{date}}</p>
 <h6>List of product_group_ids</h6>
 {{#group_ids}}<h7>Reference token for product group instance</h7>
-<p>{{}}</p>
+<p>{{.}}</p>
 {{/group_ids}}
 {{/threats}}
 <h4>Title</h4>
