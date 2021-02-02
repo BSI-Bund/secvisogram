@@ -38,7 +38,7 @@ export default function createCoreFixture() {
 
   return {
     async setup() {
-      core = await createCore({})
+      core = await createCore()
     },
     async teardown() {},
 
