@@ -1,6 +1,12 @@
+# Include/Enable Gitlab SAST
+include:
+  - template: Security/SAST.gitlab-ci.yml
+
 variables:
   # The ACE Editor is included as submodule
   GIT_SUBMODULE_STRATEGY: recursive
+  SECURE_LOG_LEVEL: debug
+  SAST_EXCLUDED_ANALYZERS: nodejs-scan
 
 default:
   image: node:lts-slim
@@ -20,6 +26,7 @@ default:
     - NPM_PACKAGE_VERSION=$(node -p "require('./package.json').version")
     - npm set cache .npm
     - npm ci
+
 
 build:
   stage: build
