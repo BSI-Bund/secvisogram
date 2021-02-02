@@ -142,6 +142,17 @@ export default function createCoreFixture() {
           },
         },
       },
+      {
+        valid: false,
+        content: {
+          aggregate_severity: {
+            namespace:
+              'https://access.redhat.com/security/updates/classification/',
+            text: 'Moderate',
+          },
+        },
+        strippedVersion: {},
+      },
     ],
   }
 }
