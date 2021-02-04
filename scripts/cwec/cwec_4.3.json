@@ -1,0 +1,2080 @@
+{
+  "weaknesses": [
+    { "id": "1004", "name": "Sensitive Cookie Without 'HttpOnly' Flag" },
+    {
+      "id": "1007",
+      "name": "Insufficient Visual Distinction of Homoglyphs Presented to User"
+    },
+    { "id": "102", "name": "Struts: Duplicate Validation Forms" },
+    {
+      "id": "1021",
+      "name": "Improper Restriction of Rendered UI Layers or Frames"
+    },
+    {
+      "id": "1022",
+      "name": "Use of Web Link to Untrusted Target with window.opener Access"
+    },
+    { "id": "1023", "name": "Incomplete Comparison with Missing Factors" },
+    { "id": "1024", "name": "Comparison of Incompatible Types" },
+    { "id": "1025", "name": "Comparison Using Wrong Factors" },
+    { "id": "103", "name": "Struts: Incomplete validate() Method Definition" },
+    {
+      "id": "1037",
+      "name": "Processor Optimization Removal or Modification of Security-critical Code"
+    },
+    { "id": "1038", "name": "Insecure Automated Optimizations" },
+    {
+      "id": "1039",
+      "name": "Automated Recognition Mechanism with Inadequate Detection or Handling of Adversarial Input Perturbations"
+    },
+    {
+      "id": "104",
+      "name": "Struts: Form Bean Does Not Extend Validation Class"
+    },
+    { "id": "1041", "name": "Use of Redundant Code" },
+    {
+      "id": "1042",
+      "name": "Static Member Data Element outside of a Singleton Class Element"
+    },
+    {
+      "id": "1043",
+      "name": "Data Element Aggregating an Excessively Large Number of Non-Primitive Elements"
+    },
+    {
+      "id": "1044",
+      "name": "Architecture with Number of Horizontal Layers Outside of Expected Range"
+    },
+    {
+      "id": "1045",
+      "name": "Parent Class with a Virtual Destructor and a Child Class without a Virtual Destructor"
+    },
+    {
+      "id": "1046",
+      "name": "Creation of Immutable Text Using String Concatenation"
+    },
+    { "id": "1047", "name": "Modules with Circular Dependencies" },
+    {
+      "id": "1048",
+      "name": "Invokable Control Element with Large Number of Outward Calls"
+    },
+    {
+      "id": "1049",
+      "name": "Excessive Data Query Operations in a Large Data Table"
+    },
+    { "id": "105", "name": "Struts: Form Field Without Validator" },
+    {
+      "id": "1050",
+      "name": "Excessive Platform Resource Consumption within a Loop"
+    },
+    {
+      "id": "1051",
+      "name": "Initialization with Hard-Coded Network Resource Configuration Data"
+    },
+    {
+      "id": "1052",
+      "name": "Excessive Use of Hard-Coded Literals in Initialization"
+    },
+    { "id": "1053", "name": "Missing Documentation for Design" },
+    {
+      "id": "1054",
+      "name": "Invocation of a Control Element at an Unnecessarily Deep Horizontal Layer"
+    },
+    { "id": "1055", "name": "Multiple Inheritance from Concrete Classes" },
+    {
+      "id": "1056",
+      "name": "Invokable Control Element with Variadic Parameters"
+    },
+    {
+      "id": "1057",
+      "name": "Data Access Operations Outside of Expected Data Manager Component"
+    },
+    {
+      "id": "1058",
+      "name": "Invokable Control Element in Multi-Thread Context with non-Final Static Storable or Member Element"
+    },
+    { "id": "1059", "name": "Incomplete Documentation" },
+    { "id": "106", "name": "Struts: Plug-in Framework not in Use" },
+    {
+      "id": "1060",
+      "name": "Excessive Number of Inefficient Server-Side Data Accesses"
+    },
+    { "id": "1061", "name": "Insufficient Encapsulation" },
+    { "id": "1062", "name": "Parent Class with References to Child Class" },
+    {
+      "id": "1063",
+      "name": "Creation of Class Instance within a Static Code Block"
+    },
+    {
+      "id": "1064",
+      "name": "Invokable Control Element with Signature Containing an Excessive Number of Parameters"
+    },
+    {
+      "id": "1065",
+      "name": "Runtime Resource Management Control Element in a Component Built to Run on Application Servers"
+    },
+    { "id": "1066", "name": "Missing Serialization Control Element" },
+    {
+      "id": "1067",
+      "name": "Excessive Execution of Sequential Searches of Data Resource"
+    },
+    {
+      "id": "1068",
+      "name": "Inconsistency Between Implementation and Documented Design"
+    },
+    { "id": "1069", "name": "Empty Exception Block" },
+    { "id": "107", "name": "Struts: Unused Validation Form" },
+    {
+      "id": "1070",
+      "name": "Serializable Data Element Containing non-Serializable Item Elements"
+    },
+    { "id": "1071", "name": "Empty Code Block" },
+    {
+      "id": "1072",
+      "name": "Data Resource Access without Use of Connection Pooling"
+    },
+    {
+      "id": "1073",
+      "name": "Non-SQL Invokable Control Element with Excessive Number of Data Resource Accesses"
+    },
+    { "id": "1074", "name": "Class with Excessively Deep Inheritance" },
+    {
+      "id": "1075",
+      "name": "Unconditional Control Flow Transfer outside of Switch Block"
+    },
+    { "id": "1076", "name": "Insufficient Adherence to Expected Conventions" },
+    {
+      "id": "1077",
+      "name": "Floating Point Comparison with Incorrect Operator"
+    },
+    { "id": "1078", "name": "Inappropriate Source Code Style or Formatting" },
+    { "id": "1079", "name": "Parent Class without Virtual Destructor Method" },
+    { "id": "108", "name": "Struts: Unvalidated Action Form" },
+    {
+      "id": "1080",
+      "name": "Source Code File with Excessive Number of Lines of Code"
+    },
+    { "id": "1082", "name": "Class Instance Self Destruction Control Element" },
+    {
+      "id": "1083",
+      "name": "Data Access from Outside Expected Data Manager Component"
+    },
+    {
+      "id": "1084",
+      "name": "Invokable Control Element with Excessive File or Data Access Operations"
+    },
+    {
+      "id": "1085",
+      "name": "Invokable Control Element with Excessive Volume of Commented-out Code"
+    },
+    { "id": "1086", "name": "Class with Excessive Number of Child Classes" },
+    {
+      "id": "1087",
+      "name": "Class with Virtual Method without a Virtual Destructor"
+    },
+    {
+      "id": "1088",
+      "name": "Synchronous Access of Remote Resource without Timeout"
+    },
+    {
+      "id": "1089",
+      "name": "Large Data Table with Excessive Number of Indices"
+    },
+    { "id": "109", "name": "Struts: Validator Turned Off" },
+    {
+      "id": "1090",
+      "name": "Method Containing Access of a Member Element from Another Class"
+    },
+    {
+      "id": "1091",
+      "name": "Use of Object without Invoking Destructor Method"
+    },
+    {
+      "id": "1092",
+      "name": "Use of Same Invokable Control Element in Multiple Architectural Layers"
+    },
+    { "id": "1093", "name": "Excessively Complex Data Representation" },
+    { "id": "1094", "name": "Excessive Index Range Scan for a Data Resource" },
+    { "id": "1095", "name": "Loop Condition Value Update within the Loop" },
+    {
+      "id": "1096",
+      "name": "Singleton Class Instance Creation without Proper Locking or Synchronization"
+    },
+    {
+      "id": "1097",
+      "name": "Persistent Storable Data Element without Associated Comparison Control Element"
+    },
+    {
+      "id": "1098",
+      "name": "Data Element containing Pointer Item without Proper Copy Control Element"
+    },
+    { "id": "1099", "name": "Inconsistent Naming Conventions for Identifiers" },
+    { "id": "11", "name": "ASP.NET Misconfiguration: Creating Debug Binary" },
+    { "id": "110", "name": "Struts: Validator Without Form Field" },
+    {
+      "id": "1100",
+      "name": "Insufficient Isolation of System-Dependent Functions"
+    },
+    { "id": "1101", "name": "Reliance on Runtime Component in Generated Code" },
+    {
+      "id": "1102",
+      "name": "Reliance on Machine-Dependent Data Representation"
+    },
+    {
+      "id": "1103",
+      "name": "Use of Platform-Dependent Third Party Components"
+    },
+    { "id": "1104", "name": "Use of Unmaintained Third Party Components" },
+    {
+      "id": "1105",
+      "name": "Insufficient Encapsulation of Machine-Dependent Functionality"
+    },
+    { "id": "1106", "name": "Insufficient Use of Symbolic Constants" },
+    {
+      "id": "1107",
+      "name": "Insufficient Isolation of Symbolic Constant Definitions"
+    },
+    { "id": "1108", "name": "Excessive Reliance on Global Variables" },
+    { "id": "1109", "name": "Use of Same Variable for Multiple Purposes" },
+    { "id": "111", "name": "Direct Use of Unsafe JNI" },
+    { "id": "1110", "name": "Incomplete Design Documentation" },
+    { "id": "1111", "name": "Incomplete I/O Documentation" },
+    { "id": "1112", "name": "Incomplete Documentation of Program Execution" },
+    { "id": "1113", "name": "Inappropriate Comment Style" },
+    { "id": "1114", "name": "Inappropriate Whitespace Style" },
+    { "id": "1115", "name": "Source Code Element without Standard Prologue" },
+    { "id": "1116", "name": "Inaccurate Comments" },
+    { "id": "1117", "name": "Callable with Insufficient Behavioral Summary" },
+    {
+      "id": "1118",
+      "name": "Insufficient Documentation of Error Handling Techniques"
+    },
+    { "id": "1119", "name": "Excessive Use of Unconditional Branching" },
+    { "id": "112", "name": "Missing XML Validation" },
+    { "id": "1120", "name": "Excessive Code Complexity" },
+    { "id": "1121", "name": "Excessive McCabe Cyclomatic Complexity" },
+    { "id": "1122", "name": "Excessive Halstead Complexity" },
+    { "id": "1123", "name": "Excessive Use of Self-Modifying Code" },
+    { "id": "1124", "name": "Excessively Deep Nesting" },
+    { "id": "1125", "name": "Excessive Attack Surface" },
+    {
+      "id": "1126",
+      "name": "Declaration of Variable with Unnecessarily Wide Scope"
+    },
+    {
+      "id": "1127",
+      "name": "Compilation with Insufficient Warnings or Errors"
+    },
+    {
+      "id": "113",
+      "name": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')"
+    },
+    { "id": "114", "name": "Process Control" },
+    { "id": "115", "name": "Misinterpretation of Input" },
+    { "id": "116", "name": "Improper Encoding or Escaping of Output" },
+    { "id": "1164", "name": "Irrelevant Code" },
+    { "id": "117", "name": "Improper Output Neutralization for Logs" },
+    { "id": "1173", "name": "Improper Use of Validation Framework" },
+    {
+      "id": "1174",
+      "name": "ASP.NET Misconfiguration: Improper Model Validation"
+    },
+    { "id": "1176", "name": "Inefficient CPU Computation" },
+    { "id": "1177", "name": "Use of Prohibited Code" },
+    {
+      "id": "118",
+      "name": "Incorrect Access of Indexable Resource ('Range Error')"
+    },
+    { "id": "1187", "name": "DEPRECATED: Use of Uninitialized Resource" },
+    { "id": "1188", "name": "Insecure Default Initialization of Resource" },
+    {
+      "id": "1189",
+      "name": "Improper Isolation of Shared Resources on System-on-a-Chip (SoC)"
+    },
+    {
+      "id": "119",
+      "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer"
+    },
+    { "id": "1190", "name": "DMA Device Enabled Too Early in Boot Phase" },
+    {
+      "id": "1191",
+      "name": "Exposed Chip Debug and Test Interface With Insufficient or Missing Authorization"
+    },
+    {
+      "id": "1192",
+      "name": "System-on-Chip (SoC) Using Components without Unique, Immutable Identifiers"
+    },
+    {
+      "id": "1193",
+      "name": "Power-On of Untrusted Execution Core Before Enabling Fabric Access Control"
+    },
+    {
+      "id": "12",
+      "name": "ASP.NET Misconfiguration: Missing Custom Error Page"
+    },
+    {
+      "id": "120",
+      "name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+    },
+    { "id": "1209", "name": "Failure to Disable Reserved Bits" },
+    { "id": "121", "name": "Stack-based Buffer Overflow" },
+    { "id": "122", "name": "Heap-based Buffer Overflow" },
+    { "id": "1220", "name": "Insufficient Granularity of Access Control" },
+    {
+      "id": "1221",
+      "name": "Incorrect Register Defaults or Module Parameters"
+    },
+    {
+      "id": "1222",
+      "name": "Insufficient Granularity of Address Regions Protected by Register Locks"
+    },
+    { "id": "1223", "name": "Race Condition for Write-Once Attributes" },
+    { "id": "1224", "name": "Improper Restriction of Write-Once Bit Fields" },
+    { "id": "1229", "name": "Creation of Emergent Resource" },
+    { "id": "123", "name": "Write-what-where Condition" },
+    {
+      "id": "1230",
+      "name": "Exposure of Sensitive Information Through Metadata"
+    },
+    {
+      "id": "1231",
+      "name": "Improper Implementation of Lock Protection Registers"
+    },
+    {
+      "id": "1232",
+      "name": "Improper Lock Behavior After Power State Transition"
+    },
+    {
+      "id": "1233",
+      "name": "Improper Hardware Lock Protection for Security Sensitive Controls"
+    },
+    {
+      "id": "1234",
+      "name": "Hardware Internal or Debug Modes Allow Override of Locks"
+    },
+    {
+      "id": "1235",
+      "name": "Incorrect Use of Autoboxing and Unboxing for Performance Critical Operations"
+    },
+    {
+      "id": "1236",
+      "name": "Improper Neutralization of Formula Elements in a CSV File"
+    },
+    { "id": "1239", "name": "Improper Zeroization of Hardware Register" },
+    { "id": "124", "name": "Buffer Underwrite ('Buffer Underflow')" },
+    { "id": "1240", "name": "Use of a Risky Cryptographic Primitive" },
+    {
+      "id": "1241",
+      "name": "Use of Predictable Algorithm in Random Number Generator"
+    },
+    {
+      "id": "1242",
+      "name": "Inclusion of Undocumented Features or Chicken Bits"
+    },
+    {
+      "id": "1243",
+      "name": "Sensitive Non-Volatile Information Not Protected During Debug"
+    },
+    {
+      "id": "1244",
+      "name": "Improper Access to Sensitive Information Using Debug and Test Interfaces"
+    },
+    {
+      "id": "1245",
+      "name": "Improper Finite State Machines (FSMs) in Hardware Logic"
+    },
+    {
+      "id": "1246",
+      "name": "Improper Write Handling in Limited-write Non-Volatile Memories"
+    },
+    {
+      "id": "1247",
+      "name": "Missing or Improperly Implemented Protection Against Voltage and Clock Glitches"
+    },
+    {
+      "id": "1248",
+      "name": "Semiconductor Defects in Hardware Logic with Security-Sensitive Implications"
+    },
+    {
+      "id": "1249",
+      "name": "Application-Level Admin Tool with Inconsistent View of Underlying Operating System"
+    },
+    { "id": "125", "name": "Out-of-bounds Read" },
+    {
+      "id": "1250",
+      "name": "Improper Preservation of Consistency Between Independent Representations of Shared State"
+    },
+    { "id": "1251", "name": "Mirrored Regions with Different Values" },
+    {
+      "id": "1252",
+      "name": "CPU Hardware Not Configured to Support Exclusivity of Write and Execute Operations"
+    },
+    { "id": "1253", "name": "Incorrect Selection of Fuse Values" },
+    { "id": "1254", "name": "Incorrect Comparison Logic Granularity" },
+    {
+      "id": "1255",
+      "name": "Comparison Logic is Vulnerable to Power Side-Channel Attacks"
+    },
+    {
+      "id": "1256",
+      "name": "Hardware Features Enable Physical Attacks from Software"
+    },
+    {
+      "id": "1257",
+      "name": "Improper Access Control Applied to Mirrored or Aliased Memory Regions"
+    },
+    {
+      "id": "1258",
+      "name": "Exposure of Sensitive System Information Due to Uncleared Debug Information"
+    },
+    {
+      "id": "1259",
+      "name": "Improper Restriction of Security Token Assignment"
+    },
+    { "id": "126", "name": "Buffer Over-read" },
+    {
+      "id": "1260",
+      "name": "Improper Handling of Overlap Between Protected Memory Ranges"
+    },
+    { "id": "1261", "name": "Improper Handling of Single Event Upsets" },
+    {
+      "id": "1262",
+      "name": "Register Interface Allows Software Access to Sensitive Data or Security Settings"
+    },
+    { "id": "1263", "name": "Improper Physical Access Control" },
+    {
+      "id": "1264",
+      "name": "Hardware Logic with Insecure De-Synchronization between Control and Data Channels"
+    },
+    {
+      "id": "1265",
+      "name": "Unintended Reentrant Invocation of Non-reentrant Code Via Nested Calls"
+    },
+    {
+      "id": "1266",
+      "name": "Improper Scrubbing of Sensitive Data from Decommissioned Device"
+    },
+    { "id": "1267", "name": "Policy Uses Obsolete Encoding" },
+    {
+      "id": "1268",
+      "name": "Policy Privileges are not Assigned Consistently Between Control and Data Agents"
+    },
+    { "id": "1269", "name": "Product Released in Non-Release Configuration" },
+    { "id": "127", "name": "Buffer Under-read" },
+    { "id": "1270", "name": "Generation of Incorrect Security Tokens" },
+    {
+      "id": "1271",
+      "name": "Unitialized Value on Reset for Registers Holding Security Settings"
+    },
+    {
+      "id": "1272",
+      "name": "Sensitive Information Uncleared Before Debug/Power State Transition"
+    },
+    { "id": "1273", "name": "Device Unlock Credential Sharing" },
+    {
+      "id": "1274",
+      "name": "Insufficient Protections on the Volatile Memory Containing Boot Code"
+    },
+    {
+      "id": "1275",
+      "name": "Sensitive Cookie with Improper SameSite Attribute"
+    },
+    {
+      "id": "1276",
+      "name": "Hardware Child Block Incorrectly Connected to Parent System"
+    },
+    { "id": "1277", "name": "Firmware Not Updateable" },
+    {
+      "id": "1278",
+      "name": "Missing Protection Against Hardware Reverse Engineering Using Integrated Circuit (IC) Imaging Techniques"
+    },
+    {
+      "id": "1279",
+      "name": "Cryptographic Operations are run Before Supporting Units are Ready"
+    },
+    { "id": "128", "name": "Wrap-around Error" },
+    {
+      "id": "1280",
+      "name": "Access Control Check Implemented After Asset is Accessed"
+    },
+    {
+      "id": "1281",
+      "name": "Sequence of Processor Instructions Leads to Unexpected Behavior (Halt and Catch Fire)"
+    },
+    {
+      "id": "1282",
+      "name": "Assumed-Immutable Data is Stored in Writable Memory"
+    },
+    {
+      "id": "1283",
+      "name": "Mutable Attestation or Measurement Reporting Data"
+    },
+    {
+      "id": "1284",
+      "name": "Improper Validation of Specified Quantity in Input"
+    },
+    {
+      "id": "1285",
+      "name": "Improper Validation of Specified Index, Position, or Offset in Input"
+    },
+    {
+      "id": "1286",
+      "name": "Improper Validation of Syntactic Correctness of Input"
+    },
+    { "id": "1287", "name": "Improper Validation of Specified Type of Input" },
+    { "id": "1288", "name": "Improper Validation of Consistency within Input" },
+    {
+      "id": "1289",
+      "name": "Improper Validation of Unsafe Equivalence in Input"
+    },
+    { "id": "129", "name": "Improper Validation of Array Index" },
+    { "id": "1290", "name": "Incorrect Decoding of Security Identifiers " },
+    {
+      "id": "1291",
+      "name": "Public Key Re-Use for Signing both Debug and Production Code"
+    },
+    { "id": "1292", "name": "Incorrect Conversion of Security Identifiers" },
+    {
+      "id": "1293",
+      "name": "Missing Source Correlation of Multiple Independent Data"
+    },
+    { "id": "1294", "name": "Insecure Security Identifier Mechanism" },
+    {
+      "id": "1295",
+      "name": "Debug Messages Revealing Unnecessary Information"
+    },
+    {
+      "id": "1296",
+      "name": "Incorrect Chaining or Granularity of Debug Components"
+    },
+    {
+      "id": "1297",
+      "name": "Unprotected Confidential Information on Device is Accessible by OSAT Vendors"
+    },
+    { "id": "1298", "name": "Hardware Logic Contains Race Conditions" },
+    {
+      "id": "1299",
+      "name": "Missing Protection Mechanism for Alternate Hardware Interface"
+    },
+    {
+      "id": "13",
+      "name": "ASP.NET Misconfiguration: Password in Configuration File"
+    },
+    {
+      "id": "130",
+      "name": "Improper Handling of Length Parameter Inconsistency"
+    },
+    {
+      "id": "1300",
+      "name": "Improper Protection Against Physical Side Channels"
+    },
+    {
+      "id": "1301",
+      "name": "Insufficient or Incomplete Data Removal within Hardware Component"
+    },
+    { "id": "1302", "name": "Missing Security Identifier" },
+    {
+      "id": "1303",
+      "name": "Non-Transparent Sharing of Microarchitectural Resources"
+    },
+    {
+      "id": "1304",
+      "name": "Improperly Preserved Integrity of Hardware Configuration State During a Power Save/Restore Operation"
+    },
+    { "id": "131", "name": "Incorrect Calculation of Buffer Size" },
+    { "id": "1310", "name": "Missing Ability to Patch ROM Code" },
+    {
+      "id": "1311",
+      "name": "Improper Translation of Security Attributes by Fabric Bridge"
+    },
+    {
+      "id": "1312",
+      "name": "Missing Protection for Mirrored Regions in On-Chip Fabric Firewall"
+    },
+    {
+      "id": "1313",
+      "name": "Hardware Allows Activation of Test or Debug Logic at Runtime"
+    },
+    {
+      "id": "1314",
+      "name": "Missing Write Protection for Parametric Data Values"
+    },
+    {
+      "id": "1315",
+      "name": "Improper Setting of Bus Controlling Capability in Fabric End-point"
+    },
+    {
+      "id": "1316",
+      "name": "Fabric-Address Map Allows Programming of Unwarranted Overlaps of Protected and Unprotected Ranges"
+    },
+    { "id": "1317", "name": "Missing Security Checks in Fabric Bridge" },
+    {
+      "id": "1318",
+      "name": "Missing Support for Security Features in On-chip Fabrics or Buses"
+    },
+    {
+      "id": "1319",
+      "name": "Improper Protection against Electromagnetic Fault Injection (EM-FI)"
+    },
+    {
+      "id": "132",
+      "name": "DEPRECATED (Duplicate): Miscalculated Null Termination"
+    },
+    {
+      "id": "1320",
+      "name": "Improper Protection for Out of Bounds Signal Level Alerts"
+    },
+    {
+      "id": "1321",
+      "name": "Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')"
+    },
+    {
+      "id": "1322",
+      "name": "Use of Blocking Code in Single-threaded, Non-blocking Context"
+    },
+    { "id": "1323", "name": "Improper Management of Sensitive Trace Data" },
+    {
+      "id": "1324",
+      "name": "Sensitive Information Accessible by Physical Probing of JTAG Interface"
+    },
+    {
+      "id": "1325",
+      "name": "Improperly Controlled Sequential Memory Allocation"
+    },
+    { "id": "1326", "name": "Missing Immutable Root of Trust in Hardware" },
+    { "id": "1327", "name": "Binding to an Unrestricted IP Address" },
+    {
+      "id": "1328",
+      "name": "Security Version Number Mutable to Older Versions"
+    },
+    { "id": "1329", "name": "Reliance on Component That is Not Updateable" },
+    { "id": "1330", "name": "Remanent Data Readable after Memory Erase" },
+    {
+      "id": "1331",
+      "name": "Improper Isolation of Shared Resources in Network On Chip"
+    },
+    {
+      "id": "1332",
+      "name": "Insufficient Protection Against Instruction Skipping Via Fault Injection"
+    },
+    {
+      "id": "1334",
+      "name": "Unauthorized Error Injection Can Degrade Hardware Redundancy"
+    },
+    {
+      "id": "1338",
+      "name": "Improper Protections Against Hardware Overheating"
+    },
+    { "id": "134", "name": "Use of Externally-Controlled Format String" },
+    {
+      "id": "135",
+      "name": "Incorrect Calculation of Multi-Byte String Length"
+    },
+    { "id": "138", "name": "Improper Neutralization of Special Elements" },
+    { "id": "14", "name": "Compiler Removal of Code to Clear Buffers" },
+    { "id": "140", "name": "Improper Neutralization of Delimiters" },
+    {
+      "id": "141",
+      "name": "Improper Neutralization of Parameter/Argument Delimiters"
+    },
+    { "id": "142", "name": "Improper Neutralization of Value Delimiters" },
+    { "id": "143", "name": "Improper Neutralization of Record Delimiters" },
+    { "id": "144", "name": "Improper Neutralization of Line Delimiters" },
+    { "id": "145", "name": "Improper Neutralization of Section Delimiters" },
+    {
+      "id": "146",
+      "name": "Improper Neutralization of Expression/Command Delimiters"
+    },
+    { "id": "147", "name": "Improper Neutralization of Input Terminators" },
+    { "id": "148", "name": "Improper Neutralization of Input Leaders" },
+    { "id": "149", "name": "Improper Neutralization of Quoting Syntax" },
+    {
+      "id": "15",
+      "name": "External Control of System or Configuration Setting"
+    },
+    {
+      "id": "150",
+      "name": "Improper Neutralization of Escape, Meta, or Control Sequences"
+    },
+    { "id": "151", "name": "Improper Neutralization of Comment Delimiters" },
+    { "id": "152", "name": "Improper Neutralization of Macro Symbols" },
+    {
+      "id": "153",
+      "name": "Improper Neutralization of Substitution Characters"
+    },
+    {
+      "id": "154",
+      "name": "Improper Neutralization of Variable Name Delimiters"
+    },
+    {
+      "id": "155",
+      "name": "Improper Neutralization of Wildcards or Matching Symbols"
+    },
+    { "id": "156", "name": "Improper Neutralization of Whitespace" },
+    { "id": "157", "name": "Failure to Sanitize Paired Delimiters" },
+    {
+      "id": "158",
+      "name": "Improper Neutralization of Null Byte or NUL Character"
+    },
+    {
+      "id": "159",
+      "name": "Improper Handling of Invalid Use of Special Elements"
+    },
+    {
+      "id": "160",
+      "name": "Improper Neutralization of Leading Special Elements"
+    },
+    {
+      "id": "161",
+      "name": "Improper Neutralization of Multiple Leading Special Elements"
+    },
+    {
+      "id": "162",
+      "name": "Improper Neutralization of Trailing Special Elements"
+    },
+    {
+      "id": "163",
+      "name": "Improper Neutralization of Multiple Trailing Special Elements"
+    },
+    {
+      "id": "164",
+      "name": "Improper Neutralization of Internal Special Elements"
+    },
+    {
+      "id": "165",
+      "name": "Improper Neutralization of Multiple Internal Special Elements"
+    },
+    { "id": "166", "name": "Improper Handling of Missing Special Element" },
+    { "id": "167", "name": "Improper Handling of Additional Special Element" },
+    {
+      "id": "168",
+      "name": "Improper Handling of Inconsistent Special Elements"
+    },
+    { "id": "170", "name": "Improper Null Termination" },
+    { "id": "172", "name": "Encoding Error" },
+    { "id": "173", "name": "Improper Handling of Alternate Encoding" },
+    { "id": "174", "name": "Double Decoding of the Same Data" },
+    { "id": "175", "name": "Improper Handling of Mixed Encoding" },
+    { "id": "176", "name": "Improper Handling of Unicode Encoding" },
+    { "id": "177", "name": "Improper Handling of URL Encoding (Hex Encoding)" },
+    { "id": "178", "name": "Improper Handling of Case Sensitivity" },
+    { "id": "179", "name": "Incorrect Behavior Order: Early Validation" },
+    {
+      "id": "180",
+      "name": "Incorrect Behavior Order: Validate Before Canonicalize"
+    },
+    { "id": "181", "name": "Incorrect Behavior Order: Validate Before Filter" },
+    { "id": "182", "name": "Collapse of Data into Unsafe Value" },
+    { "id": "183", "name": "Permissive List of Allowed Inputs" },
+    { "id": "184", "name": "Incomplete List of Disallowed Inputs" },
+    { "id": "185", "name": "Incorrect Regular Expression" },
+    { "id": "186", "name": "Overly Restrictive Regular Expression" },
+    { "id": "187", "name": "Partial String Comparison" },
+    { "id": "188", "name": "Reliance on Data/Memory Layout" },
+    { "id": "190", "name": "Integer Overflow or Wraparound" },
+    { "id": "191", "name": "Integer Underflow (Wrap or Wraparound)" },
+    { "id": "192", "name": "Integer Coercion Error" },
+    { "id": "193", "name": "Off-by-one Error" },
+    { "id": "194", "name": "Unexpected Sign Extension" },
+    { "id": "195", "name": "Signed to Unsigned Conversion Error" },
+    { "id": "196", "name": "Unsigned to Signed Conversion Error" },
+    { "id": "197", "name": "Numeric Truncation Error" },
+    { "id": "198", "name": "Use of Incorrect Byte Ordering" },
+    { "id": "20", "name": "Improper Input Validation" },
+    {
+      "id": "200",
+      "name": "Exposure of Sensitive Information to an Unauthorized Actor"
+    },
+    {
+      "id": "201",
+      "name": "Insertion of Sensitive Information Into Sent Data"
+    },
+    {
+      "id": "202",
+      "name": "Exposure of Sensitive Information Through Data Queries"
+    },
+    { "id": "203", "name": "Observable Discrepancy" },
+    { "id": "204", "name": "Observable Response Discrepancy" },
+    { "id": "205", "name": "Observable Behavioral Discrepancy" },
+    { "id": "206", "name": "Observable Internal Behavioral Discrepancy" },
+    {
+      "id": "207",
+      "name": "Observable Behavioral Discrepancy With Equivalent Products"
+    },
+    { "id": "208", "name": "Observable Timing Discrepancy" },
+    {
+      "id": "209",
+      "name": "Generation of Error Message Containing Sensitive Information"
+    },
+    {
+      "id": "210",
+      "name": "Self-generated Error Message Containing Sensitive Information"
+    },
+    {
+      "id": "211",
+      "name": "Externally-Generated Error Message Containing Sensitive Information"
+    },
+    {
+      "id": "212",
+      "name": "Improper Removal of Sensitive Information Before Storage or Transfer"
+    },
+    {
+      "id": "213",
+      "name": "Exposure of Sensitive Information Due to Incompatible Policies"
+    },
+    {
+      "id": "214",
+      "name": "Invocation of Process Using Visible Sensitive Information"
+    },
+    {
+      "id": "215",
+      "name": "Insertion of Sensitive Information Into Debugging Code"
+    },
+    {
+      "id": "216",
+      "name": "DEPRECATED: Containment Errors (Container Errors)"
+    },
+    {
+      "id": "217",
+      "name": "DEPRECATED: Failure to Protect Stored Data from Modification"
+    },
+    {
+      "id": "218",
+      "name": "DEPRECATED (Duplicate): Failure to provide confidentiality for stored data"
+    },
+    {
+      "id": "219",
+      "name": "Storage of File with Sensitive Data Under Web Root"
+    },
+    {
+      "id": "22",
+      "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+    },
+    {
+      "id": "220",
+      "name": "Storage of File With Sensitive Data Under FTP Root"
+    },
+    { "id": "221", "name": "Information Loss or Omission" },
+    { "id": "222", "name": "Truncation of Security-relevant Information" },
+    { "id": "223", "name": "Omission of Security-relevant Information" },
+    {
+      "id": "224",
+      "name": "Obscured Security-relevant Information by Alternate Name"
+    },
+    {
+      "id": "225",
+      "name": "DEPRECATED (Duplicate): General Information Management Problems"
+    },
+    {
+      "id": "226",
+      "name": "Sensitive Information in Resource Not Removed Before Reuse"
+    },
+    {
+      "id": "228",
+      "name": "Improper Handling of Syntactically Invalid Structure"
+    },
+    { "id": "229", "name": "Improper Handling of Values" },
+    { "id": "23", "name": "Relative Path Traversal" },
+    { "id": "230", "name": "Improper Handling of Missing Values" },
+    { "id": "231", "name": "Improper Handling of Extra Values" },
+    { "id": "232", "name": "Improper Handling of Undefined Values" },
+    { "id": "233", "name": "Improper Handling of Parameters" },
+    { "id": "234", "name": "Failure to Handle Missing Parameter" },
+    { "id": "235", "name": "Improper Handling of Extra Parameters" },
+    { "id": "236", "name": "Improper Handling of Undefined Parameters" },
+    { "id": "237", "name": "Improper Handling of Structural Elements" },
+    {
+      "id": "238",
+      "name": "Improper Handling of Incomplete Structural Elements"
+    },
+    { "id": "239", "name": "Failure to Handle Incomplete Element" },
+    { "id": "24", "name": "Path Traversal: '../filedir'" },
+    {
+      "id": "240",
+      "name": "Improper Handling of Inconsistent Structural Elements"
+    },
+    { "id": "241", "name": "Improper Handling of Unexpected Data Type" },
+    { "id": "242", "name": "Use of Inherently Dangerous Function" },
+    {
+      "id": "243",
+      "name": "Creation of chroot Jail Without Changing Working Directory"
+    },
+    {
+      "id": "244",
+      "name": "Improper Clearing of Heap Memory Before Release ('Heap Inspection')"
+    },
+    {
+      "id": "245",
+      "name": "J2EE Bad Practices: Direct Management of Connections"
+    },
+    { "id": "246", "name": "J2EE Bad Practices: Direct Use of Sockets" },
+    {
+      "id": "247",
+      "name": "DEPRECATED (Duplicate): Reliance on DNS Lookups in a Security Decision"
+    },
+    { "id": "248", "name": "Uncaught Exception" },
+    { "id": "249", "name": "DEPRECATED: Often Misused: Path Manipulation" },
+    { "id": "25", "name": "Path Traversal: '/../filedir'" },
+    { "id": "250", "name": "Execution with Unnecessary Privileges" },
+    { "id": "252", "name": "Unchecked Return Value" },
+    { "id": "253", "name": "Incorrect Check of Function Return Value" },
+    { "id": "256", "name": "Unprotected Storage of Credentials" },
+    { "id": "257", "name": "Storing Passwords in a Recoverable Format" },
+    { "id": "258", "name": "Empty Password in Configuration File" },
+    { "id": "259", "name": "Use of Hard-coded Password" },
+    { "id": "26", "name": "Path Traversal: '/dir/../filename'" },
+    { "id": "260", "name": "Password in Configuration File" },
+    { "id": "261", "name": "Weak Encoding for Password" },
+    { "id": "262", "name": "Not Using Password Aging" },
+    { "id": "263", "name": "Password Aging with Long Expiration" },
+    { "id": "266", "name": "Incorrect Privilege Assignment" },
+    { "id": "267", "name": "Privilege Defined With Unsafe Actions" },
+    { "id": "268", "name": "Privilege Chaining" },
+    { "id": "269", "name": "Improper Privilege Management" },
+    { "id": "27", "name": "Path Traversal: 'dir/../../filename'" },
+    { "id": "270", "name": "Privilege Context Switching Error" },
+    { "id": "271", "name": "Privilege Dropping / Lowering Errors" },
+    { "id": "272", "name": "Least Privilege Violation" },
+    { "id": "273", "name": "Improper Check for Dropped Privileges" },
+    { "id": "274", "name": "Improper Handling of Insufficient Privileges" },
+    { "id": "276", "name": "Incorrect Default Permissions" },
+    { "id": "277", "name": "Insecure Inherited Permissions" },
+    { "id": "278", "name": "Insecure Preserved Inherited Permissions" },
+    { "id": "279", "name": "Incorrect Execution-Assigned Permissions" },
+    { "id": "28", "name": "Path Traversal: '..\filedir'" },
+    {
+      "id": "280",
+      "name": "Improper Handling of Insufficient Permissions or Privileges "
+    },
+    { "id": "281", "name": "Improper Preservation of Permissions" },
+    { "id": "282", "name": "Improper Ownership Management" },
+    { "id": "283", "name": "Unverified Ownership" },
+    { "id": "284", "name": "Improper Access Control" },
+    { "id": "285", "name": "Improper Authorization" },
+    { "id": "286", "name": "Incorrect User Management" },
+    { "id": "287", "name": "Improper Authentication" },
+    {
+      "id": "288",
+      "name": "Authentication Bypass Using an Alternate Path or Channel"
+    },
+    { "id": "289", "name": "Authentication Bypass by Alternate Name" },
+    { "id": "29", "name": "Path Traversal: '..\filename'" },
+    { "id": "290", "name": "Authentication Bypass by Spoofing" },
+    { "id": "291", "name": "Reliance on IP Address for Authentication" },
+    {
+      "id": "292",
+      "name": "DEPRECATED (Duplicate): Trusting Self-reported DNS Name"
+    },
+    { "id": "293", "name": "Using Referer Field for Authentication" },
+    { "id": "294", "name": "Authentication Bypass by Capture-replay" },
+    { "id": "295", "name": "Improper Certificate Validation" },
+    {
+      "id": "296",
+      "name": "Improper Following of a Certificate's Chain of Trust"
+    },
+    {
+      "id": "297",
+      "name": "Improper Validation of Certificate with Host Mismatch"
+    },
+    { "id": "298", "name": "Improper Validation of Certificate Expiration" },
+    { "id": "299", "name": "Improper Check for Certificate Revocation" },
+    { "id": "30", "name": "Path Traversal: 'dir..\filename'" },
+    { "id": "300", "name": "Channel Accessible by Non-Endpoint" },
+    { "id": "301", "name": "Reflection Attack in an Authentication Protocol" },
+    { "id": "302", "name": "Authentication Bypass by Assumed-Immutable Data" },
+    {
+      "id": "303",
+      "name": "Incorrect Implementation of Authentication Algorithm"
+    },
+    { "id": "304", "name": "Missing Critical Step in Authentication" },
+    { "id": "305", "name": "Authentication Bypass by Primary Weakness" },
+    { "id": "306", "name": "Missing Authentication for Critical Function" },
+    {
+      "id": "307",
+      "name": "Improper Restriction of Excessive Authentication Attempts"
+    },
+    { "id": "308", "name": "Use of Single-factor Authentication" },
+    {
+      "id": "309",
+      "name": "Use of Password System for Primary Authentication"
+    },
+    { "id": "31", "name": "Path Traversal: 'dir....\filename'" },
+    { "id": "311", "name": "Missing Encryption of Sensitive Data" },
+    { "id": "312", "name": "Cleartext Storage of Sensitive Information" },
+    { "id": "313", "name": "Cleartext Storage in a File or on Disk" },
+    { "id": "314", "name": "Cleartext Storage in the Registry" },
+    {
+      "id": "315",
+      "name": "Cleartext Storage of Sensitive Information in a Cookie"
+    },
+    {
+      "id": "316",
+      "name": "Cleartext Storage of Sensitive Information in Memory"
+    },
+    {
+      "id": "317",
+      "name": "Cleartext Storage of Sensitive Information in GUI"
+    },
+    {
+      "id": "318",
+      "name": "Cleartext Storage of Sensitive Information in Executable"
+    },
+    { "id": "319", "name": "Cleartext Transmission of Sensitive Information" },
+    { "id": "32", "name": "Path Traversal: '...' (Triple Dot)" },
+    { "id": "321", "name": "Use of Hard-coded Cryptographic Key" },
+    { "id": "322", "name": "Key Exchange without Entity Authentication" },
+    { "id": "323", "name": "Reusing a Nonce, Key Pair in Encryption" },
+    { "id": "324", "name": "Use of a Key Past its Expiration Date" },
+    { "id": "325", "name": "Missing Cryptographic Step" },
+    { "id": "326", "name": "Inadequate Encryption Strength" },
+    { "id": "327", "name": "Use of a Broken or Risky Cryptographic Algorithm" },
+    { "id": "328", "name": "Reversible One-Way Hash" },
+    { "id": "329", "name": "Not Using a Random IV with CBC Mode" },
+    { "id": "33", "name": "Path Traversal: '....' (Multiple Dot)" },
+    { "id": "330", "name": "Use of Insufficiently Random Values" },
+    { "id": "331", "name": "Insufficient Entropy" },
+    { "id": "332", "name": "Insufficient Entropy in PRNG" },
+    {
+      "id": "333",
+      "name": "Improper Handling of Insufficient Entropy in TRNG"
+    },
+    { "id": "334", "name": "Small Space of Random Values" },
+    {
+      "id": "335",
+      "name": "Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)"
+    },
+    {
+      "id": "336",
+      "name": "Same Seed in Pseudo-Random Number Generator (PRNG)"
+    },
+    {
+      "id": "337",
+      "name": "Predictable Seed in Pseudo-Random Number Generator (PRNG)"
+    },
+    {
+      "id": "338",
+      "name": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)"
+    },
+    { "id": "339", "name": "Small Seed Space in PRNG" },
+    { "id": "34", "name": "Path Traversal: '....//'" },
+    { "id": "340", "name": "Generation of Predictable Numbers or Identifiers" },
+    { "id": "341", "name": "Predictable from Observable State" },
+    { "id": "342", "name": "Predictable Exact Value from Previous Values" },
+    { "id": "343", "name": "Predictable Value Range from Previous Values" },
+    {
+      "id": "344",
+      "name": "Use of Invariant Value in Dynamically Changing Context"
+    },
+    { "id": "345", "name": "Insufficient Verification of Data Authenticity" },
+    { "id": "346", "name": "Origin Validation Error" },
+    { "id": "347", "name": "Improper Verification of Cryptographic Signature" },
+    { "id": "348", "name": "Use of Less Trusted Source" },
+    {
+      "id": "349",
+      "name": "Acceptance of Extraneous Untrusted Data With Trusted Data"
+    },
+    { "id": "35", "name": "Path Traversal: '.../...//'" },
+    {
+      "id": "350",
+      "name": "Reliance on Reverse DNS Resolution for a Security-Critical Action"
+    },
+    { "id": "351", "name": "Insufficient Type Distinction" },
+    { "id": "352", "name": "Cross-Site Request Forgery (CSRF)" },
+    { "id": "353", "name": "Missing Support for Integrity Check" },
+    { "id": "354", "name": "Improper Validation of Integrity Check Value" },
+    { "id": "356", "name": "Product UI does not Warn User of Unsafe Actions" },
+    { "id": "357", "name": "Insufficient UI Warning of Dangerous Operations" },
+    {
+      "id": "358",
+      "name": "Improperly Implemented Security Check for Standard"
+    },
+    {
+      "id": "359",
+      "name": "Exposure of Private Personal Information to an Unauthorized Actor"
+    },
+    { "id": "36", "name": "Absolute Path Traversal" },
+    { "id": "360", "name": "Trust of System Event Data" },
+    {
+      "id": "362",
+      "name": "Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')"
+    },
+    { "id": "363", "name": "Race Condition Enabling Link Following" },
+    { "id": "364", "name": "Signal Handler Race Condition" },
+    { "id": "365", "name": "Race Condition in Switch" },
+    { "id": "366", "name": "Race Condition within a Thread" },
+    {
+      "id": "367",
+      "name": "Time-of-check Time-of-use (TOCTOU) Race Condition"
+    },
+    { "id": "368", "name": "Context Switching Race Condition" },
+    { "id": "369", "name": "Divide By Zero" },
+    { "id": "37", "name": "Path Traversal: '/absolute/pathname/here'" },
+    {
+      "id": "370",
+      "name": "Missing Check for Certificate Revocation after Initial Check"
+    },
+    { "id": "372", "name": "Incomplete Internal State Distinction" },
+    { "id": "373", "name": "DEPRECATED: State Synchronization Error" },
+    { "id": "374", "name": "Passing Mutable Objects to an Untrusted Method" },
+    {
+      "id": "375",
+      "name": "Returning a Mutable Object to an Untrusted Caller"
+    },
+    { "id": "377", "name": "Insecure Temporary File" },
+    {
+      "id": "378",
+      "name": "Creation of Temporary File With Insecure Permissions"
+    },
+    {
+      "id": "379",
+      "name": "Creation of Temporary File in Directory with Insecure Permissions"
+    },
+    { "id": "38", "name": "Path Traversal: 'absolutepathnamehere'" },
+    { "id": "382", "name": "J2EE Bad Practices: Use of System.exit()" },
+    { "id": "383", "name": "J2EE Bad Practices: Direct Use of Threads" },
+    { "id": "384", "name": "Session Fixation" },
+    { "id": "385", "name": "Covert Timing Channel" },
+    { "id": "386", "name": "Symbolic Name not Mapping to Correct Object" },
+    { "id": "39", "name": "Path Traversal: 'C:dirname'" },
+    { "id": "390", "name": "Detection of Error Condition Without Action" },
+    { "id": "391", "name": "Unchecked Error Condition" },
+    { "id": "392", "name": "Missing Report of Error Condition" },
+    { "id": "393", "name": "Return of Wrong Status Code" },
+    { "id": "394", "name": "Unexpected Status Code or Return Value" },
+    {
+      "id": "395",
+      "name": "Use of NullPointerException Catch to Detect NULL Pointer Dereference"
+    },
+    { "id": "396", "name": "Declaration of Catch for Generic Exception" },
+    { "id": "397", "name": "Declaration of Throws for Generic Exception" },
+    {
+      "id": "40",
+      "name": "Path Traversal: '\\UNCshare\name' (Windows UNC Share)"
+    },
+    { "id": "400", "name": "Uncontrolled Resource Consumption" },
+    {
+      "id": "401",
+      "name": "Missing Release of Memory after Effective Lifetime"
+    },
+    {
+      "id": "402",
+      "name": "Transmission of Private Resources into a New Sphere ('Resource Leak')"
+    },
+    {
+      "id": "403",
+      "name": "Exposure of File Descriptor to Unintended Control Sphere ('File Descriptor Leak')"
+    },
+    { "id": "404", "name": "Improper Resource Shutdown or Release" },
+    { "id": "405", "name": "Asymmetric Resource Consumption (Amplification)" },
+    {
+      "id": "406",
+      "name": "Insufficient Control of Network Message Volume (Network Amplification)"
+    },
+    { "id": "407", "name": "Inefficient Algorithmic Complexity" },
+    { "id": "408", "name": "Incorrect Behavior Order: Early Amplification" },
+    {
+      "id": "409",
+      "name": "Improper Handling of Highly Compressed Data (Data Amplification)"
+    },
+    { "id": "41", "name": "Improper Resolution of Path Equivalence" },
+    { "id": "410", "name": "Insufficient Resource Pool" },
+    { "id": "412", "name": "Unrestricted Externally Accessible Lock" },
+    { "id": "413", "name": "Improper Resource Locking" },
+    { "id": "414", "name": "Missing Lock Check" },
+    { "id": "415", "name": "Double Free" },
+    { "id": "416", "name": "Use After Free" },
+    { "id": "419", "name": "Unprotected Primary Channel" },
+    { "id": "42", "name": "Path Equivalence: 'filename.' (Trailing Dot)" },
+    { "id": "420", "name": "Unprotected Alternate Channel" },
+    {
+      "id": "421",
+      "name": "Race Condition During Access to Alternate Channel"
+    },
+    {
+      "id": "422",
+      "name": "Unprotected Windows Messaging Channel ('Shatter')"
+    },
+    { "id": "423", "name": "DEPRECATED (Duplicate): Proxied Trusted Channel" },
+    { "id": "424", "name": "Improper Protection of Alternate Path" },
+    { "id": "425", "name": "Direct Request ('Forced Browsing')" },
+    { "id": "426", "name": "Untrusted Search Path" },
+    { "id": "427", "name": "Uncontrolled Search Path Element" },
+    { "id": "428", "name": "Unquoted Search Path or Element" },
+    {
+      "id": "43",
+      "name": "Path Equivalence: 'filename....' (Multiple Trailing Dot)"
+    },
+    { "id": "430", "name": "Deployment of Wrong Handler" },
+    { "id": "431", "name": "Missing Handler" },
+    {
+      "id": "432",
+      "name": "Dangerous Signal Handler not Disabled During Sensitive Operations"
+    },
+    { "id": "433", "name": "Unparsed Raw Web Content Delivery" },
+    { "id": "434", "name": "Unrestricted Upload of File with Dangerous Type" },
+    {
+      "id": "435",
+      "name": "Improper Interaction Between Multiple Correctly-Behaving Entities"
+    },
+    { "id": "436", "name": "Interpretation Conflict" },
+    { "id": "437", "name": "Incomplete Model of Endpoint Features" },
+    { "id": "439", "name": "Behavioral Change in New Version or Environment" },
+    { "id": "44", "name": "Path Equivalence: 'file.name' (Internal Dot)" },
+    { "id": "440", "name": "Expected Behavior Violation" },
+    {
+      "id": "441",
+      "name": "Unintended Proxy or Intermediary ('Confused Deputy')"
+    },
+    { "id": "443", "name": "DEPRECATED (Duplicate): HTTP response splitting" },
+    {
+      "id": "444",
+      "name": "Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling')"
+    },
+    { "id": "446", "name": "UI Discrepancy for Security Feature" },
+    { "id": "447", "name": "Unimplemented or Unsupported Feature in UI" },
+    { "id": "448", "name": "Obsolete Feature in UI" },
+    { "id": "449", "name": "The UI Performs the Wrong Action" },
+    {
+      "id": "45",
+      "name": "Path Equivalence: 'file...name' (Multiple Internal Dot)"
+    },
+    { "id": "450", "name": "Multiple Interpretations of UI Input" },
+    {
+      "id": "451",
+      "name": "User Interface (UI) Misrepresentation of Critical Information"
+    },
+    { "id": "453", "name": "Insecure Default Variable Initialization" },
+    {
+      "id": "454",
+      "name": "External Initialization of Trusted Variables or Data Stores"
+    },
+    { "id": "455", "name": "Non-exit on Failed Initialization" },
+    { "id": "456", "name": "Missing Initialization of a Variable" },
+    { "id": "457", "name": "Use of Uninitialized Variable" },
+    { "id": "458", "name": "DEPRECATED: Incorrect Initialization" },
+    { "id": "459", "name": "Incomplete Cleanup" },
+    { "id": "46", "name": "Path Equivalence: 'filename ' (Trailing Space)" },
+    { "id": "460", "name": "Improper Cleanup on Thrown Exception" },
+    { "id": "462", "name": "Duplicate Key in Associative List (Alist)" },
+    { "id": "463", "name": "Deletion of Data Structure Sentinel" },
+    { "id": "464", "name": "Addition of Data Structure Sentinel" },
+    {
+      "id": "466",
+      "name": "Return of Pointer Value Outside of Expected Range"
+    },
+    { "id": "467", "name": "Use of sizeof() on a Pointer Type" },
+    { "id": "468", "name": "Incorrect Pointer Scaling" },
+    { "id": "469", "name": "Use of Pointer Subtraction to Determine Size" },
+    { "id": "47", "name": "Path Equivalence: ' filename' (Leading Space)" },
+    {
+      "id": "470",
+      "name": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')"
+    },
+    { "id": "471", "name": "Modification of Assumed-Immutable Data (MAID)" },
+    {
+      "id": "472",
+      "name": "External Control of Assumed-Immutable Web Parameter"
+    },
+    { "id": "473", "name": "PHP External Variable Modification" },
+    {
+      "id": "474",
+      "name": "Use of Function with Inconsistent Implementations"
+    },
+    { "id": "475", "name": "Undefined Behavior for Input to API" },
+    { "id": "476", "name": "NULL Pointer Dereference" },
+    { "id": "477", "name": "Use of Obsolete Function" },
+    { "id": "478", "name": "Missing Default Case in Switch Statement" },
+    { "id": "479", "name": "Signal Handler Use of a Non-reentrant Function" },
+    {
+      "id": "48",
+      "name": "Path Equivalence: 'file name' (Internal Whitespace)"
+    },
+    { "id": "480", "name": "Use of Incorrect Operator" },
+    { "id": "481", "name": "Assigning instead of Comparing" },
+    { "id": "482", "name": "Comparing instead of Assigning" },
+    { "id": "483", "name": "Incorrect Block Delimitation" },
+    { "id": "484", "name": "Omitted Break Statement in Switch" },
+    { "id": "486", "name": "Comparison of Classes by Name" },
+    { "id": "487", "name": "Reliance on Package-level Scope" },
+    { "id": "488", "name": "Exposure of Data Element to Wrong Session" },
+    { "id": "489", "name": "Active Debug Code" },
+    { "id": "49", "name": "Path Equivalence: 'filename/' (Trailing Slash)" },
+    {
+      "id": "491",
+      "name": "Public cloneable() Method Without Final ('Object Hijack')"
+    },
+    { "id": "492", "name": "Use of Inner Class Containing Sensitive Data" },
+    { "id": "493", "name": "Critical Public Variable Without Final Modifier" },
+    { "id": "494", "name": "Download of Code Without Integrity Check" },
+    {
+      "id": "495",
+      "name": "Private Data Structure Returned From A Public Method"
+    },
+    {
+      "id": "496",
+      "name": "Public Data Assigned to Private Array-Typed Field"
+    },
+    {
+      "id": "497",
+      "name": "Exposure of Sensitive System Information to an Unauthorized Control Sphere"
+    },
+    { "id": "498", "name": "Cloneable Class Containing Sensitive Information" },
+    { "id": "499", "name": "Serializable Class Containing Sensitive Data" },
+    {
+      "id": "5",
+      "name": "J2EE Misconfiguration: Data Transmission Without Encryption"
+    },
+    { "id": "50", "name": "Path Equivalence: '//multiple/leading/slash'" },
+    { "id": "500", "name": "Public Static Field Not Marked Final" },
+    { "id": "501", "name": "Trust Boundary Violation" },
+    { "id": "502", "name": "Deserialization of Untrusted Data" },
+    { "id": "506", "name": "Embedded Malicious Code" },
+    { "id": "507", "name": "Trojan Horse" },
+    { "id": "508", "name": "Non-Replicating Malicious Code" },
+    { "id": "509", "name": "Replicating Malicious Code (Virus or Worm)" },
+    { "id": "51", "name": "Path Equivalence: '/multiple//internal/slash'" },
+    { "id": "510", "name": "Trapdoor" },
+    { "id": "511", "name": "Logic/Time Bomb" },
+    { "id": "512", "name": "Spyware" },
+    { "id": "514", "name": "Covert Channel" },
+    { "id": "515", "name": "Covert Storage Channel" },
+    { "id": "516", "name": "DEPRECATED (Duplicate): Covert Timing Channel" },
+    { "id": "52", "name": "Path Equivalence: '/multiple/trailing/slash//'" },
+    { "id": "520", "name": ".NET Misconfiguration: Use of Impersonation" },
+    { "id": "521", "name": "Weak Password Requirements" },
+    { "id": "522", "name": "Insufficiently Protected Credentials" },
+    { "id": "523", "name": "Unprotected Transport of Credentials" },
+    { "id": "524", "name": "Use of Cache Containing Sensitive Information" },
+    {
+      "id": "525",
+      "name": "Use of Web Browser Cache Containing Sensitive Information"
+    },
+    {
+      "id": "526",
+      "name": "Exposure of Sensitive Information Through Environmental Variables"
+    },
+    {
+      "id": "527",
+      "name": "Exposure of Version-Control Repository to an Unauthorized Control Sphere"
+    },
+    {
+      "id": "528",
+      "name": "Exposure of Core Dump File to an Unauthorized Control Sphere"
+    },
+    {
+      "id": "529",
+      "name": "Exposure of Access Control List Files to an Unauthorized Control Sphere"
+    },
+    { "id": "53", "name": "Path Equivalence: 'multiple\\internal\backslash'" },
+    {
+      "id": "530",
+      "name": "Exposure of Backup File to an Unauthorized Control Sphere"
+    },
+    { "id": "531", "name": "Inclusion of Sensitive Information in Test Code" },
+    { "id": "532", "name": "Insertion of Sensitive Information into Log File" },
+    {
+      "id": "533",
+      "name": "DEPRECATED: Information Exposure Through Server Log Files"
+    },
+    {
+      "id": "534",
+      "name": "DEPRECATED: Information Exposure Through Debug Log Files"
+    },
+    {
+      "id": "535",
+      "name": "Exposure of Information Through Shell Error Message"
+    },
+    {
+      "id": "536",
+      "name": "Servlet Runtime Error Message Containing Sensitive Information"
+    },
+    {
+      "id": "537",
+      "name": "Java Runtime Error Message Containing Sensitive Information"
+    },
+    {
+      "id": "538",
+      "name": "Insertion of Sensitive Information into Externally-Accessible File or Directory"
+    },
+    {
+      "id": "539",
+      "name": "Use of Persistent Cookies Containing Sensitive Information"
+    },
+    { "id": "54", "name": "Path Equivalence: 'filedir' (Trailing Backslash)" },
+    {
+      "id": "540",
+      "name": "Inclusion of Sensitive Information in Source Code"
+    },
+    {
+      "id": "541",
+      "name": "Inclusion of Sensitive Information in an Include File"
+    },
+    {
+      "id": "542",
+      "name": "DEPRECATED: Information Exposure Through Cleanup Log Files"
+    },
+    {
+      "id": "543",
+      "name": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context"
+    },
+    { "id": "544", "name": "Missing Standardized Error Handling Mechanism" },
+    { "id": "545", "name": "DEPRECATED: Use of Dynamic Class Loading" },
+    { "id": "546", "name": "Suspicious Comment" },
+    { "id": "547", "name": "Use of Hard-coded, Security-relevant Constants" },
+    {
+      "id": "548",
+      "name": "Exposure of Information Through Directory Listing"
+    },
+    { "id": "549", "name": "Missing Password Field Masking" },
+    { "id": "55", "name": "Path Equivalence: '/./' (Single Dot Directory)" },
+    {
+      "id": "550",
+      "name": "Server-generated Error Message Containing Sensitive Information"
+    },
+    {
+      "id": "551",
+      "name": "Incorrect Behavior Order: Authorization Before Parsing and Canonicalization"
+    },
+    {
+      "id": "552",
+      "name": "Files or Directories Accessible to External Parties"
+    },
+    { "id": "553", "name": "Command Shell in Externally Accessible Directory" },
+    {
+      "id": "554",
+      "name": "ASP.NET Misconfiguration: Not Using Input Validation Framework"
+    },
+    {
+      "id": "555",
+      "name": "J2EE Misconfiguration: Plaintext Password in Configuration File"
+    },
+    {
+      "id": "556",
+      "name": "ASP.NET Misconfiguration: Use of Identity Impersonation"
+    },
+    { "id": "558", "name": "Use of getlogin() in Multithreaded Application" },
+    { "id": "56", "name": "Path Equivalence: 'filedir*' (Wildcard)" },
+    { "id": "560", "name": "Use of umask() with chmod-style Argument" },
+    { "id": "561", "name": "Dead Code" },
+    { "id": "562", "name": "Return of Stack Variable Address" },
+    { "id": "563", "name": "Assignment to Variable without Use" },
+    { "id": "564", "name": "SQL Injection: Hibernate" },
+    {
+      "id": "565",
+      "name": "Reliance on Cookies without Validation and Integrity Checking"
+    },
+    {
+      "id": "566",
+      "name": "Authorization Bypass Through User-Controlled SQL Primary Key"
+    },
+    {
+      "id": "567",
+      "name": "Unsynchronized Access to Shared Data in a Multithreaded Context"
+    },
+    { "id": "568", "name": "finalize() Method Without super.finalize()" },
+    { "id": "57", "name": "Path Equivalence: 'fakedir/../realdir/filename'" },
+    { "id": "570", "name": "Expression is Always False" },
+    { "id": "571", "name": "Expression is Always True" },
+    { "id": "572", "name": "Call to Thread run() instead of start()" },
+    { "id": "573", "name": "Improper Following of Specification by Caller" },
+    {
+      "id": "574",
+      "name": "EJB Bad Practices: Use of Synchronization Primitives"
+    },
+    { "id": "575", "name": "EJB Bad Practices: Use of AWT Swing" },
+    { "id": "576", "name": "EJB Bad Practices: Use of Java I/O" },
+    { "id": "577", "name": "EJB Bad Practices: Use of Sockets" },
+    { "id": "578", "name": "EJB Bad Practices: Use of Class Loader" },
+    {
+      "id": "579",
+      "name": "J2EE Bad Practices: Non-serializable Object Stored in Session"
+    },
+    { "id": "58", "name": "Path Equivalence: Windows 8.3 Filename" },
+    { "id": "580", "name": "clone() Method Without super.clone()" },
+    {
+      "id": "581",
+      "name": "Object Model Violation: Just One of Equals and Hashcode Defined"
+    },
+    { "id": "582", "name": "Array Declared Public, Final, and Static" },
+    { "id": "583", "name": "finalize() Method Declared Public" },
+    { "id": "584", "name": "Return Inside Finally Block" },
+    { "id": "585", "name": "Empty Synchronized Block" },
+    { "id": "586", "name": "Explicit Call to Finalize()" },
+    { "id": "587", "name": "Assignment of a Fixed Address to a Pointer" },
+    {
+      "id": "588",
+      "name": "Attempt to Access Child of a Non-structure Pointer"
+    },
+    { "id": "589", "name": "Call to Non-ubiquitous API" },
+    {
+      "id": "59",
+      "name": "Improper Link Resolution Before File Access ('Link Following')"
+    },
+    { "id": "590", "name": "Free of Memory not on the Heap" },
+    {
+      "id": "591",
+      "name": "Sensitive Data Storage in Improperly Locked Memory"
+    },
+    { "id": "592", "name": "DEPRECATED: Authentication Bypass Issues" },
+    {
+      "id": "593",
+      "name": "Authentication Bypass: OpenSSL CTX Object Modified after SSL Objects are Created"
+    },
+    {
+      "id": "594",
+      "name": "J2EE Framework: Saving Unserializable Objects to Disk"
+    },
+    {
+      "id": "595",
+      "name": "Comparison of Object References Instead of Object Contents"
+    },
+    { "id": "596", "name": "DEPRECATED: Incorrect Semantic Object Comparison" },
+    { "id": "597", "name": "Use of Wrong Operator in String Comparison" },
+    {
+      "id": "598",
+      "name": "Use of GET Request Method With Sensitive Query Strings"
+    },
+    { "id": "599", "name": "Missing Validation of OpenSSL Certificate" },
+    {
+      "id": "6",
+      "name": "J2EE Misconfiguration: Insufficient Session-ID Length"
+    },
+    { "id": "600", "name": "Uncaught Exception in Servlet " },
+    {
+      "id": "601",
+      "name": "URL Redirection to Untrusted Site ('Open Redirect')"
+    },
+    { "id": "602", "name": "Client-Side Enforcement of Server-Side Security" },
+    { "id": "603", "name": "Use of Client-Side Authentication" },
+    { "id": "605", "name": "Multiple Binds to the Same Port" },
+    { "id": "606", "name": "Unchecked Input for Loop Condition" },
+    {
+      "id": "607",
+      "name": "Public Static Final Field References Mutable Object"
+    },
+    { "id": "608", "name": "Struts: Non-private Field in ActionForm Class" },
+    { "id": "609", "name": "Double-Checked Locking" },
+    { "id": "61", "name": "UNIX Symbolic Link (Symlink) Following" },
+    {
+      "id": "610",
+      "name": "Externally Controlled Reference to a Resource in Another Sphere"
+    },
+    {
+      "id": "611",
+      "name": "Improper Restriction of XML External Entity Reference"
+    },
+    {
+      "id": "612",
+      "name": "Improper Authorization of Index Containing Sensitive Information"
+    },
+    { "id": "613", "name": "Insufficient Session Expiration" },
+    {
+      "id": "614",
+      "name": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute"
+    },
+    {
+      "id": "615",
+      "name": "Inclusion of Sensitive Information in Source Code Comments"
+    },
+    {
+      "id": "616",
+      "name": "Incomplete Identification of Uploaded File Variables (PHP)"
+    },
+    { "id": "617", "name": "Reachable Assertion" },
+    { "id": "618", "name": "Exposed Unsafe ActiveX Method" },
+    { "id": "619", "name": "Dangling Database Cursor ('Cursor Injection')" },
+    { "id": "62", "name": "UNIX Hard Link" },
+    { "id": "620", "name": "Unverified Password Change" },
+    { "id": "621", "name": "Variable Extraction Error" },
+    { "id": "622", "name": "Improper Validation of Function Hook Arguments" },
+    { "id": "623", "name": "Unsafe ActiveX Control Marked Safe For Scripting" },
+    { "id": "624", "name": "Executable Regular Expression Error" },
+    { "id": "625", "name": "Permissive Regular Expression" },
+    { "id": "626", "name": "Null Byte Interaction Error (Poison Null Byte)" },
+    { "id": "627", "name": "Dynamic Variable Evaluation" },
+    {
+      "id": "628",
+      "name": "Function Call with Incorrectly Specified Arguments"
+    },
+    { "id": "636", "name": "Not Failing Securely ('Failing Open')" },
+    {
+      "id": "637",
+      "name": "Unnecessary Complexity in Protection Mechanism (Not Using 'Economy of Mechanism')"
+    },
+    { "id": "638", "name": "Not Using Complete Mediation" },
+    { "id": "639", "name": "Authorization Bypass Through User-Controlled Key" },
+    { "id": "64", "name": "Windows Shortcut Following (.LNK)" },
+    {
+      "id": "640",
+      "name": "Weak Password Recovery Mechanism for Forgotten Password"
+    },
+    {
+      "id": "641",
+      "name": "Improper Restriction of Names for Files and Other Resources"
+    },
+    { "id": "642", "name": "External Control of Critical State Data" },
+    {
+      "id": "643",
+      "name": "Improper Neutralization of Data within XPath Expressions ('XPath Injection')"
+    },
+    {
+      "id": "644",
+      "name": "Improper Neutralization of HTTP Headers for Scripting Syntax"
+    },
+    { "id": "645", "name": "Overly Restrictive Account Lockout Mechanism" },
+    {
+      "id": "646",
+      "name": "Reliance on File Name or Extension of Externally-Supplied File"
+    },
+    {
+      "id": "647",
+      "name": "Use of Non-Canonical URL Paths for Authorization Decisions"
+    },
+    { "id": "648", "name": "Incorrect Use of Privileged APIs" },
+    {
+      "id": "649",
+      "name": "Reliance on Obfuscation or Encryption of Security-Relevant Inputs without Integrity Checking"
+    },
+    { "id": "65", "name": "Windows Hard Link" },
+    {
+      "id": "650",
+      "name": "Trusting HTTP Permission Methods on the Server Side"
+    },
+    {
+      "id": "651",
+      "name": "Exposure of WSDL File Containing Sensitive Information"
+    },
+    {
+      "id": "652",
+      "name": "Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')"
+    },
+    { "id": "653", "name": "Insufficient Compartmentalization" },
+    {
+      "id": "654",
+      "name": "Reliance on a Single Factor in a Security Decision"
+    },
+    { "id": "655", "name": "Insufficient Psychological Acceptability" },
+    { "id": "656", "name": "Reliance on Security Through Obscurity" },
+    { "id": "657", "name": "Violation of Secure Design Principles" },
+    {
+      "id": "66",
+      "name": "Improper Handling of File Names that Identify Virtual Resources"
+    },
+    { "id": "662", "name": "Improper Synchronization" },
+    {
+      "id": "663",
+      "name": "Use of a Non-reentrant Function in a Concurrent Context"
+    },
+    {
+      "id": "664",
+      "name": "Improper Control of a Resource Through its Lifetime"
+    },
+    { "id": "665", "name": "Improper Initialization" },
+    { "id": "666", "name": "Operation on Resource in Wrong Phase of Lifetime" },
+    { "id": "667", "name": "Improper Locking" },
+    { "id": "668", "name": "Exposure of Resource to Wrong Sphere" },
+    { "id": "669", "name": "Incorrect Resource Transfer Between Spheres" },
+    { "id": "67", "name": "Improper Handling of Windows Device Names" },
+    { "id": "670", "name": "Always-Incorrect Control Flow Implementation" },
+    { "id": "671", "name": "Lack of Administrator Control over Security" },
+    {
+      "id": "672",
+      "name": "Operation on a Resource after Expiration or Release"
+    },
+    { "id": "673", "name": "External Influence of Sphere Definition" },
+    { "id": "674", "name": "Uncontrolled Recursion" },
+    { "id": "675", "name": "Duplicate Operations on Resource" },
+    { "id": "676", "name": "Use of Potentially Dangerous Function" },
+    { "id": "680", "name": "Integer Overflow to Buffer Overflow" },
+    { "id": "681", "name": "Incorrect Conversion between Numeric Types" },
+    { "id": "682", "name": "Incorrect Calculation" },
+    { "id": "683", "name": "Function Call With Incorrect Order of Arguments" },
+    { "id": "684", "name": "Incorrect Provision of Specified Functionality" },
+    { "id": "685", "name": "Function Call With Incorrect Number of Arguments" },
+    { "id": "686", "name": "Function Call With Incorrect Argument Type" },
+    {
+      "id": "687",
+      "name": "Function Call With Incorrectly Specified Argument Value"
+    },
+    {
+      "id": "688",
+      "name": "Function Call With Incorrect Variable or Reference as Argument"
+    },
+    { "id": "689", "name": "Permission Race Condition During Resource Copy" },
+    {
+      "id": "69",
+      "name": "Improper Handling of Windows ::DATA Alternate Data Stream"
+    },
+    {
+      "id": "690",
+      "name": "Unchecked Return Value to NULL Pointer Dereference"
+    },
+    { "id": "691", "name": "Insufficient Control Flow Management" },
+    { "id": "692", "name": "Incomplete Denylist to Cross-Site Scripting" },
+    { "id": "693", "name": "Protection Mechanism Failure" },
+    {
+      "id": "694",
+      "name": "Use of Multiple Resources with Duplicate Identifier"
+    },
+    { "id": "695", "name": "Use of Low-Level Functionality" },
+    { "id": "696", "name": "Incorrect Behavior Order" },
+    { "id": "697", "name": "Incorrect Comparison" },
+    { "id": "698", "name": "Execution After Redirect (EAR)" },
+    { "id": "7", "name": "J2EE Misconfiguration: Missing Custom Error Page" },
+    {
+      "id": "703",
+      "name": "Improper Check or Handling of Exceptional Conditions"
+    },
+    { "id": "704", "name": "Incorrect Type Conversion or Cast" },
+    { "id": "705", "name": "Incorrect Control Flow Scoping" },
+    { "id": "706", "name": "Use of Incorrectly-Resolved Name or Reference" },
+    { "id": "707", "name": "Improper Neutralization" },
+    { "id": "708", "name": "Incorrect Ownership Assignment" },
+    { "id": "71", "name": "DEPRECATED: Apple '.DS_Store'" },
+    { "id": "710", "name": "Improper Adherence to Coding Standards" },
+    {
+      "id": "72",
+      "name": "Improper Handling of Apple HFS+ Alternate Data Stream Path"
+    },
+    { "id": "73", "name": "External Control of File Name or Path" },
+    {
+      "id": "732",
+      "name": "Incorrect Permission Assignment for Critical Resource"
+    },
+    {
+      "id": "733",
+      "name": "Compiler Optimization Removal or Modification of Security-critical Code"
+    },
+    {
+      "id": "74",
+      "name": "Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')"
+    },
+    { "id": "749", "name": "Exposed Dangerous Method or Function" },
+    {
+      "id": "75",
+      "name": "Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)"
+    },
+    {
+      "id": "754",
+      "name": "Improper Check for Unusual or Exceptional Conditions"
+    },
+    { "id": "755", "name": "Improper Handling of Exceptional Conditions" },
+    { "id": "756", "name": "Missing Custom Error Page" },
+    {
+      "id": "757",
+      "name": "Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')"
+    },
+    {
+      "id": "758",
+      "name": "Reliance on Undefined, Unspecified, or Implementation-Defined Behavior"
+    },
+    { "id": "759", "name": "Use of a One-Way Hash without a Salt" },
+    {
+      "id": "76",
+      "name": "Improper Neutralization of Equivalent Special Elements"
+    },
+    { "id": "760", "name": "Use of a One-Way Hash with a Predictable Salt" },
+    { "id": "761", "name": "Free of Pointer not at Start of Buffer" },
+    { "id": "762", "name": "Mismatched Memory Management Routines" },
+    { "id": "763", "name": "Release of Invalid Pointer or Reference" },
+    { "id": "764", "name": "Multiple Locks of a Critical Resource" },
+    { "id": "765", "name": "Multiple Unlocks of a Critical Resource" },
+    { "id": "766", "name": "Critical Data Element Declared Public" },
+    {
+      "id": "767",
+      "name": "Access to Critical Private Variable via Public Method"
+    },
+    { "id": "768", "name": "Incorrect Short Circuit Evaluation" },
+    {
+      "id": "769",
+      "name": "DEPRECATED: Uncontrolled File Descriptor Consumption"
+    },
+    {
+      "id": "77",
+      "name": "Improper Neutralization of Special Elements used in a Command ('Command Injection')"
+    },
+    {
+      "id": "770",
+      "name": "Allocation of Resources Without Limits or Throttling"
+    },
+    { "id": "771", "name": "Missing Reference to Active Allocated Resource" },
+    {
+      "id": "772",
+      "name": "Missing Release of Resource after Effective Lifetime"
+    },
+    {
+      "id": "773",
+      "name": "Missing Reference to Active File Descriptor or Handle"
+    },
+    {
+      "id": "774",
+      "name": "Allocation of File Descriptors or Handles Without Limits or Throttling"
+    },
+    {
+      "id": "775",
+      "name": "Missing Release of File Descriptor or Handle after Effective Lifetime"
+    },
+    {
+      "id": "776",
+      "name": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')"
+    },
+    { "id": "777", "name": "Regular Expression without Anchors" },
+    { "id": "778", "name": "Insufficient Logging" },
+    { "id": "779", "name": "Logging of Excessive Data" },
+    {
+      "id": "78",
+      "name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+    },
+    { "id": "780", "name": "Use of RSA Algorithm without OAEP" },
+    {
+      "id": "781",
+      "name": "Improper Address Validation in IOCTL with METHOD_NEITHER I/O Control Code"
+    },
+    { "id": "782", "name": "Exposed IOCTL with Insufficient Access Control" },
+    { "id": "783", "name": "Operator Precedence Logic Error" },
+    {
+      "id": "784",
+      "name": "Reliance on Cookies without Validation and Integrity Checking in a Security Decision"
+    },
+    {
+      "id": "785",
+      "name": "Use of Path Manipulation Function without Maximum-sized Buffer"
+    },
+    { "id": "786", "name": "Access of Memory Location Before Start of Buffer" },
+    { "id": "787", "name": "Out-of-bounds Write" },
+    { "id": "788", "name": "Access of Memory Location After End of Buffer" },
+    { "id": "789", "name": "Memory Allocation with Excessive Size Value" },
+    {
+      "id": "79",
+      "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    },
+    { "id": "790", "name": "Improper Filtering of Special Elements" },
+    { "id": "791", "name": "Incomplete Filtering of Special Elements" },
+    {
+      "id": "792",
+      "name": "Incomplete Filtering of One or More Instances of Special Elements"
+    },
+    { "id": "793", "name": "Only Filtering One Instance of a Special Element" },
+    {
+      "id": "794",
+      "name": "Incomplete Filtering of Multiple Instances of Special Elements"
+    },
+    {
+      "id": "795",
+      "name": "Only Filtering Special Elements at a Specified Location"
+    },
+    {
+      "id": "796",
+      "name": "Only Filtering Special Elements Relative to a Marker"
+    },
+    {
+      "id": "797",
+      "name": "Only Filtering Special Elements at an Absolute Position"
+    },
+    { "id": "798", "name": "Use of Hard-coded Credentials" },
+    { "id": "799", "name": "Improper Control of Interaction Frequency" },
+    { "id": "8", "name": "J2EE Misconfiguration: Entity Bean Declared Remote" },
+    {
+      "id": "80",
+      "name": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)"
+    },
+    { "id": "804", "name": "Guessable CAPTCHA" },
+    { "id": "805", "name": "Buffer Access with Incorrect Length Value" },
+    { "id": "806", "name": "Buffer Access Using Size of Source Buffer" },
+    {
+      "id": "807",
+      "name": "Reliance on Untrusted Inputs in a Security Decision"
+    },
+    {
+      "id": "81",
+      "name": "Improper Neutralization of Script in an Error Message Web Page"
+    },
+    {
+      "id": "82",
+      "name": "Improper Neutralization of Script in Attributes of IMG Tags in a Web Page"
+    },
+    { "id": "820", "name": "Missing Synchronization" },
+    { "id": "821", "name": "Incorrect Synchronization" },
+    { "id": "822", "name": "Untrusted Pointer Dereference" },
+    { "id": "823", "name": "Use of Out-of-range Pointer Offset" },
+    { "id": "824", "name": "Access of Uninitialized Pointer" },
+    { "id": "825", "name": "Expired Pointer Dereference" },
+    {
+      "id": "826",
+      "name": "Premature Release of Resource During Expected Lifetime"
+    },
+    { "id": "827", "name": "Improper Control of Document Type Definition" },
+    {
+      "id": "828",
+      "name": "Signal Handler with Functionality that is not Asynchronous-Safe"
+    },
+    {
+      "id": "829",
+      "name": "Inclusion of Functionality from Untrusted Control Sphere"
+    },
+    {
+      "id": "83",
+      "name": "Improper Neutralization of Script in Attributes in a Web Page"
+    },
+    {
+      "id": "830",
+      "name": "Inclusion of Web Functionality from an Untrusted Source"
+    },
+    {
+      "id": "831",
+      "name": "Signal Handler Function Associated with Multiple Signals"
+    },
+    { "id": "832", "name": "Unlock of a Resource that is not Locked" },
+    { "id": "833", "name": "Deadlock" },
+    { "id": "834", "name": "Excessive Iteration" },
+    {
+      "id": "835",
+      "name": "Loop with Unreachable Exit Condition ('Infinite Loop')"
+    },
+    {
+      "id": "836",
+      "name": "Use of Password Hash Instead of Password for Authentication"
+    },
+    { "id": "837", "name": "Improper Enforcement of a Single, Unique Action" },
+    { "id": "838", "name": "Inappropriate Encoding for Output Context" },
+    { "id": "839", "name": "Numeric Range Comparison Without Minimum Check" },
+    {
+      "id": "84",
+      "name": "Improper Neutralization of Encoded URI Schemes in a Web Page"
+    },
+    { "id": "841", "name": "Improper Enforcement of Behavioral Workflow" },
+    { "id": "842", "name": "Placement of User into Incorrect Group" },
+    {
+      "id": "843",
+      "name": "Access of Resource Using Incompatible Type ('Type Confusion')"
+    },
+    { "id": "85", "name": "Doubled Character XSS Manipulations" },
+    {
+      "id": "86",
+      "name": "Improper Neutralization of Invalid Characters in Identifiers in Web Pages"
+    },
+    { "id": "862", "name": "Missing Authorization" },
+    { "id": "863", "name": "Incorrect Authorization" },
+    { "id": "87", "name": "Improper Neutralization of Alternate XSS Syntax" },
+    {
+      "id": "88",
+      "name": "Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')"
+    },
+    {
+      "id": "89",
+      "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+    },
+    {
+      "id": "9",
+      "name": "J2EE Misconfiguration: Weak Access Permissions for EJB Methods"
+    },
+    {
+      "id": "90",
+      "name": "Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')"
+    },
+    { "id": "908", "name": "Use of Uninitialized Resource" },
+    { "id": "909", "name": "Missing Initialization of Resource" },
+    { "id": "91", "name": "XML Injection (aka Blind XPath Injection)" },
+    { "id": "910", "name": "Use of Expired File Descriptor" },
+    { "id": "911", "name": "Improper Update of Reference Count" },
+    { "id": "912", "name": "Hidden Functionality" },
+    {
+      "id": "913",
+      "name": "Improper Control of Dynamically-Managed Code Resources"
+    },
+    {
+      "id": "914",
+      "name": "Improper Control of Dynamically-Identified Variables"
+    },
+    {
+      "id": "915",
+      "name": "Improperly Controlled Modification of Dynamically-Determined Object Attributes"
+    },
+    {
+      "id": "916",
+      "name": "Use of Password Hash With Insufficient Computational Effort"
+    },
+    {
+      "id": "917",
+      "name": "Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')"
+    },
+    { "id": "918", "name": "Server-Side Request Forgery (SSRF)" },
+    {
+      "id": "92",
+      "name": "DEPRECATED: Improper Sanitization of Custom Special Characters"
+    },
+    { "id": "920", "name": "Improper Restriction of Power Consumption" },
+    {
+      "id": "921",
+      "name": "Storage of Sensitive Data in a Mechanism without Access Control"
+    },
+    { "id": "922", "name": "Insecure Storage of Sensitive Information" },
+    {
+      "id": "923",
+      "name": "Improper Restriction of Communication Channel to Intended Endpoints"
+    },
+    {
+      "id": "924",
+      "name": "Improper Enforcement of Message Integrity During Transmission in a Communication Channel"
+    },
+    {
+      "id": "925",
+      "name": "Improper Verification of Intent by Broadcast Receiver"
+    },
+    {
+      "id": "926",
+      "name": "Improper Export of Android Application Components"
+    },
+    {
+      "id": "927",
+      "name": "Use of Implicit Intent for Sensitive Communication"
+    },
+    {
+      "id": "93",
+      "name": "Improper Neutralization of CRLF Sequences ('CRLF Injection')"
+    },
+    {
+      "id": "939",
+      "name": "Improper Authorization in Handler for Custom URL Scheme"
+    },
+    {
+      "id": "94",
+      "name": "Improper Control of Generation of Code ('Code Injection')"
+    },
+    {
+      "id": "940",
+      "name": "Improper Verification of Source of a Communication Channel"
+    },
+    {
+      "id": "941",
+      "name": "Incorrectly Specified Destination in a Communication Channel"
+    },
+    {
+      "id": "942",
+      "name": "Permissive Cross-domain Policy with Untrusted Domains"
+    },
+    {
+      "id": "943",
+      "name": "Improper Neutralization of Special Elements in Data Query Logic"
+    },
+    {
+      "id": "95",
+      "name": "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"
+    },
+    {
+      "id": "96",
+      "name": "Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')"
+    },
+    {
+      "id": "97",
+      "name": "Improper Neutralization of Server-Side Includes (SSI) Within a Web Page"
+    },
+    {
+      "id": "98",
+      "name": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')"
+    },
+    {
+      "id": "99",
+      "name": "Improper Control of Resource Identifiers ('Resource Injection')"
+    }
+  ]
+}
