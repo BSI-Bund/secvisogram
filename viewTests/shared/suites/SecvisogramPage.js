@@ -41,6 +41,10 @@ const props = {
             urls: [],
           },
         ],
+        aggregate_severity: {
+          namespace: '',
+          text: '',
+        },
         notes: [],
       },
       product_tree: {},
