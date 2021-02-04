@@ -163,6 +163,64 @@ export const tests = [
     render: () => <View {...props} />,
   },
   {
+    title: 'Editor with invalid object',
+    render: () => (
+      <View
+        {...props}
+        data={{
+          ...props.data,
+          doc: { ...props.data.doc, document: /** @type {any} */ ([]) },
+          documentIsValid: false,
+          errors: [{ dataPath: '/document', message: 'should be object' }],
+        }}
+      />
+    ),
+  },
+  {
+    title: 'Editor with invalid array',
+    render: () => (
+      <View
+        {...props}
+        data={{
+          ...props.data,
+          doc: {
+            ...props.data.doc,
+            document: {
+              ...props.data.doc.document,
+              acknowledgments: /** @type {any} */ ({}),
+            },
+          },
+          documentIsValid: false,
+          errors: [
+            {
+              dataPath: '/document/acknowledgments',
+              message: 'should be array',
+            },
+          ],
+        }}
+      />
+    ),
+  },
+  {
+    title: 'Editor with object array with null value',
+    render: () => (
+      <View
+        {...props}
+        data={{
+          ...props.data,
+          doc: {
+            ...props.data.doc,
+            document: {
+              ...props.data.doc.document,
+              acknowledgments: /** @type {any} */ ([null]),
+            },
+          },
+          documentIsValid: false,
+        }}
+      />
+    ),
+  },
+  {
     title: 'Editor (seed-1)',
     render: () => (
       <View
