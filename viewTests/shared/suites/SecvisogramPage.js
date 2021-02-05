@@ -67,9 +67,9 @@ const props = {
   onSave: console.log.bind(console, 'onSave'),
   onChangeTab: console.log.bind(console, 'onChangeTab'),
   onValidate: console.log.bind(console, 'onValidate'),
-  onNewFormDoc: console.log.bind(console, 'onNewFormDoc'),
-  onNewSourceDoc: () => {
-    console.log.bind(console, 'onNewSourceDoc')
+  onNewDocMin: console.log.bind(console, 'onNewDocMin'),
+  onNewDocMax: () => {
+    console.log.bind(console, 'onNewDocMax')
     return new Promise(() => {})
   },
   onStrip: (/** @type {any[]} */ ...args) => {

@@ -44,7 +44,7 @@ suite('SecvisogramPage', () => {
         return {
           state: {
             formValues: {
-              doc: /** @type {{} | null} */ ({}),
+              doc: /** @type {any} */ ({}),
             },
           },
         }
