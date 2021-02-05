@@ -1,0 +1,237 @@
+{
+  "document": {
+    "aggregate_severity": {
+      "namespace": "",
+      "text": ""
+    },
+    "csaf_version": "2.0",
+    "distribution": {
+      "text": "",
+      "tlp": {
+        "label": "",
+        "url": "https://www.first.org/tlp/"
+      }
+    },
+    "lang": "",
+    "source_lang": "",
+    "notes": [
+      {
+        "audience": "",
+        "title": "",
+        "type": "",
+        "text": ""
+      }
+    ],
+    "publisher": {
+      "contact_details": "",
+      "issuing_authority": "",
+      "type": "",
+      "vendor_id": ""
+    },
+    "references": [
+      {
+        "summary": "",
+        "type": "external",
+        "url": ""
+      }
+    ],
+    "title": "",
+    "tracking": {
+      "id": "",
+      "aliases": [""],
+      "current_release_date": "",
+      "generator": {
+        "engine": "",
+        "date": ""
+      },
+      "initial_release_date": "",
+      "revision_history": [
+        {
+          "number": "",
+          "date": "",
+          "summary": ""
+        }
+      ],
+      "status": "",
+      "version": ""
+    },
+    "type": ""
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "name": "",
+        "type": "",
+        "branches": [],
+        "product": {
+          "product_id": "",
+          "name": "",
+          "cpe": ""
+        }
+      }
+    ],
+    "full_product_names": [
+      {
+        "product_id": "",
+        "name": "",
+        "cpe": ""
+      }
+    ],
+    "product_groups": [
+      {
+        "summary": "",
+        "group_id": "",
+        "product_ids": [""]
+      }
+    ],
+    "relationships": [
+      {
+        "full_product_name": {
+          "product_id": "",
+          "name": "",
+          "cpe": ""
+        },
+        "product_reference": "",
+        "relates_to_product_reference": "",
+        "relationship_type": ""
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "acknowledgments": [
+        {
+          "names": [""],
+          "organizations": [""],
+          "summary": "",
+          "urls": [""]
+        }
+      ],
+      "cve": "",
+      "cwe": {
+        "id": "",
+        "name": ""
+      },
+      "scores": [
+        {
+          "products": [""],
+          "cvss_v2": {
+            "version": "",
+            "vectorString": "",
+            "accessVector": "",
+            "accessComplexity": "",
+            "authentication": "",
+            "confidentialityImpact": "",
+            "integrityImpact": "",
+            "availabilityImpact": "",
+            "baseScore": "",
+            "exploitability": "",
+            "remediationLevel": "",
+            "reportConfidence": "",
+            "temporalScore": "",
+            "collateralDamagePotential": "",
+            "targetDistribution": "",
+            "confidentialityRequirement": "",
+            "integrityRequirement": "",
+            "availabilityRequirement": "",
+            "environmentalScore": ""
+          },
+          "cvss_v3": {
+            "version": "",
+            "vectorString": "",
+            "attackVector": "",
+            "attackComplexity": "",
+            "privilegesRequired": "",
+            "userInteraction": "",
+            "scope": "",
+            "confidentialityImpact": "",
+            "integrityImpact": "",
+            "availabilityImpact": "",
+            "baseScore": "",
+            "baseSeverity": "",
+            "exploitCodeMaturity": "",
+            "remediationLevel": "",
+            "reportConfidence": "",
+            "temporalScore": "",
+            "temporalSeverity": "",
+            "confidentialityRequirement": "",
+            "integrityRequirement": "",
+            "availabilityRequirement": "",
+            "modifiedAttackVector": "",
+            "modifiedAttackComplexity": "",
+            "modifiedPrivilegesRequired": "",
+            "modifiedUserInteraction": "",
+            "modifiedScope": "",
+            "modifiedIntegrityImpact": "",
+            "modifiedAvailabilityImpact": "",
+            "environmentalScore": "",
+            "environmentalSeverity": ""
+          }
+        }
+      ],
+      "discovery_date": "",
+      "id": {
+        "system_name": "",
+        "text": ""
+      },
+      "involvements": [
+        {
+          "summary": "",
+          "party": "",
+          "status": ""
+        }
+      ],
+      "notes": [
+        {
+          "audience": "",
+          "title": "",
+          "type": "",
+          "text": ""
+        }
+      ],
+      "product_status": {
+        "fixed": [""],
+        "first_fixed": [""],
+        "recommended": [""],
+        "known_affected": [""],
+        "first_affected": [""],
+        "last_affected": [""],
+        "known_not_affected": [""],
+        "under_investigation": [""]
+      },
+      "references": [
+        {
+          "summary": "",
+          "type": "external",
+          "url": ""
+        }
+      ],
+      "release_date": "",
+      "remediations": [
+        {
+          "date": "",
+          "details": "",
+          "entitlements": [""],
+          "group_ids": [""],
+          "product_ids": [""],
+          "restart_required": {
+            "type": "",
+            "details": ""
+          },
+          "type": "",
+          "url": ""
+        }
+      ],
+      "threats": [
+        {
+          "type": "",
+          "details": "",
+          "date": "",
+          "product_ids": [""],
+          "group_ids": [""]
+        }
+      ],
+      "title": ""
+    }
+  ]
+}
