@@ -15,17 +15,6 @@ suite('SecvisogramPage', () => {
         expect(state.formValues.doc).to.equal(42)
       })
 
-      test('When updating the form undefined keys are stripped', () => {
-        let { state } = Fixture()
-
-        state = ViewReducer(state, {
-          type: 'CHANGE_FORM_DOC',
-          update: { test: { $set: undefined } },
-        })
-
-        expect(state.formValues.doc).to.deep.equal({})
-      })
-
       test('The form can be reset', () => {
         let { state } = Fixture()
         const values = /** @type {ReturnType<typeof ViewReducer>['formValues']} */ ({
