@@ -16,7 +16,7 @@ function generateCWAList() {
     parser.parseStringPromise(args[1]).then(function (result) {
       console.log('{ "weaknesses": [')
       result.Weaknesses.Weakness.map((/** @type {Weakness} */ weakness) => {
-        console.log(`{"id": "${weakness.ID}", "name": "${weakness.Name}"},`)
+        console.log(`{"id": "CWE-${weakness.ID}", "name": "${weakness.Name}"},`)
       })
       console.log(']}')
     })
