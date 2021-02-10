@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import CVSSMetrics from '../lib/SecvisogramPage/View/EditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSMetrics'
+import CVSSVector from '../lib/SecvisogramPage/View/EditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSVector'
 import ViewReducer from '../lib/SecvisogramPage/View/Reducer'
 
 suite('SecvisogramPage', () => {
@@ -55,8 +55,8 @@ suite('SecvisogramPage', () => {
     })
 
     suite('CVSSMetrics', () => {
-      test('A vector-string can be generated', () => {
-        const vector = new CVSSMetrics({
+      test('Metrics can be calculated', () => {
+        const vector = new CVSSVector({
           attackVector: 'NETWORK',
           attackComplexity: 'HIGH',
           privilegesRequired: 'LOW',
@@ -71,17 +71,20 @@ suite('SecvisogramPage', () => {
           .remove('exploitCodeMaturity')
           .set('reportConfidence', 'NOT_DEFINED')
 
-        expect(vector.vectorString).to.equal(
+        const data = vector.data
+        expect(data.vectorString).to.equal(
           'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N'
         )
+        expect(data.baseScore).to.equal(7.3)
+        expect(data.baseSeverity).to.equal('HIGH')
       })
 
       test('Metrics can be updated from a vector-string', () => {
-        const vector = new CVSSMetrics({
+        const vector = new CVSSVector({
           availabilityImpact: 'NONE',
         }).updateFromVectorString('CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H')
 
-        expect(vector.data).to.deep.equal({
+        expect(vector.data).to.contain({
           attackVector: 'NETWORK',
           attackComplexity: 'LOW',
           privilegesRequired: 'LOW',
