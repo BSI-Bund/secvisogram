@@ -26,7 +26,8 @@
     "mustache": "^4.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-error-boundary": "^3.1.0"
+    "react-error-boundary": "^3.1.0",
+    "shallowequal": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -42,6 +43,7 @@
     "@types/mustache": "^4.1.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/shallowequal": "^1.1.1",
     "@types/xml2js": "^0.4.8",
     "autoprefixer": "^10.2.4",
     "babel-loader": "^8.2.2",
