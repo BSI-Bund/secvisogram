@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import CVSSVector from '../lib/SecvisogramPage/View/EditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSVector'
+import CVSSMetrics from '../lib/SecvisogramPage/View/EditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSMetrics'
 import ViewReducer from '../lib/SecvisogramPage/View/Reducer'
 
 suite('SecvisogramPage', () => {
@@ -54,15 +54,43 @@ suite('SecvisogramPage', () => {
       }
     })
 
-    suite('CVSSVector', () => {
+    suite('CVSSMetrics', () => {
       test('A vector-string can be generated', () => {
-        const vector = new CVSSVector({ attackVector: 'NETWORK' })
+        const vector = new CVSSMetrics({
+          attackVector: 'NETWORK',
+          attackComplexity: 'HIGH',
+          privilegesRequired: 'LOW',
+          userInteraction: 'REQUIRED',
+          scope: 'UNCHANGED',
+          confidentialityImpact: 'HIGH',
+          integrityImpact: 'HIGH',
+          availabilityImpact: 'NONE',
+        })
           .set('attackComplexity', 'LOW')
-          .set('privilegesRequired', 'NONE')
-          .remove('privilegesRequired')
+          .set('exploitCodeMaturity', 'NONE')
+          .remove('exploitCodeMaturity')
           .set('reportConfidence', 'NOT_DEFINED')
 
-        expect(vector.toString()).to.equal('CVSS:3.1/AV:N/AC:L/RC:X')
+        expect(vector.vectorString).to.equal(
+          'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N'
+        )
+      })
+
+      test('Metrics can be updated from a vector-string', () => {
+        const vector = new CVSSMetrics({
+          availabilityImpact: 'NONE',
+        }).updateFromVectorString('CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H')
+
+        expect(vector.data).to.deep.equal({
+          attackVector: 'NETWORK',
+          attackComplexity: 'LOW',
+          privilegesRequired: 'LOW',
+          userInteraction: 'REQUIRED',
+          scope: 'UNCHANGED',
+          confidentialityImpact: 'HIGH',
+          integrityImpact: 'HIGH',
+          availabilityImpact: 'NONE',
+        })
       })
     })
   })
