@@ -25,7 +25,12 @@ Assure that you have Node 14 (LTS) and npm 6 or newer installed.
       v14.15.4
       6.14.10
 
-This repository includes git submodules for vendor modules like Ace. Make sure to initialise and check them out before interactive with the repository.
+Check out the repository and change into you working copy.
+
+    git clone git@gitlab-ext.exxcellent.de:bsi/secvisogram.git
+    cd secvisogram
+
+This repository includes git submodules for vendor modules like Ace. Make sure to initialize and check them out before interactive with the repository.
 
     git submodule update --init --recursive
 
@@ -37,7 +42,7 @@ Now you can start a development server via
 
     npm run dev
 
-The application is now running on http://localhost:8080.
+The application is now running and accessible at http://localhost:8080.
 
 ### Deployment for production with nginx
 
