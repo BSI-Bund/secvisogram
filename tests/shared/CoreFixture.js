@@ -123,6 +123,46 @@ export default function createCoreFixture() {
       {
         valid: false,
         content: {
+          ...MINIMAL_DOC,
+          vulnerabilities: [
+            {
+              cwe: {
+                id: 'CWE-1005',
+                name: "Sensitive Cookie Without 'HttpOnly' Flag",
+              },
+            },
+          ],
+        },
+        strippedVersion: {
+          ...MINIMAL_DOC,
+          document: {
+            ...MINIMAL_DOC.document,
+          },
+        },
+      },
+      {
+        valid: false,
+        content: {
+          ...MINIMAL_DOC,
+          vulnerabilities: [
+            {
+              cwe: {
+                id: 'CWE-1007',
+                name: "Sensitive Cookie Without 'HttpOnly' Flag",
+              },
+            },
+          ],
+        },
+        strippedVersion: {
+          ...MINIMAL_DOC,
+          document: {
+            ...MINIMAL_DOC.document,
+          },
+        },
+      },
+      {
+        valid: false,
+        content: {
           document: {
             csaf_version: '2.0',
             title: 'Minimal valid',
