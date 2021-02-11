@@ -91,6 +91,38 @@ export default function createCoreFixture() {
       {
         valid: false,
         content: {
+          ...MINIMAL_DOC,
+          document: {
+            ...MINIMAL_DOC.document,
+            lang: 'XX',
+          },
+        },
+        strippedVersion: {
+          ...MINIMAL_DOC,
+          document: {
+            ...MINIMAL_DOC.document,
+          },
+        },
+      },
+      {
+        valid: false,
+        content: {
+          ...MINIMAL_DOC,
+          document: {
+            ...MINIMAL_DOC.document,
+            source_lang: 'XX',
+          },
+        },
+        strippedVersion: {
+          ...MINIMAL_DOC,
+          document: {
+            ...MINIMAL_DOC.document,
+          },
+        },
+      },
+      {
+        valid: false,
+        content: {
           document: {
             csaf_version: '2.0',
             title: 'Minimal valid',
