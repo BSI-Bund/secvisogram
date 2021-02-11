@@ -30,7 +30,7 @@ Check out the repository and change into you working copy.
     git clone git@gitlab-ext.exxcellent.de:bsi/secvisogram.git
     cd secvisogram
 
-This repository includes git submodules for vendor modules like Ace. Make sure to initialize and check them out before interactive with the repository.
+This repository includes git submodules for vendor modules like Ace. Make sure to initialize and update the submodules, too before you start to work with the repository.
 
     git submodule update --init --recursive
 
