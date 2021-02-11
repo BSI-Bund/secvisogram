@@ -23,6 +23,7 @@ module.exports = {
     test: true,
     mocha: true,
     ace: true,
+    CVSS: true,
     CVSS31: true,
   },
   rules: {

@@ -1,7 +1,7 @@
 const { spawn } = require('child_process')
 
 spawn(
-  'npx electron-mocha -r @babel/register -u tdd --script ./vendor/first/cvsscalc31.js --renderer tests/index.js',
+  'npx electron-mocha -r @babel/register -u tdd --script ./vendor/first/cvsscalc31.js --script ./vendor/first/cvsscalc30.js --renderer tests/index.js',
   {
     env: {
       ...process.env,

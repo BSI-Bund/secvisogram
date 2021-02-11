@@ -46,6 +46,10 @@ module.exports = {
           from: 'vendor/ace-builds/src-min-noconflict',
           to: 'vendor/ace',
         },
+        {
+          from: 'vendor/first',
+          to: 'vendor/first',
+        },
       ],
     }),
     ...(process.env.NODE_ENV === 'production'

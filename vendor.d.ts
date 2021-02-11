@@ -48,4 +48,33 @@ declare global {
 
     calculateCVSSFromVector(vectorString): CVSSObject
   }
+
+  const CVSS: {
+    calculateCVSSFromMetrics(
+      AttackVector: string,
+      AttackComplexity: string,
+      PrivilegesRequired: string,
+      UserInteraction: string,
+      Scope: string,
+      Confidentiality: string,
+      Integrity: string,
+      Availability,
+      ExploitCodeMaturity: string,
+      RemediationLevel: string,
+      ReportConfidence,
+      ConfidentialityRequirement: string,
+      IntegrityRequirement: string,
+      AvailabilityRequirement,
+      ModifiedAttackVector: string,
+      ModifiedAttackComplexity: string,
+      ModifiedPrivilegesRequire: string,
+      ModifiedUserInteraction: string,
+      ModifiedScope,
+      ModifiedConfidentiality: string,
+      ModifiedIntegrity: string,
+      ModifiedAvailability: string
+    ): CVSSObject
+
+    calculateCVSSFromVector(vectorString): CVSSObject
+  }
 }

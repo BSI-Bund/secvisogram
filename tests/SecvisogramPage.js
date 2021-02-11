@@ -95,6 +95,31 @@ suite('SecvisogramPage', () => {
           availabilityImpact: 'NONE',
         })
       })
+
+      test('CVSS3.0 metrics can be calculated', () => {
+        const vector = new CVSSVector({
+          attackVector: 'NETWORK',
+          attackComplexity: 'HIGH',
+          privilegesRequired: 'LOW',
+          userInteraction: 'REQUIRED',
+          scope: 'UNCHANGED',
+          confidentialityImpact: 'HIGH',
+          integrityImpact: 'HIGH',
+          availabilityImpact: 'NONE',
+          vectorString: 'CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N',
+        })
+          .set('attackComplexity', 'LOW')
+          .set('exploitCodeMaturity', 'NONE')
+          .remove('exploitCodeMaturity')
+          .set('reportConfidence', 'NOT_DEFINED')
+
+        const data = vector.data
+        expect(data.vectorString).to.equal(
+          'CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N'
+        )
+        expect(data.baseScore).to.equal(7.3)
+        expect(data.baseSeverity).to.equal('HIGH')
+      })
     })
   })
 })
