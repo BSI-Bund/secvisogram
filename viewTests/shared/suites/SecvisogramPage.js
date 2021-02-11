@@ -56,7 +56,7 @@ const props = {
               text: '',
             },
           ],
-          scores: [{ cvss_v3: { baseScore: 0 } }],
+          scores: [{ cvss_v3: { vectorString: '', baseScore: 0 } }],
         },
       ],
     },

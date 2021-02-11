@@ -120,6 +120,35 @@ suite('SecvisogramPage', () => {
         expect(data.baseScore).to.equal(7.3)
         expect(data.baseSeverity).to.equal('HIGH')
       })
+
+      test('A 3.0 valid vector-string can be upgraded', () => {
+        const vector = new CVSSVector({
+          vectorString: 'CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N',
+        }).updateFromVectorString(
+          'CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N'
+        )
+
+        expect(vector.canBeUpgraded).to.be.true
+        expect(vector.updateVectorStringTo31().data.vectorString).to.equal(
+          'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N'
+        )
+      })
+
+      test('An invalid vector-string can not be upgraded', () => {
+        const vector = new CVSSVector({})
+
+        expect(vector.canBeUpgraded).to.be.false
+      })
+
+      test('A 3.1 valid vector-string can not be upgraded', () => {
+        const vector = new CVSSVector({})
+          .updateFromVectorString(
+            'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N'
+          )
+          .updateVectorStringTo31()
+
+        expect(vector.canBeUpgraded).to.be.false
+      })
     })
   })
 })
