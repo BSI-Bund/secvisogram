@@ -10,6 +10,15 @@ textarea:invalid {
   @apply border-red-500;
 }
 
+/* Toggle Button */
+.toggle-checkbox:checked {
+  @apply right-0;
+  @apply border-blue-400;
+}
+.toggle-checkbox:checked + .toggle-label {
+  @apply bg-blue-400;
+}
+
 /* Loading Indicator */
 .lds-spinner {
   color: official;

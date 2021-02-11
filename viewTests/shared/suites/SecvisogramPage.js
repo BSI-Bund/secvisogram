@@ -68,7 +68,10 @@ const props = {
   onSave: console.log.bind(console, 'onSave'),
   onChangeTab: console.log.bind(console, 'onChangeTab'),
   onValidate: console.log.bind(console, 'onValidate'),
-  onNewDocMin: console.log.bind(console, 'onNewDocMin'),
+  onNewDocMin: () => {
+    console.log.bind(console, 'onNewDocMin')
+    return new Promise(() => {})
+  },
   onNewDocMax: () => {
     console.log.bind(console, 'onNewDocMax')
     return new Promise(() => {})
