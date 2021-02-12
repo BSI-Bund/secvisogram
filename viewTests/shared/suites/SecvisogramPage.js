@@ -9,6 +9,7 @@ const props = {
   isLoading: false,
   isSaving: false,
   errors: [],
+  stripResult: null,
   data: {
     documentIsValid: null,
     doc: {
