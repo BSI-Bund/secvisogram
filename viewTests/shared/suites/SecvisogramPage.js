@@ -112,6 +112,22 @@ export const tests = [
     render: () => <View {...props} isSaving={true} />,
   },
   {
+    title: 'With alert',
+    render: () => (
+      <View
+        {...props}
+        alert={{
+          label: 'Sure?',
+          description: 'Are you sure you wanna do this?',
+          confirmLabel: 'Yep',
+          cancelLabel: 'Nope',
+          onConfirm: console.log.bind(console, 'onConfirm'),
+          onCancel: console.log.bind(console, 'onCancel'),
+        }}
+      />
+    ),
+  },
+  {
     title: 'With valid document',
     render: () => (
       <View
