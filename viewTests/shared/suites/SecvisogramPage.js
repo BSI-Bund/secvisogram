@@ -8,9 +8,9 @@ export const title = 'SecvisogramPage'
 const props = {
   isLoading: false,
   isSaving: false,
+  errors: [],
   data: {
     documentIsValid: null,
-    errors: [],
     doc: {
       document: {
         csaf_version: '',
@@ -130,12 +130,7 @@ export const tests = [
   },
   {
     title: 'With valid document',
-    render: () => (
-      <View
-        {...props}
-        data={{ ...props.data, documentIsValid: true, errors: [] }}
-      />
-    ),
+    render: () => <View {...props} data={{ ...props.data }} errors={[]} />,
   },
   {
     title: 'With invalid document',
@@ -144,38 +139,37 @@ export const tests = [
         {...props}
         data={{
           ...props.data,
-          documentIsValid: false,
-          errors: [
-            { dataPath: '/document', message: '' },
-            { dataPath: '/document/acknowledgments', message: '' },
-            { dataPath: '/document/acknowledgments/0', message: '' },
-            { dataPath: '/document/acknowledgments/0/names', message: '' },
-            {
-              dataPath: '/document/acknowledgments/0/organizations',
-              message: '',
-            },
-            {
-              dataPath: '/document/acknowledgments/0/urls',
-              message: '',
-            },
-            {
-              dataPath: '/document/publisher',
-              message: '',
-            },
-            {
-              dataPath: '/document/tracking',
-              message: '',
-            },
-            {
-              dataPath: '/document/tracking/revision_history',
-              message: '',
-            },
-            {
-              dataPath: '/document/tracking/revision_history/0',
-              message: '',
-            },
-          ],
         }}
+        errors={[
+          { dataPath: '/document', message: '' },
+          { dataPath: '/document/acknowledgments', message: '' },
+          { dataPath: '/document/acknowledgments/0', message: '' },
+          { dataPath: '/document/acknowledgments/0/names', message: '' },
+          {
+            dataPath: '/document/acknowledgments/0/organizations',
+            message: '',
+          },
+          {
+            dataPath: '/document/acknowledgments/0/urls',
+            message: '',
+          },
+          {
+            dataPath: '/document/publisher',
+            message: '',
+          },
+          {
+            dataPath: '/document/tracking',
+            message: '',
+          },
+          {
+            dataPath: '/document/tracking/revision_history',
+            message: '',
+          },
+          {
+            dataPath: '/document/tracking/revision_history/0',
+            message: '',
+          },
+        ]}
       />
     ),
   },
@@ -191,9 +185,8 @@ export const tests = [
         data={{
           ...props.data,
           doc: { ...props.data.doc, document: /** @type {any} */ ([]) },
-          documentIsValid: false,
-          errors: [{ dataPath: '/document', message: 'should be object' }],
         }}
+        errors={[{ dataPath: '/document', message: 'should be object' }]}
       />
     ),
   },
@@ -211,14 +204,13 @@ export const tests = [
               acknowledgments: /** @type {any} */ ({}),
             },
           },
-          documentIsValid: false,
-          errors: [
-            {
-              dataPath: '/document/acknowledgments',
-              message: 'should be array',
-            },
-          ],
         }}
+        errors={[
+          {
+            dataPath: '/document/acknowledgments',
+            message: 'should be array',
+          },
+        ]}
       />
     ),
   },
@@ -236,7 +228,6 @@ export const tests = [
               acknowledgments: /** @type {any} */ ([null]),
             },
           },
-          documentIsValid: false,
         }}
       />
     ),
