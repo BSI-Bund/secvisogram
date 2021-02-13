@@ -96,15 +96,27 @@
 <p>{{data.json.document.tracking.generator.date}}</p>{{/data.json.document.tracking.generator.date}}
 {{#data.json.document.tracking.initial_release_date}}<h4>Initial release date</h4>
 <p>{{data.json.document.tracking.initial_release_date}}</p>{{/data.json.document.tracking.initial_release_date}}
+
 <h4>Revision history</h4>
-{{#data.json.document.tracking.revision_history}}<h5>Revision</h5>
-{{#number}}<h6>Version</h6>
-<p>{{number}}</p>{{/number}}
-{{#date}}<h6>Date of the revision</h6>
-<p>{{date}}</p>{{/date}}
-{{#summary}}<h6>Summary of the revision</h6>
-<p>{{summary}}</p>{{/summary}}
+<table>
+  <thead>
+    <tr>
+      <th>Version</th>
+      <th>Date of the revision</th>
+      <th>Summary of the revision</th>
+    </tr>
+  </thead>
+  <tbody>
+{{#data.json.document.tracking.revision_history}}
+    <tr>
+      <td>{{number}}</td>
+      <td>{{date}}</td>
+      <td>{{summary}}</td>
+    </tr>
 {{/data.json.document.tracking.revision_history}}
+  </tbody>
+</table>
+
 {{#data.json.document.tracking.status}}<h4>Document status</h4>
 <p>{{data.json.document.tracking.status}}</p>{{/data.json.document.tracking.status}}
 {{#data.json.document.tracking.version}}<h4>Version</h4>
@@ -211,6 +223,65 @@
 <p>{{cwe.name}}</p>{{/cwe.name}}
 <h4>List of scores</h4>
 {{#scores}}<h5>Score</h5>
+<h6>List of product_ids</h6>
+{{#products}}{{#.}}<h7>Reference token for product instance</h7>
+<p>{{.}}</p>{{/.}}
+{{/products}}
+<h6>JSON Schema for Common Vulnerability Scoring System version 3.1</h6>
+{{#cvss_v3.version}}<h7>version</h7>
+<p>{{cvss_v3.version}}</p>{{/cvss_v3.version}}
+{{#cvss_v3.vectorString}}<h7>vectorString</h7>
+<p>{{cvss_v3.vectorString}}</p>{{/cvss_v3.vectorString}}
+{{#cvss_v3.attackVector}}<h7>attackVector</h7>
+<p>{{cvss_v3.attackVector}}</p>{{/cvss_v3.attackVector}}
+{{#cvss_v3.attackComplexity}}<h7>attackComplexity</h7>
+<p>{{cvss_v3.attackComplexity}}</p>{{/cvss_v3.attackComplexity}}
+{{#cvss_v3.privilegesRequired}}<h7>privilegesRequired</h7>
+<p>{{cvss_v3.privilegesRequired}}</p>{{/cvss_v3.privilegesRequired}}
+{{#cvss_v3.userInteraction}}<h7>userInteraction</h7>
+<p>{{cvss_v3.userInteraction}}</p>{{/cvss_v3.userInteraction}}
+{{#cvss_v3.scope}}<h7>scope</h7>
+<p>{{cvss_v3.scope}}</p>{{/cvss_v3.scope}}
+{{#cvss_v3.confidentialityImpact}}<h7>confidentialityImpact</h7>
+<p>{{cvss_v3.confidentialityImpact}}</p>{{/cvss_v3.confidentialityImpact}}
+{{#cvss_v3.integrityImpact}}<h7>integrityImpact</h7>
+<p>{{cvss_v3.integrityImpact}}</p>{{/cvss_v3.integrityImpact}}
+{{#cvss_v3.availabilityImpact}}<h7>availabilityImpact</h7>
+<p>{{cvss_v3.availabilityImpact}}</p>{{/cvss_v3.availabilityImpact}}
+{{#cvss_v3.baseSeverity}}<h7>baseSeverity</h7>
+<p>{{cvss_v3.baseSeverity}}</p>{{/cvss_v3.baseSeverity}}
+{{#cvss_v3.exploitCodeMaturity}}<h7>exploitCodeMaturity</h7>
+<p>{{cvss_v3.exploitCodeMaturity}}</p>{{/cvss_v3.exploitCodeMaturity}}
+{{#cvss_v3.remediationLevel}}<h7>remediationLevel</h7>
+<p>{{cvss_v3.remediationLevel}}</p>{{/cvss_v3.remediationLevel}}
+{{#cvss_v3.reportConfidence}}<h7>reportConfidence</h7>
+<p>{{cvss_v3.reportConfidence}}</p>{{/cvss_v3.reportConfidence}}
+{{#cvss_v3.temporalSeverity}}<h7>temporalSeverity</h7>
+<p>{{cvss_v3.temporalSeverity}}</p>{{/cvss_v3.temporalSeverity}}
+{{#cvss_v3.confidentialityRequirement}}<h7>confidentialityRequirement</h7>
+<p>{{cvss_v3.confidentialityRequirement}}</p>{{/cvss_v3.confidentialityRequirement}}
+{{#cvss_v3.integrityRequirement}}<h7>integrityRequirement</h7>
+<p>{{cvss_v3.integrityRequirement}}</p>{{/cvss_v3.integrityRequirement}}
+{{#cvss_v3.availabilityRequirement}}<h7>availabilityRequirement</h7>
+<p>{{cvss_v3.availabilityRequirement}}</p>{{/cvss_v3.availabilityRequirement}}
+{{#cvss_v3.modifiedAttackVector}}<h7>modifiedAttackVector</h7>
+<p>{{cvss_v3.modifiedAttackVector}}</p>{{/cvss_v3.modifiedAttackVector}}
+{{#cvss_v3.modifiedAttackComplexity}}<h7>modifiedAttackComplexity</h7>
+<p>{{cvss_v3.modifiedAttackComplexity}}</p>{{/cvss_v3.modifiedAttackComplexity}}
+{{#cvss_v3.modifiedPrivilegesRequired}}<h7>modifiedPrivilegesRequired</h7>
+<p>{{cvss_v3.modifiedPrivilegesRequired}}</p>{{/cvss_v3.modifiedPrivilegesRequired}}
+{{#cvss_v3.modifiedUserInteraction}}<h7>modifiedUserInteraction</h7>
+<p>{{cvss_v3.modifiedUserInteraction}}</p>{{/cvss_v3.modifiedUserInteraction}}
+{{#cvss_v3.modifiedScope}}<h7>modifiedScope</h7>
+<p>{{cvss_v3.modifiedScope}}</p>{{/cvss_v3.modifiedScope}}
+{{#cvss_v3.modifiedConfidentialityImpact}}<h7>modifiedConfidentialityImpact</h7>
+<p>{{cvss_v3.modifiedConfidentialityImpact}}</p>{{/cvss_v3.modifiedConfidentialityImpact}}
+{{#cvss_v3.modifiedIntegrityImpact}}<h7>modifiedIntegrityImpact</h7>
+<p>{{cvss_v3.modifiedIntegrityImpact}}</p>{{/cvss_v3.modifiedIntegrityImpact}}
+{{#cvss_v3.modifiedAvailabilityImpact}}<h7>modifiedAvailabilityImpact</h7>
+<p>{{cvss_v3.modifiedAvailabilityImpact}}</p>{{/cvss_v3.modifiedAvailabilityImpact}}
+{{#cvss_v3.environmentalSeverity}}<h7>environmentalSeverity</h7>
+<p>{{cvss_v3.environmentalSeverity}}</p>{{/cvss_v3.environmentalSeverity}}
 {{/scores}}
 {{#discovery_date}}<h4>Discovery date</h4>
 <p>{{discovery_date}}</p>{{/discovery_date}}
@@ -240,6 +311,38 @@
 <p>{{text}}</p>{{/text}}
 {{/notes}}
 <h4>Product status</h4>
+<h5>List of product_ids</h5>
+{{#product_status.fixed}}{{#.}}<h6>Reference token for product instance</h6>
+<p>{{.}}</p>{{/.}}
+{{/product_status.fixed}}
+<h5>List of product_ids</h5>
+{{#product_status.first_fixed}}{{#.}}<h6>Reference token for product instance</h6>
+<p>{{.}}</p>{{/.}}
+{{/product_status.first_fixed}}
+<h5>List of product_ids</h5>
+{{#product_status.recommended}}{{#.}}<h6>Reference token for product instance</h6>
+<p>{{.}}</p>{{/.}}
+{{/product_status.recommended}}
+<h5>List of product_ids</h5>
+{{#product_status.known_affected}}{{#.}}<h6>Reference token for product instance</h6>
+<p>{{.}}</p>{{/.}}
+{{/product_status.known_affected}}
+<h5>List of product_ids</h5>
+{{#product_status.first_affected}}{{#.}}<h6>Reference token for product instance</h6>
+<p>{{.}}</p>{{/.}}
+{{/product_status.first_affected}}
+<h5>List of product_ids</h5>
+{{#product_status.last_affected}}{{#.}}<h6>Reference token for product instance</h6>
+<p>{{.}}</p>{{/.}}
+{{/product_status.last_affected}}
+<h5>List of product_ids</h5>
+{{#product_status.known_not_affected}}{{#.}}<h6>Reference token for product instance</h6>
+<p>{{.}}</p>{{/.}}
+{{/product_status.known_not_affected}}
+<h5>List of product_ids</h5>
+{{#product_status.under_investigation}}{{#.}}<h6>Reference token for product instance</h6>
+<p>{{.}}</p>{{/.}}
+{{/product_status.under_investigation}}
 <h4>List of references</h4>
 {{#references}}<h5>Reference</h5>
 {{#summary}}<h6>Summary of the reference</h6>
@@ -265,6 +368,10 @@
 {{#group_ids}}{{#.}}<h7>Reference token for product group instance</h7>
 <p>{{.}}</p>{{/.}}
 {{/group_ids}}
+<h6>List of product_ids</h6>
+{{#product_ids}}{{#.}}<h7>Reference token for product instance</h7>
+<p>{{.}}</p>{{/.}}
+{{/product_ids}}
 <h6>Restart required by remediation</h6>
 {{#restart_required.type}}<h7>Type of restart</h7>
 <p>{{restart_required.type}}</p>{{/restart_required.type}}
@@ -283,6 +390,10 @@
 <p>{{details}}</p>{{/details}}
 {{#date}}<h6>Date of the threat</h6>
 <p>{{date}}</p>{{/date}}
+<h6>List of product_ids</h6>
+{{#product_ids}}{{#.}}<h7>Reference token for product instance</h7>
+<p>{{.}}</p>{{/.}}
+{{/product_ids}}
 <h6>List of product_group_ids</h6>
 {{#group_ids}}{{#.}}<h7>Reference token for product group instance</h7>
 <p>{{.}}</p>{{/.}}

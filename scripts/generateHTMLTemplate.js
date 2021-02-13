@@ -1,6 +1,7 @@
 const jsonPtr = require('json-pointer')
-const schema = require('../lib/shared/Core/csaf_2.0.json')
-const rootSchema = schema
+const rootSchema = require('../lib/shared/Core/csaf_2.0.json')
+const cvss3Schema = require('../lib/shared/Core/cvss-v3.1.json')
+Object.assign(rootSchema.definitions, cvss3Schema.definitions)
 
 /** @typedef {{ path: string; schema: any; items?: Array<Entry>; headingLevel: number }} Entry */
 
@@ -32,12 +33,19 @@ function generateSchemaPaths(schema, dataPath = [], headingLevel = 1) {
       ]
     default:
       if (schema.$ref && schema.$ref.startsWith('#')) {
-        if (schema.$ref === '#/definitions/products_t') return []
         return generateSchemaPaths(
           jsonPtr.get(rootSchema, schema.$ref.slice(1)),
           dataPath,
           headingLevel
         )
+      }
+      if (
+        schema.oneOf?.find(
+          (/** @type {any} */ s) =>
+            s.$ref === 'https://www.first.org/cvss/cvss-v3.1.json'
+        )
+      ) {
+        return generateSchemaPaths(cvss3Schema, dataPath, headingLevel)
       }
       return [{ schema, path, headingLevel }]
   }
@@ -55,7 +63,9 @@ function generateSchemaHTML(entries) {
       case 'string':
         return (
           html +
-          `{{#${entry.path}}}<h${headingLevel}>${entry.schema.title}</h${headingLevel}>\n<p>{{${entry.path}}}</p>{{/${entry.path}}}\n`
+          `{{#${entry.path}}}<h${headingLevel}>${
+            entry.schema.title || entry.path.split('.').pop()
+          }</h${headingLevel}>\n<p>{{${entry.path}}}</p>{{/${entry.path}}}\n`
         )
 
       case 'object':
@@ -95,7 +105,7 @@ console.log(
     </style>
   </head>
   <body>
-    ${generateSchemaHTML(generateSchemaPaths(schema, ['data', 'json']))}
+    ${generateSchemaHTML(generateSchemaPaths(rootSchema, ['data', 'json']))}
   </body>
 </html>`
 )
