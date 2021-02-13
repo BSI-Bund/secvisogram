@@ -12,396 +12,395 @@
   </head>
   <body>
     <h1>Common Security Advisory Framework</h1>
-<h2>Document level meta-data</h2>
-<h3>List of acknowledgments</h3>
-{{#data.json.document.acknowledgments}}<h4>Acknowledgment</h4>
-<h5>List of acknowledged names</h5>
-{{#names}}{{#.}}<h6>Name of entity being recognized</h6>
-<p>{{.}}</p>{{/.}}
-{{/names}}
-<h5>List of contributing organizations</h5>
-{{#organizations}}{{#.}}<h6>Contributing organization</h6>
-<p>{{.}}</p>{{/.}}
-{{/organizations}}
-{{#summary}}<h5>Summary of the acknowledgment</h5>
-<p>{{summary}}</p>{{/summary}}
-<h5>List of URLs</h5>
-{{#urls}}{{#.}}<h6>URL of acknowledgment</h6>
-<p>{{.}}</p>{{/.}}
-{{/urls}}
-{{/data.json.document.acknowledgments}}
-<h3>Aggregate severity</h3>
-{{#data.json.document.aggregate_severity.namespace}}<h4>Namespace of aggregate severity</h4>
-<p>{{data.json.document.aggregate_severity.namespace}}</p>{{/data.json.document.aggregate_severity.namespace}}
-{{#data.json.document.aggregate_severity.text}}<h4>Text of aggregate severity</h4>
-<p>{{data.json.document.aggregate_severity.text}}</p>{{/data.json.document.aggregate_severity.text}}
-{{#data.json.document.csaf_version}}<h3>CSAF version</h3>
-<p>{{data.json.document.csaf_version}}</p>{{/data.json.document.csaf_version}}
-<h3>Rules for sharing document</h3>
-{{#data.json.document.distribution.text}}<h4>Textual description</h4>
-<p>{{data.json.document.distribution.text}}</p>{{/data.json.document.distribution.text}}
-<h4>Traffic Light Protocol (TLP)</h4>
-{{#data.json.document.distribution.tlp.label}}<h5>Label of TLP</h5>
-<p>{{data.json.document.distribution.tlp.label}}</p>{{/data.json.document.distribution.tlp.label}}
-{{#data.json.document.distribution.tlp.url}}<h5>URL of TLP version</h5>
-<p>{{data.json.document.distribution.tlp.url}}</p>{{/data.json.document.distribution.tlp.url}}
-{{#data.json.document.lang}}<h3>Language type</h3>
-<p>{{data.json.document.lang}}</p>{{/data.json.document.lang}}
-{{#data.json.document.source_lang}}<h3>Language type</h3>
-<p>{{data.json.document.source_lang}}</p>{{/data.json.document.source_lang}}
-<h3>List of notes</h3>
-{{#data.json.document.notes}}<h4>Note</h4>
-{{#audience}}<h5>Audience of note</h5>
-<p>{{audience}}</p>{{/audience}}
-{{#title}}<h5>Title of note</h5>
-<p>{{title}}</p>{{/title}}
-{{#type}}<h5>Note type</h5>
-<p>{{type}}</p>{{/type}}
-{{#text}}<h5>Note contents</h5>
-<p>{{text}}</p>{{/text}}
-{{/data.json.document.notes}}
-<h3>Publisher</h3>
-{{#data.json.document.publisher.contact_details}}<h4>Contact details</h4>
-<p>{{data.json.document.publisher.contact_details}}</p>{{/data.json.document.publisher.contact_details}}
-{{#data.json.document.publisher.issuing_authority}}<h4>Issuing authority</h4>
-<p>{{data.json.document.publisher.issuing_authority}}</p>{{/data.json.document.publisher.issuing_authority}}
-{{#data.json.document.publisher.type}}<h4>Type of publisher</h4>
-<p>{{data.json.document.publisher.type}}</p>{{/data.json.document.publisher.type}}
-{{#data.json.document.publisher.vendor_id}}<h4>Vendor releasing the document</h4>
-<p>{{data.json.document.publisher.vendor_id}}</p>{{/data.json.document.publisher.vendor_id}}
-<h3>List of references</h3>
-{{#data.json.document.references}}<h4>Reference</h4>
-{{#summary}}<h5>Summary of the reference</h5>
-<p>{{summary}}</p>{{/summary}}
-{{#type}}<h5>Type of reference</h5>
-<p>{{type}}</p>{{/type}}
-{{#url}}<h5>URL of reference</h5>
-<p>{{url}}</p>{{/url}}
-{{/data.json.document.references}}
-{{#data.json.document.title}}<h3>Title of this document</h3>
-<p>{{data.json.document.title}}</p>{{/data.json.document.title}}
-<h3>Tracking</h3>
-{{#data.json.document.tracking.id}}<h4>Unique identifier for the document</h4>
-<p>{{data.json.document.tracking.id}}</p>{{/data.json.document.tracking.id}}
-<h4>Aliases</h4>
-{{#data.json.document.tracking.aliases}}{{#.}}<h5>Alternate name</h5>
-<p>{{.}}</p>{{/.}}
-{{/data.json.document.tracking.aliases}}
-{{#data.json.document.tracking.current_release_date}}<h4>Current release date</h4>
-<p>{{data.json.document.tracking.current_release_date}}</p>{{/data.json.document.tracking.current_release_date}}
-<h4>Document generator</h4>
-{{#data.json.document.tracking.generator.engine}}<h5>Engine of document generation</h5>
-<p>{{data.json.document.tracking.generator.engine}}</p>{{/data.json.document.tracking.generator.engine}}
-{{#data.json.document.tracking.generator.date}}<h5>Date of document generation</h5>
-<p>{{data.json.document.tracking.generator.date}}</p>{{/data.json.document.tracking.generator.date}}
-{{#data.json.document.tracking.initial_release_date}}<h4>Initial release date</h4>
-<p>{{data.json.document.tracking.initial_release_date}}</p>{{/data.json.document.tracking.initial_release_date}}
+    <h2>Document level meta-data</h2>
+    <h3>List of acknowledgments</h3>
+    {{#data.json.document.acknowledgments}}<h4>Acknowledgment</h4>
+    <h5>List of acknowledged names</h5>
+    {{#names}}{{#.}}<h6>Name of entity being recognized</h6>
+    <p>{{.}}</p>{{/.}}
+    {{/names}}
+    <h5>List of contributing organizations</h5>
+    {{#organizations}}{{#.}}<h6>Contributing organization</h6>
+    <p>{{.}}</p>{{/.}}
+    {{/organizations}}
+    {{#summary}}<h5>Summary of the acknowledgment</h5>
+    <p>{{summary}}</p>{{/summary}}
+    <h5>List of URLs</h5>
+    {{#urls}}{{#.}}<h6>URL of acknowledgment</h6>
+    <p>{{.}}</p>{{/.}}
+    {{/urls}}
+    {{/data.json.document.acknowledgments}}
+    <h3>Aggregate severity</h3>
+    {{#data.json.document.aggregate_severity.namespace}}<h4>Namespace of aggregate severity</h4>
+    <p>{{data.json.document.aggregate_severity.namespace}}</p>{{/data.json.document.aggregate_severity.namespace}}
+    {{#data.json.document.aggregate_severity.text}}<h4>Text of aggregate severity</h4>
+    <p>{{data.json.document.aggregate_severity.text}}</p>{{/data.json.document.aggregate_severity.text}}
+    {{#data.json.document.csaf_version}}<h3>CSAF version</h3>
+    <p>{{data.json.document.csaf_version}}</p>{{/data.json.document.csaf_version}}
+    <h3>Rules for sharing document</h3>
+    {{#data.json.document.distribution.text}}<h4>Textual description</h4>
+    <p>{{data.json.document.distribution.text}}</p>{{/data.json.document.distribution.text}}
+    <h4>Traffic Light Protocol (TLP)</h4>
+    {{#data.json.document.distribution.tlp.label}}<h5>Label of TLP</h5>
+    <p>{{data.json.document.distribution.tlp.label}}</p>{{/data.json.document.distribution.tlp.label}}
+    {{#data.json.document.distribution.tlp.url}}<h5>URL of TLP version</h5>
+    <p>{{data.json.document.distribution.tlp.url}}</p>{{/data.json.document.distribution.tlp.url}}
+    {{#data.json.document.lang}}<h3>Language type</h3>
+    <p>{{data.json.document.lang}}</p>{{/data.json.document.lang}}
+    {{#data.json.document.source_lang}}<h3>Language type</h3>
+    <p>{{data.json.document.source_lang}}</p>{{/data.json.document.source_lang}}
+    <h3>List of notes</h3>
+    {{#data.json.document.notes}}<h4>Note</h4>
+    {{#audience}}<h5>Audience of note</h5>
+    <p>{{audience}}</p>{{/audience}}
+    {{#title}}<h5>Title of note</h5>
+    <p>{{title}}</p>{{/title}}
+    {{#type}}<h5>Note type</h5>
+    <p>{{type}}</p>{{/type}}
+    {{#text}}<h5>Note contents</h5>
+    <p>{{text}}</p>{{/text}}
+    {{/data.json.document.notes}}
+    <h3>Publisher</h3>
+    {{#data.json.document.publisher.contact_details}}<h4>Contact details</h4>
+    <p>{{data.json.document.publisher.contact_details}}</p>{{/data.json.document.publisher.contact_details}}
+    {{#data.json.document.publisher.issuing_authority}}<h4>Issuing authority</h4>
+    <p>{{data.json.document.publisher.issuing_authority}}</p>{{/data.json.document.publisher.issuing_authority}}
+    {{#data.json.document.publisher.type}}<h4>Type of publisher</h4>
+    <p>{{data.json.document.publisher.type}}</p>{{/data.json.document.publisher.type}}
+    {{#data.json.document.publisher.vendor_id}}<h4>Vendor releasing the document</h4>
+    <p>{{data.json.document.publisher.vendor_id}}</p>{{/data.json.document.publisher.vendor_id}}
+    <h3>List of references</h3>
+    {{#data.json.document.references}}<h4>Reference</h4>
+    {{#summary}}<h5>Summary of the reference</h5>
+    <p>{{summary}}</p>{{/summary}}
+    {{#type}}<h5>Type of reference</h5>
+    <p>{{type}}</p>{{/type}}
+    {{#url}}<h5>URL of reference</h5>
+    <p>{{url}}</p>{{/url}}
+    {{/data.json.document.references}}
+    {{#data.json.document.title}}<h3>Title of this document</h3>
+    <p>{{data.json.document.title}}</p>{{/data.json.document.title}}
+    <h3>Tracking</h3>
+    {{#data.json.document.tracking.id}}<h4>Unique identifier for the document</h4>
+    <p>{{data.json.document.tracking.id}}</p>{{/data.json.document.tracking.id}}
+    <h4>Aliases</h4>
+    {{#data.json.document.tracking.aliases}}{{#.}}<h5>Alternate name</h5>
+    <p>{{.}}</p>{{/.}}
+    {{/data.json.document.tracking.aliases}}
+    {{#data.json.document.tracking.current_release_date}}<h4>Current release date</h4>
+    <p>{{data.json.document.tracking.current_release_date}}</p>{{/data.json.document.tracking.current_release_date}}
+    <h4>Document generator</h4>
+    {{#data.json.document.tracking.generator.engine}}<h5>Engine of document generation</h5>
+    <p>{{data.json.document.tracking.generator.engine}}</p>{{/data.json.document.tracking.generator.engine}}
+    {{#data.json.document.tracking.generator.date}}<h5>Date of document generation</h5>
+    <p>{{data.json.document.tracking.generator.date}}</p>{{/data.json.document.tracking.generator.date}}
+    {{#data.json.document.tracking.initial_release_date}}<h4>Initial release date</h4>
+    <p>{{data.json.document.tracking.initial_release_date}}</p>{{/data.json.document.tracking.initial_release_date}}
 
-<h4>Revision history</h4>
-<table>
-  <thead>
-    <tr>
-      <th>Version</th>
-      <th>Date of the revision</th>
-      <th>Summary of the revision</th>
-    </tr>
-  </thead>
-  <tbody>
-{{#data.json.document.tracking.revision_history}}
-    <tr>
-      <td>{{number}}</td>
-      <td>{{date}}</td>
-      <td>{{summary}}</td>
-    </tr>
-{{/data.json.document.tracking.revision_history}}
-  </tbody>
-</table>
+    <h4>Revision history</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Version</th>
+          <th>Date of the revision</th>
+          <th>Summary of the revision</th>
+        </tr>
+      </thead>
+      <tbody>
+    {{#data.json.document.tracking.revision_history}}
+        <tr>
+          <td>{{number}}</td>
+          <td>{{date}}</td>
+          <td>{{summary}}</td>
+        </tr>
+    {{/data.json.document.tracking.revision_history}}
+      </tbody>
+    </table>
 
-{{#data.json.document.tracking.status}}<h4>Document status</h4>
-<p>{{data.json.document.tracking.status}}</p>{{/data.json.document.tracking.status}}
-{{#data.json.document.tracking.version}}<h4>Version</h4>
-<p>{{data.json.document.tracking.version}}</p>{{/data.json.document.tracking.version}}
-{{#data.json.document.type}}<h3>Document type</h3>
-<p>{{data.json.document.type}}</p>{{/data.json.document.type}}
-<h2>Product tree</h2>
-<h3>List of branches</h3>
-{{#data.json.product_tree.branches}}<h4>Branch</h4>
-{{#name}}<h5>Name of the branch</h5>
-<p>{{name}}</p>{{/name}}
-{{#type}}<h5>Type of the branch</h5>
-<p>{{type}}</p>{{/type}}
-<h5>List of branches</h5>
-{{#branches}}<h6>Branch</h6>
-{{#name}}<h7>Name of the branch</h7>
-<p>{{name}}</p>{{/name}}
-{{#type}}<h7>Type of the branch</h7>
-<p>{{type}}</p>{{/type}}
-<h7>List of branches</h7>
-{{#branches}}<h8>Branch</h8>
-{{#name}}<h9>Name of the branch</h9>
-<p>{{name}}</p>{{/name}}
-{{#type}}<h9>Type of the branch</h9>
-<p>{{type}}</p>{{/type}}
-{{/branches}}
-<h7>Full product name</h7>
-{{#product.product_id}}<h8>Reference token for product instance</h8>
-<p>{{product.product_id}}</p>{{/product.product_id}}
-{{#product.name}}<h8>Textual description of the product</h8>
-<p>{{product.name}}</p>{{/product.name}}
-{{#product.cpe}}<h8>Common Platform Enumeration representation</h8>
-<p>{{product.cpe}}</p>{{/product.cpe}}
-{{/branches}}
-<h5>Full product name</h5>
-{{#product.product_id}}<h6>Reference token for product instance</h6>
-<p>{{product.product_id}}</p>{{/product.product_id}}
-{{#product.name}}<h6>Textual description of the product</h6>
-<p>{{product.name}}</p>{{/product.name}}
-{{#product.cpe}}<h6>Common Platform Enumeration representation</h6>
-<p>{{product.cpe}}</p>{{/product.cpe}}
-{{/data.json.product_tree.branches}}
-<h3>List of full product names</h3>
-{{#data.json.product_tree.full_product_names}}<h4>Full product name</h4>
-{{#product_id}}<h5>Reference token for product instance</h5>
-<p>{{product_id}}</p>{{/product_id}}
-{{#name}}<h5>Textual description of the product</h5>
-<p>{{name}}</p>{{/name}}
-{{#cpe}}<h5>Common Platform Enumeration representation</h5>
-<p>{{cpe}}</p>{{/cpe}}
-{{/data.json.product_tree.full_product_names}}
-<h3>List of product groups</h3>
-{{#data.json.product_tree.product_groups}}<h4>Product group</h4>
-{{#summary}}<h5>Summary of the product group</h5>
-<p>{{summary}}</p>{{/summary}}
-{{#group_id}}<h5>Reference token for product group instance</h5>
-<p>{{group_id}}</p>{{/group_id}}
-<h5>List of Product IDs</h5>
-{{#product_ids}}{{#.}}<h6>Reference token for product instance</h6>
-<p>{{.}}</p>{{/.}}
-{{/product_ids}}
-{{/data.json.product_tree.product_groups}}
-<h3>List of relationships</h3>
-{{#data.json.product_tree.relationships}}<h4>Relationship</h4>
-<h5>Full product name</h5>
-{{#full_product_name.product_id}}<h6>Reference token for product instance</h6>
-<p>{{full_product_name.product_id}}</p>{{/full_product_name.product_id}}
-{{#full_product_name.name}}<h6>Textual description of the product</h6>
-<p>{{full_product_name.name}}</p>{{/full_product_name.name}}
-{{#full_product_name.cpe}}<h6>Common Platform Enumeration representation</h6>
-<p>{{full_product_name.cpe}}</p>{{/full_product_name.cpe}}
-{{#product_reference}}<h5>Reference token for product instance</h5>
-<p>{{product_reference}}</p>{{/product_reference}}
-{{#relates_to_product_reference}}<h5>Reference token for product instance</h5>
-<p>{{relates_to_product_reference}}</p>{{/relates_to_product_reference}}
-{{#relationship_type}}<h5>Relationship type</h5>
-<p>{{relationship_type}}</p>{{/relationship_type}}
-{{/data.json.product_tree.relationships}}
-<h2>Vulnerabilities</h2>
-{{#data.json.vulnerabilities}}<h3>Vulnerability</h3>
-<h4>List of acknowledgments</h4>
-{{#acknowledgments}}<h5>Acknowledgment</h5>
-<h6>List of acknowledged names</h6>
-{{#names}}{{#.}}<h7>Name of entity being recognized</h7>
-<p>{{.}}</p>{{/.}}
-{{/names}}
-<h6>List of contributing organizations</h6>
-{{#organizations}}{{#.}}<h7>Contributing organization</h7>
-<p>{{.}}</p>{{/.}}
-{{/organizations}}
-{{#summary}}<h6>Summary of the acknowledgment</h6>
-<p>{{summary}}</p>{{/summary}}
-<h6>List of URLs</h6>
-{{#urls}}{{#.}}<h7>URL of acknowledgment</h7>
-<p>{{.}}</p>{{/.}}
-{{/urls}}
-{{/acknowledgments}}
-{{#cve}}<h4>CVE</h4>
-<p>{{cve}}</p>{{/cve}}
-<h4>CWE</h4>
-{{#cwe.id}}<h5>Weakness ID</h5>
-<p>{{cwe.id}}</p>{{/cwe.id}}
-{{#cwe.name}}<h5>Weakness name</h5>
-<p>{{cwe.name}}</p>{{/cwe.name}}
-<h4>List of scores</h4>
-{{#scores}}<h5>Score</h5>
-<h6>List of product_ids</h6>
-{{#products}}{{#.}}<h7>Reference token for product instance</h7>
-<p>{{.}}</p>{{/.}}
-{{/products}}
-<h6>JSON Schema for Common Vulnerability Scoring System version 3.1</h6>
-{{#cvss_v3.version}}<h7>version</h7>
-<p>{{cvss_v3.version}}</p>{{/cvss_v3.version}}
-{{#cvss_v3.vectorString}}<h7>vectorString</h7>
-<p>{{cvss_v3.vectorString}}</p>{{/cvss_v3.vectorString}}
-{{#cvss_v3.attackVector}}<h7>attackVector</h7>
-<p>{{cvss_v3.attackVector}}</p>{{/cvss_v3.attackVector}}
-{{#cvss_v3.attackComplexity}}<h7>attackComplexity</h7>
-<p>{{cvss_v3.attackComplexity}}</p>{{/cvss_v3.attackComplexity}}
-{{#cvss_v3.privilegesRequired}}<h7>privilegesRequired</h7>
-<p>{{cvss_v3.privilegesRequired}}</p>{{/cvss_v3.privilegesRequired}}
-{{#cvss_v3.userInteraction}}<h7>userInteraction</h7>
-<p>{{cvss_v3.userInteraction}}</p>{{/cvss_v3.userInteraction}}
-{{#cvss_v3.scope}}<h7>scope</h7>
-<p>{{cvss_v3.scope}}</p>{{/cvss_v3.scope}}
-{{#cvss_v3.confidentialityImpact}}<h7>confidentialityImpact</h7>
-<p>{{cvss_v3.confidentialityImpact}}</p>{{/cvss_v3.confidentialityImpact}}
-{{#cvss_v3.integrityImpact}}<h7>integrityImpact</h7>
-<p>{{cvss_v3.integrityImpact}}</p>{{/cvss_v3.integrityImpact}}
-{{#cvss_v3.availabilityImpact}}<h7>availabilityImpact</h7>
-<p>{{cvss_v3.availabilityImpact}}</p>{{/cvss_v3.availabilityImpact}}
-{{#cvss_v3.baseSeverity}}<h7>baseSeverity</h7>
-<p>{{cvss_v3.baseSeverity}}</p>{{/cvss_v3.baseSeverity}}
-{{#cvss_v3.exploitCodeMaturity}}<h7>exploitCodeMaturity</h7>
-<p>{{cvss_v3.exploitCodeMaturity}}</p>{{/cvss_v3.exploitCodeMaturity}}
-{{#cvss_v3.remediationLevel}}<h7>remediationLevel</h7>
-<p>{{cvss_v3.remediationLevel}}</p>{{/cvss_v3.remediationLevel}}
-{{#cvss_v3.reportConfidence}}<h7>reportConfidence</h7>
-<p>{{cvss_v3.reportConfidence}}</p>{{/cvss_v3.reportConfidence}}
-{{#cvss_v3.temporalSeverity}}<h7>temporalSeverity</h7>
-<p>{{cvss_v3.temporalSeverity}}</p>{{/cvss_v3.temporalSeverity}}
-{{#cvss_v3.confidentialityRequirement}}<h7>confidentialityRequirement</h7>
-<p>{{cvss_v3.confidentialityRequirement}}</p>{{/cvss_v3.confidentialityRequirement}}
-{{#cvss_v3.integrityRequirement}}<h7>integrityRequirement</h7>
-<p>{{cvss_v3.integrityRequirement}}</p>{{/cvss_v3.integrityRequirement}}
-{{#cvss_v3.availabilityRequirement}}<h7>availabilityRequirement</h7>
-<p>{{cvss_v3.availabilityRequirement}}</p>{{/cvss_v3.availabilityRequirement}}
-{{#cvss_v3.modifiedAttackVector}}<h7>modifiedAttackVector</h7>
-<p>{{cvss_v3.modifiedAttackVector}}</p>{{/cvss_v3.modifiedAttackVector}}
-{{#cvss_v3.modifiedAttackComplexity}}<h7>modifiedAttackComplexity</h7>
-<p>{{cvss_v3.modifiedAttackComplexity}}</p>{{/cvss_v3.modifiedAttackComplexity}}
-{{#cvss_v3.modifiedPrivilegesRequired}}<h7>modifiedPrivilegesRequired</h7>
-<p>{{cvss_v3.modifiedPrivilegesRequired}}</p>{{/cvss_v3.modifiedPrivilegesRequired}}
-{{#cvss_v3.modifiedUserInteraction}}<h7>modifiedUserInteraction</h7>
-<p>{{cvss_v3.modifiedUserInteraction}}</p>{{/cvss_v3.modifiedUserInteraction}}
-{{#cvss_v3.modifiedScope}}<h7>modifiedScope</h7>
-<p>{{cvss_v3.modifiedScope}}</p>{{/cvss_v3.modifiedScope}}
-{{#cvss_v3.modifiedConfidentialityImpact}}<h7>modifiedConfidentialityImpact</h7>
-<p>{{cvss_v3.modifiedConfidentialityImpact}}</p>{{/cvss_v3.modifiedConfidentialityImpact}}
-{{#cvss_v3.modifiedIntegrityImpact}}<h7>modifiedIntegrityImpact</h7>
-<p>{{cvss_v3.modifiedIntegrityImpact}}</p>{{/cvss_v3.modifiedIntegrityImpact}}
-{{#cvss_v3.modifiedAvailabilityImpact}}<h7>modifiedAvailabilityImpact</h7>
-<p>{{cvss_v3.modifiedAvailabilityImpact}}</p>{{/cvss_v3.modifiedAvailabilityImpact}}
-{{#cvss_v3.environmentalSeverity}}<h7>environmentalSeverity</h7>
-<p>{{cvss_v3.environmentalSeverity}}</p>{{/cvss_v3.environmentalSeverity}}
-{{/scores}}
-{{#discovery_date}}<h4>Discovery date</h4>
-<p>{{discovery_date}}</p>{{/discovery_date}}
-<h4>ID</h4>
-{{#id.system_name}}<h5>System name</h5>
-<p>{{id.system_name}}</p>{{/id.system_name}}
-{{#id.text}}<h5>Text</h5>
-<p>{{id.text}}</p>{{/id.text}}
-<h4>List of involvements</h4>
-{{#involvements}}<h5>Involvement</h5>
-{{#summary}}<h6>Summary of the involvement</h6>
-<p>{{summary}}</p>{{/summary}}
-{{#party}}<h6>Party type</h6>
-<p>{{party}}</p>{{/party}}
-{{#status}}<h6>Party status</h6>
-<p>{{status}}</p>{{/status}}
-{{/involvements}}
-<h4>List of notes</h4>
-{{#notes}}<h5>Note</h5>
-{{#audience}}<h6>Audience of note</h6>
-<p>{{audience}}</p>{{/audience}}
-{{#title}}<h6>Title of note</h6>
-<p>{{title}}</p>{{/title}}
-{{#type}}<h6>Note type</h6>
-<p>{{type}}</p>{{/type}}
-{{#text}}<h6>Note contents</h6>
-<p>{{text}}</p>{{/text}}
-{{/notes}}
-<h4>Product status</h4>
-<h5>List of product_ids</h5>
-{{#product_status.fixed}}{{#.}}<h6>Reference token for product instance</h6>
-<p>{{.}}</p>{{/.}}
-{{/product_status.fixed}}
-<h5>List of product_ids</h5>
-{{#product_status.first_fixed}}{{#.}}<h6>Reference token for product instance</h6>
-<p>{{.}}</p>{{/.}}
-{{/product_status.first_fixed}}
-<h5>List of product_ids</h5>
-{{#product_status.recommended}}{{#.}}<h6>Reference token for product instance</h6>
-<p>{{.}}</p>{{/.}}
-{{/product_status.recommended}}
-<h5>List of product_ids</h5>
-{{#product_status.known_affected}}{{#.}}<h6>Reference token for product instance</h6>
-<p>{{.}}</p>{{/.}}
-{{/product_status.known_affected}}
-<h5>List of product_ids</h5>
-{{#product_status.first_affected}}{{#.}}<h6>Reference token for product instance</h6>
-<p>{{.}}</p>{{/.}}
-{{/product_status.first_affected}}
-<h5>List of product_ids</h5>
-{{#product_status.last_affected}}{{#.}}<h6>Reference token for product instance</h6>
-<p>{{.}}</p>{{/.}}
-{{/product_status.last_affected}}
-<h5>List of product_ids</h5>
-{{#product_status.known_not_affected}}{{#.}}<h6>Reference token for product instance</h6>
-<p>{{.}}</p>{{/.}}
-{{/product_status.known_not_affected}}
-<h5>List of product_ids</h5>
-{{#product_status.under_investigation}}{{#.}}<h6>Reference token for product instance</h6>
-<p>{{.}}</p>{{/.}}
-{{/product_status.under_investigation}}
-<h4>List of references</h4>
-{{#references}}<h5>Reference</h5>
-{{#summary}}<h6>Summary of the reference</h6>
-<p>{{summary}}</p>{{/summary}}
-{{#type}}<h6>Type of reference</h6>
-<p>{{type}}</p>{{/type}}
-{{#url}}<h6>URL of reference</h6>
-<p>{{url}}</p>{{/url}}
-{{/references}}
-{{#release_date}}<h4>Release date</h4>
-<p>{{release_date}}</p>{{/release_date}}
-<h4>List of remediations</h4>
-{{#remediations}}<h5>Remediation</h5>
-{{#date}}<h6>Date of the remediation</h6>
-<p>{{date}}</p>{{/date}}
-{{#details}}<h6>Details of the remediation</h6>
-<p>{{details}}</p>{{/details}}
-<h6>List of entitlements</h6>
-{{#entitlements}}{{#.}}<h7>Entitlement of the remediation</h7>
-<p>{{.}}</p>{{/.}}
-{{/entitlements}}
-<h6>List of product_group_ids</h6>
-{{#group_ids}}{{#.}}<h7>Reference token for product group instance</h7>
-<p>{{.}}</p>{{/.}}
-{{/group_ids}}
-<h6>List of product_ids</h6>
-{{#product_ids}}{{#.}}<h7>Reference token for product instance</h7>
-<p>{{.}}</p>{{/.}}
-{{/product_ids}}
-<h6>Restart required by remediation</h6>
-{{#restart_required.type}}<h7>Type of restart</h7>
-<p>{{restart_required.type}}</p>{{/restart_required.type}}
-{{#restart_required.details}}<h7>Additional restart information</h7>
-<p>{{restart_required.details}}</p>{{/restart_required.details}}
-{{#type}}<h6>Type of the remediation</h6>
-<p>{{type}}</p>{{/type}}
-{{#url}}<h6>URL to the remediation</h6>
-<p>{{url}}</p>{{/url}}
-{{/remediations}}
-<h4>List of threats</h4>
-{{#threats}}<h5>Threat</h5>
-{{#type}}<h6>Type of the threat</h6>
-<p>{{type}}</p>{{/type}}
-{{#details}}<h6>Details of the threat</h6>
-<p>{{details}}</p>{{/details}}
-{{#date}}<h6>Date of the threat</h6>
-<p>{{date}}</p>{{/date}}
-<h6>List of product_ids</h6>
-{{#product_ids}}{{#.}}<h7>Reference token for product instance</h7>
-<p>{{.}}</p>{{/.}}
-{{/product_ids}}
-<h6>List of product_group_ids</h6>
-{{#group_ids}}{{#.}}<h7>Reference token for product group instance</h7>
-<p>{{.}}</p>{{/.}}
-{{/group_ids}}
-{{/threats}}
-{{#title}}<h4>Title</h4>
-<p>{{title}}</p>{{/title}}
-{{/data.json.vulnerabilities}}
-
+    {{#data.json.document.tracking.status}}<h4>Document status</h4>
+    <p>{{data.json.document.tracking.status}}</p>{{/data.json.document.tracking.status}}
+    {{#data.json.document.tracking.version}}<h4>Version</h4>
+    <p>{{data.json.document.tracking.version}}</p>{{/data.json.document.tracking.version}}
+    {{#data.json.document.type}}<h3>Document type</h3>
+    <p>{{data.json.document.type}}</p>{{/data.json.document.type}}
+    <h2>Product tree</h2>
+    <h3>List of branches</h3>
+    {{#data.json.product_tree.branches}}<h4>Branch</h4>
+    {{#name}}<h5>Name of the branch</h5>
+    <p>{{name}}</p>{{/name}}
+    {{#type}}<h5>Type of the branch</h5>
+    <p>{{type}}</p>{{/type}}
+    <h5>List of branches</h5>
+    {{#branches}}<h6>Branch</h6>
+    {{#name}}<h7>Name of the branch</h7>
+    <p>{{name}}</p>{{/name}}
+    {{#type}}<h7>Type of the branch</h7>
+    <p>{{type}}</p>{{/type}}
+    <h7>List of branches</h7>
+    {{#branches}}<h8>Branch</h8>
+    {{#name}}<h9>Name of the branch</h9>
+    <p>{{name}}</p>{{/name}}
+    {{#type}}<h9>Type of the branch</h9>
+    <p>{{type}}</p>{{/type}}
+    {{/branches}}
+    <h7>Full product name</h7>
+    {{#product.product_id}}<h8>Reference token for product instance</h8>
+    <p>{{product.product_id}}</p>{{/product.product_id}}
+    {{#product.name}}<h8>Textual description of the product</h8>
+    <p>{{product.name}}</p>{{/product.name}}
+    {{#product.cpe}}<h8>Common Platform Enumeration representation</h8>
+    <p>{{product.cpe}}</p>{{/product.cpe}}
+    {{/branches}}
+    <h5>Full product name</h5>
+    {{#product.product_id}}<h6>Reference token for product instance</h6>
+    <p>{{product.product_id}}</p>{{/product.product_id}}
+    {{#product.name}}<h6>Textual description of the product</h6>
+    <p>{{product.name}}</p>{{/product.name}}
+    {{#product.cpe}}<h6>Common Platform Enumeration representation</h6>
+    <p>{{product.cpe}}</p>{{/product.cpe}}
+    {{/data.json.product_tree.branches}}
+    <h3>List of full product names</h3>
+    {{#data.json.product_tree.full_product_names}}<h4>Full product name</h4>
+    {{#product_id}}<h5>Reference token for product instance</h5>
+    <p>{{product_id}}</p>{{/product_id}}
+    {{#name}}<h5>Textual description of the product</h5>
+    <p>{{name}}</p>{{/name}}
+    {{#cpe}}<h5>Common Platform Enumeration representation</h5>
+    <p>{{cpe}}</p>{{/cpe}}
+    {{/data.json.product_tree.full_product_names}}
+    <h3>List of product groups</h3>
+    {{#data.json.product_tree.product_groups}}<h4>Product group</h4>
+    {{#summary}}<h5>Summary of the product group</h5>
+    <p>{{summary}}</p>{{/summary}}
+    {{#group_id}}<h5>Reference token for product group instance</h5>
+    <p>{{group_id}}</p>{{/group_id}}
+    <h5>List of Product IDs</h5>
+    {{#product_ids}}{{#.}}<h6>Reference token for product instance</h6>
+    <p>{{.}}</p>{{/.}}
+    {{/product_ids}}
+    {{/data.json.product_tree.product_groups}}
+    <h3>List of relationships</h3>
+    {{#data.json.product_tree.relationships}}<h4>Relationship</h4>
+    <h5>Full product name</h5>
+    {{#full_product_name.product_id}}<h6>Reference token for product instance</h6>
+    <p>{{full_product_name.product_id}}</p>{{/full_product_name.product_id}}
+    {{#full_product_name.name}}<h6>Textual description of the product</h6>
+    <p>{{full_product_name.name}}</p>{{/full_product_name.name}}
+    {{#full_product_name.cpe}}<h6>Common Platform Enumeration representation</h6>
+    <p>{{full_product_name.cpe}}</p>{{/full_product_name.cpe}}
+    {{#product_reference}}<h5>Reference token for product instance</h5>
+    <p>{{product_reference}}</p>{{/product_reference}}
+    {{#relates_to_product_reference}}<h5>Reference token for product instance</h5>
+    <p>{{relates_to_product_reference}}</p>{{/relates_to_product_reference}}
+    {{#relationship_type}}<h5>Relationship type</h5>
+    <p>{{relationship_type}}</p>{{/relationship_type}}
+    {{/data.json.product_tree.relationships}}
+    <h2>Vulnerabilities</h2>
+    {{#data.json.vulnerabilities}}<h3>Vulnerability</h3>
+    <h4>List of acknowledgments</h4>
+    {{#acknowledgments}}<h5>Acknowledgment</h5>
+    <h6>List of acknowledged names</h6>
+    {{#names}}{{#.}}<h7>Name of entity being recognized</h7>
+    <p>{{.}}</p>{{/.}}
+    {{/names}}
+    <h6>List of contributing organizations</h6>
+    {{#organizations}}{{#.}}<h7>Contributing organization</h7>
+    <p>{{.}}</p>{{/.}}
+    {{/organizations}}
+    {{#summary}}<h6>Summary of the acknowledgment</h6>
+    <p>{{summary}}</p>{{/summary}}
+    <h6>List of URLs</h6>
+    {{#urls}}{{#.}}<h7>URL of acknowledgment</h7>
+    <p>{{.}}</p>{{/.}}
+    {{/urls}}
+    {{/acknowledgments}}
+    {{#cve}}<h4>CVE</h4>
+    <p>{{cve}}</p>{{/cve}}
+    <h4>CWE</h4>
+    {{#cwe.id}}<h5>Weakness ID</h5>
+    <p>{{cwe.id}}</p>{{/cwe.id}}
+    {{#cwe.name}}<h5>Weakness name</h5>
+    <p>{{cwe.name}}</p>{{/cwe.name}}
+    <h4>List of scores</h4>
+    {{#scores}}<h5>Score</h5>
+    <h6>List of product_ids</h6>
+    {{#products}}{{#.}}<h7>Reference token for product instance</h7>
+    <p>{{.}}</p>{{/.}}
+    {{/products}}
+    <h6>JSON Schema for Common Vulnerability Scoring System version 3.1</h6>
+    {{#cvss_v3.version}}<h7>version</h7>
+    <p>{{cvss_v3.version}}</p>{{/cvss_v3.version}}
+    {{#cvss_v3.vectorString}}<h7>vectorString</h7>
+    <p>{{cvss_v3.vectorString}}</p>{{/cvss_v3.vectorString}}
+    {{#cvss_v3.attackVector}}<h7>attackVector</h7>
+    <p>{{cvss_v3.attackVector}}</p>{{/cvss_v3.attackVector}}
+    {{#cvss_v3.attackComplexity}}<h7>attackComplexity</h7>
+    <p>{{cvss_v3.attackComplexity}}</p>{{/cvss_v3.attackComplexity}}
+    {{#cvss_v3.privilegesRequired}}<h7>privilegesRequired</h7>
+    <p>{{cvss_v3.privilegesRequired}}</p>{{/cvss_v3.privilegesRequired}}
+    {{#cvss_v3.userInteraction}}<h7>userInteraction</h7>
+    <p>{{cvss_v3.userInteraction}}</p>{{/cvss_v3.userInteraction}}
+    {{#cvss_v3.scope}}<h7>scope</h7>
+    <p>{{cvss_v3.scope}}</p>{{/cvss_v3.scope}}
+    {{#cvss_v3.confidentialityImpact}}<h7>confidentialityImpact</h7>
+    <p>{{cvss_v3.confidentialityImpact}}</p>{{/cvss_v3.confidentialityImpact}}
+    {{#cvss_v3.integrityImpact}}<h7>integrityImpact</h7>
+    <p>{{cvss_v3.integrityImpact}}</p>{{/cvss_v3.integrityImpact}}
+    {{#cvss_v3.availabilityImpact}}<h7>availabilityImpact</h7>
+    <p>{{cvss_v3.availabilityImpact}}</p>{{/cvss_v3.availabilityImpact}}
+    {{#cvss_v3.baseSeverity}}<h7>baseSeverity</h7>
+    <p>{{cvss_v3.baseSeverity}}</p>{{/cvss_v3.baseSeverity}}
+    {{#cvss_v3.exploitCodeMaturity}}<h7>exploitCodeMaturity</h7>
+    <p>{{cvss_v3.exploitCodeMaturity}}</p>{{/cvss_v3.exploitCodeMaturity}}
+    {{#cvss_v3.remediationLevel}}<h7>remediationLevel</h7>
+    <p>{{cvss_v3.remediationLevel}}</p>{{/cvss_v3.remediationLevel}}
+    {{#cvss_v3.reportConfidence}}<h7>reportConfidence</h7>
+    <p>{{cvss_v3.reportConfidence}}</p>{{/cvss_v3.reportConfidence}}
+    {{#cvss_v3.temporalSeverity}}<h7>temporalSeverity</h7>
+    <p>{{cvss_v3.temporalSeverity}}</p>{{/cvss_v3.temporalSeverity}}
+    {{#cvss_v3.confidentialityRequirement}}<h7>confidentialityRequirement</h7>
+    <p>{{cvss_v3.confidentialityRequirement}}</p>{{/cvss_v3.confidentialityRequirement}}
+    {{#cvss_v3.integrityRequirement}}<h7>integrityRequirement</h7>
+    <p>{{cvss_v3.integrityRequirement}}</p>{{/cvss_v3.integrityRequirement}}
+    {{#cvss_v3.availabilityRequirement}}<h7>availabilityRequirement</h7>
+    <p>{{cvss_v3.availabilityRequirement}}</p>{{/cvss_v3.availabilityRequirement}}
+    {{#cvss_v3.modifiedAttackVector}}<h7>modifiedAttackVector</h7>
+    <p>{{cvss_v3.modifiedAttackVector}}</p>{{/cvss_v3.modifiedAttackVector}}
+    {{#cvss_v3.modifiedAttackComplexity}}<h7>modifiedAttackComplexity</h7>
+    <p>{{cvss_v3.modifiedAttackComplexity}}</p>{{/cvss_v3.modifiedAttackComplexity}}
+    {{#cvss_v3.modifiedPrivilegesRequired}}<h7>modifiedPrivilegesRequired</h7>
+    <p>{{cvss_v3.modifiedPrivilegesRequired}}</p>{{/cvss_v3.modifiedPrivilegesRequired}}
+    {{#cvss_v3.modifiedUserInteraction}}<h7>modifiedUserInteraction</h7>
+    <p>{{cvss_v3.modifiedUserInteraction}}</p>{{/cvss_v3.modifiedUserInteraction}}
+    {{#cvss_v3.modifiedScope}}<h7>modifiedScope</h7>
+    <p>{{cvss_v3.modifiedScope}}</p>{{/cvss_v3.modifiedScope}}
+    {{#cvss_v3.modifiedConfidentialityImpact}}<h7>modifiedConfidentialityImpact</h7>
+    <p>{{cvss_v3.modifiedConfidentialityImpact}}</p>{{/cvss_v3.modifiedConfidentialityImpact}}
+    {{#cvss_v3.modifiedIntegrityImpact}}<h7>modifiedIntegrityImpact</h7>
+    <p>{{cvss_v3.modifiedIntegrityImpact}}</p>{{/cvss_v3.modifiedIntegrityImpact}}
+    {{#cvss_v3.modifiedAvailabilityImpact}}<h7>modifiedAvailabilityImpact</h7>
+    <p>{{cvss_v3.modifiedAvailabilityImpact}}</p>{{/cvss_v3.modifiedAvailabilityImpact}}
+    {{#cvss_v3.environmentalSeverity}}<h7>environmentalSeverity</h7>
+    <p>{{cvss_v3.environmentalSeverity}}</p>{{/cvss_v3.environmentalSeverity}}
+    {{/scores}}
+    {{#discovery_date}}<h4>Discovery date</h4>
+    <p>{{discovery_date}}</p>{{/discovery_date}}
+    <h4>ID</h4>
+    {{#id.system_name}}<h5>System name</h5>
+    <p>{{id.system_name}}</p>{{/id.system_name}}
+    {{#id.text}}<h5>Text</h5>
+    <p>{{id.text}}</p>{{/id.text}}
+    <h4>List of involvements</h4>
+    {{#involvements}}<h5>Involvement</h5>
+    {{#summary}}<h6>Summary of the involvement</h6>
+    <p>{{summary}}</p>{{/summary}}
+    {{#party}}<h6>Party type</h6>
+    <p>{{party}}</p>{{/party}}
+    {{#status}}<h6>Party status</h6>
+    <p>{{status}}</p>{{/status}}
+    {{/involvements}}
+    <h4>List of notes</h4>
+    {{#notes}}<h5>Note</h5>
+    {{#audience}}<h6>Audience of note</h6>
+    <p>{{audience}}</p>{{/audience}}
+    {{#title}}<h6>Title of note</h6>
+    <p>{{title}}</p>{{/title}}
+    {{#type}}<h6>Note type</h6>
+    <p>{{type}}</p>{{/type}}
+    {{#text}}<h6>Note contents</h6>
+    <p>{{text}}</p>{{/text}}
+    {{/notes}}
+    <h4>Product status</h4>
+    <h5>List of product_ids</h5>
+    {{#product_status.fixed}}{{#.}}<h6>Reference token for product instance</h6>
+    <p>{{.}}</p>{{/.}}
+    {{/product_status.fixed}}
+    <h5>List of product_ids</h5>
+    {{#product_status.first_fixed}}{{#.}}<h6>Reference token for product instance</h6>
+    <p>{{.}}</p>{{/.}}
+    {{/product_status.first_fixed}}
+    <h5>List of product_ids</h5>
+    {{#product_status.recommended}}{{#.}}<h6>Reference token for product instance</h6>
+    <p>{{.}}</p>{{/.}}
+    {{/product_status.recommended}}
+    <h5>List of product_ids</h5>
+    {{#product_status.known_affected}}{{#.}}<h6>Reference token for product instance</h6>
+    <p>{{.}}</p>{{/.}}
+    {{/product_status.known_affected}}
+    <h5>List of product_ids</h5>
+    {{#product_status.first_affected}}{{#.}}<h6>Reference token for product instance</h6>
+    <p>{{.}}</p>{{/.}}
+    {{/product_status.first_affected}}
+    <h5>List of product_ids</h5>
+    {{#product_status.last_affected}}{{#.}}<h6>Reference token for product instance</h6>
+    <p>{{.}}</p>{{/.}}
+    {{/product_status.last_affected}}
+    <h5>List of product_ids</h5>
+    {{#product_status.known_not_affected}}{{#.}}<h6>Reference token for product instance</h6>
+    <p>{{.}}</p>{{/.}}
+    {{/product_status.known_not_affected}}
+    <h5>List of product_ids</h5>
+    {{#product_status.under_investigation}}{{#.}}<h6>Reference token for product instance</h6>
+    <p>{{.}}</p>{{/.}}
+    {{/product_status.under_investigation}}
+    <h4>List of references</h4>
+    {{#references}}<h5>Reference</h5>
+    {{#summary}}<h6>Summary of the reference</h6>
+    <p>{{summary}}</p>{{/summary}}
+    {{#type}}<h6>Type of reference</h6>
+    <p>{{type}}</p>{{/type}}
+    {{#url}}<h6>URL of reference</h6>
+    <p>{{url}}</p>{{/url}}
+    {{/references}}
+    {{#release_date}}<h4>Release date</h4>
+    <p>{{release_date}}</p>{{/release_date}}
+    <h4>List of remediations</h4>
+    {{#remediations}}<h5>Remediation</h5>
+    {{#date}}<h6>Date of the remediation</h6>
+    <p>{{date}}</p>{{/date}}
+    {{#details}}<h6>Details of the remediation</h6>
+    <p>{{details}}</p>{{/details}}
+    <h6>List of entitlements</h6>
+    {{#entitlements}}{{#.}}<h7>Entitlement of the remediation</h7>
+    <p>{{.}}</p>{{/.}}
+    {{/entitlements}}
+    <h6>List of product_group_ids</h6>
+    {{#group_ids}}{{#.}}<h7>Reference token for product group instance</h7>
+    <p>{{.}}</p>{{/.}}
+    {{/group_ids}}
+    <h6>List of product_ids</h6>
+    {{#product_ids}}{{#.}}<h7>Reference token for product instance</h7>
+    <p>{{.}}</p>{{/.}}
+    {{/product_ids}}
+    <h6>Restart required by remediation</h6>
+    {{#restart_required.type}}<h7>Type of restart</h7>
+    <p>{{restart_required.type}}</p>{{/restart_required.type}}
+    {{#restart_required.details}}<h7>Additional restart information</h7>
+    <p>{{restart_required.details}}</p>{{/restart_required.details}}
+    {{#type}}<h6>Type of the remediation</h6>
+    <p>{{type}}</p>{{/type}}
+    {{#url}}<h6>URL to the remediation</h6>
+    <p>{{url}}</p>{{/url}}
+    {{/remediations}}
+    <h4>List of threats</h4>
+    {{#threats}}<h5>Threat</h5>
+    {{#type}}<h6>Type of the threat</h6>
+    <p>{{type}}</p>{{/type}}
+    {{#details}}<h6>Details of the threat</h6>
+    <p>{{details}}</p>{{/details}}
+    {{#date}}<h6>Date of the threat</h6>
+    <p>{{date}}</p>{{/date}}
+    <h6>List of product_ids</h6>
+    {{#product_ids}}{{#.}}<h7>Reference token for product instance</h7>
+    <p>{{.}}</p>{{/.}}
+    {{/product_ids}}
+    <h6>List of product_group_ids</h6>
+    {{#group_ids}}{{#.}}<h7>Reference token for product group instance</h7>
+    <p>{{.}}</p>{{/.}}
+    {{/group_ids}}
+    {{/threats}}
+    {{#title}}<h4>Title</h4>
+    <p>{{title}}</p>{{/title}}
+    {{/data.json.vulnerabilities}}
   </body>
 </html>
