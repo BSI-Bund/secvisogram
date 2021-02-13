@@ -102,6 +102,7 @@ const props = {
     })
   },
   onExportCSAF: console.log.bind(console, 'onExportCSAF'),
+  onExportHTML: console.log.bind(console, 'onExportHTML'),
 }
 
 export const tests = [
