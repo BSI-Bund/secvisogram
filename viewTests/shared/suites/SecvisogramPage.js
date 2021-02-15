@@ -257,16 +257,12 @@ export const tests = [
     render: () => <View {...props} activeTab="SOURCE" />,
   },
   {
-    title: 'Advisory',
-    render: () => <View {...props} activeTab="ADVISORY" />,
-  },
-  {
     title: 'Advisory (seed-1)',
     render: () => (
       <View
         {...props}
         data={{ ...props.data, doc: /** @type {any} */ (seed1) }}
-        activeTab="ADVISORY"
+        activeTab="PREVIEW"
       />
     ),
   },
@@ -276,31 +272,31 @@ export const tests = [
       <View
         {...props}
         data={{ ...props.data, doc: /** @type {any} */ (seed2) }}
-        activeTab="ADVISORY"
+        activeTab="PREVIEW"
       />
     ),
   },
   {
-    title: 'HTML',
-    render: () => <View {...props} activeTab="HTML" />,
+    title: 'PREVIEW',
+    render: () => <View {...props} activeTab="PREVIEW" />,
   },
   {
-    title: 'HTML (seed-1)',
+    title: 'PREVIEW (seed-1)',
     render: () => (
       <View
         {...props}
         data={{ ...props.data, doc: /** @type {any} */ (seed1) }}
-        activeTab="HTML"
+        activeTab="PREVIEW"
       />
     ),
   },
   {
-    title: 'HTML (seed-2)',
+    title: 'PREVIEW (seed-2)',
     render: () => (
       <View
         {...props}
         data={{ ...props.data, doc: /** @type {any} */ (seed2) }}
-        activeTab="HTML"
+        activeTab="PREVIEW"
       />
     ),
   },

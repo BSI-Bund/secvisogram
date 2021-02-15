@@ -72,9 +72,9 @@ Simple input errors are displayed directly at the respective form field. Errors 
 
 The source-editor uses the ACE editor to edit the data in the local browser storage, just like the Vulnogram example.
 
-#### Advisory, HTML and CSAF-JSON views
+#### Preview and CSAF-JSON views
 
-The Advisory, HTML and CSAF-JSON views do not include any editing functions and simply display the data stored in local browser storage.
+The Preview and CSAF-JSON views do not include any editing functions and simply display the data stored in local browser storage.
 
 Thus, there are four ways to modify the data of a CSAF 2.0 document in the local browser storage:
 
