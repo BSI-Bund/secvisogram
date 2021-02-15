@@ -97,6 +97,7 @@ suite('SecvisogramPage', () => {
           .set('reportConfidence', 'NOT_DEFINED')
 
         const data = vector.data
+        expect(data.version).to.equal('3.1')
         expect(data.vectorString).to.equal(
           'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N'
         )
@@ -110,6 +111,7 @@ suite('SecvisogramPage', () => {
         }).updateFromVectorString('CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H')
 
         expect(vector.data).to.contain({
+          version: '3.1',
           attackVector: 'NETWORK',
           attackComplexity: 'LOW',
           privilegesRequired: 'LOW',
@@ -144,6 +146,7 @@ suite('SecvisogramPage', () => {
         )
         expect(data.baseScore).to.equal(7.3)
         expect(data.baseSeverity).to.equal('HIGH')
+        expect(data.version).to.equal('3.0')
       })
 
       test('A 3.0 valid vector-string can be upgraded', () => {
