@@ -10,6 +10,7 @@ const props = {
   isSaving: false,
   errors: [],
   stripResult: null,
+  strict: true,
   data: {
     documentIsValid: null,
     doc: {
@@ -63,6 +64,7 @@ const props = {
     },
   },
   activeTab: /** @type {'EDITOR'} */ ('EDITOR'),
+  onSetStrict: console.log.bind(console, 'onSetStrict'),
   onNew: console.log.bind(console, 'onNew'),
   onDownload: console.log.bind(console, 'onDownload'),
   onOpen: console.log.bind(console, 'onOpen'),

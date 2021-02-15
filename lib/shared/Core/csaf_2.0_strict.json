@@ -1,5 +1,5 @@
 {
-  "$id": "https://raw.githubusercontent.com/oasis-tcs/csaf/master/csaf_2.0/json_schema/csaf_json_schema.json",
+  "$id": "https://raw.githubusercontent.com/oasis-tcs/csaf/master/csaf_2.0/json_schema/csaf_json_schema.json#strict",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
     "acknowledgments_t": {
@@ -13,10 +13,7 @@
             "description": "Contains the names of entities being recognized.",
             "items": {
               "description": "Contains the name of a single person.",
-              "examples": [
-                "Johann Sebastian Bach",
-                "Albert Einstein"
-              ],
+              "examples": ["Johann Sebastian Bach", "Albert Einstein"],
               "minLength": 1,
               "title": "Name of entity being recognized",
               "type": "string"
@@ -29,11 +26,7 @@
             "description": "Contains the names of contributing organizations being recognized.",
             "items": {
               "description": "Contains the name of a single organization.",
-              "examples": [
-                "CISA",
-                "Talos",
-                "Google Project Zero"
-              ],
+              "examples": ["CISA", "Talos", "Google Project Zero"],
               "minLength": 1,
               "title": "Contributing organization",
               "type": "string"
@@ -120,10 +113,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "name",
-          "type"
-        ],
+        "required": ["name", "type"],
         "title": "Branch",
         "type": "object"
       },
@@ -157,22 +147,13 @@
           "$ref": "#/definitions/product_id_t"
         }
       },
-      "required": [
-        "product_id",
-        "name"
-      ],
+      "required": ["product_id", "name"],
       "title": "Full product name",
       "type": "object"
     },
     "lang_t": {
       "description": "Identifies a language, corresponding to IETF BCP 47 / RFC 5646. See IETF language registry: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry",
-      "examples": [
-        "de",
-        "en",
-        "fr",
-        "frc",
-        "jp"
-      ],
+      "examples": ["de", "en", "fr", "frc", "jp"],
       "pattern": "^[a-zA-Z]{2,3}(-.+)?$",
       "title": "Language type",
       "type": "string"
@@ -228,10 +209,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "type",
-          "text"
-        ],
+        "required": ["type", "text"],
         "title": "Note",
         "type": "object"
       },
@@ -241,11 +219,7 @@
     },
     "product_group_id_t": {
       "description": "Token required to identify a group of products so that it can be referred to from other parts in the document. There is no predefined or required format for the product_group_id as long as it uniquely identifies a group in the context of the current document.",
-      "examples": [
-        "CSAFGID-0001",
-        "CSAFGID-0002",
-        "CSAFGID-0020"
-      ],
+      "examples": ["CSAFGID-0001", "CSAFGID-0002", "CSAFGID-0020"],
       "minLength": 1,
       "title": "Reference token for product group instance",
       "type": "string"
@@ -262,10 +236,7 @@
     },
     "product_id_t": {
       "description": "Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.",
-      "examples": [
-        "CVRFPID-0004",
-        "CVRFPID-0008"
-      ],
+      "examples": ["CVRFPID-0004", "CVRFPID-0008"],
       "minLength": 1,
       "title": "Reference token for product instance",
       "type": "string"
@@ -295,10 +266,7 @@
           "type": {
             "default": "external",
             "description": "Indicates whether the reference points to the same document or vulnerability in focus (depending on scope) or to an external resource.",
-            "enum": [
-              "external",
-              "self"
-            ],
+            "enum": ["external", "self"],
             "title": "Type of reference",
             "type": "string"
           },
@@ -309,10 +277,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "url",
-          "summary"
-        ],
+        "required": ["url", "summary"],
         "title": "Reference",
         "type": "object"
       },
@@ -322,12 +287,7 @@
     },
     "version_t": {
       "description": "Specifies a version string with a simple hierarchical counter model to denote clearly the evolution of the content of the document. Format must be understood as 'major[.minor[.patch[.build]]]' version.",
-      "examples": [
-        "1",
-        "0.9",
-        "1.4.3",
-        "2.40.0.320002"
-      ],
+      "examples": ["1", "0.9", "1.4.3", "2.40.0.320002"],
       "pattern": "^(0|[1-9][0-9]*)(\\.(0|[1-9][0-9]*)){0,3}$",
       "title": "Version",
       "type": "string"
@@ -354,27 +314,19 @@
             },
             "text": {
               "description": "Provides a severity which is independent of - and in addition to - any other standard metric for determining the impact or severity of a given vulnerability (such as CVSS).",
-              "examples": [
-                "Moderate",
-                "Important",
-                "Critical"
-              ],
+              "examples": ["Moderate", "Important", "Critical"],
               "minLength": 1,
               "title": "Text of aggregate severity",
               "type": "string"
             }
           },
-          "required": [
-            "text"
-          ],
+          "required": ["text"],
           "title": "Aggregate severity",
           "type": "object"
         },
         "csaf_version": {
           "description": "Gives the version of the CSAF specification which the document was generated for.",
-          "enum": [
-            "2.0"
-          ],
+          "enum": ["2.0"],
           "title": "CSAF version",
           "type": "string"
         },
@@ -400,12 +352,7 @@
               "properties": {
                 "label": {
                   "description": "Provides the TLP label of the document.",
-                  "enum": [
-                    "RED",
-                    "AMBER",
-                    "GREEN",
-                    "WHITE"
-                  ],
+                  "enum": ["RED", "AMBER", "GREEN", "WHITE"],
                   "title": "Label of TLP",
                   "type": "string"
                 },
@@ -421,9 +368,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "label"
-              ],
+              "required": ["label"],
               "title": "Traffic Light Protocol (TLP)",
               "type": "object"
             }
@@ -462,13 +407,7 @@
             },
             "type": {
               "description": "Provides information about the type of publisher releasing the document.",
-              "enum": [
-                "coordinator",
-                "discoverer",
-                "other",
-                "user",
-                "vendor"
-              ],
+              "enum": ["coordinator", "discoverer", "other", "user", "vendor"],
               "title": "Type of publisher",
               "type": "string"
             },
@@ -479,9 +418,7 @@
               "type": "string"
             }
           },
-          "required": [
-            "type"
-          ],
+          "required": ["type"],
           "title": "Publisher",
           "type": "object"
         },
@@ -511,9 +448,7 @@
               "description": "Contains a list of alternate names for the same document.",
               "items": {
                 "description": "Specifies a non-empty string that represents a distinct optional alternative ID used to refer to the document.",
-                "examples": [
-                  "CVE-2019-12345"
-                ],
+                "examples": ["CVE-2019-12345"],
                 "minLength": 1,
                 "title": "Alternate name",
                 "type": "string"
@@ -551,9 +486,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "engine"
-              ],
+              "required": ["engine"],
               "title": "Document generator",
               "type": "object"
             },
@@ -591,19 +524,13 @@
                   },
                   "summary": {
                     "description": "Holds a single non-empty string representing a short description of the changes.",
-                    "examples": [
-                      "Initial version."
-                    ],
+                    "examples": ["Initial version."],
                     "minLength": 1,
                     "title": "Summary of the revision",
                     "type": "string"
                   }
                 },
-                "required": [
-                  "number",
-                  "date",
-                  "summary"
-                ],
+                "required": ["number", "date", "summary"],
                 "title": "Revision",
                 "type": "object"
               },
@@ -613,11 +540,7 @@
             },
             "status": {
               "description": "Defines the draft status of the document.",
-              "enum": [
-                "draft",
-                "final",
-                "interim"
-              ],
+              "enum": ["draft", "final", "interim"],
               "title": "Document status",
               "type": "string"
             },
@@ -648,13 +571,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "csaf_version",
-        "title",
-        "publisher",
-        "type",
-        "tracking"
-      ],
+      "required": ["csaf_version", "title", "publisher", "type", "tracking"],
       "title": "Document level meta-data",
       "type": "object"
     },
@@ -704,10 +621,7 @@
                 "type": "string"
               }
             },
-            "required": [
-              "group_id",
-              "product_ids"
-            ],
+            "required": ["group_id", "product_ids"],
             "title": "Product group",
             "type": "object"
           },
@@ -781,11 +695,7 @@
             "properties": {
               "id": {
                 "description": "Holds the ID for the weakness associated.",
-                "examples": [
-                  "CWE-79",
-                  "CWE-22",
-                  "CWE-352"
-                ],
+                "examples": ["CWE-79", "CWE-22", "CWE-352"],
                 "pattern": "^CWE-[1-9]\\d{0,5}$",
                 "title": "Weakness ID",
                 "type": "string"
@@ -802,10 +712,7 @@
                 "type": "string"
               }
             },
-            "required": [
-              "id",
-              "name"
-            ],
+            "required": ["id", "name"],
             "title": "CWE",
             "type": "object"
           },
@@ -821,27 +728,20 @@
             "properties": {
               "system_name": {
                 "description": "Indicates the name of the vulnerability tracking or numbering system.",
-                "examples": [
-                  "Cisco Bug ID"
-                ],
+                "examples": ["Cisco Bug ID"],
                 "minLength": 1,
                 "title": "System name",
                 "type": "string"
               },
               "text": {
                 "description": "Is unique label or tracking ID for the vulnerability (if such information exists).",
-                "examples": [
-                  "CSCso66472"
-                ],
+                "examples": ["CSCso66472"],
                 "minLength": 1,
                 "title": "Text",
                 "type": "string"
               }
             },
-            "required": [
-              "system_name",
-              "text"
-            ],
+            "required": ["system_name", "text"],
             "title": "ID",
             "type": "object"
           },
@@ -883,10 +783,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "party",
-                "status"
-              ],
+              "required": ["party", "status"],
               "title": "Involvement",
               "type": "object"
             },
@@ -1018,9 +915,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "type"
-                  ],
+                  "required": ["type"],
                   "title": "Restart required by remediation",
                   "type": "object"
                 },
@@ -1043,10 +938,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "details",
-                "type"
-              ],
+              "required": ["details", "type"],
               "title": "Remediation",
               "type": "object"
             },
@@ -1078,9 +970,7 @@
                   "$ref": "#/definitions/products_t"
                 }
               },
-              "required": [
-                "products"
-              ],
+              "required": ["products"],
               "title": "Score",
               "type": "object"
             },
@@ -1114,19 +1004,12 @@
                 },
                 "type": {
                   "description": "Categorizes the threat according to the rules of the specification.",
-                  "enum": [
-                    "impact",
-                    "exploit_status",
-                    "target_set"
-                  ],
+                  "enum": ["impact", "exploit_status", "target_set"],
                   "title": "Type of the threat",
                   "type": "string"
                 }
               },
-              "required": [
-                "details",
-                "type"
-              ],
+              "required": ["details", "type"],
               "title": "Threat",
               "type": "object"
             },
@@ -1149,9 +1032,7 @@
       "type": "array"
     }
   },
-  "required": [
-    "document"
-  ],
+  "required": ["document"],
   "title": "Common Security Advisory Framework",
   "type": "object"
 }

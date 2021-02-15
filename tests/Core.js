@@ -14,6 +14,7 @@ suite('Core', () => {
       for (const document of fixture.documents) {
         const result = await fixture.core.document.validate({
           document: document.content,
+          strict: false,
         })
         expect(result.isValid).to.equal(document.valid)
         if (document.valid) {
