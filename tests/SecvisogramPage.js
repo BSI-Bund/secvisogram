@@ -7,26 +7,51 @@ suite('SecvisogramPage', () => {
     suite('Reducer', () => {
       test('The document can be updated', () => {
         let { state } = Fixture()
+        const timestamp = new Date('2020-01-01')
 
         state = ViewReducer(state, {
           type: 'CHANGE_FORM_DOC',
-          update: { $set: 42 },
+          update: { foo: { $set: 42 } },
+          timestamp,
         })
 
-        expect(state.formValues.doc).to.equal(42)
+        expect(state.formValues.doc.foo).to.equal(42)
+        expect(state.formValues.doc.document.tracking.generator.date).to.equal(
+          timestamp.toISOString()
+        )
+      })
+
+      test('The document can be reset', () => {
+        let { state } = Fixture()
+        const doc = {}
+
+        state = ViewReducer(state, {
+          type: 'RESET_FORM_DOC',
+          doc,
+        })
+
+        expect(state.formValues.doc).to.equal(doc)
       })
 
       test('The document can be updated using a data-path', () => {
         let { state } = Fixture()
         state.formValues.doc = { foobar: {} }
+        const timestamp = new Date('2020-01-01')
 
         state = ViewReducer(state, {
           type: 'CHANGE_FORM_DOC',
           dataPath: '/foobar/test',
+          timestamp,
           update: { $set: 42 },
         })
 
         expect(state.formValues.doc.foobar.test).to.equal(42)
+        expect(state.formValues.doc.document.tracking.generator.date).to.equal(
+          timestamp.toISOString()
+        )
+        expect(
+          state.formValues.doc.document.tracking.generator.engine
+        ).to.equal('Secvisogram')
       })
 
       test('The form can be reset', () => {
