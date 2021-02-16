@@ -94,28 +94,22 @@ createCore().then((core) => {
               .catch(handleError)
           }}
           onOpen={(file) => {
-            if (file.size > 1 * 1024 * 1024) {
-              window.alert('File too large!')
-              return
-            }
-            setState((state) => ({ ...state, isLoading: true }))
-            new Promise((resolve, reject) => {
+            return new Promise((resolve, reject) => {
               const fileReader = new FileReader()
               fileReader.onerror = reject
               fileReader.onload = (e) => {
                 try {
+                  const parsedDoc = JSON.parse(
+                    /** @type {string | undefined} */ (e.target?.result) ?? ''
+                  )
                   setState((state) => ({
                     ...state,
-                    isLoading: false,
                     data: {
                       ...state.data,
-                      doc: JSON.parse(
-                        /** @type {string | undefined} */ (e.target?.result) ??
-                          ''
-                      ),
+                      doc: parsedDoc,
                     },
                   }))
-                  resolve(null)
+                  resolve(parsedDoc)
                 } catch (err) {
                   reject(err)
                 }

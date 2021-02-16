@@ -176,6 +176,10 @@ export default function FormEditorTab({
               accept="application/json"
               onChange={(e) => {
                 if (!e.target.files || !e.target.files[0]) return
+                if (e.target.files[0].size > 1 * 1024 * 1024) {
+                  window.alert('File too large!')
+                  return
+                }
                 onOpen(e.target.files[0])
               }}
             />

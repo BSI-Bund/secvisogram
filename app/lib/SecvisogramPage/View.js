@@ -29,7 +29,7 @@ import useDebounce from './View/shared/useDebounce'
  *  strict: boolean
  *  onSetStrict(strict: boolean): void
  *  onDownload(doc: {}): void
- *  onOpen(file: File): void
+ *  onOpen(file: File): Promise<void | {}>
  *  onChangeTab(tab: 'EDITOR' | 'SOURCE' | 'PREVIEW' | 'CSAF-JSON', document: {}): void
  *  onValidate(document: {}): void
  *  onNewDocMin(): Promise<void | {}>

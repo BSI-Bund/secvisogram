@@ -20,7 +20,7 @@ import useDebounce from './shared/useDebounce'
  *  strict: boolean
  *  onSetStrict(strict: boolean): void
  *  onChange({}): void
- *  onOpen(file: File): void
+ *  onOpen(file: File): Promise<void | {}>
  *  onDownload(doc: {}): void
  *  onNewDocMin(): Promise<void | {}>
  *  onNewDocMax(): Promise<void | {}>
@@ -136,6 +136,12 @@ export default function JsonEditorTab({
     confirm: confirmMax,
   })
 
+  const handleOpen = (/** @type {File} */ file) => {
+    onOpen(file).then((openedDoc) => {
+      editorRef.current?.setValue(JSON.stringify(openedDoc, null, 2))
+    })
+  }
+
   return (
     <>
       <MinAlert />
@@ -210,7 +216,11 @@ export default function JsonEditorTab({
               accept="application/json"
               onChange={(e) => {
                 if (!e.target.files || !e.target.files[0]) return
-                onOpen(e.target.files[0])
+                if (e.target.files[0].size > 1 * 1024 * 1024) {
+                  window.alert('File too large!')
+                  return
+                }
+                handleOpen(e.target.files[0])
               }}
             />
             <button
