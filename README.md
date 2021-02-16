@@ -4,13 +4,16 @@
 
 - [Introduction](#introduction)
 - [Getting started](#getting-started)
-    - [Deployment for production with nginx](#deployment-for-production-with-nginx)
-- [Usage](#usage)
-    - [The basic concept of Secvisogram](#the-basic-concept-of-secvisogram)
-- [Developing](#developing)
-    - [Automated Tests](#automated-tests)
-    - [Folder structure scheme](#folder-structure-scheme)
-- [Dependencies: 3rd party Libraries & Technologies](#dependencies-3rd-party-libraries--technologies)
+- [How to use Secvisogram](#how-to-use-secvisogram)
+  - [Basic concepts](#basic-concepts)
+  - [Form Editor](#form-editor)
+  - [JSON Editor](#json-editor)
+  - [Preview (HTML view)](#preview-html-view)
+  - [CSAF Document (JSON view)](#csaf-document-json-view)
+- [Developing Secvisogram](#developing-secvisogram)
+  - [Developer Guide, Architecture & Technical Design](#developer-guide-architecture--technical-design)
+  - [Custom Preview Templates](#custom-preview-templates)
+  - [Security Considerations](#security-considerations)
 
 <!-- /TOC -->
 
@@ -52,75 +55,68 @@ Now you can start a development server via
 
 The application is now running and accessible at http://localhost:8080.
 
-### Deployment for production with nginx
+#### Deploying to Production
 
-## Usage
+Please refer to [`DEVELOPMENT.md`](DEVELOPMENT.md) for a detailed description on how to build and deploy Secvisogram in production.
 
-### The basic concept of Secvisogram
+## How to use Secvisogram
+
+### Basic concepts
 
 Similar to the Vulnogram model, the web application consists of various tabs that represent the individual views. These are represented as an HTML page which loads its data from a local browser storage using JavaScript.
+
 To start a new document after saving, either a "New" button must be pressed or an "Open" button must be used to select and load a local file.
+
 When leaving a view without saving (e.g. clicking on another application tab or reloading the application) a warning is displayed and users have to confirm leaving the page.
 
-#### Editor View
+### Form Editor
 
-The "Editor" view is an HTML form with primarily client-side input validation (https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation). In addition, the language fields in the form are checked for plausibility against the values from the IANA database and the CVSS 3 input fields are completed with the data from a possibly copied vector string and this is recalculated. This gives the user an elegant way to use a possibly existing and copied CVSS 2.0 vector and to partially adjust the values.
+The _Form Editor_ view is an HTML form with live input validation. Besides the CSAF JSON Schema checks some additional constraints are implemented:
 
-A special input field is the "cwe" attribute. Here you can search the CWE catalog (XML file) by entering a value in the "id" or "name" field. For this purpose, a list with the first ten entries matching the input opens under the respective input field, from which a suitable entry can be selected and accepted.
+- language fields in the form are checked for plausibility against the values from the IANA database
+- The consistency of CVSS string and accompaning fields are checked
+- The consistency of the CWE ID and description are checked
+
+CVSS 3 input fields are completed with the data from a possibly copied vector string and this is recalculated. This gives the user an elegant way to use a possibly existing and copied CVSS 2.0 vector and to partially adjust the values.
+
+A special input field is the "CWE" attribute. Here you can search the CWE catalog (XML file) by entering a value in the "id" or "name" field. For this purpose, a list with the first ten entries matching the input opens under the respective input field, from which a suitable entry can be selected and accepted.
 
 Simple input errors are displayed directly at the respective form field. Errors that occur during the input check when saving are listed at the top of the form.
 
-#### Source Editor
+_Opening & Saving Files_
+You can open and save you CSAF JSON document at any time using the according _Open_ and _Save_ buttons. If your document fails the validation checks, a confirmation dialog will appear.
 
-The source-editor uses the ACE editor to edit the data in the local browser storage, just like the Vulnogram example.
+The _CSAF Document_ tab offers functionality to extract the standard-valid subset of you current document.
 
-#### Preview and CSAF-JSON views
+_Identifying & Solving Validation issues_
+Use the `Show errors`-link in the Form Editor view to reveal a linked list of validation issues. Here you can click on any validation issue and directly jump to the affected form elements.
 
-The Preview and CSAF-JSON views do not include any editing functions and simply display the data stored in local browser storage.
+### JSON Editor
 
-Thus, there are four ways to modify the data of a CSAF 2.0 document in the local browser storage:
+The _JSON Editor_ view uses the ACE editor to edit the JSON representation of the current CSAF document. Please not that only valid JSON content is accepted for further processing.
 
-- Create a new document
-- Load a file
-- Saving the editor-view
-- Saving the source-view
+### Preview (HTML view)
 
-## Developing
+This view do not include any editing functionality. It displays a rendered HTML template view of the current CSAF document as shown in the editor views.
 
-### Automated Tests
+Use the toggle button to switch between the Rendered web view and the HTML source view. You can export this HTML document via _Export Preview_ as standalone HTML document (i.e. for printing).
 
-There are two different types of tests in this system.
+### CSAF Document (JSON view)
 
-#### Mocha Tests
+This view do not include any editing functionality. It **always displays the valid subset of your current CSAF document** by removing any invalid and/or empty CSAF document elements.
 
-On the one hand **Mocha tests** are used, which are located in the folder "tests". They are to test logic of the application. In the console they can be executed with the following command:
+You can use this view and the embedded _Export CSAF_ button to always quickly extract the standard-valid subset of you current CSAF document.
 
-    npm test
+## Developing Secvisogram
 
-#### View Tests
+### Developer Guide, Architecture & Technical Design
 
-On the other hand, there are the **viewTests** in the folder of the same name. Once you have started the system as described above, you can view the tests at the following URL:
+The [`DEVELOPMENT.md`](DEVELOPMENT.md) document gives an overall introduction on how to get started with developing Secvisogram as well as an overview on the architecture, libraries used and technical design of Secvisogram.
 
-http://localhost:8080/view-tests.html
+### Custom Preview Templates
 
-On this page, there is a drop-down menu in the footer that can be used to select the respective test.
+It's possible to change and provide custom Preview Templates. Please refer to [`PREVIEW-TEMPLATING.md`](PREVIEW-TEMPLATING.md) for detailed instructions on how to create, modify and deploy Secvisogram with custom templates.
 
-### Folder structure scheme
+### Security Considerations
 
-Source files may only access folders that have the same name as themselves and are located at the same file level. Exception are the so-called "shared" folders. They may be used if they are located on the same or higher file level.
-
-It is not allowed to reach in any deeper file level than one.
-
-## Dependencies: 3rd party Libraries & Technologies
-
-##### AJV for JSON schema validation
-
-To validate the input data against the JSON schema the package "ajv" is used. |
-
-##### Typescript
-
-Typescript is used to type and document the source code. This means, for example, that variables that can be used in templates are directly documented and statically checked. But typescript is not used as a language but as a type-checker only, which means that types are declared using source-code comments. This keeps the configuration of related tools simpler.
-
-##### React
-
-React is used to implement the views. This JavaScript library is suitable for mapping data structures to the DOM in the browser and keeping it synchronized when the structure changes. In doing so, it offers an easily customizable template language. In addition, React prevents the accidental insertion of executable code in the DOM and therefore already offers basic protection against cross-site scripting.
+Please refer to [`SECURITY-CONSIDERATIONS.md`](SECURITY-CONSIDERATIONS.md) for details about how Secvisogram addresses the OWAS Top 10 Web Application Vulnerabilities.
