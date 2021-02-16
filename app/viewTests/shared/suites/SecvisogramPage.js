@@ -67,7 +67,10 @@ const props = {
   onSetStrict: console.log.bind(console, 'onSetStrict'),
   onNew: console.log.bind(console, 'onNew'),
   onDownload: console.log.bind(console, 'onDownload'),
-  onOpen: console.log.bind(console, 'onOpen'),
+  onOpen: () => {
+    console.log.bind(console, 'onOpen')
+    return new Promise(() => {})
+  },
   onSave: console.log.bind(console, 'onSave'),
   onChangeTab: console.log.bind(console, 'onChangeTab'),
   onValidate: console.log.bind(console, 'onValidate'),
