@@ -20,7 +20,7 @@ import ObjectContainer from '../shared/ObjectContainer'
  *  onUpdate: ((update: {}) => void) & ((dataPath: string, update: {}) => void)
  * }} props
  */
-export default function Cwec(props) {
+export default function Cwe(props) {
   return (
     <>
       <ObjectContainer
@@ -115,7 +115,7 @@ function CwecId(props) {
             <Combobox className="w-full" onSelect={handleSelect}>
               <ComboboxInput
                 value={value}
-                className="border p-2 w-full shadow-inner rounded-l"
+                className="border border-gray-400 py-1 px-2 w-full shadow-inner rounded"
                 pattern="^CWE-[1-9]\d{0,5}$"
                 placeholder="^CWE-[1-9]\d{0,5}$"
                 required={true}
@@ -190,7 +190,7 @@ function CwecName(props) {
             <Combobox className="w-full" onSelect={handleSelect}>
               <ComboboxInput
                 value={value}
-                className="border p-2 w-full shadow-inner rounded-l"
+                className="border border-gray-400 py-1 px-2 w-full shadow-inner rounded"
                 placeholder="Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') ..."
                 required={true}
                 onChange={handleChange}

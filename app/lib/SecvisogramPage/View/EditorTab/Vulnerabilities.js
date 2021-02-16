@@ -14,7 +14,7 @@ import ObjectContainer from './shared/ObjectContainer'
 import TextAreaAttribute from './shared/TextAreaAttribute'
 import TextAttribute from './shared/TextAttribute'
 import validationErrorShallowEqual from './shared/validationErrorShallowEqual'
-import Cwec from './Vulnerabilities/Cwec'
+import Cwe from './Vulnerabilities/Cwe'
 import Scores from './Vulnerabilities/Scores'
 
 export default React.memo(
@@ -68,7 +68,7 @@ const Vulnerability = React.memo(
               pattern="^CVE-[0-9]{4}-[0-9]{4,}$"
               deletable
             />
-            <Cwec {...vulnerabilityProps('cwe')} />
+            <Cwe {...vulnerabilityProps('cwe')} />
             <Scores {...vulnerabilityProps('scores')} />
             <DateAttribute
               {...vulnerabilityProps('discovery_date')}
