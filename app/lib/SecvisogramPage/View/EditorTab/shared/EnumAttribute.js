@@ -1,12 +1,3 @@
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxList,
-  ComboboxOption,
-  ComboboxPopover,
-} from '@reach/combobox'
 import '@reach/combobox/styles.css'
 import React from 'react'
 import Attribute from './Attribute'
@@ -32,40 +23,27 @@ export default function EnumAttribute({
   deletable,
   ...props
 }) {
+  const listId = `${props.dataPath}-list`
   return (
     <Attribute {...props}>
       {({ onChange, onDelete }) => (
         <div className="max-w-md flex">
           <div className="w-full">
-            <Combobox
-              className="w-full"
-              openOnFocus
-              onSelect={(item) => {
-                onChange(item)
+            <input
+              className="border border-gray-400 py-1 px-2 w-full shadow-inner rounded"
+              type="text"
+              list={listId}
+              value={/** @type {string} */ (props.value)}
+              onChange={(e) => {
+                onChange(e.target.value)
               }}
-            >
-              <label className="block w-full flex">
-                <ComboboxInput
-                  value={/** @type {string} */ (props.value)}
-                  className="border border-gray-400 py-1 px-2 w-full shadow-inner rounded-l"
-                  selectOnClick
-                  required={required}
-                  onChange={(e) => {
-                    onChange(e.target.value)
-                  }}
-                />
-                <div className="flex items-center justify-center w-8 text-xs border border-gray-400 rounded-r bg-white hover:bg-gray-200 cursor-pointer">
-                  <FontAwesomeIcon icon={faChevronDown} />
-                </div>
-              </label>
-              <ComboboxPopover>
-                <ComboboxList persistSelection>
-                  {options.map((option, index) => (
-                    <ComboboxOption key={index} value={option} />
-                  ))}
-                </ComboboxList>
-              </ComboboxPopover>
-            </Combobox>
+              required={required}
+            />
+            <datalist id={listId}>
+              {options.map((option, index) => (
+                <option key={index} value={option} />
+              ))}
+            </datalist>
           </div>
           {deletable ? (
             <Delete
