@@ -20,6 +20,8 @@ module.exports = function generateIcannList({ registry }) {
       subtags.push({ subtag: line.substring(8) })
     }
   }).on('close', () => {
+    console.log('{"subtags":')
     console.log(JSON.stringify(subtags, null, 2))
+    console.log('}')
   })
 }
