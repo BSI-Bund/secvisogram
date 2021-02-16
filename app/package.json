@@ -1,10 +1,11 @@
 {
-  "name": "bsi-secvisogram",
+  "name": "app",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint . && tsc -b . && node scripts/test.js",
+    "test": "eslint . && node scripts/test.js",
     "build": "node scripts/build.js",
     "dev": "webpack serve --mode development"
   },

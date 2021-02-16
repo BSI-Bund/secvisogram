@@ -1,0 +1,25 @@
+{
+  "name": "bin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": "cli.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-pointer": "^0.6.1",
+    "xml2js": "^0.4.23",
+    "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "@types/json-pointer": "^1.0.30",
+    "@types/node": "^14.14.28",
+    "@types/xml2js": "^0.4.8",
+    "@types/yargs": "^16.0.0"
+  }
+}

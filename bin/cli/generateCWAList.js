@@ -6,13 +6,16 @@ const xml2js = require('xml2js')
  * @typedef {{Weaknesses: {Weakness: Array<Weakness>}}} Weaknesses
  */
 
-function generateCWAList() {
+/**
+ * @param {{ cwec: string }} params
+ */
+module.exports = function generateCWAList({ cwec }) {
   const parser = new xml2js.Parser({
     explicitArray: false,
     mergeAttrs: true,
     explicitRoot: false,
   })
-  fs.readFile(__dirname + '/cwec_v4.3.xml', function (...args) {
+  fs.readFile(cwec, function (...args) {
     parser.parseStringPromise(args[1]).then(function (result) {
       console.log('{ "weaknesses": [')
       result.Weaknesses.Weakness.map((/** @type {Weakness} */ weakness) => {
@@ -22,5 +25,3 @@ function generateCWAList() {
     })
   })
 }
-
-generateCWAList()
