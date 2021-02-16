@@ -1,7 +1,7 @@
 import React from 'react'
 import View from '../../../lib/SecvisogramPage/View'
-import seed1 from './SecvisogramPage/seed-1.json'
-import seed2 from './SecvisogramPage/seed-2.json'
+import seed1 from '../../../seeds/documents/valid-1.json'
+import seed2 from '../../../seeds/documents/valid-2.json'
 
 export const title = 'SecvisogramPage'
 
