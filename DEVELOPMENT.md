@@ -70,7 +70,7 @@ Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incid
 ### Core stacke & Technology
 
 **Typescript:**
-Typescript is used to type and document the source code. This means, for example, that variables that can be used in templates are directly documented and statically checked. But typescript is not used as a language but as a type-checker only, which means that types are declared using source-code comments. This keeps the configuration of related tools simpler.
+Typescript is used to type and document the source code. It is not used as language, but as a statical type-checker only. Types are declared using [Javascript with embedded Typescript source-code comments](TODO://LINK-ZU-DOKU!). This keeps the overall toolchain clean & simple.
 
 **React & Reach:**
 React is used to implement the views. This JavaScript library is suitable for mapping data structures to the DOM in the browser and keeping it synchronized when the structure changes. In doing so, it offers an easily customizable template language. In addition, React prevents the accidental insertion of executable code in the DOM and therefore already offers basic protection against cross-site scripting.
