@@ -4,12 +4,12 @@
 
 - [Introduction](#introduction)
 - [Getting started](#getting-started)
-  - [Deployment for production with nginx](#deployment-for-production-with-nginx)
+    - [Deployment for production with nginx](#deployment-for-production-with-nginx)
 - [Usage](#usage)
-  - [The basic concept of Secvisogram](#the-basic-concept-of-secvisogram)
+    - [The basic concept of Secvisogram](#the-basic-concept-of-secvisogram)
 - [Developing](#developing)
-  - [Automated Tests](#automated-tests)
-  - [Folder structure scheme](#folder-structure-scheme)
+    - [Automated Tests](#automated-tests)
+    - [Folder structure scheme](#folder-structure-scheme)
 - [Dependencies: 3rd party Libraries & Technologies](#dependencies-3rd-party-libraries--technologies)
 
 <!-- /TOC -->
@@ -21,6 +21,8 @@ Secvisogram is a tool for creating and editing advisories in [CSAF format](https
 Secvisogram is inspired by the project [Vulnogram](https://vulnogram.github.io/) - "a tool for creating and editing CVE information in CVE JSON format". Both names share the same Greek origin suffix '-gram' which is used for denoting something written or recorded especially in a certain way. Vulnerability related information is often not enough - mostly only the remediation information enables the end user to act efficiently in responding to those information.
 
 Secvisogram aims to make it easier for vendors and other security advisory issuing parties to record the advisory details in the CSAF format.
+
+![Secvisogram CSAF Editor Screenshot](README-screenshot.png)
 
 ## Getting started
 
