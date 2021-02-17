@@ -219,12 +219,36 @@ createCore().then((core) => {
                 .validate({ document: document, strict: strict })
                 .then(({ isValid }) => {
                   const fileName = createFileName(document, isValid, 'json')
-                  core.document
-                    .strip({ document, strict: strict })
-                    .then(({ document: doc }) => {
-                      downloadFile(JSON.stringify(doc, null, 2), fileName)
-                    })
-                    .catch(handleError)
+                  if (!isValid) {
+                    setState((state) => ({
+                      ...state,
+                      alert: {
+                        ...alertSaveInvalid,
+                        onConfirm() {
+                          core.document
+                            .strip({ document, strict: strict })
+                            .then(({ document: doc }) => {
+                              setState({ ...state, alert: null })
+                              downloadFile(
+                                JSON.stringify(doc, null, 2),
+                                fileName
+                              )
+                            })
+                            .catch(handleError)
+                        },
+                        onCancel() {
+                          setState({ ...state, alert: null })
+                        },
+                      },
+                    }))
+                  } else {
+                    core.document
+                      .strip({ document, strict: strict })
+                      .then(({ document: doc }) => {
+                        downloadFile(JSON.stringify(doc, null, 2), fileName)
+                      })
+                      .catch(handleError)
+                  }
                 })
                 .catch(handleError)
             },

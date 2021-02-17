@@ -142,6 +142,14 @@ function View({
     [activeTab, onChangeTab, formValues.doc, isTabLocked]
   )
 
+  const onStripCallback = React.useCallback(() => {
+    onStrip(formValues.doc)
+  }, [formValues.doc, onStrip])
+
+  const onExportCSAFCallback = React.useCallback(() => {
+    onExportCSAF(formValues.doc)
+  }, [formValues.doc, onExportCSAF])
+
   return (
     <>
       {alert ? <Alert {...alert} /> : null}
@@ -198,12 +206,8 @@ function View({
               ) : activeTab === 'CSAF-JSON' ? (
                 <CsafTab
                   stripResult={stripResult}
-                  onStrip={() => {
-                    onStrip(formValues.doc)
-                  }}
-                  onExport={() => {
-                    onExportCSAF(formValues.doc)
-                  }}
+                  onStrip={onStripCallback}
+                  onExport={onExportCSAFCallback}
                 />
               ) : null}
             </>
