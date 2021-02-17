@@ -1,3 +1,4 @@
+import { get } from 'lodash'
 import React from 'react'
 import { render } from 'react-dom'
 import { ErrorBoundary, useErrorHandler } from 'react-error-boundary'
@@ -12,6 +13,14 @@ import './shared/style.css'
 
 const root = document.createElement('div')
 document.body.appendChild(root)
+
+const alertSaveInvalid = {
+  label: 'Validation',
+  description:
+    'Open validation issues: Your document is yet not CSAF 2.0 compliant!',
+  cancelLabel: 'Resume editing (Recommended)',
+  confirmLabel: 'Save invalid document',
+}
 
 createCore().then((core) => {
   core.document.newDocMin().then((initialDoc) => {
@@ -66,20 +75,14 @@ createCore().then((core) => {
             core.document
               .validate({ document: doc, strict: strict })
               .then(({ isValid }) => {
+                const fileName = createFileName(doc, isValid, 'json')
                 if (!isValid) {
                   setState((state) => ({
                     ...state,
                     alert: {
-                      label: 'Validation',
-                      description:
-                        'Open validation issues: Your document is yet not CSAF 2.0 compliant!',
-                      cancelLabel: 'Resume editing (Recommended)',
-                      confirmLabel: 'Save invalid document',
+                      ...alertSaveInvalid,
                       onConfirm() {
-                        downloadFile(
-                          JSON.stringify(doc, null, 2),
-                          `CSAF_2_0${isValid ? '' : '_invalid'}.json`
-                        )
+                        downloadFile(JSON.stringify(doc, null, 2), fileName)
                         setState({ ...state, alert: null })
                       },
                       onCancel() {
@@ -88,7 +91,7 @@ createCore().then((core) => {
                     },
                   }))
                 } else {
-                  downloadFile(JSON.stringify(doc, null, 2), 'CSAF_2_0.json')
+                  downloadFile(JSON.stringify(doc, null, 2), fileName)
                 }
               })
               .catch(handleError)
@@ -195,17 +198,47 @@ createCore().then((core) => {
           onExportCSAF={React.useCallback(
             (document) => {
               core.document
-                .strip({ document, strict: strict })
-                .then(({ document: doc }) => {
-                  downloadFile(JSON.stringify(doc, null, 2), 'CSAF_2_0.json')
+                .validate({ document: document, strict: strict })
+                .then(({ isValid }) => {
+                  const fileName = createFileName(document, isValid, 'json')
+                  core.document
+                    .strip({ document, strict: strict })
+                    .then(({ document: doc }) => {
+                      downloadFile(JSON.stringify(doc, null, 2), fileName)
+                    })
+                    .catch(handleError)
                 })
                 .catch(handleError)
             },
             [handleError, strict]
           )}
-          onExportHTML={React.useCallback((html) => {
-            downloadFile(html, 'CSAF_2_0.html')
-          }, [])}
+          onExportHTML={React.useCallback(
+            (html, doc) => {
+              core.document
+                .validate({ document: doc, strict: strict })
+                .then(({ isValid }) => {
+                  const fileName = createFileName(doc, isValid, 'html')
+                  if (!isValid) {
+                    setState((state) => ({
+                      ...state,
+                      alert: {
+                        ...alertSaveInvalid,
+                        onConfirm() {
+                          downloadFile(html, fileName, 'text/html')
+                          setState({ ...state, alert: null })
+                        },
+                        onCancel() {
+                          setState({ ...state, alert: null })
+                        },
+                      },
+                    }))
+                  } else {
+                    downloadFile(html, fileName, 'text/html')
+                  }
+                })
+            },
+            [strict]
+          )}
         />
       )
     }
@@ -222,11 +255,16 @@ createCore().then((core) => {
 /**
  * @param {string} content
  * @param {string} fileName
+ * @param {string} type
  */
-export default function downloadFile(content, fileName) {
+export default function downloadFile(
+  content,
+  fileName,
+  type = 'application/json'
+) {
   try {
     const string = btoa(content)
-    const dataURI = `data:application/json;base64,${string}`
+    const dataURI = `data:${type};base64,${string}`
     const element = window.document.createElement('a')
     element.download = fileName
     element.href = dataURI
@@ -234,4 +272,20 @@ export default function downloadFile(content, fileName) {
   } catch (e) {
     alert('An error occured while serializing the download:\n\n' + e.message)
   }
+}
+
+/**
+ * @param {{}} doc
+ * @param {boolean} isValid
+ * @param {string} extension
+ */
+function createFileName(doc, isValid, extension) {
+  let trackingId = `${get(doc, 'document.tracking.id', '')}`
+  if (trackingId.trim().length === 0) {
+    trackingId = 'csaf_2_0'
+  } else {
+    trackingId = trackingId.replace(/([^a-z0-9]+)/gi, '_')
+  }
+  const fileName = `${trackingId}${isValid ? '' : '_invalid'}.${extension}`
+  return fileName
 }

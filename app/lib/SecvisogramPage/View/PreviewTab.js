@@ -12,7 +12,7 @@ import HTMLTemplate from './shared/HTMLTemplate'
  * @param {{
  *  formValues: import('../shared/FormValues').default
  *  validationErrors: import('../../shared/validationTypes').ValidationError[]
- *  onExport(html: string): void
+ *  onExport(html: string, doc: {}): void
  * }} props
  */
 export default function PreviewTab({
@@ -124,7 +124,7 @@ export default function PreviewTab({
             type="button"
             className="mb-2 py-1 px-3 rounded shadow border border-green-500 bg-green-500 text-white hover:text-green-500 hover:bg-white"
             onClick={() => {
-              onExport(html)
+              onExport(html, formValues.doc)
             }}
           >
             <FontAwesomeIcon className="mr-1" icon={faCode} />

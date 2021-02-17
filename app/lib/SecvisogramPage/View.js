@@ -36,7 +36,7 @@ import useDebounce from './View/shared/useDebounce'
  *  onNewDocMax(): Promise<void | {}>
  *  onStrip(document: {}): void
  *  onExportCSAF(doc: {}): void
- *  onExportHTML(html: string): void
+ *  onExportHTML(html: string, doc: {}): void
  * }} props
  */
 function View({
