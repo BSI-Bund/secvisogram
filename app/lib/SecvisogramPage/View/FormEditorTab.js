@@ -72,6 +72,12 @@ export default function FormEditorTab({
     setExpanded(!showErrors)
   }
 
+  React.useEffect(() => {
+    if (errors.length === 0) {
+      setShowErrors(false)
+    }
+  }, [errors])
+
   const ref = React.useRef(/** @type {HTMLDivElement | null} */ (null))
   /** @param {boolean} open */
   const setExpanded = (open) => {

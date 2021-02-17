@@ -120,6 +120,12 @@ export default function JsonEditorTab({
     // editorRef.current?.resize()
   }
 
+  React.useEffect(() => {
+    if (errors.length === 0) {
+      setShowErrors(false)
+    }
+  }, [errors])
+
   const confirmMin = () => {
     onNewDocMin().then((newDoc) => {
       editorRef.current?.setValue(JSON.stringify(newDoc, null, 2))
