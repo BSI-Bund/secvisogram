@@ -62,7 +62,6 @@ export default React.memo(
               description="The date when the current revision of this document was released"
             />
             <ObjectContainer
-              /** @todo Generate values */
               {...trackingProps('generator')}
               label="Document generator"
               description="Is a container to hold all elements related to the generation of the document. These items will reference when the document was actually created, including the date it was generated and the entity that generated it."

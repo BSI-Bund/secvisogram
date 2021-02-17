@@ -1,8 +1,6 @@
 import React from 'react'
 import TextAttribute from '../TextAttribute'
 
-/** @todo Validation via subtags.json */
-
 /**
  * @param {{
  *  label?: string
