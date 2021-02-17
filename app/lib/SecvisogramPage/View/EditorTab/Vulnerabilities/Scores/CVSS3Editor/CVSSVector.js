@@ -247,21 +247,16 @@ export default class CVSSVector {
     const result = this.calculateCVSSMetrics()
     return {
       ...this._data,
-      version: result.vectorString
-        ? result.vectorString.split(/[:/]/)[1]
-        : this._data.version,
-      vectorString: result.success
-        ? typeof result.vectorString === 'string'
-          ? result.vectorString
-          : ''
-        : '',
+      version: this._data.version,
+      vectorString:
+        (result.success ? result.vectorString : this._data.vectorString) ?? '',
       baseScore: result.success ? Number(result.baseMetricScore) : 0,
       baseSeverity: result.success ? result.baseSeverity.toUpperCase() : '',
     }
   }
 
   get canBeUpgraded() {
-    return this.isValid && this.data.vectorString.startsWith('CVSS:3.0/')
+    return this.isValid && this.data.version === '3.0'
   }
 
   get isValid() {
@@ -299,10 +294,7 @@ export default class CVSSVector {
      *   string,
      * ]}
      */ (vectorStringMapping.map((e) => e[2][this._data[e[0]]]))
-    if (
-      typeof this._data.vectorString === 'string' &&
-      this._data.vectorString.startsWith('CVSS:3.0')
-    )
+    if (this._data.version === '3.0')
       return CVSS.calculateCVSSFromMetrics(...args)
     return CVSS31.calculateCVSSFromMetrics(...args)
   }
@@ -311,27 +303,37 @@ export default class CVSSVector {
    * @param {string} vectorString
    */
   updateFromVectorString(vectorString) {
+    const valid =
+      CVSS31.calculateCVSSFromVector(vectorString).success ||
+      CVSS.calculateCVSSFromVector(vectorString).success
     const data = Object.fromEntries(
-      vectorString
-        .split('/')
-        .slice(1)
-        .map((entry) => entry.split(':'))
-        .map(([key, value]) => {
-          const mapping = vectorStringMapping.find((m) => m[1] === key)
-          if (!mapping) return null
-          const valueMapping = Object.entries(mapping[2]).find(
-            (m) => m[1] === value
-          )
-          if (!valueMapping) return null
-          return [mapping[0], valueMapping[0]]
-        })
-        .filter(/** @returns {e is [string, string]} */ (e) => Boolean(e))
+      valid
+        ? vectorString
+            .split('/')
+            .slice(1)
+            .map((entry) => entry.split(':'))
+            .map(([key, value]) => {
+              const mapping = vectorStringMapping.find((m) => m[1] === key)
+              if (!mapping) return null
+              const valueMapping = Object.entries(mapping[2]).find(
+                (m) => m[1] === value
+              )
+              if (!valueMapping) return null
+              return [mapping[0], valueMapping[0]]
+            })
+            .filter(/** @returns {e is [string, string]} */ (e) => Boolean(e))
+        : Object.entries(this._data).map((e) => [e[0], ''])
     )
-    return new CVSSVector({ ...this._data, ...data })
+    return new CVSSVector({
+      ...this._data,
+      ...data,
+      version: valid ? vectorString.split(/[:/]/)[1] : '',
+      vectorString,
+    })
   }
 
   updateVectorStringTo31() {
     const vectorString = this.data.vectorString.replace(/^(CVSS:3).0/, '$1.1')
-    return new CVSSVector({ ...this._data, vectorString })
+    return new CVSSVector({ ...this._data, vectorString, version: '3.1' })
   }
 }

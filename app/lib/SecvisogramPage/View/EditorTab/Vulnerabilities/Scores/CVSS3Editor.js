@@ -16,10 +16,7 @@ import CVSSVector from './CVSS3Editor/CVSSVector'
  */
 export default function CVSSV3Editor(props) {
   const cvssVector = new CVSSVector(/** @type {{}} */ (props.value) || {})
-
-  const [{ canBeUpgraded }, setState] = React.useState(() => ({
-    canBeUpgraded: cvssVector.canBeUpgraded,
-  }))
+  const canBeUpgraded = cvssVector.canBeUpgraded
 
   return (
     <ObjectContainer
@@ -80,13 +77,7 @@ export default function CVSSV3Editor(props) {
                   const updatedCVSSMetrics = cvssVector.updateFromVectorString(
                     e.target.value
                   )
-                  const metrics = updatedCVSSMetrics.isValid
-                    ? updatedCVSSMetrics
-                    : cvssVector
-                  setState((state) => ({
-                    ...state,
-                    canBeUpgraded: metrics.canBeUpgraded,
-                  }))
+                  const metrics = updatedCVSSMetrics
                   props.onUpdate(props.dataPath, {
                     $merge: { ...metrics.data },
                   })
@@ -96,7 +87,6 @@ export default function CVSSV3Editor(props) {
                 {canBeUpgraded ? (
                   <DefaultButton
                     onClick={() => {
-                      setState((state) => ({ ...state, canBeUpgraded: false }))
                       props.onUpdate(props.dataPath, {
                         $merge: { ...cvssVector.updateVectorStringTo31().data },
                       })

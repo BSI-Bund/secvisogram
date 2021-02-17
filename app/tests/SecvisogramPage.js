@@ -80,8 +80,9 @@ suite('SecvisogramPage', () => {
     })
 
     suite('CVSSMetrics', () => {
-      test('Metrics can be calculated', () => {
+      test('3.1 metrics can be calculated', () => {
         const vector = new CVSSVector({
+          version: '3.1',
           attackVector: 'NETWORK',
           attackComplexity: 'HIGH',
           privilegesRequired: 'LOW',
@@ -105,10 +106,38 @@ suite('SecvisogramPage', () => {
         expect(data.baseSeverity).to.equal('HIGH')
       })
 
-      test('Metrics can be updated from a vector-string', () => {
+      test('3.0 metrics can be calculated', () => {
+        const vector = new CVSSVector({
+          version: '3.0',
+          attackVector: 'NETWORK',
+          attackComplexity: 'HIGH',
+          privilegesRequired: 'LOW',
+          userInteraction: 'REQUIRED',
+          scope: 'UNCHANGED',
+          confidentialityImpact: 'HIGH',
+          integrityImpact: 'HIGH',
+          availabilityImpact: 'NONE',
+        })
+          .set('attackComplexity', 'LOW')
+          .set('exploitCodeMaturity', 'NONE')
+          .remove('exploitCodeMaturity')
+          .set('reportConfidence', 'NOT_DEFINED')
+
+        const data = vector.data
+        expect(data.version).to.equal('3.0')
+        expect(data.vectorString).to.equal(
+          'CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N'
+        )
+        expect(data.baseScore).to.equal(7.3)
+        expect(data.baseSeverity).to.equal('HIGH')
+      })
+
+      test('Metrics can be updated from a 3.1 vector-string', () => {
         const vector = new CVSSVector({
           availabilityImpact: 'NONE',
-        }).updateFromVectorString('CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H')
+        }).updateFromVectorString(
+          'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N'
+        )
 
         expect(vector.data).to.contain({
           version: '3.1',
@@ -123,8 +152,56 @@ suite('SecvisogramPage', () => {
         })
       })
 
+      test('Metrics can be updated from a 3.0 vector-string', () => {
+        const vector = new CVSSVector({
+          availabilityImpact: 'NONE',
+        }).updateFromVectorString(
+          'CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N'
+        )
+
+        expect(vector.data).to.contain({
+          version: '3.0',
+          attackVector: 'NETWORK',
+          attackComplexity: 'LOW',
+          privilegesRequired: 'LOW',
+          userInteraction: 'REQUIRED',
+          scope: 'UNCHANGED',
+          confidentialityImpact: 'HIGH',
+          integrityImpact: 'HIGH',
+          availabilityImpact: 'NONE',
+        })
+      })
+
+      test('Updating from an invalid vector-string clears all fields', () => {
+        const vector = new CVSSVector({
+          availabilityImpact: 'NONE',
+          attackVector: '',
+          attackComplexity: '',
+          privilegesRequired: '',
+          userInteraction: '',
+          scope: '',
+          confidentialityImpact: '',
+          integrityImpact: '',
+        }).updateFromVectorString('CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:x')
+
+        expect(vector.data).to.contain({
+          vectorString: 'CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:x',
+          version: '',
+          attackVector: '',
+          attackComplexity: '',
+          privilegesRequired: '',
+          userInteraction: '',
+          scope: '',
+          confidentialityImpact: '',
+          integrityImpact: '',
+          availabilityImpact: '',
+        })
+        expect(vector.data).to.not.contain({ exploitCodeMaturity: '' })
+      })
+
       test('CVSS3.0 metrics can be calculated', () => {
         const vector = new CVSSVector({
+          version: '3.0',
           attackVector: 'NETWORK',
           attackComplexity: 'HIGH',
           privilegesRequired: 'LOW',
@@ -157,9 +234,11 @@ suite('SecvisogramPage', () => {
         )
 
         expect(vector.canBeUpgraded).to.be.true
-        expect(vector.updateVectorStringTo31().data.vectorString).to.equal(
+        const upgradedVector = vector.updateVectorStringTo31()
+        expect(upgradedVector.data.vectorString).to.equal(
           'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N'
         )
+        expect(upgradedVector.data.version).to.equal('3.1')
       })
 
       test('An invalid vector-string can not be upgraded', () => {
