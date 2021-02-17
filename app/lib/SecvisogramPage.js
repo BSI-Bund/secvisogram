@@ -26,7 +26,16 @@ createCore().then((core) => {
   core.document.newDocMin().then((initialDoc) => {
     const SecvisogramPage = () => {
       const [
-        { isLoading, activeTab, data, errors, alert, stripResult, strict },
+        {
+          isLoading,
+          isTabLocked,
+          activeTab,
+          data,
+          errors,
+          alert,
+          stripResult,
+          strict,
+        },
         setState,
       ] = React.useState({
         isLoading: false,
@@ -52,12 +61,14 @@ createCore().then((core) => {
           doc: initialDoc,
         },
         activeTab: /** @type {React.ComponentProps<typeof View>['activeTab']} */ ('EDITOR'),
+        isTabLocked: false,
       })
       const handleError = useErrorHandler()
 
       return (
         <View
           activeTab={activeTab}
+          isTabLocked={isTabLocked}
           isLoading={isLoading}
           isSaving={false}
           errors={errors}
@@ -65,6 +76,12 @@ createCore().then((core) => {
           data={data}
           alert={alert}
           strict={strict}
+          onLockTab={React.useCallback(() => {
+            setState((state) => ({ ...state, isTabLocked: true }))
+          }, [])}
+          onUnlockTab={React.useCallback(() => {
+            setState((state) => ({ ...state, isTabLocked: false }))
+          }, [])}
           onSetStrict={(value) => {
             setState((state) => ({
               ...state,
@@ -121,6 +138,7 @@ createCore().then((core) => {
             }).catch(handleError)
           }}
           onChangeTab={(tab, document) => {
+            if (isTabLocked) return
             setState((state) => ({ ...state, isLoading: true }))
             core.document
               .validate({ document, strict: strict })

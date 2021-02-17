@@ -24,6 +24,8 @@ import useDebounce from './shared/useDebounce'
  *  onDownload(doc: {}): void
  *  onNewDocMin(): Promise<void | {}>
  *  onNewDocMax(): Promise<void | {}>
+ *  onLockTab(): void
+ *  onUnlockTab(): void
  * }} props
  */
 export default function JsonEditorTab({
@@ -36,6 +38,8 @@ export default function JsonEditorTab({
   onDownload,
   onNewDocMin,
   onNewDocMax,
+  onLockTab,
+  onUnlockTab,
 }) {
   const { doc } = formValues
 
@@ -43,8 +47,16 @@ export default function JsonEditorTab({
   const editorRef = /** @type {React.MutableRefObject<import('../../../vendor/ace-builds/ace').Ace.Editor | undefined>} */ (React.useRef())
   const parsedDoc = React.useMemo(() => JSON.stringify(doc, null, 2), [doc])
   const [initialValue] = React.useState(parsedDoc)
-  const [{ value }, setState] = React.useState({ value: parsedDoc })
+  const [{ value, parseError }, setState] = React.useState({
+    value: parsedDoc,
+    parseError: null,
+  })
   const debouncedValue = useDebounce(value)
+
+  React.useEffect(() => {
+    if (parseError) onLockTab()
+    else onUnlockTab()
+  }, [parseError, onLockTab, onUnlockTab])
 
   React.useEffect(() => {
     const editorEl = /** @type {HTMLDivElement} */ (ref.current)
@@ -82,7 +94,9 @@ export default function JsonEditorTab({
     let result = null
     try {
       result = JSON.parse(debouncedValue)
+      setState((state) => ({ ...state, parseError: null }))
     } catch (e) {
+      setState((state) => ({ ...state, parseError: e }))
       return
     }
     onChange(result || {})

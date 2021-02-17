@@ -8,6 +8,7 @@ export const title = 'SecvisogramPage'
 const props = {
   isLoading: false,
   isSaving: false,
+  isTabLocked: false,
   errors: [],
   stripResult: null,
   strict: true,
@@ -68,18 +69,18 @@ const props = {
   onNew: console.log.bind(console, 'onNew'),
   onDownload: console.log.bind(console, 'onDownload'),
   onOpen: () => {
-    console.log.bind(console, 'onOpen')
+    console.log('onOpen')
     return new Promise(() => {})
   },
   onSave: console.log.bind(console, 'onSave'),
   onChangeTab: console.log.bind(console, 'onChangeTab'),
   onValidate: console.log.bind(console, 'onValidate'),
   onNewDocMin: () => {
-    console.log.bind(console, 'onNewDocMin')
+    console.log('onNewDocMin')
     return new Promise(() => {})
   },
   onNewDocMax: () => {
-    console.log.bind(console, 'onNewDocMax')
+    console.log('onNewDocMax')
     return new Promise(() => {})
   },
   onStrip: (/** @type {any[]} */ ...args) => {
@@ -108,6 +109,8 @@ const props = {
   },
   onExportCSAF: console.log.bind(console, 'onExportCSAF'),
   onExportHTML: console.log.bind(console, 'onExportHTML'),
+  onLockTab: console.log.bind(console, 'onLockTab'),
+  onUnlockTab: console.log.bind(console, 'onUnlockTab'),
 }
 
 export const tests = [
@@ -260,6 +263,10 @@ export const tests = [
   {
     title: 'Source',
     render: () => <View {...props} activeTab="SOURCE" />,
+  },
+  {
+    title: 'Source (locked)',
+    render: () => <View {...props} activeTab="SOURCE" isTabLocked={true} />,
   },
   {
     title: 'Advisory (seed-1)',

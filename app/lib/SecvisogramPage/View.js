@@ -12,6 +12,7 @@ import useDebounce from './View/shared/useDebounce'
  * @param {{
  *  isLoading: boolean
  *  isSaving: boolean
+ *  isTabLocked: boolean
  *  errors: import('../shared/validationTypes').ValidationError[]
  *  data: {
  *    doc: unknown
@@ -37,12 +38,15 @@ import useDebounce from './View/shared/useDebounce'
  *  onStrip(document: {}): void
  *  onExportCSAF(doc: {}): void
  *  onExportHTML(html: string, doc: {}): void
+ *  onLockTab(): void
+ *  onUnlockTab(): void
  * }} props
  */
 function View({
   activeTab,
   isLoading,
   isSaving,
+  isTabLocked,
   errors,
   data,
   alert,
@@ -58,6 +62,8 @@ function View({
   onStrip,
   onExportCSAF,
   onExportHTML,
+  onLockTab,
+  onUnlockTab,
 }) {
   const originalValues = React.useMemo(() => ({ doc: data?.doc ?? null }), [
     data,
@@ -116,68 +122,36 @@ function View({
 
   const { doc } = formValues
 
+  const tabButtonProps = React.useCallback(
+    (/** @type {typeof activeTab} */ tab) => {
+      return {
+        type: /** @type {'button'} */ ('button'),
+        disabled: Boolean(activeTab !== tab && isTabLocked),
+        className:
+          'ml-3 px-2 pb-2 pt-1 ' +
+          (activeTab === tab
+            ? 'bg-white text-blue-400'
+            : isTabLocked
+            ? 'bg-blue-100 text-white'
+            : 'bg-blue-400 text-white hover:bg-white hover:text-blue-400'),
+        onClick() {
+          onChangeTab(tab, formValues.doc)
+        },
+      }
+    },
+    [activeTab, onChangeTab, formValues.doc, isTabLocked]
+  )
+
   return (
     <>
       {alert ? <Alert {...alert} /> : null}
       <div className="mx-auto w-full h-screen flex flex-col">
         <div className="bg-gray-500 flex justify-between items-baseline pt-2">
           <div>
-            <button
-              type="button"
-              className={
-                'ml-3 px-2 pb-2 pt-1 ' +
-                (activeTab === 'EDITOR'
-                  ? 'bg-white text-blue-400'
-                  : 'bg-blue-400 text-white hover:bg-white hover:text-blue-400')
-              }
-              onClick={() => {
-                onChangeTab('EDITOR', formValues.doc)
-              }}
-            >
-              Form Editor
-            </button>
-            <button
-              type="button"
-              className={
-                'ml-3 px-2 pb-2 pt-1 ' +
-                (activeTab === 'SOURCE'
-                  ? 'bg-white text-blue-400'
-                  : 'bg-blue-400 text-white hover:bg-white hover:text-blue-400')
-              }
-              onClick={() => {
-                onChangeTab('SOURCE', formValues.doc)
-              }}
-            >
-              JSON Editor
-            </button>
-            <button
-              type="button"
-              className={
-                'ml-3 px-2 pb-2 pt-1 ' +
-                (activeTab === 'PREVIEW'
-                  ? 'bg-white text-gray-400'
-                  : 'bg-gray-400 text-white hover:bg-white hover:text-gray-400')
-              }
-              onClick={() => {
-                onChangeTab('PREVIEW', formValues.doc)
-              }}
-            >
-              Preview
-            </button>
-            <button
-              type="button"
-              className={
-                'ml-3 px-2 pb-2 pt-1 ' +
-                (activeTab === 'CSAF-JSON'
-                  ? 'bg-white text-green-500'
-                  : 'bg-green-500 text-white hover:bg-white hover:text-green-500')
-              }
-              onClick={() => {
-                onChangeTab('CSAF-JSON', formValues.doc)
-              }}
-            >
-              CSAF Document
-            </button>
+            <button {...tabButtonProps('EDITOR')}>Form Editor</button>
+            <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
+            <button {...tabButtonProps('PREVIEW')}>Preview</button>
+            <button {...tabButtonProps('CSAF-JSON')}>CSAF Document</button>
           </div>
           <h1 className="mr-3 text-2xl text-blue-200 font-mono">Secvisogram</h1>
         </div>
@@ -212,6 +186,8 @@ function View({
                   onDownload={onDownload}
                   onNewDocMin={onNewDocMin}
                   onNewDocMax={onNewDocMax}
+                  onLockTab={onLockTab}
+                  onUnlockTab={onUnlockTab}
                 />
               ) : activeTab === 'PREVIEW' ? (
                 <PreviewTab
