@@ -114,6 +114,7 @@ createCore().then((core) => {
               .catch(handleError)
           }}
           onOpen={(file) => {
+            setState((state) => ({ ...state, isLoading: true }))
             return new Promise((resolve, reject) => {
               const fileReader = new FileReader()
               fileReader.onerror = reject
@@ -122,10 +123,11 @@ createCore().then((core) => {
                   const parsedDoc = JSON.parse(
                     /** @type {string | undefined} */ (e.target?.result) ?? ''
                   )
-                  setState((state) => ({
-                    ...state,
+                  setState((state_1) => ({
+                    ...state_1,
+                    isLoading: false,
                     data: {
-                      ...state.data,
+                      ...state_1.data,
                       doc: parsedDoc,
                     },
                   }))

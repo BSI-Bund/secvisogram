@@ -167,11 +167,7 @@ function View({
           className="relative overflow-auto h-full bg-gray-500"
           key={activeTab}
         >
-          {isLoading ? (
-            <LoadingIndicator label="Loading data ..." />
-          ) : isSaving ? (
-            <LoadingIndicator label="Saving data ..." />
-          ) : doc ? (
+          {doc ? (
             <>
               {activeTab === 'EDITOR' ? (
                 <FormEditorTab
@@ -214,6 +210,11 @@ function View({
           ) : null}
         </div>
       </div>
+      {isLoading ? (
+        <LoadingIndicator label="Loading data ..." />
+      ) : isSaving ? (
+        <LoadingIndicator label="Saving data ..." />
+      ) : null}
     </>
   )
 }
