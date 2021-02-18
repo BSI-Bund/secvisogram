@@ -1306,10 +1306,6 @@
       }
     ]
   },
-  "aggregate_severity": {
-    "namespace": "https://access.redhat.com/security/updates/classification/",
-    "text": "Moderate"
-  },
   "product_tree": {
     "branches": [
       {
