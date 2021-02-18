@@ -7,7 +7,7 @@
   - [Overview Diagram](#overview-diagram)
   - [Secvisogram Components](#secvisogram-components)
 - [Technology Stack & Libraries](#technology-stack--libraries)
-  - [Core stacke & Technology](#core-stacke--technology)
+  - [Core stack & Technology](#core-stack--technology)
   - [Frameworks & Libraries](#frameworks--libraries)
 - [Building Secvisogram](#building-secvisogram)
 - [Building & Deploying Secvisogram into Production](#building--deploying-secvisogram-into-production)
@@ -122,19 +122,122 @@ Ich denke ich würde die folgenden Aufführen:
 
 ### Create and Building a release
 
-- `npm run build`
-- Deploy the content of the `dist` folder to a webserver
+To provide a production release of Secvisogram, follow the following steps:
 
-TODO: Benjamin
-
-- Requirements (SSL abgesicherter Host)
-- Hinweis aus HTTP Headers für Security Hardening (Verweis auf security.md)
+- Run `npm run build`
+- Deploy the content of the `app/dist` folder to a webserver
+- Configure SSL and HTTP headers according the template (see ngixn)
 
 ### Deploy to production using nginx
 
-TODO: Benjamin
+Below you'll find an example configuration for hosting Secvisogram in a production environment. The example uses TLS and HTTP header pragmas like `Strict-Transport-Security`, `Content-Security-Policy`, `X-Frame-Options` and for `X-Content-Type-Options` security hardening:
 
-- Verweis bzw. Einbinden der nginx Konfiguration (siehe Issue!)
+    add_header Strict-Transport-Security "max-age=31536000" always;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-Frame-Options DENY;
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-eval' https: blob: ; style-src 'self' 'unsafe-inline' unpkg.com; img-src 'self' https: data: blob: ; media-src 'none'; connect-src 'none'; ";
+
+#### Full nginx configuration example
+
+**File: `/etc/nginx/site-available/secvisogram.conf`**
+
+```
+##
+# You should look at the following URL's in order to grasp a solid understanding
+# of Nginx configuration files in order to fully unleash the power of Nginx.
+# https://www.nginx.com/resources/wiki/start/
+# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+# https://wiki.debian.org/Nginx/DirectoryStructure
+##
+
+# HTTP server configuration
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	server_name _;
+
+	return 301 https://$host$request_uri;
+}
+
+# HTTPS Server
+server {
+	listen 443 ssl http2;
+	listen [::]:443 ssl http2;
+
+	include /etc/nginx/snippets/ssl-secvisogram.conf;
+	root /var/www/secvisogram.de;
+
+	# Add index.php to the list if you are using PHP
+	index index.html index.htm;
+
+	server_name secvisogram.de;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ =404;
+	}
+}
+```
+
+**SSL Configuration parameters: `/etc/nginx/snippets/ssl-secvisogram.conf`**
+
+```
+# Certificates used
+ssl_certificate /etc/letsencrypt/secvisogram.de/cert.pem;
+ssl_certificate_key /etc/letsencrypt/secvisogram.de/key.pem;
+
+# This should be ca.pem (certificate with the additional intermediate certificate)
+# See here: https://certbot.eff.org/docs/using.html
+ssl_trusted_certificate /etc/letsencrypt/secvisogram.de/ca.pem;
+
+# Diffie-Hellman parameter, recommended 4096 bits
+ssl_dhparam /etc/nginx/dhparams/dhparams.pem;
+
+# Not using TLSv1 will break:
+# Android <= 4.4.40
+# IE <= 10
+# IE mobile <=10
+# Removing TLSv1.1 breaks nothing else!
+# TLSv1.3 is not supported by most clients, but it should be enabled.
+ssl_protocols TLSv1.2 TLSv1.3;
+
+# Cipher suite from https://cipherli.st/
+# Max. security, but lower compatibility
+ssl_ciphers 'TLS-CHACHA20-POLY1305-SHA256:TLS-AES-256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384';
+
+# Cipher suite from https://wiki.mozilla.org/Security/Server_Side_TLS
+#ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';
+
+# (Modern) cipher suite from https://mozilla.github.io/server-side-tls/ssl-config-generator/
+#ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';
+
+# Use multiple curves.
+ssl_ecdh_curve secp521r1:secp384r1;
+
+# Server should determine the ciphers, not the client
+ssl_prefer_server_ciphers on;
+
+# OCSP Stapling
+# fetch OCSP records from URL in ssl_certificate and cache them
+ssl_stapling on;
+ssl_stapling_verify on;
+resolver 8.8.8.8 8.8.4.4;
+
+# SSL session handling
+ssl_session_timeout 24h;
+ssl_session_cache shared:SSL:50m;
+ssl_session_tickets off;
+
+# HSTS Header
+add_header Strict-Transport-Security "max-age=31536000" always;
+
+# Security Hardening Headers
+add_header X-Content-Type-Options nosniff;
+add_header X-Frame-Options DENY;
+add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-eval' https: blob: ; style-src 'self' 'unsafe-inline' unpkg.com; img-src 'self' https: data: blob: ; media-src 'none'; connect-src 'none'; ";
+```
 
 ## Secvisogram folder structure
 
