@@ -41,30 +41,24 @@ We use Visual Studio Code to edit the source-code. A vscode-profile is included 
 
 ### Overview Diagram
 
-TODO::
-
-- Idealerweise ein Bildchen mit Gesamtüberblick.
-- Draw.io eigent sich dafür idr recht gut
-- Erwartete Elemente (die mir spontan einfallen)
-  - View Tests
-  - Unit Tests
-  - "Core"
-  - "View"
-  - DocumentEntity
-  - Secvisogram
-  - Validierung
+![architecture](DEVELOPMENT-architecture.png)
 
 ### Secvisogram Components
 
-**entities**:
+**Entities**:
 This module exports the entities of the core. Entities are classes that contain logic which is used from multiple use-cases.
 
-**Core:**
+**Core**:
 Logic which can be abstracted without UI-interaction should be placed here to be tested independently. Ideally this _facade_ exports one method for each use-case of the application.
 
-**TODO:** Lorem upsum
+**Page**:
+The page connects the view to the core and maintains the state about the communication.
 
-**Validation:** Wie wir das realisiert
+**View**:
+The view is a react-component which defines the main layout of the application.
+
+**View-Components**:
+View-components are react-components which provide the actual content for the application.
 
 ## Technology Stack & Libraries
 
@@ -119,35 +113,49 @@ Ich denke ich würde die folgenden Aufführen:
 
 ## Building Secvisogram
 
-| Command       | Purpose |
-| ------------- | ------- |
-| `npm run dev` | …       |
-| `npm ci`      | …       |
+| Command         | Purpose                                                            |
+| --------------- | ------------------------------------------------------------------ |
+| `npm run dev`   | Starts the development-server                                      |
+| `npm run build` | Builds the application as static assets and places it into `dist/` |
 
 ## Building & Deploying Secvisogram into Production
 
 ### Create and Building a release
 
-- Was tun für ein produktiv release
-- was nehmen & deployen
+- `npm run build`
+- Deploy the content of the `dist` folder to a webserver
+
+TODO: Benjamin
+
 - Requirements (SSL abgesicherter Host)
 - Hinweis aus HTTP Headers für Security Hardening (Verweis auf security.md)
 
 ### Deploy to production using nginx
 
+TODO: Benjamin
+
 - Verweis bzw. Einbinden der nginx Konfiguration (siehe Issue!)
 
 ## Secvisogram folder structure
 
-| Folder               | description                      |
-| -------------------- | -------------------------------- |
-| `dist`               | …                                |
-| `seeds`              | …                                |
-| `lib`                | Source code of sv comprising …   |
-| `scripts`            | Variious scripts for x, y and z… |
-| `shared/Core/*.json` | …                                |
+| Folder             | description                                  |
+| ------------------ | -------------------------------------------- |
+| `app/dist`         | The output of the build-command              |
+| `app/lib`          | Source code                                  |
+| `app/node_modules` | Npm dependencies of the app                  |
+| `app/scripts`      | Various scripts used by npm-scripts          |
+| `app/seeds`        | Sample-files                                 |
+| `app/tests`        | Unit-tests                                   |
+| `app/vendor`       | Dependencies which aren't packaged using npm |
+| `app/viewTests`    | View-tests                                   |
 
-Source files may only access folders that have the same name as themselves and are located at the same file level. Exception are the so-called "shared" folders. They may be used if they are located on the same or higher file level.
+Source files may only access folders that have the same name as themselves and are located at the same file level, e.g.
+
+usage of the `app/lib/shared/Core/entities/DocumentEntity.js` from within `app/lib/shared/Core.js` is only allowed via importing the `app/lib/shared/Core/entities.js`.
+
+Exception are the so-called "shared" folders. They may be used if they are located on the same or higher file level, e.g.
+
+usage of the `app/lib/shared/Core.js` from within `app/lib/SecvisogramPage.js` is allowed because it is contained in a "shared" folder.
 
 ## Technical Design
 
@@ -194,6 +202,7 @@ On the one hand **Mocha tests** are used, which are located in the folder "tests
 ### View Tests
 
 TODO: Das ist mir nicht klar! Ich dachte das sind automatisierte E2E-Tests. Hier klingt es aber so, als ob das nur interaktive Dialoge sind? Verstehe ich nicht. Werden die nun auch automatisiert abgetestet?
+View-tests are a concept to test and design the view-components independently from the _business logic_
 
 On the other hand, there are the **viewTests** in the folder of the same name. Once you have started the system as described above, you can view the tests at the following URL:
 
