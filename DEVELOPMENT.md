@@ -64,13 +64,11 @@ View-components are react-components which provide the actual content for the ap
 
 ### Core stack & Technology
 
-**Typescript:**
-Typescript is used to type and document the source code. It is not used as language, but as a statical type-checker only. Types are declared using [Javascript with embedded Typescript source-code comments](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html). This keeps the overall toolchain clean & simple.
-
-**React & Reach-UI:**
+**React:**
 React is used to implement the views. This JavaScript library is suitable for mapping data structures to the DOM in the browser and keeping it synchronized when the structure changes. In doing so, it offers an easily customizable template language. In addition, React prevents the accidental insertion of executable code in the DOM and therefore already offers basic protection against cross-site scripting.
 
-Reach-UI is library of primitive component to build accessible user-interfaces.
+**Typescript:**
+Typescript is used to type and document the source code. It is not used as language, but as a statical type-checker only. Types are declared using [Javascript with embedded Typescript source-code comments](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html). This keeps the overall toolchain clean & simple.
 
 **Tailwind CSS:**
 Tailwind-CSS is a CSS-Framework and library of CSS-classes to be reused across components to keep them adaptable and yet themeable.
@@ -79,37 +77,29 @@ Tailwind-CSS is a CSS-Framework and library of CSS-classes to be reused across c
 
 TODO: Hier wirklich nur ein halber Satz: Was machts & ggf. warum genau das.
 
-| Domain   | Package    | Description & Justification                                                                                |
-| -------- | ---------- | ---------------------------------------------------------------------------------------------------------- |
-| Build    | Webpack    | Bundles the source-code and coordinates the build-pipeline with transpilation-tools like postcss and babel |
-|          | npm        | Is the package-manager which is used to install dependencies and update or remove them                     |
-|          | eslint     | Lints the source-code for its quality and accordance to configured rules                                   |
-|          | Dependabot |                                                                                                            |
-|          | postcss    |                                                                                                            |
-| ??       | tailwind   | …                                                                                                          |
-| IDE      | VS Code    | …                                                                                                          |
-|          | Prettier   | …                                                                                                          |
-| Compiler | Typescript | ES with TS annotations. See [link]()                                                                       |
-| Frontend | React      | …                                                                                                          |
-| xx       | AJV        | Performs the JSON Schema validation according to the CSAF specification.                                   |
-
-Ich denke ich würde die folgenden Aufführen:
-
-- fortawesome
-- reach
-- "ajv"
-- "mustache"
-- "react"
-- "babel
-- "electron-mocha"
-- "eslint"
-- "mocha"
-- "postcss"
-- "tailwindcss"
-- "typescript"
-- "webpack"
-- "xml2js"
-- ACE editore
+| Domain        | Package        | Description & Justification                                                                                               |
+| ------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Build         | Webpack        | Bundles the source-code and coordinates the build-pipeline with transpilation-tools like postcss and babel                |
+|               | npm            | Is the package-manager which is used to install dependencies and update or remove them                                    |
+|               | Dependabot     | Automated dependency updates. See [link](https://dependabot.com/)                                                         |
+|               | postcss        | Used to compile tailwindcss stylesheet. See [link](https://postcss.org/)                                                  |
+|               | babel          |                                                                                                                           |
+| Linting       | eslint         | Lints the source-code for its quality and accordance to configured rules                                                  |
+| Styling       | tailwind       | A utility-first CSS framework. See [link](https://tailwindcss.com/)                                                       |
+|               | fontawesome    |                                                                                                                           |
+| IDE           | VS Code        | De facto standard IDE for web development. See [link](https://code.visualstudio.com/)                                     |
+| Codestyle     | Prettier       | An opinionated code formatter to enforce a consistent coding-style. See [link](https://prettier.io/)                      |
+| Typechecking  | Typescript     | ES with TS annotations. See [link](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)               |
+| UI            | React          | A JavaScript library for building user interfaces. See [link](https://reactjs.org/)                                       |
+|               | Reach-UI       | Reach-UI is library of primitive components to build accessible user-interfaces. See [link](https://reach.tech/)          |
+| Validation    | AJV            | Performs the JSON Schema validation according to the CSAF specification. See [link](https://github.com/ajv-validator/ajv) |
+| HTML-Template | mustache       | Logic-less templates. See [link](https://github.com/janl/mustache.js)                                                     |
+| Testing       | electron-mocha | Mocha testing in Electron. See [link](https://github.com/jprichardson/electron-mocha)                                     |
+|               | mocha          | Mocha is a feature-rich JavaScript test framework. See [link](https://mochajs.org/)                                       |
+| Parsing       | xml2js         | XML-parser. See [link](https://github.com/Leonidas-from-XIV/node-xml2js)                                                  |
+|               | json-pointer   | Some utilities for JSON pointers described by RFC 6901. See [link](https://github.com/manuelstofer/json-pointer)          |
+| CLI           | yargs          | Yargs helps you build interactive command line tools. See [link](https://github.com/yargs/yargs)                          |
+| JSON-Editor   | ACE editor     | Ace is an embeddable code editor written in JavaScript. See [link](https://ace.c9.io/)                                    |
 
 ## Building Secvisogram
 
