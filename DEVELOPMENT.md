@@ -106,6 +106,7 @@ TODO: Hier wirklich nur ein halber Satz: Was machts & ggf. warum genau das.
 | Command         | Purpose                                                            |
 | --------------- | ------------------------------------------------------------------ |
 | `npm run dev`   | Starts the development-server                                      |
+| `npm test`      | Runs typecheck, the linter and the test-suite                      |
 | `npm run build` | Builds the application as static assets and places it into `dist/` |
 
 ## Building & Deploying Secvisogram into Production
