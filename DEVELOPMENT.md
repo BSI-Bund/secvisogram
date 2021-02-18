@@ -31,10 +31,11 @@
 
 ## Prerequisites & Development Environment
 
-TODO::
+- VSCode
 
-- Liste Empfohlener Entwicklungswerkzeuge
-- Was muss man installiert haben (ggf. auf README verweisen und ergänzen)
+We use Visual Studio Code to edit the source-code. A vscode-profile is included in this project under `.vscode`. It lists recommended extensions which improve the development experience.
+
+- Node.js (version 14+)
 
 ## Secvisogram Architecture & Design
 
@@ -55,11 +56,11 @@ TODO::
 
 ### Secvisogram Components
 
-**DocumentEntity**:
-Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.
+**entities**:
+This module exports the entities of the core. Entities are classes that contain logic which is used from multiple use-cases.
 
 **Core:**
-Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.
+Logic which can be abstracted without UI-interaction should be placed here to be tested independently. Ideally this _facade_ exports one method for each use-case of the application.
 
 **TODO:** Lorem upsum
 
@@ -67,33 +68,36 @@ Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incid
 
 ## Technology Stack & Libraries
 
-### Core stacke & Technology
+### Core stack & Technology
 
 **Typescript:**
 Typescript is used to type and document the source code. It is not used as language, but as a statical type-checker only. Types are declared using [Javascript with embedded Typescript source-code comments](TODO://LINK-ZU-DOKU!). This keeps the overall toolchain clean & simple.
 
-**React & Reach:**
+**React & Reach-UI:**
 React is used to implement the views. This JavaScript library is suitable for mapping data structures to the DOM in the browser and keeping it synchronized when the structure changes. In doing so, it offers an easily customizable template language. In addition, React prevents the accidental insertion of executable code in the DOM and therefore already offers basic protection against cross-site scripting.
 
-**Tailwind CSS:** Lorem
+Reach-UI is library of primitive component to build accessible user-interfaces.
+
+**Tailwind CSS:**
+Tailwind-CSS is a CSS-Framework and library of CSS-classes to be reused across components to keep them adaptable and yet themeable.
 
 ### Frameworks & Libraries
 
 TODO: Hier wirklich nur ein halber Satz: Was machts & ggf. warum genau das.
 
-| Domain   | Package    | Description & Justification                                              |
-| -------- | ---------- | ------------------------------------------------------------------------ |
-| Build    | Webpack    | … takes care of x,y, z                                                   |
-|          | npm        |                                                                          |
-|          | eslint     | …                                                                        |
-|          | Dependabot | …                                                                        |
-|          | postcss    |                                                                          |
-| ??       | tailwind   | …                                                                        |
-| IDE      | VS Code    | …                                                                        |
-|          | Prettier   | …                                                                        |
-| Compiler | Typescript | ES with TS annotations. See [link]()                                     |
-| Frontend | React      | …                                                                        |
-| xx       | AJV        | Performs the JSON Schema validation according to the CSAF specification. |
+| Domain   | Package    | Description & Justification                                                                                |
+| -------- | ---------- | ---------------------------------------------------------------------------------------------------------- |
+| Build    | Webpack    | Bundles the source-code and coordinates the build-pipeline with transpilation-tools like postcss and babel |
+|          | npm        | Is the package-manager which is used to install dependencies and update or remove them                     |
+|          | eslint     | Lints the source-code for its quality and accordance to configured rules                                   |
+|          | Dependabot |                                                                                                            |
+|          | postcss    |                                                                                                            |
+| ??       | tailwind   | …                                                                                                          |
+| IDE      | VS Code    | …                                                                                                          |
+|          | Prettier   | …                                                                                                          |
+| Compiler | Typescript | ES with TS annotations. See [link]()                                                                       |
+| Frontend | React      | …                                                                                                          |
+| xx       | AJV        | Performs the JSON Schema validation according to the CSAF specification.                                   |
 
 Ich denke ich würde die folgenden Aufführen:
 
