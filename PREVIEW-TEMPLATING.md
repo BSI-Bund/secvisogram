@@ -24,8 +24,10 @@ This document describes, how to create and integrate custom Preview Templates.
 
 To create a custom Preview HTML template:
 
-1. Edit & modify the `lib/SecvisogramPage/View/shared/HTMLTemplate/Template.html` file according to the instructions in this file
-2. Build & Deploy a new version of Secvisogram as described in the [`README.md` in the "Getting started" section](README.md#getting-started)
+1. Start the development server in the [`README.md` in the "Getting started" section](README.md#getting-started)
+2. Open http://localhost:8080/view-tests.html?test=SecvisogramPage/PREVIEW%20(seed-1) in your to see a preview of changes
+3. Edit & modify the `lib/SecvisogramPage/View/shared/HTMLTemplate/Template.html` file according to the instructions in this file
+4. The preview in your browser refreshes and shows your latest changes.
 
 ## Technical Overview
 
