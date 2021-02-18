@@ -1,5 +1,5 @@
 {
-  "name": "secvisogram-build",
+  "name": "secvisogram",
   "private": true,
   "description": "Secvisogram build infrastructure",
   "scripts": {
