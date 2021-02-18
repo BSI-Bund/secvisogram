@@ -159,57 +159,44 @@ usage of the `app/lib/shared/Core.js` from within `app/lib/SecvisogramPage.js` i
 
 ## Technical Design
 
-### Code Style & Design Patterns
-
-FAlls vorhanden, kurze auflistung der eingesetzten Design-Patterns bzw. Konventionen. ggf. einfach auch nur verlinkt (falls z.B. react design guidelines.)
-
-Sonst entfernen.
-
 ### Form Editor
 
-Aus welchen Einzelbausteinen besteht der Form editor. Wie wird es zusammengebaut.
+The "Form Editor"-tab represents the structure of the json-schema. It uses container components to represent objects and arrays and attribute components to represent values. Missing attributes are shown as "Add ..."-buttons which create the respective attribute using its `defaultValue`-function.
 
-Wie kann ich neues Feld hinzufügen, ändern oder anpassen. ggf. Beispiel?
-
-Wie finde ich die richtige Stelle? → CSAF Structur
+New attributes can be added by instantiating a suitable attribute component (e.g. `app/lib/SecvisogramPage/View/EditorTab/shared/TextAttribute.js`).
 
 ### Navigation
 
-Wie wird Navigation gemacht?
+The various parts of the application are accessible using the tabs. The state, which tab is active, is stored as react-state in `app/lib/SecvisogramPage.js`. Navigation is only disabled if a parse-error occurs in `app/lib/SecvisogramPage/View/JsonEditorTab.js`.
 
 ### Validation
 
-Wie / wann / wo wird validaitoin gemacht. Woraus besteht sie.
+The application uses two validations patterns: The fast HTML5 validation and the validation via JSON-schema which kicks in 300ms after editing the document or between tab-changes. The status of the validation is shown in the "Form Editor"-tab, the "JSON Editor"-tab and the "Preview"-tab.
 
-Wie entstehen die Sanitizes Versionen
+### Sanitizing
+
+The "CSAF Document"-tab uses an algorithm to remove elements which are either invalid, empty or null (see `app/lib/shared/Core/entities/DocumentEntity.js`) and shows the removed paths.
 
 ### Data Model
 
-Wo/wie wir das datenmodell gehalten und ausgetasuch
+Application state is being held in the `app/lib/SecvisogramPage.js`. It contains state which is needed to coordinate the communication with the `app/lib/shared/Core.js`. Editor state is being held in the `app/lib/SecvisogramPage/View.js`. It contains state of the current editing status of the document.
 
 ## Debugging & Testing Secvisogram
 
 ### Unit Tests
 
-Unit tests cover x and are written using mocha
+Unit tests cover logic sitting behind the `Core` component and are written using mocha.
 
-You can run them from CLI via y oder in IDE via y
+You can run them from CLI via `npm test`. Or you can open http://localhost:8080/tests.html in your browser which provides you the ability to run specific tests only.
 
-On the one hand **Mocha tests** are used, which are located in the folder "tests". They are to test logic of the application. In the console they can be executed with the following command:
-
-    npm test
+These are located in the folder `/app/tests`.
 
 ### View Tests
 
-TODO: Das ist mir nicht klar! Ich dachte das sind automatisierte E2E-Tests. Hier klingt es aber so, als ob das nur interaktive Dialoge sind? Verstehe ich nicht. Werden die nun auch automatisiert abgetestet?
-View-tests are a concept to test and design the view-components independently from the _business logic_
+View-tests are a concept to test and design the view and its view-components independently from the _business logic_. To add a view-test for the view, modify the file `app/viewTests/shared/suites/SecvisogramPage.js` and add your test to the `tests` array.
 
-On the other hand, there are the **viewTests** in the folder of the same name. Once you have started the system as described above, you can view the tests at the following URL:
+Once you have started the system as described above, you can view the tests at the following URL:
 
 http://localhost:8080/view-tests.html
 
 On this page, there is a drop-down menu in the footer that can be used to select the respective test.
-
-### Debugging
-
-ggf. tipps wie man debugged. (Source maps? Uniminified code?). Sonst etnfernen.
