@@ -23,83 +23,248 @@ const alertSaveInvalid = {
 }
 
 createCore().then((core) => {
-  core.document.newDocMin().then((initialDoc) => {
-    const SecvisogramPage = () => {
-      const [
-        {
-          isLoading,
-          isTabLocked,
-          activeTab,
-          data,
-          errors,
-          alert,
-          stripResult,
-          strict,
-        },
-        setState,
-      ] = React.useState({
-        isLoading: false,
-        strict: true,
-        alert: /**
-         * @type {{
-         *   confirmLabel: string
-         *   cancelLabel: string
-         *   label: string
-         *   description: string
-         *   onConfirm(): void
-         *   onCancel(): void
-         * } | null}
-         */ (null),
-        errors: /** @type {ValidationError[]} */ ([]),
-        stripResult: /**
-         * @type {{
-         *    strippedPaths: Array<{ dataPath: string; message: string; error: boolean }>
-         *    doc: {}
-         * } | null}
-         */ (null),
-        data: {
-          doc: initialDoc,
-        },
-        activeTab: /** @type {React.ComponentProps<typeof View>['activeTab']} */ ('EDITOR'),
-        isTabLocked: false,
-      })
-      const handleError = useErrorHandler()
+  const SecvisogramPage = () => {
+    const [
+      {
+        isLoading,
+        isTabLocked,
+        activeTab,
+        data,
+        errors,
+        alert,
+        stripResult,
+        strict,
+      },
+      setState,
+    ] = React.useState({
+      isLoading: false,
+      strict: true,
+      alert: /**
+       * @type {{
+       *   confirmLabel: string
+       *   cancelLabel: string
+       *   label: string
+       *   description: string
+       *   onConfirm(): void
+       *   onCancel(): void
+       * } | null}
+       */ (null),
+      errors: /** @type {ValidationError[]} */ ([]),
+      stripResult: /**
+       * @type {{
+       *    strippedPaths: Array<{ dataPath: string; message: string; error: boolean }>
+       *    doc: {}
+       * } | null}
+       */ (null),
+      data: {
+        doc: {},
+      },
+      activeTab: /** @type {React.ComponentProps<typeof View>['activeTab']} */ ('EDITOR'),
+      isTabLocked: false,
+    })
+    const handleError = useErrorHandler()
 
-      return (
-        <View
-          activeTab={activeTab}
-          isTabLocked={isTabLocked}
-          isLoading={isLoading}
-          isSaving={false}
-          errors={errors}
-          stripResult={stripResult}
-          data={data}
-          alert={alert}
-          strict={strict}
-          onLockTab={React.useCallback(() => {
-            setState((state) => ({ ...state, isTabLocked: true }))
-          }, [])}
-          onUnlockTab={React.useCallback(() => {
-            setState((state) => ({ ...state, isTabLocked: false }))
-          }, [])}
-          onSetStrict={(value) => {
-            setState((state) => ({
-              ...state,
-              strict: value,
-            }))
-          }}
-          onDownload={(doc) => {
+    return (
+      <View
+        activeTab={activeTab}
+        isTabLocked={isTabLocked}
+        isLoading={isLoading}
+        isSaving={false}
+        errors={errors}
+        stripResult={stripResult}
+        data={data}
+        alert={alert}
+        strict={strict}
+        onLockTab={React.useCallback(() => {
+          setState((state) => ({ ...state, isTabLocked: true }))
+        }, [])}
+        onUnlockTab={React.useCallback(() => {
+          setState((state) => ({ ...state, isTabLocked: false }))
+        }, [])}
+        onSetStrict={(value) => {
+          setState((state) => ({
+            ...state,
+            strict: value,
+          }))
+        }}
+        onDownload={(doc) => {
+          core.document
+            .validate({ document: doc, strict: strict })
+            .then(({ isValid }) => {
+              const fileName = createFileName(doc, isValid, 'json')
+              if (!isValid) {
+                setState((state) => ({
+                  ...state,
+                  alert: {
+                    ...alertSaveInvalid,
+                    onConfirm() {
+                      downloadFile(JSON.stringify(doc, null, 2), fileName)
+                      setState({ ...state, alert: null })
+                    },
+                    onCancel() {
+                      setState({ ...state, alert: null })
+                    },
+                  },
+                }))
+              } else {
+                downloadFile(JSON.stringify(doc, null, 2), fileName)
+              }
+            })
+            .catch(handleError)
+        }}
+        onOpen={(file) => {
+          setState((state) => ({ ...state, isLoading: true }))
+          return new Promise((resolve, reject) => {
+            const fileReader = new FileReader()
+            fileReader.onerror = reject
+            fileReader.onload = (e) => {
+              try {
+                const parsedDoc = JSON.parse(
+                  /** @type {string | undefined} */ (e.target?.result) ?? ''
+                )
+                setState((state_1) => ({
+                  ...state_1,
+                  isLoading: false,
+                  data: {
+                    ...state_1.data,
+                    doc: parsedDoc,
+                  },
+                }))
+                resolve(parsedDoc)
+              } catch (err) {
+                reject(err)
+              }
+            }
+            fileReader.readAsText(file)
+          }).catch(handleError)
+        }}
+        onChangeTab={(tab, document) => {
+          if (isTabLocked) return
+          setState((state) => ({ ...state, isLoading: true }))
+          core.document
+            .validate({ document, strict: strict })
+            .then((result) => {
+              setState((state) => ({
+                ...state,
+                isLoading: false,
+                errors: /** @type {ValidationError[]} */ (result.errors),
+                activeTab: tab,
+              }))
+            })
+            .catch(handleError)
+        }}
+        onValidate={React.useCallback(
+          (doc) => {
             core.document
               .validate({ document: doc, strict: strict })
+              .then((result) => {
+                setState((state) => ({
+                  ...state,
+                  errors: /** @type {ValidationError[]} */ (result.errors),
+                }))
+              })
+              .catch(handleError)
+          },
+          [handleError, strict]
+        )}
+        onNewDocMin={React.useCallback(() => {
+          return core.document
+            .newDocMin()
+            .then((doc) => {
+              setState((state) => ({
+                ...state,
+                data: {
+                  ...state.data,
+                  doc: doc,
+                },
+              }))
+              return doc
+            })
+            .catch(handleError)
+        }, [handleError])}
+        onNewDocMax={React.useCallback(() => {
+          return core.document
+            .newDocMax()
+            .then((doc) => {
+              setState((state) => ({
+                ...state,
+                data: {
+                  ...state.data,
+                  doc: doc,
+                },
+              }))
+              return doc
+            })
+            .catch(handleError)
+        }, [handleError])}
+        onStrip={React.useCallback(
+          (document) => {
+            core.document
+              .strip({ document, strict: strict })
+              .then(({ document: doc, strippedPaths }) => {
+                setState((state) => ({
+                  ...state,
+                  stripResult: {
+                    strippedPaths,
+                    doc,
+                  },
+                }))
+              })
+              .catch(handleError)
+          },
+          [handleError, strict]
+        )}
+        onExportCSAF={React.useCallback(
+          (document) => {
+            core.document
+              .validate({ document: document, strict: strict })
               .then(({ isValid }) => {
-                const fileName = createFileName(doc, isValid, 'json')
+                const fileName = createFileName(document, isValid, 'json')
                 if (!isValid) {
                   setState((state) => ({
                     ...state,
                     alert: {
                       ...alertSaveInvalid,
                       onConfirm() {
-                        downloadFile(JSON.stringify(doc, null, 2), fileName)
+                        core.document
+                          .strip({ document, strict: strict })
+                          .then(({ document: doc }) => {
+                            setState({ ...state, alert: null })
+                            downloadFile(JSON.stringify(doc, null, 2), fileName)
+                          })
+                          .catch(handleError)
+                      },
+                      onCancel() {
+                        setState({ ...state, alert: null })
+                      },
+                    },
+                  }))
+                } else {
+                  core.document
+                    .strip({ document, strict: strict })
+                    .then(({ document: doc }) => {
+                      downloadFile(JSON.stringify(doc, null, 2), fileName)
+                    })
+                    .catch(handleError)
+                }
+              })
+              .catch(handleError)
+          },
+          [handleError, strict]
+        )}
+        onExportHTML={React.useCallback(
+          (html, doc) => {
+            core.document
+              .validate({ document: doc, strict: strict })
+              .then(({ isValid }) => {
+                const fileName = createFileName(doc, isValid, 'html')
+                if (!isValid) {
+                  setState((state) => ({
+                    ...state,
+                    alert: {
+                      ...alertSaveInvalid,
+                      onConfirm() {
+                        downloadFile(html, fileName, 'text/html')
                         setState({ ...state, alert: null })
                       },
                       onCancel() {
@@ -108,192 +273,22 @@ createCore().then((core) => {
                     },
                   }))
                 } else {
-                  downloadFile(JSON.stringify(doc, null, 2), fileName)
+                  downloadFile(html, fileName, 'text/html')
                 }
               })
-              .catch(handleError)
-          }}
-          onOpen={(file) => {
-            setState((state) => ({ ...state, isLoading: true }))
-            return new Promise((resolve, reject) => {
-              const fileReader = new FileReader()
-              fileReader.onerror = reject
-              fileReader.onload = (e) => {
-                try {
-                  const parsedDoc = JSON.parse(
-                    /** @type {string | undefined} */ (e.target?.result) ?? ''
-                  )
-                  setState((state_1) => ({
-                    ...state_1,
-                    isLoading: false,
-                    data: {
-                      ...state_1.data,
-                      doc: parsedDoc,
-                    },
-                  }))
-                  resolve(parsedDoc)
-                } catch (err) {
-                  reject(err)
-                }
-              }
-              fileReader.readAsText(file)
-            }).catch(handleError)
-          }}
-          onChangeTab={(tab, document) => {
-            if (isTabLocked) return
-            setState((state) => ({ ...state, isLoading: true }))
-            core.document
-              .validate({ document, strict: strict })
-              .then((result) => {
-                setState((state) => ({
-                  ...state,
-                  isLoading: false,
-                  errors: /** @type {ValidationError[]} */ (result.errors),
-                  activeTab: tab,
-                }))
-              })
-              .catch(handleError)
-          }}
-          onValidate={React.useCallback(
-            (doc) => {
-              core.document
-                .validate({ document: doc, strict: strict })
-                .then((result) => {
-                  setState((state) => ({
-                    ...state,
-                    errors: /** @type {ValidationError[]} */ (result.errors),
-                  }))
-                })
-                .catch(handleError)
-            },
-            [handleError, strict]
-          )}
-          onNewDocMin={React.useCallback(() => {
-            return core.document
-              .newDocMin()
-              .then((doc) => {
-                setState((state) => ({
-                  ...state,
-                  data: {
-                    ...state.data,
-                    doc: doc,
-                  },
-                }))
-                return doc
-              })
-              .catch(handleError)
-          }, [handleError])}
-          onNewDocMax={React.useCallback(() => {
-            return core.document
-              .newDocMax()
-              .then((doc) => {
-                setState((state) => ({
-                  ...state,
-                  data: {
-                    ...state.data,
-                    doc: doc,
-                  },
-                }))
-                return doc
-              })
-              .catch(handleError)
-          }, [handleError])}
-          onStrip={React.useCallback(
-            (document) => {
-              core.document
-                .strip({ document, strict: strict })
-                .then(({ document: doc, strippedPaths }) => {
-                  setState((state) => ({
-                    ...state,
-                    stripResult: {
-                      strippedPaths,
-                      doc,
-                    },
-                  }))
-                })
-                .catch(handleError)
-            },
-            [handleError, strict]
-          )}
-          onExportCSAF={React.useCallback(
-            (document) => {
-              core.document
-                .validate({ document: document, strict: strict })
-                .then(({ isValid }) => {
-                  const fileName = createFileName(document, isValid, 'json')
-                  if (!isValid) {
-                    setState((state) => ({
-                      ...state,
-                      alert: {
-                        ...alertSaveInvalid,
-                        onConfirm() {
-                          core.document
-                            .strip({ document, strict: strict })
-                            .then(({ document: doc }) => {
-                              setState({ ...state, alert: null })
-                              downloadFile(
-                                JSON.stringify(doc, null, 2),
-                                fileName
-                              )
-                            })
-                            .catch(handleError)
-                        },
-                        onCancel() {
-                          setState({ ...state, alert: null })
-                        },
-                      },
-                    }))
-                  } else {
-                    core.document
-                      .strip({ document, strict: strict })
-                      .then(({ document: doc }) => {
-                        downloadFile(JSON.stringify(doc, null, 2), fileName)
-                      })
-                      .catch(handleError)
-                  }
-                })
-                .catch(handleError)
-            },
-            [handleError, strict]
-          )}
-          onExportHTML={React.useCallback(
-            (html, doc) => {
-              core.document
-                .validate({ document: doc, strict: strict })
-                .then(({ isValid }) => {
-                  const fileName = createFileName(doc, isValid, 'html')
-                  if (!isValid) {
-                    setState((state) => ({
-                      ...state,
-                      alert: {
-                        ...alertSaveInvalid,
-                        onConfirm() {
-                          downloadFile(html, fileName, 'text/html')
-                          setState({ ...state, alert: null })
-                        },
-                        onCancel() {
-                          setState({ ...state, alert: null })
-                        },
-                      },
-                    }))
-                  } else {
-                    downloadFile(html, fileName, 'text/html')
-                  }
-                })
-            },
-            [strict]
-          )}
-        />
-      )
-    }
-
-    render(
-      <ErrorBoundary FallbackComponent={ErrorScreen}>
-        <SecvisogramPage />
-      </ErrorBoundary>,
-      root
+          },
+          [strict]
+        )}
+      />
     )
-  })
+  }
+
+  render(
+    <ErrorBoundary FallbackComponent={ErrorScreen}>
+      <SecvisogramPage />
+    </ErrorBoundary>,
+    root
+  )
 })
 
 /**
