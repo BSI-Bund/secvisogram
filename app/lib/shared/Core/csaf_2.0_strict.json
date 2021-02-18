@@ -1,6 +1,7 @@
 {
   "$id": "https://raw.githubusercontent.com/oasis-tcs/csaf/master/csaf_2.0/json_schema/csaf_json_schema.json#strict",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
   "definitions": {
     "acknowledgments_t": {
       "description": "Contains a list of acknowledgment elements.",
@@ -129,12 +130,12 @@
           "$comment": "TODO: This should have a full regular expression to enforce CPE syntax.",
           "description": "The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification.",
           "minLength": 5,
-          "pattern": "^cpe:(/|\\d+\\.\\d+)[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*$",
+          "pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$",
           "title": "Common Platform Enumeration representation",
           "type": "string"
         },
         "name": {
-          "description": "The value should be the product\u00e2\u20ac\u2122s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.",
+          "description": "The value should be the product\u2019s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.",
           "examples": [
             "Microsoft Host Integration Server 2006 Service Pack 1",
             "Cisco AnyConnect Secure Mobility Client 2.3.185"
@@ -236,7 +237,7 @@
     },
     "product_id_t": {
       "description": "Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.",
-      "examples": ["CVRFPID-0004", "CVRFPID-0008"],
+      "examples": ["CSAFPID-0004", "CSAFPID-0008"],
       "minLength": 1,
       "title": "Reference token for product instance",
       "type": "string"
@@ -304,7 +305,7 @@
         },
         "aggregate_severity": {
           "additionalProperties": false,
-          "description": "Is a vehicle that is provided by the document producer to convey the urgency and criticality with which the one or more vulnerabilities reported should be addressed. It is a document-level metric and applied to the document as a whole \u00e2\u20ac\u201d not any specific vulnerability. The range of values in this field is defined according to the document producer's policies and procedures.",
+          "description": "Is a vehicle that is provided by the document producer to convey the urgency and criticality with which the one or more vulnerabilities reported should be addressed. It is a document-level metric and applied to the document as a whole \u2014 not any specific vulnerability. The range of values in this field is defined according to the document producer's policies and procedures.",
           "properties": {
             "namespace": {
               "description": "Points to the namespace so referenced.",
@@ -658,6 +659,7 @@
               }
             },
             "required": [
+              "full_product_name",
               "product_reference",
               "relates_to_product_reference",
               "relationship_type"
