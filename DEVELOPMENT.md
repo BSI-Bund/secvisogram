@@ -303,3 +303,9 @@ Once you have started the system as described above, you can view the tests at t
 http://localhost:8080/view-tests.html
 
 On this page, there is a drop-down menu in the footer that can be used to select the respective test.
+
+## CLI
+
+The project includes a convenient cli for various scripts. It resides in the folder `bin/`.
+
+Usage: `node cli.js --help`
