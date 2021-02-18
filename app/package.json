@@ -1,17 +1,21 @@
 {
-  "name": "app",
+  "name": "secvisogram-app",
   "version": "1.0.0",
   "private": true,
-  "description": "",
+  "license": "MIT",
+  "author": "eXXcellent solutions GmbH",
+  "description": "Secvisogram is a web application tool for creating and editing security advisories in the CSAF 2.0 JSON format.",
+  "keywords": [
+    "CASF",
+    "Secvisogram",
+    "Common Security Advisory Framework"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "eslint . && node scripts/test.js",
     "build": "node scripts/build.js",
     "dev": "webpack serve --mode development"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
