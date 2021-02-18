@@ -1,7 +1,7 @@
 import { parse } from 'json-pointer'
 import unset from 'lodash/fp/unset'
 import isEmpty from 'lodash/isEmpty'
-import cwec from './cwec_4.3.json'
+import cwec from '../cwec_4.3.json'
 import icann from './DocumentEntity/subtags.json'
 
 /**

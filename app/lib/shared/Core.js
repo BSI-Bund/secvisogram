@@ -8,7 +8,7 @@ import cvss_v3_0 from './Core/cvss-v3.0.json'
 import cvss_v3_1 from './Core/cvss-v3.1.json'
 import doc_max from './Core/doc-max.json'
 import doc_min from './Core/doc-min.json'
-import DocumentEntity from './Core/DocumentEntity'
+import { DocumentEntity } from './Core/entities'
 
 const setGeneratorFields = (/** @type {Date} */ date) =>
   compose(

@@ -1,6 +1,6 @@
 import Ajv from 'ajv'
 import { expect } from 'chai'
-import DocumentEntity from '../lib/shared/Core/DocumentEntity'
+import { DocumentEntity } from '../lib/shared/Core/entities'
 import createCoreFixture from './shared/CoreFixture'
 
 suite('Core', () => {
