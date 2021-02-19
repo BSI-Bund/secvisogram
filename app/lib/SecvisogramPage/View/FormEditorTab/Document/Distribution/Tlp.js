@@ -34,7 +34,7 @@ export default function Tlp({
         <>
           <EnumAttribute
             {...tlpProps('label')}
-            label="URL of TLP version"
+            label="Label of TLP"
             description="Provides the TLP label of the document."
             options={['RED', 'AMBER', 'GREEN', 'WHITE']}
           />
