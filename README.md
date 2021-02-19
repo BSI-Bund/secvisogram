@@ -21,7 +21,7 @@
 
 Secvisogram is a tool for creating and editing advisories in [CSAF format](https://github.com/oasis-tcs/csaf/blob/master/csaf_2.0/json_schema/csaf_json_schema.json).
 
-Secvisogram is inspired by the project [Vulnogram](https://vulnogram.github.io/) - "a tool for creating and editing CVE information in CVE JSON format". Both names share the same Greek origin suffix '-gram' which is used for denoting something written or recorded especially in a certain way. Vulnerability related information is often not enough - mostly only the remediation information enables the end user to act efficiently in responding to those information.
+Secvisogram is inspired by the project [Vulnogram](https://vulnogram.github.io/) - "a tool for creating and editing CVE information in CVE JSON format". Both names share the same Greek suffix '-gram' which is used for denoting something written or recorded in a particular way. Vulnerability-related information is often not enough - mostly, only the remediation information enables the end user to act efficiently in responding to these concerns.
 
 Secvisogram aims to make it easier for vendors and other security advisory issuing parties to record the advisory details in the CSAF format.
 
@@ -36,20 +36,20 @@ Assure that you have Node 14 (LTS) and npm 6 or newer installed.
       v14.15.4
       6.14.10
 
-Check out the repository and change into you working copy.
+Check out the repository and navigate to the working directory.
 
     git clone git@gitlab-ext.exxcellent.de:bsi/secvisogram.git
     cd secvisogram
 
-This repository includes git submodules for vendor modules like Ace. Make sure to initialize and update the submodules, too before you start to work with the repository.
+This repository includes git submodules for vendor modules like Ace. Make sure to initialize and update the submodules before you start to work with the repository.
 
     git submodule update --init --recursive
 
-Afterwards the npm dependencies need to be installed.
+Afterwards, the npm dependencies need to be installed.
 
     npm ci
 
-Now you can start a development server via
+Now you can start a development server as follows:
 
     npm run dev
 
@@ -65,26 +65,26 @@ Please refer to [`DEVELOPMENT.md`](DEVELOPMENT.md) for a detailed description on
 
 Similar to the Vulnogram model, the web application consists of various tabs that represent the individual views. These are represented as an HTML page which loads its data from a local browser storage using JavaScript.
 
-To start a new document after saving, either a "New" button must be pressed or an "Open" button must be used to select and load a local file.
+To start a new document after saving, click the "New" button. Alternatively, click the "Open" button to select and load a local file.
 
-When leaving a view without saving (e.g. clicking on another application tab or reloading the application) a warning is displayed and users have to confirm leaving the page.
+When leaving a view without saving, e.g. clicking on another application tab or reloading the application, a warning is displayed, and the user must confirm prior to leaving the page.
 
 ### Form Editor
 
-The _Form Editor_ view is an HTML form with live input validation. Besides the CSAF JSON Schema checks some additional constraints are implemented:
+The _Form Editor_ view is an HTML form with live input validation. Additionally, the CSAF JSON Schema checks the following constraints:
 
-- language fields in the form are checked for plausibility against the values from the IANA database
-- The consistency of CVSS string and accompaning fields are checked
+- Language fields in the form are checked for plausibility against the values from the IANA database
+- The consistency of CVSS string and accompanying fields are checked
 - The consistency of the CWE ID and description are checked
 
-CVSS 3 input fields are completed with the data from a possibly copied vector string and this is recalculated. This gives the user an elegant way to use a possibly existing and copied CVSS 2.0 vector and to partially adjust the values.
+CVSS 3 input fields are completed with the data from a possibly copied vector string and their values are recalculated. This gives the user an elegant way to use a possibly existing and copied CVSS 2.0 vector and to partially adjust the values.
 
 A special input field is the "CWE" attribute. Here you can search the CWE catalog (XML file) by entering a value in the "id" or "name" field. For this purpose, a list with the first ten entries matching the input opens under the respective input field, from which a suitable entry can be selected and accepted.
 
-Simple input errors are displayed directly at the respective form field. Errors that occur during the input check when saving are listed at the top of the form.
+Simple input errors are displayed directly alongside the respective form field. Errors that occur during the input check when saving are listed at the top of the form.
 
 _Opening & Saving Files_
-You can open and save you CSAF JSON document at any time using the according _Open_ and _Save_ buttons. If your document fails the validation checks, a confirmation dialog will appear.
+You can open and save your CSAF JSON document at any time using the respective _Open_ and _Save_ buttons. If your document fails the validation checks, a confirmation dialog will appear.
 
 The _CSAF Document_ tab offers functionality to extract the standard-valid subset of you current document.
 
@@ -93,17 +93,17 @@ Use the `Show errors`-link in the Form Editor view to reveal a linked list of va
 
 ### JSON Editor
 
-The _JSON Editor_ view uses the ACE editor to edit the JSON representation of the current CSAF document. Please not that only valid JSON content is accepted for further processing.
+The _JSON Editor_ view uses the ACE editor to edit the JSON representation of the current CSAF document. Please note that only valid JSON content is accepted for further processing.
 
 ### Preview (HTML view)
 
-This view do not include any editing functionality. It displays a rendered HTML template view of the current CSAF document as shown in the editor views.
+This view does not include any editing functionality. It displays a rendered HTML template view of the current CSAF document as shown in the editor views.
 
-Use the toggle button to switch between the Rendered web view and the HTML source view. You can export this HTML document via _Export Preview_ as standalone HTML document (i.e. for printing).
+Use the toggle button to switch between the Rendered web view and the HTML source view. You can export this HTML document via _Export Preview_ as a standalone HTML document (i.e. for printing).
 
 ### CSAF Document (JSON view)
 
-This view do not include any editing functionality. It **always displays the valid subset of your current CSAF document** by removing any invalid and/or empty CSAF document elements.
+This view does not include any editing functionality. It **always displays the valid subset of your current CSAF document** by removing any invalid and/or empty CSAF document elements.
 
 You can use this view and the embedded _Export CSAF_ button to always quickly extract the standard-valid subset of you current CSAF document.
 
