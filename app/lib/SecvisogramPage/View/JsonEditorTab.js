@@ -61,7 +61,7 @@ export default function JsonEditorTab({
   ])
 
   /**
-   * Initial value represented as state to prevent a rerender of the ace-editor
+   * The initial value of the state used to prevent a re-render of the ace editor
    * when the document changes from outside.
    */
   const [initialValue] = React.useState(stringifiedDoc)

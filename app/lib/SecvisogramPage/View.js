@@ -84,7 +84,7 @@ function View({
   const formValues = /** @type {import('./shared/FormValues').default} */ (state.formValues)
 
   /**
-   * Enables debounces validation.
+   * Enables debounced validation.
    */
   const debouncedChangedDoc = useDebounce(formValues.doc, 300)
 
@@ -141,7 +141,7 @@ function View({
   }, [originalValues])
 
   /**
-   * Prevents accidentally loss of changes of the editor state
+   * Prevents accidental loss of changes of the editor state
    * (e.g. browser refresh).
    */
   React.useEffect(() => {

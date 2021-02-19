@@ -1,6 +1,6 @@
 # Developing Secvisogram
 
-This document gives an overview on how to develop Secvisogram, about the general technical and architectural design decision and how to deploy for production.
+This document gives an overview on how to develop Secvisogram, about the general technical and architectural design decisions and how to deploy for production.
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
@@ -9,7 +9,7 @@ This document gives an overview on how to develop Secvisogram, about the general
   - [Overview Diagram](#overview-diagram)
   - [Secvisogram Components](#secvisogram-components)
 - [Technology Stack & Libraries](#technology-stack--libraries)
-  - [Core stack & Technology](#core-stack--technology)
+  - [Core Stack & Technology](#core-stack--technology)
   - [Frameworks & Libraries](#frameworks--libraries)
 - [Building Secvisogram](#building-secvisogram)
 - [Building & Deploying Secvisogram into Production](#building--deploying-secvisogram-into-production)
@@ -24,7 +24,7 @@ This document gives an overview on how to develop Secvisogram, about the general
   - [Data Model](#data-model)
 - [Debugging & Testing Secvisogram](#debugging--testing-secvisogram)
   - [Unit Tests](#unit-tests)
-  - [View Tests](#view-tests)
+  - [View-Tests](#view-tests)
 - [CLI](#cli)
 
 <!-- /TOC -->
@@ -38,7 +38,7 @@ This document gives an overview on how to develop Secvisogram, about the general
 - Node.js (version 14 LTS)
 - Firefox stable
 
-Secvisogram recommends Visual Studio Code as source-code IDE. A `.vscode`-profile is included in this project. It lists recommended extensions which improve the development experience.
+Secvisogram recommends using Visual Studio Code as the source code IDE. A `.vscode`-profile is included in this project. It lists recommended extensions, improving the development experience.
 
 ## Secvisogram Architecture & Design
 
@@ -49,13 +49,13 @@ Secvisogram recommends Visual Studio Code as source-code IDE. A `.vscode`-profil
 ### Secvisogram Components
 
 **Entities**:
-This module exports the entities of the core. Entities are classes that contain logic which is used from multiple use-cases.
+This module exports the entities of the core. Entities are classes that contain logic applied in multiple use-cases.
 
 **Core**:
-Logic which can be abstracted without UI-interaction should be placed here to be tested independently. Ideally this _facade_ exports one method for each use-case of the application.
+Logic that can be abstracted without UI interaction should be placed here to be tested independently. Ideally, this _facade_ exports one method for each use-case of the application.
 
 **Page**:
-The page connects the view to the core and maintains the state about the communication.
+The page connects the view to the core and maintains the state of the communication.
 
 **View**:
 The view is a react-component which defines the main layout of the application.
@@ -65,52 +65,50 @@ View-components are react-components which provide the actual content for the ap
 
 ## Technology Stack & Libraries
 
-### Core stack & Technology
+### Core Stack & Technology
 
 **React:**
-React is used to implement the views. This JavaScript library is suitable for mapping data structures to the DOM in the browser and keeping it synchronized when the structure changes. In doing so, it offers an easily customizable template language. In addition, React prevents the accidental insertion of executable code in the DOM and therefore already offers basic protection against cross-site scripting.
+React is used to implement the views. This JavaScript library is suitable for mapping data structures to the DOM in the browser and keeping it synchronized when the structure changes. In doing so, it offers an easily customizable template language. In addition, React prevents the accidental insertion of executable code in the DOM, thus offering basic protection against cross-site scripting.
 
 **Typescript:**
-Typescript is used to type and document the source code. It is not used as language, but as a statical type-checker only. Types are declared using [Javascript with embedded Typescript source-code comments](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html). This keeps the overall toolchain clean & simple.
+Typescript is used to type and document the source code. It is not used as the language, but rather as a static type-checker only. Types are declared using [Javascript with embedded Typescript source-code comments](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html). This keeps the overall toolchain clean and simple.
 
 **Tailwind CSS:**
 Tailwind-CSS is a CSS-Framework and library of CSS-classes to be reused across components to keep them adaptable and yet themeable.
 
 ### Frameworks & Libraries
 
-TODO: Hier wirklich nur ein halber Satz: Was machts & ggf. warum genau das.
-
-| Domain        | Package        | Description & Justification                                                                                               |
-| ------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Build         | Webpack        | Bundles the source-code and coordinates the build-pipeline with transpilation-tools like postcss and babel                |
-|               | npm            | Is the package-manager which is used to install dependencies and update or remove them                                    |
-|               | Dependabot     | Automated dependency updates. See [link](https://dependabot.com/)                                                         |
-|               | postcss        | Used to compile tailwindcss stylesheet. See [link](https://postcss.org/)                                                  |
-|               | babel          |                                                                                                                           |
-| Linting       | eslint         | Lints the source-code for its quality and accordance to configured rules                                                  |
-| Styling       | tailwind       | A utility-first CSS framework. See [link](https://tailwindcss.com/)                                                       |
-|               | fontawesome    |                                                                                                                           |
-| IDE           | VS Code        | De facto standard IDE for web development. See [link](https://code.visualstudio.com/)                                     |
-| Codestyle     | Prettier       | An opinionated code formatter to enforce a consistent coding-style. See [link](https://prettier.io/)                      |
-| Typechecking  | Typescript     | ES with TS annotations. See [link](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)               |
-| UI            | React          | A JavaScript library for building user interfaces. See [link](https://reactjs.org/)                                       |
-|               | Reach-UI       | Reach-UI is library of primitive components to build accessible user-interfaces. See [link](https://reach.tech/)          |
-| Validation    | AJV            | Performs the JSON Schema validation according to the CSAF specification. See [link](https://github.com/ajv-validator/ajv) |
-| HTML-Template | mustache       | Logic-less templates. See [link](https://github.com/janl/mustache.js)                                                     |
-| Testing       | electron-mocha | Mocha testing in Electron. See [link](https://github.com/jprichardson/electron-mocha)                                     |
-|               | mocha          | Mocha is a feature-rich JavaScript test framework. See [link](https://mochajs.org/)                                       |
-| Parsing       | xml2js         | XML-parser. See [link](https://github.com/Leonidas-from-XIV/node-xml2js)                                                  |
-|               | json-pointer   | Some utilities for JSON pointers described by RFC 6901. See [link](https://github.com/manuelstofer/json-pointer)          |
-| CLI           | yargs          | Yargs helps you build interactive command line tools. See [link](https://github.com/yargs/yargs)                          |
-| JSON-Editor   | ACE editor     | Ace is an embeddable code editor written in JavaScript. See [link](https://ace.c9.io/)                                    |
+| Domain        | Package        | Description & Justification                                                                                                             |
+| ------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Build         | Webpack        | Bundles the source-code and coordinates the build-pipeline with transpilation-tools like postcss and babel                              |
+|               | npm            | Is the package-manager which is used to install dependencies and update or remove them                                                  |
+|               | Dependabot     | Automated dependency updates. See [https://dependabot.com/](https://dependabot.com/)                                                    |
+|               | postcss        | Used to compile tailwindcss stylesheet. See [https://postcss.org/](https://postcss.org/)                                                |
+|               | babel          | JavaScript transcompiler to convert ECMAScript ES6+ code into older JavaScript. See [https://babeljs.io/](https://babeljs.io/)          |
+| Linting       | eslint         | Lints the source-code for its quality and accordance to configured rules                                                                |
+| Styling       | tailwind       | A utility-first CSS framework. See [https://tailwindcss.com/](https://tailwindcss.com/)                                                 |
+|               | fontawesome    | Font-based icons set                                                                                                                    |
+| IDE           | VS Code        | De facto standard IDE for web development. See [https://code.visualstudio.com/](https://code.visualstudio.com/)                         |
+| Codestyle     | Prettier       | An opinionated code formatter to enforce a consistent coding-style. See [https://prettier.io/](https://prettier.io/)                    |
+| Typechecking  | Typescript     | ES with TS annotations. See [Typescript JSDoc supported types](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html) |
+| UI            | React          | A JavaScript library for building user interfaces. See [https://reactjs.org/](https://reactjs.org/)                                     |
+|               | Reach-UI       | Reach-UI is library of primitive components to build accessible user-interfaces. See [linkhttps://reach.tech/](https://reach.tech/)     |
+| Validation    | AJV            | Performs the JSON Schema validation according to the CSAF specification. See [AJV](https://github.com/ajv-validator/ajv)                |
+| HTML-Template | mustache       | Logic-less templates. See [mustache](https://github.com/janl/mustache.js)                                                               |
+| Testing       | electron-mocha | Mocha testing in Electron. See [electron-mocha](https://github.com/jprichardson/electron-mocha)                                         |
+|               | mocha          | Mocha is a feature-rich JavaScript test framework. See [https://mochajs.org/](https://mochajs.org/)                                     |
+| Parsing       | xml2js         | XML-parser. See [link](https://github.com/Leonidas-from-XIV/node-xml2js)                                                                |
+|               | json-pointer   | Some utilities for JSON pointers described by RFC 6901. See [json-pointer](https://github.com/manuelstofer/json-pointer)                |
+| CLI           | yargs          | Yargs helps you build interactive command line tools. See [yargs](https://github.com/yargs/yargs)                                       |
+| JSON-Editor   | ACE editor     | Ace is an embeddable code editor written in JavaScript. See [https://ace.c9.io/](https://ace.c9.io/)                                    |
 
 ## Building Secvisogram
 
-| Command         | Purpose                                                            |
-| --------------- | ------------------------------------------------------------------ |
-| `npm run dev`   | Starts the development-server                                      |
-| `npm test`      | Runs typecheck, the linter and the test-suite                      |
-| `npm run build` | Builds the application as static assets and places it into `dist/` |
+| Command         | Purpose                                                             |
+| --------------- | ------------------------------------------------------------------- |
+| `npm run dev`   | Starts the development server                                       |
+| `npm test`      | Runs typecheck, the linter and the test suite                       |
+| `npm run build` | Builds the application as a static asset and places it into `dist/` |
 
 ## Building & Deploying Secvisogram into Production
 
@@ -120,11 +118,11 @@ To provide a production release of Secvisogram, follow the following steps:
 
 - Run `npm run build`
 - Deploy the content of the `app/dist` folder to a webserver
-- Configure SSL and HTTP headers according the template (see ngixn)
+- Configure SSL and HTTP headers according to the template (see nginx)
 
 ### Deploy to production using nginx
 
-Below you'll find an example configuration for hosting Secvisogram in a production environment. The example uses TLS and HTTP header pragmas like `Strict-Transport-Security`, `Content-Security-Policy`, `X-Frame-Options` and for `X-Content-Type-Options` security hardening:
+Below you'll find an example configuration for hosting Secvisogram in a production environment. The example uses TLS and HTTP header pragmas like `Strict-Transport-Security`, `Content-Security-Policy`, `X-Frame-Options` and `X-Content-Type-Options` security hardening:
 
     add_header Strict-Transport-Security "max-age=31536000" always;
     add_header X-Content-Type-Options nosniff;
@@ -239,7 +237,7 @@ add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsaf
 | ------------------ | -------------------------------------------- |
 | `app/dist`         | The output of the build-command              |
 | `app/lib`          | Source code                                  |
-| `app/node_modules` | Npm dependencies of the app                  |
+| `app/node_modules` | npm dependencies of the app                  |
 | `app/scripts`      | Various scripts used by npm-scripts          |
 | `app/seeds`        | Sample-files                                 |
 | `app/tests`        | Unit-tests                                   |
@@ -247,56 +245,53 @@ add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsaf
 | `app/viewTests`    | View-tests                                   |
 
 Source files may only access folders that have the same name as themselves and are located at the same file level, e.g.
+usage of `app/lib/shared/Core/entities/DocumentEntity.js` from within `app/lib/shared/Core.js` is only allowed when importing `app/lib/shared/Core/entities.js`.
 
-usage of the `app/lib/shared/Core/entities/DocumentEntity.js` from within `app/lib/shared/Core.js` is only allowed via importing the `app/lib/shared/Core/entities.js`.
-
-Exception are the so-called "shared" folders. They may be used if they are located on the same or higher file level, e.g.
-
-usage of the `app/lib/shared/Core.js` from within `app/lib/SecvisogramPage.js` is allowed because it is contained in a "shared" folder.
+Exceptions are the so-called "shared" folders. They may be used if they are located on the same or higher file level, e.g. usage of `app/lib/shared/Core.js` from within `app/lib/SecvisogramPage.js` is allowed because it is contained in a "shared" folder.
 
 ## Technical Design
 
 ### Form Editor
 
-The "Form Editor"-tab represents the structure of the json-schema. It uses container components to represent objects and arrays and attribute components to represent values. Missing attributes are shown as "Add ..."-buttons which create the respective attribute using its `defaultValue`-function.
+The "Form Editor" tab represents the structure of the JSON schema. It uses container components to represent objects and arrays and attribute components to represent values. Missing attributes are shown as "Add ..." buttons, which create the respective attribute using its `defaultValue`-function.
 
 New attributes can be added by instantiating a suitable attribute component (e.g. `app/lib/SecvisogramPage/View/EditorTab/shared/TextAttribute.js`).
 
 ### Navigation
 
-The various parts of the application are accessible using the tabs. The state, which tab is active, is stored as react-state in `app/lib/SecvisogramPage.js`. Navigation is only disabled if a parse-error occurs in `app/lib/SecvisogramPage/View/JsonEditorTab.js`.
+The various parts of the application are accessible using the tabs. The state indicating which tab is active is stored in the react-state in `app/lib/SecvisogramPage.js`. Navigation is only disabled if a parsing error occurs in `app/lib/SecvisogramPage/View/JsonEditorTab.js`.
 
 ### Validation
 
-The application uses two validations patterns: The fast HTML5 validation and the validation via JSON-schema which kicks in 300ms after editing the document or between tab-changes. The status of the validation is shown in the "Form Editor"-tab, the "JSON Editor"-tab and the "Preview"-tab.
+The application uses two validation patterns: The fast HTML5 validation; and the validation according to the JSON schema, which kicks in either 300ms after editing the document or when changing the tab. The status of the validation is shown in the "Form Editor" tab, the "JSON Editor" tab and the "Preview" tab.
 
 ### Sanitizing
 
-The "CSAF Document"-tab uses an algorithm to remove elements which are either invalid, empty or null (see `app/lib/shared/Core/entities/DocumentEntity.js`) and shows the removed paths.
+The "CSAF Document" tab uses an algorithm to remove elements which are either invalid, empty or null (see `app/lib/shared/Core/entities/DocumentEntity.js`) and shows the removed paths.
 
 ### Data Model
 
-Application state is being held in the `app/lib/SecvisogramPage.js`. It contains state which is needed to coordinate the communication with the `app/lib/shared/Core.js`. Editor state is being held in the `app/lib/SecvisogramPage/View.js`. It contains state of the current editing status of the document.
+The application state is maintained in the `app/lib/SecvisogramPage.js`. It contains the state which is needed to coordinate the communication with the `app/lib/shared/Core.js`. The editor state is maintained in the `app/lib/SecvisogramPage/View.js`. It contains the state of the current editing status of the document.
 
 ## Debugging & Testing Secvisogram
 
 ### Unit Tests
 
-Unit tests cover logic sitting behind the `Core` component and are written using mocha.
+Unit tests account for the logic behind the `Core` component and are written using mocha.
 
-You can run them from CLI via `npm test`. Or you can open http://localhost:8080/tests.html in your browser which provides you the ability to run specific tests only.
+You can run them from CLI via `npm test`. Alternatively, you can open http://localhost:8080/tests.html in your browser, which provides you with the ability to run specific tests only.
 
 These are located in the folder `/app/tests`.
 
-### View Tests
+### View-Tests
 
-View-tests are a concept to test and design the view and its view-components independently from the _business logic_. To add a view-test for the view, modify the file `app/viewTests/shared/suites/SecvisogramPage.js` and add your test to the `tests` array.
+View-tests are a concept used to test and design the view and its view-components independently of the _business logic_. To add a view-test for the view, modify the file `app/viewTests/shared/suites/SecvisogramPage.js` and add your test to the `tests` array.
 
 Once you have started the system as described above, you can view the tests at the following URL:
 
 http://localhost:8080/view-tests.html
 
-On this page, there is a drop-down menu in the footer that can be used to select the respective test.
+On this page, there is a drop-down menu in the footer that can be used to select tests.
 
 ## CLI
 
