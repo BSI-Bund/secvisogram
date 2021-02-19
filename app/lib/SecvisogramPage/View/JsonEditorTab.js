@@ -22,7 +22,7 @@ import useDebounce from './shared/useDebounce'
  *  validationErrors: import('../../shared/validationTypes').ValidationError[]
  *  strict: boolean
  *  onSetStrict(strict: boolean): void
- *  onChange({}): void
+ *  onChange(doc: {} | null): void
  *  onOpen(file: File): Promise<void | {}>
  *  onDownload(doc: {}): void
  *  onNewDocMin(): Promise<void | {}>
@@ -167,7 +167,7 @@ export default function JsonEditorTab({
       setState((state) => ({ ...state, parseError: e }))
       return
     }
-    onChange(result || {})
+    onChange(result)
   }, [debouncedValue, onChange])
 
   React.useEffect(() => {

@@ -165,8 +165,6 @@ function View({
     onValidate(debouncedChangedDoc)
   }, [debouncedChangedDoc, onValidate])
 
-  const { doc } = formValues
-
   const tabButtonProps = React.useCallback(
     (/** @type {typeof activeTab} */ tab) => {
       return {
@@ -204,47 +202,45 @@ function View({
           className="relative overflow-auto h-full bg-gray-500"
           key={activeTab}
         >
-          {doc ? (
-            <>
-              {activeTab === 'EDITOR' ? (
-                <FormEditorTab
-                  formValues={formValues}
-                  validationErrors={errors}
-                  onUpdate={onUpdate}
-                  onOpen={onOpen}
-                  onDownload={onDownload}
-                  onNewDocMin={onNewDocMin}
-                  onNewDocMax={onNewDocMax}
-                />
-              ) : activeTab === 'SOURCE' ? (
-                <JsonEditorTab
-                  formValues={formValues}
-                  validationErrors={errors}
-                  strict={strict}
-                  onSetStrict={onSetStrict}
-                  onChange={onReplaceDoc}
-                  onOpen={onOpen}
-                  onDownload={onDownload}
-                  onNewDocMin={onNewDocMin}
-                  onNewDocMax={onNewDocMax}
-                  onLockTab={onLockTab}
-                  onUnlockTab={onUnlockTab}
-                />
-              ) : activeTab === 'PREVIEW' ? (
-                <PreviewTab
-                  formValues={formValues}
-                  validationErrors={errors}
-                  onExport={onExportHTML}
-                />
-              ) : activeTab === 'CSAF-JSON' ? (
-                <CsafTab
-                  stripResult={stripResult}
-                  onStrip={onStripCallback}
-                  onExport={onExportCSAFCallback}
-                />
-              ) : null}
-            </>
-          ) : null}
+          <>
+            {activeTab === 'EDITOR' ? (
+              <FormEditorTab
+                formValues={formValues}
+                validationErrors={errors}
+                onUpdate={onUpdate}
+                onOpen={onOpen}
+                onDownload={onDownload}
+                onNewDocMin={onNewDocMin}
+                onNewDocMax={onNewDocMax}
+              />
+            ) : activeTab === 'SOURCE' ? (
+              <JsonEditorTab
+                formValues={formValues}
+                validationErrors={errors}
+                strict={strict}
+                onSetStrict={onSetStrict}
+                onChange={onReplaceDoc}
+                onOpen={onOpen}
+                onDownload={onDownload}
+                onNewDocMin={onNewDocMin}
+                onNewDocMax={onNewDocMax}
+                onLockTab={onLockTab}
+                onUnlockTab={onUnlockTab}
+              />
+            ) : activeTab === 'PREVIEW' ? (
+              <PreviewTab
+                formValues={formValues}
+                validationErrors={errors}
+                onExport={onExportHTML}
+              />
+            ) : activeTab === 'CSAF-JSON' ? (
+              <CsafTab
+                stripResult={stripResult}
+                onStrip={onStripCallback}
+                onExport={onExportCSAFCallback}
+              />
+            ) : null}
+          </>
         </div>
       </div>
       {isLoading ? (

@@ -271,7 +271,28 @@ function Doc(props) {
       collapsible={false}
       deletable={false}
       defaultValue={() => ({
-        document: {},
+        document: {
+          csaf_version: '2.0',
+          title: '',
+          publisher: {
+            type: '',
+          },
+          type: '',
+          tracking: {
+            id: '',
+            current_release_date: '',
+            initial_release_date: '',
+            revision_history: [
+              {
+                number: '',
+                date: '',
+                summary: '',
+              },
+            ],
+            status: '',
+            version: '',
+          },
+        },
       })}
     >
       {(csafProps) => (
