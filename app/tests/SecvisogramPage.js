@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import CVSSVector from '../lib/SecvisogramPage/View/EditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSVector'
+import CVSSVector from '../lib/SecvisogramPage/View/FormEditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSVector'
 import ViewReducer from '../lib/SecvisogramPage/View/Reducer'
 
 suite('SecvisogramPage', () => {

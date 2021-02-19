@@ -1,41 +1,49 @@
+import '@reach/combobox/styles.css'
 import React from 'react'
-import Attribute from './Attribute'
-import DatePicker from './DateAttribute/DatePicker'
+import Attribute from './shared/Attribute'
 import Delete from './shared/Delete'
 
 /**
  * @param {{
  *  label: string
  *  description: string
+ *  options: string[]
  *  defaultValue?(): string
- *  readOnly?: boolean
- *  deletable?: boolean
  *  required?: boolean
+ *  deletable?: boolean
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
  *  value: unknown
  *  onUpdate({}): void
  * }} props
  */
-export default function DateAttribute({
+export default function EnumAttribute({
+  options,
   required = true,
   deletable,
-  readOnly = false,
   ...props
 }) {
+  const listId = `${props.dataPath}-list`
   return (
     <Attribute {...props}>
       {({ onChange, onDelete }) => (
-        <div className="max-w-md flex items-center justify-center">
+        <div className="max-w-md flex">
           <div className="w-full">
-            <DatePicker
+            <input
+              className="border border-gray-400 py-1 px-2 w-full shadow-inner rounded"
+              type="text"
+              list={listId}
               value={/** @type {string} */ (props.value)}
-              required={required}
-              onChange={(/** @type {string} */ newValue) => {
-                onChange(newValue)
+              onChange={(e) => {
+                onChange(e.target.value)
               }}
-              readOnly={readOnly}
+              required={required}
             />
+            <datalist id={listId}>
+              {options.map((option, index) => (
+                <option key={index} value={option} />
+              ))}
+            </datalist>
           </div>
           {deletable ? (
             <Delete

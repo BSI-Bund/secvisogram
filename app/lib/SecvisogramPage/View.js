@@ -9,6 +9,8 @@ import Alert from './View/shared/Alert'
 import useDebounce from './View/shared/useDebounce'
 
 /**
+ * Holds the editor-state and defines the main layout of the application.
+ *
  * @param {{
  *  isLoading: boolean
  *  isSaving: boolean
@@ -65,14 +67,33 @@ function View({
   onLockTab,
   onUnlockTab,
 }) {
+  /**
+   * Initial values for the editors. Can be used to detect changes of the
+   * document.
+   */
   const originalValues = React.useMemo(() => ({ doc: data?.doc ?? null }), [
     data,
   ])
-  const [{ ...state }, dispatch] = React.useReducer(Reducer, {
+
+  /**
+   * Editor state.
+   */
+  const [state, dispatch] = React.useReducer(Reducer, {
     formValues: originalValues,
   })
   const formValues = /** @type {import('./shared/FormValues').default} */ (state.formValues)
+
+  /**
+   * Enables debounces validation.
+   */
   const debouncedChangedDoc = useDebounce(formValues.doc, 300)
+
+  /**
+   * Callback to update the document. Dispatches an update-action to the
+   * reducer.
+   *
+   * @see {Reducer}
+   */
   const onUpdate = /** @type {((update: {}) => void) & ((dataPath: string, update: {}) => void)} */ (React.useCallback(
     (/** @type {any} */ newValue, /** @type {any?} */ update) => {
       if (typeof newValue === 'string') {
@@ -92,16 +113,37 @@ function View({
     },
     []
   ))
-  const onResetDoc = React.useCallback((
+
+  /**
+   * Is used to replace the complete document in the json editor.
+   *
+   * @see {JsonEditorTab}
+   */
+  const onReplaceDoc = React.useCallback((
     /** @type {unknown} */ newSerializedDoc
   ) => {
     dispatch({ type: 'RESET_FORM_DOC', doc: newSerializedDoc })
   }, [])
 
+  const onStripCallback = React.useCallback(() => {
+    onStrip(formValues.doc)
+  }, [formValues.doc, onStrip])
+
+  const onExportCSAFCallback = React.useCallback(() => {
+    onExportCSAF(formValues.doc)
+  }, [formValues.doc, onExportCSAF])
+
+  /**
+   * Resets the editor state if a new document is created.
+   */
   React.useEffect(() => {
     dispatch({ type: 'RESET_FORM', values: originalValues })
   }, [originalValues])
 
+  /**
+   * Prevents accidentally loss of changes of the editor state
+   * (e.g. browser refresh).
+   */
   React.useEffect(() => {
     /**
      * @param {BeforeUnloadEvent} e
@@ -116,6 +158,9 @@ function View({
     }
   }, [originalValues, formValues])
 
+  /**
+   * Triggers debounced validation.
+   */
   React.useEffect(() => {
     onValidate(debouncedChangedDoc)
   }, [debouncedChangedDoc, onValidate])
@@ -141,14 +186,6 @@ function View({
     },
     [activeTab, onChangeTab, formValues.doc, isTabLocked]
   )
-
-  const onStripCallback = React.useCallback(() => {
-    onStrip(formValues.doc)
-  }, [formValues.doc, onStrip])
-
-  const onExportCSAFCallback = React.useCallback(() => {
-    onExportCSAF(formValues.doc)
-  }, [formValues.doc, onExportCSAF])
 
   return (
     <>
@@ -185,7 +222,7 @@ function View({
                   validationErrors={errors}
                   strict={strict}
                   onSetStrict={onSetStrict}
-                  onChange={onResetDoc}
+                  onChange={onReplaceDoc}
                   onOpen={onOpen}
                   onDownload={onDownload}
                   onNewDocMin={onNewDocMin}

@@ -11,6 +11,10 @@ import ContainerErrors from '../ContainerErrors'
 const numberRegExp = /^(0|[1-9][0-9]*)$/
 
 /**
+ * Abstracts the base functionality for all containers in the form editor.
+ * It uses the data path to filter the associated validation errors.
+ * Provides the functionality to add or remove itself.
+ *
  * @param {{
  *   value: unknown
  *   label: string

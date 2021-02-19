@@ -11,6 +11,8 @@ import React from 'react'
  */
 
 /**
+ * Defines the layout of the csaf tab.
+ *
  * @param {{
  *  stripResult: {
  *    strippedPaths: Array<{ dataPath: string; message: string; error: boolean }>
@@ -21,6 +23,9 @@ import React from 'react'
  * }} props
  */
 export default function CsafTab({ stripResult, onStrip, onExport }) {
+  /**
+   * Strips the document initially.
+   */
   React.useEffect(() => {
     onStrip()
   }, [onStrip])

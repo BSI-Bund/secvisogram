@@ -23,6 +23,10 @@ const alertSaveInvalid = {
 }
 
 createCore().then((core) => {
+  /**
+   * Holds the application-state and provides memoized callbacks for the view
+   * to communicate with the core.
+   */
   const SecvisogramPage = () => {
     const [
       {
@@ -122,11 +126,11 @@ createCore().then((core) => {
                 const parsedDoc = JSON.parse(
                   /** @type {string | undefined} */ (e.target?.result) ?? ''
                 )
-                setState((state_1) => ({
-                  ...state_1,
+                setState((state) => ({
+                  ...state,
                   isLoading: false,
                   data: {
-                    ...state_1.data,
+                    ...state.data,
                     doc: parsedDoc,
                   },
                 }))

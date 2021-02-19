@@ -9,6 +9,8 @@ import React from 'react'
 import HTMLTemplate from './shared/HTMLTemplate'
 
 /**
+ * Defines the layout of the preview tab.
+ *
  * @param {{
  *  formValues: import('../shared/FormValues').default
  *  validationErrors: import('../../shared/validationTypes').ValidationError[]
@@ -28,6 +30,9 @@ export default function PreviewTab({
     formValues.doc,
   ])
 
+  /**
+   * Updates the content of the preview iframe.
+   */
   React.useEffect(() => {
     if (!iframeRef.current?.contentDocument) return
     iframeRef.current.contentDocument.open()
@@ -35,6 +40,9 @@ export default function PreviewTab({
     iframeRef.current.contentDocument.close()
   }, [html, showRendered])
 
+  /**
+   * Switches between html and rendered preview.
+   */
   const toggleShowRendered = () => {
     setShowRendered(!showRendered)
   }

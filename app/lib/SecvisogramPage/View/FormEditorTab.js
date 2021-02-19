@@ -11,13 +11,15 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import Document from './EditorTab/Document'
-import ProductTree from './EditorTab/ProductTree'
-import ObjectContainer from './EditorTab/shared/ObjectContainer'
-import Vulnerabilities from './EditorTab/Vulnerabilities'
+import Document from './FormEditorTab/Document'
+import ProductTree from './FormEditorTab/ProductTree'
+import ObjectContainer from './FormEditorTab/shared/ObjectContainer'
+import Vulnerabilities from './FormEditorTab/Vulnerabilities'
 import { useAlert } from './shared/Alert'
 
 /**
+ * Defines the layout of the form editor.
+ *
  * @param {{
  *  formValues: import('../shared/FormValues').default
  *  validationErrors: import('../../shared/validationTypes').ValidationError[]
@@ -37,7 +39,13 @@ export default function FormEditorTab({
   onNewDocMin,
   onNewDocMax,
 }) {
-  const { doc } = formValues
+  const ref = React.useRef(/** @type {HTMLDivElement | null} */ (null))
+  const [showErrors, setShowErrors] = React.useState(false)
+
+  const toggleErrors = () => {
+    setShowErrors(!showErrors)
+    setExpanded(!showErrors)
+  }
 
   const confirmMin = () => {
     onNewDocMin()
@@ -48,6 +56,28 @@ export default function FormEditorTab({
     onNewDocMax()
     hideMax()
   }
+
+  /**
+   * Expands all collapsible form elements.
+   *
+   * @param {boolean} open
+   */
+  const setExpanded = (open) => {
+    if (!ref.current) return
+    /** @type {NodeListOf<HTMLDetailsElement>} */
+    const elements = ref.current.querySelectorAll('.js-collapsible')
+    for (const el of elements) {
+      el.open = open
+    }
+  }
+
+  React.useEffect(() => {
+    if (errors.length === 0) {
+      setShowErrors(false)
+    }
+  }, [errors])
+
+  const { doc } = formValues
 
   const { show: showMin, hide: hideMin, Alert: MinAlert } = useAlert({
     description:
@@ -65,30 +95,6 @@ export default function FormEditorTab({
     confirm: confirmMax,
   })
 
-  const [showErrors, setShowErrors] = React.useState(false)
-
-  const toggleErrors = () => {
-    setShowErrors(!showErrors)
-    setExpanded(!showErrors)
-  }
-
-  React.useEffect(() => {
-    if (errors.length === 0) {
-      setShowErrors(false)
-    }
-  }, [errors])
-
-  const ref = React.useRef(/** @type {HTMLDivElement | null} */ (null))
-  /** @param {boolean} open */
-  const setExpanded = (open) => {
-    if (!ref.current) return
-    /** @type {NodeListOf<HTMLDetailsElement>} */
-    const elements = ref.current.querySelectorAll('.js-collapsible')
-    for (const el of elements) {
-      el.open = open
-    }
-  }
-
   return (
     <>
       <MinAlert />
@@ -96,27 +102,12 @@ export default function FormEditorTab({
       <div ref={ref} className="form-editor flex h-full mr-3 bg-white">
         <div className="p-3 w-full">
           <div className={'overflow-auto ' + (showErrors ? 'h-4/5' : 'h-full')}>
-            <ObjectContainer
-              label="Common Security Advisory Framework"
-              description="Representation of security advisory information as a JSON document."
+            <Doc
               dataPath=""
               value={doc}
-              collapsible={false}
-              deletable={false}
               validationErrors={errors}
               onUpdate={onUpdate}
-              defaultValue={() => ({
-                document: {},
-              })}
-            >
-              {(csafProps) => (
-                <>
-                  <Document {...csafProps('document')} />
-                  <ProductTree {...csafProps('product_tree')} />
-                  <Vulnerabilities {...csafProps('vulnerabilities')} />
-                </>
-              )}
-            </ObjectContainer>
+            />
           </div>
           <div
             className={
@@ -256,5 +247,40 @@ export default function FormEditorTab({
         </div>
       </div>
     </>
+  )
+}
+
+/**
+ * Defines the layout of the document. The data path is passed throughout all
+ * children to enable error filtering and nested updates. Containers and
+ * attributes of the document are defined in respective components.
+ *
+ * @param {{
+ *  value: unknown
+ *  validationErrors: import('../../shared/validationTypes').ValidationError[]
+ *  dataPath: string
+ *  onUpdate({}): void
+ * }} props
+ */
+function Doc(props) {
+  return (
+    <ObjectContainer
+      {...props}
+      label="Common Security Advisory Framework"
+      description="Representation of security advisory information as a JSON document."
+      collapsible={false}
+      deletable={false}
+      defaultValue={() => ({
+        document: {},
+      })}
+    >
+      {(csafProps) => (
+        <>
+          <Document {...csafProps('document')} />
+          <ProductTree {...csafProps('product_tree')} />
+          <Vulnerabilities {...csafProps('vulnerabilities')} />
+        </>
+      )}
+    </ObjectContainer>
   )
 }

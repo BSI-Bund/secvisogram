@@ -14,6 +14,9 @@ import { useAlert } from './shared/Alert'
 import useDebounce from './shared/useDebounce'
 
 /**
+ * Embeds the ace editor.
+ * @see https://ace.c9.io/
+ *
  * @param {{
  *  formValues: import('../shared/FormValues').default
  *  validationErrors: import('../../shared/validationTypes').ValidationError[]
@@ -43,21 +46,83 @@ export default function JsonEditorTab({
 }) {
   const { doc } = formValues
 
+  /**
+   * Holds the reference to the container element of the ace editor.
+   */
   const ref = React.useRef(/** @type {HTMLDivElement | null} */ (null))
+
+  /**
+   * Holds the instance of the ace editor.
+   */
   const editorRef = /** @type {React.MutableRefObject<import('../../../vendor/ace-builds/ace').Ace.Editor | undefined>} */ (React.useRef())
-  const parsedDoc = React.useMemo(() => JSON.stringify(doc, null, 2), [doc])
-  const [initialValue] = React.useState(parsedDoc)
+
+  const stringifiedDoc = React.useMemo(() => JSON.stringify(doc, null, 2), [
+    doc,
+  ])
+
+  /**
+   * Initial value represented as state to prevent a rerender of the ace-editor
+   * when the document changes from outside.
+   */
+  const [initialValue] = React.useState(stringifiedDoc)
+
+  /**
+   * Holds the value and potential parse errors of the ace editor input.
+   */
   const [{ value, parseError }, setState] = React.useState({
-    value: parsedDoc,
+    value: stringifiedDoc,
     parseError: null,
   })
+  const [showExpertSettings, setShowExpertSettings] = React.useState(!strict)
+  const [showErrors, setShowErrors] = React.useState(false)
   const debouncedValue = useDebounce(value)
 
+  /**
+   * Toggles between strict and lenient validation.
+   */
+  const toggleStrict = () => {
+    onSetStrict(!strict)
+  }
+
+  const toggleExpertSettings = () => {
+    setShowExpertSettings(!showExpertSettings)
+  }
+
+  const toggleShowErrors = () => {
+    setShowErrors(!showErrors)
+  }
+
+  const confirmMin = () => {
+    onNewDocMin().then((newDoc) => {
+      editorRef.current?.setValue(JSON.stringify(newDoc, null, 2))
+    })
+    hideMin()
+  }
+
+  const confirmMax = () => {
+    onNewDocMax().then((newDoc) => {
+      editorRef.current?.setValue(JSON.stringify(newDoc, null, 2))
+    })
+    hideMax()
+  }
+
+  const handleOpen = (/** @type {File} */ file) => {
+    onOpen(file).then((openedDoc) => {
+      editorRef.current?.setValue(JSON.stringify(openedDoc, null, 2))
+    })
+  }
+
+  /**
+   * Locks the tab navigation if there are any parse errors.
+   */
   React.useEffect(() => {
     if (parseError) onLockTab()
     else onUnlockTab()
   }, [parseError, onLockTab, onUnlockTab])
 
+  /**
+   * Initializes the ace editor.
+   */
   React.useEffect(() => {
     const editorEl = /** @type {HTMLDivElement} */ (ref.current)
     if (!editorRef.current) {
@@ -89,6 +154,9 @@ export default function JsonEditorTab({
     }
   }, [initialValue])
 
+  /**
+   * Parses the ace editor input and replaces the document.
+   */
   React.useEffect(() => {
     /** @type {{} | null} */
     let result = null
@@ -102,43 +170,11 @@ export default function JsonEditorTab({
     onChange(result || {})
   }, [debouncedValue, onChange])
 
-  const toggleStrict = () => {
-    onSetStrict(!strict)
-  }
-
-  const [showExpertSettings, setShowExpertSettings] = React.useState(!strict)
-
-  const toggleExpertSettings = () => {
-    setShowExpertSettings(!showExpertSettings)
-  }
-
-  const [showErrors, setShowErrors] = React.useState(false)
-
-  const toggleShowErrors = () => {
-    setShowErrors(!showErrors)
-    /** @todo resize is calculating wrong height */
-    // editorRef.current?.resize()
-  }
-
   React.useEffect(() => {
     if (errors.length === 0) {
       setShowErrors(false)
     }
   }, [errors])
-
-  const confirmMin = () => {
-    onNewDocMin().then((newDoc) => {
-      editorRef.current?.setValue(JSON.stringify(newDoc, null, 2))
-    })
-    hideMin()
-  }
-
-  const confirmMax = () => {
-    onNewDocMax().then((newDoc) => {
-      editorRef.current?.setValue(JSON.stringify(newDoc, null, 2))
-    })
-    hideMax()
-  }
 
   const { show: showMin, hide: hideMin, Alert: MinAlert } = useAlert({
     description:
@@ -155,12 +191,6 @@ export default function JsonEditorTab({
     cancelLabel: 'No, resume editing',
     confirm: confirmMax,
   })
-
-  const handleOpen = (/** @type {File} */ file) => {
-    onOpen(file).then((openedDoc) => {
-      editorRef.current?.setValue(JSON.stringify(openedDoc, null, 2))
-    })
-  }
 
   return (
     <>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Attribute from './Attribute'
+import Attribute from './shared/Attribute'
 import Delete from './shared/Delete'
 
 /**

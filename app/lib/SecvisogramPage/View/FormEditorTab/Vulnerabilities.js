@@ -1,6 +1,7 @@
 import '@reach/combobox/styles.css'
 import React from 'react'
 import ArrayContainer from './shared/ArrayContainer'
+import CweAttribute from './shared/CweAttribute'
 import DateAttribute from './shared/DateAttribute'
 import {
   Acknowledgments,
@@ -14,7 +15,6 @@ import ObjectContainer from './shared/ObjectContainer'
 import TextAreaAttribute from './shared/TextAreaAttribute'
 import TextAttribute from './shared/TextAttribute'
 import validationErrorShallowEqual from './shared/validationErrorShallowEqual'
-import Cwe from './Vulnerabilities/Cwe'
 import Scores from './Vulnerabilities/Scores'
 
 export default React.memo(
@@ -68,7 +68,7 @@ const Vulnerability = React.memo(
               pattern="^CVE-[0-9]{4}-[0-9]{4,}$"
               deletable
             />
-            <Cwe {...vulnerabilityProps('cwe')} />
+            <CweAttribute {...vulnerabilityProps('cwe')} />
             <Scores {...vulnerabilityProps('scores')} />
             <DateAttribute
               {...vulnerabilityProps('discovery_date')}

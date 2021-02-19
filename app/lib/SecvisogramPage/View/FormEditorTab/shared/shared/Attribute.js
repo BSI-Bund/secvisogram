@@ -1,18 +1,22 @@
 import { parse } from 'json-pointer'
 import { set } from 'lodash'
 import React from 'react'
-import DefaultButton from '../../shared/DefaultButton'
-import AttributeErrors from './AttributeErrors'
+import DefaultButton from '../../../shared/DefaultButton'
+import AttributeErrors from '../AttributeErrors'
 
 const numberRegExp = /^(0|[1-9][0-9]*)$/
 
 /**
+ * Abstracts the base functionality for all fields in the form editor.
+ * It uses the data path to filter the associated validation errors.
+ * Provides the functionality to add or remove itself.
+ *
  * @param {{
  *  value: V
  *  label: string
  *  description: string
  *  defaultValue?(): string
- *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
+ *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
  *  children?: React.ReactNode | ((params: { isInArray: boolean; onDelete(): void; onChange(value: V): void }) => React.ReactNode)
  *  canBeAdded?: boolean

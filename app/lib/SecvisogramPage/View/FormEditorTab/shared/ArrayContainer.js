@@ -10,6 +10,19 @@ import Container from './shared/Container'
 const EMPTY_ARRAY = []
 
 /**
+ * @typedef {Object} ChildProps
+ * @property {unknown} value
+ * @property {number} index
+ * @property {string} dataPath
+ * @property {import('../../../../shared/validationTypes').ValidationError[]} validationErrors
+ * @property {() => V} defaultValue
+ * @property {((update: {}) => void) & ((dataPath: string, update: {}) => void)} onUpdate
+ * @template V
+ */
+
+/**
+ * Calculates the child props and provides controls to add new items.
+ *
  * @param {{
  *   value: unknown
  *   dataPath: string
@@ -19,16 +32,7 @@ const EMPTY_ARRAY = []
  *   validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *   defaultItemValue(): V
  *   onUpdate({}): void
- *   children(
- *     props: {
- *       dataPath: string
- *       value: unknown
- *       index: number
- *       validationErrors: import('../../../../shared/validationTypes').ValidationError[]
- *       defaultValue(): V
- *       onUpdate({}): void
- *     }
- *   ): JSX.Element
+ *   children(props: ChildProps<V>): JSX.Element
  * }} props
  * @template V
  */
@@ -42,6 +46,10 @@ export default function ArrayContainer({ children, ...props }) {
    * @returns {v is Array<unknown>}
    */
   const isValid = (v) => Array.isArray(v)
+
+  /**
+   * Is a memoized map of all validation errors for its children.
+   */
   const validationErrorCache = React.useMemo(() => {
     /** @type {Map<number, import('../../../../SecvisogramPage').ValidationError[]>} */
     const c = new Map()

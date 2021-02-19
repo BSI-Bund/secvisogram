@@ -9,10 +9,12 @@ import { matchSorter } from 'match-sorter'
 import React from 'react'
 import cwec_4_3 from '../../../../shared/Core/cwec_4.3.json'
 import useDebounce from '../../shared/useDebounce'
-import Attribute from '../shared/Attribute'
-import ObjectContainer from '../shared/ObjectContainer'
+import ObjectContainer from './ObjectContainer'
+import Attribute from './shared/Attribute'
 
 /**
+ * Custom attribute.
+ *
  * @param {{
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
@@ -20,7 +22,7 @@ import ObjectContainer from '../shared/ObjectContainer'
  *  onUpdate: ((update: {}) => void) & ((dataPath: string, update: {}) => void)
  * }} props
  */
-export default function Cwe(props) {
+export default function CweAttribute(props) {
   return (
     <>
       <ObjectContainer

@@ -33,10 +33,19 @@ export default async function createCore() {
   return {
     document: {
       /**
+       * Validates the document and returns errors that possibly occur.
+       *
        * @param {{
        *  document: {}
        *  strict?: boolean
        * }} params
+       * @returns {Promise<{
+       *   isValid: boolean;
+       *   errors: {
+       *     message?: string | undefined;
+       *     dataPath: string;
+       *   }[];
+       * }>}
        */
       async validate({ document, strict = true }) {
         const schemaValidator = strict
@@ -46,12 +55,18 @@ export default async function createCore() {
         return documentEntity.validate({ document })
       },
 
+      /**
+       * Provides a minimal new document.
+       */
       async newDocMin() {
         return setGeneratorFields(new Date())({
           ...doc_min,
         })
       },
 
+      /**
+       * Provides a maximal new document.
+       */
       async newDocMax() {
         return setGeneratorFields(new Date())({
           ...doc_max,
@@ -59,6 +74,9 @@ export default async function createCore() {
       },
 
       /**
+       * Strips the document according to the CSAF-algorithm and returns a list
+       * of removed elements.
+       *
        * @param {{
        *  document: {}
        *  strict?: boolean

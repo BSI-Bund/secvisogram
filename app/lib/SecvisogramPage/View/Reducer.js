@@ -15,12 +15,15 @@ import { compose, set } from 'lodash/fp'
  */
 
 /**
+ * Manages updates of the editor state.
+ * @see https://github.com/kolodny/immutability-helper#readme
+ *
  * @param {State} state
  * @param {
-    | { type: 'CHANGE_FORM_DOC'; dataPath?: string; update: any; timestamp: Date }
-    | { type: 'RESET_FORM_DOC'; doc: Doc }
-    | { type: 'RESET_FORM'; values: FormValues }
-  } action
+ *   | { type: 'CHANGE_FORM_DOC'; dataPath?: string; update: any; timestamp: Date }
+ *   | { type: 'RESET_FORM_DOC'; doc: Doc }
+ *   | { type: 'RESET_FORM'; values: FormValues }
+ * } action
  * @returns {State}
  */
 export default function Reducer(state, action) {

@@ -1,6 +1,9 @@
 import React from 'react'
 
 /**
+ * This hook allows you to debounce any fast changing value.
+ * @see https://usehooks.com/useDebounce/
+ *
  * @param {T} value
  * @param {number} [delay]
  * @returns {T}
