@@ -5,7 +5,7 @@ import cwec from '../cwec_4.3.json'
 import icann from './DocumentEntity/subtags.json'
 
 /**
- * This class abstracts central logic around the json-document which are used
+ * This class abstracts central logic regarding the json-document used
  * multiple times within the `Core`.
  */
 export default class DocumentEntity {
