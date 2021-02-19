@@ -1,5 +1,7 @@
 # Developing Secvisogram
 
+This document gives an overview on how to develop Secvisogram, about the general technical and architectural design decision and how to deploy for production.
+
 <!-- TOC depthFrom:2 depthTo:3 -->
 
 - [Prerequisites & Development Environment](#prerequisites--development-environment)
@@ -15,15 +17,15 @@
   - [Deploy to production using nginx](#deploy-to-production-using-nginx)
 - [Secvisogram folder structure](#secvisogram-folder-structure)
 - [Technical Design](#technical-design)
-  - [Code Style & Design Patterns](#code-style--design-patterns)
   - [Form Editor](#form-editor)
   - [Navigation](#navigation)
   - [Validation](#validation)
+  - [Sanitizing](#sanitizing)
   - [Data Model](#data-model)
 - [Debugging & Testing Secvisogram](#debugging--testing-secvisogram)
   - [Unit Tests](#unit-tests)
   - [View Tests](#view-tests)
-  - [Debugging](#debugging)
+- [CLI](#cli)
 
 <!-- /TOC -->
 
@@ -31,11 +33,12 @@
 
 ## Prerequisites & Development Environment
 
+- Git
 - VSCode
+- Node.js (version 14 LTS)
+- Firefox stable
 
-We use Visual Studio Code to edit the source-code. A vscode-profile is included in this project under `.vscode`. It lists recommended extensions which improve the development experience.
-
-- Node.js (version 14+)
+Secvisogram recommends Visual Studio Code as source-code IDE. A `.vscode`-profile is included in this project. It lists recommended extensions which improve the development experience.
 
 ## Secvisogram Architecture & Design
 
