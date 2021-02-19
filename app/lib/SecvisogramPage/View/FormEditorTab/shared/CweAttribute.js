@@ -19,7 +19,7 @@ import Attribute from './shared/Attribute'
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
  *  value: unknown
- *  onUpdate: ((update: {}) => void) & ((dataPath: string, update: {}) => void)
+ *  onUpdate: (dataPath: string, update: {}) => void
  * }} props
  */
 export default function CweAttribute(props) {
@@ -79,7 +79,7 @@ function useCwecMatch(term) {
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
  *  value: unknown
- *  onUpdate: ((update: {}) => void) & ((dataPath: string, update: {}) => void)
+ *  onUpdate: (dataPath: string, update: {}) => void
  *  onChange({}): void
  * }} props
  */
@@ -153,7 +153,7 @@ function CwecId(props) {
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
  *  value: unknown
- *  onUpdate: ((update: {}) => void) & ((dataPath: string, update: {}) => void)
+ *  onUpdate: (dataPath: string, update: {}) => void
  *  onChange({}): void
  * }} props
  */

@@ -10,7 +10,7 @@ const EMPTY_ARRAY = []
  * @property {unknown} value
  * @property {string} dataPath
  * @property {import('../../../../shared/validationTypes').ValidationError[]} validationErrors
- * @property {((update: {}) => void) & ((dataPath: string, update: {}) => void)} onUpdate
+ * @property {(dataPath: string, update: {}) => void} onUpdate
  */
 
 /**
@@ -25,7 +25,7 @@ const EMPTY_ARRAY = []
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
  *  defaultValue?(): {}
- *  onUpdate: ((update: {}) => void) & ((dataPath: string, update: {}) => void)
+ *  onUpdate: (dataPath: string, update: {}) => void
  *  children(props: (attributeName: string) => ChildProps): React.ReactNode;
  * }} props
  */

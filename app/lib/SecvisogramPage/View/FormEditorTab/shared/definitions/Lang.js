@@ -9,7 +9,7 @@ import TextAttribute from '../TextAttribute'
  *  deletable?: boolean
  *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
- *  onUpdate({}): void
+ *  onUpdate(dataPath: string, update: {}): void
  * }} props
  */
 export default function Lang({

@@ -7,7 +7,7 @@ import TextAttribute from '../TextAttribute'
  *   validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
  *   dataPath: string
  *   deletable?: boolean
- *   onUpdate({}): void
+ *   onUpdate(dataPath: string, update: {}): void
  * }} props
  */
 export default function ProductId(props) {

@@ -259,7 +259,7 @@ export default function FormEditorTab({
  *  value: unknown
  *  validationErrors: import('../../shared/validationTypes').ValidationError[]
  *  dataPath: string
- *  onUpdate({}): void
+ *  onUpdate(dataPath: string, update: {}): void
  * }} props
  */
 function Doc(props) {

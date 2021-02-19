@@ -9,7 +9,7 @@ import ProductGroupId from './ProductGroupId'
  *   dataPath: string
  *   label?: string
  *   description?: string
- *   onUpdate({}): void
+ *   onUpdate(dataPath: string, update: {}): void
  * }} props
  */
 export default function ProductGroups({

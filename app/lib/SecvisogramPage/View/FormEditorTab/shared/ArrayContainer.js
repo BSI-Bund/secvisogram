@@ -1,7 +1,6 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { parse } from 'json-pointer'
-import { set } from 'lodash'
 import React from 'react'
 import DefaultButton from '../../shared/DefaultButton'
 import Container from './shared/Container'
@@ -16,7 +15,7 @@ const EMPTY_ARRAY = []
  * @property {string} dataPath
  * @property {import('../../../../shared/validationTypes').ValidationError[]} validationErrors
  * @property {() => V} defaultValue
- * @property {((update: {}) => void) & ((dataPath: string, update: {}) => void)} onUpdate
+ * @property {(dataPath: string, update: {}) => void} onUpdate
  * @template V
  */
 
@@ -31,16 +30,12 @@ const EMPTY_ARRAY = []
  *   collapsible?: boolean
  *   validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *   defaultItemValue(): V
- *   onUpdate({}): void
+ *   onUpdate(dataPath: string, update: {}): void
  *   children(props: ChildProps<V>): JSX.Element
  * }} props
  * @template V
  */
 export default function ArrayContainer({ children, ...props }) {
-  const parsedDataPath = React.useMemo(() => parse(props.dataPath), [
-    props.dataPath,
-  ])
-
   /**
    * @param {unknown} v
    * @returns {v is Array<unknown>}
@@ -86,11 +81,9 @@ export default function ArrayContainer({ children, ...props }) {
           <div className="mb-2">
             <DefaultButton
               onClick={() => {
-                const update = {}
-                set(update, parsedDataPath, {
+                props.onUpdate(props.dataPath, {
                   $push: [props.defaultItemValue()],
                 })
-                props.onUpdate(update)
               }}
             >
               <FontAwesomeIcon icon={faPlus} />

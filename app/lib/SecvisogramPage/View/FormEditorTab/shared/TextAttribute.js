@@ -17,7 +17,7 @@ import Delete from './shared/Delete'
  *  dataPath: string
  *  value: unknown
  *  canBeAdded?: boolean
- *  onUpdate({}): void
+ *  onUpdate(dataPath: string, update: {}): void
  * }} props
  */
 export default function TextAttribute({

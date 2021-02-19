@@ -14,7 +14,7 @@ import Delete from './shared/Delete'
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
  *  value: unknown
- *  onUpdate({}): void
+ *  onUpdate(dataPath: string, update: {}): void
  * }} props
  */
 export default function TextAreaAttribute({

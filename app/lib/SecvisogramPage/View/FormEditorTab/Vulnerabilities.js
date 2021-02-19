@@ -23,7 +23,7 @@ export default React.memo(
    *  value: unknown
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
    *  dataPath: string
-   *  onUpdate({}): void
+   *  onUpdate(dataPath: string, update: {}): void
    * }} props
    */
   function Vulnerabilities(props) {
@@ -48,7 +48,7 @@ const Vulnerability = React.memo(
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
    *  dataPath: string
    *  defaultValue?(): {}
-   *  onUpdate({}): void
+   *  onUpdate(dataPath: string, update: {}): void
    * }} props
    */
   function Vulnerability(props) {

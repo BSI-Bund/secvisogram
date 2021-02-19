@@ -11,7 +11,7 @@ export default React.memo(
    *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
    *  dataPath: string
    *  value: unknown
-   *  onUpdate({}): void
+   *  onUpdate(dataPath: string, update: {}): void
    * }} props
    */
   function Publisher(props) {

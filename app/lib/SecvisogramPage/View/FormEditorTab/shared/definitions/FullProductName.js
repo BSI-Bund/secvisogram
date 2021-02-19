@@ -8,7 +8,7 @@ import ProductId from './ProductId'
  *   value: unknown
  *   validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
  *   dataPath: string
- *   onUpdate({}): void
+ *   onUpdate(dataPath: string, update: {}): void
  * }} props
  */
 export default function FullProductName(props) {

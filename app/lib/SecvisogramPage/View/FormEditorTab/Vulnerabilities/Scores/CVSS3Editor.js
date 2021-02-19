@@ -11,7 +11,7 @@ import CVSSVector from './CVSS3Editor/CVSSVector'
  *  value: unknown
  *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
- *  onUpdate: ((update: {}) => void) & ((dataPath: string, update: {}) => void)
+ *  onUpdate: (dataPath: string, update: {}) => void
  * }} props
  */
 export default function CVSSV3Editor(props) {

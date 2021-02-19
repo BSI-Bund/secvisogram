@@ -18,7 +18,7 @@ export default React.memo(
    *   value: unknown
    *   validationErrors: import('../../../shared/validationTypes').ValidationError[]
    *   dataPath: string
-   *   onUpdate({}): void
+   *   onUpdate(dataPath: string, update: {}): void
    * }} props
    */
   function ProductTree(props) {
@@ -53,7 +53,7 @@ const ProductGroups = React.memo(
    *   value: unknown
    *   validationErrors: import('../../../shared/validationTypes').ValidationError[]
    *   dataPath: string
-   *   onUpdate({}): void
+   *   onUpdate(dataPath: string, update: {}): void
    * }} props
    */
   function ProductGroups({ ...props }) {
@@ -106,7 +106,7 @@ const FullProductNames = React.memo(
    *   value: unknown
    *   validationErrors: import('../../../shared/validationTypes').ValidationError[]
    *   dataPath: string
-   *   onUpdate({}): void
+   *   onUpdate(dataPath: string, update: {}): void
    * }} props
    */
   function FullProductNames(props) {
@@ -135,7 +135,7 @@ const Relationships = React.memo(
    *   value: unknown
    *   validationErrors: import('../../../shared/validationTypes').ValidationError[]
    *   dataPath: string
-   *   onUpdate({}): void
+   *   onUpdate(dataPath: string, update: {}): void
    * }} props
    */
   function Relationships(props) {

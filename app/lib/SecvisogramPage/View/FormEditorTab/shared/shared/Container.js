@@ -1,8 +1,7 @@
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '@reach/dialog/styles.css'
-import { parse } from 'json-pointer'
-import { set } from 'lodash'
+import { compile, parse } from 'json-pointer'
 import React from 'react'
 import { useAlert } from '../../../shared/Alert'
 import DefaultButton from '../../../shared/DefaultButton'
@@ -25,7 +24,7 @@ const numberRegExp = /^(0|[1-9][0-9]*)$/
  *   collapsible?: boolean
  *   defaultValue?(): V
  *   isValid(v: unknown): v is V
- *   onUpdate({}): void
+ *   onUpdate(dataPath: string, update: {}): void
  *   children(props: { value: V; validationErrors: import('../../../../../shared/validationTypes').ValidationError[] }): React.ReactNode;
  * }} props
  * @template V
@@ -62,19 +61,7 @@ export default function Container({
     const operation = !isInArray
       ? { $unset: [objectName] }
       : { $splice: [[Number(objectName), 1]] }
-    if (parsedDataPath.length === 1) {
-      onUpdate(operation)
-    } else {
-      onUpdate(
-        set(
-          {},
-          parsedDataPath.slice(0, -1),
-          !isInArray
-            ? { $unset: [objectName] }
-            : { $splice: [[Number(objectName), 1]] }
-        )
-      )
-    }
+    onUpdate(compile(parsedDataPath.slice(0, -1)), operation)
   }
 
   const confirm = () => {
@@ -134,9 +121,7 @@ export default function Container({
         <div className="mb-2">
           <DefaultButton
             onClick={() => {
-              const update = {}
-              set(update, parsedDataPath.concat(['$set']), defaultValue())
-              onUpdate(update)
+              onUpdate(dataPath, { $set: defaultValue() })
             }}
           >
             {"Add '" + label + "'"}

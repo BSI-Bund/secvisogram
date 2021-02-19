@@ -9,7 +9,7 @@ import ProductId from './ProductId'
  *   dataPath: string
  *   label?: string
  *   description?: string
- *   onUpdate({}): void
+ *   onUpdate(dataPath: string, update: {}): void
  * }} props
  */
 export default function Products({

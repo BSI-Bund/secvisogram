@@ -10,7 +10,7 @@ import CVSSV3Editor from './Scores/CVSS3Editor'
  *  value: unknown
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
- *  onUpdate({}): void
+ *  onUpdate(dataPath: string, update: {}): void
  * }} props
  */
 export default function Scores(props) {

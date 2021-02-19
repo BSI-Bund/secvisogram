@@ -1,5 +1,4 @@
-import { parse } from 'json-pointer'
-import { set } from 'lodash'
+import { compile, parse } from 'json-pointer'
 import React from 'react'
 import DefaultButton from '../../../shared/DefaultButton'
 import AttributeErrors from '../AttributeErrors'
@@ -20,7 +19,7 @@ const numberRegExp = /^(0|[1-9][0-9]*)$/
  *  dataPath: string
  *  children?: React.ReactNode | ((params: { isInArray: boolean; onDelete(): void; onChange(value: V): void }) => React.ReactNode)
  *  canBeAdded?: boolean
- *  onUpdate({}): void
+ *  onUpdate(dataPath: string, update: {}): void
  *  onChange?(value: V): void
  *  onDelete?(): void
  * }} props
@@ -50,15 +49,6 @@ export default function Attribute({
     [attributeName]
   )
 
-  /**
-   * @param {{}} data
-   */
-  const onUpdate = (data) => {
-    const update = {}
-    set(update, parsedDataPath, data)
-    props.onUpdate(update)
-  }
-
   return (
     <section className="mb-2">
       {value != null ? (
@@ -74,19 +64,16 @@ export default function Attribute({
             ? children({
                 isInArray,
                 onChange(v) {
-                  onUpdate({ $set: v })
+                  props.onUpdate(dataPath, { $set: v })
                   props.onChange?.(v)
                 },
                 onDelete() {
-                  const update = {}
-                  set(
-                    update,
-                    parsedDataPath.slice(0, -1),
+                  props.onUpdate(
+                    compile(parsedDataPath.slice(0, -1)),
                     !isInArray
                       ? { $unset: [attributeName] }
                       : { $splice: [[Number(attributeName), 1]] }
                   )
-                  props.onUpdate(update)
                   props.onDelete?.()
                 },
               })
@@ -96,7 +83,7 @@ export default function Attribute({
       ) : canBeAdded ? (
         <DefaultButton
           onClick={() => {
-            onUpdate({
+            props.onUpdate(dataPath, {
               $set: defaultValue(),
             })
           }}

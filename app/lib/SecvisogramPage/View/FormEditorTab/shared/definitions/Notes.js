@@ -14,7 +14,7 @@ export default React.memo(
    *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
    *  dataPath: string
    *  value: unknown
-   *  onUpdate({}): void
+   *  onUpdate(dataPath: string, update: {}): void
    * }} props
    */
   function Notes({
@@ -46,7 +46,7 @@ const Note = React.memo(
    *  dataPath: string
    *  value: unknown
    *  defaultValue?(): {}
-   *  onUpdate({}): void
+   *  onUpdate(dataPath: string, update: {}): void
    * }} props
    */
   function Note({ ...props }) {
