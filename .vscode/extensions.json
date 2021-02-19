@@ -2,5 +2,6 @@
   "recommendations": [
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
-    "alanwalk.markdown-toc",]
+    "alanwalk.markdown-toc",
+    "zainchen.json"]
 }
