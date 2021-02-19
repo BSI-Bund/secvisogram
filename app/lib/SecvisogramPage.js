@@ -311,7 +311,7 @@ export default function downloadFile(
   type = 'application/json'
 ) {
   try {
-    const string = btoa(content)
+    const string = btoa(unescape(encodeURIComponent(content)))
     const dataURI = `data:${type};base64,${string}`
     const element = window.document.createElement('a')
     element.download = fileName
