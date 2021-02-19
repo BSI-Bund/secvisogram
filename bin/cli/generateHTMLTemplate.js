@@ -105,8 +105,9 @@ module.exports = function generateHTMLTemplate(args) {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-		<link rel="stylesheet" href="https://unpkg.com/gutenberg-css" media="print" charset="utf-8">
-		<link rel="stylesheet" href="https://unpkg.com/gutenberg-css/dist/themes/modern.min.css" media="print" charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/gutenberg-css" media="print" charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/gutenberg-css/dist/themes/modern.min.css" media="print" charset="utf-8">
+    <meta charset="utf-8"/>
   </head>
   <body>
     ${generateSchemaHTML(generateSchemaPaths(rootSchema, []))}
