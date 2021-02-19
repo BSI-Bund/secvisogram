@@ -20,7 +20,7 @@ export default function Scores(props) {
       label="List of scores"
       description="contains score objects for the currrent vulnerability."
       defaultItemValue={() => ({
-        products: [],
+        products: [''],
       })}
     >
       {(scoreItemProps) => (

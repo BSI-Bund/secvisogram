@@ -64,6 +64,7 @@ const ProductGroups = React.memo(
         description="Contains a list of product groups."
         defaultItemValue={() => ({
           group_id: '',
+          product_ids: ['', ''],
         })}
       >
         {(itemProps) => (
@@ -144,6 +145,7 @@ const Relationships = React.memo(
         label="List of relationships"
         description="Contains a list of relationships."
         defaultItemValue={() => ({
+          full_product_name: { name: '', product_id: '' },
           product_reference: '',
           relates_to_product_reference: '',
           relationship_type: '',
