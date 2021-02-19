@@ -28,50 +28,23 @@ export const useAlert = ({
   const show = () => setIsVisible(true)
   const hide = () => setIsVisible(false)
 
-  const cancelRef = /** @type {React.RefObject<HTMLButtonElement>} */ (React.useRef())
-
-  const Alert = () => (
-    <>
-      {isVisible && (
-        <AlertDialogOverlay
-          onDismiss={hide}
-          leastDestructiveRef={cancelRef}
-          className="z-10"
-        >
-          <AlertDialogContent className="rounded shadow-xl">
-            <AlertDialogLabel className="text-xl mb-3">
-              {label}
-            </AlertDialogLabel>
-            <AlertDialogDescription className="mb-3">
-              {description}
-            </AlertDialogDescription>
-            <div className="alert-buttons flex justify-end items-center">
-              <button
-                type="button"
-                className="py-1 px-3 rounded shadow border border-red-500 bg-red-500 hover:text-red-500 text-white hover:bg-white"
-                onClick={confirm}
-              >
-                {confirmLabel}
-              </button>
-              <button
-                type="button"
-                className="ml-4 py-1 px-3 rounded shadow border border-gray-500 bg-gray-500 text-white hover:text-gray-500 hover:bg-white"
-                ref={cancelRef}
-                onClick={hide}
-              >
-                {cancelLabel}
-              </button>
-            </div>
-          </AlertDialogContent>
-        </AlertDialogOverlay>
-      )}
-    </>
-  )
-
   return {
     show,
     hide,
-    Alert,
+    Alert: () => (
+      <>
+        {isVisible && (
+          <Alert
+            label={label}
+            description={description}
+            cancelLabel={cancelLabel}
+            confirmLabel={confirmLabel}
+            onCancel={hide}
+            onConfirm={confirm}
+          />
+        )}
+      </>
+    ),
   }
 }
 
