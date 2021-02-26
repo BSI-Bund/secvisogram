@@ -118,7 +118,7 @@ To provide a production release of Secvisogram, follow the following steps:
 
 - Run `npm run build`
 - Deploy the content of the `app/dist` folder to a webserver
-- Configure SSL and HTTP headers according to the template (see nginx)
+- Configure TLS and HTTP headers according to the template (see nginx)
 
 ### Deploy to production using nginx
 
@@ -173,7 +173,7 @@ server {
 }
 ```
 
-**SSL Configuration parameters: `/etc/nginx/snippets/ssl-secvisogram.conf`**
+**TLS Configuration parameters: `/etc/nginx/snippets/ssl-secvisogram.conf`**
 
 ```
 # Certificates used
