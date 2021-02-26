@@ -2,7 +2,7 @@
 
 This document gives an overview on how to develop Secvisogram, about the general technical and architectural design decisions and how to deploy for production.
 
-<!-- TOC depthFrom:2 depthTo:3 -->
+<!-- TOC depthFrom:2 depthTo:3 insertAnchor:true -->
 
 - [Prerequisites & Development Environment](#prerequisites--development-environment)
 - [Secvisogram Architecture & Design](#secvisogram-architecture--design)
@@ -31,6 +31,8 @@ This document gives an overview on how to develop Secvisogram, about the general
 
 **Note:** Please also refer to [`PREVIEW-TEMPLATING.md`](PREVIEW-TEMPLATING.md) and [`SECURITY-CONSIDERATIONS.md`](SECURITY-CONSIDERATIONS.md) while developing Secvisogram.
 
+<a id="markdown-prerequisites--development-environment" name="prerequisites--development-environment"></a>
+
 ## Prerequisites & Development Environment
 
 - Git
@@ -40,11 +42,17 @@ This document gives an overview on how to develop Secvisogram, about the general
 
 Secvisogram recommends using Visual Studio Code as the source code IDE. A `.vscode`-profile is included in this project. It lists recommended extensions, improving the development experience.
 
+<a id="markdown-secvisogram-architecture--design" name="secvisogram-architecture--design"></a>
+
 ## Secvisogram Architecture & Design
+
+<a id="markdown-overview-diagram" name="overview-diagram"></a>
 
 ### Overview Diagram
 
 ![architecture](DEVELOPMENT-architecture.png)
+
+<a id="markdown-secvisogram-components" name="secvisogram-components"></a>
 
 ### Secvisogram Components
 
@@ -63,7 +71,11 @@ The view is a react-component which defines the main layout of the application.
 **View-Components**:
 View-components are react-components which provide the actual content for the application.
 
+<a id="markdown-technology-stack--libraries" name="technology-stack--libraries"></a>
+
 ## Technology Stack & Libraries
+
+<a id="markdown-core-stack--technology" name="core-stack--technology"></a>
 
 ### Core Stack & Technology
 
@@ -75,6 +87,8 @@ Typescript is used to type and document the source code. It is not used as the l
 
 **Tailwind CSS:**
 Tailwind-CSS is a CSS-Framework and library of CSS-classes to be reused across components to keep them adaptable and yet themeable.
+
+<a id="markdown-frameworks--libraries" name="frameworks--libraries"></a>
 
 ### Frameworks & Libraries
 
@@ -102,6 +116,8 @@ Tailwind-CSS is a CSS-Framework and library of CSS-classes to be reused across c
 | CLI           | yargs          | Yargs helps you build interactive command line tools. See [yargs](https://github.com/yargs/yargs)                                       |
 | JSON-Editor   | ACE editor     | Ace is an embeddable code editor written in JavaScript. See [https://ace.c9.io/](https://ace.c9.io/)                                    |
 
+<a id="markdown-building-secvisogram" name="building-secvisogram"></a>
+
 ## Building Secvisogram
 
 | Command         | Purpose                                                             |
@@ -110,7 +126,11 @@ Tailwind-CSS is a CSS-Framework and library of CSS-classes to be reused across c
 | `npm test`      | Runs typecheck, the linter and the test suite                       |
 | `npm run build` | Builds the application as a static asset and places it into `dist/` |
 
+<a id="markdown-building--deploying-secvisogram-into-production" name="building--deploying-secvisogram-into-production"></a>
+
 ## Building & Deploying Secvisogram into Production
+
+<a id="markdown-create-and-building-a-release" name="create-and-building-a-release"></a>
 
 ### Create and Building a release
 
@@ -119,6 +139,8 @@ To provide a production release of Secvisogram, follow the following steps:
 - Run `npm run build`
 - Deploy the content of the `app/dist` folder to a webserver
 - Configure TLS and HTTP headers according to the template (see nginx)
+
+<a id="markdown-deploy-to-production-using-nginx" name="deploy-to-production-using-nginx"></a>
 
 ### Deploy to production using nginx
 
@@ -231,6 +253,8 @@ add_header X-Frame-Options DENY;
 add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-eval' https: blob: ; style-src 'self' 'unsafe-inline' unpkg.com; img-src 'self' https: data: blob: ; media-src 'none'; connect-src 'none'; ";
 ```
 
+<a id="markdown-secvisogram-folder-structure" name="secvisogram-folder-structure"></a>
+
 ## Secvisogram folder structure
 
 | Folder             | description                                  |
@@ -249,7 +273,11 @@ usage of `app/lib/shared/Core/entities/DocumentEntity.js` from within `app/lib/s
 
 Exceptions are the so-called "shared" folders. They may be used if they are located on the same or higher file level, e.g. usage of `app/lib/shared/Core.js` from within `app/lib/SecvisogramPage.js` is allowed because it is contained in a "shared" folder.
 
+<a id="markdown-technical-design" name="technical-design"></a>
+
 ## Technical Design
+
+<a id="markdown-form-editor" name="form-editor"></a>
 
 ### Form Editor
 
@@ -257,23 +285,35 @@ The "Form Editor" tab represents the structure of the JSON schema. It uses conta
 
 New attributes can be added by instantiating a suitable attribute component (e.g. `app/lib/SecvisogramPage/View/EditorTab/shared/TextAttribute.js`).
 
+<a id="markdown-navigation" name="navigation"></a>
+
 ### Navigation
 
 The various parts of the application are accessible using the tabs. The state indicating which tab is active is stored in the react-state in `app/lib/SecvisogramPage.js`. Navigation is only disabled if a parsing error occurs in `app/lib/SecvisogramPage/View/JsonEditorTab.js`.
+
+<a id="markdown-validation" name="validation"></a>
 
 ### Validation
 
 The application uses two validation patterns: The fast HTML5 validation; and the validation according to the JSON schema, which kicks in either 300ms after editing the document or when changing the tab. The status of the validation is shown in the "Form Editor" tab, the "JSON Editor" tab and the "Preview" tab.
 
+<a id="markdown-sanitizing" name="sanitizing"></a>
+
 ### Sanitizing
 
 The "CSAF Document" tab uses an algorithm to remove elements which are either invalid, empty or null (see `app/lib/shared/Core/entities/DocumentEntity.js`) and shows the removed paths.
+
+<a id="markdown-data-model" name="data-model"></a>
 
 ### Data Model
 
 The application state is maintained in the `app/lib/SecvisogramPage.js`. It contains the state which is needed to coordinate the communication with the `app/lib/shared/Core.js`. The editor state is maintained in the `app/lib/SecvisogramPage/View.js`. It contains the state of the current editing status of the document.
 
+<a id="markdown-debugging--testing-secvisogram" name="debugging--testing-secvisogram"></a>
+
 ## Debugging & Testing Secvisogram
+
+<a id="markdown-unit-tests" name="unit-tests"></a>
 
 ### Unit Tests
 
@@ -282,6 +322,8 @@ Unit tests account for the logic behind the `Core` component and are written usi
 You can run them from CLI via `npm test`. Alternatively, you can open http://localhost:8080/tests.html in your browser, which provides you with the ability to run specific tests only.
 
 These are located in the folder `/app/tests`.
+
+<a id="markdown-view-tests" name="view-tests"></a>
 
 ### View-Tests
 
@@ -292,6 +334,8 @@ Once you have started the system as described above, you can view the tests at t
 http://localhost:8080/view-tests.html
 
 On this page, there is a drop-down menu in the footer that can be used to select tests.
+
+<a id="markdown-cli" name="cli"></a>
 
 ## CLI
 
