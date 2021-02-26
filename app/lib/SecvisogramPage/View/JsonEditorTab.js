@@ -6,7 +6,7 @@ import {
   faFileAlt,
   faFolderOpen,
   faSave,
-  faWindowClose,
+  faWindowClose
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
@@ -134,7 +134,7 @@ export default function JsonEditorTab({
         value: editorRef.current?.getValue() ?? '',
       }))
     }
-    editorEl.style.fontSize = '18px'
+    editorEl.style.fontSize = '14px'
 
     editorRef.current.session.setMode('ace/mode/json')
     editorRef.current.setTheme('ace/theme/eclipse')
