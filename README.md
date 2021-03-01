@@ -74,8 +74,8 @@ When leaving a view without saving, e.g. clicking on another application tab or 
 The _Form Editor_ view is an HTML form with live input validation. Additionally, the CSAF JSON Schema checks the following constraints:
 
 - Language fields in the form are checked for plausibility against the values from the IANA database
-- The consistency of CVSS string and accompanying fields are checked
-- The consistency of the CWE ID and description are checked
+- The consistency of CVSS string and accompanying fields is checked
+- The consistency of the CWE ID and description is checked
 
 CVSS 3 input fields are completed with the data from a possibly copied vector string and their values are recalculated. This gives the user an elegant way to use a possibly existing and copied CVSS 2.0 vector and to partially adjust the values.
 
@@ -86,7 +86,7 @@ Simple input errors are displayed directly alongside the respective form field. 
 _Opening & Saving Files_
 You can open and save your CSAF JSON document at any time using the respective _Open_ and _Save_ buttons. If your document fails the validation checks, a confirmation dialog will appear.
 
-The _CSAF Document_ tab offers functionality to extract the standard-valid subset of you current document.
+The _CSAF Document_ tab offers functionality to extract the standard-valid subset of your current document.
 
 _Identifying & Solving Validation issues_
 Use the `Show errors`-link in the Form Editor view to reveal a linked list of validation issues. Here you can click on any validation issue and directly jump to the affected form elements.
@@ -105,7 +105,7 @@ Use the toggle button to switch between the Rendered web view and the HTML sourc
 
 This view does not include any editing functionality. It **always displays the valid subset of your current CSAF document** by removing any invalid and/or empty CSAF document elements.
 
-You can use this view and the embedded _Export CSAF_ button to always quickly extract the standard-valid subset of you current CSAF document.
+You can use this view and the embedded _Export CSAF_ button to always quickly extract the standard-valid subset of your current CSAF document.
 
 ## Developing Secvisogram
 
@@ -119,4 +119,4 @@ It's possible to change and provide custom Preview Templates. Please refer to [`
 
 ### Security Considerations
 
-Please refer to [`SECURITY-CONSIDERATIONS.md`](SECURITY-CONSIDERATIONS.md) for details about how Secvisogram addresses the OWAS Top 10 Web Application Vulnerabilities.
+Please refer to [`SECURITY-CONSIDERATIONS.md`](SECURITY-CONSIDERATIONS.md) for details about how Secvisogram addresses the [OWASP Top 10 Web Application Security Risks](https://owasp.org/www-project-top-ten/).
