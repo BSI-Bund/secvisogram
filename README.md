@@ -29,7 +29,7 @@ Secvisogram aims to make it easier for vendors and other security advisory issui
 
 ## Getting started
 
-Assure that you have Node 14 (LTS) and npm 6 or newer installed.
+Assure that you have **Node 14 (LTS) and npm 6 or newer** installed.
 [Nodesource](https://github.com/nodesource/distributions/blob/master/README.md) provides binary distributions for various Linux distributions.
 
       $ node --version ; npm --version
@@ -41,7 +41,7 @@ Check out the repository and navigate to the working directory.
     git clone git@gitlab-ext.exxcellent.de:bsi/secvisogram.git
     cd secvisogram
 
-This repository includes git submodules for vendor modules like Ace. Make sure to initialize and update the submodules before you start to work with the repository.
+This repository includes git submodules for vendor modules like [Ace](https://ace.c9.io/). Make sure to initialize and update the submodules before you start to work with the repository.
 
     git submodule update --init --recursive
 
