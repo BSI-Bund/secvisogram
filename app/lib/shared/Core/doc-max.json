@@ -170,6 +170,7 @@
             "modifiedPrivilegesRequired": "",
             "modifiedUserInteraction": "",
             "modifiedScope": "",
+            "modifiedConfidentialityImpact": "",
             "modifiedIntegrityImpact": "",
             "modifiedAvailabilityImpact": "",
             "environmentalScore": "",
