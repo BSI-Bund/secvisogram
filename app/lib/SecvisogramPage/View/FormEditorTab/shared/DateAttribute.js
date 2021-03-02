@@ -32,7 +32,7 @@ export default function DateAttribute({
               value={/** @type {string} */ (props.value)}
               required={required}
               onChange={(/** @type {string} */ newValue) => {
-                onChange(newValue)
+                onChange(newValue, props.value)
               }}
               readOnly={readOnly}
             />
@@ -40,7 +40,7 @@ export default function DateAttribute({
           {deletable ? (
             <Delete
               doDelete={() => {
-                onDelete()
+                onDelete(props.value)
               }}
             />
           ) : null}

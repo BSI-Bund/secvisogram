@@ -25,6 +25,7 @@ const EMPTY_ARRAY = []
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
  *  defaultValue?(): {}
+ *  onDelete?(): void
  *  onUpdate: (dataPath: string, update: {}) => void
  *  children(props: (attributeName: string) => ChildProps): React.ReactNode;
  * }} props

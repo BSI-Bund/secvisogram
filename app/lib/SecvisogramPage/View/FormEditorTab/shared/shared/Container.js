@@ -25,6 +25,7 @@ const numberRegExp = /^(0|[1-9][0-9]*)$/
  *   defaultValue?(): V
  *   isValid(v: unknown): v is V
  *   onUpdate(dataPath: string, update: {}): void
+ *   onDelete?(): void
  *   children(props: { value: V; validationErrors: import('../../../../../shared/validationTypes').ValidationError[] }): React.ReactNode;
  * }} props
  * @template V
@@ -40,6 +41,7 @@ export default function Container({
   defaultValue,
   isValid,
   onUpdate,
+  onDelete,
   children,
 }) {
   const validationErrorsForChildren = validationErrors.filter((e) =>
@@ -62,6 +64,7 @@ export default function Container({
       ? { $unset: [objectName] }
       : { $splice: [[Number(objectName), 1]] }
     onUpdate(compile(parsedDataPath.slice(0, -1)), operation)
+    onDelete?.()
   }
 
   const confirm = () => {

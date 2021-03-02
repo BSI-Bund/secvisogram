@@ -46,7 +46,7 @@ export default function TextAttribute({
               required={required}
               readOnly={readOnly}
               onChange={(e) => {
-                onChange(e.target.value)
+                onChange(e.target.value, props.value)
               }}
               onBlur={onBlur}
             />
@@ -54,7 +54,7 @@ export default function TextAttribute({
           {deletable ? (
             <Delete
               doDelete={() => {
-                onDelete()
+                onDelete(props.value)
               }}
             />
           ) : null}

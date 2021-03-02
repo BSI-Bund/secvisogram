@@ -38,14 +38,14 @@ export default function TextAreaAttribute({
               minLength={minLength}
               required={required}
               onChange={(e) => {
-                onChange(e.target.value)
+                onChange(e.target.value, props.value)
               }}
             />
           </div>
           {deletable ? (
             <Delete
               doDelete={() => {
-                onDelete()
+                onDelete(props.value)
               }}
             />
           ) : null}

@@ -42,6 +42,8 @@ import useDebounce from './View/shared/useDebounce'
  *  onExportHTML(html: string, doc: {}): void
  *  onLockTab(): void
  *  onUnlockTab(): void
+ *  onCollectProductIds(document: {}): Promise<void | {ids: Map<string, string>}>
+ *  onCollectGroupIds(document: {}): Promise<void | {ids: Map<string, string>}>
  * }} props
  */
 function View({
@@ -66,6 +68,8 @@ function View({
   onExportHTML,
   onLockTab,
   onUnlockTab,
+  onCollectProductIds,
+  onCollectGroupIds,
 }) {
   /**
    * Initial values for the editors. Can be used to detect changes of the
@@ -132,6 +136,14 @@ function View({
   const onExportCSAFCallback = React.useCallback(() => {
     onExportCSAF(formValues.doc)
   }, [formValues.doc, onExportCSAF])
+
+  const onCollectProductIdsCallback = React.useCallback(() => {
+    return onCollectProductIds(formValues.doc)
+  }, [formValues.doc, onCollectProductIds])
+
+  const onCollectGroupIdsCallback = React.useCallback(() => {
+    return onCollectGroupIds(formValues.doc)
+  }, [formValues.doc, onCollectGroupIds])
 
   /**
    * Resets the editor state if a new document is created.
@@ -212,6 +224,8 @@ function View({
                 onDownload={onDownload}
                 onNewDocMin={onNewDocMin}
                 onNewDocMax={onNewDocMax}
+                onCollectProductIds={onCollectProductIdsCallback}
+                onCollectGroupIds={onCollectGroupIdsCallback}
               />
             ) : activeTab === 'SOURCE' ? (
               <JsonEditorTab

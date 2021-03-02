@@ -13,9 +13,10 @@ export default React.memo(
    *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
    *  dataPath: string
    *  onUpdate(dataPath: string, update: {}): void
+   *  productName?: string
    * }} props
    */
-  function Branches(props) {
+  function Branches({ productName = '', ...props }) {
     return (
       <ArrayContainer
         {...props}
@@ -32,36 +33,47 @@ export default React.memo(
             label="Branch"
             description="Is a part of the hierarchical structure of the product tree."
           >
-            {(branchProps) => (
-              <>
-                <TextAttribute
-                  {...branchProps('name')}
-                  label="Name of the branch"
-                  description="Contains the canonical descriptor or 'friendly name' of the branch."
-                  placeholder="Microsoft ..."
-                />
-                <EnumAttribute
-                  {...branchProps('type')}
-                  label="Type of the branch"
-                  description="Describes the characteristics of the labeled branch."
-                  options={[
-                    'architecture',
-                    'host_name',
-                    'language',
-                    'legacy',
-                    'patch_level',
-                    'product_family',
-                    'product_name',
-                    'product_version',
-                    'service_pack',
-                    'specification',
-                    'vendor',
-                  ]}
-                />
-                <Branches {...branchProps('branches')} />
-                <FullProductName {...branchProps('product')} />
-              </>
-            )}
+            {(branchProps) => {
+              const name = branchProps('name').value ?? ''
+              const fullProductName =
+                productName.length == 0 ? `${name}` : `${productName} ${name}`
+              return (
+                <>
+                  <TextAttribute
+                    {...branchProps('name')}
+                    label="Name of the branch"
+                    description="Contains the canonical descriptor or 'friendly name' of the branch."
+                    placeholder="Microsoft ..."
+                  />
+                  <EnumAttribute
+                    {...branchProps('type')}
+                    label="Type of the branch"
+                    description="Describes the characteristics of the labeled branch."
+                    options={[
+                      'architecture',
+                      'host_name',
+                      'language',
+                      'legacy',
+                      'patch_level',
+                      'product_family',
+                      'product_name',
+                      'product_version',
+                      'service_pack',
+                      'specification',
+                      'vendor',
+                    ]}
+                  />
+                  <Branches
+                    productName={fullProductName}
+                    {...branchProps('branches')}
+                  />
+                  <FullProductName
+                    productName={fullProductName}
+                    {...branchProps('product')}
+                  />
+                </>
+              )
+            }}
           </ObjectContainer>
         )}
       </ArrayContainer>

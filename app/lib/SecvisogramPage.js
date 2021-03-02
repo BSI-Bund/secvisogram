@@ -172,6 +172,28 @@ createCore().then((core) => {
             },
             [handleError, strict]
           )}
+          onCollectProductIds={React.useCallback(
+            async (document) => {
+              try {
+                const ids = await core.document.collectProductIds({ document })
+                return ids
+              } catch (error) {
+                return handleError(error)
+              }
+            },
+            [handleError]
+          )}
+          onCollectGroupIds={React.useCallback(
+            async (document) => {
+              try {
+                const ids = await core.document.collectGroupIds({ document })
+                return ids
+              } catch (error) {
+                return handleError(error)
+              }
+            },
+            [handleError]
+          )}
           onNewDocMin={React.useCallback(() => {
             return core.document
               .newDocMin()

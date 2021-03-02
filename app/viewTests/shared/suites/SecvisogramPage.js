@@ -111,6 +111,14 @@ const props = {
   onExportHTML: console.log.bind(console, 'onExportHTML'),
   onLockTab: console.log.bind(console, 'onLockTab'),
   onUnlockTab: console.log.bind(console, 'onUnlockTab'),
+  onCollectProductIds: () => {
+    console.log('onCollectProductIds')
+    return new Promise(() => {})
+  },
+  onCollectGroupIds: () => {
+    console.log('onCollectGroupIds')
+    return new Promise(() => {})
+  },
 }
 
 export const tests = [

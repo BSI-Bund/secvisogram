@@ -17,11 +17,11 @@ const numberRegExp = /^(0|[1-9][0-9]*)$/
  *  defaultValue?(): string
  *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
- *  children?: React.ReactNode | ((params: { isInArray: boolean; onDelete(): void; onChange(value: V): void }) => React.ReactNode)
+ *  children?: React.ReactNode | ((params: { isInArray: boolean; onDelete(value: V): void; onChange(value: V, prevValue: V): void }) => React.ReactNode)
  *  canBeAdded?: boolean
  *  onUpdate(dataPath: string, update: {}): void
- *  onChange?(value: V): void
- *  onDelete?(): void
+ *  onChange?(value: V, oldValue: V): void
+ *  onDelete?(value: V): void
  * }} props
  * @template V
  */
@@ -63,18 +63,18 @@ export default function Attribute({
           {typeof children === 'function'
             ? children({
                 isInArray,
-                onChange(v) {
+                onChange(v, prevValue) {
                   props.onUpdate(dataPath, { $set: v })
-                  props.onChange?.(v)
+                  props.onChange?.(v, prevValue)
                 },
-                onDelete() {
+                onDelete(v) {
                   props.onUpdate(
                     compile(parsedDataPath.slice(0, -1)),
                     !isInArray
                       ? { $unset: [attributeName] }
                       : { $splice: [[Number(attributeName), 1]] }
                   )
-                  props.onDelete?.()
+                  props.onDelete?.(v)
                 },
               })
             : children}

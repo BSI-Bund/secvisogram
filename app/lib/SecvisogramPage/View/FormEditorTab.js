@@ -28,6 +28,8 @@ import { useAlert } from './shared/Alert'
  *  onDownload(doc: {}): void
  *  onNewDocMin(): void
  *  onNewDocMax(): void
+ *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
+ *  onCollectGroupIds(): Promise<void | {ids: Map<string, string>}>
  * }} props
  */
 export default function FormEditorTab({
@@ -38,6 +40,8 @@ export default function FormEditorTab({
   onDownload,
   onNewDocMin,
   onNewDocMax,
+  onCollectProductIds,
+  onCollectGroupIds,
 }) {
   const ref = React.useRef(/** @type {HTMLDivElement | null} */ (null))
   const [showErrors, setShowErrors] = React.useState(false)
@@ -107,6 +111,8 @@ export default function FormEditorTab({
               value={doc}
               validationErrors={errors}
               onUpdate={onUpdate}
+              onCollectProductIds={onCollectProductIds}
+              onCollectGroupIds={onCollectGroupIds}
             />
           </div>
           <div
@@ -260,6 +266,8 @@ export default function FormEditorTab({
  *  validationErrors: import('../../shared/validationTypes').ValidationError[]
  *  dataPath: string
  *  onUpdate(dataPath: string, update: {}): void
+ *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
+ *  onCollectGroupIds(): Promise<void | {ids: Map<string, string>}>
  * }} props
  */
 function Doc(props) {
@@ -298,8 +306,15 @@ function Doc(props) {
       {(csafProps) => (
         <>
           <Document {...csafProps('document')} />
-          <ProductTree {...csafProps('product_tree')} />
-          <Vulnerabilities {...csafProps('vulnerabilities')} />
+          <ProductTree
+            {...csafProps('product_tree')}
+            onCollectProductIds={props.onCollectProductIds}
+          />
+          <Vulnerabilities
+            {...csafProps('vulnerabilities')}
+            onCollectGroupIds={props.onCollectGroupIds}
+            onCollectProductIds={props.onCollectProductIds}
+          />
         </>
       )}
     </ObjectContainer>

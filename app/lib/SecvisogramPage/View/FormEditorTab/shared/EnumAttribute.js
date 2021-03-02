@@ -35,7 +35,7 @@ export default function EnumAttribute({
               list={listId}
               value={/** @type {string} */ (props.value)}
               onChange={(e) => {
-                onChange(e.target.value)
+                onChange(e.target.value, props.value)
               }}
               required={required}
             />
@@ -48,7 +48,7 @@ export default function EnumAttribute({
           {deletable ? (
             <Delete
               doDelete={() => {
-                onDelete()
+                onDelete(props.value)
               }}
             />
           ) : null}

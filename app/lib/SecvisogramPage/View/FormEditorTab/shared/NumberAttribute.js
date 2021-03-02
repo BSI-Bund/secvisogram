@@ -47,14 +47,14 @@ export default function NumberAttribute({
               readOnly={readOnly}
               onChange={(e) => {
                 const float = parseFloat(e.target.value)
-                onChange(Number.isNaN(float) ? '' : float)
+                onChange(Number.isNaN(float) ? '' : float, String(props.value))
               }}
             />
           </div>
           {deletable ? (
             <Delete
               doDelete={() => {
-                onDelete()
+                onDelete(String(props.value))
               }}
             />
           ) : null}

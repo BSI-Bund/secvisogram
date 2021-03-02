@@ -24,9 +24,15 @@ export default React.memo(
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
    *  dataPath: string
    *  onUpdate(dataPath: string, update: {}): void
+   *  onCollectGroupIds(): Promise<void | {ids: Map<string, string>}>
+   *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
    * }} props
    */
-  function Vulnerabilities(props) {
+  function Vulnerabilities({
+    onCollectProductIds,
+    onCollectGroupIds,
+    ...props
+  }) {
     return (
       <ArrayContainer
         {...props}
@@ -34,7 +40,13 @@ export default React.memo(
         description="Represents a list of all relevant vulnerability information items."
         defaultItemValue={() => ({})}
       >
-        {(itemProps) => <Vulnerability {...itemProps} />}
+        {(itemProps) => (
+          <Vulnerability
+            {...itemProps}
+            onCollectProductIds={onCollectProductIds}
+            onCollectGroupIds={onCollectGroupIds}
+          />
+        )}
       </ArrayContainer>
     )
   },
@@ -49,9 +61,11 @@ const Vulnerability = React.memo(
    *  dataPath: string
    *  defaultValue?(): {}
    *  onUpdate(dataPath: string, update: {}): void
+   *  onCollectGroupIds(): Promise<void | {ids: Map<string, string>}>
+   *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
    * }} props
    */
-  function Vulnerability(props) {
+  function Vulnerability({ onCollectProductIds, onCollectGroupIds, ...props }) {
     return (
       <ObjectContainer
         {...props}
@@ -69,7 +83,10 @@ const Vulnerability = React.memo(
               deletable
             />
             <CweAttribute {...vulnerabilityProps('cwe')} />
-            <Scores {...vulnerabilityProps('scores')} />
+            <Scores
+              {...vulnerabilityProps('scores')}
+              onCollectProductIds={onCollectProductIds}
+            />
             <DateAttribute
               {...vulnerabilityProps('discovery_date')}
               label="Discovery date"
@@ -173,41 +190,49 @@ const Vulnerability = React.memo(
                     {...productStatusProps('fixed')}
                     label="Fixed"
                     description="These versions contain a fix for the vulnerability but may not be the recommended fixed versions."
+                    onCollectProductIds={onCollectProductIds}
                   />
                   <Products
                     {...productStatusProps('first_fixed')}
                     label="First fixed"
                     description="These versions contain the first fix for the vulnerability but may not be the recommended fixed versions."
+                    onCollectProductIds={onCollectProductIds}
                   />
                   <Products
                     {...productStatusProps('recommended')}
                     label="Recommended"
                     description="These versions have a fix for the vulnerability and are the vendor-recommended versions for fixing the vulnerability."
+                    onCollectProductIds={onCollectProductIds}
                   />
                   <Products
                     {...productStatusProps('known_affected')}
                     label="Known affected"
                     description="These versions are known to be affected by the vulnerability."
+                    onCollectProductIds={onCollectProductIds}
                   />
                   <Products
                     {...productStatusProps('first_affected')}
                     label="First affected"
                     description="These are the first versions of the releases known to be affected by the vulnerability."
+                    onCollectProductIds={onCollectProductIds}
                   />
                   <Products
                     {...productStatusProps('last_affected')}
                     label="Last affected"
                     description="These are the last versions in a release train known to be affected by the vulnerability. Subsequently released versions would contain a fix for the vulnerability."
+                    onCollectProductIds={onCollectProductIds}
                   />
                   <Products
                     {...productStatusProps('known_not_affected')}
                     label="Known not affected"
                     description="These versions are known not to be affected by the vulnerability."
+                    onCollectProductIds={onCollectProductIds}
                   />
                   <Products
                     {...productStatusProps('under_investigation')}
                     label="Under investigation"
                     description="It is not known yet whether this version is or is not affected by the vulnerability. However, it is still under investigation - the result will be provided in a later release of the document."
+                    onCollectProductIds={onCollectProductIds}
                   />
                 </>
               )}
@@ -262,8 +287,14 @@ const Vulnerability = React.memo(
                           />
                         )}
                       </ArrayContainer>
-                      <ProductGroups {...remediationProps('group_ids')} />
-                      <Products {...remediationProps('product_ids')} />
+                      <ProductGroups
+                        {...remediationProps('group_ids')}
+                        onCollectGroupIds={onCollectGroupIds}
+                      />
+                      <Products
+                        {...remediationProps('product_ids')}
+                        onCollectProductIds={onCollectProductIds}
+                      />
                       <ObjectContainer
                         {...remediationProps('restart_required')}
                         label="Restart required by remediation"
@@ -357,8 +388,14 @@ const Vulnerability = React.memo(
                         description="Contains the date when the assessment was done or the threat appeared."
                         deletable
                       />
-                      <Products {...threatProps('product_ids')} />
-                      <ProductGroups {...threatProps('group_ids')} />
+                      <Products
+                        {...threatProps('product_ids')}
+                        onCollectProductIds={onCollectProductIds}
+                      />
+                      <ProductGroups
+                        {...threatProps('group_ids')}
+                        onCollectGroupIds={onCollectGroupIds}
+                      />
                     </>
                   )}
                 </ObjectContainer>

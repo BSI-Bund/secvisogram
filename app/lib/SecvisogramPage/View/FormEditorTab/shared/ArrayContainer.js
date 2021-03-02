@@ -31,6 +31,7 @@ const EMPTY_ARRAY = []
  *   validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *   defaultItemValue(): V
  *   onUpdate(dataPath: string, update: {}): void
+ *   onDelete?(): void
  *   children(props: ChildProps<V>): JSX.Element
  * }} props
  * @template V

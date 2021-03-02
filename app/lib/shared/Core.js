@@ -56,6 +56,56 @@ export default async function createCore() {
       },
 
       /**
+       * @typedef {Object} FullProductName
+       * @property {string} name
+       * @property {string} product_id
+       */
+
+      /**
+       * @typedef {Object} Branch
+       * @property {Array<Branch>} branches
+       * @property {FullProductName} product
+       */
+
+      /**
+       * This method collects product_ids and corresponding names in the given document and returns a result object.
+       *
+       * @param {{
+       *  document: any
+       *  strict?: boolean
+       * }} params
+       * @returns {Promise<{
+       *   ids: Map<string, string>;
+       * }>}
+       */
+      async collectProductIds({ document, strict = true }) {
+        const schemaValidator = strict
+          ? schemaValidatorStrict
+          : schemaValidatorLenient
+        const documentEntity = new DocumentEntity({ schemaValidator })
+        return documentEntity.collectProductIds({ document })
+      },
+
+      /**
+       * This method collects group_ids and corresponding summaries in the given document and returns a result object.
+       *
+       * @param {{
+       *  document: any
+       *  strict?: boolean
+       * }} params
+       * @returns {Promise<{
+       *   ids: Map<string, string>;
+       * }>}
+       */
+      async collectGroupIds({ document, strict = true }) {
+        const schemaValidator = strict
+          ? schemaValidatorStrict
+          : schemaValidatorLenient
+        const documentEntity = new DocumentEntity({ schemaValidator })
+        return documentEntity.collectGroupIds({ document })
+      },
+
+      /**
        * Provides a minimal new document.
        */
       async newDocMin() {

@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 import { parse } from 'json-pointer'
 import unset from 'lodash/fp/unset'
 import isEmpty from 'lodash/isEmpty'
@@ -24,6 +25,99 @@ export default class DocumentEntity {
    */
   validate({ document }) {
     return this.validateDoc(document)
+  }
+
+  /**
+   * @typedef {Object} FullProductName
+   * @property {string} name
+   * @property {string} product_id
+   */
+
+  /**
+   * @typedef {Object} Branch
+   * @property {Array<Branch>} branches
+   * @property {FullProductName} product
+   */
+
+  /**
+   * @typedef {Object} ProductGroup
+   * @property {string} summary
+   * @property {string} group_id
+   */
+
+  /**
+   * This method collects ids and corresponding names in the given document and returns a result object.
+   *
+   * @param {{ document: {
+   *          product_tree: {
+   *            full_product_names: [{name: string, product_id: string}],
+   *            relationships: [{full_product_name: FullProductName}],
+   *            branches: [Branch]
+   *          }
+   *        }
+   * }} params
+   * @returns {{
+   *   ids: Map<string, string>;
+   * }}
+   */
+  collectProductIds({ document }) {
+    const map = new Map()
+
+    const fullProductNames = document.product_tree?.full_product_names
+    if (fullProductNames) {
+      fullProductNames.forEach((fullProductName) => {
+        if (fullProductName.product_id) {
+          map.set(fullProductName.product_id, fullProductName.name ?? '')
+        }
+      })
+    }
+
+    const relationships = document.product_tree?.relationships
+    if (relationships) {
+      relationships.forEach((relationship) => {
+        const fullProductName = relationship.full_product_name
+        if (fullProductName) {
+          if (fullProductName.product_id) {
+            map.set(fullProductName.product_id, fullProductName.name ?? '')
+          }
+        }
+      })
+    }
+
+    const branches = document.product_tree?.branches
+    if (branches) {
+      traverseBranches(branches, map)
+    }
+
+    return { ids: map }
+  }
+
+  /**
+   * This method collects ids and corresponding names in the given document and returns a result object.
+   *
+   * @param {{ document: {
+   *          product_tree: {
+   *            product_groups: [ProductGroup]
+   *          }
+   *        }
+   * }} params
+   * @returns {{
+   *   ids: Map<string, string>;
+   * }}
+   */
+  collectGroupIds({ document }) {
+    const map = new Map()
+
+    const productGroups = document.product_tree?.product_groups
+    if (productGroups) {
+      productGroups.forEach((productGroup) => {
+        if (productGroup.group_id) {
+          map.set(productGroup.group_id, productGroup.summary ?? '')
+        }
+      })
+    }
+
+    return { ids: map }
   }
 
   /**
@@ -208,3 +302,20 @@ const vulnerabilityHasCWEFields = (vulnerability) =>
   typeof vulnerability.cwe.name === 'string'
     ? true
     : false
+
+/**
+ *
+ * @param {Array<Branch>} branches
+ * @param {*} map
+ */
+const traverseBranches = (branches, map) => {
+  branches.forEach((branch) => {
+    const fullProductName = branch.product
+    if (fullProductName) {
+      if (fullProductName.product_id) {
+        map.set(fullProductName.product_id, fullProductName.name ?? '')
+      }
+    }
+    if (branch.branches) traverseBranches(branch.branches, map)
+  })
+}

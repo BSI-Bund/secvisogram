@@ -11,9 +11,10 @@ import CVSSV3Editor from './Scores/CVSS3Editor'
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
  *  onUpdate(dataPath: string, update: {}): void
+ *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
  * }} props
  */
-export default function Scores(props) {
+export default function Scores({ onCollectProductIds, ...props }) {
   return (
     <ArrayContainer
       {...props}
@@ -31,7 +32,10 @@ export default function Scores(props) {
         >
           {(scoreProps) => (
             <>
-              <Products {...scoreProps('products')} />
+              <Products
+                {...scoreProps('products')}
+                onCollectProductIds={onCollectProductIds}
+              />
               <ObjectContainer
                 {...scoreProps('cvss_v2')}
                 label="JSON Schema for Common Vulnerability Scoring System version 2.0"
