@@ -1,5 +1,13 @@
 {
   "document": {
+    "acknowledgments": [
+      {
+        "names": [""],
+        "organizations": [""],
+        "summary": "",
+        "urls": [""]
+      }
+    ],
     "aggregate_severity": {
       "namespace": "",
       "text": ""
