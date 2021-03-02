@@ -59,6 +59,13 @@ const Note = React.memo(
         {(noteProps) => (
           <>
             <TextAttribute
+              {...noteProps('audience')}
+              label="Audience of note"
+              description="Indicate who is intended to read it."
+              placeholder="all"
+              deletable
+            />
+            <TextAttribute
               {...noteProps('title')}
               label="Title of note"
               description="Provides a concise description of what is contained in the text of the note."
