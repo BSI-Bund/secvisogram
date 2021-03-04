@@ -609,7 +609,8 @@
                 },
                 "minItems": 2,
                 "title": "List of Product IDs",
-                "type": "array"
+                "type": "array",
+                "uniqueItems": true
               },
               "summary": {
                 "description": "Gives a short, optional description of the group.",
