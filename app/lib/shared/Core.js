@@ -74,9 +74,7 @@ export default async function createCore() {
        *  document: any
        *  strict?: boolean
        * }} params
-       * @returns {Promise<{
-       *   ids: Map<string, string>;
-       * }>}
+       * @returns {Promise<{id: string, name: string}[]>}
        */
       async collectProductIds({ document, strict = true }) {
         const schemaValidator = strict
@@ -93,9 +91,7 @@ export default async function createCore() {
        *  document: any
        *  strict?: boolean
        * }} params
-       * @returns {Promise<{
-       *   ids: Map<string, string>;
-       * }>}
+       * @returns {Promise<{id: string, name: string}[]>}
        */
       async collectGroupIds({ document, strict = true }) {
         const schemaValidator = strict

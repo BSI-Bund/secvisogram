@@ -10,7 +10,7 @@ import { uniqueProductId } from '../unique-id'
  *  dataPath: string
  *  onUpdate(dataPath: string, update: {}): void
  *  productName?: string
- *  onCollectProductIds?(): Promise<void | {ids: Map<string, string>}>
+ *  onCollectProductIds?(): Promise<void | {id: string, name: string}[]>
  *  productReference?: string
  *  relatesToProductReference?: string
  *  relationshipType?: string
@@ -29,11 +29,12 @@ export default function FullProductName({
   React.useEffect(() => {
     if (productName) setSuggestedProductName(productName)
     if (onCollectProductIds) {
-      onCollectProductIds().then((map) => {
-        if (map) {
-          const productReferenceName = map.ids.get(productReference) ?? ''
+      onCollectProductIds().then((entries) => {
+        if (entries) {
+          const productReferenceName =
+            entries.find((e) => e.id === productReference)?.name ?? ''
           const relatesToProductReferenceName =
-            map.ids.get(relatesToProductReference) ?? ''
+            entries.find((e) => e.id === relatesToProductReference)?.name ?? ''
           setSuggestedProductName(
             `${productReferenceName} ${relationshipType.replaceAll(
               '_',

@@ -28,8 +28,8 @@ import { useAlert } from './shared/Alert'
  *  onDownload(doc: {}): void
  *  onNewDocMin(): void
  *  onNewDocMax(): void
- *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
- *  onCollectGroupIds(): Promise<void | {ids: Map<string, string>}>
+ *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
+ *  onCollectGroupIds(): Promise<void | {id: string, name: string}[]>
  * }} props
  */
 export default function FormEditorTab({
@@ -266,8 +266,8 @@ export default function FormEditorTab({
  *  validationErrors: import('../../shared/validationTypes').ValidationError[]
  *  dataPath: string
  *  onUpdate(dataPath: string, update: {}): void
- *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
- *  onCollectGroupIds(): Promise<void | {ids: Map<string, string>}>
+ *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
+ *  onCollectGroupIds(): Promise<void | {id: string, name: string}[]>
  * }} props
  */
 function Doc(props) {

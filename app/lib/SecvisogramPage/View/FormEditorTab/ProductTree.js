@@ -16,7 +16,7 @@ export default React.memo(
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
    *  dataPath: string
    *  onUpdate(dataPath: string, update: {}): void
-   *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
+   *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
    * }} props
    */
   function ProductTree(props) {
@@ -64,7 +64,7 @@ const ProductGroups = React.memo(
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
    *  dataPath: string
    *  onUpdate(dataPath: string, update: {}): void
-   *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
+   *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
    * }} props
    */
   function ProductGroups({ onCollectProductIds, ...props }) {
@@ -160,7 +160,7 @@ const Relationships = React.memo(
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
    *  dataPath: string
    *  onUpdate(dataPath: string, update: {}): void
-   *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
+   *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
    * }} props
    */
   function Relationships({ onCollectProductIds, ...props }) {

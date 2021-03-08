@@ -24,8 +24,8 @@ export default React.memo(
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
    *  dataPath: string
    *  onUpdate(dataPath: string, update: {}): void
-   *  onCollectGroupIds(): Promise<void | {ids: Map<string, string>}>
-   *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
+   *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
+   *  onCollectGroupIds(): Promise<void | {id: string, name: string}[]>
    * }} props
    */
   function Vulnerabilities({
@@ -61,8 +61,8 @@ const Vulnerability = React.memo(
    *  dataPath: string
    *  defaultValue?(): {}
    *  onUpdate(dataPath: string, update: {}): void
-   *  onCollectGroupIds(): Promise<void | {ids: Map<string, string>}>
-   *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
+   *  onCollectGroupIds(): Promise<void | {id: string, name: string}[]>
+   *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
    * }} props
    */
   function Vulnerability({ onCollectProductIds, onCollectGroupIds, ...props }) {

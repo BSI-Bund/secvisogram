@@ -10,7 +10,7 @@ import IdAttribute from '../IdAttribute'
  *  label?: string
  *  description?: string
  *  onUpdate(dataPath: string, update: {}): void
- *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
+ *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
  * }} props
  */
 export default function Products({

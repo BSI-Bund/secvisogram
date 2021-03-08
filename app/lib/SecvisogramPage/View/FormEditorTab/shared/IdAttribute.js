@@ -37,7 +37,7 @@ function useMatch(term, entries) {
  *  dataPath: string
  *  value: unknown
  *  onUpdate: (dataPath: string, update: {}) => void
- *  onCollectIds?(): Promise<void | {ids: Map<string, string>}>
+ *  onCollectIds?(): Promise<void | {id: string, name: string}[]>
  * }} props
  */
 export default function IdAttribute({
@@ -57,9 +57,9 @@ export default function IdAttribute({
 
   const handleFocus = () => {
     if (onCollectIds) {
-      onCollectIds().then((map) => {
-        if (map) {
-          setEntries(Array.from(map.ids, ([id, name]) => ({ id, name })))
+      onCollectIds().then((entries) => {
+        if (entries) {
+          setEntries(entries)
         }
       })
     }

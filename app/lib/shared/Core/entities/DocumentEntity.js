@@ -56,18 +56,19 @@ export default class DocumentEntity {
    *          }
    *        }
    * }} params
-   * @returns {{
-   *   ids: Map<string, string>;
-   * }}
+   * @returns {{id: string, name: string}[]}
    */
   collectProductIds({ document }) {
-    const map = new Map()
+    const entries = /** @type {{id: string, name: string}[]} */ ([])
 
     const fullProductNames = document.product_tree?.full_product_names
     if (fullProductNames) {
       fullProductNames.forEach((fullProductName) => {
         if (fullProductName.product_id) {
-          map.set(fullProductName.product_id, fullProductName.name ?? '')
+          entries.push({
+            id: fullProductName.product_id,
+            name: fullProductName.name ?? '',
+          })
         }
       })
     }
@@ -78,7 +79,10 @@ export default class DocumentEntity {
         const fullProductName = relationship.full_product_name
         if (fullProductName) {
           if (fullProductName.product_id) {
-            map.set(fullProductName.product_id, fullProductName.name ?? '')
+            entries.push({
+              id: fullProductName.product_id,
+              name: fullProductName.name ?? '',
+            })
           }
         }
       })
@@ -86,10 +90,10 @@ export default class DocumentEntity {
 
     const branches = document.product_tree?.branches
     if (branches) {
-      traverseBranches(branches, map)
+      traverseBranches(branches, entries)
     }
 
-    return { ids: map }
+    return entries
   }
 
   /**
@@ -101,23 +105,24 @@ export default class DocumentEntity {
    *          }
    *        }
    * }} params
-   * @returns {{
-   *   ids: Map<string, string>;
-   * }}
+   * @returns {{id: string, name: string}[]}
    */
   collectGroupIds({ document }) {
-    const map = new Map()
+    const entries = /** @type {{id: string, name: string}[]} */ ([])
 
     const productGroups = document.product_tree?.product_groups
     if (productGroups) {
       productGroups.forEach((productGroup) => {
         if (productGroup.group_id) {
-          map.set(productGroup.group_id, productGroup.summary ?? '')
+          entries.push({
+            id: productGroup.group_id,
+            name: productGroup.summary ?? '',
+          })
         }
       })
     }
 
-    return { ids: map }
+    return entries
   }
 
   /**
@@ -306,16 +311,19 @@ const vulnerabilityHasCWEFields = (vulnerability) =>
 /**
  *
  * @param {Array<Branch>} branches
- * @param {*} map
+ * @param {{id: string, name: string}[]} entries
  */
-const traverseBranches = (branches, map) => {
+const traverseBranches = (branches, entries) => {
   branches.forEach((branch) => {
     const fullProductName = branch.product
     if (fullProductName) {
       if (fullProductName.product_id) {
-        map.set(fullProductName.product_id, fullProductName.name ?? '')
+        entries.push({
+          id: fullProductName.product_id,
+          name: fullProductName.name ?? '',
+        })
       }
     }
-    if (branch.branches) traverseBranches(branch.branches, map)
+    if (branch.branches) traverseBranches(branch.branches, entries)
   })
 }

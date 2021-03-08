@@ -11,7 +11,7 @@ import CVSSV3Editor from './Scores/CVSS3Editor'
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *  dataPath: string
  *  onUpdate(dataPath: string, update: {}): void
- *  onCollectProductIds(): Promise<void | {ids: Map<string, string>}>
+ *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
  * }} props
  */
 export default function Scores({ onCollectProductIds, ...props }) {

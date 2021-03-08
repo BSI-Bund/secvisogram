@@ -42,8 +42,8 @@ import useDebounce from './View/shared/useDebounce'
  *  onExportHTML(html: string, doc: {}): void
  *  onLockTab(): void
  *  onUnlockTab(): void
- *  onCollectProductIds(document: {}): Promise<void | {ids: Map<string, string>}>
- *  onCollectGroupIds(document: {}): Promise<void | {ids: Map<string, string>}>
+ *  onCollectProductIds(document: {}): Promise<void | {id: string, name: string}[]>
+ *  onCollectGroupIds(document: {}): Promise<void | {id: string, name: string}[]>
  * }} props
  */
 function View({
