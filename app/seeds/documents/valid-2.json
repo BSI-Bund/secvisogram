@@ -5219,15 +5219,6 @@
         }
       },
       {
-        "product_reference": "jenkins-plugin-branch-api-0:2.0.9-10.el7",
-        "relationship_type": "default_component_of",
-        "relates_to_product_reference": "7Server-RH7-RHOSE-3.9",
-        "full_product_name": {
-          "product_id": "7Server-RH7-RHOSE-3.9:jenkins-plugin-branch-api-0:2.0.9-10.el7",
-          "name": "jenkins-plugin-branch-api-0:2.0.9-10.el7 as a component of Red Hat OpenShift Container Platform 3.9"
-        }
-      },
-      {
         "product_reference": "jenkins-plugin-cloudbees-folder-0:6.0.4-10.el7",
         "relationship_type": "default_component_of",
         "relates_to_product_reference": "7Server-RH7-RHOSE-3.9",
@@ -5342,15 +5333,6 @@
         "full_product_name": {
           "product_id": "7Server-RH7-RHOSE-3.9:jenkins-plugin-github-api-0:1.85-1.el7",
           "name": "jenkins-plugin-github-api-0:1.85-1.el7 as a component of Red Hat OpenShift Container Platform 3.9"
-        }
-      },
-      {
-        "product_reference": "jenkins-plugin-github-branch-source-0:2.0.5-1.el7",
-        "relationship_type": "default_component_of",
-        "relates_to_product_reference": "7Server-RH7-RHOSE-3.9",
-        "full_product_name": {
-          "product_id": "7Server-RH7-RHOSE-3.9:jenkins-plugin-github-branch-source-0:2.0.5-1.el7",
-          "name": "jenkins-plugin-github-branch-source-0:2.0.5-1.el7 as a component of Red Hat OpenShift Container Platform 3.9"
         }
       },
       {
@@ -5786,15 +5768,6 @@
         }
       },
       {
-        "product_reference": "jenkins-plugin-workflow-multibranch-0:2.14-10.el7",
-        "relationship_type": "default_component_of",
-        "relates_to_product_reference": "7Server-RH7-RHOSE-3.9",
-        "full_product_name": {
-          "product_id": "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-multibranch-0:2.14-10.el7",
-          "name": "jenkins-plugin-workflow-multibranch-0:2.14-10.el7 as a component of Red Hat OpenShift Container Platform 3.9"
-        }
-      },
-      {
         "product_reference": "jenkins-plugin-workflow-remote-loader-0:1.4-10.el7",
         "relationship_type": "default_component_of",
         "relates_to_product_reference": "7Server-RH7-RHOSE-3.9",
@@ -5918,15 +5891,6 @@
         "full_product_name": {
           "product_id": "7Server-RH7-RHOSE-3.9:nodejs-accepts-0:1.3.3-1.el7",
           "name": "nodejs-accepts-0:1.3.3-1.el7 as a component of Red Hat OpenShift Container Platform 3.9"
-        }
-      },
-      {
-        "product_reference": "nodejs-align-text-0:0.1.3-2.el7aos",
-        "relationship_type": "default_component_of",
-        "relates_to_product_reference": "7Server-RH7-RHOSE-3.9",
-        "full_product_name": {
-          "product_id": "7Server-RH7-RHOSE-3.9:nodejs-align-text-0:0.1.3-2.el7aos",
-          "name": "nodejs-align-text-0:0.1.3-2.el7aos as a component of Red Hat OpenShift Container Platform 3.9"
         }
       },
       {
@@ -8710,7 +8674,6 @@
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-blueocean-rest-0:1.0.1-1.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-blueocean-rest-impl-0:1.0.1-1.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-blueocean-web-0:1.0.1-1.el7",
-          "7Server-RH7-RHOSE-3.9:jenkins-plugin-branch-api-0:2.0.9-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-cloudbees-folder-0:6.0.4-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-credentials-0:2.1.13-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-credentials-binding-0:1.11-1.el7",
@@ -8724,7 +8687,6 @@
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-git-server-0:1.7-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-github-0:1.27.0-1.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-github-api-0:1.85-1.el7",
-          "7Server-RH7-RHOSE-3.9:jenkins-plugin-github-branch-source-0:2.0.5-1.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-handlebars-0:1.1.1-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-icon-shim-0:2.0.3-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-jackson2-api-0:2.7.3-1.el7",
@@ -8773,7 +8735,6 @@
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-cps-global-lib-0:2.8-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-durable-task-step-0:2.11-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-job-0:2.10-10.el7",
-          "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-multibranch-0:2.14-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-remote-loader-0:1.4-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-scm-step-0:2.4-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-step-api-0:2.9-10.el7",
@@ -8788,7 +8749,6 @@
           "7Server-RH7-RHOSE-3.9:nodejs-0:4.7.2-1.el7",
           "7Server-RH7-RHOSE-3.9:nodejs-abbrev-0:1.0.7-1.el7aos",
           "7Server-RH7-RHOSE-3.9:nodejs-accepts-0:1.3.3-1.el7",
-          "7Server-RH7-RHOSE-3.9:nodejs-align-text-0:0.1.3-2.el7aos",
           "7Server-RH7-RHOSE-3.9:nodejs-amdefine-0:0.0.4-5.el7aos",
           "7Server-RH7-RHOSE-3.9:nodejs-ansi-regex-0:2.0.0-1.el7aos",
           "7Server-RH7-RHOSE-3.9:nodejs-ansi-styles-0:2.1.0-1.el7aos",
@@ -9180,7 +9140,6 @@
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-blueocean-rest-0:1.0.1-1.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-blueocean-rest-impl-0:1.0.1-1.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-blueocean-web-0:1.0.1-1.el7",
-          "7Server-RH7-RHOSE-3.9:jenkins-plugin-branch-api-0:2.0.9-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-cloudbees-folder-0:6.0.4-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-credentials-0:2.1.13-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-credentials-binding-0:1.11-1.el7",
@@ -9194,7 +9153,6 @@
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-git-server-0:1.7-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-github-0:1.27.0-1.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-github-api-0:1.85-1.el7",
-          "7Server-RH7-RHOSE-3.9:jenkins-plugin-github-branch-source-0:2.0.5-1.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-handlebars-0:1.1.1-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-icon-shim-0:2.0.3-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-jackson2-api-0:2.7.3-1.el7",
@@ -9243,7 +9201,6 @@
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-cps-global-lib-0:2.8-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-durable-task-step-0:2.11-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-job-0:2.10-10.el7",
-          "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-multibranch-0:2.14-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-remote-loader-0:1.4-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-scm-step-0:2.4-10.el7",
           "7Server-RH7-RHOSE-3.9:jenkins-plugin-workflow-step-api-0:2.9-10.el7",
@@ -9258,7 +9215,6 @@
           "7Server-RH7-RHOSE-3.9:nodejs-0:4.7.2-1.el7",
           "7Server-RH7-RHOSE-3.9:nodejs-abbrev-0:1.0.7-1.el7aos",
           "7Server-RH7-RHOSE-3.9:nodejs-accepts-0:1.3.3-1.el7",
-          "7Server-RH7-RHOSE-3.9:nodejs-align-text-0:0.1.3-2.el7aos",
           "7Server-RH7-RHOSE-3.9:nodejs-amdefine-0:0.0.4-5.el7aos",
           "7Server-RH7-RHOSE-3.9:nodejs-ansi-regex-0:2.0.0-1.el7aos",
           "7Server-RH7-RHOSE-3.9:nodejs-ansi-styles-0:2.1.0-1.el7aos",
