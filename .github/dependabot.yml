@@ -4,8 +4,8 @@ version: 2
 updates:
   # Enable version updates for npm
   - package-ecosystem: 'npm'
-    # Look for `package.json` and `lock` files in the `root` directory
-    directory: 'app/'
+    # Look for `package.json` and `lock` files in the `/app` directory
+    directory: '/app'
     # Check the npm registry for updates every day (weekdays)
     schedule:
       interval: 'daily'
