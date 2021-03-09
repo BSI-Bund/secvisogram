@@ -2,6 +2,7 @@ import * as Ace from './vendor/ace-builds/ace'
 
 declare global {
   const ace: typeof Ace
+  const SECVISOGRAM_VERSION: string
 }
 
 declare global {
