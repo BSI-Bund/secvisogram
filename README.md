@@ -81,7 +81,7 @@ CVSS 3 input fields are completed with the data from a possibly copied vector st
 
 A special input field is the "CWE" attribute. Here you can search the CWE catalog (XML file) by entering a value in the "id" or "name" field. For this purpose, a list with the first ten entries matching the input opens under the respective input field, from which a suitable entry can be selected and accepted.
 
-Input errors are displayed directly alongside the respective form field. A global issue counter and validity symbol indicates the current overall validation status. Clicking _Show errors_ reveals a panel with all validation issues allows to inspect and directly jump to the respective fields.
+Input errors are displayed directly alongside the respective form field. A global issue counter and validity symbol indicates the current overall validation status. Clicking _Show errors_ reveals a panel with all validation issues and allows to inspect and directly jump to the respective fields.
 
 _Opening & Saving Files_
 You can open and save your CSAF JSON document at any time using the respective _Open_ and _Save_ buttons. If your document fails the validation checks, a confirmation dialog will appear.
