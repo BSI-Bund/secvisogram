@@ -144,12 +144,14 @@ To provide a production release of Secvisogram, follow the following steps:
 
 ### Deploy to production using nginx
 
-Below you'll find an example configuration for hosting Secvisogram in a production environment. The example uses TLS and HTTP header pragmas like `Strict-Transport-Security`, `Content-Security-Policy`, `X-Frame-Options` and `X-Content-Type-Options` security hardening:
+Below you'll find an example configuration for hosting Secvisogram in a production environment. The example uses TLS and HTTP header pragmas like `Strict-Transport-Security`, `Content-Security-Policy`, `X-Frame-Options`, `X-Content-Type-Options`,`Referrer-Policy` and `Permissions-Policy` security hardening:
 
     add_header Strict-Transport-Security "max-age=31536000" always;
     add_header X-Content-Type-Options nosniff;
     add_header X-Frame-Options DENY;
     add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-eval' https: blob: ; style-src 'self' 'unsafe-inline' unpkg.com; img-src 'self' https: data: blob: ; media-src 'none'; connect-src 'none'; ";
+    add_header Referrer-Policy no-referrer;
+    add_header Permissions-Policy "geolocation=(), camera=(), fullscreen=*, usb=(), payment=(), microphone=(), gyroscope=(), accelerometer=()";
 
 #### Full nginx configuration example
 
@@ -251,6 +253,8 @@ add_header Strict-Transport-Security "max-age=31536000" always;
 add_header X-Content-Type-Options nosniff;
 add_header X-Frame-Options DENY;
 add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-eval' https: blob: ; style-src 'self' 'unsafe-inline' unpkg.com; img-src 'self' https: data: blob: ; media-src 'none'; connect-src 'none'; ";
+add_header Referrer-Policy no-referrer;
+add_header Permissions-Policy "geolocation=(), camera=(), fullscreen=*, usb=(), payment=(), microphone=(), gyroscope=(), accelerometer=()";
 ```
 
 <a id="markdown-secvisogram-folder-structure" name="secvisogram-folder-structure"></a>
