@@ -31,7 +31,7 @@ To create a custom Preview HTML template:
 
 ## Technical Overview
 
-Sevisogram uses the popular [{{ mustache }} library](https://mustache.github.io/) for the templating mechanism. Currently, the template can only be changed at build-time.
+Secvisogram uses the popular [{{ mustache }} library](https://mustache.github.io/) for the templating mechanism. Currently, the template can only be changed at build-time.
 
 ### Mustache template example
 
