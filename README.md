@@ -99,7 +99,7 @@ The _JSON Editor_ view uses the ACE editor to edit the JSON representation of th
 
 This view does not include any editing functionality. It displays a rendered HTML template view of the current CSAF document as shown in the editor views.
 
-Use the toggle button to switch between the Rendered web view and the HTML source view. You can export this HTML document via _Export Preview_ as a standalone HTML document (i.e. for printing).
+Use the toggle button to switch between the Rendered web view and the HTML source view. You can export this HTML document via _Export Preview_ as a standalone HTML document or print the rendered document via _Print Preview_.
 
 ### CSAF Document (JSON view)
 
