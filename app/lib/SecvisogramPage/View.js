@@ -1,3 +1,5 @@
+import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import CsafTab from './View/CsafTab'
 import FormEditorTab from './View/FormEditorTab'
@@ -208,7 +210,23 @@ function View({
             <button {...tabButtonProps('PREVIEW')}>Preview</button>
             <button {...tabButtonProps('CSAF-JSON')}>CSAF Document</button>
           </div>
-          <h1 className="mr-3 text-2xl text-blue-200 font-mono">Secvisogram</h1>
+          <div class="mr-4">
+            <div class="text-xs float-left text-gray-400 mr-4 mt-2">
+              <a
+                href="https://github.com/secvisogram/secvisogram/"
+                class="mr-3"
+              >
+                <FontAwesomeIcon className="mx-1" icon={faCodeBranch} />
+                <span>{SECVISOGRAM_VERSION}</span>
+              </a>
+              <a href="https://github.com/secvisogram/secvisogram/blob/main/LICENSE.md">
+                License: MIT
+              </a>
+            </div>
+            <h1 class="text-2xl text-blue-200 font-mono float-right">
+              Secvisogram
+            </h1>
+          </div>
         </div>
         <div
           className="relative overflow-auto h-full bg-gray-500"
