@@ -11,7 +11,7 @@
   - [Preview (HTML view)](#preview-html-view)
   - [CSAF Document (JSON view)](#csaf-document-json-view)
 - [Developing Secvisogram](#developing-secvisogram)
-  - [Developer Guide, Architecture & Technical Design](#developer-guide-architecture--technical-design)
+  - [Developer Guide, Architecture and Technical Design](#developer-guide-architecture-and-technical-design)
   - [Custom Preview Templates](#custom-preview-templates)
   - [Security Considerations](#security-considerations)
 
@@ -109,7 +109,7 @@ You can use this view and the embedded _Export CSAF_ button to always quickly ex
 
 ## Developing Secvisogram
 
-### Developer Guide, Architecture & Technical Design
+### Developer Guide, Architecture and Technical Design
 
 The [`DEVELOPMENT.md`](DEVELOPMENT.md) document gives an overall introduction on how to get started with developing Secvisogram as well as an overview on the architecture, libraries used and technical design of Secvisogram.
 
