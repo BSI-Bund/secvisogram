@@ -106,12 +106,12 @@ Tailwind-CSS is a CSS-Framework and library of CSS-classes to be reused across c
 | Codestyle     | Prettier       | An opinionated code formatter to enforce a consistent coding-style. See [https://prettier.io/](https://prettier.io/)                    |
 | Typechecking  | Typescript     | ES with TS annotations. See [Typescript JSDoc supported types](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html) |
 | UI            | React          | A JavaScript library for building user interfaces. See [https://reactjs.org/](https://reactjs.org/)                                     |
-|               | Reach-UI       | Reach-UI is library of primitive components to build accessible user-interfaces. See [https://reach.tech/](https://reach.tech/)     |
+|               | Reach-UI       | Reach-UI is library of primitive components to build accessible user-interfaces. See [https://reach.tech/](https://reach.tech/)         |
 | Validation    | AJV            | Performs the JSON Schema validation according to the CSAF specification. See [AJV](https://github.com/ajv-validator/ajv)                |
 | HTML-Template | mustache       | Logic-less templates. See [mustache](https://github.com/janl/mustache.js)                                                               |
 | Testing       | electron-mocha | Mocha testing in Electron. See [electron-mocha](https://github.com/jprichardson/electron-mocha)                                         |
 |               | mocha          | Mocha is a feature-rich JavaScript test framework. See [https://mochajs.org/](https://mochajs.org/)                                     |
-| Parsing       | xml2js         | XML-parser. See [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js)                                                                |
+| Parsing       | xml2js         | XML-parser. See [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js)                                                              |
 |               | json-pointer   | Some utilities for JSON pointers described by RFC 6901. See [json-pointer](https://github.com/manuelstofer/json-pointer)                |
 | CLI           | yargs          | Yargs helps you build interactive command line tools. See [yargs](https://github.com/yargs/yargs)                                       |
 | JSON-Editor   | ACE editor     | Ace is an embeddable code editor written in JavaScript. See [https://ace.c9.io/](https://ace.c9.io/)                                    |
