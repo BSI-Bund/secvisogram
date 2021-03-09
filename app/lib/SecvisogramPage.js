@@ -38,6 +38,7 @@ createCore().then((core) => {
           errors,
           alert,
           stripResult,
+          previewResult,
           strict,
         },
         setState,
@@ -61,6 +62,11 @@ createCore().then((core) => {
          *    doc: {}
          * } | null}
          */ (null),
+        previewResult: /**
+         * @type {{
+         *    doc: {}
+         * } | null}
+         */ (null),
         data: {
           doc,
         },
@@ -77,6 +83,7 @@ createCore().then((core) => {
           isSaving={false}
           errors={errors}
           stripResult={stripResult}
+          previewResult={previewResult}
           data={data}
           alert={alert}
           strict={strict}
@@ -233,6 +240,22 @@ createCore().then((core) => {
                     ...state,
                     stripResult: {
                       strippedPaths,
+                      doc,
+                    },
+                  }))
+                })
+                .catch(handleError)
+            },
+            [handleError, strict]
+          )}
+          onPreview={React.useCallback(
+            (document) => {
+              core.document
+                .preview({ document, strict: strict })
+                .then(({ document: doc }) => {
+                  setState((state) => ({
+                    ...state,
+                    previewResult: {
                       doc,
                     },
                   }))

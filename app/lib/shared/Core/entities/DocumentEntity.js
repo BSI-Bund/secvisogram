@@ -309,6 +309,16 @@ export default class DocumentEntity {
   }
 
   /**
+   * This method extends the current document with data required for preview and returns the extended document.
+   *
+   * @param {{ document: any }} params
+   */
+  preview({ document }) {
+    const templateDoc = { ...document }
+    return { document: templateDoc }
+  }
+
+  /**
    * @param {unknown} doc
    * @private
    */

@@ -11,6 +11,7 @@ const props = {
   isTabLocked: false,
   errors: [],
   stripResult: null,
+  previewResult: null,
   strict: true,
   data: {
     documentIsValid: null,
@@ -106,6 +107,10 @@ const props = {
         500
       )
     })
+  },
+  onPreview: () => {
+    console.log('onPreview')
+    return new Promise(() => {})
   },
   onExportCSAF: console.log.bind(console, 'onExportCSAF'),
   onExportHTML: console.log.bind(console, 'onExportHTML'),

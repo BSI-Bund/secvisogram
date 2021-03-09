@@ -33,6 +33,7 @@ const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
  *    onCancel(): void
  *  } | null
  *  stripResult: React.ComponentProps<typeof CsafTab>['stripResult']
+ *  previewResult: React.ComponentProps<typeof PreviewTab>['previewResult']
  *  strict: boolean
  *  onSetStrict(strict: boolean): void
  *  onDownload(doc: {}): void
@@ -42,6 +43,7 @@ const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
  *  onNewDocMin(): Promise<void | {}>
  *  onNewDocMax(): Promise<void | {}>
  *  onStrip(document: {}): void
+ *  onPreview(document: {}): void
  *  onExportCSAF(doc: {}): void
  *  onExportHTML(html: string, doc: {}): void
  *  onLockTab(): void
@@ -59,6 +61,7 @@ function View({
   data,
   alert,
   stripResult,
+  previewResult,
   strict,
   onSetStrict,
   onDownload,
@@ -68,6 +71,7 @@ function View({
   onNewDocMin,
   onNewDocMax,
   onStrip,
+  onPreview,
   onExportCSAF,
   onExportHTML,
   onLockTab,
@@ -136,6 +140,10 @@ function View({
   const onStripCallback = React.useCallback(() => {
     onStrip(formValues.doc)
   }, [formValues.doc, onStrip])
+
+  const onPreviewCallback = React.useCallback(() => {
+    onPreview(formValues.doc)
+  }, [formValues.doc, onPreview])
 
   const onExportCSAFCallback = React.useCallback(() => {
     onExportCSAF(formValues.doc)
@@ -263,6 +271,8 @@ function View({
               />
             ) : activeTab === 'PREVIEW' ? (
               <PreviewTab
+                previewResult={previewResult}
+                onPreview={onPreviewCallback}
                 formValues={formValues}
                 validationErrors={errors}
                 onExport={onExportHTML}

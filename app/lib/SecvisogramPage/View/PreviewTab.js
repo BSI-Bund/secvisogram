@@ -16,20 +16,33 @@ import HTMLTemplate from './shared/HTMLTemplate'
  *  formValues: import('../shared/FormValues').default
  *  validationErrors: import('../../shared/validationTypes').ValidationError[]
  *  onExport(html: string, doc: {}): void
+ *  onPreview(): void
+ *  previewResult: {
+ *    doc: {}
+ *  } | null
  * }} props
  */
 export default function PreviewTab({
   formValues,
   validationErrors: errors,
   onExport,
+  onPreview,
+  previewResult,
 }) {
+  /**
+   * Extend the document initially.
+   */
+  React.useEffect(() => {
+    onPreview()
+  }, [onPreview])
+
   /** @type {React.MutableRefObject<HTMLIFrameElement | null>} */
   const iframeRef = React.useRef(null)
   const [showErrors, setShowErrors] = React.useState(false)
   const [showRendered, setShowRendered] = React.useState(true)
-  const html = React.useMemo(() => HTMLTemplate({ document: formValues.doc }), [
-    formValues.doc,
-  ])
+  const html = React.useMemo(() => {
+    return HTMLTemplate({ document: previewResult?.doc ?? {} })
+  }, [previewResult?.doc])
 
   /**
    * Updates the content of the preview iframe.

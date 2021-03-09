@@ -135,6 +135,22 @@ export default async function createCore() {
         const documentEntity = new DocumentEntity({ schemaValidator })
         return documentEntity.strip({ document })
       },
+
+      /**
+       * Extends the current document with data required for preview and returns the extended document.
+       *
+       * @param {{
+       *  document: {}
+       *  strict?: boolean
+       * }} params
+       */
+      async preview({ document, strict = true }) {
+        const schemaValidator = strict
+          ? schemaValidatorStrict
+          : schemaValidatorLenient
+        const documentEntity = new DocumentEntity({ schemaValidator })
+        return documentEntity.preview({ document })
+      },
     },
   }
 }
