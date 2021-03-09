@@ -67,7 +67,7 @@ Similar to the Vulnogram model, the web application consists of various tabs tha
 
 To start a new document after saving, click the "New" button. Alternatively, click the "Open" button to select and load a local file.
 
-When leaving a view without saving, e.g. clicking on another application tab or reloading the application, a warning is displayed, and the user must confirm prior to leaving the page.
+When leaving a view without saving, e.g. reloading the application, a warning is displayed, and the user must confirm prior to leaving the page.
 
 ### Form Editor
 
