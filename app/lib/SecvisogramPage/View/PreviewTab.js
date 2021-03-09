@@ -2,6 +2,7 @@ import {
   faCheckCircle,
   faCode,
   faExclamationTriangle,
+  faPrint,
   faWindowClose,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -47,11 +48,20 @@ export default function PreviewTab({
     setShowRendered(!showRendered)
   }
 
+  const printIframe = () => {
+    if (!iframeRef.current?.contentWindow) return
+    const iframeWindow = iframeRef.current.contentWindow
+
+    iframeRef.current.focus()
+    iframeWindow.print()
+  }
+
   return (
     <div className="preview-html flex h-full mr-3 bg-white">
       <div className="p-3 w-full">
         {showRendered ? (
           <iframe
+            id="preview"
             className={
               'advisory w-full border ' + (showErrors ? 'h-4/5' : 'h-full')
             }
@@ -138,6 +148,18 @@ export default function PreviewTab({
             <FontAwesomeIcon className="mr-1" icon={faCode} />
             Export Preview
           </button>
+          {showRendered && (
+            <button
+              type="button"
+              className="mb-2 py-1 px-3 rounded shadow border border-green-500 bg-green-500 text-white hover:text-green-500 hover:bg-white"
+              onClick={() => {
+                printIframe()
+              }}
+            >
+              <FontAwesomeIcon className="mr-1" icon={faPrint} />
+              Print Preview
+            </button>
+          )}
         </div>
         <div>
           <h2 className="mb-4 text-xl font-bold">Validation Status</h2>
