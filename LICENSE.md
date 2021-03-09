@@ -16,7 +16,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Third Party Library Licenses
 
-The list can be updated using `npx license-checker-rseidelsohn --production --markdown | grep -v "\[app@" | sed -r 's/^\\[/- \\[/g'` in the `app/` directory.
+The list can be updated using `npx license-checker-rseidelsohn --production --markdown | grep -v "\[app@" | sed -r "s/^\\[/- \\[/g"` in the `app/` directory.
 
 - [ace](https://ace.c9.io/) - BSD
 <!--
