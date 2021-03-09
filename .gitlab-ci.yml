@@ -26,6 +26,7 @@ default:
     - NPM_PACKAGE_VERSION=$(node -p "require('./package.json').version")
     - npm set cache .npm
     - npm ci
+    - apt-get update && apt-get install -q -y git
 
 
 build:
@@ -50,7 +51,7 @@ test:
     # Electron dooesn't like to run under root
     - npx tsc -b
     - chmod 4755 app/node_modules/electron/dist/chrome-sandbox
-    - apt-get update && apt-get install -q -y xvfb
+    - apt-get update && apt-get install -q -y xvfb git
     - su node -c 'cd app && /usr/bin/xvfb-run node scripts/test.js'
 #
 #
