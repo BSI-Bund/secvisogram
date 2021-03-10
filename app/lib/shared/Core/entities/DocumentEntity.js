@@ -1,5 +1,6 @@
 /* eslint-disable no-prototype-builtins */
 import { parse } from 'json-pointer'
+import { cloneDeep } from 'lodash'
 import unset from 'lodash/fp/unset'
 import isEmpty from 'lodash/isEmpty'
 import cwec from '../cwec_4.3.json'
@@ -314,60 +315,16 @@ export default class DocumentEntity {
    * @param {{ document: any }} params
    */
   preview({ document }) {
-    const templateDoc = { ...document }
+    const templateDoc = cloneDeep(document)
     const productIds = this.collectProductIds({ document: templateDoc })
+    const groupIds = this.collectGroupIds({ document: templateDoc })
 
     const vulnerabilities = templateDoc.vulnerabilities
     if (vulnerabilities) {
       for (let i = 0; i < vulnerabilities.length; ++i) {
         const vulnerability = vulnerabilities[i]
-        const extendedScoreIds = createExtendedScoreIds(
-          vulnerability.scores,
-          productIds
-        )
-        const productStatus = vulnerability.product_status
-        if (productStatus) {
-          productStatus.known_affected = extendProductStatus(
-            productStatus.known_affected,
-            extendedScoreIds,
-            productIds
-          )
-          productStatus.first_affected = extendProductStatus(
-            productStatus.first_affected,
-            extendedScoreIds,
-            productIds
-          )
-          productStatus.last_affected = extendProductStatus(
-            productStatus.last_affected,
-            extendedScoreIds,
-            productIds
-          )
-          productStatus.known_not_affected = extendProductStatus(
-            productStatus.known_not_affected,
-            extendedScoreIds,
-            productIds
-          )
-          productStatus.recommended = extendProductStatus(
-            productStatus.recommended,
-            extendedScoreIds,
-            productIds
-          )
-          productStatus.fixed = extendProductStatus(
-            productStatus.fixed,
-            extendedScoreIds,
-            productIds
-          )
-          productStatus.first_fixed = extendProductStatus(
-            productStatus.first_fixed,
-            extendedScoreIds,
-            productIds
-          )
-          productStatus.under_investigation = extendProductStatus(
-            productStatus.under_investigation,
-            extendedScoreIds,
-            productIds
-          )
-        }
+        createProductStatusPreview(vulnerability, productIds)
+        createRemediationsPreview(vulnerability, productIds, groupIds)
       }
     }
 
@@ -819,4 +776,155 @@ const createExtendedScoreIds = (scores, productIds) => {
     }
   }
   return extendedProductIds
+}
+
+/**
+ * @param {{scores: [], product_status: any}} vulnerability
+ * @param {*} productIds
+ */
+const createProductStatusPreview = (vulnerability, productIds) => {
+  const extendedScoreIds = createExtendedScoreIds(
+    vulnerability.scores,
+    productIds
+  )
+  const productStatus = vulnerability.product_status
+  if (productStatus) {
+    productStatus.known_affected = extendProductStatus(
+      productStatus.known_affected,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.first_affected = extendProductStatus(
+      productStatus.first_affected,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.last_affected = extendProductStatus(
+      productStatus.last_affected,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.known_not_affected = extendProductStatus(
+      productStatus.known_not_affected,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.recommended = extendProductStatus(
+      productStatus.recommended,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.fixed = extendProductStatus(
+      productStatus.fixed,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.first_fixed = extendProductStatus(
+      productStatus.first_fixed,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.under_investigation = extendProductStatus(
+      productStatus.under_investigation,
+      extendedScoreIds,
+      productIds
+    )
+  }
+}
+
+/**
+ * @param {any} vulnerability
+ * @param {any} productIds
+ * @param {any} groupIds
+ */
+const createRemediationsPreview = (vulnerability, productIds, groupIds) => {
+  const vendorFix = []
+  const mitigation = []
+  const workaround = []
+  const noneAvailable = []
+  const noFixPlanned = []
+  const unknown = []
+  const remediations = vulnerability.remediations
+  if (remediations) {
+    for (let i = 0; i < remediations.length; ++i) {
+      const remediation = remediations[i]
+      extendRemediation(remediation, productIds, groupIds)
+      switch (remediation.type) {
+        case 'vendor_fix':
+          vendorFix.push(remediation)
+          break
+        case 'mitigation':
+          mitigation.push(remediation)
+          break
+        case 'workaround':
+          workaround.push(remediation)
+          break
+        case 'none_available':
+          noneAvailable.push(remediation)
+          break
+        case 'no_fix_planned':
+          noFixPlanned.push(remediation)
+          break
+        default:
+          unknown.push(remediation)
+      }
+    }
+  }
+
+  vulnerability.remediations_vendor_fix = vendorFix.sort(sortByDate)
+  vulnerability.remediations_mitigation = mitigation.sort(sortByDate)
+  vulnerability.remediations_workaround = workaround.sort(sortByDate)
+  vulnerability.remediations_none_available = noneAvailable.sort(sortByDate)
+  vulnerability.remediations_no_fix_planned = noFixPlanned.sort(sortByDate)
+  vulnerability.remediations_unknown = unknown.sort(sortByDate)
+}
+
+/**
+ * @param {{product_ids: any, group_ids: any}} remediation
+ * @param {{id: string, name: string}[]} extProductIds
+ * @param {{id: string, name: string}[]} extGroupIds
+ */
+const extendRemediation = (remediation, extProductIds, extGroupIds) => {
+  if (remediation) {
+    const extendedProductIds = []
+    let productIds = remediation.product_ids
+    if (productIds) {
+      for (let i = 0; i < productIds.length; ++i) {
+        let productId = productIds[i]
+        if (productId) {
+          extendedProductIds.push({
+            id: productId,
+            name: extProductIds.find((e) => e.id === productId)?.name ?? '',
+          })
+        }
+      }
+    }
+    remediation.product_ids = extendedProductIds
+
+    const extendedGroupIds = []
+    let groupIds = remediation.group_ids
+    if (groupIds) {
+      for (let i = 0; i < groupIds.length; ++i) {
+        let productId = groupIds[i]
+        if (productId) {
+          extendedGroupIds.push({
+            id: productId,
+            name: extGroupIds.find((e) => e.id === productId)?.name ?? '',
+          })
+        }
+      }
+    }
+    remediation.group_ids = extendedGroupIds
+  }
+}
+
+/**
+ * @param {{date: string}} a
+ * @param {{date: string}} b
+ */
+const sortByDate = (a, b) => {
+  if (!a && !b) return 0
+  if (!a) return 1
+  if (!b) return -1
+  return new Date(b.date).getTime() - new Date(a.date).getTime()
 }

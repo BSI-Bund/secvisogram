@@ -607,6 +607,28 @@
     </ul>
     {{/product_status.under_investigation.length}}
 
+    {{#remediations.length}}
+      <h4>List of remediations</h4>
+      {{#remediations_vendor_fix}}
+        {{> remediation}}
+      {{/remediations_vendor_fix}}
+      {{#remediations_mitigation}}
+        {{> remediation}}
+      {{/remediations_mitigation}}
+      {{#remediations_workaround}}
+        {{> remediation}}
+      {{/remediations_workaround}}
+      {{#remediations_none_available}}
+        {{> remediation}}
+      {{/remediations_none_available}}
+      {{#remediations_no_fix_planned}}
+        {{> remediation}}
+      {{/remediations_no_fix_planned}}                        
+      {{#remediations_unknown}}
+        {{> remediation}}
+      {{/remediations_unknown}}                              
+    {{/remediations.length}}
+
     <h4>List of references</h4>
     {{#references}}
       <h5>Reference</h5>
@@ -627,53 +649,6 @@
       <h4>Release date</h4>
       <p>{{release_date}}</p>
     {{/release_date}}
-    <h4>List of remediations</h4>
-    {{#remediations}}
-      <h5>Remediation</h5>
-      {{#date}}
-        <h6>Date of the remediation</h6>
-        <p>{{date}}</p>
-      {{/date}}
-      {{#details}}
-        <h6>Details of the remediation</h6>
-        <p>{{details}}</p>
-      {{/details}}
-      <h6>List of entitlements</h6>
-      {{#entitlements}}{{#.}}
-          <h7>Entitlement of the remediation</h7>
-          <p>{{.}}</p>
-        {{/.}}
-      {{/entitlements}}
-      <h6>List of product_group_ids</h6>
-      {{#group_ids}}{{#.}}
-          <h7>Reference token for product group instance</h7>
-          <p>{{.}}</p>
-        {{/.}}
-      {{/group_ids}}
-      <h6>List of product_ids</h6>
-      {{#product_ids}}{{#.}}
-          <h7>Reference token for product instance</h7>
-          <p>{{.}}</p>
-        {{/.}}
-      {{/product_ids}}
-      <h6>Restart required by remediation</h6>
-      {{#restart_required.type}}
-        <h7>Type of restart</h7>
-        <p>{{restart_required.type}}</p>
-      {{/restart_required.type}}
-      {{#restart_required.details}}
-        <h7>Additional restart information</h7>
-        <p>{{restart_required.details}}</p>
-      {{/restart_required.details}}
-      {{#type}}
-        <h6>Type of the remediation</h6>
-        <p>{{type}}</p>
-      {{/type}}
-      {{#url}}
-        <h6>URL to the remediation</h6>
-        <p>{{url}}</p>
-      {{/url}}
-    {{/remediations}}
     <h4>List of threats</h4>
     {{#threats}}
       <h5>Threat</h5>
