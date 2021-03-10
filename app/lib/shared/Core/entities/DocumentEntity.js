@@ -315,6 +315,62 @@ export default class DocumentEntity {
    */
   preview({ document }) {
     const templateDoc = { ...document }
+    const productIds = this.collectProductIds({ document: templateDoc })
+
+    const vulnerabilities = templateDoc.vulnerabilities
+    if (vulnerabilities) {
+      for (let i = 0; i < vulnerabilities.length; ++i) {
+        const vulnerability = vulnerabilities[i]
+        const extendedScoreIds = createExtendedScoreIds(
+          vulnerability.scores,
+          productIds
+        )
+        const productStatus = vulnerability.product_status
+        if (productStatus) {
+          productStatus.known_affected = extendProductStatus(
+            productStatus.known_affected,
+            extendedScoreIds,
+            productIds
+          )
+          productStatus.first_affected = extendProductStatus(
+            productStatus.first_affected,
+            extendedScoreIds,
+            productIds
+          )
+          productStatus.last_affected = extendProductStatus(
+            productStatus.last_affected,
+            extendedScoreIds,
+            productIds
+          )
+          productStatus.known_not_affected = extendProductStatus(
+            productStatus.known_not_affected,
+            extendedScoreIds,
+            productIds
+          )
+          productStatus.recommended = extendProductStatus(
+            productStatus.recommended,
+            extendedScoreIds,
+            productIds
+          )
+          productStatus.fixed = extendProductStatus(
+            productStatus.fixed,
+            extendedScoreIds,
+            productIds
+          )
+          productStatus.first_fixed = extendProductStatus(
+            productStatus.first_fixed,
+            extendedScoreIds,
+            productIds
+          )
+          productStatus.under_investigation = extendProductStatus(
+            productStatus.under_investigation,
+            extendedScoreIds,
+            productIds
+          )
+        }
+      }
+    }
+
     return { document: templateDoc }
   }
 
@@ -709,4 +765,58 @@ const collectGroupRefsInThreats = (dataPath, vulnerability, entries) => {
       }
     }
   }
+}
+
+/**
+ * @param {any} refs
+ * @param {{id: string}[]} extendedScoreIds
+ * @param {{id: string;
+ *          name: string;
+ *        }[]} productIds
+ */
+const extendProductStatus = (refs, extendedScoreIds, productIds) => {
+  const extendedProductStatus = []
+  if (refs) {
+    for (let i = 0; i < refs.length; ++i) {
+      let ref = refs[i]
+      if (ref) {
+        extendedProductStatus.push(
+          extendedScoreIds.find((e) => e.id === ref) ?? {
+            id: ref,
+            name:
+              productIds.find((productId) => productId.id === ref)?.name ?? '',
+          }
+        )
+      }
+    }
+  }
+  return extendedProductStatus
+}
+
+/**
+ * @param {*} scores
+ * @param {{id: string, name: string}[]} productIds
+ */
+const createExtendedScoreIds = (scores, productIds) => {
+  const extendedProductIds = []
+  if (scores) {
+    for (let i = 0; i < scores.length; ++i) {
+      const score = scores[i]
+      const products = score.products
+      if (products) {
+        for (let j = 0; j < products.length; ++j) {
+          const productId = products[j]
+          if (productId) {
+            extendedProductIds.push({
+              id: productId,
+              name: productIds.find((e) => e.id === productId)?.name ?? '',
+              vectorString: score.cvss_v3?.vectorString ?? '',
+              baseScore: score.cvss_v3?.baseScore ?? '',
+            })
+          }
+        }
+      }
+    }
+  }
+  return extendedProductIds
 }

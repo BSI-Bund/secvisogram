@@ -526,54 +526,87 @@
       {{/text}}
     {{/notes}}
     <h4>Product status</h4>
-    <h5>List of product_ids</h5>
-    {{#product_status.fixed}}{{#.}}
-        <h6>Reference token for product instance</h6>
-        <p>{{.}}</p>
-      {{/.}}
-    {{/product_status.fixed}}
-    <h5>List of product_ids</h5>
-    {{#product_status.first_fixed}}{{#.}}
-        <h6>Reference token for product instance</h6>
-        <p>{{.}}</p>
-      {{/.}}
-    {{/product_status.first_fixed}}
-    <h5>List of product_ids</h5>
-    {{#product_status.recommended}}{{#.}}
-        <h6>Reference token for product instance</h6>
-        <p>{{.}}</p>
-      {{/.}}
-    {{/product_status.recommended}}
-    <h5>List of product_ids</h5>
-    {{#product_status.known_affected}}{{#.}}
-        <h6>Reference token for product instance</h6>
-        <p>{{.}}</p>
-      {{/.}}
-    {{/product_status.known_affected}}
-    <h5>List of product_ids</h5>
-    {{#product_status.first_affected}}{{#.}}
-        <h6>Reference token for product instance</h6>
-        <p>{{.}}</p>
-      {{/.}}
-    {{/product_status.first_affected}}
-    <h5>List of product_ids</h5>
-    {{#product_status.last_affected}}{{#.}}
-        <h6>Reference token for product instance</h6>
-        <p>{{.}}</p>
-      {{/.}}
-    {{/product_status.last_affected}}
-    <h5>List of product_ids</h5>
-    {{#product_status.known_not_affected}}{{#.}}
-        <h6>Reference token for product instance</h6>
-        <p>{{.}}</p>
-      {{/.}}
-    {{/product_status.known_not_affected}}
-    <h5>List of product_ids</h5>
-    {{#product_status.under_investigation}}{{#.}}
-        <h6>Reference token for product instance</h6>
-        <p>{{.}}</p>
-      {{/.}}
-    {{/product_status.under_investigation}}
+    {{#product_status.known_affected.length}}
+    <h5>Known affected</h5>
+    <table>
+      {{> product_status_header}}
+      <tbody>
+        {{#product_status.known_affected}}
+          {{> product_status_row}}
+        {{/product_status.known_affected}}
+      </tbody>
+    </table>
+    {{/product_status.known_affected.length}}
+
+    {{#product_status.first_affected.length}}
+    <h5>First affected</h5>
+    <table>
+      {{> product_status_header}}
+      <tbody>
+        {{#product_status.first_affected}}
+          {{> product_status_row}}
+        {{/product_status.first_affected}}
+      </tbody>
+    </table>
+    {{/product_status.first_affected.length}}
+
+    {{#product_status.last_affected.length}}
+    <h5>Last affected</h5>
+    <table>
+      {{> product_status_header}}
+      <tbody>
+        {{#product_status.last_affected}}    
+          {{> product_status_row}}
+        {{/product_status.last_affected}}
+      </tbody>
+    </table>
+    {{/product_status.last_affected.length}}
+
+    {{#product_status.known_not_affected.length}}
+    <h5>Known not affected</h5>
+    <ul>
+      {{#product_status.known_not_affected}}
+        <li>{{name}}</li>
+      {{/product_status.known_not_affected}}
+    </ul>
+    {{/product_status.known_not_affected.length}}
+    
+    {{#product_status.recommended.length}}
+    <h5>Recommended</h5>
+    <ul>
+      {{#product_status.recommended}}
+        <li>{{name}}</li>
+      {{/product_status.recommended}}
+    </ul>
+    {{/product_status.recommended.length}}
+    
+    {{#product_status.fixed.length}}
+    <h5>Fixed</h5>
+    <ul>
+      {{#product_status.fixed}}
+        <li>{{name}}</li>
+      {{/product_status.fixed}}
+    </ul>
+    {{/product_status.fixed.length}}
+
+    {{#product_status.first_fixed.length}}
+    <h5>First fixed</h5>
+    <ul>
+      {{#product_status.first_fixed}}
+        <li>{{name}}</li>
+      {{/product_status.first_fixed}}
+    </ul>
+    {{/product_status.first_fixed.length}}
+
+    {{#product_status.under_investigation.length}}
+    <h5>Under investgation</h5>
+    <ul>
+      {{#product_status.under_investigation}}
+        <li>{{name}}</li>
+      {{/product_status.under_investigation}}
+    </ul>
+    {{/product_status.under_investigation.length}}
+
     <h4>List of references</h4>
     {{#references}}
       <h5>Reference</h5>
