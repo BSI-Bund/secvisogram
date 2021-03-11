@@ -310,7 +310,7 @@ export default class DocumentEntity {
   }
 
   /**
-   * This method extends the current document with data required for preview and returns the extended document.
+   * This method extends a copy of the current document with data required for the preview and returns the copy.
    *
    * @param {{ document: any }} params
    */
@@ -770,114 +770,8 @@ const collectGroupRefsInThreats = (dataPath, vulnerability, entries) => {
 }
 
 /**
- * @param {any} refs
- * @param {{id: string}[]} extendedScoreIds
- * @param {{id: string;
- *          name: string;
- *        }[]} productIds
- */
-const extendProductStatus = (refs, extendedScoreIds, productIds) => {
-  const extendedProductStatus = []
-  if (refs) {
-    for (let i = 0; i < refs.length; ++i) {
-      let ref = refs[i]
-      if (ref) {
-        extendedProductStatus.push(
-          extendedScoreIds.find((e) => e.id === ref) ?? {
-            id: ref,
-            name:
-              productIds.find((productId) => productId.id === ref)?.name ?? '',
-          }
-        )
-      }
-    }
-  }
-  return extendedProductStatus
-}
-
-/**
- * @param {*} scores
- * @param {{id: string, name: string}[]} productIds
- */
-const createExtendedScoreIds = (scores, productIds) => {
-  const extendedProductIds = []
-  if (scores) {
-    for (let i = 0; i < scores.length; ++i) {
-      const score = scores[i]
-      const products = score.products
-      if (products) {
-        for (let j = 0; j < products.length; ++j) {
-          const productId = products[j]
-          if (productId) {
-            extendedProductIds.push({
-              id: productId,
-              name: productIds.find((e) => e.id === productId)?.name ?? '',
-              vectorString: score.cvss_v3?.vectorString ?? '',
-              baseScore: score.cvss_v3?.baseScore ?? '',
-            })
-          }
-        }
-      }
-    }
-  }
-  return extendedProductIds
-}
-
-/**
- * @param {{scores: [], product_status: any}} vulnerability
- * @param {*} productIds
- */
-const addProductStatusPreviewAttributes = (vulnerability, productIds) => {
-  const extendedScoreIds = createExtendedScoreIds(
-    vulnerability.scores,
-    productIds
-  )
-  const productStatus = vulnerability.product_status
-  if (productStatus) {
-    productStatus.known_affected = extendProductStatus(
-      productStatus.known_affected,
-      extendedScoreIds,
-      productIds
-    )
-    productStatus.first_affected = extendProductStatus(
-      productStatus.first_affected,
-      extendedScoreIds,
-      productIds
-    )
-    productStatus.last_affected = extendProductStatus(
-      productStatus.last_affected,
-      extendedScoreIds,
-      productIds
-    )
-    productStatus.known_not_affected = extendProductStatus(
-      productStatus.known_not_affected,
-      extendedScoreIds,
-      productIds
-    )
-    productStatus.recommended = extendProductStatus(
-      productStatus.recommended,
-      extendedScoreIds,
-      productIds
-    )
-    productStatus.fixed = extendProductStatus(
-      productStatus.fixed,
-      extendedScoreIds,
-      productIds
-    )
-    productStatus.first_fixed = extendProductStatus(
-      productStatus.first_fixed,
-      extendedScoreIds,
-      productIds
-    )
-    productStatus.under_investigation = extendProductStatus(
-      productStatus.under_investigation,
-      extendedScoreIds,
-      productIds
-    )
-  }
-}
-
-/**
+ * Retrieve the maximum baseScore of all scores
+ *
  * @param {{scores: {cvss_v3: {baseScore: string}}[]}[]} vulnerabilities
  */
 const retrieveMaxBaseScore = (vulnerabilities) => {
@@ -900,151 +794,8 @@ const retrieveMaxBaseScore = (vulnerabilities) => {
 }
 
 /**
- * @param {any} vulnerability
- * @param {any} productIds
- * @param {any} groupIds
- */
-const addRemediationsPreviewAttributes = (
-  vulnerability,
-  productIds,
-  groupIds
-) => {
-  const vendorFix = []
-  const mitigation = []
-  const workaround = []
-  const noneAvailable = []
-  const noFixPlanned = []
-  const unknown = []
-  const remediations = vulnerability.remediations
-  if (remediations) {
-    for (let i = 0; i < remediations.length; ++i) {
-      const remediation = remediations[i]
-      extendRemediation(remediation, productIds, groupIds)
-      switch (remediation.type) {
-        case 'vendor_fix':
-          vendorFix.push(remediation)
-          break
-        case 'mitigation':
-          mitigation.push(remediation)
-          break
-        case 'workaround':
-          workaround.push(remediation)
-          break
-        case 'none_available':
-          noneAvailable.push(remediation)
-          break
-        case 'no_fix_planned':
-          noFixPlanned.push(remediation)
-          break
-        default:
-          unknown.push(remediation)
-      }
-    }
-  }
-
-  vulnerability.remediations_vendor_fix = vendorFix.sort(sortByDate)
-  vulnerability.remediations_mitigation = mitigation.sort(sortByDate)
-  vulnerability.remediations_workaround = workaround.sort(sortByDate)
-  vulnerability.remediations_none_available = noneAvailable.sort(sortByDate)
-  vulnerability.remediations_no_fix_planned = noFixPlanned.sort(sortByDate)
-  vulnerability.remediations_unknown = unknown.sort(sortByDate)
-}
-
-/**
- * @param {{product_ids: any, group_ids: any}} remediation
- * @param {{id: string, name: string}[]} extProductIds
- * @param {{id: string, name: string}[]} extGroupIds
- */
-const extendRemediation = (remediation, extProductIds, extGroupIds) => {
-  if (remediation) {
-    const extendedProductIds = []
-    let productIds = remediation.product_ids
-    if (productIds) {
-      for (let i = 0; i < productIds.length; ++i) {
-        let productId = productIds[i]
-        if (productId) {
-          extendedProductIds.push({
-            id: productId,
-            name: extProductIds.find((e) => e.id === productId)?.name ?? '',
-          })
-        }
-      }
-    }
-    remediation.product_ids = extendedProductIds
-
-    const extendedGroupIds = []
-    let groupIds = remediation.group_ids
-    if (groupIds) {
-      for (let i = 0; i < groupIds.length; ++i) {
-        let productId = groupIds[i]
-        if (productId) {
-          extendedGroupIds.push({
-            id: productId,
-            name: extGroupIds.find((e) => e.id === productId)?.name ?? '',
-          })
-        }
-      }
-    }
-    remediation.group_ids = extendedGroupIds
-  }
-}
-
-/**
- * @param {any} vulnerability
- */
-const addVulnerabilityNotesPreviewAttributes = (vulnerability) => {
-  const summary = []
-  const details = []
-  const general = []
-  const description = []
-  const other = []
-  const faq = []
-  const legalDisclaimer = []
-  const unknown = []
-
-  const notes = vulnerability.notes
-  if (notes) {
-    for (let i = 0; i < notes.length; ++i) {
-      const note = notes[i]
-      switch (note.type) {
-        case 'summary':
-          summary.push(note)
-          break
-        case 'details':
-          details.push(note)
-          break
-        case 'general':
-          general.push(note)
-          break
-        case 'description':
-          description.push(note)
-          break
-        case 'other':
-          other.push(note)
-          break
-        case 'faq':
-          faq.push(note)
-          break
-        case 'legal_disclaimer':
-          legalDisclaimer.push(note)
-          break
-        default:
-          unknown.push(note)
-      }
-    }
-  }
-
-  vulnerability.notes_summary = summary
-  vulnerability.notes_details = details
-  vulnerability.notes_general = general
-  vulnerability.notes_description = description
-  vulnerability.notes_other = other
-  vulnerability.notes_faq = faq
-  vulnerability.notes_legal_disclaimer = legalDisclaimer
-  vulnerability.notes_unknown = unknown
-}
-
-/**
+ * Categorize all document notes by type
+ *
  * @param {any} document
  */
 const addDocumentNotesPreviewAttributes = (document) => {
@@ -1100,6 +851,8 @@ const addDocumentNotesPreviewAttributes = (document) => {
 }
 
 /**
+ * Add attributes to all product groups
+ *
  * @param {{product_groups: []}} productTree
  * @param {{id: string, name: string}[]} productIds
  */
@@ -1114,6 +867,8 @@ const addProductTreePreviewAttributes = (productTree, productIds) => {
 }
 
 /**
+ * Add the full product name to all product groups
+ *
  * @param {{product_ids: any}} productGroup
  * @param {{id: string, name: string}[]} extProductIds
  */
@@ -1137,6 +892,214 @@ const extendProductGroup = (productGroup, extProductIds) => {
 }
 
 /**
+ * Add the full product name to all products in product status
+ *
+ * @param {{scores: [], product_status: any}} vulnerability
+ * @param {*} productIds
+ */
+const addProductStatusPreviewAttributes = (vulnerability, productIds) => {
+  const extendedScoreIds = createExtendedScoreIds(
+    vulnerability.scores,
+    productIds
+  )
+  const productStatus = vulnerability.product_status
+  if (productStatus) {
+    productStatus.known_affected = extendProductStatus(
+      productStatus.known_affected,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.first_affected = extendProductStatus(
+      productStatus.first_affected,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.last_affected = extendProductStatus(
+      productStatus.last_affected,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.known_not_affected = extendProductStatus(
+      productStatus.known_not_affected,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.recommended = extendProductStatus(
+      productStatus.recommended,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.fixed = extendProductStatus(
+      productStatus.fixed,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.first_fixed = extendProductStatus(
+      productStatus.first_fixed,
+      extendedScoreIds,
+      productIds
+    )
+    productStatus.under_investigation = extendProductStatus(
+      productStatus.under_investigation,
+      extendedScoreIds,
+      productIds
+    )
+  }
+}
+
+/**
+ * Collect all product ids with the matching name, vectorString and baseScore
+ *
+ * @param {*} scores
+ * @param {{id: string, name: string}[]} productIds
+ */
+const createExtendedScoreIds = (scores, productIds) => {
+  const extendedProductIds = []
+  if (scores) {
+    for (let i = 0; i < scores.length; ++i) {
+      const score = scores[i]
+      const products = score.products
+      if (products) {
+        for (let j = 0; j < products.length; ++j) {
+          const productId = products[j]
+          if (productId) {
+            extendedProductIds.push({
+              id: productId,
+              name: productIds.find((e) => e.id === productId)?.name ?? '',
+              vectorString: score.cvss_v3?.vectorString ?? '',
+              baseScore: score.cvss_v3?.baseScore ?? '',
+            })
+          }
+        }
+      }
+    }
+  }
+  return extendedProductIds
+}
+
+/**
+ * Add full product name to product status
+ *
+ * @param {any} refs
+ * @param {{id: string}[]} extendedScoreIds
+ * @param {{id: string;
+ *          name: string;
+ *        }[]} productIds
+ */
+const extendProductStatus = (refs, extendedScoreIds, productIds) => {
+  const extendedProductStatus = []
+  if (refs) {
+    for (let i = 0; i < refs.length; ++i) {
+      let ref = refs[i]
+      if (ref) {
+        extendedProductStatus.push(
+          extendedScoreIds.find((e) => e.id === ref) ?? {
+            id: ref,
+            name:
+              productIds.find((productId) => productId.id === ref)?.name ?? '',
+          }
+        )
+      }
+    }
+  }
+  return extendedProductStatus
+}
+
+/**
+ * Categorize all remediations by type
+ *
+ * @param {any} vulnerability
+ * @param {any} productIds
+ * @param {any} groupIds
+ */
+const addRemediationsPreviewAttributes = (
+  vulnerability,
+  productIds,
+  groupIds
+) => {
+  const vendorFix = []
+  const mitigation = []
+  const workaround = []
+  const noneAvailable = []
+  const noFixPlanned = []
+  const unknown = []
+  const remediations = vulnerability.remediations
+  if (remediations) {
+    for (let i = 0; i < remediations.length; ++i) {
+      const remediation = remediations[i]
+      extendRemediation(remediation, productIds, groupIds)
+      switch (remediation.type) {
+        case 'vendor_fix':
+          vendorFix.push(remediation)
+          break
+        case 'mitigation':
+          mitigation.push(remediation)
+          break
+        case 'workaround':
+          workaround.push(remediation)
+          break
+        case 'none_available':
+          noneAvailable.push(remediation)
+          break
+        case 'no_fix_planned':
+          noFixPlanned.push(remediation)
+          break
+        default:
+          unknown.push(remediation)
+      }
+    }
+  }
+
+  vulnerability.remediations_vendor_fix = vendorFix.sort(sortByDate)
+  vulnerability.remediations_mitigation = mitigation.sort(sortByDate)
+  vulnerability.remediations_workaround = workaround.sort(sortByDate)
+  vulnerability.remediations_none_available = noneAvailable.sort(sortByDate)
+  vulnerability.remediations_no_fix_planned = noFixPlanned.sort(sortByDate)
+  vulnerability.remediations_unknown = unknown.sort(sortByDate)
+}
+
+/**
+ * Add full product name to remediations
+ *
+ * @param {{product_ids: any, group_ids: any}} remediation
+ * @param {{id: string, name: string}[]} extProductIds
+ * @param {{id: string, name: string}[]} extGroupIds
+ */
+const extendRemediation = (remediation, extProductIds, extGroupIds) => {
+  if (remediation) {
+    const extendedProductIds = []
+    let productIds = remediation.product_ids
+    if (productIds) {
+      for (let i = 0; i < productIds.length; ++i) {
+        let productId = productIds[i]
+        if (productId) {
+          extendedProductIds.push({
+            id: productId,
+            name: extProductIds.find((e) => e.id === productId)?.name ?? '',
+          })
+        }
+      }
+    }
+    remediation.product_ids = extendedProductIds
+
+    const extendedGroupIds = []
+    let groupIds = remediation.group_ids
+    if (groupIds) {
+      for (let i = 0; i < groupIds.length; ++i) {
+        let productId = groupIds[i]
+        if (productId) {
+          extendedGroupIds.push({
+            id: productId,
+            name: extGroupIds.find((e) => e.id === productId)?.name ?? '',
+          })
+        }
+      }
+    }
+    remediation.group_ids = extendedGroupIds
+  }
+}
+
+/**
  * @param {{date: string}} a
  * @param {{date: string}} b
  */
@@ -1145,4 +1108,61 @@ const sortByDate = (a, b) => {
   if (!a) return 1
   if (!b) return -1
   return new Date(b.date).getTime() - new Date(a.date).getTime()
+}
+
+/**
+ * Categorize all vulnerability notes by type
+ *
+ * @param {any} vulnerability
+ */
+const addVulnerabilityNotesPreviewAttributes = (vulnerability) => {
+  const summary = []
+  const details = []
+  const general = []
+  const description = []
+  const other = []
+  const faq = []
+  const legalDisclaimer = []
+  const unknown = []
+
+  const notes = vulnerability.notes
+  if (notes) {
+    for (let i = 0; i < notes.length; ++i) {
+      const note = notes[i]
+      switch (note.type) {
+        case 'summary':
+          summary.push(note)
+          break
+        case 'details':
+          details.push(note)
+          break
+        case 'general':
+          general.push(note)
+          break
+        case 'description':
+          description.push(note)
+          break
+        case 'other':
+          other.push(note)
+          break
+        case 'faq':
+          faq.push(note)
+          break
+        case 'legal_disclaimer':
+          legalDisclaimer.push(note)
+          break
+        default:
+          unknown.push(note)
+      }
+    }
+  }
+
+  vulnerability.notes_summary = summary
+  vulnerability.notes_details = details
+  vulnerability.notes_general = general
+  vulnerability.notes_description = description
+  vulnerability.notes_other = other
+  vulnerability.notes_faq = faq
+  vulnerability.notes_legal_disclaimer = legalDisclaimer
+  vulnerability.notes_unknown = unknown
 }
