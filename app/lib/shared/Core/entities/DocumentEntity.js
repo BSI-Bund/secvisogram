@@ -320,6 +320,9 @@ export default class DocumentEntity {
     const groupIds = this.collectGroupIds({ document: templateDoc })
 
     if (templateDoc.document) {
+      templateDoc.document.max_base_score = retrieveMaxBaseScore(
+        templateDoc.vulnerabilities
+      )
       addDocumentNotesPreviewAttributes(templateDoc.document)
     }
 
@@ -839,6 +842,28 @@ const addProductStatusPreviewAttributes = (vulnerability, productIds) => {
       productIds
     )
   }
+}
+
+/**
+ * @param {{scores: {cvss_v3: {baseScore: string}}[]}[]} vulnerabilities
+ */
+const retrieveMaxBaseScore = (vulnerabilities) => {
+  if (!vulnerabilities) return '0'
+  let maxBaseScore = 0
+  for (let i = 0; i < vulnerabilities.length; ++i) {
+    const vulnerability = vulnerabilities[i]
+    const scores = vulnerability.scores
+    if (scores) {
+      for (let i = 0; i < scores.length; ++i) {
+        const score = scores[i]
+        const baseScore = Number(score.cvss_v3?.baseScore) ?? 0
+        if (maxBaseScore < baseScore) {
+          maxBaseScore = baseScore
+        }
+      }
+    }
+  }
+  return maxBaseScore.toString()
 }
 
 /**

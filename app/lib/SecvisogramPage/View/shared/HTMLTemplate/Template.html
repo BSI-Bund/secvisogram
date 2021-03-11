@@ -8,8 +8,37 @@
 </head>
 
 <body>
-  <h1>Common Security Advisory Framework</h1>
-  <h2>Document level meta-data</h2>
+  <h1>{{#document.tracking.id}}{{document.tracking.id}}: {{/document.tracking.id}}{{document.title}}</h1>
+
+  <table>
+    <tr>
+      <td>Initial release date: {{document.tracking.initial_release_date}}</td>
+      <td>Engine: {{document.tracking.generator.engine}}</td>
+    </tr>
+    <tr>
+      <td>Current release date: {{document.tracking.current_release_date}}</td>
+      <td>Build Date: {{document.tracking.generator.date}}</td>
+    </tr>
+    <tr>
+      <td>Current version: {{document.tracking.version}}</td>
+      <td>Status: {{document.tracking.status}}</td>    
+    </tr>
+    <tr>
+      <td>CVSSv3.1 Base Score: {{document.max_base_score}}</td>
+      <td>Serverity:
+        {{#document.aggregate_severity.namespace}} <a href={{document.aggregate_severity.namespace}}>{{document.aggregate_severity.text}}</a>{{/document.aggregate_severity.namespace}}
+        {{^document.aggregate_severity.namespace}} {{document.aggregate_severity.text}}{{/document.aggregate_severity.namespace}}
+      </td>
+    </tr>
+    <tr>
+      <td>Original language: {{document.source_lang}}</td>
+      <td>Language: {{document.lang}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">Also referred to: {{#document.tracking.aliases}}{{.}}{{/document.tracking.aliases}}</td>
+    </tr>    
+  </table>
+
   <h3>List of acknowledgments</h3>
   {{#document.acknowledgments}}
     <h4>Acknowledgment</h4>
@@ -36,15 +65,6 @@
       {{/.}}
     {{/urls}}
   {{/document.acknowledgments}}
-  <h3>Aggregate severity</h3>
-  {{#document.aggregate_severity.namespace}}
-    <h4>Namespace of aggregate severity</h4>
-    <p>{{document.aggregate_severity.namespace}}</p>
-  {{/document.aggregate_severity.namespace}}
-  {{#document.aggregate_severity.text}}
-    <h4>Text of aggregate severity</h4>
-    <p>{{document.aggregate_severity.text}}</p>
-  {{/document.aggregate_severity.text}}
   {{#document.csaf_version}}
     <h3>CSAF version</h3>
     <p>{{document.csaf_version}}</p>
@@ -63,14 +83,6 @@
     <h5>URL of TLP version</h5>
     <p>{{document.distribution.tlp.url}}</p>
   {{/document.distribution.tlp.url}}
-  {{#document.lang}}
-    <h3>Language type</h3>
-    <p>{{document.lang}}</p>
-  {{/document.lang}}
-  {{#document.source_lang}}
-    <h3>Language type</h3>
-    <p>{{document.source_lang}}</p>
-  {{/document.source_lang}}
 
   {{#document.notes_summary}}
     {{> document_note}}
@@ -141,34 +153,6 @@
     <p>{{document.title}}</p>
   {{/document.title}}
   <h3>Tracking</h3>
-  {{#document.tracking.id}}
-    <h4>Unique identifier for the document</h4>
-    <p>{{document.tracking.id}}</p>
-  {{/document.tracking.id}}
-  <h4>Aliases</h4>
-  {{#document.tracking.aliases}}{{#.}}
-      <h5>Alternate name</h5>
-      <p>{{.}}</p>
-    {{/.}}
-  {{/document.tracking.aliases}}
-  {{#document.tracking.current_release_date}}
-    <h4>Current release date</h4>
-    <p>{{document.tracking.current_release_date}}</p>
-  {{/document.tracking.current_release_date}}
-  <h4>Document generator</h4>
-  {{#document.tracking.generator.engine}}
-    <h5>Engine of document generation</h5>
-    <p>{{document.tracking.generator.engine}}</p>
-  {{/document.tracking.generator.engine}}
-  {{#document.tracking.generator.date}}
-    <h5>Date of document generation</h5>
-    <p>{{document.tracking.generator.date}}</p>
-  {{/document.tracking.generator.date}}
-  {{#document.tracking.initial_release_date}}
-    <h4>Initial release date</h4>
-    <p>{{document.tracking.initial_release_date}}</p>
-  {{/document.tracking.initial_release_date}}
-
   <h4>Revision history</h4>
   <table>
     <thead>
@@ -189,14 +173,6 @@
     </tbody>
   </table>
 
-  {{#document.tracking.status}}
-    <h4>Document status</h4>
-    <p>{{document.tracking.status}}</p>
-  {{/document.tracking.status}}
-  {{#document.tracking.version}}
-    <h4>Version</h4>
-    <p>{{document.tracking.version}}</p>
-  {{/document.tracking.version}}
   {{#document.type}}
     <h3>Document type</h3>
     <p>{{document.type}}</p>
