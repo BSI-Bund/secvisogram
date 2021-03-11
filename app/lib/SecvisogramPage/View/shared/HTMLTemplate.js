@@ -18,7 +18,7 @@ const PRODUCT_STATUS_ROW = `
 </tr>`
 
 const REMEDIATION = `
-<h5>{{type}}{{#date}} ({{.}}){{/date}}</h5>
+<h5>{{#replaceUnderscores}}{{#upperCase}}{{type}}{{/upperCase}}{{/replaceUnderscores}}{{#date}} ({{.}}){{/date}}</h5>
 <p>{{details}}</p>
 {{#product_ids.length}}
   <h6>For products:</h6>
@@ -36,7 +36,7 @@ const REMEDIATION = `
   {{/group_ids}}
   </ul>
 {{/group_ids.length}}        
-{{#url}}<a href={{.}}>{{.}}</a>{{/url}}
+{{#url}}<p><a href={{.}}>{{.}}</a></p>{{/url}}
 {{#entitlements}}
   <p>{{.}}</p>
 {{/entitlements}}
@@ -46,21 +46,22 @@ const REMEDIATION = `
 {{/restart_required}}`
 
 const VULNERABILITY_NOTE = `
-<b>{{title}}</b>{{#audience}} ({{.}}){{/audience}}
-<p>{{text}}</p>
-`
+{{#title}}<b>{{.}}</b>{{/title}}{{#audience}} ({{.}}){{/audience}}
+{{#text}}<p>{{text}}</p>{{/text}}`
 
 const DOCUMENT_NOTE = `
-<h2>{{title}}</h2>
-<small>{{audience}}</small>
-<p>{{text}}<p>
-`
-
+{{#title}}<h2>{{.}}</h2>{{/title}}
+{{#audience}}<small>{{.}}</small>{{/audience}}
+{{#text}}<p>{{text}}</p>{{/text}}`
 const ACKNOWLEDGEMENT = `
 {{#.}}
-<li>{{#removeTrailingComma}}{{#names}}{{.}}, {{/names}}{{/removeTrailingComma}}{{#organizations.length}} from {{#removeTrailingComma}}{{#organizations}}{{.}}, {{/organizations}}{{/removeTrailingComma}}{{/organizations.length}}{{#summary}} for {{.}}{{/summary}}{{#urls.length}} (see: {{#removeTrailingComma}}{{#urls}}{{.}}, {{/urls}}{{/removeTrailingComma}}){{/urls.length}}</li>  
-{{/.}}
-`
+  <li>{{#removeTrailingComma}}{{#names}}{{.}}, {{/names}}{{/removeTrailingComma}}{{#organizations.length}} from {{#removeTrailingComma}}{{#organizations}}{{.}}, {{/organizations}}{{/removeTrailingComma}}{{/organizations.length}}{{#summary}} for {{.}}{{/summary}}{{#urls.length}} (see: {{#removeTrailingComma}}{{#urls}}{{.}}, {{/urls}}{{/removeTrailingComma}}){{/urls.length}}</li>  
+{{/.}}`
+
+const REFERENCE = `
+{{#.}}
+  <li>{{summary}} {{#type}} ({{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}){{/type}}{{#url}}: <a href={{.}}>{{.}}</a>{{/url}}</li>
+{{/.}}`
 
 /**
  * Encapsulates the rendering of the mustache template.
@@ -75,5 +76,6 @@ export default function HTMLTemplate({ document }) {
     vulnerability_note: VULNERABILITY_NOTE,
     document_note: DOCUMENT_NOTE,
     acknowledgment: ACKNOWLEDGEMENT,
+    reference: REFERENCE,
   })
 }

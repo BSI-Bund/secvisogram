@@ -353,6 +353,26 @@ export default class DocumentEntity {
       }
     }
 
+    templateDoc.upperCase = () => {
+      return function (
+        /** @type {string} */ text,
+        /** @type {function} */ render
+      ) {
+        var renderedText = /** @type {string} */ (render(text))
+        return renderedText.charAt(0).toUpperCase() + renderedText.slice(1)
+      }
+    }
+
+    templateDoc.replaceUnderscores = () => {
+      return function (
+        /** @type {string} */ text,
+        /** @type {function} */ render
+      ) {
+        var renderedText = /** @type {string} */ (render(text))
+        return renderedText.replaceAll('_', ' ')
+      }
+    }
+
     return { document: templateDoc }
   }
 

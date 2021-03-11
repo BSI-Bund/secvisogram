@@ -39,35 +39,6 @@
     </tr>    
   </table>
 
-  {{#document.acknowledgments.length}}
-  <h2>Acknowledgments</h2>
-  We thank the following parties for their efforts:
-  <ul>
-  {{#document.acknowledgments}}      
-    {{> acknowledgment}}
-  {{/document.acknowledgments}}
-  </ul>
-  {{/document.acknowledgments.length}}
-
-  {{#document.csaf_version}}
-    <h3>CSAF version</h3>
-    <p>{{document.csaf_version}}</p>
-  {{/document.csaf_version}}
-  <h3>Rules for sharing document</h3>
-  {{#document.distribution.text}}
-    <h4>Textual description</h4>
-    <p>{{document.distribution.text}}</p>
-  {{/document.distribution.text}}
-  <h4>Traffic Light Protocol (TLP)</h4>
-  {{#document.distribution.tlp.label}}
-    <h5>Label of TLP</h5>
-    <p>{{document.distribution.tlp.label}}</p>
-  {{/document.distribution.tlp.label}}
-  {{#document.distribution.tlp.url}}
-    <h5>URL of TLP version</h5>
-    <p>{{document.distribution.tlp.url}}</p>
-  {{/document.distribution.tlp.url}}
-
   {{#document.notes_summary}}
     {{> document_note}}
   {{/document.notes_summary}}
@@ -99,72 +70,9 @@
   {{/product_tree.product_groups}}
   {{/product_tree.product_groups.length}}
 
-  <h3>Publisher</h3>
-  {{#document.publisher.contact_details}}
-    <h4>Contact details</h4>
-    <p>{{document.publisher.contact_details}}</p>
-  {{/document.publisher.contact_details}}
-  {{#document.publisher.issuing_authority}}
-    <h4>Issuing authority</h4>
-    <p>{{document.publisher.issuing_authority}}</p>
-  {{/document.publisher.issuing_authority}}
-  {{#document.publisher.type}}
-    <h4>Type of publisher</h4>
-    <p>{{document.publisher.type}}</p>
-  {{/document.publisher.type}}
-  {{#document.publisher.vendor_id}}
-    <h4>Vendor releasing the document</h4>
-    <p>{{document.publisher.vendor_id}}</p>
-  {{/document.publisher.vendor_id}}
-  <h3>List of references</h3>
-  {{#document.references}}
-    <h4>Reference</h4>
-    {{#summary}}
-      <h5>Summary of the reference</h5>
-      <p>{{summary}}</p>
-    {{/summary}}
-    {{#type}}
-      <h5>Type of reference</h5>
-      <p>{{type}}</p>
-    {{/type}}
-    {{#url}}
-      <h5>URL of reference</h5>
-      <p>{{url}}</p>
-    {{/url}}
-  {{/document.references}}
-  {{#document.title}}
-    <h3>Title of this document</h3>
-    <p>{{document.title}}</p>
-  {{/document.title}}
-  <h3>Tracking</h3>
-  <h4>Revision history</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>Version</th>
-        <th>Date of the revision</th>
-        <th>Summary of the revision</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#document.tracking.revision_history}}
-        <tr>
-          <td>{{number}}</td>
-          <td>{{date}}</td>
-          <td>{{summary}}</td>
-        </tr>
-      {{/document.tracking.revision_history}}
-    </tbody>
-  </table>
-
-  {{#document.type}}
-    <h3>Document type</h3>
-    <p>{{document.type}}</p>
-  {{/document.type}}
-  
   <h2>Vulnerabilities</h2>
   {{#vulnerabilities}}
-    <h3>Vulnerability</h3>
+    <h3>{{title}}{{#cve}} ({{.}}){{/cve}}</h3>
 
     {{#notes_summary}}
       {{> vulnerability_note}}
@@ -187,6 +95,31 @@
     {{#notes_unknown}}
       {{> vulnerability_note}}
     {{/notes_unknown}}
+
+    <table>
+      <tr>
+        <th>CWE:</th>
+        <td>{{#cwe}}{{id}}:{{name}}{{/cwe}}</td>
+      </tr>
+      {{#id}}
+        <tr>
+          <th>ID:</th>
+          <td>{{text}}{{#system_name}} ({{.}}){{/system_name}}</td>
+        </tr>
+      {{/id}}
+      {{#discovery_date}}
+        <tr>
+          <th>Discovery date:</th>
+          <td>{{discovery_date}}</td>
+        </tr>
+      {{/discovery_date}}
+      {{#release_date}}
+        <tr>
+          <th>Release date:</th>
+          <td>{{release_date}}</td>
+        </tr>            
+      {{/release_date}}
+    </table>
     
     <h4>Product status</h4>
     {{#product_status.known_affected.length}}
@@ -271,7 +204,7 @@
     {{/product_status.under_investigation.length}}
 
     {{#remediations.length}}
-      <h4>List of remediations</h4>
+      <h4>Remediations</h4>
       {{#remediations_vendor_fix}}
         {{> remediation}}
       {{/remediations_vendor_fix}}
@@ -294,7 +227,6 @@
 
     {{#acknowledgments.length}}
     <h4>Acknowledgments</h4>
-    We thank the following parties for their efforts:
     <ul>
     {{#acknowledgments}}      
       {{> acknowledgment}}
@@ -302,229 +234,114 @@
     </ul>
     {{/acknowledgments.length}}
 
-    {{#cve}}
-      <h4>CVE</h4>
-      <p>{{cve}}</p>
-    {{/cve}}
-    <h4>CWE</h4>
-    {{#cwe.id}}
-      <h5>Weakness ID</h5>
-      <p>{{cwe.id}}</p>
-    {{/cwe.id}}
-    {{#cwe.name}}
-      <h5>Weakness name</h5>
-      <p>{{cwe.name}}</p>
-    {{/cwe.name}}
-    <h4>List of scores</h4>
-    {{#scores}}
-      <h5>Score</h5>
-      <h6>List of product_ids</h6>
-      {{#products}}{{#.}}
-          <h7>Reference token for product instance</h7>
-          <p>{{.}}</p>
+    {{#involvements.length}}
+      <h4>Involvement</h4>      
+      <ul>
+      {{#involvements}}
+        {{#.}}
+        <li>{{#upperCase}}{{party}}{{/upperCase}}{{#status}} ({{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}){{/status}}{{#summary}}: {{.}}{{/summary}}</li>
         {{/.}}
-      {{/products}}
-      <h6>JSON Schema for Common Vulnerability Scoring System version 3.1</h6>
-      {{#cvss_v3.version}}
-        <h7>version</h7>
-        <p>{{cvss_v3.version}}</p>
-      {{/cvss_v3.version}}
-      {{#cvss_v3.vectorString}}
-        <h7>vectorString</h7>
-        <p>{{cvss_v3.vectorString}}</p>
-      {{/cvss_v3.vectorString}}
-      {{#cvss_v3.attackVector}}
-        <h7>attackVector</h7>
-        <p>{{cvss_v3.attackVector}}</p>
-      {{/cvss_v3.attackVector}}
-      {{#cvss_v3.attackComplexity}}
-        <h7>attackComplexity</h7>
-        <p>{{cvss_v3.attackComplexity}}</p>
-      {{/cvss_v3.attackComplexity}}
-      {{#cvss_v3.privilegesRequired}}
-        <h7>privilegesRequired</h7>
-        <p>{{cvss_v3.privilegesRequired}}</p>
-      {{/cvss_v3.privilegesRequired}}
-      {{#cvss_v3.userInteraction}}
-        <h7>userInteraction</h7>
-        <p>{{cvss_v3.userInteraction}}</p>
-      {{/cvss_v3.userInteraction}}
-      {{#cvss_v3.scope}}
-        <h7>scope</h7>
-        <p>{{cvss_v3.scope}}</p>
-      {{/cvss_v3.scope}}
-      {{#cvss_v3.confidentialityImpact}}
-        <h7>confidentialityImpact</h7>
-        <p>{{cvss_v3.confidentialityImpact}}</p>
-      {{/cvss_v3.confidentialityImpact}}
-      {{#cvss_v3.integrityImpact}}
-        <h7>integrityImpact</h7>
-        <p>{{cvss_v3.integrityImpact}}</p>
-      {{/cvss_v3.integrityImpact}}
-      {{#cvss_v3.availabilityImpact}}
-        <h7>availabilityImpact</h7>
-        <p>{{cvss_v3.availabilityImpact}}</p>
-      {{/cvss_v3.availabilityImpact}}
-      {{#cvss_v3.baseSeverity}}
-        <h7>baseSeverity</h7>
-        <p>{{cvss_v3.baseSeverity}}</p>
-      {{/cvss_v3.baseSeverity}}
-      {{#cvss_v3.exploitCodeMaturity}}
-        <h7>exploitCodeMaturity</h7>
-        <p>{{cvss_v3.exploitCodeMaturity}}</p>
-      {{/cvss_v3.exploitCodeMaturity}}
-      {{#cvss_v3.remediationLevel}}
-        <h7>remediationLevel</h7>
-        <p>{{cvss_v3.remediationLevel}}</p>
-      {{/cvss_v3.remediationLevel}}
-      {{#cvss_v3.reportConfidence}}
-        <h7>reportConfidence</h7>
-        <p>{{cvss_v3.reportConfidence}}</p>
-      {{/cvss_v3.reportConfidence}}
-      {{#cvss_v3.temporalSeverity}}
-        <h7>temporalSeverity</h7>
-        <p>{{cvss_v3.temporalSeverity}}</p>
-      {{/cvss_v3.temporalSeverity}}
-      {{#cvss_v3.confidentialityRequirement}}
-        <h7>confidentialityRequirement</h7>
-        <p>{{cvss_v3.confidentialityRequirement}}</p>
-      {{/cvss_v3.confidentialityRequirement}}
-      {{#cvss_v3.integrityRequirement}}
-        <h7>integrityRequirement</h7>
-        <p>{{cvss_v3.integrityRequirement}}</p>
-      {{/cvss_v3.integrityRequirement}}
-      {{#cvss_v3.availabilityRequirement}}
-        <h7>availabilityRequirement</h7>
-        <p>{{cvss_v3.availabilityRequirement}}</p>
-      {{/cvss_v3.availabilityRequirement}}
-      {{#cvss_v3.modifiedAttackVector}}
-        <h7>modifiedAttackVector</h7>
-        <p>{{cvss_v3.modifiedAttackVector}}</p>
-      {{/cvss_v3.modifiedAttackVector}}
-      {{#cvss_v3.modifiedAttackComplexity}}
-        <h7>modifiedAttackComplexity</h7>
-        <p>{{cvss_v3.modifiedAttackComplexity}}</p>
-      {{/cvss_v3.modifiedAttackComplexity}}
-      {{#cvss_v3.modifiedPrivilegesRequired}}
-        <h7>modifiedPrivilegesRequired</h7>
-        <p>{{cvss_v3.modifiedPrivilegesRequired}}</p>
-      {{/cvss_v3.modifiedPrivilegesRequired}}
-      {{#cvss_v3.modifiedUserInteraction}}
-        <h7>modifiedUserInteraction</h7>
-        <p>{{cvss_v3.modifiedUserInteraction}}</p>
-      {{/cvss_v3.modifiedUserInteraction}}
-      {{#cvss_v3.modifiedScope}}
-        <h7>modifiedScope</h7>
-        <p>{{cvss_v3.modifiedScope}}</p>
-      {{/cvss_v3.modifiedScope}}
-      {{#cvss_v3.modifiedConfidentialityImpact}}
-        <h7>modifiedConfidentialityImpact</h7>
-        <p>{{cvss_v3.modifiedConfidentialityImpact}}</p>
-      {{/cvss_v3.modifiedConfidentialityImpact}}
-      {{#cvss_v3.modifiedIntegrityImpact}}
-        <h7>modifiedIntegrityImpact</h7>
-        <p>{{cvss_v3.modifiedIntegrityImpact}}</p>
-      {{/cvss_v3.modifiedIntegrityImpact}}
-      {{#cvss_v3.modifiedAvailabilityImpact}}
-        <h7>modifiedAvailabilityImpact</h7>
-        <p>{{cvss_v3.modifiedAvailabilityImpact}}</p>
-      {{/cvss_v3.modifiedAvailabilityImpact}}
-      {{#cvss_v3.environmentalSeverity}}
-        <h7>environmentalSeverity</h7>
-        <p>{{cvss_v3.environmentalSeverity}}</p>
-      {{/cvss_v3.environmentalSeverity}}
-    {{/scores}}
-    {{#discovery_date}}
-      <h4>Discovery date</h4>
-      <p>{{discovery_date}}</p>
-    {{/discovery_date}}
-    <h4>ID</h4>
-    {{#id.system_name}}
-      <h5>System name</h5>
-      <p>{{id.system_name}}</p>
-    {{/id.system_name}}
-    {{#id.text}}
-      <h5>Text</h5>
-      <p>{{id.text}}</p>
-    {{/id.text}}
-    <h4>List of involvements</h4>
-    {{#involvements}}
-      <h5>Involvement</h5>
-      {{#summary}}
-        <h6>Summary of the involvement</h6>
-        <p>{{summary}}</p>
-      {{/summary}}
-      {{#party}}
-        <h6>Party type</h6>
-        <p>{{party}}</p>
-      {{/party}}
-      {{#status}}
-        <h6>Party status</h6>
-        <p>{{status}}</p>
-      {{/status}}
-    {{/involvements}}
+      {{/involvements}}
+      </ul>
+    {{/involvements.length}}
 
-    <h4>List of references</h4>
-    {{#references}}
-      <h5>Reference</h5>
-      {{#summary}}
-        <h6>Summary of the reference</h6>
-        <p>{{summary}}</p>
-      {{/summary}}
-      {{#type}}
-        <h6>Type of reference</h6>
-        <p>{{type}}</p>
-      {{/type}}
-      {{#url}}
-        <h6>URL of reference</h6>
-        <p>{{url}}</p>
-      {{/url}}
-    {{/references}}
-    {{#release_date}}
-      <h4>Release date</h4>
-      <p>{{release_date}}</p>
-    {{/release_date}}
-    <h4>List of threats</h4>
-    {{#threats}}
-      <h5>Threat</h5>
-      {{#type}}
-        <h6>Type of the threat</h6>
-        <p>{{type}}</p>
-      {{/type}}
-      {{#details}}
-        <h6>Details of the threat</h6>
+    {{#references.length}}
+      <h4>References</h4>
+      <ul>
+      {{#references}}
+        {{> reference}}
+      {{/references}}
+      </ul>
+    {{/references.length}}
+
+    {{#threats.length}}
+      <h4>Threats</h4>
+      {{#.}}
+        <h5>{{#replaceUnderscores}}{{#upperCase}}{{type}}{{/upperCase}}{{/replaceUnderscores}}{{#date}} ({{.}}){{/date}}</h5>
         <p>{{details}}</p>
-      {{/details}}
-      {{#date}}
-        <h6>Date of the threat</h6>
-        <p>{{date}}</p>
-      {{/date}}
-      <h6>List of product_ids</h6>
-      {{#product_ids}}{{#.}}
-          <h7>Reference token for product instance</h7>
-          <p>{{.}}</p>
-        {{/.}}
-      {{/product_ids}}
-      <h6>List of product_group_ids</h6>
-      {{#group_ids}}{{#.}}
-          <h7>Reference token for product group instance</h7>
-          <p>{{.}}</p>
-        {{/.}}
-      {{/group_ids}}
-    {{/threats}}
-    {{#title}}
-      <h4>Title</h4>
-      <p>{{title}}</p>
-    {{/title}}
+        {{#product_ids.length}}
+          <h6>For products:</h6>
+          <ul>
+          {{#product_ids}}
+            <li>{{name}}</li>
+          {{/product_ids}}
+          </ul>
+        {{/product_ids.length}}
+        {{#group_ids.length}}
+          <h6>For groups:</h6>
+          <ul>
+          {{#group_ids}}
+          <li>{{name}}</li>
+          {{/group_ids}}
+          </ul>
+        {{/group_ids.length}}  
+      {{/.}}
+    {{/threats.length}}
+
   {{/vulnerabilities}}
 
+  {{#document.acknowledgments.length}}
+  <h2>Acknowledgments</h2>
+  We thank the following parties for their efforts:
+  <ul>
+  {{#document.acknowledgments}}      
+    {{> acknowledgment}}
+  {{/document.acknowledgments}}
+  </ul>
+  {{/document.acknowledgments.length}}
+
   {{#document.notes_other}}
-  {{> document_note}}
+    {{> document_note}}
   {{/document.notes_other}}
 
+  {{#document.publisher}}
+    <h2>Contact details</h2>
+    <p>{{contact_details}}</p>
+  {{/document.publisher}}
+
+  {{#document.references.length}}
+    <h2>References</h2>
+    <ul>
+      {{#document.references}}
+        {{> reference}}
+      {{/document.references}}
+    </ul>
+  {{/document.references.length}}
+
+  <h2>Revision history</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Version</th>
+        <th>Date of the revision</th>
+        <th>Summary of the revision</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#document.tracking.revision_history}}
+        <tr>
+          <td>{{number}}</td>
+          <td>{{date}}</td>
+          <td>{{summary}}</td>
+        </tr>
+      {{/document.tracking.revision_history}}
+    </tbody>
+  </table>
+
+  {{#document.distribution}}
+    <h2>Sharing rules</h2>
+    <p>{{text}}{{#tlp.url}}<br>For the TLP version see: {{.}}{{/tlp.url}}</p>
+  {{/document.distribution}}
+
   {{#document.notes_legal_disclaimer}}
-  {{> document_note}}
+    {{> document_note}}
   {{/document.notes_legal_disclaimer}}
+
+  {{#document.type}}
+    <h3>Document type</h3>
+    <p>{{document.type}}</p>
+  {{/document.type}}
+
 </body>
 
 </html>
