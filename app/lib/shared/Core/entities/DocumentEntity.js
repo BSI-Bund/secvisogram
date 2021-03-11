@@ -319,12 +319,15 @@ export default class DocumentEntity {
     const productIds = this.collectProductIds({ document: templateDoc })
     const groupIds = this.collectGroupIds({ document: templateDoc })
 
+    addDocumentNotesPreviewAttributes(templateDoc.document)
+
     const vulnerabilities = templateDoc.vulnerabilities
     if (vulnerabilities) {
       for (let i = 0; i < vulnerabilities.length; ++i) {
         const vulnerability = vulnerabilities[i]
-        createProductStatusPreview(vulnerability, productIds)
-        createRemediationsPreview(vulnerability, productIds, groupIds)
+        addProductStatusPreviewAttributes(vulnerability, productIds)
+        addRemediationsPreviewAttributes(vulnerability, productIds, groupIds)
+        addVulnerabilityNotesPreviewAttributes(vulnerability)
       }
     }
 
@@ -782,7 +785,7 @@ const createExtendedScoreIds = (scores, productIds) => {
  * @param {{scores: [], product_status: any}} vulnerability
  * @param {*} productIds
  */
-const createProductStatusPreview = (vulnerability, productIds) => {
+const addProductStatusPreviewAttributes = (vulnerability, productIds) => {
   const extendedScoreIds = createExtendedScoreIds(
     vulnerability.scores,
     productIds
@@ -837,7 +840,11 @@ const createProductStatusPreview = (vulnerability, productIds) => {
  * @param {any} productIds
  * @param {any} groupIds
  */
-const createRemediationsPreview = (vulnerability, productIds, groupIds) => {
+const addRemediationsPreviewAttributes = (
+  vulnerability,
+  productIds,
+  groupIds
+) => {
   const vendorFix = []
   const mitigation = []
   const workaround = []
@@ -916,6 +923,116 @@ const extendRemediation = (remediation, extProductIds, extGroupIds) => {
     }
     remediation.group_ids = extendedGroupIds
   }
+}
+
+/**
+ * @param {any} vulnerability
+ */
+const addVulnerabilityNotesPreviewAttributes = (vulnerability) => {
+  const summary = []
+  const details = []
+  const general = []
+  const description = []
+  const other = []
+  const faq = []
+  const legalDisclaimer = []
+  const unknown = []
+
+  const notes = vulnerability.notes
+  if (notes) {
+    for (let i = 0; i < notes.length; ++i) {
+      const note = notes[i]
+      switch (note.type) {
+        case 'summary':
+          summary.push(note)
+          break
+        case 'details':
+          details.push(note)
+          break
+        case 'general':
+          general.push(note)
+          break
+        case 'description':
+          description.push(note)
+          break
+        case 'other':
+          other.push(note)
+          break
+        case 'faq':
+          faq.push(note)
+          break
+        case 'legal_disclaimer':
+          legalDisclaimer.push(note)
+          break
+        default:
+          unknown.push(note)
+      }
+    }
+  }
+
+  vulnerability.notes_summary = summary
+  vulnerability.notes_details = details
+  vulnerability.notes_general = general
+  vulnerability.notes_description = description
+  vulnerability.notes_other = other
+  vulnerability.notes_faq = faq
+  vulnerability.notes_legal_disclaimer = legalDisclaimer
+  vulnerability.notes_unknown = unknown
+}
+
+/**
+ * @param {any} document
+ */
+const addDocumentNotesPreviewAttributes = (document) => {
+  const summary = []
+  const details = []
+  const general = []
+  const description = []
+  const other = []
+  const faq = []
+  const legalDisclaimer = []
+  const unknown = []
+
+  const notes = document.notes
+  if (notes) {
+    for (let i = 0; i < notes.length; ++i) {
+      const note = notes[i]
+      switch (note.type) {
+        case 'summary':
+          summary.push(note)
+          break
+        case 'details':
+          details.push(note)
+          break
+        case 'general':
+          general.push(note)
+          break
+        case 'description':
+          description.push(note)
+          break
+        case 'other':
+          other.push(note)
+          break
+        case 'faq':
+          faq.push(note)
+          break
+        case 'legal_disclaimer':
+          legalDisclaimer.push(note)
+          break
+        default:
+          unknown.push(note)
+      }
+    }
+  }
+
+  document.notes_summary = summary
+  document.notes_details = details
+  document.notes_general = general
+  document.notes_description = description
+  document.notes_other = other
+  document.notes_faq = faq
+  document.notes_legal_disclaimer = legalDisclaimer
+  document.notes_unknown = unknown
 }
 
 /**

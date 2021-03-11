@@ -45,6 +45,17 @@ const REMEDIATION = `
   <p>{{details}}</p>
 {{/restart_required}}`
 
+const VULNERABILITY_NOTE = `
+<b>{{title}}</b>{{#audience}} ({{.}}){{/audience}}
+<p>{{text}}</p>
+`
+
+const DOCUMENT_NOTE = `
+<h2>{{title}}</h2>
+<small>{{audience}}</small>
+<p>{{text}}<p>
+`
+
 /**
  * Encapsulates the rendering of the mustache template.
  *
@@ -55,5 +66,7 @@ export default function HTMLTemplate({ document }) {
     product_status_header: PRODUCT_STATUS_HEADER,
     product_status_row: PRODUCT_STATUS_ROW,
     remediation: REMEDIATION,
+    vulnerability_note: VULNERABILITY_NOTE,
+    document_note: DOCUMENT_NOTE,
   })
 }
