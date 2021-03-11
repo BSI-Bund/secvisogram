@@ -319,7 +319,13 @@ export default class DocumentEntity {
     const productIds = this.collectProductIds({ document: templateDoc })
     const groupIds = this.collectGroupIds({ document: templateDoc })
 
-    addDocumentNotesPreviewAttributes(templateDoc.document)
+    if (templateDoc.document) {
+      addDocumentNotesPreviewAttributes(templateDoc.document)
+    }
+
+    if (templateDoc.product_tree) {
+      addProductTreePreviewAttributes(templateDoc.product_tree, productIds)
+    }
 
     const vulnerabilities = templateDoc.vulnerabilities
     if (vulnerabilities) {
@@ -1033,6 +1039,43 @@ const addDocumentNotesPreviewAttributes = (document) => {
   document.notes_faq = faq
   document.notes_legal_disclaimer = legalDisclaimer
   document.notes_unknown = unknown
+}
+
+/**
+ * @param {{product_groups: []}} productTree
+ * @param {{id: string, name: string}[]} productIds
+ */
+const addProductTreePreviewAttributes = (productTree, productIds) => {
+  const productGroups = productTree.product_groups
+  if (productGroups) {
+    for (let i = 0; i < productGroups.length; ++i) {
+      const productGroup = productGroups[i]
+      extendProductGroup(productGroup, productIds)
+    }
+  }
+}
+
+/**
+ * @param {{product_ids: any}} productGroup
+ * @param {{id: string, name: string}[]} extProductIds
+ */
+const extendProductGroup = (productGroup, extProductIds) => {
+  if (productGroup) {
+    const extendedProductIds = []
+    let productIds = productGroup.product_ids
+    if (productIds) {
+      for (let i = 0; i < productIds.length; ++i) {
+        let productId = productIds[i]
+        if (productId) {
+          extendedProductIds.push({
+            id: productId,
+            name: extProductIds.find((e) => e.id === productId)?.name ?? '',
+          })
+        }
+      }
+    }
+    productGroup.product_ids = extendedProductIds
+  }
 }
 
 /**

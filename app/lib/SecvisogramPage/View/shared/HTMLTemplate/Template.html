@@ -91,6 +91,18 @@
   {{> document_note}}
   {{/document.notes_unknown}}
 
+  {{#product_tree.product_groups.length}}
+  <h2>Product groups</h2>
+  {{#product_tree.product_groups}}
+    <b>{{#summary}}{{.}}{{/summary}}{{^summary}}{{group_id}}{{/summary}}</b>
+    <ul>
+    {{#product_ids}}
+      <li>{{name}}</li>
+    {{/product_ids}}
+    </ul>    
+  {{/product_tree.product_groups}}
+  {{/product_tree.product_groups.length}}
+
   <h3>Publisher</h3>
   {{#document.publisher.contact_details}}
     <h4>Contact details</h4>
@@ -268,24 +280,6 @@
       <p>{{cpe}}</p>
     {{/cpe}}
   {{/product_tree.full_product_names}}
-  <h3>List of product groups</h3>
-  {{#product_tree.product_groups}}
-    <h4>Product group</h4>
-    {{#summary}}
-      <h5>Summary of the product group</h5>
-      <p>{{summary}}</p>
-    {{/summary}}
-    {{#group_id}}
-      <h5>Reference token for product group instance</h5>
-      <p>{{group_id}}</p>
-    {{/group_id}}
-    <h5>List of Product IDs</h5>
-    {{#product_ids}}{{#.}}
-        <h6>Reference token for product instance</h6>
-        <p>{{.}}</p>
-      {{/.}}
-    {{/product_ids}}
-  {{/product_tree.product_groups}}
   <h3>List of relationships</h3>
   {{#product_tree.relationships}}
     <h4>Relationship</h4>
