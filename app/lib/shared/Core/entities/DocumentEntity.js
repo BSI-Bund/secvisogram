@@ -340,6 +340,19 @@ export default class DocumentEntity {
       }
     }
 
+    templateDoc.removeTrailingComma = () => {
+      return function (
+        /** @type {string} */ text,
+        /** @type {function} */ render
+      ) {
+        var textWithTrailingComma = /** @type {string} */ (render(text))
+        const lastIndex = textWithTrailingComma.lastIndexOf(',')
+        return lastIndex > 0
+          ? textWithTrailingComma.substring(0, lastIndex)
+          : textWithTrailingComma
+      }
+    }
+
     return { document: templateDoc }
   }
 

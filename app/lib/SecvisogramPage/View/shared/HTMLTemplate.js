@@ -56,6 +56,12 @@ const DOCUMENT_NOTE = `
 <p>{{text}}<p>
 `
 
+const ACKNOWLEDGEMENT = `
+{{#.}}
+<li>{{#removeTrailingComma}}{{#names}}{{.}}, {{/names}}{{/removeTrailingComma}}{{#organizations.length}} from {{#removeTrailingComma}}{{#organizations}}{{.}}, {{/organizations}}{{/removeTrailingComma}}{{/organizations.length}}{{#summary}} for {{.}}{{/summary}}{{#urls.length}} (see: {{#removeTrailingComma}}{{#urls}}{{.}}, {{/urls}}{{/removeTrailingComma}}){{/urls.length}}</li>  
+{{/.}}
+`
+
 /**
  * Encapsulates the rendering of the mustache template.
  *
@@ -68,5 +74,6 @@ export default function HTMLTemplate({ document }) {
     remediation: REMEDIATION,
     vulnerability_note: VULNERABILITY_NOTE,
     document_note: DOCUMENT_NOTE,
+    acknowledgment: ACKNOWLEDGEMENT,
   })
 }

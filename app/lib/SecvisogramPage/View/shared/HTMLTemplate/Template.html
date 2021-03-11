@@ -39,32 +39,16 @@
     </tr>    
   </table>
 
-  <h3>List of acknowledgments</h3>
-  {{#document.acknowledgments}}
-    <h4>Acknowledgment</h4>
-    <h5>List of acknowledged names</h5>
-    {{#names}}{{#.}}
-        <h6>Name of entity being recognized</h6>
-        <p>{{.}}</p>
-      {{/.}}
-    {{/names}}
-    <h5>List of contributing organizations</h5>
-    {{#organizations}}{{#.}}
-        <h6>Contributing organization</h6>
-        <p>{{.}}</p>
-      {{/.}}
-    {{/organizations}}
-    {{#summary}}
-      <h5>Summary of the acknowledgment</h5>
-      <p>{{summary}}</p>
-    {{/summary}}
-    <h5>List of URLs</h5>
-    {{#urls}}{{#.}}
-        <h6>URL of acknowledgment</h6>
-        <p>{{.}}</p>
-      {{/.}}
-    {{/urls}}
+  {{#document.acknowledgments.length}}
+  <h2>Acknowledgments</h2>
+  We thank the following parties for their efforts:
+  <ul>
+  {{#document.acknowledgments}}      
+    {{> acknowledgment}}
   {{/document.acknowledgments}}
+  </ul>
+  {{/document.acknowledgments.length}}
+
   {{#document.csaf_version}}
     <h3>CSAF version</h3>
     <p>{{document.csaf_version}}</p>
@@ -308,32 +292,16 @@
       {{/remediations_unknown}}                              
     {{/remediations.length}}
 
-    <h4>List of acknowledgments</h4>
-    {{#acknowledgments}}
-      <h5>Acknowledgment</h5>
-      <h6>List of acknowledged names</h6>
-      {{#names}}{{#.}}
-          <h7>Name of entity being recognized</h7>
-          <p>{{.}}</p>
-        {{/.}}
-      {{/names}}
-      <h6>List of contributing organizations</h6>
-      {{#organizations}}{{#.}}
-          <h7>Contributing organization</h7>
-          <p>{{.}}</p>
-        {{/.}}
-      {{/organizations}}
-      {{#summary}}
-        <h6>Summary of the acknowledgment</h6>
-        <p>{{summary}}</p>
-      {{/summary}}
-      <h6>List of URLs</h6>
-      {{#urls}}{{#.}}
-          <h7>URL of acknowledgment</h7>
-          <p>{{.}}</p>
-        {{/.}}
-      {{/urls}}
+    {{#acknowledgments.length}}
+    <h4>Acknowledgments</h4>
+    We thank the following parties for their efforts:
+    <ul>
+    {{#acknowledgments}}      
+      {{> acknowledgment}}
     {{/acknowledgments}}
+    </ul>
+    {{/acknowledgments.length}}
+
     {{#cve}}
       <h4>CVE</h4>
       <p>{{cve}}</p>
