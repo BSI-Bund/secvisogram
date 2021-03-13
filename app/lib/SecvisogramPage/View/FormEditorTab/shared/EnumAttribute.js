@@ -27,7 +27,6 @@ export default function EnumAttribute({ options, deletable, ...props }) {
         <div className="max-w-md flex">
           <div className="w-full">
             <Autocomplete
-              freeSolo
               disableClearable
               options={options}
               value={props.value}
