@@ -3,6 +3,10 @@ import React from 'react'
 import { render } from 'react-dom'
 import { ErrorBoundary, useErrorHandler } from 'react-error-boundary'
 import View from './SecvisogramPage/View'
+import {
+  uniqueGroupId,
+  uniqueProductId,
+} from './SecvisogramPage/View/FormEditorTab/shared/unique-id'
 import createCore from './shared/Core'
 import ErrorScreen from './shared/ErrorScreen'
 import './shared/style.css'
@@ -214,6 +218,10 @@ createCore().then((core) => {
                 }))
                 return doc
               })
+              .then(() => {
+                uniqueGroupId(true)
+                uniqueProductId(true)
+              })
               .catch(handleError)
           }, [handleError])}
           onNewDocMax={React.useCallback(() => {
@@ -228,6 +236,10 @@ createCore().then((core) => {
                   },
                 }))
                 return doc
+              })
+              .then(() => {
+                uniqueGroupId(true)
+                uniqueProductId(true)
               })
               .catch(handleError)
           }, [handleError])}
