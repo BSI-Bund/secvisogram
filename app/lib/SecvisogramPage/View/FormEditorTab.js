@@ -48,7 +48,7 @@ export default function FormEditorTab({
 
   const toggleErrors = () => {
     setShowErrors(!showErrors)
-    setExpanded(!showErrors)
+    if (!showErrors) setExpanded(true)
   }
 
   const confirmMin = () => {
