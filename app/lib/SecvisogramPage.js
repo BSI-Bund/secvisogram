@@ -216,11 +216,9 @@ createCore().then((core) => {
                     doc: doc,
                   },
                 }))
-                return doc
-              })
-              .then(() => {
                 uniqueGroupId(true)
                 uniqueProductId(true)
+                return doc
               })
               .catch(handleError)
           }, [handleError])}
@@ -235,11 +233,9 @@ createCore().then((core) => {
                     doc: doc,
                   },
                 }))
-                return doc
-              })
-              .then(() => {
                 uniqueGroupId(true)
                 uniqueProductId(true)
+                return doc
               })
               .catch(handleError)
           }, [handleError])}
