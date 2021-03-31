@@ -61,6 +61,13 @@ export default React.memo(
                     />
                   )}
                 </ArrayContainer>
+                <TextAttribute
+                  {...acknowledgmentProps('summary')}
+                  label="Summary of the acknowledgment"
+                  description="SHOULD represent any contextual details the document producers wish to make known about the acknowledgment or acknowledged parties."
+                  placeholder="First analysis of Coordinated Multi-Stream Attack (CMSA)"
+                  deletable
+                />
                 <ArrayContainer
                   {...acknowledgmentProps('urls')}
                   label="List of URLs"
@@ -77,13 +84,6 @@ export default React.memo(
                     />
                   )}
                 </ArrayContainer>
-                <TextAttribute
-                  {...acknowledgmentProps('summary')}
-                  label="Summary of the acknowledgment"
-                  description="SHOULD represent any contextual details the document producers wish to make known about the acknowledgment or acknowledged parties."
-                  placeholder="First analysis of Coordinated Multi-Stream Attack (CMSA)"
-                  deletable
-                />
               </>
             )}
           </ObjectContainer>
