@@ -21,13 +21,12 @@
       }
     },
     "lang": "",
-    "source_lang": "",
     "notes": [
       {
         "audience": "",
+        "text": "",
         "title": "",
-        "type": "",
-        "text": ""
+        "type": ""
       }
     ],
     "publisher": {
@@ -43,20 +42,21 @@
         "url": ""
       }
     ],
+    "source_lang": "",
     "title": "",
     "tracking": {
-      "id": "",
       "aliases": [""],
       "current_release_date": "",
       "generator": {
-        "engine": "",
-        "date": ""
+        "date": "",
+        "engine": ""
       },
+      "id": "",
       "initial_release_date": "",
       "revision_history": [
         {
-          "number": "",
           "date": "",
+          "number": "",
           "summary": ""
         }
       ],
@@ -68,36 +68,87 @@
   "product_tree": {
     "branches": [
       {
-        "name": "",
-        "type": "",
         "branches": [],
+        "name": "",
         "product": {
-          "product_id": "",
           "name": "",
-          "cpe": ""
-        }
+          "product_id": "",
+          "product_identification_helper": {
+            "cpe": "",
+            "hashes": [
+              {
+                "algorithm": "SHA-3",
+                "file": "",
+                "value": ""
+              }
+            ],
+            "purl": "",
+            "serial_numbers": [""],
+            "x_generic_uris": [
+              {
+                "namespace": "",
+                "uri": ""
+              }
+            ]
+          }
+        },
+        "type": ""
       }
     ],
     "full_product_names": [
       {
-        "product_id": "",
         "name": "",
-        "cpe": ""
+        "product_id": "",
+        "product_identification_helper": {
+          "cpe": "",
+          "hashes": [
+            {
+              "algorithm": "SHA-3",
+              "file": "",
+              "value": ""
+            }
+          ],
+          "purl": "",
+          "serial_numbers": [""],
+          "x_generic_uris": [
+            {
+              "namespace": "",
+              "uri": ""
+            }
+          ]
+        }
       }
     ],
     "product_groups": [
       {
-        "summary": "",
         "group_id": "",
-        "product_ids": [""]
+        "product_ids": [""],
+        "summary": ""
       }
     ],
     "relationships": [
       {
         "full_product_name": {
-          "product_id": "",
           "name": "",
-          "cpe": ""
+          "product_id": "",
+          "product_identification_helper": {
+            "cpe": "",
+            "hashes": [
+              {
+                "algorithm": "SHA-3",
+                "file": "",
+                "value": ""
+              }
+            ],
+            "purl": "",
+            "serial_numbers": [""],
+            "x_generic_uris": [
+              {
+                "namespace": "",
+                "uri": ""
+              }
+            ]
+          }
         },
         "product_reference": "",
         "relates_to_product_reference": "",
@@ -120,64 +171,6 @@
         "id": "",
         "name": ""
       },
-      "scores": [
-        {
-          "products": [""],
-          "cvss_v2": {
-            "version": "",
-            "vectorString": "",
-            "accessVector": "",
-            "accessComplexity": "",
-            "authentication": "",
-            "confidentialityImpact": "",
-            "integrityImpact": "",
-            "availabilityImpact": "",
-            "baseScore": "",
-            "exploitability": "",
-            "remediationLevel": "",
-            "reportConfidence": "",
-            "temporalScore": "",
-            "collateralDamagePotential": "",
-            "targetDistribution": "",
-            "confidentialityRequirement": "",
-            "integrityRequirement": "",
-            "availabilityRequirement": "",
-            "environmentalScore": ""
-          },
-          "cvss_v3": {
-            "version": "",
-            "vectorString": "",
-            "attackVector": "",
-            "attackComplexity": "",
-            "privilegesRequired": "",
-            "userInteraction": "",
-            "scope": "",
-            "confidentialityImpact": "",
-            "integrityImpact": "",
-            "availabilityImpact": "",
-            "baseScore": "",
-            "baseSeverity": "",
-            "exploitCodeMaturity": "",
-            "remediationLevel": "",
-            "reportConfidence": "",
-            "temporalScore": "",
-            "temporalSeverity": "",
-            "confidentialityRequirement": "",
-            "integrityRequirement": "",
-            "availabilityRequirement": "",
-            "modifiedAttackVector": "",
-            "modifiedAttackComplexity": "",
-            "modifiedPrivilegesRequired": "",
-            "modifiedUserInteraction": "",
-            "modifiedScope": "",
-            "modifiedConfidentialityImpact": "",
-            "modifiedIntegrityImpact": "",
-            "modifiedAvailabilityImpact": "",
-            "environmentalScore": "",
-            "environmentalSeverity": ""
-          }
-        }
-      ],
       "discovery_date": "",
       "id": {
         "system_name": "",
@@ -185,27 +178,27 @@
       },
       "involvements": [
         {
-          "summary": "",
           "party": "",
-          "status": ""
+          "status": "",
+          "summary": ""
         }
       ],
       "notes": [
         {
           "audience": "",
+          "text": "",
           "title": "",
-          "type": "",
-          "text": ""
+          "type": ""
         }
       ],
       "product_status": {
-        "fixed": [""],
-        "first_fixed": [""],
-        "recommended": [""],
-        "known_affected": [""],
         "first_affected": [""],
-        "last_affected": [""],
+        "first_fixed": [""],
+        "fixed": [""],
+        "known_affected": [""],
         "known_not_affected": [""],
+        "last_affected": [""],
+        "recommended": [""],
         "under_investigation": [""]
       },
       "references": [
@@ -224,20 +217,78 @@
           "group_ids": [""],
           "product_ids": [""],
           "restart_required": {
-            "type": "",
-            "details": ""
+            "details": "",
+            "type": ""
           },
           "type": "",
           "url": ""
         }
       ],
+      "scores": [
+        {
+          "cvss_v2": {
+            "accessComplexity": "",
+            "accessVector": "",
+            "authentication": "",
+            "availabilityImpact": "",
+            "availabilityRequirement": "",
+            "baseScore": "",
+            "collateralDamagePotential": "",
+            "confidentialityImpact": "",
+            "confidentialityRequirement": "",
+            "environmentalScore": "",
+            "exploitability": "",
+            "integrityImpact": "",
+            "integrityRequirement": "",
+            "remediationLevel": "",
+            "reportConfidence": "",
+            "targetDistribution": "",
+            "temporalScore": "",
+            "vectorString": "",
+            "version": ""
+          },
+          "cvss_v3": {
+            "attackComplexity": "",
+            "attackVector": "",
+            "availabilityImpact": "",
+            "availabilityRequirement": "",
+            "baseScore": "",
+            "baseSeverity": "",
+            "confidentialityImpact": "",
+            "confidentialityRequirement": "",
+            "environmentalScore": "",
+            "environmentalSeverity": "",
+            "exploitCodeMaturity": "",
+            "integrityImpact": "",
+            "integrityRequirement": "",
+            "modifiedAttackComplexity": "",
+            "modifiedAttackVector": "",
+            "modifiedAvailabilityImpact": "",
+            "modifiedConfidentialityImpact": "",
+            "modifiedIntegrityImpact": "",
+            "modifiedPrivilegesRequired": "",
+            "modifiedScope": "",
+            "modifiedUserInteraction": "",
+            "privilegesRequired": "",
+            "remediationLevel": "",
+            "reportConfidence": "",
+            "scope": "",
+            "temporalScore": "",
+            "temporalSeverity": "",
+            "userInteraction": "",
+            "vectorString": "",
+            "version": ""
+          },
+          "products": [""]
+        }
+      ],
       "threats": [
         {
-          "type": "",
-          "details": "",
           "date": "",
+          "details": "",
+          "group_ids": [""],
           "product_ids": [""],
-          "group_ids": [""]
+          "type": ""
         }
       ],
       "title": ""
