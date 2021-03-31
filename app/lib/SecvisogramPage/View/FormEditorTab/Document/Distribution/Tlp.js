@@ -13,7 +13,7 @@ import TextAttribute from '../../shared/TextAttribute'
  * }} props
  */
 export default function Tlp({
-  value: distribution,
+  value: tlp,
   validationErrors,
   dataPath,
   onUpdate,
@@ -24,7 +24,7 @@ export default function Tlp({
       description="Provides details about the TLP classification of the document."
       validationErrors={validationErrors}
       dataPath={dataPath}
-      value={distribution}
+      value={tlp}
       defaultValue={() => ({
         label: '',
       })}

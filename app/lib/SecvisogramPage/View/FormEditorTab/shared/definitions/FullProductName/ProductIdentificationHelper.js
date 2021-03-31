@@ -13,7 +13,7 @@ import TextAttribute from '../../TextAttribute'
  * }} props
  */
 export default function ProductIdentificationHelper({
-  value: fullProductName,
+  value: productIdentificationHelper,
   validationErrors,
   dataPath,
   onUpdate,
@@ -24,7 +24,7 @@ export default function ProductIdentificationHelper({
       description="Provides at least one method which aids in identifying the product in an asset database."
       validationErrors={validationErrors}
       dataPath={dataPath}
-      value={fullProductName}
+      value={productIdentificationHelper}
       defaultValue={() => ({})}
       onUpdate={onUpdate}
     >
