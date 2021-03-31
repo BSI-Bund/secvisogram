@@ -83,10 +83,6 @@ const Vulnerability = React.memo(
               deletable
             />
             <CweAttribute {...vulnerabilityProps('cwe')} />
-            <Scores
-              {...vulnerabilityProps('scores')}
-              onCollectProductIds={onCollectProductIds}
-            />
             <DateAttribute
               {...vulnerabilityProps('discovery_date')}
               label="Discovery date"
@@ -137,12 +133,6 @@ const Vulnerability = React.memo(
                 >
                   {(involvementProps) => (
                     <>
-                      <TextAreaAttribute
-                        {...involvementProps('summary')}
-                        label="Summary of the involvement"
-                        deletable
-                        description="Contains additional context regarding what is going on."
-                      />
                       <EnumAttribute
                         {...involvementProps('party')}
                         label="Party type"
@@ -168,6 +158,12 @@ const Vulnerability = React.memo(
                           'open',
                         ]}
                       />
+                      <TextAreaAttribute
+                        {...involvementProps('summary')}
+                        label="Summary of the involvement"
+                        deletable
+                        description="Contains additional context regarding what is going on."
+                      />
                     </>
                   )}
                 </ObjectContainer>
@@ -187,9 +183,9 @@ const Vulnerability = React.memo(
               {(productStatusProps) => (
                 <>
                   <Products
-                    {...productStatusProps('fixed')}
-                    label="Fixed"
-                    description="These versions contain a fix for the vulnerability but may not be the recommended fixed versions."
+                    {...productStatusProps('first_affected')}
+                    label="First affected"
+                    description="These are the first versions of the releases known to be affected by the vulnerability."
                     onCollectProductIds={onCollectProductIds}
                   />
                   <Products
@@ -199,9 +195,9 @@ const Vulnerability = React.memo(
                     onCollectProductIds={onCollectProductIds}
                   />
                   <Products
-                    {...productStatusProps('recommended')}
-                    label="Recommended"
-                    description="These versions have a fix for the vulnerability and are the vendor-recommended versions for fixing the vulnerability."
+                    {...productStatusProps('fixed')}
+                    label="Fixed"
+                    description="These versions contain a fix for the vulnerability but may not be the recommended fixed versions."
                     onCollectProductIds={onCollectProductIds}
                   />
                   <Products
@@ -211,9 +207,9 @@ const Vulnerability = React.memo(
                     onCollectProductIds={onCollectProductIds}
                   />
                   <Products
-                    {...productStatusProps('first_affected')}
-                    label="First affected"
-                    description="These are the first versions of the releases known to be affected by the vulnerability."
+                    {...productStatusProps('known_not_affected')}
+                    label="Known not affected"
+                    description="These versions are known not to be affected by the vulnerability."
                     onCollectProductIds={onCollectProductIds}
                   />
                   <Products
@@ -223,9 +219,9 @@ const Vulnerability = React.memo(
                     onCollectProductIds={onCollectProductIds}
                   />
                   <Products
-                    {...productStatusProps('known_not_affected')}
-                    label="Known not affected"
-                    description="These versions are known not to be affected by the vulnerability."
+                    {...productStatusProps('recommended')}
+                    label="Recommended"
+                    description="These versions have a fix for the vulnerability and are the vendor-recommended versions for fixing the vulnerability."
                     onCollectProductIds={onCollectProductIds}
                   />
                   <Products
@@ -305,6 +301,12 @@ const Vulnerability = React.memo(
                       >
                         {(restartRequiredProps) => (
                           <>
+                            <TextAreaAttribute
+                              {...restartRequiredProps('details')}
+                              label="Additional restart information"
+                              description="Provides additional information for the restart. This can include details on procedures, scope or impact."
+                              deletable
+                            />
                             <EnumAttribute
                               {...restartRequiredProps('type')}
                               label="Type of restart"
@@ -320,12 +322,6 @@ const Vulnerability = React.memo(
                                 'zone',
                                 'system',
                               ]}
-                            />
-                            <TextAreaAttribute
-                              {...restartRequiredProps('details')}
-                              label="Additional restart information"
-                              description="Provides additional information for the restart. This can include details on procedures, scope or impact."
-                              deletable
                             />
                           </>
                         )}
@@ -354,13 +350,17 @@ const Vulnerability = React.memo(
                 </ObjectContainer>
               )}
             </ArrayContainer>
+            <Scores
+              {...vulnerabilityProps('scores')}
+              onCollectProductIds={onCollectProductIds}
+            />
             <ArrayContainer
               {...vulnerabilityProps('threats')}
               label="List of threats"
               description="Contains information about a vulnerability that can change with time."
               defaultItemValue={() => ({
-                type: '',
                 details: '',
+                type: '',
               })}
             >
               {(threatItemProps) => (
@@ -371,30 +371,30 @@ const Vulnerability = React.memo(
                 >
                   {(threatProps) => (
                     <>
-                      <EnumAttribute
-                        {...threatProps('type')}
-                        label="Type of the threat"
-                        description="Categorizes the threat according to the rules of the specification."
-                        options={['impact', 'exploit_status', 'target_set']}
-                      />
-                      <TextAreaAttribute
-                        {...threatProps('details')}
-                        label="Details of the threat"
-                        description="Represents a thorough human-readable discussion of the threat."
-                      />
                       <DateAttribute
                         {...threatProps('date')}
                         label="Date of the threat"
                         description="Contains the date when the assessment was done or the threat appeared."
                         deletable
                       />
-                      <Products
-                        {...threatProps('product_ids')}
-                        onCollectProductIds={onCollectProductIds}
+                      <TextAreaAttribute
+                        {...threatProps('details')}
+                        label="Details of the threat"
+                        description="Represents a thorough human-readable discussion of the threat."
                       />
                       <ProductGroups
                         {...threatProps('group_ids')}
                         onCollectGroupIds={onCollectGroupIds}
+                      />
+                      <Products
+                        {...threatProps('product_ids')}
+                        onCollectProductIds={onCollectProductIds}
+                      />
+                      <EnumAttribute
+                        {...threatProps('type')}
+                        label="Type of the threat"
+                        description="Categorizes the threat according to the rules of the specification."
+                        options={['impact', 'exploit_status', 'target_set']}
                       />
                     </>
                   )}
