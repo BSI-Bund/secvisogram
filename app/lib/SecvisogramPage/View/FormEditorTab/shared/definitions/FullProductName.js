@@ -2,6 +2,7 @@ import React from 'react'
 import ObjectContainer from '../ObjectContainer'
 import TextAttribute from '../TextAttribute'
 import { uniqueProductId } from '../unique-id'
+import ProductIdentificationHelper from './FullProductName/ProductIdentificationHelper'
 
 /**
  * @param {{
@@ -78,14 +79,8 @@ export default function FullProductName({
             description="The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document."
             placeholder="Microsoft Host Integration Server 2006 Service Pack 1"
           />
-          <TextAttribute
-            {...fullProductNameProps('cpe')}
-            label="Common Platform Enumeration representation"
-            description="The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification."
-            pattern="^cpe:(/|\\d+\\.\\d+)[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*$"
-            placeholder="^cpe:(/|\\d+\\.\\d+)[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*$"
-            minLength={5}
-            deletable
+          <ProductIdentificationHelper
+            {...fullProductNameProps('product_identification_helper')}
           />
         </>
       )}
