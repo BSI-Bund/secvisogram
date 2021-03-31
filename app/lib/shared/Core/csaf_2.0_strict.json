@@ -126,14 +126,6 @@
       "additionalProperties": false,
       "description": "Specifies information about the product and assigns the product_id.",
       "properties": {
-        "cpe": {
-          "$comment": "TODO: This should have a full regular expression to enforce CPE syntax.",
-          "description": "The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification.",
-          "minLength": 5,
-          "pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$",
-          "title": "Common Platform Enumeration representation",
-          "type": "string"
-        },
         "name": {
           "description": "The value should be the product\u2019s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.",
           "examples": [
@@ -146,9 +138,123 @@
         },
         "product_id": {
           "$ref": "#/definitions/product_id_t"
+        },
+        "product_identification_helper": {
+          "additionalProperties": false,
+          "description": "Provides at least one method which aids in identifying the product in an asset database.",
+          "minProperties": 1,
+          "properties": {
+            "cpe": {
+              "$comment": "TODO: This should have a full regular expression to enforce CPE syntax.",
+              "description": "The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification.",
+              "minLength": 5,
+              "pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$",
+              "title": "Common Platform Enumeration representation",
+              "type": "string"
+            },
+            "hashes": {
+              "description": "Contains a list of cryptographic hashes usable to identify files.",
+              "items": {
+                "additionalProperties": false,
+                "description": "Contains all information to identify a file based on its cryptographic hash value.",
+                "properties": {
+                  "algorithm": {
+                    "default": "SHA-3",
+                    "description": "Contains the name of the cryptographic hash algorithm used to calculate the value.",
+                    "examples": [
+                      "SHA-256",
+                      "SHA-384",
+                      "SHA-512",
+                      "SHA-3",
+                      "BLAKE3"
+                    ],
+                    "minLength": 1,
+                    "title": "Algorithm of the cryptographic hash",
+                    "type": "string"
+                  },
+                  "file": {
+                    "description": "Contains the name of the file which is identified by the hash value.",
+                    "examples": ["WINWORD.EXE", "msotadddin.dll", "sudoers.so"],
+                    "minLength": 1,
+                    "title": "Filename",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Contains the cryptographic hash value.",
+                    "examples": [
+                      "4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc",
+                      "9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c",
+                      "37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3"
+                    ],
+                    "minLength": 64,
+                    "pattern": "^[0-9a-fA-F]{64,}$",
+                    "title": "Value of the cryptographic hash",
+                    "type": "string"
+                  }
+                },
+                "required": ["algorithm", "file", "value"],
+                "title": "Cryptographic hash",
+                "type": "object"
+              },
+              "minItems": 1,
+              "title": "List of hashes",
+              "type": "array"
+            },
+            "purl": {
+              "$comment": "TODO: This should have a full regular expression to enforce purl syntax.",
+              "description": "The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification.",
+              "minLength": 4,
+              "pattern": "^pkg:",
+              "title": "package URL representation",
+              "type": "string"
+            },
+            "serial_numbers": {
+              "$comment": "TODO: Add remark in prose that this should only be used if a certain range of serial numbers with a software version is affected, or the serial numbers change during update.",
+              "description": "Contains a list of parts, or a full serial numbers.",
+              "items": {
+                "description": "Contains a part, or a full serial number of the component to identify.",
+                "minLength": 1,
+                "title": "Serial number",
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "List of serial numbers",
+              "type": "array"
+            },
+            "x_generic_uris": {
+              "$comment": "TODO: Add remark in prose which kind of uris might be used here / add examples.",
+              "description": "Contains a list of identifiers which are either vendor-specific or derived from a standard not yet supported.",
+              "items": {
+                "additionalProperties": false,
+                "description": "Provides a generic extension point for any identifier which is either vendor-specific or derived from a standard not yet supported.",
+                "properties": {
+                  "namespace": {
+                    "description": "Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid.",
+                    "format": "uri",
+                    "title": "Namespace of the generic URI",
+                    "type": "string"
+                  },
+                  "uri": {
+                    "description": "Contains the identifier itself.",
+                    "format": "uri",
+                    "title": "URI",
+                    "type": "string"
+                  }
+                },
+                "required": ["namespace", "uri"],
+                "title": "Generic UR",
+                "type": "object"
+              },
+              "minItems": 1,
+              "title": "List of generic URIs",
+              "type": "array"
+            }
+          },
+          "title": "Helper to identify the product",
+          "type": "object"
         }
       },
-      "required": ["product_id", "name"],
+      "required": ["name", "product_id"],
       "title": "Full product name",
       "type": "object"
     },
@@ -210,7 +316,7 @@
             "type": "string"
           }
         },
-        "required": ["type", "text"],
+        "required": ["text", "type"],
         "title": "Note",
         "type": "object"
       },
@@ -278,7 +384,7 @@
             "type": "string"
           }
         },
-        "required": ["url", "summary"],
+        "required": ["summary", "url"],
         "title": "Reference",
         "type": "object"
       },
@@ -531,7 +637,7 @@
                     "type": "string"
                   }
                 },
-                "required": ["number", "date", "summary"],
+                "required": ["date", "number", "summary"],
                 "title": "Revision",
                 "type": "object"
               },
@@ -572,7 +678,7 @@
           "type": "string"
         }
       },
-      "required": ["csaf_version", "title", "publisher", "type", "tracking"],
+      "required": ["csaf_version", "publisher", "title", "tracking", "type"],
       "title": "Document level meta-data",
       "type": "object"
     },
