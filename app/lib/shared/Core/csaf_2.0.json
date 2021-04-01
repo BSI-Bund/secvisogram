@@ -79,6 +79,9 @@
         "minProperties": 3,
         "required": ["name", "type"],
         "properties": {
+          "branches": {
+            "$ref": "#/definitions/branches_t"
+          },
           "name": {
             "title": "Name of the branch",
             "description": "Contains the canonical descriptor or 'friendly name' of the branch.",
@@ -94,6 +97,9 @@
               "365",
               "PCS 7"
             ]
+          },
+          "product": {
+            "$ref": "#/definitions/full_product_name_t"
           },
           "type": {
             "title": "Type of the branch",
@@ -112,12 +118,6 @@
               "specification",
               "vendor"
             ]
-          },
-          "branches": {
-            "$ref": "#/definitions/branches_t"
-          },
-          "product": {
-            "$ref": "#/definitions/full_product_name_t"
           }
         }
       }
@@ -126,11 +126,8 @@
       "title": "Full product name",
       "description": "Specifies information about the product and assigns the product_id.",
       "type": "object",
-      "required": ["product_id", "name"],
+      "required": ["name", "product_id"],
       "properties": {
-        "product_id": {
-          "$ref": "#/definitions/product_id_t"
-        },
         "name": {
           "title": "Textual description of the product",
           "description": "The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.",
@@ -141,13 +138,119 @@
             "Cisco AnyConnect Secure Mobility Client 2.3.185"
           ]
         },
-        "cpe": {
-          "$comment": "TODO: This should have a full regular expression to enforce CPE syntax.",
-          "title": "Common Platform Enumeration representation",
-          "description": "The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification.",
-          "type": "string",
-          "pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$",
-          "minLength": 5
+        "product_id": {
+          "$ref": "#/definitions/product_id_t"
+        },
+        "product_identification_helper": {
+          "title": "Helper to identify the product",
+          "description": "Provides at least one method which aids in identifying the product in an asset database.",
+          "type": "object",
+          "minProperties": 1,
+          "properties": {
+            "cpe": {
+              "$comment": "TODO: This should have a full regular expression to enforce CPE syntax.",
+              "title": "Common Platform Enumeration representation",
+              "description": "The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification.",
+              "type": "string",
+              "pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$",
+              "minLength": 5
+            },
+            "hashes": {
+              "title": "List of hashes",
+              "description": "Contains a list of cryptographic hashes usable to identify files.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "title": "Cryptographic hash",
+                "description": "Contains all information to identify a file based on its cryptographic hash value.",
+                "type": "object",
+                "required": ["algorithm", "file", "value"],
+                "properties": {
+                  "algorithm": {
+                    "title": "Algorithm of the cryptographic hash",
+                    "description": "Contains the name of the cryptographic hash algorithm used to calculate the value.",
+                    "type": "string",
+                    "default": "SHA-3",
+                    "minLength": 1,
+                    "examples": [
+                      "SHA-256",
+                      "SHA-384",
+                      "SHA-512",
+                      "SHA-3",
+                      "BLAKE3"
+                    ]
+                  },
+                  "file": {
+                    "title": "Filename",
+                    "description": "Contains the name of the file which is identified by the hash value.",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": ["WINWORD.EXE", "msotadddin.dll", "sudoers.so"]
+                  },
+                  "value": {
+                    "title": "Value of the cryptographic hash",
+                    "description": "Contains the cryptographic hash value.",
+                    "type": "string",
+                    "minLength": 64,
+                    "pattern": "^[0-9a-fA-F]{64,}$",
+                    "examples": [
+                      "4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc",
+                      "9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c",
+                      "37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3"
+                    ]
+                  }
+                }
+              }
+            },
+            "purl": {
+              "$comment": "TODO: This should have a full regular expression to enforce purl syntax.",
+              "title": "package URL representation",
+              "description": "The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification.",
+              "type": "string",
+              "pattern": "^pkg:",
+              "minLength": 4
+            },
+            "serial_numbers": {
+              "$comment": "TODO: Add remark in prose that this should only be used if a certain range of serial numbers with a software version is affected, or the serial numbers change during update.",
+              "title": "List of serial numbers",
+              "description": "Contains a list of parts, or a full serial numbers.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "title": "Serial number",
+                "description": "Contains a part, or a full serial number of the component to identify.",
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "x_generic_uris": {
+              "$comment": "TODO: Add remark in prose which kind of uris might be used here / add examples.",
+              "title": "List of generic URIs",
+              "description": "Contains a list of identifiers which are either vendor-specific or derived from a standard not yet supported.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "title": "Generic UR",
+                "description": "Provides a generic extension point for any identifier which is either vendor-specific or derived from a standard not yet supported.",
+                "type": "object",
+                "required": ["namespace", "uri"],
+                "properties": {
+                  "namespace": {
+                    "title": "Namespace of the generic URI",
+                    "description": "Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid.",
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "uri": {
+                    "title": "URI",
+                    "description": "Contains the identifier itself.",
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -167,7 +270,7 @@
         "title": "Note",
         "description": "Is a place to put all manner of text blobs related to the current context.",
         "type": "object",
-        "required": ["type", "text"],
+        "required": ["text", "type"],
         "properties": {
           "audience": {
             "title": "Audience of note",
@@ -180,6 +283,12 @@
               "operational management and system administrators",
               "safety engineers"
             ]
+          },
+          "text": {
+            "title": "Note contents",
+            "description": "The contents of the note. Content varies depending on type.",
+            "type": "string",
+            "minLength": 1
           },
           "title": {
             "title": "Title of note",
@@ -206,25 +315,16 @@
               "other",
               "summary"
             ]
-          },
-          "text": {
-            "title": "Note contents",
-            "description": "The contents of the note. Content varies depending on type.",
-            "type": "string",
-            "minLength": 1
           }
         }
       }
     },
-    "products_t": {
-      "title": "List of product_ids",
-      "description": "Specifies a list of product_ids to give context to the parent item.",
-      "type": "array",
-      "minItems": 1,
-      "uniqueItems": true,
-      "items": {
-        "$ref": "#/definitions/product_id_t"
-      }
+    "product_group_id_t": {
+      "title": "Reference token for product group instance",
+      "description": "Token required to identify a group of products so that it can be referred to from other parts in the document. There is no predefined or required format for the product_group_id as long as it uniquely identifies a group in the context of the current document.",
+      "type": "string",
+      "minLength": 1,
+      "examples": ["CSAFGID-0001", "CSAFGID-0002", "CSAFGID-0020"]
     },
     "product_groups_t": {
       "title": "List of product_group_ids",
@@ -236,19 +336,22 @@
         "$ref": "#/definitions/product_group_id_t"
       }
     },
-    "product_group_id_t": {
-      "title": "Reference token for product group instance",
-      "description": "Token required to identify a group of products so that it can be referred to from other parts in the document. There is no predefined or required format for the product_group_id as long as it uniquely identifies a group in the context of the current document.",
-      "type": "string",
-      "minLength": 1,
-      "examples": ["CSAFGID-0001", "CSAFGID-0002", "CSAFGID-0020"]
-    },
     "product_id_t": {
       "title": "Reference token for product instance",
       "description": "Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.",
       "type": "string",
       "minLength": 1,
       "examples": ["CSAFPID-0004", "CSAFPID-0008"]
+    },
+    "products_t": {
+      "title": "List of product_ids",
+      "description": "Specifies a list of product_ids to give context to the parent item.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/product_id_t"
+      }
     },
     "references_t": {
       "title": "List of references",
@@ -259,7 +362,7 @@
         "title": "Reference",
         "description": "Holds any reference to conferences, papers, advisories, and other resources that are related and considered related to either a surrounding part of or the entire document and to be of value to the document consumer.",
         "type": "object",
-        "required": ["url", "summary"],
+        "required": ["summary", "url"],
         "properties": {
           "summary": {
             "title": "Summary of the reference",
@@ -297,7 +400,7 @@
       "title": "Document level meta-data",
       "description": "Captures the meta-data about this document describing a particular set of security advisories.",
       "type": "object",
-      "required": ["csaf_version", "title", "publisher", "type", "tracking"],
+      "required": ["csaf_version", "publisher", "title", "tracking", "type"],
       "properties": {
         "acknowledgments": {
           "$ref": "#/definitions/acknowledgments_t"
@@ -378,11 +481,6 @@
           "description": "Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.",
           "$ref": "#/definitions/lang_t"
         },
-        "source_lang": {
-          "title": "Source language",
-          "description": "If this copy of the document is a translation then the value of this property describes from which language this document was translated.",
-          "$ref": "#/definitions/lang_t"
-        },
         "notes": {
           "title": "Notes associated with the whole document.",
           "description": "Holds notes about this set of vulnerabilities.",
@@ -426,6 +524,11 @@
         "references": {
           "$ref": "#/definitions/references_t"
         },
+        "source_lang": {
+          "title": "Source language",
+          "description": "If this copy of the document is a translation then the value of this property describes from which language this document was translated.",
+          "$ref": "#/definitions/lang_t"
+        },
         "title": {
           "title": "Title of this document",
           "description": "This SHOULD be a canonical name for the document, and sufficiently unique to distinguish it from similar documents.",
@@ -449,17 +552,6 @@
             "version"
           ],
           "properties": {
-            "id": {
-              "title": "Unique identifier for the document",
-              "description": "The ID is a simple label that provides for a wide range of numbering values, types, and schemes. Its value SHOULD be assigned and maintained by the original document issuing authority.",
-              "type": "string",
-              "minLength": 1,
-              "examples": [
-                "Example Company - 2019-YH3234",
-                "RHBA-2019:0024",
-                "cisco-sa-20190513-secureboot"
-              ]
-            },
             "aliases": {
               "title": "Aliases",
               "description": "Contains a list of alternate names for the same document.",
@@ -486,6 +578,12 @@
               "type": "object",
               "required": ["engine"],
               "properties": {
+                "date": {
+                  "title": "Date of document generation",
+                  "description": "This SHOULD be the current date that the document was generated. Because documents are often generated internally by a document producer and exist for a nonzero amount of time before being released, this field MAY be different from the Initial Release Date and Current Release Date.",
+                  "type": "string",
+                  "format": "date-time"
+                },
                 "engine": {
                   "title": "Engine of document generation",
                   "description": "This string SHOULD represent the name of the engine that generated the CSAF document, and MAY additionally refer to its version.",
@@ -496,14 +594,19 @@
                     "Red Hat rhsa-to-cvrf 2.1",
                     "CMPFA Core Converter CVRF->CSAF Version 0.6"
                   ]
-                },
-                "date": {
-                  "title": "Date of document generation",
-                  "description": "This SHOULD be the current date that the document was generated. Because documents are often generated internally by a document producer and exist for a nonzero amount of time before being released, this field MAY be different from the Initial Release Date and Current Release Date.",
-                  "type": "string",
-                  "format": "date-time"
                 }
               }
+            },
+            "id": {
+              "title": "Unique identifier for the document",
+              "description": "The ID is a simple label that provides for a wide range of numbering values, types, and schemes. Its value SHOULD be assigned and maintained by the original document issuing authority.",
+              "type": "string",
+              "minLength": 1,
+              "examples": [
+                "Example Company - 2019-YH3234",
+                "RHBA-2019:0024",
+                "cisco-sa-20190513-secureboot"
+              ]
             },
             "initial_release_date": {
               "title": "Initial release date",
@@ -520,16 +623,16 @@
                 "title": "Revision",
                 "description": "Contains all the information elements required to track the evolution of a CSAF document.",
                 "type": "object",
-                "required": ["number", "date", "summary"],
+                "required": ["date", "number", "summary"],
                 "properties": {
-                  "number": {
-                    "$ref": "#/definitions/version_t"
-                  },
                   "date": {
                     "title": "Date of the revision",
                     "description": "The date of the revision entry",
                     "type": "string",
                     "format": "date-time"
+                  },
+                  "number": {
+                    "$ref": "#/definitions/version_t"
                   },
                   "summary": {
                     "title": "Summary of the revision",
@@ -594,16 +697,6 @@
             "type": "object",
             "required": ["group_id", "product_ids"],
             "properties": {
-              "summary": {
-                "title": "Summary of the product group",
-                "description": "Gives a short, optional description of the group.",
-                "type": "string",
-                "minLength": 1,
-                "examples": [
-                  "The x64 versions of the operating system.",
-                  "Products supporting Modbus."
-                ]
-              },
               "group_id": {
                 "$ref": "#/definitions/product_group_id_t"
               },
@@ -616,6 +709,16 @@
                 "items": {
                   "$ref": "#/definitions/product_id_t"
                 }
+              },
+              "summary": {
+                "title": "Summary of the product group",
+                "description": "Gives a short, optional description of the group.",
+                "type": "string",
+                "minLength": 1,
+                "examples": [
+                  "The x64 versions of the operating system.",
+                  "Products supporting Modbus."
+                ]
               }
             }
           }
@@ -708,37 +811,6 @@
               }
             }
           },
-          "scores": {
-            "title": "List of scores",
-            "description": "contains score objects for the currrent vulnerability.",
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "title": "Score",
-              "description": "specifies information about (at least one) score of the vulnerability and for which products the given value applies.",
-              "type": "object",
-              "minItems": 2,
-              "required": ["products"],
-              "properties": {
-                "products": {
-                  "$ref": "#/definitions/products_t"
-                },
-                "cvss_v2": {
-                  "$ref": "https://www.first.org/cvss/cvss-v2.0.json"
-                },
-                "cvss_v3": {
-                  "oneOf": [
-                    {
-                      "$ref": "https://www.first.org/cvss/cvss-v3.0.json"
-                    },
-                    {
-                      "$ref": "https://www.first.org/cvss/cvss-v3.1.json"
-                    }
-                  ]
-                }
-              }
-            }
-          },
           "discovery_date": {
             "title": "Discovery date",
             "description": "Holds the date and time the vulnerability was originally discovered.",
@@ -778,12 +850,6 @@
               "type": "object",
               "required": ["party", "status"],
               "properties": {
-                "summary": {
-                  "title": "Summary of the involvement",
-                  "description": "Contains additional context regarding what is going on.",
-                  "type": "string",
-                  "minLength": 1
-                },
                 "party": {
                   "title": "Party type",
                   "description": "Defines the type of the involved party.",
@@ -808,6 +874,12 @@
                     "not_contacted",
                     "open"
                   ]
+                },
+                "summary": {
+                  "title": "Summary of the involvement",
+                  "description": "Contains additional context regarding what is going on.",
+                  "type": "string",
+                  "minLength": 1
                 }
               }
             }
@@ -821,9 +893,9 @@
             "type": "object",
             "minProperties": 1,
             "properties": {
-              "fixed": {
-                "title": "Fixed",
-                "description": "These versions contain a fix for the vulnerability but may not be the recommended fixed versions.",
+              "first_affected": {
+                "title": "First affected",
+                "description": "These are the first versions of the releases known to be affected by the vulnerability.",
                 "$ref": "#/definitions/products_t"
               },
               "first_fixed": {
@@ -831,9 +903,9 @@
                 "description": "These versions contain the first fix for the vulnerability but may not be the recommended fixed versions.",
                 "$ref": "#/definitions/products_t"
               },
-              "recommended": {
-                "title": "Recommended",
-                "description": "These versions have a fix for the vulnerability and are the vendor-recommended versions for fixing the vulnerability.",
+              "fixed": {
+                "title": "Fixed",
+                "description": "These versions contain a fix for the vulnerability but may not be the recommended fixed versions.",
                 "$ref": "#/definitions/products_t"
               },
               "known_affected": {
@@ -841,9 +913,9 @@
                 "description": "These versions are known to be affected by the vulnerability.",
                 "$ref": "#/definitions/products_t"
               },
-              "first_affected": {
-                "title": "First affected",
-                "description": "These are the first versions of the releases known to be affected by the vulnerability.",
+              "known_not_affected": {
+                "title": "Known not affected",
+                "description": "These versions are known not to be affected by the vulnerability.",
                 "$ref": "#/definitions/products_t"
               },
               "last_affected": {
@@ -851,9 +923,9 @@
                 "description": "These are the last versions in a release train known to be affected by the vulnerability. Subsequently released versions would contain a fix for the vulnerability.",
                 "$ref": "#/definitions/products_t"
               },
-              "known_not_affected": {
-                "title": "Known not affected",
-                "description": "These versions are known not to be affected by the vulnerability.",
+              "recommended": {
+                "title": "Recommended",
+                "description": "These versions have a fix for the vulnerability and are the vendor-recommended versions for fixing the vulnerability.",
                 "$ref": "#/definitions/products_t"
               },
               "under_investigation": {
@@ -919,6 +991,12 @@
                   "type": "object",
                   "required": ["type"],
                   "properties": {
+                    "details": {
+                      "title": "Additional restart information",
+                      "description": "Provides additional information for the restart. This can include details on procedures, scope or impact.",
+                      "type": "string",
+                      "minLength": 1
+                    },
                     "type": {
                       "title": "Type of restart",
                       "description": "Specifies what type of restart is required by this remediation to become effective.",
@@ -934,12 +1012,6 @@
                         "zone",
                         "system"
                       ]
-                    },
-                    "details": {
-                      "title": "Additional restart information",
-                      "description": "Provides additional information for the restart. This can include details on procedures, scope or impact.",
-                      "type": "string",
-                      "minLength": 1
                     }
                   }
                 },
@@ -964,6 +1036,37 @@
               }
             }
           },
+          "scores": {
+            "title": "List of scores",
+            "description": "contains score objects for the currrent vulnerability.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "title": "Score",
+              "description": "specifies information about (at least one) score of the vulnerability and for which products the given value applies.",
+              "type": "object",
+              "minItems": 2,
+              "required": ["products"],
+              "properties": {
+                "cvss_v2": {
+                  "$ref": "https://www.first.org/cvss/cvss-v2.0.json"
+                },
+                "cvss_v3": {
+                  "oneOf": [
+                    {
+                      "$ref": "https://www.first.org/cvss/cvss-v3.0.json"
+                    },
+                    {
+                      "$ref": "https://www.first.org/cvss/cvss-v3.1.json"
+                    }
+                  ]
+                },
+                "products": {
+                  "$ref": "#/definitions/products_t"
+                }
+              }
+            }
+          },
           "threats": {
             "title": "List of threats",
             "description": "Contains information about a vulnerability that can change with time.",
@@ -975,11 +1078,11 @@
               "type": "object",
               "required": ["details", "type"],
               "properties": {
-                "type": {
-                  "title": "Type of the threat",
-                  "description": "Categorizes the threat according to the rules of the specification.",
+                "date": {
+                  "title": "Date of the threat",
+                  "description": "Contains the date when the assessment was done or the threat appeared.",
                   "type": "string",
-                  "enum": ["impact", "exploit_status", "target_set"]
+                  "format": "date-time"
                 },
                 "details": {
                   "title": "Details of the threat",
@@ -987,17 +1090,17 @@
                   "type": "string",
                   "minLength": 1
                 },
-                "date": {
-                  "title": "Date of the threat",
-                  "description": "Contains the date when the assessment was done or the threat appeared.",
-                  "type": "string",
-                  "format": "date-time"
+                "group_ids": {
+                  "$ref": "#/definitions/product_groups_t"
                 },
                 "product_ids": {
                   "$ref": "#/definitions/products_t"
                 },
-                "group_ids": {
-                  "$ref": "#/definitions/product_groups_t"
+                "type": {
+                  "title": "Type of the threat",
+                  "description": "Categorizes the threat according to the rules of the specification.",
+                  "type": "string",
+                  "enum": ["impact", "exploit_status", "target_set"]
                 }
               }
             }

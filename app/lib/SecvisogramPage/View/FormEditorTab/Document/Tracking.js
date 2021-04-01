@@ -25,8 +25,8 @@ export default React.memo(
         label="Tracking"
         description="Is a container designated to hold all management attributes necessary to track a CSAF document as a whole."
         defaultValue={() => ({
-          id: '',
           current_release_date: '',
+          id: '',
           initial_release_date: '',
           status: '',
           version: '',
@@ -34,12 +34,6 @@ export default React.memo(
       >
         {(trackingProps) => (
           <>
-            <TextAttribute
-              {...trackingProps('id')}
-              label="Unique identifier for the document"
-              description="The ID is a simple label that provides for a wide range of numbering values, types, and schemes. Its value SHOULD be assigned and maintained by the original document issuing authority."
-              placeholder="Example Company - 2019-YH3234"
-            />
             <ArrayContainer
               {...trackingProps('aliases')}
               label="Aliases"
@@ -70,6 +64,12 @@ export default React.memo(
             >
               {(generatorProps) => (
                 <>
+                  <DateAttribute
+                    {...generatorProps('date')}
+                    label="Date of document generation"
+                    description="This SHOULD be the current date that the document was generated. Because documents are often generated internally by a document producer and exist for a nonzero amount of time before being released, this field MAY be different from the Initial Release Date and Current Release Date."
+                    readOnly
+                  />
                   <TextAttribute
                     {...generatorProps('engine')}
                     label="Engine of document generation"
@@ -77,15 +77,15 @@ export default React.memo(
                     placeholder="TVCE"
                     readOnly
                   />
-                  <DateAttribute
-                    {...generatorProps('date')}
-                    label="Date of document generation"
-                    description="This SHOULD be the current date that the document was generated. Because documents are often generated internally by a document producer and exist for a nonzero amount of time before being released, this field MAY be different from the Initial Release Date and Current Release Date."
-                    readOnly
-                  />
                 </>
               )}
             </ObjectContainer>
+            <TextAttribute
+              {...trackingProps('id')}
+              label="Unique identifier for the document"
+              description="The ID is a simple label that provides for a wide range of numbering values, types, and schemes. Its value SHOULD be assigned and maintained by the original document issuing authority."
+              placeholder="Example Company - 2019-YH3234"
+            />
             <DateAttribute
               {...trackingProps('initial_release_date')}
               label="Initial release date"

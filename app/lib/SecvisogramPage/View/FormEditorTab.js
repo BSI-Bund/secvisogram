@@ -281,25 +281,25 @@ function Doc(props) {
       defaultValue={() => ({
         document: {
           csaf_version: '2.0',
-          title: '',
           publisher: {
             type: '',
           },
-          type: '',
+          title: '',
           tracking: {
-            id: '',
             current_release_date: '',
+            id: '',
             initial_release_date: '',
             revision_history: [
               {
-                number: '',
                 date: '',
+                number: '',
                 summary: '',
               },
             ],
             status: '',
             version: '',
           },
+          type: '',
         },
       })}
     >

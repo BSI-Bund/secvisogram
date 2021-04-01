@@ -20,8 +20,8 @@ export default function RevisionHistory(props) {
       label="Revision history"
       description="Holds one revision item for each version of the CSAF document, including the initial one."
       defaultItemValue={() => ({
-        number: '',
         date: '',
+        number: '',
         summary: '',
       })}
     >
@@ -33,12 +33,12 @@ export default function RevisionHistory(props) {
         >
           {(revisionHistoryItemProps) => (
             <>
-              <Version {...revisionHistoryItemProps('number')} />
               <DateAttribute
                 {...revisionHistoryItemProps('date')}
                 label="Date of the revision"
                 description="The date of the revision entry"
               />
+              <Version {...revisionHistoryItemProps('number')} />
               <TextAreaAttribute
                 {...revisionHistoryItemProps('summary')}
                 label="Summary of the revision"
