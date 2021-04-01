@@ -2,6 +2,7 @@ const yargs = require('yargs/yargs')
 const generateCWAList = require('./cli/generateCWAList')
 const generateHTMLTemplate = require('./cli/generateHTMLTemplate')
 const generateICANNList = require('./cli/generateICANNList')
+const generatePreviewTemplatingTable = require('./cli/generatePreviewTemplatingTable')
 
 yargs(process.argv.slice(2))
   .command(
@@ -27,6 +28,17 @@ yargs(process.argv.slice(2))
     (command) =>
       command.option('registry', { type: 'string' }).demandOption('registry'),
     generateICANNList
+  )
+  .command(
+    'generate-preview-templating-table',
+    '',
+    (command) =>
+      command
+        .option('csaf20Schema', { alias: 'csaf', type: 'string' })
+        .option('cvss31Schema', { alias: 'cvss-3.1', type: 'string' })
+        .option('cvss20Schema', { alias: 'cvss-2', type: 'string' })
+        .demandOption(['csaf20Schema', 'cvss31Schema', 'cvss20Schema']),
+    generatePreviewTemplatingTable
   )
   .demandCommand(1)
   .help()
