@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab-ext.exxcellent.de:bsi/secvisogram.git"
+    "url": "git@github.com:secvisogram/secvisogram.git"
   },
   "keywords": [
     "CASF",
