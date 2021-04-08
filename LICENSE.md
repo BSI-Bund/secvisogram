@@ -92,7 +92,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [lodash@4.17.21](https://github.com/lodash/lodash) - MIT
 - [loose-envify@1.4.0](https://github.com/zertosh/loose-envify) - MIT
 - [match-sorter@6.3.0](https://github.com/kentcdodds/match-sorter) - MIT
-- [mustache@4.1.0](https://github.com/janl/mustache.js) - MIT
+- [mustache@4.2.0](https://github.com/janl/mustache.js) - MIT
 - [object-assign@4.1.1](https://github.com/sindresorhus/object-assign) - MIT
 - [popper.js@1.16.1-lts](https://github.com/FezVrasta/popper.js) - MIT
 - [prop-types@15.7.2](https://github.com/facebook/prop-types) - MIT
