@@ -38,7 +38,7 @@
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.12",
-    "@babel/preset-react": "^7.12.13",
+    "@babel/preset-react": "^7.13.13",
     "@babel/register": "^7.13.14",
     "@types/chai": "^4.2.16",
     "@types/copy-webpack-plugin": "^6.4.1",
