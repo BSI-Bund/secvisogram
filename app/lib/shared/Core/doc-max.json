@@ -3,7 +3,7 @@
     "acknowledgments": [
       {
         "names": [""],
-        "organizations": [""],
+        "organization": "",
         "summary": "",
         "urls": [""]
       }
@@ -12,6 +12,7 @@
       "namespace": "",
       "text": ""
     },
+    "category": "",
     "csaf_version": "2.0",
     "distribution": {
       "text": "",
@@ -24,21 +25,22 @@
     "notes": [
       {
         "audience": "",
+        "category": "",
         "text": "",
-        "title": "",
-        "type": ""
+        "title": ""
       }
     ],
     "publisher": {
+      "category": "",
       "contact_details": "",
       "issuing_authority": "",
-      "type": "",
+      "name": "",
       "vendor_id": ""
     },
     "references": [
       {
+        "category": "external",
         "summary": "",
-        "type": "external",
         "url": ""
       }
     ],
@@ -62,13 +64,13 @@
       ],
       "status": "",
       "version": ""
-    },
-    "type": ""
+    }
   },
   "product_tree": {
     "branches": [
       {
         "branches": [],
+        "category": "",
         "name": "",
         "product": {
           "name": "",
@@ -91,8 +93,7 @@
               }
             ]
           }
-        },
-        "type": ""
+        }
       }
     ],
     "full_product_names": [
@@ -128,6 +129,7 @@
     ],
     "relationships": [
       {
+        "category": "",
         "full_product_name": {
           "name": "",
           "product_id": "",
@@ -151,8 +153,7 @@
           }
         },
         "product_reference": "",
-        "relates_to_product_reference": "",
-        "relationship_type": ""
+        "relates_to_product_reference": ""
       }
     ]
   },
@@ -161,7 +162,7 @@
       "acknowledgments": [
         {
           "names": [""],
-          "organizations": [""],
+          "organization": "",
           "summary": "",
           "urls": [""]
         }
@@ -186,9 +187,9 @@
       "notes": [
         {
           "audience": "",
+          "category": "",
           "text": "",
-          "title": "",
-          "type": ""
+          "title": ""
         }
       ],
       "product_status": {
@@ -203,24 +204,24 @@
       },
       "references": [
         {
+          "category": "external",
           "summary": "",
-          "type": "external",
           "url": ""
         }
       ],
       "release_date": "",
       "remediations": [
         {
+          "category": "",
           "date": "",
           "details": "",
           "entitlements": [""],
           "group_ids": [""],
           "product_ids": [""],
           "restart_required": {
-            "details": "",
-            "type": ""
+            "category": "",
+            "details": ""
           },
-          "type": "",
           "url": ""
         }
       ],
@@ -284,11 +285,11 @@
       ],
       "threats": [
         {
+          "category": "",
           "date": "",
           "details": "",
           "group_ids": [""],
-          "product_ids": [""],
-          "type": ""
+          "product_ids": [""]
         }
       ],
       "title": ""
