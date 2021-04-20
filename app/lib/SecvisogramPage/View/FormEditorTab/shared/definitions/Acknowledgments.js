@@ -45,22 +45,13 @@ export default React.memo(
                     />
                   )}
                 </ArrayContainer>
-                <ArrayContainer
-                  {...acknowledgmentProps('organizations')}
-                  label="List of contributing organizations"
-                  description="Contains the names of contributing organizations being recognized."
-                  defaultItemValue={() => ''}
-                >
-                  {(organizationsItemProps) => (
-                    <TextAttribute
-                      {...organizationsItemProps}
-                      label="Contributing organization"
-                      description="Contains the name of a single organization."
-                      placeholder="CISA"
-                      deletable
-                    />
-                  )}
-                </ArrayContainer>
+                <TextAttribute
+                  {...acknowledgmentProps('organization')}
+                  label="Contributing organization"
+                  description="Contains the name of a contributing organization being recognized."
+                  placeholder="CISA"
+                  deletable
+                />
                 <TextAttribute
                   {...acknowledgmentProps('summary')}
                   label="Summary of the acknowledgment"

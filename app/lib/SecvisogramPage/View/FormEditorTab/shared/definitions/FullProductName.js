@@ -13,14 +13,14 @@ import ProductIdentificationHelper from './FullProductName/ProductIdentification
  *  productName?: string
  *  onCollectProductIds?(): Promise<void | {id: string, name: string}[]>
  *  productReference?: string
+ *  category?: string
  *  relatesToProductReference?: string
- *  relationshipType?: string
  * }} props
  */
 export default function FullProductName({
   productReference = '',
   relatesToProductReference = '',
-  relationshipType = '',
+  category = '',
   onCollectProductIds,
   productName,
   ...props
@@ -37,7 +37,7 @@ export default function FullProductName({
           const relatesToProductReferenceName =
             entries.find((e) => e.id === relatesToProductReference)?.name ?? ''
           setSuggestedProductName(
-            `${productReferenceName} ${relationshipType.replaceAll(
+            `${productReferenceName} ${category.replaceAll(
               '_',
               ' '
             )} ${relatesToProductReferenceName}`
@@ -49,7 +49,7 @@ export default function FullProductName({
     productReference,
     onCollectProductIds,
     relatesToProductReference,
-    relationshipType,
+    category,
     productName,
   ])
 

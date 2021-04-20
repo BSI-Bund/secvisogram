@@ -26,9 +26,11 @@ export default React.memo(
         label="Document level meta-data"
         description="Captures the meta-data about this document describing a particular set of security advisories."
         defaultValue={() => ({
+          category: '',
           csaf_version: '2.0',
           publisher: {
-            type: '',
+            category: '',
+            name: '',
           },
           title: '',
           tracking: {
@@ -45,7 +47,6 @@ export default React.memo(
             status: '',
             version: '',
           },
-          type: '',
         })}
       >
         {(documentLevelMetaDataProps) => (
@@ -55,6 +56,12 @@ export default React.memo(
             />
             <AggregateSeverity
               {...documentLevelMetaDataProps('aggregate_severity')}
+            />
+            <TextAttribute
+              {...documentLevelMetaDataProps('category')}
+              label="Document category"
+              description="Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document."
+              placeholder="Security Advisory"
             />
             <EnumAttribute
               {...documentLevelMetaDataProps('csaf_version')}
@@ -89,12 +96,6 @@ export default React.memo(
               placeholder="Example Company Cross-Site-Scripting Vulnerability in Example Generator"
             />
             <Tracking {...documentLevelMetaDataProps('tracking')} />
-            <TextAttribute
-              {...documentLevelMetaDataProps('type')}
-              label="Document type"
-              description="Defines a short canonical name, chosen by the document producer, which will inform the end user as to the type of document."
-              placeholder="Security Advisory"
-            />
           </>
         )}
       </ObjectContainer>

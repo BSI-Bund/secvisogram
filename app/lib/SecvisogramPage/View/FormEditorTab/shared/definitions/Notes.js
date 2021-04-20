@@ -28,7 +28,7 @@ export default React.memo(
         label={label}
         description={description}
         defaultItemValue={() => ({
-          type: '',
+          category: '',
           text: '',
         })}
       >
@@ -65,16 +65,9 @@ const Note = React.memo(
               placeholder="all"
               deletable
             />
-            <TextAttribute
-              {...noteProps('title')}
-              label="Title of note"
-              description="Provides a concise description of what is contained in the text of the note."
-              placeholder="Details"
-              deletable
-            />
             <EnumAttribute
-              {...noteProps('type')}
-              label="Note type"
+              {...noteProps('category')}
+              label="Note category"
               description="Choice of what kind of note this is."
               options={[
                 'description',
@@ -85,6 +78,13 @@ const Note = React.memo(
                 'other',
                 'summary',
               ]}
+            />
+            <TextAttribute
+              {...noteProps('title')}
+              label="Title of note"
+              description="Provides a concise description of what is contained in the text of the note."
+              placeholder="Details"
+              deletable
             />
             <TextAreaAttribute
               {...noteProps('text')}
