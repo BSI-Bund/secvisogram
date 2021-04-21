@@ -338,7 +338,7 @@
     <p>
       {{#tlp}}
         <b>{{#label}}TLP:{{.}}{{/label}}</b><br>
-        For the TLP version see: {{#url}}{{.}}{{/url}}{{^url}}{{https://www.first.org/tlp/}}{{/url}}
+        For the TLP version see: <a href={{#url}}{{.}}{{/url}}{{^url}}https://www.first.org/tlp/{{/url}}>{{#url}}{{.}}{{/url}}{{^url}}https://www.first.org/tlp/{{/url}}</a>
       {{/tlp}}
     </p>
     <p>{{text}}</p>
