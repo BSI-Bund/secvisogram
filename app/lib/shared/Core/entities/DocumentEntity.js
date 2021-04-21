@@ -794,7 +794,7 @@ const retrieveMaxBaseScore = (vulnerabilities) => {
 }
 
 /**
- * Categorize all document notes by type
+ * Categorize all document notes by category
  *
  * @param {any} document
  */
@@ -812,7 +812,7 @@ const addDocumentNotesPreviewAttributes = (document) => {
   if (notes) {
     for (let i = 0; i < notes.length; ++i) {
       const note = notes[i]
-      switch (note.type) {
+      switch (note.category) {
         case 'summary':
           summary.push(note)
           break
@@ -1006,7 +1006,7 @@ const extendProductStatus = (refs, extendedScoreIds, productIds) => {
 }
 
 /**
- * Categorize all remediations by type
+ * Categorize all remediations by category
  *
  * @param {any} vulnerability
  * @param {any} productIds
@@ -1028,7 +1028,7 @@ const addRemediationsPreviewAttributes = (
     for (let i = 0; i < remediations.length; ++i) {
       const remediation = remediations[i]
       extendRemediation(remediation, productIds, groupIds)
-      switch (remediation.type) {
+      switch (remediation.category) {
         case 'vendor_fix':
           vendorFix.push(remediation)
           break
@@ -1111,7 +1111,7 @@ const sortByDate = (a, b) => {
 }
 
 /**
- * Categorize all vulnerability notes by type
+ * Categorize all vulnerability notes by category
  *
  * @param {any} vulnerability
  */
@@ -1129,7 +1129,7 @@ const addVulnerabilityNotesPreviewAttributes = (vulnerability) => {
   if (notes) {
     for (let i = 0; i < notes.length; ++i) {
       const note = notes[i]
-      switch (note.type) {
+      switch (note.category) {
         case 'summary':
           summary.push(note)
           break
