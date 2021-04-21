@@ -53,7 +53,7 @@ Now you can start a development server as follows:
 
     npm run dev
 
-The application is now running and accessible at http://localhost:8080.
+The application is now running and accessible at http://localhost:8080. Use the `--port` argument for alternative ports, e.g. `npm run dev --port=8081`.
 
 #### Deploying to Production
 
