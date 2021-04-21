@@ -151,7 +151,7 @@ const Vulnerability = React.memo(
                         description="Defines contact status of the involved party."
                         options={[
                           'completed',
-                          'contact_accepted',
+                          'contact_attempted',
                           'disputed',
                           'in_progress',
                           'not_contacted',
@@ -227,7 +227,7 @@ const Vulnerability = React.memo(
                   <Products
                     {...productStatusProps('under_investigation')}
                     label="Under investigation"
-                    description="It is not known yet whether this version is or is not affected by the vulnerability. However, it is still under investigation - the result will be provided in a later release of the document."
+                    description="It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation - the result will be provided in a later release of the document."
                     onCollectProductIds={onCollectProductIds}
                   />
                 </>
@@ -245,8 +245,8 @@ const Vulnerability = React.memo(
               label="List of remediations"
               description="Contains a list of remediations."
               defaultItemValue={() => ({
+                category: '',
                 details: '',
-                type: '',
               })}
             >
               {(remediationItemProps) => (
@@ -257,6 +257,18 @@ const Vulnerability = React.memo(
                 >
                   {(remediationProps) => (
                     <>
+                      <EnumAttribute
+                        {...remediationProps('category')}
+                        label="Category of the remediation"
+                        description="Specifies the category which this remediation belongs to."
+                        options={[
+                          'workaround',
+                          'mitigation',
+                          'vendor_fix',
+                          'none_available',
+                          'no_fix_planned',
+                        ]}
+                      />
                       <DateAttribute
                         {...remediationProps('date')}
                         label="Date of the remediation"
@@ -294,23 +306,17 @@ const Vulnerability = React.memo(
                       <ObjectContainer
                         {...remediationProps('restart_required')}
                         label="Restart required by remediation"
-                        description="Provides information on type of restart is required by this remediation to become effective."
+                        description="Provides information on category of restart is required by this remediation to become effective."
                         defaultValue={() => ({
-                          type: '',
+                          category: '',
                         })}
                       >
                         {(restartRequiredProps) => (
                           <>
-                            <TextAreaAttribute
-                              {...restartRequiredProps('details')}
-                              label="Additional restart information"
-                              description="Provides additional information for the restart. This can include details on procedures, scope or impact."
-                              deletable
-                            />
                             <EnumAttribute
-                              {...restartRequiredProps('type')}
-                              label="Type of restart"
-                              description="Specifies what type of restart is required by this remediation to become effective."
+                              {...restartRequiredProps('category')}
+                              label="Category of restart"
+                              description="Specifies what category of restart is required by this remediation to become effective."
                               options={[
                                 'none',
                                 'vulnerable_component',
@@ -323,21 +329,15 @@ const Vulnerability = React.memo(
                                 'system',
                               ]}
                             />
+                            <TextAreaAttribute
+                              {...restartRequiredProps('details')}
+                              label="Additional restart information"
+                              description="Provides additional information for the restart. This can include details on procedures, scope or impact."
+                              deletable
+                            />
                           </>
                         )}
                       </ObjectContainer>
-                      <EnumAttribute
-                        {...remediationProps('type')}
-                        label="Type of the remediation"
-                        description="Specifies the type which this remediation belongs to."
-                        options={[
-                          'workaround',
-                          'mitigation',
-                          'vendor_fix',
-                          'none_available',
-                          'no_fix_planned',
-                        ]}
-                      />
                       <TextAttribute
                         {...remediationProps('url')}
                         label="URL to the remediation"
@@ -359,8 +359,8 @@ const Vulnerability = React.memo(
               label="List of threats"
               description="Contains information about a vulnerability that can change with time."
               defaultItemValue={() => ({
+                category: '',
                 details: '',
-                type: '',
               })}
             >
               {(threatItemProps) => (
@@ -371,6 +371,12 @@ const Vulnerability = React.memo(
                 >
                   {(threatProps) => (
                     <>
+                      <EnumAttribute
+                        {...threatProps('category')}
+                        label="Category of the threat"
+                        description="Categorizes the threat according to the rules of the specification."
+                        options={['impact', 'exploit_status', 'target_set']}
+                      />
                       <DateAttribute
                         {...threatProps('date')}
                         label="Date of the threat"
@@ -389,12 +395,6 @@ const Vulnerability = React.memo(
                       <Products
                         {...threatProps('product_ids')}
                         onCollectProductIds={onCollectProductIds}
-                      />
-                      <EnumAttribute
-                        {...threatProps('type')}
-                        label="Type of the threat"
-                        description="Categorizes the threat according to the rules of the specification."
-                        options={['impact', 'exploit_status', 'target_set']}
                       />
                     </>
                   )}

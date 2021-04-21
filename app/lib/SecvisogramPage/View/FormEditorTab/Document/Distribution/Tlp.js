@@ -44,7 +44,8 @@ export default function Tlp({
             description="Provides a URL where to find the textual description of the TLP version which is used in this document. Default is the URL to the definition by FIRST."
             defaultValue={() => 'https://www.first.org/tlp/'}
             type="url"
-            placeholder="https://www.us-cert.gov/tlp"
+            placeholder="https://www.first.org/tlp/"
+            deletable
           />
         </>
       )}

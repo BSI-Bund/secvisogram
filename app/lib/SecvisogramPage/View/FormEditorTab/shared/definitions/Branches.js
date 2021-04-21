@@ -23,8 +23,8 @@ export default React.memo(
         label="List of branches"
         description="Contains branch elements as children of the current element."
         defaultItemValue={() => ({
+          category: '',
           name: '',
-          type: '',
         })}
       >
         {(branchesProps) => (
@@ -39,15 +39,9 @@ export default React.memo(
                 productName.length == 0 ? `${name}` : `${productName} ${name}`
               return (
                 <>
-                  <TextAttribute
-                    {...branchProps('name')}
-                    label="Name of the branch"
-                    description="Contains the canonical descriptor or 'friendly name' of the branch."
-                    placeholder="Microsoft ..."
-                  />
                   <EnumAttribute
-                    {...branchProps('type')}
-                    label="Type of the branch"
+                    {...branchProps('category')}
+                    label="Category of the branch"
                     description="Describes the characteristics of the labeled branch."
                     options={[
                       'architecture',
@@ -62,6 +56,12 @@ export default React.memo(
                       'specification',
                       'vendor',
                     ]}
+                  />
+                  <TextAttribute
+                    {...branchProps('name')}
+                    label="Name of the branch"
+                    description="Contains the canonical descriptor or 'friendly name' of the branch."
+                    placeholder="Microsoft ..."
                   />
                   <Branches
                     productName={fullProductName}

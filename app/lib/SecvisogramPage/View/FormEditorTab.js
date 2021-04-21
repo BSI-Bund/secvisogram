@@ -280,9 +280,11 @@ function Doc(props) {
       deletable={false}
       defaultValue={() => ({
         document: {
+          category: '',
           csaf_version: '2.0',
           publisher: {
-            type: '',
+            category: '',
+            name: '',
           },
           title: '',
           tracking: {
@@ -299,7 +301,6 @@ function Doc(props) {
             status: '',
             version: '',
           },
-          type: '',
         },
       })}
     >

@@ -29,18 +29,12 @@
               "examples": ["Johann Sebastian Bach", "Albert Einstein"]
             }
           },
-          "organizations": {
-            "title": "List of contributing organizations",
-            "description": "Contains the names of contributing organizations being recognized.",
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "title": "Contributing organization",
-              "description": "Contains the name of a single organization.",
-              "type": "string",
-              "minLength": 1,
-              "examples": ["CISA", "Talos", "Google Project Zero"]
-            }
+          "organization": {
+            "title": "Contributing organization",
+            "description": "Contains the name of a contributing organization being recognized.",
+            "type": "string",
+            "minLength": 1,
+            "examples": ["CISA", "Talos", "Google Project Zero"]
           },
           "summary": {
             "title": "Summary of the acknowledgment",
@@ -77,10 +71,28 @@
         "type": "object",
         "maxProperties": 3,
         "minProperties": 3,
-        "required": ["name", "type"],
+        "required": ["category", "name"],
         "properties": {
           "branches": {
             "$ref": "#/definitions/branches_t"
+          },
+          "category": {
+            "title": "Category of the branch",
+            "description": "Describes the characteristics of the labeled branch.",
+            "type": "string",
+            "enum": [
+              "architecture",
+              "host_name",
+              "language",
+              "legacy",
+              "patch_level",
+              "product_family",
+              "product_name",
+              "product_version",
+              "service_pack",
+              "specification",
+              "vendor"
+            ]
           },
           "name": {
             "title": "Name of the branch",
@@ -100,24 +112,6 @@
           },
           "product": {
             "$ref": "#/definitions/full_product_name_t"
-          },
-          "type": {
-            "title": "Type of the branch",
-            "description": "Describes the characteristics of the labeled branch.",
-            "type": "string",
-            "enum": [
-              "architecture",
-              "host_name",
-              "language",
-              "legacy",
-              "patch_level",
-              "product_family",
-              "product_name",
-              "product_version",
-              "service_pack",
-              "specification",
-              "vendor"
-            ]
           }
         }
       }
@@ -189,7 +183,7 @@
                   },
                   "value": {
                     "title": "Value of the cryptographic hash",
-                    "description": "Contains the cryptographic hash value.",
+                    "description": "Contains the cryptographic hash value in hexadecimal representation.",
                     "type": "string",
                     "minLength": 64,
                     "pattern": "^[0-9a-fA-F]{64,}$",
@@ -213,7 +207,7 @@
             "serial_numbers": {
               "$comment": "TODO: Add remark in prose that this should only be used if a certain range of serial numbers with a software version is affected, or the serial numbers change during update.",
               "title": "List of serial numbers",
-              "description": "Contains a list of parts, or a full serial numbers.",
+              "description": "Contains a list of parts, or full serial numbers.",
               "type": "array",
               "minItems": 1,
               "items": {
@@ -230,7 +224,7 @@
               "type": "array",
               "minItems": 1,
               "items": {
-                "title": "Generic UR",
+                "title": "Generic URI",
                 "description": "Provides a generic extension point for any identifier which is either vendor-specific or derived from a standard not yet supported.",
                 "type": "object",
                 "required": ["namespace", "uri"],
@@ -270,7 +264,7 @@
         "title": "Note",
         "description": "Is a place to put all manner of text blobs related to the current context.",
         "type": "object",
-        "required": ["text", "type"],
+        "required": ["category", "text"],
         "properties": {
           "audience": {
             "title": "Audience of note",
@@ -282,6 +276,20 @@
               "executives",
               "operational management and system administrators",
               "safety engineers"
+            ]
+          },
+          "category": {
+            "title": "Note category",
+            "description": "Choice of what kind of note this is.",
+            "type": "string",
+            "enum": [
+              "description",
+              "details",
+              "faq",
+              "general",
+              "legal_disclaimer",
+              "other",
+              "summary"
             ]
           },
           "text": {
@@ -300,20 +308,6 @@
               "Executive summary",
               "Technical summary",
               "Impact on safety systems"
-            ]
-          },
-          "type": {
-            "title": "Note type",
-            "description": "Choice of what kind of note this is.",
-            "type": "string",
-            "enum": [
-              "description",
-              "details",
-              "faq",
-              "general",
-              "legal_disclaimer",
-              "other",
-              "summary"
             ]
           }
         }
@@ -364,18 +358,18 @@
         "type": "object",
         "required": ["summary", "url"],
         "properties": {
+          "category": {
+            "title": "Category of reference",
+            "description": "Indicates whether the reference points to the same document or vulnerability in focus (depending on scope) or to an external resource.",
+            "type": "string",
+            "default": "external",
+            "enum": ["external", "self"]
+          },
           "summary": {
             "title": "Summary of the reference",
             "description": "Indicates what this reference refers to.",
             "type": "string",
             "minLength": 1
-          },
-          "type": {
-            "title": "Type of reference",
-            "description": "Indicates whether the reference points to the same document or vulnerability in focus (depending on scope) or to an external resource.",
-            "type": "string",
-            "default": "external",
-            "enum": ["external", "self"]
           },
           "url": {
             "title": "URL of reference",
@@ -400,7 +394,13 @@
       "title": "Document level meta-data",
       "description": "Captures the meta-data about this document describing a particular set of security advisories.",
       "type": "object",
-      "required": ["csaf_version", "publisher", "title", "tracking", "type"],
+      "required": [
+        "category",
+        "csaf_version",
+        "publisher",
+        "title",
+        "tracking"
+      ],
       "properties": {
         "acknowledgments": {
           "$ref": "#/definitions/acknowledgments_t"
@@ -425,6 +425,17 @@
               "examples": ["Moderate", "Important", "Critical"]
             }
           }
+        },
+        "category": {
+          "title": "Document category",
+          "description": "Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document.",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "Security Advisory",
+            "Security Notice",
+            "Vulnerability Report"
+          ]
         },
         "csaf_version": {
           "title": "CSAF version",
@@ -490,8 +501,21 @@
           "title": "Publisher",
           "description": "Provides information about the publisher of the document.",
           "type": "object",
-          "required": ["type"],
+          "required": ["category", "name"],
           "properties": {
+            "category": {
+              "title": "Category of publisher",
+              "description": "Provides information about the category of publisher releasing the document.",
+              "type": "string",
+              "enum": [
+                "coordinator",
+                "discoverer",
+                "other",
+                "translator",
+                "user",
+                "vendor"
+              ]
+            },
             "contact_details": {
               "title": "Contact details",
               "description": "Information on how to contact the publisher, possibly including details such as web sites, email addresses, phone numbers, and postal mail addresses.",
@@ -503,15 +527,16 @@
             },
             "issuing_authority": {
               "title": "Issuing authority",
-              "description": "The name of the issuing party and their authority to release the document, in particular, the party's constituency and responsibilities or other obligations.",
+              "description": "Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.",
               "type": "string",
               "minLength": 1
             },
-            "type": {
-              "title": "Type of publisher",
-              "description": "Provides information about the type of publisher releasing the document.",
+            "name": {
+              "title": "Name of publisher",
+              "description": "Contains the name of the issuing party.",
               "type": "string",
-              "enum": ["coordinator", "discoverer", "other", "user", "vendor"]
+              "minLength": 1,
+              "examples": ["BSI", "Cisco PSIRT", "Siemens ProductCERT"]
             },
             "vendor_id": {
               "title": "Vendor releasing the document",
@@ -654,17 +679,6 @@
               "$ref": "#/definitions/version_t"
             }
           }
-        },
-        "type": {
-          "title": "Document type",
-          "description": "Defines a short canonical name, chosen by the document producer, which will inform the end user as to the type of document.",
-          "type": "string",
-          "minLength": 1,
-          "examples": [
-            "Security Advisory",
-            "Security Notice",
-            "Vulnerability Report"
-          ]
         }
       }
     },
@@ -733,12 +747,24 @@
             "description": "Establishes a link between two existing full_product_name_t elements, allowing the document producer to define a combination of two products that form a new full_product_name entry.",
             "type": "object",
             "required": [
+              "category",
               "full_product_name",
               "product_reference",
-              "relates_to_product_reference",
-              "relationship_type"
+              "relates_to_product_reference"
             ],
             "properties": {
+              "category": {
+                "title": "Relationship category",
+                "description": "Defines the category of relationship for the referenced component.",
+                "type": "string",
+                "enum": [
+                  "default_component_of",
+                  "external_component_of",
+                  "installed_on",
+                  "installed_with",
+                  "optional_component_of"
+                ]
+              },
               "full_product_name": {
                 "$ref": "#/definitions/full_product_name_t"
               },
@@ -747,18 +773,6 @@
               },
               "relates_to_product_reference": {
                 "$ref": "#/definitions/product_id_t"
-              },
-              "relationship_type": {
-                "title": "Relationship type",
-                "description": "Defines the type of relationship for the referenced component.",
-                "type": "string",
-                "enum": [
-                  "default_component_of",
-                  "optional_component_of",
-                  "external_component_of",
-                  "installed_on",
-                  "installed_with"
-                ]
               }
             }
           }
@@ -828,14 +842,14 @@
                 "description": "Indicates the name of the vulnerability tracking or numbering system.",
                 "type": "string",
                 "minLength": 1,
-                "examples": ["Cisco Bug ID"]
+                "examples": ["Cisco Bug ID", "GitHub Issue"]
               },
               "text": {
                 "title": "Text",
                 "description": "Is unique label or tracking ID for the vulnerability (if such information exists).",
                 "type": "string",
                 "minLength": 1,
-                "examples": ["CSCso66472"]
+                "examples": ["CSCso66472", "oasis-tcs/csaf#210"]
               }
             }
           },
@@ -868,7 +882,7 @@
                   "type": "string",
                   "enum": [
                     "completed",
-                    "contact_accepted",
+                    "contact_attempted",
                     "disputed",
                     "in_progress",
                     "not_contacted",
@@ -930,7 +944,7 @@
               },
               "under_investigation": {
                 "title": "Under investigation",
-                "description": "It is not known yet whether this version is or is not affected by the vulnerability. However, it is still under investigation - the result will be provided in a later release of the document.",
+                "description": "It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation - the result will be provided in a later release of the document.",
                 "$ref": "#/definitions/products_t"
               }
             }
@@ -953,8 +967,20 @@
               "title": "Remediation",
               "description": "Specifies details on how to handle (and presumably, fix) a vulnerability.",
               "type": "object",
-              "required": ["details", "type"],
+              "required": ["category", "details"],
               "properties": {
+                "category": {
+                  "title": "Category of the remediation",
+                  "description": "Specifies the category which this remediation belongs to.",
+                  "type": "string",
+                  "enum": [
+                    "workaround",
+                    "mitigation",
+                    "vendor_fix",
+                    "none_available",
+                    "no_fix_planned"
+                  ]
+                },
                 "date": {
                   "title": "Date of the remediation",
                   "description": "Contains the date from which the remediation is available.",
@@ -987,19 +1013,13 @@
                 },
                 "restart_required": {
                   "title": "Restart required by remediation",
-                  "description": "Provides information on type of restart is required by this remediation to become effective.",
+                  "description": "Provides information on category of restart is required by this remediation to become effective.",
                   "type": "object",
-                  "required": ["type"],
+                  "required": ["category"],
                   "properties": {
-                    "details": {
-                      "title": "Additional restart information",
-                      "description": "Provides additional information for the restart. This can include details on procedures, scope or impact.",
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "type": {
-                      "title": "Type of restart",
-                      "description": "Specifies what type of restart is required by this remediation to become effective.",
+                    "category": {
+                      "title": "Category of restart",
+                      "description": "Specifies what category of restart is required by this remediation to become effective.",
                       "type": "string",
                       "enum": [
                         "none",
@@ -1012,20 +1032,14 @@
                         "zone",
                         "system"
                       ]
+                    },
+                    "details": {
+                      "title": "Additional restart information",
+                      "description": "Provides additional information for the restart. This can include details on procedures, scope or impact.",
+                      "type": "string",
+                      "minLength": 1
                     }
                   }
-                },
-                "type": {
-                  "title": "Type of the remediation",
-                  "description": "Specifies the type which this remediation belongs to.",
-                  "type": "string",
-                  "enum": [
-                    "workaround",
-                    "mitigation",
-                    "vendor_fix",
-                    "none_available",
-                    "no_fix_planned"
-                  ]
                 },
                 "url": {
                   "title": "URL to the remediation",
@@ -1038,7 +1052,7 @@
           },
           "scores": {
             "title": "List of scores",
-            "description": "contains score objects for the currrent vulnerability.",
+            "description": "contains score objects for the current vulnerability.",
             "type": "array",
             "minItems": 1,
             "items": {
@@ -1076,8 +1090,14 @@
               "title": "Threat",
               "description": "Contains the vulnerability kinetic information. This information can change as the vulnerability ages and new information becomes available.",
               "type": "object",
-              "required": ["details", "type"],
+              "required": ["category", "details"],
               "properties": {
+                "category": {
+                  "title": "Category of the threat",
+                  "description": "Categorizes the threat according to the rules of the specification.",
+                  "type": "string",
+                  "enum": ["exploit_status", "impact", "target_set"]
+                },
                 "date": {
                   "title": "Date of the threat",
                   "description": "Contains the date when the assessment was done or the threat appeared.",
@@ -1095,12 +1115,6 @@
                 },
                 "product_ids": {
                   "$ref": "#/definitions/products_t"
-                },
-                "type": {
-                  "title": "Type of the threat",
-                  "description": "Categorizes the threat according to the rules of the specification.",
-                  "type": "string",
-                  "enum": ["impact", "exploit_status", "target_set"]
                 }
               }
             }

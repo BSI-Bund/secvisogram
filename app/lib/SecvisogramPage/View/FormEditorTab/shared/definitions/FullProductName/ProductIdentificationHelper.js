@@ -70,7 +70,7 @@ export default function ProductIdentificationHelper({
                     <TextAttribute
                       {...hashProps('value')}
                       label="Value of the cryptographic hash"
-                      description="Contains the cryptographic hash value."
+                      description="Contains the cryptographic hash value in hexadecimal representation."
                       placeholder="da4fa28021c21c738485012886ff921e2d2be471165510dfadb93b7aff688108553e52aa38c253c900352a8e60b08d42be6f8a4f7185c5c0def8fe9ca0554b4c"
                     />
                   </>
@@ -89,7 +89,7 @@ export default function ProductIdentificationHelper({
           <ArrayContainer
             {...productIdentificationHelperProps('serial_numbers')}
             label="List of serial numbers"
-            description="Contains a list of parts, or a full serial numbers."
+            description="Contains a list of parts, or full serial numbers."
             defaultItemValue={() => ''}
           >
             {(serialNumbersItemProps) => (

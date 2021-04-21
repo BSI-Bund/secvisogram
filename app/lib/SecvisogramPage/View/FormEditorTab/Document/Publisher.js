@@ -21,11 +21,25 @@ export default React.memo(
         label="Publisher"
         description="Provides information about the publisher of the document."
         defaultValue={() => ({
-          type: '',
+          category: '',
+          name: '',
         })}
       >
         {(publisherProps) => (
           <>
+            <EnumAttribute
+              {...publisherProps('category')}
+              label="Category of publisher"
+              description="Provides information about the category of publisher releasing the document."
+              options={[
+                'coordinator',
+                'discoverer',
+                'other',
+                'translator',
+                'user',
+                'vendor',
+              ]}
+            />
             <TextAttribute
               {...publisherProps('contact_details')}
               label="Contact details"
@@ -36,14 +50,14 @@ export default React.memo(
             <TextAttribute
               {...publisherProps('issuing_authority')}
               label="Issuing authority"
-              description="The name of the issuing party and their authority to release the document, in particular, the party's constituency and responsibilities or other obligations."
+              description="Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations."
               deletable
             />
-            <EnumAttribute
-              {...publisherProps('type')}
-              label="Type of publisher"
-              description="Provides information about the type of publisher releasing the document."
-              options={['coordinator', 'discoverer', 'other', 'user', 'vendor']}
+            <TextAttribute
+              {...publisherProps('name')}
+              label="Name of publisher"
+              description="Contains the name of the issuing party."
+              placeholder="Example PSIRT"
             />
             <TextAttribute
               {...publisherProps('vendor_id')}

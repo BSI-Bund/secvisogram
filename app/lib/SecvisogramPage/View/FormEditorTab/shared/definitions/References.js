@@ -31,18 +31,18 @@ export default React.memo(
           >
             {(referenceProps) => (
               <>
-                <TextAreaAttribute
-                  {...referenceProps('summary')}
-                  label="Summary of the reference"
-                  description="Indicates what this reference refers to."
-                />
                 <EnumAttribute
-                  {...referenceProps('type')}
-                  label="Type of reference"
+                  {...referenceProps('category')}
+                  label="Category of reference"
                   description="Indicates whether the reference points to the same document or vulnerability in focus (depending on scope) or to an external resource."
                   options={['external', 'self']}
                   defaultValue={() => 'external'}
                   deletable
+                />
+                <TextAreaAttribute
+                  {...referenceProps('summary')}
+                  label="Summary of the reference"
+                  description="Indicates what this reference refers to."
                 />
                 <TextAttribute
                   {...referenceProps('url')}
