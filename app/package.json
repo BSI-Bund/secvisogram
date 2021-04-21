@@ -13,7 +13,7 @@
   "scripts": {
     "test": "eslint . && node scripts/test.js",
     "build": "node scripts/build.js",
-    "dev": "webpack serve --mode development"
+    "dev": "webpack serve --mode development --port=$npm_config_port"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
