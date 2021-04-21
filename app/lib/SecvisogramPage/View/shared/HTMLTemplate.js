@@ -55,7 +55,7 @@ const DOCUMENT_NOTE = `
 {{#text}}<p>{{text}}</p>{{/text}}`
 const ACKNOWLEDGEMENT = `
 {{#.}}
-  <li>{{#removeTrailingComma}}{{#names}}{{.}}, {{/names}}{{/removeTrailingComma}}{{#organization}}{{#names.length}} from {{/names.length}}{{.}} {{/organization}}{{#summary}} for {{.}}{{/summary}}{{#urls.length}} (see: {{#removeTrailingComma}}{{#urls}}{{.}}, {{/urls}}{{/removeTrailingComma}}){{/urls.length}}</li>  
+  <li>{{#removeTrailingComma}}{{#names}}{{.}}, {{/names}}{{/removeTrailingComma}}{{#organization}}{{#names.length}} from {{/names.length}}{{.}} {{/organization}}{{#summary}} for {{.}}{{/summary}}{{#urls.length}} (see: {{#removeTrailingComma}}{{#urls}}<a href={{.}}>{{.}}</a>, {{/urls}}{{/removeTrailingComma}}){{/urls.length}}</li>  
 {{/.}}`
 
 const REFERENCE = `
