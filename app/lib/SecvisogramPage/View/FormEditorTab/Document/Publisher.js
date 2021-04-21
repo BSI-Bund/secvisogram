@@ -50,7 +50,7 @@ export default React.memo(
             <TextAttribute
               {...publisherProps('issuing_authority')}
               label="Issuing authority"
-              description="Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.."
+              description="Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations."
               deletable
             />
             <TextAttribute
