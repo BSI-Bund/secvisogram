@@ -71,7 +71,7 @@
     "raw-loader": "^4.0.2",
     "tailwindcss": "^2.1.1",
     "webpack": "^5.35.0",
-    "webpack-cli": "^4.5.0",
+    "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2",
     "xml2js": "^0.4.23"
   },
