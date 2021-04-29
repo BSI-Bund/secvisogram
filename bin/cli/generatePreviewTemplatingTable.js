@@ -28,7 +28,7 @@ module.exports = function generatePreviewTemplatingTable(args) {
    */
   function generateSchemaPaths(schema, dataPath = [], depth = 1) {
     const path = dataPath.length ? dataPath.join('.') : '.'
-    if (depth > 8) return [{ path, schema, depth }]
+    if (depth > 10) return [{ path, schema, depth }]
     switch (schema.type) {
       case 'object':
         return [
