@@ -150,44 +150,59 @@
               "description": "Contains a list of cryptographic hashes usable to identify files.",
               "items": {
                 "additionalProperties": false,
-                "description": "Contains all information to identify a file based on its cryptographic hash value.",
+                "description": "Contains all information to identify a file based on its cryptographic hash values.",
                 "properties": {
-                  "algorithm": {
-                    "default": "SHA-3",
-                    "description": "Contains the name of the cryptographic hash algorithm used to calculate the value.",
-                    "examples": [
-                      "SHA-256",
-                      "SHA-384",
-                      "SHA-512",
-                      "SHA-3",
-                      "BLAKE3"
-                    ],
-                    "minLength": 1,
-                    "title": "Algorithm of the cryptographic hash",
-                    "type": "string"
+                  "file_hashes": {
+                    "description": "Contains a list of cryptographic hashes for this file.",
+                    "items": {
+                      "additionalProperties": false,
+                      "description": "Contains one hash value and algorithm of the file to be identified.",
+                      "properties": {
+                        "algorithm": {
+                          "default": "sha256",
+                          "description": "Contains the name of the cryptographic hash algorithm used to calculate the value.",
+                          "examples": [
+                            "sha256",
+                            "sha384",
+                            "sha512",
+                            "sha3-512",
+                            "blake2b512"
+                          ],
+                          "minLength": 1,
+                          "title": "Algorithm of the cryptographic hash",
+                          "type": "string"
+                        },
+                        "value": {
+                          "description": "Contains the cryptographic hash value in hexadecimal representation.",
+                          "examples": [
+                            "4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc",
+                            "9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c",
+                            "37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3"
+                          ],
+                          "minLength": 32,
+                          "pattern": "^[0-9a-fA-F]{32,}$",
+                          "title": "Value of the cryptographic hash",
+                          "type": "string"
+                        }
+                      },
+                      "required": ["algorithm", "value"],
+                      "title": "File hash",
+                      "type": "object"
+                    },
+                    "minItems": 1,
+                    "title": "List of file hashes",
+                    "type": "array"
                   },
-                  "file": {
-                    "description": "Contains the name of the file which is identified by the hash value.",
+                  "filename": {
+                    "description": "Contains the name of the file which is identified by the hash values.",
                     "examples": ["WINWORD.EXE", "msotadddin.dll", "sudoers.so"],
                     "minLength": 1,
                     "title": "Filename",
                     "type": "string"
-                  },
-                  "value": {
-                    "description": "Contains the cryptographic hash value in hexadecimal representation.",
-                    "examples": [
-                      "4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc",
-                      "9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c",
-                      "37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3"
-                    ],
-                    "minLength": 64,
-                    "pattern": "^[0-9a-fA-F]{64,}$",
-                    "title": "Value of the cryptographic hash",
-                    "type": "string"
                   }
                 },
-                "required": ["algorithm", "file", "value"],
-                "title": "Cryptographic hash",
+                "required": ["file_hashes", "filename"],
+                "title": "Cryptographic hashes",
                 "type": "object"
               },
               "minItems": 1,
@@ -387,9 +402,9 @@
       "type": "array"
     },
     "version_t": {
-      "description": "Specifies a version string with a simple hierarchical counter model to denote clearly the evolution of the content of the document. Format must be understood as 'major[.minor[.patch[.build]]]' version.",
-      "examples": ["1", "0.9", "1.4.3", "2.40.0.320002"],
-      "pattern": "^(0|[1-9][0-9]*)(\\.(0|[1-9][0-9]*)){0,3}$",
+      "description": "Specifies a version string to denote clearly the evolution of the content of the document. Format must be either integer or semantic versioning.",
+      "examples": ["1", "4", "0.9.0", "1.4.3", "2.40.0+21AF26D3"],
+      "pattern": "^(0|[1-9][0-9]*)$|^((0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)$",
       "title": "Version",
       "type": "string"
     }

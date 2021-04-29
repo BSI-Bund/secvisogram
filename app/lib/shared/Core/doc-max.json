@@ -79,9 +79,13 @@
             "cpe": "",
             "hashes": [
               {
-                "algorithm": "SHA-3",
-                "file": "",
-                "value": ""
+                "file_hashes": [
+                  {
+                    "algorithm": "sha256",
+                    "value": ""
+                  }
+                ],
+                "filename": ""
               }
             ],
             "purl": "",
@@ -104,9 +108,13 @@
           "cpe": "",
           "hashes": [
             {
-              "algorithm": "SHA-3",
-              "file": "",
-              "value": ""
+              "file_hashes": [
+                {
+                  "algorithm": "sha256",
+                  "value": ""
+                }
+              ],
+              "filename": ""
             }
           ],
           "purl": "",
@@ -137,9 +145,13 @@
             "cpe": "",
             "hashes": [
               {
-                "algorithm": "SHA-3",
-                "file": "",
-                "value": ""
+                "file_hashes": [
+                  {
+                    "algorithm": "sha256",
+                    "value": ""
+                  }
+                ],
+                "filename": ""
               }
             ],
             "purl": "",
