@@ -44,35 +44,62 @@ export default function ProductIdentificationHelper({
             label="List of hashes"
             description="Contains a list of cryptographic hashes usable to identify files."
             defaultItemValue={() => ({
-              algorithm: 'SHA-3',
-              file: '',
-              value: '',
+              file_hashes: [
+                {
+                  algorithm: 'sha256',
+                  value: '',
+                },
+              ],
+              filename: '',
             })}
           >
             {(hashItemProps) => (
               <ObjectContainer
                 {...hashItemProps}
-                label="Cryptographic hash"
-                description="Contains all information to identify a file based on its cryptographic hash value."
+                label="Cryptographic hashes"
+                description="Contains all information to identify a file based on its cryptographic hash values."
               >
                 {(hashProps) => (
                   <>
                     <TextAttribute
-                      {...hashProps('algorithm')}
-                      label="Algorithm of the cryptographic hash"
-                      description="Contains the name of the cryptographic hash algorithm used to calculate the value."
-                    />
-                    <TextAttribute
-                      {...hashProps('file')}
+                      {...hashProps('filename')}
                       label="Filename"
-                      description="Contains the name of the file which is identified by the hash value."
+                      description="Contains the name of the file which is identified by the hash values."
                     />
-                    <TextAttribute
-                      {...hashProps('value')}
-                      label="Value of the cryptographic hash"
-                      description="Contains the cryptographic hash value in hexadecimal representation."
-                      placeholder="da4fa28021c21c738485012886ff921e2d2be471165510dfadb93b7aff688108553e52aa38c253c900352a8e60b08d42be6f8a4f7185c5c0def8fe9ca0554b4c"
-                    />
+                    <ArrayContainer
+                      {...hashProps('file_hashes')}
+                      label="List of file hashes"
+                      description="Contains a list of cryptographic hashes for this file."
+                      defaultItemValue={() => ({
+                        algorithm: 'sha256',
+                        value: '',
+                      })}
+                    >
+                      {(fileHashItemProps) => (
+                        <ObjectContainer
+                          {...fileHashItemProps}
+                          label="File hash"
+                          description="Contains the name of the cryptographic hash algorithm used to calculate the value."
+                        >
+                          {(fileHashProps) => (
+                            <>
+                              <TextAttribute
+                                {...fileHashProps('algorithm')}
+                                label="Algorithm of the cryptographic hash"
+                                description="Contains the name of the cryptographic hash algorithm used to calculate the value."
+                              />
+                              <TextAttribute
+                                {...fileHashProps('value')}
+                                label="Value of the cryptographic hash"
+                                description="Contains the cryptographic hash value in hexadecimal representation."
+                                placeholder="4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341c"
+                                minLength={32}
+                              />
+                            </>
+                          )}
+                        </ObjectContainer>
+                      )}
+                    </ArrayContainer>
                   </>
                 )}
               </ObjectContainer>
