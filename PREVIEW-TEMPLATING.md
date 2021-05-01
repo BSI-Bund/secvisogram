@@ -134,10 +134,10 @@ This is the full list of document properties. It reflects the structure as defin
 | `document.tracking.revision_history` | Holds one revision item for each version of the CSAF document, including the initial one.| |
 | `document.tracking.revision_history[]` | Contains all the information elements required to track the evolution of a CSAF document. | |
 | `document.tracking.revision_history[].date` | The date of the revision entry | |
-| `document.tracking.revision_history[].number` | Specifies a version string with a simple hierarchical counter model to denote clearly the evolution of the content of the document. Format must be understood as 'major[.minor[.patch[.build]]]' version. | 1, 0.9, 1.4.3, 2.40.0.320002 |
+| `document.tracking.revision_history[].number` | Specifies a version string to denote clearly the evolution of the content of the document. Format must be either integer or semantic versioning. | 1, 4, 0.9.0, 1.4.3, 2.40.0+21AF26D3 |
 | `document.tracking.revision_history[].summary` | Holds a single non-empty string representing a short description of the changes. | Initial version. |
 | `document.tracking.status` | Defines the draft status of the document. | |
-| `document.tracking.version` | Specifies a version string with a simple hierarchical counter model to denote clearly the evolution of the content of the document. Format must be understood as 'major[.minor[.patch[.build]]]' version. | 1, 0.9, 1.4.3, 2.40.0.320002 |
+| `document.tracking.version` | Specifies a version string to denote clearly the evolution of the content of the document. Format must be either integer or semantic versioning. | 1, 4, 0.9.0, 1.4.3, 2.40.0+21AF26D3 |
 | `product_tree` | Is a container for all fully qualified product names that can be referenced elsewhere in the document. | |
 | `product_tree.branches` | Contains branch elements as children of the current element.| |
 | `product_tree.branches[]` | Is a part of the hierarchical structure of the product tree. | |
@@ -145,8 +145,21 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.branches[].branches[]` | Is a part of the hierarchical structure of the product tree. | |
 | `product_tree.branches[].branches[].branches` | Contains branch elements as children of the current element.| |
 | `product_tree.branches[].branches[].branches[]` | Is a part of the hierarchical structure of the product tree. | |
+| `product_tree.branches[].branches[].branches[].branches` | Contains branch elements as children of the current element.| |
+| `product_tree.branches[].branches[].branches[].branches[]` | Is a part of the hierarchical structure of the product tree. | |
+| `product_tree.branches[].branches[].branches[].branches[].category` | Describes the characteristics of the labeled branch. | |
+| `product_tree.branches[].branches[].branches[].branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | Microsoft, Siemens, Windows, Office, SIMATIC, 10, 365, PCS 7 |
 | `product_tree.branches[].branches[].branches[].category` | Describes the characteristics of the labeled branch. | |
 | `product_tree.branches[].branches[].branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | Microsoft, Siemens, Windows, Office, SIMATIC, 10, 365, PCS 7 |
+| `product_tree.branches[].branches[].branches[].product` | Specifies information about the product and assigns the product_id. | |
+| `product_tree.branches[].branches[].branches[].product.name` | The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document. | Microsoft Host Integration Server 2006 Service Pack 1, Cisco AnyConnect Secure Mobility Client 2.3.185 |
+| `product_tree.branches[].branches[].branches[].product.product_id` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
+| `product_tree.branches[].branches[].branches[].product.product_identification_helper` | Provides at least one method which aids in identifying the product in an asset database. | |
+| `product_tree.branches[].branches[].branches[].product.product_identification_helper.cpe` | The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification. | |
+| `product_tree.branches[].branches[].branches[].product.product_identification_helper.hashes` | Contains a list of cryptographic hashes usable to identify files.| |
+| `product_tree.branches[].branches[].branches[].product.product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
+| `product_tree.branches[].branches[].branches[].product.product_identification_helper.serial_numbers` | Contains a list of parts, or full serial numbers.| |
+| `product_tree.branches[].branches[].branches[].product.product_identification_helper.x_generic_uris` | Contains a list of identifiers which are either vendor-specific or derived from a standard not yet supported.| |
 | `product_tree.branches[].branches[].category` | Describes the characteristics of the labeled branch. | |
 | `product_tree.branches[].branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | Microsoft, Siemens, Windows, Office, SIMATIC, 10, 365, PCS 7 |
 | `product_tree.branches[].branches[].product` | Specifies information about the product and assigns the product_id. | |
@@ -155,9 +168,16 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.branches[].branches[].product.product_identification_helper` | Provides at least one method which aids in identifying the product in an asset database. | |
 | `product_tree.branches[].branches[].product.product_identification_helper.cpe` | The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification. | |
 | `product_tree.branches[].branches[].product.product_identification_helper.hashes` | Contains a list of cryptographic hashes usable to identify files.| |
+| `product_tree.branches[].branches[].product.product_identification_helper.hashes[]` | Contains all information to identify a file based on its cryptographic hash values. | |
+| `product_tree.branches[].branches[].product.product_identification_helper.hashes[].file_hashes` | Contains a list of cryptographic hashes for this file.| |
+| `product_tree.branches[].branches[].product.product_identification_helper.hashes[].filename` | Contains the name of the file which is identified by the hash values. | WINWORD.EXE, msotadddin.dll, sudoers.so |
 | `product_tree.branches[].branches[].product.product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
 | `product_tree.branches[].branches[].product.product_identification_helper.serial_numbers` | Contains a list of parts, or full serial numbers.| |
+| `product_tree.branches[].branches[].product.product_identification_helper.serial_numbers[]` | Contains a part, or a full serial number of the component to identify. | |
 | `product_tree.branches[].branches[].product.product_identification_helper.x_generic_uris` | Contains a list of identifiers which are either vendor-specific or derived from a standard not yet supported.| |
+| `product_tree.branches[].branches[].product.product_identification_helper.x_generic_uris[]` | Provides a generic extension point for any identifier which is either vendor-specific or derived from a standard not yet supported. | |
+| `product_tree.branches[].branches[].product.product_identification_helper.x_generic_uris[].namespace` | Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid. | |
+| `product_tree.branches[].branches[].product.product_identification_helper.x_generic_uris[].uri` | Contains the identifier itself. | |
 | `product_tree.branches[].category` | Describes the characteristics of the labeled branch. | |
 | `product_tree.branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | Microsoft, Siemens, Windows, Office, SIMATIC, 10, 365, PCS 7 |
 | `product_tree.branches[].product` | Specifies information about the product and assigns the product_id. | |
@@ -166,10 +186,12 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.branches[].product.product_identification_helper` | Provides at least one method which aids in identifying the product in an asset database. | |
 | `product_tree.branches[].product.product_identification_helper.cpe` | The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification. | |
 | `product_tree.branches[].product.product_identification_helper.hashes` | Contains a list of cryptographic hashes usable to identify files.| |
-| `product_tree.branches[].product.product_identification_helper.hashes[]` | Contains all information to identify a file based on its cryptographic hash value. | |
-| `product_tree.branches[].product.product_identification_helper.hashes[].algorithm` | Contains the name of the cryptographic hash algorithm used to calculate the value. | SHA-256, SHA-384, SHA-512, SHA-3, BLAKE3 |
-| `product_tree.branches[].product.product_identification_helper.hashes[].file` | Contains the name of the file which is identified by the hash value. | WINWORD.EXE, msotadddin.dll, sudoers.so |
-| `product_tree.branches[].product.product_identification_helper.hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c, 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3 |
+| `product_tree.branches[].product.product_identification_helper.hashes[]` | Contains all information to identify a file based on its cryptographic hash values. | |
+| `product_tree.branches[].product.product_identification_helper.hashes[].file_hashes` | Contains a list of cryptographic hashes for this file.| |
+| `product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[]` | Contains one hash value and algorithm of the file to be identified. | |
+| `product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].algorithm` | Contains the name of the cryptographic hash algorithm used to calculate the value. | sha256, sha384, sha512, sha3-512, blake2b512 |
+| `product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c, 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3 |
+| `product_tree.branches[].product.product_identification_helper.hashes[].filename` | Contains the name of the file which is identified by the hash values. | WINWORD.EXE, msotadddin.dll, sudoers.so |
 | `product_tree.branches[].product.product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
 | `product_tree.branches[].product.product_identification_helper.serial_numbers` | Contains a list of parts, or full serial numbers.| |
 | `product_tree.branches[].product.product_identification_helper.serial_numbers[]` | Contains a part, or a full serial number of the component to identify. | |
@@ -184,10 +206,12 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.full_product_names[].product_identification_helper` | Provides at least one method which aids in identifying the product in an asset database. | |
 | `product_tree.full_product_names[].product_identification_helper.cpe` | The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification. | |
 | `product_tree.full_product_names[].product_identification_helper.hashes` | Contains a list of cryptographic hashes usable to identify files.| |
-| `product_tree.full_product_names[].product_identification_helper.hashes[]` | Contains all information to identify a file based on its cryptographic hash value. | |
-| `product_tree.full_product_names[].product_identification_helper.hashes[].algorithm` | Contains the name of the cryptographic hash algorithm used to calculate the value. | SHA-256, SHA-384, SHA-512, SHA-3, BLAKE3 |
-| `product_tree.full_product_names[].product_identification_helper.hashes[].file` | Contains the name of the file which is identified by the hash value. | WINWORD.EXE, msotadddin.dll, sudoers.so |
-| `product_tree.full_product_names[].product_identification_helper.hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c, 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3 |
+| `product_tree.full_product_names[].product_identification_helper.hashes[]` | Contains all information to identify a file based on its cryptographic hash values. | |
+| `product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes` | Contains a list of cryptographic hashes for this file.| |
+| `product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[]` | Contains one hash value and algorithm of the file to be identified. | |
+| `product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].algorithm` | Contains the name of the cryptographic hash algorithm used to calculate the value. | sha256, sha384, sha512, sha3-512, blake2b512 |
+| `product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c, 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3 |
+| `product_tree.full_product_names[].product_identification_helper.hashes[].filename` | Contains the name of the file which is identified by the hash values. | WINWORD.EXE, msotadddin.dll, sudoers.so |
 | `product_tree.full_product_names[].product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
 | `product_tree.full_product_names[].product_identification_helper.serial_numbers` | Contains a list of parts, or full serial numbers.| |
 | `product_tree.full_product_names[].product_identification_helper.serial_numbers[]` | Contains a part, or a full serial number of the component to identify. | |
@@ -210,10 +234,12 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.relationships[].full_product_name.product_identification_helper` | Provides at least one method which aids in identifying the product in an asset database. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.cpe` | The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.hashes` | Contains a list of cryptographic hashes usable to identify files.| |
-| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[]` | Contains all information to identify a file based on its cryptographic hash value. | |
-| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].algorithm` | Contains the name of the cryptographic hash algorithm used to calculate the value. | SHA-256, SHA-384, SHA-512, SHA-3, BLAKE3 |
-| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file` | Contains the name of the file which is identified by the hash value. | WINWORD.EXE, msotadddin.dll, sudoers.so |
-| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c, 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3 |
+| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[]` | Contains all information to identify a file based on its cryptographic hash values. | |
+| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes` | Contains a list of cryptographic hashes for this file.| |
+| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[]` | Contains one hash value and algorithm of the file to be identified. | |
+| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].algorithm` | Contains the name of the cryptographic hash algorithm used to calculate the value. | sha256, sha384, sha512, sha3-512, blake2b512 |
+| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c, 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3 |
+| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].filename` | Contains the name of the file which is identified by the hash values. | WINWORD.EXE, msotadddin.dll, sudoers.so |
 | `product_tree.relationships[].full_product_name.product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers` | Contains a list of parts, or full serial numbers.| |
 | `product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers[]` | Contains a part, or a full serial number of the component to identify. | |

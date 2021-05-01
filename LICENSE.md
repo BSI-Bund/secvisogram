@@ -29,7 +29,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 -->
 
 - [@babel/runtime@7.12.5](https://github.com/babel/babel) - MIT
-- [@babel/runtime@7.13.9](https://github.com/babel/babel) - MIT
+- [@babel/runtime@7.13.10](https://github.com/babel/babel) - MIT
 - [@emotion/hash@0.8.0](https://github.com/emotion-js/emotion/tree/master/packages/hash) - MIT
 - [@fortawesome/fontawesome-common-types@0.2.35](https://github.com/FortAwesome/Font-Awesome) - MIT
 - [@fortawesome/fontawesome-svg-core@1.2.35](https://github.com/FortAwesome/Font-Awesome) - MIT
@@ -41,19 +41,19 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [@material-ui/system@4.11.3](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/types@5.1.0](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/utils@4.11.2](https://github.com/mui-org/material-ui) - MIT
-- [@reach/alert-dialog@0.13.2](https://github.com/reach/reach-ui) - MIT
-- [@reach/auto-id@0.13.2](https://github.com/reach/reach-ui) - MIT
+- [@reach/alert-dialog@0.15.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/auto-id@0.14.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/auto-id@0.15.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/combobox@0.14.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/descendants@0.14.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/dialog@0.13.2](https://github.com/reach/reach-ui) - MIT
+- [@reach/dialog@0.15.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/observe-rect@1.2.0](https://github.com/reach/observe-rect) - MIT
 - [@reach/popover@0.14.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/portal@0.13.2](https://github.com/reach/reach-ui) - MIT
 - [@reach/portal@0.14.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/portal@0.15.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/rect@0.14.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/utils@0.13.2](https://github.com/reach/reach-ui) - MIT
 - [@reach/utils@0.14.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/utils@0.15.0](https://github.com/reach/reach-ui) - MIT
 - [@types/prop-types@15.7.3](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/react-transition-group@4.4.1](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/react@17.0.3](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
@@ -117,6 +117,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [tiny-warning@1.0.3](https://github.com/alexreardon/tiny-warning) - MIT
 - [tslib@1.14.1](https://github.com/Microsoft/tslib) - 0BSD
 - [tslib@2.1.0](https://github.com/Microsoft/tslib) - 0BSD
+- [tslib@2.2.0](https://github.com/Microsoft/tslib) - 0BSD
 - [uri-js@4.4.0](https://github.com/garycourt/uri-js) - BSD-2-Clause
 - [use-callback-ref@1.2.5](https://github.com/theKashey/use-callback-ref) - MIT
 - [use-sidecar@1.0.5](undefined) - MIT
