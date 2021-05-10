@@ -1,6 +1,6 @@
 # BSI Secvisogram CSAF 2.0 Web Editor
 
-<!-- TOC depthFrom:2 depthTo:3 -->
+<!-- TOC depthfrom:2 depthto:3 -->
 
 - [Introduction](#introduction)
 - [Getting started](#getting-started)
@@ -8,20 +8,22 @@
   - [Basic concepts](#basic-concepts)
   - [Form Editor](#form-editor)
   - [JSON Editor](#json-editor)
-  - [Preview (HTML view)](#preview-html-view)
-  - [CSAF Document (JSON view)](#csaf-document-json-view)
+  - [Preview HTML view](#preview-html-view)
+  - [CSAF Document JSON view](#csaf-document-json-view)
 - [Developing Secvisogram](#developing-secvisogram)
   - [Developer Guide, Architecture and Technical Design](#developer-guide-architecture-and-technical-design)
   - [Custom Preview Templates](#custom-preview-templates)
   - [Security Considerations](#security-considerations)
+- [Contributing](#contributing)
 
 <!-- /TOC -->
 
 ## Introduction
 
-Secvisogram is a tool for creating and editing advisories in [CSAF format](https://github.com/oasis-tcs/csaf/blob/master/csaf_2.0/json_schema/csaf_json_schema.json).
+[Secvisogram](https://secvisogram.github.io) is a tool for creating and editing advisories in [CSAF](https://github.com/oasis-tcs/csaf/blob/master/csaf_2.0/prose/csaf-v2-editor-draft.md) [format](https://github.com/oasis-tcs/csaf/blob/master/csaf_2.0/json_schema/csaf_json_schema.json).
 
-Secvisogram is inspired by the project [Vulnogram](https://vulnogram.github.io/) - "a tool for creating and editing CVE information in CVE JSON format". Both names share the same Greek suffix '-gram' which is used for denoting something written or recorded in a particular way. Vulnerability-related information is often not enough - mostly, only the remediation information enables the end user to act efficiently in responding to these concerns.
+Secvisogram is inspired by the project [Vulnogram](https://vulnogram.github.io/) - "a tool for creating and editing CVE information in CVE JSON format". Both names share the same Greek suffix '-gram' which is used for denoting something written or recorded in a particular way.
+Vulnerability-related information is often not enough - mostly, only the remediation information enables the end user to act efficiently in responding to these concerns. This information is usually conveyed in **Secutiry Advisories**. Therefore, the first part of the name Secvisogram abbreviates the words _Security Advisory_.
 
 Secvisogram aims to make it easier for vendors and other security advisory issuing parties to record the advisory details in the CSAF format.
 
@@ -120,3 +122,7 @@ It's possible to change and provide custom Preview Templates. Please refer to [`
 ### Security Considerations
 
 Please refer to [`SECURITY-CONSIDERATIONS.md`](SECURITY-CONSIDERATIONS.md) for details about how Secvisogram addresses the [OWASP Top 10 Web Application Security Risks](https://owasp.org/www-project-top-ten/).
+
+## Contributing
+
+Please refer to [`CONTRIBUTING.md`](CONTRIBUTING.md) for details about how to conribute to the development of [Secvisogram](https://github.com/secvisogram/secvisogram).
