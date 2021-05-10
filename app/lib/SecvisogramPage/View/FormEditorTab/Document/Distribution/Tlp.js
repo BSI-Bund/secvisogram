@@ -13,7 +13,7 @@ import TextAttribute from '../../shared/TextAttribute'
  * }} props
  */
 export default function Tlp({
-  value: distribution,
+  value: tlp,
   validationErrors,
   dataPath,
   onUpdate,
@@ -24,7 +24,7 @@ export default function Tlp({
       description="Provides details about the TLP classification of the document."
       validationErrors={validationErrors}
       dataPath={dataPath}
-      value={distribution}
+      value={tlp}
       defaultValue={() => ({
         label: '',
       })}
@@ -44,7 +44,8 @@ export default function Tlp({
             description="Provides a URL where to find the textual description of the TLP version which is used in this document. Default is the URL to the definition by FIRST."
             defaultValue={() => 'https://www.first.org/tlp/'}
             type="url"
-            placeholder="https://www.us-cert.gov/tlp"
+            placeholder="https://www.first.org/tlp/"
+            deletable
           />
         </>
       )}

@@ -18,7 +18,7 @@ const PRODUCT_STATUS_ROW = `
 </tr>`
 
 const REMEDIATION = `
-<h5>{{#replaceUnderscores}}{{#upperCase}}{{type}}{{/upperCase}}{{/replaceUnderscores}}{{#date}} ({{.}}){{/date}}</h5>
+<h5>{{#replaceUnderscores}}{{#upperCase}}{{category}}{{/upperCase}}{{/replaceUnderscores}}{{#date}} ({{.}}){{/date}}</h5>
 <p>{{details}}</p>
 {{#product_ids.length}}
   <h6>For products:</h6>
@@ -41,7 +41,7 @@ const REMEDIATION = `
   <p>{{.}}</p>
 {{/entitlements}}
 {{#restart_required}}
-  Restart required: <b>{{type}}</b>
+  Restart required: <b>{{category}}</b>
   <p>{{details}}</p>
 {{/restart_required}}`
 
@@ -55,12 +55,12 @@ const DOCUMENT_NOTE = `
 {{#text}}<p>{{text}}</p>{{/text}}`
 const ACKNOWLEDGEMENT = `
 {{#.}}
-  <li>{{#removeTrailingComma}}{{#names}}{{.}}, {{/names}}{{/removeTrailingComma}}{{#organizations.length}} from {{#removeTrailingComma}}{{#organizations}}{{.}}, {{/organizations}}{{/removeTrailingComma}}{{/organizations.length}}{{#summary}} for {{.}}{{/summary}}{{#urls.length}} (see: {{#removeTrailingComma}}{{#urls}}{{.}}, {{/urls}}{{/removeTrailingComma}}){{/urls.length}}</li>  
+  <li>{{#removeTrailingComma}}{{#names}}{{.}}, {{/names}}{{/removeTrailingComma}}{{#organization}}{{#names.length}} from {{/names.length}}{{.}} {{/organization}}{{#summary}} for {{.}}{{/summary}}{{#urls.length}} (see: {{#removeTrailingComma}}{{#urls}}<a href={{.}}>{{.}}</a>, {{/urls}}{{/removeTrailingComma}}){{/urls.length}}</li>  
 {{/.}}`
 
 const REFERENCE = `
 {{#.}}
-  <li>{{summary}} {{#type}} ({{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}){{/type}}{{#url}}: <a href={{.}}>{{.}}</a>{{/url}}</li>
+  <li>{{summary}} {{#category}} ({{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}){{/category}}{{#url}}: <a href={{.}}>{{.}}</a>{{/url}}</li>
 {{/.}}`
 
 /**

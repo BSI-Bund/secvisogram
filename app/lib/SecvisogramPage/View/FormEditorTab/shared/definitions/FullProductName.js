@@ -2,6 +2,7 @@ import React from 'react'
 import ObjectContainer from '../ObjectContainer'
 import TextAttribute from '../TextAttribute'
 import { uniqueProductId } from '../unique-id'
+import ProductIdentificationHelper from './FullProductName/ProductIdentificationHelper'
 
 /**
  * @param {{
@@ -12,14 +13,14 @@ import { uniqueProductId } from '../unique-id'
  *  productName?: string
  *  onCollectProductIds?(): Promise<void | {id: string, name: string}[]>
  *  productReference?: string
+ *  category?: string
  *  relatesToProductReference?: string
- *  relationshipType?: string
  * }} props
  */
 export default function FullProductName({
   productReference = '',
   relatesToProductReference = '',
-  relationshipType = '',
+  category = '',
   onCollectProductIds,
   productName,
   ...props
@@ -36,7 +37,7 @@ export default function FullProductName({
           const relatesToProductReferenceName =
             entries.find((e) => e.id === relatesToProductReference)?.name ?? ''
           setSuggestedProductName(
-            `${productReferenceName} ${relationshipType.replaceAll(
+            `${productReferenceName} ${category.replaceAll(
               '_',
               ' '
             )} ${relatesToProductReferenceName}`
@@ -48,7 +49,7 @@ export default function FullProductName({
     productReference,
     onCollectProductIds,
     relatesToProductReference,
-    relationshipType,
+    category,
     productName,
   ])
 
@@ -78,14 +79,8 @@ export default function FullProductName({
             description="The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document."
             placeholder="Microsoft Host Integration Server 2006 Service Pack 1"
           />
-          <TextAttribute
-            {...fullProductNameProps('cpe')}
-            label="Common Platform Enumeration representation"
-            description="The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification."
-            pattern="^cpe:(/|\\d+\\.\\d+)[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*$"
-            placeholder="^cpe:(/|\\d+\\.\\d+)[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*:?[^:]*$"
-            minLength={5}
-            deletable
+          <ProductIdentificationHelper
+            {...fullProductNameProps('product_identification_helper')}
           />
         </>
       )}

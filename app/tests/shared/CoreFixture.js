@@ -4,12 +4,13 @@ import valid2 from '../../seeds/documents/valid-2.json'
 
 const MINIMAL_DOC = {
   document: {
+    category: 'Test Report',
     csaf_version: '2.0',
     title: 'Minimal valid',
     publisher: {
-      type: 'other',
+      category: 'other',
+      name: 'Secvisogram Automated Tester',
     },
-    type: 'Test Report',
     tracking: {
       current_release_date: '2021-01-14T00:00:00.000Z',
       id: '1',
@@ -55,12 +56,13 @@ export default function createCoreFixture() {
         valid: false,
         content: {
           document: {
+            category: 'Test Report',
             csaf_version: '2.0',
             title: 'Minimal valid',
             publisher: {
-              type: 'other',
+              category: 'other',
+              name: 'Secvisogram Automated Tester',
             },
-            type: 'Test Report',
             tracking: {
               current_release_date: '2021-01-14T00:00:00.000Z',
               id: '1',
@@ -164,12 +166,13 @@ export default function createCoreFixture() {
         valid: false,
         content: {
           document: {
+            category: 'Test Report',
             csaf_version: '2.0',
             title: 'Minimal valid',
             publisher: {
-              type: 'other',
+              category: 'other',
+              name: 'Secvisogram Automated Tester',
             },
-            type: 'Test Report',
             tracking: {
               current_release_date: '2021-01-14T00:00:00.000Z',
               id: '1',
@@ -191,12 +194,13 @@ export default function createCoreFixture() {
         },
         strippedVersion: {
           document: {
+            category: 'Test Report',
             csaf_version: '2.0',
             title: 'Minimal valid',
             publisher: {
-              type: 'other',
+              category: 'other',
+              name: 'Secvisogram Automated Tester',
             },
-            type: 'Test Report',
             tracking: {
               current_release_date: '2021-01-14T00:00:00.000Z',
               id: '1',

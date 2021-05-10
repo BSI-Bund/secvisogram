@@ -173,8 +173,8 @@ const Relationships = React.memo(
         defaultItemValue={() => ({
           full_product_name: { name: '', product_id: uniqueProductId() },
           product_reference: '',
+          category: '',
           relates_to_product_reference: '',
-          relationship_type: '',
         })}
       >
         {(relationshipItemProps) => (
@@ -190,8 +190,8 @@ const Relationships = React.memo(
               const relatesToProductReference = /** @type {string} */ (relationshipProps(
                 'relates_to_product_reference'
               ).value ?? '')
-              const relationshipType = /** @type {string} */ (relationshipProps(
-                'relationship_type'
+              const category = /** @type {string} */ (relationshipProps(
+                'category'
               ).value ?? '')
               return (
                 <>
@@ -199,8 +199,8 @@ const Relationships = React.memo(
                     {...relationshipProps('full_product_name')}
                     onCollectProductIds={onCollectProductIds}
                     productReference={productReference}
+                    category={category}
                     relatesToProductReference={relatesToProductReference}
-                    relationshipType={relationshipType}
                   />
                   <IdAttribute
                     {...relationshipProps('product_reference')}
@@ -209,17 +209,10 @@ const Relationships = React.memo(
                     placeholder="CSAFPID-0004 ..."
                     onCollectIds={onCollectProductIds}
                   />
-                  <IdAttribute
-                    {...relationshipProps('relates_to_product_reference')}
-                    label="Reference token for product instance"
-                    description="Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document."
-                    placeholder="CSAFPID-0004 ..."
-                    onCollectIds={onCollectProductIds}
-                  />
                   <EnumAttribute
-                    {...relationshipProps('relationship_type')}
-                    label="Relationship type"
-                    description="Defines the type of relationship for the referenced component."
+                    {...relationshipProps('category')}
+                    label="Relationship category"
+                    description="Defines the category of relationship for the referenced component."
                     options={[
                       'default_component_of',
                       'optional_component_of',
@@ -227,6 +220,13 @@ const Relationships = React.memo(
                       'installed_on',
                       'installed_with',
                     ]}
+                  />
+                  <IdAttribute
+                    {...relationshipProps('relates_to_product_reference')}
+                    label="Reference token for product instance"
+                    description="Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document."
+                    placeholder="CSAFPID-0004 ..."
+                    onCollectIds={onCollectProductIds}
                   />
                 </>
               )

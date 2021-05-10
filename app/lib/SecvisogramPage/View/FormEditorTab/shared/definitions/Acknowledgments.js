@@ -45,22 +45,20 @@ export default React.memo(
                     />
                   )}
                 </ArrayContainer>
-                <ArrayContainer
-                  {...acknowledgmentProps('organizations')}
-                  label="List of contributing organizations"
-                  description="Contains the names of contributing organizations being recognized."
-                  defaultItemValue={() => ''}
-                >
-                  {(organizationsItemProps) => (
-                    <TextAttribute
-                      {...organizationsItemProps}
-                      label="Contributing organization"
-                      description="Contains the name of a single organization."
-                      placeholder="CISA"
-                      deletable
-                    />
-                  )}
-                </ArrayContainer>
+                <TextAttribute
+                  {...acknowledgmentProps('organization')}
+                  label="Contributing organization"
+                  description="Contains the name of a contributing organization being recognized."
+                  placeholder="CISA"
+                  deletable
+                />
+                <TextAttribute
+                  {...acknowledgmentProps('summary')}
+                  label="Summary of the acknowledgment"
+                  description="SHOULD represent any contextual details the document producers wish to make known about the acknowledgment or acknowledged parties."
+                  placeholder="First analysis of Coordinated Multi-Stream Attack (CMSA)"
+                  deletable
+                />
                 <ArrayContainer
                   {...acknowledgmentProps('urls')}
                   label="List of URLs"
@@ -77,13 +75,6 @@ export default React.memo(
                     />
                   )}
                 </ArrayContainer>
-                <TextAttribute
-                  {...acknowledgmentProps('summary')}
-                  label="Summary of the acknowledgment"
-                  description="SHOULD represent any contextual details the document producers wish to make known about the acknowledgment or acknowledged parties."
-                  placeholder="First analysis of Coordinated Multi-Stream Attack (CMSA)"
-                  deletable
-                />
               </>
             )}
           </ObjectContainer>

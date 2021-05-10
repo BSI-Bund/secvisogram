@@ -26,20 +26,21 @@ export default React.memo(
         label="Document level meta-data"
         description="Captures the meta-data about this document describing a particular set of security advisories."
         defaultValue={() => ({
+          category: '',
           csaf_version: '2.0',
-          title: '',
           publisher: {
-            type: '',
+            category: '',
+            name: '',
           },
-          type: '',
+          title: '',
           tracking: {
-            id: '',
             current_release_date: '',
+            id: '',
             initial_release_date: '',
             revision_history: [
               {
-                number: '',
                 date: '',
+                number: '',
                 summary: '',
               },
             ],
@@ -56,6 +57,12 @@ export default React.memo(
             <AggregateSeverity
               {...documentLevelMetaDataProps('aggregate_severity')}
             />
+            <TextAttribute
+              {...documentLevelMetaDataProps('category')}
+              label="Document category"
+              description="Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document."
+              placeholder="Security Advisory"
+            />
             <EnumAttribute
               {...documentLevelMetaDataProps('csaf_version')}
               label="CSAF version"
@@ -69,12 +76,6 @@ export default React.memo(
               deletable
               {...documentLevelMetaDataProps('lang')}
             />
-            <Lang
-              label="Source language"
-              description="If this copy of the document is a translation then the value of this property describes from which language this document was translated."
-              deletable
-              {...documentLevelMetaDataProps('source_lang')}
-            />
             <Notes
               {...documentLevelMetaDataProps('notes')}
               label="Notes associated with the whole document."
@@ -82,6 +83,12 @@ export default React.memo(
             />
             <Publisher {...documentLevelMetaDataProps('publisher')} />
             <References {...documentLevelMetaDataProps('references')} />
+            <Lang
+              label="Source language"
+              description="If this copy of the document is a translation then the value of this property describes from which language this document was translated."
+              deletable
+              {...documentLevelMetaDataProps('source_lang')}
+            />
             <TextAttribute
               {...documentLevelMetaDataProps('title')}
               label="Title of this document"
@@ -89,12 +96,6 @@ export default React.memo(
               placeholder="Example Company Cross-Site-Scripting Vulnerability in Example Generator"
             />
             <Tracking {...documentLevelMetaDataProps('tracking')} />
-            <TextAttribute
-              {...documentLevelMetaDataProps('type')}
-              label="Document type"
-              description="Defines a short canonical name, chosen by the document producer, which will inform the end user as to the type of document."
-              placeholder="Security Advisory"
-            />
           </>
         )}
       </ObjectContainer>

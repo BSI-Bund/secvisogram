@@ -19,7 +19,7 @@ export default function Scores({ onCollectProductIds, ...props }) {
     <ArrayContainer
       {...props}
       label="List of scores"
-      description="contains score objects for the currrent vulnerability."
+      description="Contains score objects for the current vulnerability."
       defaultItemValue={() => ({
         products: [''],
       })}
