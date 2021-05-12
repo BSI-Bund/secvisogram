@@ -35,9 +35,9 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [@fortawesome/fontawesome-svg-core@1.2.35](https://github.com/FortAwesome/Font-Awesome) - MIT
 - [@fortawesome/free-solid-svg-icons@5.15.3](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
 - [@fortawesome/react-fontawesome@0.1.14](https://github.com/FortAwesome/react-fontawesome) - MIT
-- [@material-ui/core@4.11.3](https://github.com/mui-org/material-ui) - MIT
+- [@material-ui/core@4.11.4](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/lab@4.0.0-alpha.57](https://github.com/mui-org/material-ui) - MIT
-- [@material-ui/styles@4.11.3](https://github.com/mui-org/material-ui) - MIT
+- [@material-ui/styles@4.11.4](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/system@4.11.3](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/types@5.1.0](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/utils@4.11.2](https://github.com/mui-org/material-ui) - MIT
@@ -63,10 +63,10 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [ajv@7.2.3](https://github.com/ajv-validator/ajv) - MIT
 - [clsx@1.1.1](https://github.com/lukeed/clsx) - MIT
 - [css-vendor@2.0.8](https://github.com/cssinjs/css-vendor) - MIT
-- [csstype@2.6.16](https://github.com/frenic/csstype) - MIT
+- [csstype@2.6.17](https://github.com/frenic/csstype) - MIT
 - [csstype@3.0.6](https://github.com/frenic/csstype) - MIT
 - [detect-node-es@1.1.0](https://github.com/thekashey/detect-node) - MIT
-- [dom-helpers@5.2.0](https://github.com/react-bootstrap/dom-helpers) - MIT
+- [dom-helpers@5.2.1](https://github.com/react-bootstrap/dom-helpers) - MIT
 - [fast-deep-equal@3.1.3](https://github.com/epoberezkin/fast-deep-equal) - MIT
 - [focus-lock@0.8.1](https://github.com/theKashey/focus-lock) - MIT
 - [foreach@2.0.5](https://github.com/manuelstofer/foreach) - MIT
@@ -81,14 +81,14 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [js-tokens@4.0.0](https://github.com/lydell/js-tokens) - MIT
 - [json-pointer@0.6.1](https://github.com/manuelstofer/json-pointer) - MIT
 - [json-schema-traverse@1.0.0](https://github.com/epoberezkin/json-schema-traverse) - MIT
-- [jss-plugin-camel-case@10.5.1](https://github.com/cssinjs/jss) - MIT
-- [jss-plugin-default-unit@10.5.1](https://github.com/cssinjs/jss) - MIT
-- [jss-plugin-global@10.5.1](https://github.com/cssinjs/jss) - MIT
-- [jss-plugin-nested@10.5.1](https://github.com/cssinjs/jss) - MIT
-- [jss-plugin-props-sort@10.5.1](https://github.com/cssinjs/jss) - MIT
-- [jss-plugin-rule-value-function@10.5.1](https://github.com/cssinjs/jss) - MIT
-- [jss-plugin-vendor-prefixer@10.5.1](https://github.com/cssinjs/jss) - MIT
-- [jss@10.5.1](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-camel-case@10.6.0](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-default-unit@10.6.0](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-global@10.6.0](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-nested@10.6.0](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-props-sort@10.6.0](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-rule-value-function@10.6.0](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-vendor-prefixer@10.6.0](https://github.com/cssinjs/jss) - MIT
+- [jss@10.6.0](https://github.com/cssinjs/jss) - MIT
 - [lodash@4.17.21](https://github.com/lodash/lodash) - MIT
 - [loose-envify@1.4.0](https://github.com/zertosh/loose-envify) - MIT
 - [match-sorter@6.3.0](https://github.com/kentcdodds/match-sorter) - MIT
