@@ -36,29 +36,25 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [@fortawesome/free-solid-svg-icons@5.15.3](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
 - [@fortawesome/react-fontawesome@0.1.14](https://github.com/FortAwesome/react-fontawesome) - MIT
 - [@material-ui/core@4.11.4](https://github.com/mui-org/material-ui) - MIT
-- [@material-ui/lab@4.0.0-alpha.57](https://github.com/mui-org/material-ui) - MIT
+- [@material-ui/lab@4.0.0-alpha.58](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/styles@4.11.4](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/system@4.11.3](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/types@5.1.0](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/utils@4.11.2](https://github.com/mui-org/material-ui) - MIT
 - [@reach/alert-dialog@0.15.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/auto-id@0.14.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/auto-id@0.15.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/combobox@0.14.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/descendants@0.14.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/combobox@0.15.1](https://github.com/reach/reach-ui) - MIT
+- [@reach/descendants@0.15.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/dialog@0.15.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/observe-rect@1.2.0](https://github.com/reach/observe-rect) - MIT
-- [@reach/popover@0.14.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/portal@0.14.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/popover@0.15.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/portal@0.15.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/rect@0.14.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/utils@0.14.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/rect@0.15.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/utils@0.15.0](https://github.com/reach/reach-ui) - MIT
 - [@types/prop-types@15.7.3](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/react-transition-group@4.4.1](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/react@17.0.3](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/react@17.0.6](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/scheduler@0.16.1](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/warning@3.0.0](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [ajv-formats@1.5.1](https://github.com/ajv-validator/ajv-formats) - MIT
 - [ajv@7.2.3](https://github.com/ajv-validator/ajv) - MIT
 - [clsx@1.1.1](https://github.com/lukeed/clsx) - MIT
@@ -71,7 +67,6 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [focus-lock@0.8.1](https://github.com/theKashey/focus-lock) - MIT
 - [foreach@2.0.5](https://github.com/manuelstofer/foreach) - MIT
 - [get-nonce@1.0.1](https://github.com/theKashey/get-nonce) - MIT
-- [highlight-words-core@1.2.2](github.com/bvaughn/highlight-words-core) - MIT
 - [hoist-non-react-statics@3.3.2](https://github.com/mridgway/hoist-non-react-statics) - BSD-3-Clause
 - [hyphenate-style-name@1.0.4](https://github.com/rexxars/hyphenate-style-name) - BSD-3-Clause
 - [immutability-helper@3.1.1](https://github.com/kolodny/immutability-helper) - MIT
@@ -99,7 +94,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [punycode@2.1.1](https://github.com/bestiejs/punycode.js) - MIT
 - [react-clientside-effect@1.2.5](https://github.com/thekashey/react-clientside-effect) - MIT
 - [react-dom@17.0.2](https://github.com/facebook/react) - MIT
-- [react-error-boundary@3.1.1](https://github.com/bvaughn/react-error-boundary) - MIT
+- [react-error-boundary@3.1.3](https://github.com/bvaughn/react-error-boundary) - MIT
 - [react-focus-lock@2.5.0](https://github.com/theKashey/react-focus-lock) - MIT
 - [react-is@16.13.1](https://github.com/facebook/react) - MIT
 - [react-remove-scroll-bar@2.2.0](https://github.com/theKashey/react-remove-scroll-bar) - MIT
@@ -116,12 +111,10 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [tabbable@4.0.0](https://github.com/davidtheclark/tabbable) - MIT
 - [tiny-warning@1.0.3](https://github.com/alexreardon/tiny-warning) - MIT
 - [tslib@1.14.1](https://github.com/Microsoft/tslib) - 0BSD
-- [tslib@2.1.0](https://github.com/Microsoft/tslib) - 0BSD
 - [tslib@2.2.0](https://github.com/Microsoft/tslib) - 0BSD
 - [uri-js@4.4.0](https://github.com/garycourt/uri-js) - BSD-2-Clause
 - [use-callback-ref@1.2.5](https://github.com/theKashey/use-callback-ref) - MIT
 - [use-sidecar@1.0.5](undefined) - MIT
-- [warning@4.0.3](https://github.com/BerkeleyTrue/warning) - MIT
 
 ### [ace](https://ace.c9.io/)
 
