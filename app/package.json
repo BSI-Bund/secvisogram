@@ -43,7 +43,7 @@
     "@types/chai": "^4.2.18",
     "@types/copy-webpack-plugin": "^8.0.0",
     "@types/git-revision-webpack-plugin": "^3.0.2",
-    "@types/json-pointer": "^1.0.30",
+    "@types/json-pointer": "^1.0.31",
     "@types/lodash": "^4.14.170",
     "@types/mini-css-extract-plugin": "^1.4.3",
     "@types/mocha": "^8.2.2",
