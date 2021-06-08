@@ -53,7 +53,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [@reach/utils@0.15.0](https://github.com/reach/reach-ui) - MIT
 - [@types/prop-types@15.7.3](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/react-transition-group@4.4.1](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/react@17.0.6](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/react@17.0.8](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/scheduler@0.16.1](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [ajv-formats@1.5.1](https://github.com/ajv-validator/ajv-formats) - MIT
 - [ajv@7.2.3](https://github.com/ajv-validator/ajv) - MIT
