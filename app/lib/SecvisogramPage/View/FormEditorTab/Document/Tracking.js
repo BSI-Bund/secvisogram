@@ -59,7 +59,7 @@ export default React.memo(
               {...trackingProps('generator')}
               label="Document generator"
               description="Is a container to hold all elements related to the generation of the document. These items will reference when the document was actually created, including the date it was generated and the entity that generated it."
-              defaultValue={() => ({ engine: '' })}
+              defaultValue={() => ({ engine: {} })}
               deletable={false}
             >
               {(generatorProps) => (
@@ -70,13 +70,32 @@ export default React.memo(
                     description="This SHOULD be the current date that the document was generated. Because documents are often generated internally by a document producer and exist for a nonzero amount of time before being released, this field MAY be different from the Initial Release Date and Current Release Date."
                     readOnly
                   />
-                  <TextAttribute
+                  <ObjectContainer
                     {...generatorProps('engine')}
                     label="Engine of document generation"
-                    description="This string SHOULD represent the name of the engine that generated the CSAF document, and MAY additionally refer to its version."
-                    placeholder="TVCE"
-                    readOnly
-                  />
+                    description="Contains information about the engine that generated the CSAF document."
+                    defaultValue={() => ({ name: '' })}
+                    deletable={false}
+                  >
+                    {(engineProps) => (
+                      <>
+                        <TextAttribute
+                          {...engineProps('name')}
+                          label="Engine name"
+                          description="Represents the name of the engine that generated the CSAF document."
+                          placeholder="Secvisogram"
+                          readOnly
+                        />
+                        <TextAttribute
+                          {...engineProps('version')}
+                          label="Engine version"
+                          description="Contains the version of the engine that generated the CSAF document."
+                          placeholder="0.6.0"
+                          readOnly
+                        />
+                      </>
+                    )}
+                  </ObjectContainer>
                 </>
               )}
             </ObjectContainer>

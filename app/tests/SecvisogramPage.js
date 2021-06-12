@@ -50,8 +50,11 @@ suite('SecvisogramPage', () => {
           timestamp.toISOString()
         )
         expect(
-          state.formValues.doc.document.tracking.generator.engine
+          state.formValues.doc.document.tracking.generator.engine.name
         ).to.equal('Secvisogram')
+        expect(
+          state.formValues.doc.document.tracking.generator.engine.version
+        ).to.equal('unidentified version')
       })
 
       test('The form can be reset', () => {

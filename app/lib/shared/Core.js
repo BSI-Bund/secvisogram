@@ -10,10 +10,20 @@ import doc_max from './Core/doc-max.json'
 import doc_min from './Core/doc-min.json'
 import { DocumentEntity } from './Core/entities'
 
+/* eslint-disable */
+const secvisogramVersion =
+  typeof SECVISOGRAM_VERSION !== 'undefined'
+    ? SECVISOGRAM_VERSION.startsWith('v')
+      ? SECVISOGRAM_VERSION.substr(1)
+      : SECVISOGRAM_VERSION
+    : 'unidentified version'
+/* eslint-enable */
+
 const setGeneratorFields = (/** @type {Date} */ date) =>
   compose(
-    set('document.tracking.generator.date', date.toISOString()),
-    set('document.tracking.generator.engine', 'Secvisogram')
+    set('document.tracking.generator.engine.name', 'Secvisogram'),
+    set('document.tracking.generator.engine.version', secvisogramVersion),
+    set('document.tracking.generator.date', date.toISOString())
   )
 
 /**
