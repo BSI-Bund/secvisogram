@@ -128,7 +128,9 @@ This is the full list of document properties. It reflects the structure as defin
 | `document.tracking.current_release_date` | The date when the current revision of this document was released | |
 | `document.tracking.generator` | Is a container to hold all elements related to the generation of the document. These items will reference when the document was actually created, including the date it was generated and the entity that generated it. | |
 | `document.tracking.generator.date` | This SHOULD be the current date that the document was generated. Because documents are often generated internally by a document producer and exist for a nonzero amount of time before being released, this field MAY be different from the Initial Release Date and Current Release Date. | |
-| `document.tracking.generator.engine` | This string SHOULD represent the name of the engine that generated the CSAF document, and MAY additionally refer to its version. | TVCE, Red Hat rhsa-to-cvrf 2.1, CMPFA Core Converter CVRF->CSAF Version 0.6 |
+| `document.tracking.generator.engine` | Contains information about the engine that generated the CSAF document. | |
+| `document.tracking.generator.engine.name` | Represents the name of the engine that generated the CSAF document. | Red Hat rhsa-to-cvrf, Secvisogram, TVCE |
+| `document.tracking.generator.engine.version` | Contains the version of the engine that generated the CSAF document. | 0.6.0, 2, 1.0.0-beta+exp.sha.a1c44f85 |
 | `document.tracking.id` | The ID is a simple label that provides for a wide range of numbering values, types, and schemes. Its value SHOULD be assigned and maintained by the original document issuing authority. | Example Company - 2019-YH3234, RHBA-2019:0024, cisco-sa-20190513-secureboot |
 | `document.tracking.initial_release_date` | The date when this document was first published. | |
 | `document.tracking.revision_history` | Holds one revision item for each version of the CSAF document, including the initial one.| |
@@ -158,7 +160,9 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.branches[].branches[].branches[].product.product_identification_helper.cpe` | The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification. | |
 | `product_tree.branches[].branches[].branches[].product.product_identification_helper.hashes` | Contains a list of cryptographic hashes usable to identify files.| |
 | `product_tree.branches[].branches[].branches[].product.product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
+| `product_tree.branches[].branches[].branches[].product.product_identification_helper.sbom_urls` | Contains a list of URLs where SBOMs for this product can be retrieved.| |
 | `product_tree.branches[].branches[].branches[].product.product_identification_helper.serial_numbers` | Contains a list of parts, or full serial numbers.| |
+| `product_tree.branches[].branches[].branches[].product.product_identification_helper.skus` | Contains a list of parts, or full stock keeping units.| |
 | `product_tree.branches[].branches[].branches[].product.product_identification_helper.x_generic_uris` | Contains a list of identifiers which are either vendor-specific or derived from a standard not yet supported.| |
 | `product_tree.branches[].branches[].category` | Describes the characteristics of the labeled branch. | |
 | `product_tree.branches[].branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | Microsoft, Siemens, Windows, Office, SIMATIC, 10, 365, PCS 7 |
@@ -172,8 +176,12 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.branches[].branches[].product.product_identification_helper.hashes[].file_hashes` | Contains a list of cryptographic hashes for this file.| |
 | `product_tree.branches[].branches[].product.product_identification_helper.hashes[].filename` | Contains the name of the file which is identified by the hash values. | WINWORD.EXE, msotadddin.dll, sudoers.so |
 | `product_tree.branches[].branches[].product.product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
+| `product_tree.branches[].branches[].product.product_identification_helper.sbom_urls` | Contains a list of URLs where SBOMs for this product can be retrieved.| |
+| `product_tree.branches[].branches[].product.product_identification_helper.sbom_urls[]` | Contains a URL of one SBOM for this product. | |
 | `product_tree.branches[].branches[].product.product_identification_helper.serial_numbers` | Contains a list of parts, or full serial numbers.| |
 | `product_tree.branches[].branches[].product.product_identification_helper.serial_numbers[]` | Contains a part, or a full serial number of the component to identify. | |
+| `product_tree.branches[].branches[].product.product_identification_helper.skus` | Contains a list of parts, or full stock keeping units.| |
+| `product_tree.branches[].branches[].product.product_identification_helper.skus[]` | Contains a part, or a full stock keeping unit (SKU) which is used in the ordering process to identify the component. | |
 | `product_tree.branches[].branches[].product.product_identification_helper.x_generic_uris` | Contains a list of identifiers which are either vendor-specific or derived from a standard not yet supported.| |
 | `product_tree.branches[].branches[].product.product_identification_helper.x_generic_uris[]` | Provides a generic extension point for any identifier which is either vendor-specific or derived from a standard not yet supported. | |
 | `product_tree.branches[].branches[].product.product_identification_helper.x_generic_uris[].namespace` | Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid. | |
@@ -193,8 +201,12 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c, 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3 |
 | `product_tree.branches[].product.product_identification_helper.hashes[].filename` | Contains the name of the file which is identified by the hash values. | WINWORD.EXE, msotadddin.dll, sudoers.so |
 | `product_tree.branches[].product.product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
+| `product_tree.branches[].product.product_identification_helper.sbom_urls` | Contains a list of URLs where SBOMs for this product can be retrieved.| |
+| `product_tree.branches[].product.product_identification_helper.sbom_urls[]` | Contains a URL of one SBOM for this product. | |
 | `product_tree.branches[].product.product_identification_helper.serial_numbers` | Contains a list of parts, or full serial numbers.| |
 | `product_tree.branches[].product.product_identification_helper.serial_numbers[]` | Contains a part, or a full serial number of the component to identify. | |
+| `product_tree.branches[].product.product_identification_helper.skus` | Contains a list of parts, or full stock keeping units.| |
+| `product_tree.branches[].product.product_identification_helper.skus[]` | Contains a part, or a full stock keeping unit (SKU) which is used in the ordering process to identify the component. | |
 | `product_tree.branches[].product.product_identification_helper.x_generic_uris` | Contains a list of identifiers which are either vendor-specific or derived from a standard not yet supported.| |
 | `product_tree.branches[].product.product_identification_helper.x_generic_uris[]` | Provides a generic extension point for any identifier which is either vendor-specific or derived from a standard not yet supported. | |
 | `product_tree.branches[].product.product_identification_helper.x_generic_uris[].namespace` | Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid. | |
@@ -213,8 +225,12 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c, 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3 |
 | `product_tree.full_product_names[].product_identification_helper.hashes[].filename` | Contains the name of the file which is identified by the hash values. | WINWORD.EXE, msotadddin.dll, sudoers.so |
 | `product_tree.full_product_names[].product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
+| `product_tree.full_product_names[].product_identification_helper.sbom_urls` | Contains a list of URLs where SBOMs for this product can be retrieved.| |
+| `product_tree.full_product_names[].product_identification_helper.sbom_urls[]` | Contains a URL of one SBOM for this product. | |
 | `product_tree.full_product_names[].product_identification_helper.serial_numbers` | Contains a list of parts, or full serial numbers.| |
 | `product_tree.full_product_names[].product_identification_helper.serial_numbers[]` | Contains a part, or a full serial number of the component to identify. | |
+| `product_tree.full_product_names[].product_identification_helper.skus` | Contains a list of parts, or full stock keeping units.| |
+| `product_tree.full_product_names[].product_identification_helper.skus[]` | Contains a part, or a full stock keeping unit (SKU) which is used in the ordering process to identify the component. | |
 | `product_tree.full_product_names[].product_identification_helper.x_generic_uris` | Contains a list of identifiers which are either vendor-specific or derived from a standard not yet supported.| |
 | `product_tree.full_product_names[].product_identification_helper.x_generic_uris[]` | Provides a generic extension point for any identifier which is either vendor-specific or derived from a standard not yet supported. | |
 | `product_tree.full_product_names[].product_identification_helper.x_generic_uris[].namespace` | Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid. | |
@@ -241,8 +257,12 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c, 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3 |
 | `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].filename` | Contains the name of the file which is identified by the hash values. | WINWORD.EXE, msotadddin.dll, sudoers.so |
 | `product_tree.relationships[].full_product_name.product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
+| `product_tree.relationships[].full_product_name.product_identification_helper.sbom_urls` | Contains a list of URLs where SBOMs for this product can be retrieved.| |
+| `product_tree.relationships[].full_product_name.product_identification_helper.sbom_urls[]` | Contains a URL of one SBOM for this product. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers` | Contains a list of parts, or full serial numbers.| |
 | `product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers[]` | Contains a part, or a full serial number of the component to identify. | |
+| `product_tree.relationships[].full_product_name.product_identification_helper.skus` | Contains a list of parts, or full stock keeping units.| |
+| `product_tree.relationships[].full_product_name.product_identification_helper.skus[]` | Contains a part, or a full stock keeping unit (SKU) which is used in the ordering process to identify the component. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris` | Contains a list of identifiers which are either vendor-specific or derived from a standard not yet supported.| |
 | `product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[]` | Provides a generic extension point for any identifier which is either vendor-specific or derived from a standard not yet supported. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].namespace` | Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid. | |
@@ -268,8 +288,9 @@ This is the full list of document properties. It reflects the structure as defin
 | `vulnerabilities[].id.system_name` | Indicates the name of the vulnerability tracking or numbering system. | Cisco Bug ID, GitHub Issue |
 | `vulnerabilities[].id.text` | Is unique label or tracking ID for the vulnerability (if such information exists). | CSCso66472, oasis-tcs/csaf#210 |
 | `vulnerabilities[].involvements` | Contains a list of involvements.| |
-| `vulnerabilities[].involvements[]` | Is a container, that allows the document producers to comment on their level of Involvement (or engagement) in the vulnerability identification, scoping, and remediation process. | |
-| `vulnerabilities[].involvements[].party` | Defines the type of the involved party. | |
+| `vulnerabilities[].involvements[]` | Is a container, that allows the document producers to comment on the level of involvement (or engagement) of themselves or third parties in the vulnerability identification, scoping, and remediation process. | |
+| `vulnerabilities[].involvements[].date` | Holds the date and time of the involvement entry. | |
+| `vulnerabilities[].involvements[].party` | Defines the category of the involved party. | |
 | `vulnerabilities[].involvements[].status` | Defines contact status of the involved party. | |
 | `vulnerabilities[].involvements[].summary` | Contains additional context regarding what is going on. | |
 | `vulnerabilities[].notes` | Contains notes which are specific to the current context.| |
