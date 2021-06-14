@@ -2,6 +2,15 @@ import update from 'immutability-helper'
 import { parse } from 'json-pointer'
 import { compose, set } from 'lodash/fp'
 
+/* eslint-disable */
+const secvisogramVersion =
+  typeof SECVISOGRAM_VERSION !== 'undefined'
+    ? SECVISOGRAM_VERSION.startsWith('v')
+      ? SECVISOGRAM_VERSION.substr(1)
+      : SECVISOGRAM_VERSION
+    : 'unidentified version'
+/* eslint-enable */
+
 /** @typedef {unknown} Doc */
 
 /**
@@ -38,8 +47,9 @@ export default function Reducer(state, action) {
       }
     case 'CHANGE_FORM_DOC': {
       const setGeneratorFields = compose(
-        set('document.tracking.generator.date', action.timestamp.toISOString()),
-        set('document.tracking.generator.engine', 'Secvisogram')
+        set('document.tracking.generator.engine.name', 'Secvisogram'),
+        set('document.tracking.generator.engine.version', secvisogramVersion),
+        set('document.tracking.generator.date', action.timestamp.toISOString())
       )
       return {
         ...state,

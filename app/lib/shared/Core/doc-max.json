@@ -51,7 +51,10 @@
       "current_release_date": "",
       "generator": {
         "date": "",
-        "engine": ""
+        "engine": {
+          "name": "",
+          "version": ""
+        }
       },
       "id": "",
       "initial_release_date": "",
@@ -89,7 +92,9 @@
               }
             ],
             "purl": "",
+            "sbom_urls": [""],
             "serial_numbers": [""],
+            "skus": [""],
             "x_generic_uris": [
               {
                 "namespace": "",
@@ -118,7 +123,9 @@
             }
           ],
           "purl": "",
+          "sbom_urls": [""],
           "serial_numbers": [""],
+          "skus": [""],
           "x_generic_uris": [
             {
               "namespace": "",
@@ -155,7 +162,9 @@
               }
             ],
             "purl": "",
+            "sbom_urls": [""],
             "serial_numbers": [""],
+            "skus": [""],
             "x_generic_uris": [
               {
                 "namespace": "",
@@ -191,6 +200,7 @@
       },
       "involvements": [
         {
+          "date": "",
           "party": "",
           "status": "",
           "summary": ""
