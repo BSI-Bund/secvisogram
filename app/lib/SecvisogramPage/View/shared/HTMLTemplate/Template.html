@@ -17,7 +17,7 @@
     </tr>
     <tr>
       <td>Initial release date: {{document.tracking.initial_release_date}}</td>
-      <td>Engine: {{document.tracking.generator.engine}}</td>
+      <td>Engine: {{#document.tracking.generator.engine}}{{name}}{{#version}} {{.}}{{/version}}{{/document.tracking.generator.engine}}</td>
     </tr>
     <tr>
       <td>Current release date: {{document.tracking.current_release_date}}</td>
@@ -243,7 +243,7 @@
       <ul>
       {{#involvements}}
         {{#.}}
-        <li>{{#upperCase}}{{party}}{{/upperCase}}{{#status}} ({{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}){{/status}}{{#summary}}: {{.}}{{/summary}}</li>
+        <li>{{#date}}{{.}} {{/date}}{{#upperCase}}{{party}}{{/upperCase}}{{#status}} ({{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}){{/status}}{{#summary}}: {{.}}{{/summary}}</li>
         {{/.}}
       {{/involvements}}
       </ul>

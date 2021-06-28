@@ -128,15 +128,21 @@ const Vulnerability = React.memo(
                 <ObjectContainer
                   {...involvementItemProps}
                   label="Involvement"
-                  description="Is a container, that allows the document producers to comment on their level of Involvement (or engagement) in the vulnerability identification, scoping, and remediation process."
+                  description="Is a container, that allows the document producers to comment on the level of involvement (or engagement) of themselves or third parties in the vulnerability identification, scoping, and remediation process."
                   defaultValue={() => ({})}
                 >
                   {(involvementProps) => (
                     <>
+                      <DateAttribute
+                        {...involvementProps('date')}
+                        label="Date of involvement"
+                        description="Holds the date and time of the involvement entry."
+                        deletable
+                      />
                       <EnumAttribute
                         {...involvementProps('party')}
-                        label="Party type"
-                        description="Defines the type of the involved party."
+                        label="Party category"
+                        description="Defines the category of the involved party."
                         options={[
                           'coordinator',
                           'discoverer',
