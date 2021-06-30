@@ -539,7 +539,7 @@
           "title": "Publisher",
           "description": "Provides information about the publisher of the document.",
           "type": "object",
-          "required": ["category", "name"],
+          "required": ["category", "name", "namespace"],
           "properties": {
             "category": {
               "title": "Category of publisher",
@@ -576,11 +576,12 @@
               "minLength": 1,
               "examples": ["BSI", "Cisco PSIRT", "Siemens ProductCERT"]
             },
-            "vendor_id": {
-              "title": "Vendor releasing the document",
-              "description": "Vendor ID is a unique identifier (OID) that a vendor uses as issued by FIRST under the auspices of IETF.",
+            "namespace": {
+              "title": "Namespace of publisher",
+              "description": "Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party.",
               "type": "string",
-              "minLength": 1
+              "format": "uri",
+              "examples": ["https://www.example.com", "https://csaf.io"]
             }
           }
         },
