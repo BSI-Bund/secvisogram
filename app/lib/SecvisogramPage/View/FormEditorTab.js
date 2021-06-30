@@ -285,6 +285,7 @@ function Doc(props) {
           publisher: {
             category: '',
             name: '',
+            namespace: '',
           },
           title: '',
           tracking: {
