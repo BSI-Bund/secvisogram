@@ -576,14 +576,15 @@
               "title": "Name of publisher",
               "type": "string"
             },
-            "vendor_id": {
-              "description": "Vendor ID is a unique identifier (OID) that a vendor uses as issued by FIRST under the auspices of IETF.",
-              "minLength": 1,
-              "title": "Vendor releasing the document",
+            "namespace": {
+              "description": "Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party.",
+              "examples": ["https://www.example.com", "https://csaf.io"],
+              "format": "uri",
+              "title": "Namespace of publisher",
               "type": "string"
             }
           },
-          "required": ["category", "name"],
+          "required": ["category", "name", "namespace"],
           "title": "Publisher",
           "type": "object"
         },

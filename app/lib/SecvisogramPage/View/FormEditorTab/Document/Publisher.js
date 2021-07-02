@@ -60,10 +60,10 @@ export default React.memo(
               placeholder="Example PSIRT"
             />
             <TextAttribute
-              {...publisherProps('vendor_id')}
-              label="Vendor releasing the document"
-              description="Vendor ID is a unique identifier (OID) that a vendor uses as issued by FIRST under the auspices of IETF."
-              deletable
+              {...publisherProps('namespace')}
+              label="Namespace of publisher"
+              description="Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party."
+              placeholder="https://www.example.com"
             />
           </>
         )}

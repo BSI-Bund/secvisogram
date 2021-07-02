@@ -114,7 +114,7 @@ This is the full list of document properties. It reflects the structure as defin
 | `document.publisher.contact_details` | Information on how to contact the publisher, possibly including details such as web sites, email addresses, phone numbers, and postal mail addresses. | Example Company can be reached at contact_us@example.com, or via our website at https://www.example.com/contact. |
 | `document.publisher.issuing_authority` | Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations. | |
 | `document.publisher.name` | Contains the name of the issuing party. | BSI, Cisco PSIRT, Siemens ProductCERT |
-| `document.publisher.vendor_id` | Vendor ID is a unique identifier (OID) that a vendor uses as issued by FIRST under the auspices of IETF. | |
+| `document.publisher.namespace` | Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. | https://www.example.com, https://csaf.io |
 | `document.references` | Holds a list of references.| |
 | `document.references[]` | Holds any reference to conferences, papers, advisories, and other resources that are related and considered related to either a surrounding part of or the entire document and to be of value to the document consumer. | |
 | `document.references[].category` | Indicates whether the reference points to the same document or vulnerability in focus (depending on scope) or to an external resource. | |

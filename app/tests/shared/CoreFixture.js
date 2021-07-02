@@ -10,6 +10,7 @@ const MINIMAL_DOC = {
     publisher: {
       category: 'other',
       name: 'Secvisogram Automated Tester',
+      namespace: 'https://github.com/secvisogram/secvisogram',
     },
     tracking: {
       current_release_date: '2021-01-14T00:00:00.000Z',
@@ -62,6 +63,7 @@ export default function createCoreFixture() {
             publisher: {
               category: 'other',
               name: 'Secvisogram Automated Tester',
+              namespace: 'https://github.com/secvisogram/secvisogram',
             },
             tracking: {
               current_release_date: '2021-01-14T00:00:00.000Z',
@@ -172,6 +174,7 @@ export default function createCoreFixture() {
             publisher: {
               category: 'other',
               name: 'Secvisogram Automated Tester',
+              namespace: 'https://github.com/secvisogram/secvisogram',
             },
             tracking: {
               current_release_date: '2021-01-14T00:00:00.000Z',
@@ -200,6 +203,7 @@ export default function createCoreFixture() {
             publisher: {
               category: 'other',
               name: 'Secvisogram Automated Tester',
+              namespace: 'https://github.com/secvisogram/secvisogram',
             },
             tracking: {
               current_release_date: '2021-01-14T00:00:00.000Z',
