@@ -1,8 +1,11 @@
-# Secvisogram Dependabot configuration file 
+# Secvisogram Dependabot configuration file
 
 version: 2
 updates:
-  - package-ecosystem: 'npm'
-    directory: '/app'
+  - package-ecosystem: "npm"
+    directory: "/app"
     schedule:
-      interval: 'weekly'
+      interval: "weekly"
+    assignees:
+      - "domachine"
+    open-pull-requests-limit: 20
