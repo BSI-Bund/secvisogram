@@ -6,6 +6,4 @@ updates:
     directory: "/app"
     schedule:
       interval: "weekly"
-    assignees:
-      - "domachine"
     open-pull-requests-limit: 20
