@@ -31,7 +31,7 @@ const DatePicker = (
           onChange(
             e.target.value
               ? new Date(
-                  `${e.target.value} ${timeString || '12:00'}`
+                  `${e.target.value}T${timeString || '12:00'}`
                 ).toISOString()
               : ''
           )
@@ -45,7 +45,7 @@ const DatePicker = (
         onChange={(e) => {
           onChange(
             new Date(
-              `${dateString || formatDate(new Date())} ${
+              `${dateString || formatDate(new Date())}T${
                 e.target.value || '00:00'
               }`
             ).toISOString()
