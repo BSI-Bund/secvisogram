@@ -385,7 +385,7 @@ function createFileName(doc, isValid, extension) {
   if (trackingId.trim().length === 0) {
     trackingId = 'csaf_2_0'
   } else {
-    trackingId = trackingId.replace(/([^a-z0-9]+)/gi, '_')
+    trackingId = trackingId.replace(/([^a-z0-9+\-_]+)/gi, '_')
   }
   const fileName = `${trackingId}${isValid ? '' : '_invalid'}.${extension}`
   return fileName
