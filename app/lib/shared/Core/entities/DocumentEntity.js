@@ -3,6 +3,7 @@ import { parse } from 'json-pointer'
 import { cloneDeep } from 'lodash'
 import unset from 'lodash/fp/unset'
 import isEmpty from 'lodash/isEmpty'
+import { major, prerelease, valid } from 'semver'
 import cwec from '../cwec_4.3.json'
 import icann from './DocumentEntity/subtags.json'
 
@@ -505,6 +506,22 @@ export default class DocumentEntity {
       }
     }
 
+    if (
+      hasTrackingVersionField(doc) &&
+      hasTrackingStatusField(doc) &&
+      doc.document.tracking.status !== 'draft' &&
+      (doc.document.tracking.version === '0' ||
+        (valid(doc.document.tracking.version) &&
+          (major(doc.document.tracking.version) === 0 ||
+            prerelease(doc.document.tracking.version))))
+    ) {
+      isValid = false
+      errors.push({
+        message: 'the status is not compatible with the version',
+        dataPath: '/document/tracking/status',
+      })
+    }
+
     return {
       isValid,
       errors: errors,
@@ -529,6 +546,13 @@ const hasTrackingRevisionHistory = (doc) =>
  */
 const hasTrackingVersionField = (doc) =>
   typeof doc?.document?.tracking?.version === 'string'
+
+/**
+ * @param {any} doc
+ * @returns {doc is { document: { tracking: { status: string } } }}
+ */
+const hasTrackingStatusField = (doc) =>
+  typeof doc?.document?.tracking?.status === 'string'
 
 /**
  * @param {any} doc
