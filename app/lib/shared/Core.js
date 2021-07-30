@@ -33,7 +33,7 @@ const setGeneratorFields = (/** @type {Date} */ date) =>
  * Logic which can be abstracted without UI-interaction should be placed here
  * to be tested independently.
  */
-export default async function createCore() {
+export default function createCore() {
   const ajv = new Ajv({ strict: false, allErrors: true })
   addFormats(ajv)
   ajv.addSchema(cvss_v2_0, 'https://www.first.org/cvss/cvss-v2.0.json')

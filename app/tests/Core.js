@@ -1,18 +1,16 @@
 import Ajv from 'ajv'
 import { expect } from 'chai'
+import createCore from '../lib/shared/Core'
 import { DocumentEntity } from '../lib/shared/Core/entities'
-import createCoreFixture from './shared/CoreFixture'
+import fixture from './shared/coreFixture'
 
 suite('Core', () => {
-  const fixture = createCoreFixture()
-
-  setup(() => fixture.setup())
-  teardown(() => fixture.teardown())
+  const core = createCore()
 
   suite('DocumentService', () => {
     test('The document can be validated against the JSON-schema', async () => {
       for (const document of fixture.documents) {
-        const result = await fixture.core.document.validate({
+        const result = await core.document.validate({
           document: document.content,
           strict: false,
         })
@@ -28,7 +26,7 @@ suite('Core', () => {
     test('The document can be minified using the CSAF-strip algorithm', async () => {
       for (const document of fixture.documents) {
         if (document.strippedVersion === undefined) continue
-        const result = await fixture.core.document.strip({
+        const result = await core.document.strip({
           document: document.content,
         })
 
