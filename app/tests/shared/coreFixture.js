@@ -219,5 +219,25 @@ export default {
       },
       strippedVersion: {},
     },
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          tracking: {
+            ...MINIMAL_DOC.document.tracking,
+            revision_history: [
+              {
+                number: '2',
+                date: '2021-01-14T00:00:00.000Z',
+                summary: 'Summary',
+              },
+            ],
+            version: '1',
+          },
+        },
+      },
+    },
   ],
 }

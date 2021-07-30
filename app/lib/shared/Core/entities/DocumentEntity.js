@@ -52,7 +52,8 @@ export default class DocumentEntity {
    * @returns {{id: string, name: string, dataPath: string}[]}
    */
   collectProductIds({ document }) {
-    const entries = /** @type {{id: string, name: string, dataPath: string}[]} */ ([])
+    const entries =
+      /** @type {{id: string, name: string, dataPath: string}[]} */ ([])
 
     const fullProductNames = document.product_tree?.full_product_names
     if (fullProductNames) {
@@ -178,7 +179,8 @@ export default class DocumentEntity {
    * @returns {{id: string, name: string, dataPath: string}[]}
    */
   collectGroupIds({ document }) {
-    const entries = /** @type {{id: string, name: string, dataPath: string}[]} */ ([])
+    const entries =
+      /** @type {{id: string, name: string, dataPath: string}[]} */ ([])
 
     const productGroups = document.product_tree?.product_groups
     if (productGroups) {
@@ -483,6 +485,25 @@ export default class DocumentEntity {
         })
       })
     }
+    if (
+      hasTrackingRevisionHistory(doc) &&
+      hasTrackingVersionField(doc) &&
+      doc.document.tracking.revision_history.length > 0
+    ) {
+      if (
+        doc.document.tracking.revision_history
+          .slice()
+          .sort(
+            (a, z) => new Date(z.date).getTime() - new Date(a.date).getTime()
+          )[0].number !== doc.document.tracking.version
+      ) {
+        isValid = false
+        errors.push({
+          message: 'version does not match latest revision',
+          dataPath: '/document/tracking/version',
+        })
+      }
+    }
 
     return {
       isValid,
@@ -490,6 +511,24 @@ export default class DocumentEntity {
     }
   }
 }
+
+/**
+ * @param {any} doc
+ * @returns {doc is { document: { tracking: { revision_history: Array<{ number: string; date: string }> } } }}
+ */
+const hasTrackingRevisionHistory = (doc) =>
+  Array.isArray(doc?.document?.tracking?.revision_history) &&
+  doc?.document?.tracking?.revision_history.every(
+    (/** @type {any} */ r) =>
+      typeof r.number === 'string' && typeof r.date === 'string'
+  )
+
+/**
+ * @param {any} doc
+ * @returns {doc is { document: { tracking: { version: string } } }}
+ */
+const hasTrackingVersionField = (doc) =>
+  typeof doc?.document?.tracking?.version === 'string'
 
 /**
  * @param {any} doc
