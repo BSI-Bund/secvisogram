@@ -344,5 +344,33 @@ export default {
         },
       },
     },
+
+    // Fails "6.1.19 Revision History Entries for Pre-release Versions"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          tracking: {
+            ...MINIMAL_DOC.document.tracking,
+            revision_history: [
+              {
+                date: '2021-04-23T10:00:00.000Z',
+                number: '1.0.0-rc',
+                summary: 'Release Candidate for initial version.',
+              },
+              {
+                date: '2021-04-23T11:00:00.000Z',
+                number: '1.0.0',
+                summary: 'Initial version.',
+              },
+            ],
+            version: '1.0.0',
+            status: 'draft',
+          },
+        },
+      },
+    },
   ],
 }

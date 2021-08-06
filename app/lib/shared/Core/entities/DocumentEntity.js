@@ -541,6 +541,24 @@ export default class DocumentEntity {
       })
     }
 
+    // 6.1.19 Revision History Entries for Pre-release Versions
+    if (
+      hasTrackingVersionField(doc) &&
+      hasTrackingStatusField(doc) &&
+      hasTrackingRevisionHistory(doc)
+    ) {
+      for (let i = 0; i < doc.document.tracking.revision_history.length; ++i) {
+        const entry = doc.document.tracking.revision_history[i]
+        if (valid(entry.number) && prerelease(entry.number)) {
+          isValid = false
+          errors.push({
+            message: 'contains prerelease part',
+            dataPath: `/document/tracking/revision_history/${i}/number`,
+          })
+        }
+      }
+    }
+
     return {
       isValid,
       errors: errors,
