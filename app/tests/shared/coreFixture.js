@@ -372,5 +372,51 @@ export default {
         },
       },
     },
+
+    // Fails "6.1.20 Non-draft Document Version"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          tracking: {
+            ...MINIMAL_DOC.document.tracking,
+            revision_history: [
+              {
+                date: '2021-04-23T10:00:00.000Z',
+                number: '1.0.0-rc',
+                summary: 'Release Candidate for initial version.',
+              },
+            ],
+            version: '1.0.0-rc',
+            status: 'final',
+          },
+        },
+      },
+    },
+
+    // Fails "6.1.20 Non-draft Document Version"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          tracking: {
+            ...MINIMAL_DOC.document.tracking,
+            revision_history: [
+              {
+                date: '2021-04-23T10:00:00.000Z',
+                number: '1.0.0-rc',
+                summary: 'Release Candidate for initial version.',
+              },
+            ],
+            version: '1.0.0-rc',
+            status: 'interim',
+          },
+        },
+      },
+    },
   ],
 }

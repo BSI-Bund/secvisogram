@@ -559,6 +559,22 @@ export default class DocumentEntity {
       }
     }
 
+    // 6.1.20 Non-draft Document Version
+    if (
+      hasTrackingVersionField(doc) &&
+      hasTrackingStatusField(doc) &&
+      (doc.document.tracking.status === 'final' ||
+        doc.document.tracking.status === 'interim') &&
+      valid(doc.document.tracking.version) &&
+      prerelease(doc.document.tracking.version)
+    ) {
+      isValid = false
+      errors.push({
+        message: 'prerelease part is not allowed for status',
+        dataPath: `/document/tracking/version`,
+      })
+    }
+
     return {
       isValid,
       errors: errors,
