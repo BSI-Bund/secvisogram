@@ -260,5 +260,89 @@ export default {
         },
       },
     },
+
+    // Fails "6.1.18 Released Revision History"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          tracking: {
+            ...MINIMAL_DOC.document.tracking,
+            revision_history: [
+              {
+                date: '2021-05-17T10:00:00.000Z',
+                number: '0',
+                summary: 'First draft',
+              },
+              {
+                date: '2021-07-21T10:00:00.000Z',
+                number: '1',
+                summary: 'Initial version.',
+              },
+            ],
+            status: 'final',
+            version: '1',
+          },
+        },
+      },
+    },
+
+    // Fails "6.1.18 Released Revision History"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          tracking: {
+            ...MINIMAL_DOC.document.tracking,
+            revision_history: [
+              {
+                date: '2021-05-17T10:00:00.000Z',
+                number: '0.1.0',
+                summary: 'First draft',
+              },
+              {
+                date: '2021-07-21T10:00:00.000Z',
+                number: '1',
+                summary: 'Initial version.',
+              },
+            ],
+            status: 'final',
+            version: '1',
+          },
+        },
+      },
+    },
+
+    // Fails "6.1.18 Released Revision History"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          tracking: {
+            ...MINIMAL_DOC.document.tracking,
+            revision_history: [
+              {
+                date: '2021-05-17T10:00:00.000Z',
+                number: '0',
+                summary: 'First draft',
+              },
+              {
+                date: '2021-07-21T10:00:00.000Z',
+                number: '1',
+                summary: 'Initial version.',
+              },
+            ],
+            status: 'interim',
+            version: '1',
+          },
+        },
+      },
+    },
   ],
 }
