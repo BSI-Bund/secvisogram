@@ -575,6 +575,27 @@ export default class DocumentEntity {
       })
     }
 
+    // 6.1.22 Multiple Definition in Revision History
+    if (
+      hasTrackingVersionField(doc) &&
+      hasTrackingStatusField(doc) &&
+      hasTrackingRevisionHistory(doc)
+    ) {
+      /** @type {Record<string, number[]>} */
+      let dupes = {}
+      doc.document.tracking.revision_history.forEach((item, index) => {
+        dupes[item.number] = dupes[item.number] ?? []
+        dupes[item.number].push(index)
+        if (dupes[item.number].length > 1) {
+          isValid = false
+          errors.push({
+            message: 'version was already used',
+            dataPath: `/document/tracking/revision_history/${index}/number`,
+          })
+        }
+      })
+    }
+
     return {
       isValid,
       errors: errors,
