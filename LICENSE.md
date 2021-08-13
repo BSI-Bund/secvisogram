@@ -35,7 +35,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [@fortawesome/fontawesome-svg-core@1.2.35](https://github.com/FortAwesome/Font-Awesome) - MIT
 - [@fortawesome/free-solid-svg-icons@5.15.3](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
 - [@fortawesome/react-fontawesome@0.1.14](https://github.com/FortAwesome/react-fontawesome) - MIT
-- [@material-ui/core@4.12.1](https://github.com/mui-org/material-ui) - MIT
+- [@material-ui/core@4.12.2](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/lab@4.0.0-alpha.60](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/styles@4.11.4](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/system@4.12.1](https://github.com/mui-org/material-ui) - MIT
