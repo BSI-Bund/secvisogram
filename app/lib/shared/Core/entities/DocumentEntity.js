@@ -5,6 +5,7 @@ import unset from 'lodash/fp/unset'
 import isEmpty from 'lodash/isEmpty'
 import { major, prerelease, valid } from 'semver'
 import cwec from '../cwec_4.3.json'
+import mandatoryTest_6_1_7 from './DocumentEntity/mandatoryTest_6_1_7'
 import icann from './DocumentEntity/subtags.json'
 
 /**
@@ -599,6 +600,11 @@ export default class DocumentEntity {
         }
       })
     }
+
+    // 6.1.7 Multiple Scores with same Version per Product
+    const mandatoryTest_6_1_7_Result = mandatoryTest_6_1_7(doc)
+    isValid = isValid && mandatoryTest_6_1_7_Result.isValid
+    errors.push(...mandatoryTest_6_1_7_Result.errors)
 
     return {
       isValid,
