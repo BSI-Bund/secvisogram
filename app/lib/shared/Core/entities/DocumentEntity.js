@@ -486,6 +486,8 @@ export default class DocumentEntity {
         })
       })
     }
+
+    // 6.1.16 Latest Document Version
     if (
       hasTrackingRevisionHistory(doc) &&
       hasTrackingVersionField(doc) &&
@@ -496,7 +498,8 @@ export default class DocumentEntity {
           .slice()
           .sort(
             (a, z) => new Date(z.date).getTime() - new Date(a.date).getTime()
-          )[0].number !== doc.document.tracking.version
+          )[0]
+          .number.split('+')[0] !== doc.document.tracking.version.split('+')[0]
       ) {
         isValid = false
         errors.push({

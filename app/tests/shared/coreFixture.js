@@ -219,6 +219,8 @@ export default {
       },
       strippedVersion: {},
     },
+
+    // Fails "6.1.16 Released Revision History"
     {
       valid: false,
       content: {
@@ -239,6 +241,29 @@ export default {
         },
       },
     },
+
+    // Passes "6.1.16 Released Revision History"
+    {
+      valid: true,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          tracking: {
+            ...MINIMAL_DOC.document.tracking,
+            revision_history: [
+              {
+                number: '2.0.0+123',
+                date: '2021-01-14T00:00:00.000Z',
+                summary: 'Summary',
+              },
+            ],
+            version: '2.0.0+234',
+          },
+        },
+      },
+    },
+
     {
       valid: false,
       content: {
