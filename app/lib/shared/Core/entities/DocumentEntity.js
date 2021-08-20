@@ -509,6 +509,7 @@ export default class DocumentEntity {
       }
     }
 
+    // 6.1.17 Document Status Draft
     if (
       hasTrackingVersionField(doc) &&
       hasTrackingStatusField(doc) &&
@@ -573,7 +574,7 @@ export default class DocumentEntity {
     ) {
       isValid = false
       errors.push({
-        message: 'prerelease part is not allowed for status',
+        message: 'pre-release part is not allowed for status',
         dataPath: `/document/tracking/version`,
       })
     }

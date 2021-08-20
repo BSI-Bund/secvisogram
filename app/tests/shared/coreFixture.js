@@ -331,12 +331,12 @@ export default {
               },
               {
                 date: '2021-07-21T10:00:00.000Z',
-                number: '1',
+                number: '1.0.0',
                 summary: 'Initial version.',
               },
             ],
             status: 'final',
-            version: '1',
+            version: '1.0.0',
           },
         },
       },
@@ -466,6 +466,33 @@ export default {
               },
             ],
             version: '1',
+          },
+        },
+      },
+    },
+
+    // Fails "6.1.22 Multiple Definition in Revision History"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          tracking: {
+            ...MINIMAL_DOC.document.tracking,
+            revision_history: [
+              {
+                date: '2021-07-20T10:00:00.000Z',
+                number: '1.0.0',
+                summary: 'Initial version.',
+              },
+              {
+                date: '2021-07-21T10:00:00.000Z',
+                number: '1.0.0',
+                summary: 'Some other changes.',
+              },
+            ],
+            version: '1.0.0',
           },
         },
       },
