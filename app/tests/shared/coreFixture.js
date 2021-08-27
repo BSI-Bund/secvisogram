@@ -633,5 +633,31 @@ export default {
         ],
       },
     },
+
+    // Fails "6.1.24 Multiple Use of Same CVE"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        vulnerabilities: [
+          {
+            involvements: [
+              {
+                date: '2021-04-23T10:00:00.000Z',
+                party: 'vendor',
+                status: 'in_progress',
+              },
+              {
+                date: '2021-04-23T10:00:00.000Z',
+                party: 'vendor',
+                status: 'in_progress',
+                summary:
+                  'The vendor has released a mitigation and is working to fully resolve the issue.',
+              },
+            ],
+          },
+        ],
+      },
+    },
   ],
 }
