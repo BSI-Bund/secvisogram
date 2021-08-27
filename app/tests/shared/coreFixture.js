@@ -617,5 +617,21 @@ export default {
         },
       },
     },
+
+    // Fails "6.1.23 Multiple Use of Same CVE"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        vulnerabilities: [
+          {
+            cve: 'CVE-2017-0145',
+          },
+          {
+            cve: 'CVE-2017-0145',
+          },
+        ],
+      },
+    },
   ],
 }
