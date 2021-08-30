@@ -3,6 +3,7 @@ import { parse } from 'json-pointer'
 import { cloneDeep } from 'lodash'
 import unset from 'lodash/fp/unset'
 import isEmpty from 'lodash/isEmpty'
+import { major, prerelease, valid } from 'semver'
 import cwec from '../cwec_4.3.json'
 import icann from './DocumentEntity/subtags.json'
 
@@ -52,7 +53,8 @@ export default class DocumentEntity {
    * @returns {{id: string, name: string, dataPath: string}[]}
    */
   collectProductIds({ document }) {
-    const entries = /** @type {{id: string, name: string, dataPath: string}[]} */ ([])
+    const entries =
+      /** @type {{id: string, name: string, dataPath: string}[]} */ ([])
 
     const fullProductNames = document.product_tree?.full_product_names
     if (fullProductNames) {
@@ -178,7 +180,8 @@ export default class DocumentEntity {
    * @returns {{id: string, name: string, dataPath: string}[]}
    */
   collectGroupIds({ document }) {
-    const entries = /** @type {{id: string, name: string, dataPath: string}[]} */ ([])
+    const entries =
+      /** @type {{id: string, name: string, dataPath: string}[]} */ ([])
 
     const productGroups = document.product_tree?.product_groups
     if (productGroups) {
@@ -484,12 +487,150 @@ export default class DocumentEntity {
       })
     }
 
+    // 6.1.16 Latest Document Version
+    if (
+      hasTrackingRevisionHistory(doc) &&
+      hasTrackingVersionField(doc) &&
+      doc.document.tracking.revision_history.length > 0
+    ) {
+      if (
+        doc.document.tracking.revision_history
+          .slice()
+          .sort(
+            (a, z) => new Date(z.date).getTime() - new Date(a.date).getTime()
+          )[0]
+          .number.split('+')[0] !== doc.document.tracking.version.split('+')[0]
+      ) {
+        isValid = false
+        errors.push({
+          message: 'version does not match latest revision',
+          dataPath: '/document/tracking/version',
+        })
+      }
+    }
+
+    // 6.1.17 Document Status Draft
+    if (
+      hasTrackingVersionField(doc) &&
+      hasTrackingStatusField(doc) &&
+      doc.document.tracking.status !== 'draft' &&
+      (doc.document.tracking.version === '0' ||
+        (valid(doc.document.tracking.version) &&
+          (major(doc.document.tracking.version) === 0 ||
+            prerelease(doc.document.tracking.version))))
+    ) {
+      isValid = false
+      errors.push({
+        message: 'the status is not compatible with the version',
+        dataPath: '/document/tracking/status',
+      })
+    }
+
+    // 6.1.18 Released Revision History
+    if (
+      hasTrackingVersionField(doc) &&
+      hasTrackingStatusField(doc) &&
+      hasTrackingRevisionHistory(doc) &&
+      (doc.document.tracking.status === 'final' ||
+        doc.document.tracking.status === 'interim') &&
+      doc.document.tracking.revision_history.some(
+        (h) => h.number === '0' || (valid(h.number) && major(h.number) === 0)
+      )
+    ) {
+      isValid = false
+      errors.push({
+        message:
+          'some revision-history entries are not compatible with the status',
+        dataPath: '/document/tracking/status',
+      })
+    }
+
+    // 6.1.19 Revision History Entries for Pre-release Versions
+    if (
+      hasTrackingVersionField(doc) &&
+      hasTrackingStatusField(doc) &&
+      hasTrackingRevisionHistory(doc)
+    ) {
+      for (let i = 0; i < doc.document.tracking.revision_history.length; ++i) {
+        const entry = doc.document.tracking.revision_history[i]
+        if (valid(entry.number) && prerelease(entry.number)) {
+          isValid = false
+          errors.push({
+            message: 'contains prerelease part',
+            dataPath: `/document/tracking/revision_history/${i}/number`,
+          })
+        }
+      }
+    }
+
+    // 6.1.20 Non-draft Document Version
+    if (
+      hasTrackingVersionField(doc) &&
+      hasTrackingStatusField(doc) &&
+      (doc.document.tracking.status === 'final' ||
+        doc.document.tracking.status === 'interim') &&
+      valid(doc.document.tracking.version) &&
+      prerelease(doc.document.tracking.version)
+    ) {
+      isValid = false
+      errors.push({
+        message: 'pre-release part is not allowed for status',
+        dataPath: `/document/tracking/version`,
+      })
+    }
+
+    // 6.1.22 Multiple Definition in Revision History
+    if (
+      hasTrackingVersionField(doc) &&
+      hasTrackingStatusField(doc) &&
+      hasTrackingRevisionHistory(doc)
+    ) {
+      /** @type {Record<string, number[]>} */
+      let dupes = {}
+      doc.document.tracking.revision_history.forEach((item, index) => {
+        dupes[item.number] = dupes[item.number] ?? []
+        dupes[item.number].push(index)
+        if (dupes[item.number].length > 1) {
+          isValid = false
+          errors.push({
+            message: 'version was already used',
+            dataPath: `/document/tracking/revision_history/${index}/number`,
+          })
+        }
+      })
+    }
+
     return {
       isValid,
       errors: errors,
     }
   }
 }
+
+/**
+ * @param {any} doc
+ * @returns {doc is { document: { tracking: { revision_history: Array<{ number: string; date: string }> } } }}
+ */
+const hasTrackingRevisionHistory = (doc) =>
+  Array.isArray(doc?.document?.tracking?.revision_history) &&
+  doc?.document?.tracking?.revision_history.every(
+    (/** @type {any} */ r) =>
+      typeof r.number === 'string' && typeof r.date === 'string'
+  )
+
+/**
+ * @param {any} doc
+ * @returns {doc is { document: { tracking: { version: string } } }}
+ */
+const hasTrackingVersionField = (doc) =>
+  typeof doc?.document?.tracking?.version === 'string'
+
+/**
+ * @param {any} doc
+ * @returns {doc is { document: { tracking: { status: string } } }}
+ */
+const hasTrackingStatusField = (doc) =>
+  typeof doc?.document?.tracking?.status === 'string'
 
 /**
  * @param {any} doc
