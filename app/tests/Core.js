@@ -48,7 +48,7 @@ suite('Core', () => {
 
       expect(result.document).to.deep.equal({})
       expect(result.strippedPaths).to.deep.equal([
-        { dataPath: '/title', error: true, message: 'should be string' },
+        { instancePath: '/title', error: true, message: 'must be string' },
       ])
     })
 
@@ -63,7 +63,7 @@ suite('Core', () => {
 
       expect(result.document).to.deep.equal({})
       expect(result.strippedPaths).to.deep.equal([
-        { dataPath: '/title', error: false, message: 'value was empty' },
+        { instancePath: '/title', error: false, message: 'value was empty' },
       ])
     })
   })

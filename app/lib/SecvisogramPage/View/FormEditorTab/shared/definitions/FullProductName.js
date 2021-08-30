@@ -8,8 +8,8 @@ import ProductIdentificationHelper from './FullProductName/ProductIdentification
  * @param {{
  *  value: unknown
  *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
- *  onUpdate(dataPath: string, update: {}): void
+ *  instancePath: string
+ *  onUpdate(instancePath: string, update: {}): void
  *  productName?: string
  *  onCollectProductIds?(): Promise<void | {id: string, name: string}[]>
  *  productReference?: string

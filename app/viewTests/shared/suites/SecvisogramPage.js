@@ -95,12 +95,12 @@ const props = {
             strippedPaths: [
               {
                 message: 'value is empty',
-                dataPath: '/my/data/path',
+                instancePath: '/my/data/path',
                 error: false,
               },
               {
                 message: 'value is invalid',
-                dataPath: '/my/data/path',
+                instancePath: '/my/data/path',
                 error: true,
               },
             ],
@@ -165,32 +165,32 @@ export const tests = [
           ...props.data,
         }}
         errors={[
-          { dataPath: '/document', message: '' },
-          { dataPath: '/document/acknowledgments', message: '' },
-          { dataPath: '/document/acknowledgments/0', message: '' },
-          { dataPath: '/document/acknowledgments/0/names', message: '' },
+          { instancePath: '/document', message: '' },
+          { instancePath: '/document/acknowledgments', message: '' },
+          { instancePath: '/document/acknowledgments/0', message: '' },
+          { instancePath: '/document/acknowledgments/0/names', message: '' },
           {
-            dataPath: '/document/acknowledgments/0/organizations',
+            instancePath: '/document/acknowledgments/0/organizations',
             message: '',
           },
           {
-            dataPath: '/document/acknowledgments/0/urls',
+            instancePath: '/document/acknowledgments/0/urls',
             message: '',
           },
           {
-            dataPath: '/document/publisher',
+            instancePath: '/document/publisher',
             message: '',
           },
           {
-            dataPath: '/document/tracking',
+            instancePath: '/document/tracking',
             message: '',
           },
           {
-            dataPath: '/document/tracking/revision_history',
+            instancePath: '/document/tracking/revision_history',
             message: '',
           },
           {
-            dataPath: '/document/tracking/revision_history/0',
+            instancePath: '/document/tracking/revision_history/0',
             message: '',
           },
         ]}
@@ -210,7 +210,7 @@ export const tests = [
           ...props.data,
           doc: { ...props.data.doc, document: /** @type {any} */ ([]) },
         }}
-        errors={[{ dataPath: '/document', message: 'should be object' }]}
+        errors={[{ instancePath: '/document', message: 'should be object' }]}
       />
     ),
   },
@@ -231,7 +231,7 @@ export const tests = [
         }}
         errors={[
           {
-            dataPath: '/document/acknowledgments',
+            instancePath: '/document/acknowledgments',
             message: 'should be array',
           },
         ]}

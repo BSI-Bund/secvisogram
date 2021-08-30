@@ -21,7 +21,7 @@ import { compose, set } from 'lodash/fp'
  * @param {State} state
  * @param {{
  *      type: 'CHANGE_FORM_DOC'
- *      dataPath?: string
+ *      instancePath?: string
  *      update: any
  *      timestamp: Date
  *      generatorEngineData: { name: string; version: string }
@@ -58,15 +58,15 @@ export default function Reducer(state, action) {
         formValues: {
           ...state.formValues,
           doc: setGeneratorFields(
-            action.dataPath
-              ? /** @type {{}} */ (update(
-                  state.formValues.doc,
-                  /** @type {any} */ (set(
-                    parse(action.dataPath),
-                    action.update,
-                    {}
-                  ))
-                ))
+            action.instancePath
+              ? /** @type {{}} */ (
+                  update(
+                    state.formValues.doc,
+                    /** @type {any} */ (
+                      set(parse(action.instancePath), action.update, {})
+                    )
+                  )
+                )
               : update(state.formValues.doc, action.update)
           ),
         },

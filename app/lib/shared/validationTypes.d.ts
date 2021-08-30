@@ -1,4 +1,4 @@
 export interface ValidationError {
   message: string
-  dataPath: string
+  instancePath: string
 }

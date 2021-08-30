@@ -20,11 +20,11 @@ const numberRegExp = /^(0|[1-9][0-9]*)$/
  *   description: string
  *   deletable?: boolean
  *   validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
- *   dataPath: string
+ *   instancePath: string
  *   collapsible?: boolean
  *   defaultValue?(): V
  *   isValid(v: unknown): v is V
- *   onUpdate(dataPath: string, update: {}): void
+ *   onUpdate(instancePath: string, update: {}): void
  *   onDelete?(): void
  *   children(props: { value: V; validationErrors: import('../../../../../shared/validationTypes').ValidationError[] }): React.ReactNode;
  * }} props
@@ -36,7 +36,7 @@ export default function Container({
   description,
   deletable = true,
   validationErrors,
-  dataPath,
+  instancePath,
   collapsible = true,
   defaultValue,
   isValid,
@@ -45,15 +45,19 @@ export default function Container({
   children,
 }) {
   const validationErrorsForChildren = validationErrors.filter((e) =>
-    e.dataPath.startsWith(dataPath + '/')
+    e.instancePath.startsWith(instancePath + '/')
   )
   const localValidationErrors = validationErrors.filter(
-    (e) => e.dataPath === dataPath
+    (e) => e.instancePath === instancePath
   )
-  const parsedDataPath = React.useMemo(() => parse(dataPath), [dataPath])
-  const objectName = React.useMemo(() => parsedDataPath.slice().pop() ?? '', [
-    parsedDataPath,
-  ])
+  const parsedInstancePath = React.useMemo(
+    () => parse(instancePath),
+    [instancePath]
+  )
+  const objectName = React.useMemo(
+    () => parsedInstancePath.slice().pop() ?? '',
+    [parsedInstancePath]
+  )
   const isInArray = React.useMemo(
     () => Boolean(objectName.match(numberRegExp)),
     [objectName]
@@ -63,7 +67,7 @@ export default function Container({
     const operation = !isInArray
       ? { $unset: [objectName] }
       : { $splice: [[Number(objectName), 1]] }
-    onUpdate(compile(parsedDataPath.slice(0, -1)), operation)
+    onUpdate(compile(parsedInstancePath.slice(0, -1)), operation)
     onDelete?.()
   }
 
@@ -92,7 +96,7 @@ export default function Container({
         >
           <summary className="px-2 py-1">
             <h2
-              id={dataPath}
+              id={instancePath}
               title={objectName + ': ' + description}
               className={
                 'inline font-bold ' +
@@ -124,7 +128,7 @@ export default function Container({
         <div className="mb-2">
           <DefaultButton
             onClick={() => {
-              onUpdate(dataPath, { $set: defaultValue() })
+              onUpdate(instancePath, { $set: defaultValue() })
             }}
           >
             {"Add '" + label + "'"}

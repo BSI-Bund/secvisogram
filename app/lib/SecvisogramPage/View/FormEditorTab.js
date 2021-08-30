@@ -23,7 +23,7 @@ import { useAlert } from './shared/Alert'
  * @param {{
  *  formValues: import('../shared/FormValues').default
  *  validationErrors: import('../../shared/validationTypes').ValidationError[]
- *  onUpdate: ((update: {}) => void) & ((dataPath: string, update: {}) => void)
+ *  onUpdate: ((update: {}) => void) & ((instancePath: string, update: {}) => void)
  *  onOpen(file: File): void
  *  onDownload(doc: {}): void
  *  onNewDocMin(): void
@@ -83,7 +83,11 @@ export default function FormEditorTab({
 
   const { doc } = formValues
 
-  const { show: showMin, hide: hideMin, Alert: MinAlert } = useAlert({
+  const {
+    show: showMin,
+    hide: hideMin,
+    Alert: MinAlert,
+  } = useAlert({
     description:
       'This will create a new CSAF document. All current content will be lost. Are you sure?',
     confirmLabel: 'Yes, create new document',
@@ -91,7 +95,11 @@ export default function FormEditorTab({
     confirm: confirmMin,
   })
 
-  const { show: showMax, hide: hideMax, Alert: MaxAlert } = useAlert({
+  const {
+    show: showMax,
+    hide: hideMax,
+    Alert: MaxAlert,
+  } = useAlert({
     description:
       'This will create a new CSAF document. All current content will be lost. Are you sure?',
     confirmLabel: 'Yes, create new document',
@@ -107,7 +115,7 @@ export default function FormEditorTab({
         <div className="p-3 w-full">
           <div className={'overflow-auto ' + (showErrors ? 'h-4/5' : 'h-full')}>
             <Doc
-              dataPath=""
+              instancePath=""
               value={doc}
               validationErrors={errors}
               onUpdate={onUpdate}
@@ -130,8 +138,8 @@ export default function FormEditorTab({
               <div className="mx-2 flex-grow overflow-auto h-full">
                 {errors.map((error, i) => (
                   <div key={i}>
-                    <a href={'#' + error.dataPath} className="underline">
-                      <b>{error.dataPath}</b>: {error.message}
+                    <a href={'#' + error.instancePath} className="underline">
+                      <b>{error.instancePath}</b>: {error.message}
                     </a>
                   </div>
                 ))}
@@ -264,8 +272,8 @@ export default function FormEditorTab({
  * @param {{
  *  value: unknown
  *  validationErrors: import('../../shared/validationTypes').ValidationError[]
- *  dataPath: string
- *  onUpdate(dataPath: string, update: {}): void
+ *  instancePath: string
+ *  onUpdate(instancePath: string, update: {}): void
  *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
  *  onCollectGroupIds(): Promise<void | {id: string, name: string}[]>
  * }} props

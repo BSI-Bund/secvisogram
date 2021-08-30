@@ -8,8 +8,8 @@ import TextAttribute from '../TextAttribute'
  *  value: unknown
  *  deletable?: boolean
  *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
- *  onUpdate(dataPath: string, update: {}): void
+ *  instancePath: string
+ *  onUpdate(instancePath: string, update: {}): void
  * }} props
  */
 export default function Lang({
