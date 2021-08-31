@@ -3,7 +3,7 @@
  * @param {unknown} doc
  */
 export default function mandatoryTest_6_1_7(doc) {
-  /** @type {Array<{ message: string; dataPath: string }>} */
+  /** @type {Array<{ message: string; instancePath: string }>} */
   const errors = []
   let isValid = true
 
@@ -29,7 +29,7 @@ export default function mandatoryTest_6_1_7(doc) {
               message: `product is already included in these cvss-versions: ${Array.from(
                 versionMap.keys()
               ).join(', ')}`,
-              dataPath: `/vulnerabilities/${vulnerabilityIndex}/scores/${scoreIndex}/products/${productIndex}`,
+              instancePath: `/vulnerabilities/${vulnerabilityIndex}/scores/${scoreIndex}/products/${productIndex}`,
             })
           }
           if (score.cvss_v2?.version !== undefined) {

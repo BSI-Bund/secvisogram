@@ -2,7 +2,7 @@
  * @param {unknown} doc
  */
 export default function mandatoryTest_6_1_24(doc) {
-  /** @type {Array<{ message: string; dataPath: string }>} */
+  /** @type {Array<{ message: string; instancePath: string }>} */
   const errors = []
   let isValid = true
 
@@ -23,7 +23,7 @@ export default function mandatoryTest_6_1_24(doc) {
             isValid = false
             errors.push({
               message: `party, status tuple was already used for the same date`,
-              dataPath: `/vulnerabilities/${vulnerabilityIndex}/involvements/${involvementIndex}`,
+              instancePath: `/vulnerabilities/${vulnerabilityIndex}/involvements/${involvementIndex}`,
             })
           }
           set.add(`${involvement.party}:${involvement.status}`)

@@ -2,7 +2,7 @@
  * @param {unknown} doc
  */
 export default function mandatoryTest_6_1_23(doc) {
-  /** @type {Array<{ message: string; dataPath: string }>} */
+  /** @type {Array<{ message: string; instancePath: string }>} */
   const errors = []
   let isValid = true
 
@@ -17,7 +17,7 @@ export default function mandatoryTest_6_1_23(doc) {
         isValid = false
         errors.push({
           message: `tracking-number was already used`,
-          dataPath: `/vulnerabilities/${vulnerabilityIndex}/cve`,
+          instancePath: `/vulnerabilities/${vulnerabilityIndex}/cve`,
         })
       }
       cveStrings.add(vulnerability.cve)
