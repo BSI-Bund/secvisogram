@@ -6,7 +6,7 @@ import {
   faFileAlt,
   faFolderOpen,
   faSave,
-  faWindowClose
+  faWindowClose,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
@@ -54,11 +54,15 @@ export default function JsonEditorTab({
   /**
    * Holds the instance of the ace editor.
    */
-  const editorRef = /** @type {React.MutableRefObject<import('../../../vendor/ace-builds/ace').Ace.Editor | undefined>} */ (React.useRef())
+  const editorRef =
+    /** @type {React.MutableRefObject<import('../../../vendor/ace-builds/ace').Ace.Editor | undefined>} */ (
+      React.useRef()
+    )
 
-  const stringifiedDoc = React.useMemo(() => JSON.stringify(doc, null, 2), [
-    doc,
-  ])
+  const stringifiedDoc = React.useMemo(
+    () => JSON.stringify(doc, null, 2),
+    [doc]
+  )
 
   /**
    * The initial value of the state used to prevent a re-render of the ace editor
@@ -176,7 +180,11 @@ export default function JsonEditorTab({
     }
   }, [errors])
 
-  const { show: showMin, hide: hideMin, Alert: MinAlert } = useAlert({
+  const {
+    show: showMin,
+    hide: hideMin,
+    Alert: MinAlert,
+  } = useAlert({
     description:
       'This will create a new CSAF document. All current content will be lost. Are you sure?',
     confirmLabel: 'Yes, create new document',
@@ -184,7 +192,11 @@ export default function JsonEditorTab({
     confirm: confirmMin,
   })
 
-  const { show: showMax, hide: hideMax, Alert: MaxAlert } = useAlert({
+  const {
+    show: showMax,
+    hide: hideMax,
+    Alert: MaxAlert,
+  } = useAlert({
     description:
       'This will create a new CSAF document. All current content will be lost. Are you sure?',
     confirmLabel: 'Yes, create new document',
@@ -219,7 +231,7 @@ export default function JsonEditorTab({
               <div className="mx-2 flex-grow overflow-auto h-full">
                 {errors.map((error, i) => (
                   <div key={i}>
-                    <b>{error.dataPath}</b>: {error.message}
+                    <b>{error.instancePath}</b>: {error.message}
                   </div>
                 ))}
               </div>

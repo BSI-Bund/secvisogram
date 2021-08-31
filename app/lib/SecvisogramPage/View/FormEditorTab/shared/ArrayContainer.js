@@ -12,10 +12,10 @@ const EMPTY_ARRAY = []
  * @typedef {Object} ChildProps
  * @property {unknown} value
  * @property {number} index
- * @property {string} dataPath
+ * @property {string} instancePath
  * @property {import('../../../../shared/validationTypes').ValidationError[]} validationErrors
  * @property {() => V} defaultValue
- * @property {(dataPath: string, update: {}) => void} onUpdate
+ * @property {(instancePath: string, update: {}) => void} onUpdate
  * @template V
  */
 
@@ -24,13 +24,13 @@ const EMPTY_ARRAY = []
  *
  * @param {{
  *   value: unknown
- *   dataPath: string
+ *   instancePath: string
  *   label: string
  *   description: string
  *   collapsible?: boolean
  *   validationErrors: import('../../../../shared/validationTypes').ValidationError[]
  *   defaultItemValue(): V
- *   onUpdate(dataPath: string, update: {}): void
+ *   onUpdate(instancePath: string, update: {}): void
  *   onDelete?(): void
  *   children(props: ChildProps<V>): JSX.Element
  * }} props
@@ -50,13 +50,15 @@ export default function ArrayContainer({ children, ...props }) {
     /** @type {Map<number, import('../../../../SecvisogramPage').ValidationError[]>} */
     const c = new Map()
     for (const e of props.validationErrors) {
-      if (e.dataPath.startsWith(props.dataPath + '/')) {
-        const index = Number(parse(e.dataPath)[parse(props.dataPath).length])
+      if (e.instancePath.startsWith(props.instancePath + '/')) {
+        const index = Number(
+          parse(e.instancePath)[parse(props.instancePath).length]
+        )
         c.set(index, (c.get(index) ?? []).concat([e]))
       }
     }
     return c
-  }, [props.dataPath, props.validationErrors])
+  }, [props.instancePath, props.validationErrors])
 
   return (
     <Container
@@ -69,7 +71,7 @@ export default function ArrayContainer({ children, ...props }) {
           {array.map((value, index) => (
             <div key={index} className="mt-2 first:mt-0">
               {children({
-                dataPath: `${props.dataPath}/${index}`,
+                instancePath: `${props.instancePath}/${index}`,
                 value,
                 index,
                 onUpdate: props.onUpdate,
@@ -82,7 +84,7 @@ export default function ArrayContainer({ children, ...props }) {
           <div className="mb-2">
             <DefaultButton
               onClick={() => {
-                props.onUpdate(props.dataPath, {
+                props.onUpdate(props.instancePath, {
                   $push: [props.defaultItemValue()],
                 })
               }}

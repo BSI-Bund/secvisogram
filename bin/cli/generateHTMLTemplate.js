@@ -16,19 +16,23 @@ module.exports = function generateHTMLTemplate(args) {
 
   /**
    * @param {any} schema
-   * @param {string[]} dataPath
+   * @param {string[]} instancePath
    * @param {number} headingLevel
    * @returns {Array<Entry>}
    */
-  function generateSchemaPaths(schema, dataPath = [], headingLevel = 1) {
-    const path = dataPath.length ? dataPath.join('.') : '.'
+  function generateSchemaPaths(schema, instancePath = [], headingLevel = 1) {
+    const path = instancePath.length ? instancePath.join('.') : '.'
     if (headingLevel > 8) return [{ path, schema, headingLevel }]
     switch (schema.type) {
       case 'object':
         return [
           { path, schema, headingLevel },
           ...Object.entries(schema.properties || {}).flatMap(([key, value]) =>
-            generateSchemaPaths(value, dataPath.concat([key]), headingLevel + 1)
+            generateSchemaPaths(
+              value,
+              instancePath.concat([key]),
+              headingLevel + 1
+            )
           ),
         ]
       case 'array':
@@ -44,7 +48,7 @@ module.exports = function generateHTMLTemplate(args) {
         if (schema.$ref && schema.$ref.startsWith('#')) {
           return generateSchemaPaths(
             jsonPtr.get(rootSchema, schema.$ref.slice(1)),
-            dataPath,
+            instancePath,
             headingLevel
           )
         }
@@ -54,7 +58,7 @@ module.exports = function generateHTMLTemplate(args) {
               s.$ref === 'https://www.first.org/cvss/cvss-v3.1.json'
           )
         ) {
-          return generateSchemaPaths(cvss3Schema, dataPath, headingLevel)
+          return generateSchemaPaths(cvss3Schema, instancePath, headingLevel)
         }
         return [{ schema, path, headingLevel }]
     }

@@ -17,9 +17,9 @@ import Attribute from './shared/Attribute'
  *
  * @param {{
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
+ *  instancePath: string
  *  value: unknown
- *  onUpdate: (dataPath: string, update: {}) => void
+ *  onUpdate: (instancePath: string, update: {}) => void
  * }} props
  */
 export default function CweAttribute(props) {
@@ -38,7 +38,7 @@ export default function CweAttribute(props) {
           const onChange = (
             /** @type {{id: string, name: string}} */ { id, name }
           ) => {
-            props.onUpdate(props.dataPath, {
+            props.onUpdate(props.instancePath, {
               $set: {
                 id: id,
                 name: name,
@@ -77,9 +77,9 @@ function useCwecMatch(term) {
 /**
  * @param {{
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
+ *  instancePath: string
  *  value: unknown
- *  onUpdate: (dataPath: string, update: {}) => void
+ *  onUpdate: (instancePath: string, update: {}) => void
  *  onChange({}): void
  * }} props
  */
@@ -151,9 +151,9 @@ function CwecId(props) {
 /**
  * @param {{
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
+ *  instancePath: string
  *  value: unknown
- *  onUpdate: (dataPath: string, update: {}) => void
+ *  onUpdate: (instancePath: string, update: {}) => void
  *  onChange({}): void
  * }} props
  */

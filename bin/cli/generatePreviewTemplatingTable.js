@@ -22,19 +22,19 @@ module.exports = function generatePreviewTemplatingTable(args) {
 
   /**
    * @param {any} schema
-   * @param {string[]} dataPath
+   * @param {string[]} instancePath
    * @param {number} depth
    * @returns {Array<Entry>}
    */
-  function generateSchemaPaths(schema, dataPath = [], depth = 1) {
-    const path = dataPath.length ? dataPath.join('.') : '.'
+  function generateSchemaPaths(schema, instancePath = [], depth = 1) {
+    const path = instancePath.length ? instancePath.join('.') : '.'
     if (depth > 10) return [{ path, schema, depth }]
     switch (schema.type) {
       case 'object':
         return [
           { path, schema, depth },
           ...Object.entries(schema.properties || {}).flatMap(([key, value]) =>
-            generateSchemaPaths(value, dataPath.concat([key]), depth + 1)
+            generateSchemaPaths(value, instancePath.concat([key]), depth + 1)
           ),
         ]
       case 'array':
@@ -50,7 +50,7 @@ module.exports = function generatePreviewTemplatingTable(args) {
         if (schema.$ref && schema.$ref.startsWith('#')) {
           return generateSchemaPaths(
             jsonPtr.get(rootSchema, schema.$ref.slice(1)),
-            dataPath,
+            instancePath,
             depth
           )
         }
@@ -60,10 +60,10 @@ module.exports = function generatePreviewTemplatingTable(args) {
               s.$ref === 'https://www.first.org/cvss/cvss-v3.1.json'
           )
         ) {
-          return generateSchemaPaths(cvss3Schema, dataPath, depth)
+          return generateSchemaPaths(cvss3Schema, instancePath, depth)
         }
         if (schema.$ref === 'https://www.first.org/cvss/cvss-v2.0.json') {
-          return generateSchemaPaths(cvss2Schema, dataPath, depth)
+          return generateSchemaPaths(cvss2Schema, instancePath, depth)
         }
         return [{ schema, path, depth }]
     }

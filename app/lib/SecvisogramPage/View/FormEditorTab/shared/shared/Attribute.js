@@ -16,10 +16,10 @@ const numberRegExp = /^(0|[1-9][0-9]*)$/
  *  description: string
  *  defaultValue?(): string
  *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
+ *  instancePath: string
  *  children?: React.ReactNode | ((params: { isInArray: boolean; onDelete(value: V): void; onChange(value: V, prevValue: V): void }) => React.ReactNode)
  *  canBeAdded?: boolean
- *  onUpdate(dataPath: string, update: {}): void
+ *  onUpdate(instancePath: string, update: {}): void
  *  onChange?(value: V, oldValue: V): void
  *  onDelete?(value: V): void
  * }} props
@@ -31,18 +31,21 @@ export default function Attribute({
   description,
   defaultValue = () => '',
   validationErrors,
-  dataPath,
+  instancePath,
   canBeAdded = true,
   children,
   ...props
 }) {
   const localValidationErrors = validationErrors.filter(
-    (e) => e.dataPath === dataPath
+    (e) => e.instancePath === instancePath
   )
-  const parsedDataPath = React.useMemo(() => parse(dataPath), [dataPath])
+  const parsedInstancePath = React.useMemo(
+    () => parse(instancePath),
+    [instancePath]
+  )
   const attributeName = React.useMemo(
-    () => parsedDataPath.slice().pop() ?? '',
-    [parsedDataPath]
+    () => parsedInstancePath.slice().pop() ?? '',
+    [parsedInstancePath]
   )
   const isInArray = React.useMemo(
     () => Boolean(attributeName.match(numberRegExp)),
@@ -55,7 +58,7 @@ export default function Attribute({
         <label>
           <div
             className="mb-0.5 text-xs font-bold"
-            id={dataPath}
+            id={instancePath}
             title={attributeName + ': ' + description}
           >
             {label}
@@ -64,12 +67,12 @@ export default function Attribute({
             ? children({
                 isInArray,
                 onChange(v, prevValue) {
-                  props.onUpdate(dataPath, { $set: v })
+                  props.onUpdate(instancePath, { $set: v })
                   props.onChange?.(v, prevValue)
                 },
                 onDelete(v) {
                   props.onUpdate(
-                    compile(parsedDataPath.slice(0, -1)),
+                    compile(parsedInstancePath.slice(0, -1)),
                     !isInArray
                       ? { $unset: [attributeName] }
                       : { $splice: [[Number(attributeName), 1]] }
@@ -83,7 +86,7 @@ export default function Attribute({
       ) : canBeAdded ? (
         <DefaultButton
           onClick={() => {
-            props.onUpdate(dataPath, {
+            props.onUpdate(instancePath, {
               $set: defaultValue(),
             })
           }}

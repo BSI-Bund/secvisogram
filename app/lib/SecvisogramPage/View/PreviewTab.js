@@ -106,7 +106,7 @@ export default function PreviewTab({
             <div className="mx-2 flex-grow overflow-auto h-full">
               {errors.map((error, i) => (
                 <div key={i}>
-                  <b>{error.dataPath}</b>: {error.message}
+                  <b>{error.instancePath}</b>: {error.message}
                 </div>
               ))}
             </div>

@@ -18,8 +18,8 @@ export default function validationErrorShallowEqual(prevProps, nextProps) {
   return (
     shallow(_prevProps, _nextProps) &&
     arrayEquals(
-      v1.map((e) => `${e.dataPath}:${e.message}`),
-      v2.map((e) => `${e.dataPath}:${e.message}`)
+      v1.map((e) => `${e.instancePath}:${e.message}`),
+      v2.map((e) => `${e.instancePath}:${e.message}`)
     )
   )
 }

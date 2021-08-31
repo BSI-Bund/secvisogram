@@ -48,13 +48,13 @@ export default class DocumentEntity {
    */
 
   /**
-   * This method collects definitions of product ids and corresponding names and dataPaths in the given document and returns a result object.
+   * This method collects definitions of product ids and corresponding names and instancePaths in the given document and returns a result object.
    * @param {any} document
-   * @returns {{id: string, name: string, dataPath: string}[]}
+   * @returns {{id: string, name: string, instancePath: string}[]}
    */
   collectProductIds({ document }) {
     const entries =
-      /** @type {{id: string, name: string, dataPath: string}[]} */ ([])
+      /** @type {{id: string, name: string, instancePath: string}[]} */ ([])
 
     const fullProductNames = document.product_tree?.full_product_names
     if (fullProductNames) {
@@ -64,7 +64,7 @@ export default class DocumentEntity {
           entries.push({
             id: fullProductName.product_id,
             name: fullProductName.name ?? '',
-            dataPath: `/product_tree/full_product_names/${i}/product_id`,
+            instancePath: `/product_tree/full_product_names/${i}/product_id`,
           })
         }
       }
@@ -80,7 +80,7 @@ export default class DocumentEntity {
             entries.push({
               id: fullProductName.product_id,
               name: fullProductName.name ?? '',
-              dataPath: `/product_tree/relationships/${i}/full_product_name/product_id`,
+              instancePath: `/product_tree/relationships/${i}/full_product_name/product_id`,
             })
           }
         }
@@ -96,12 +96,12 @@ export default class DocumentEntity {
   }
 
   /**
-   * This method collects references to product ids and corresponding dataPaths in the given document and returns a result object.
+   * This method collects references to product ids and corresponding instancePaths in the given document and returns a result object.
    * @param {any} document
-   * @returns {{id: string, dataPath: string}[]}
+   * @returns {{id: string, instancePath: string}[]}
    */
   collectProductIdRefs({ document }) {
-    const entries = /** @type {{id: string, dataPath: string}[]} */ ([])
+    const entries = /** @type {{id: string, instancePath: string}[]} */ ([])
 
     const productGroups = document.product_tree?.product_groups
     if (productGroups) {
@@ -114,7 +114,7 @@ export default class DocumentEntity {
             if (productId) {
               entries.push({
                 id: productId,
-                dataPath: `/product_tree/product_groups/${i}/product_ids/${j}`,
+                instancePath: `/product_tree/product_groups/${i}/product_ids/${j}`,
               })
             }
           }
@@ -130,14 +130,14 @@ export default class DocumentEntity {
         if (productRef) {
           entries.push({
             id: productRef,
-            dataPath: `/product_tree/relationships/${i}/product_reference`,
+            instancePath: `/product_tree/relationships/${i}/product_reference`,
           })
         }
         const relToProductRef = relationshipGroup.relates_to_product_reference
         if (relToProductRef) {
           entries.push({
             id: relToProductRef,
-            dataPath: `/product_tree/relationships/${i}/relates_to_product_reference`,
+            instancePath: `/product_tree/relationships/${i}/relates_to_product_reference`,
           })
         }
       }
@@ -174,14 +174,14 @@ export default class DocumentEntity {
   }
 
   /**
-   * This method collects group ids and corresponding dataPaths in the given document and returns a result object.
+   * This method collects group ids and corresponding instancePaths in the given document and returns a result object.
    *
    * @param {any} document
-   * @returns {{id: string, name: string, dataPath: string}[]}
+   * @returns {{id: string, name: string, instancePath: string}[]}
    */
   collectGroupIds({ document }) {
     const entries =
-      /** @type {{id: string, name: string, dataPath: string}[]} */ ([])
+      /** @type {{id: string, name: string, instancePath: string}[]} */ ([])
 
     const productGroups = document.product_tree?.product_groups
     if (productGroups) {
@@ -191,7 +191,7 @@ export default class DocumentEntity {
           entries.push({
             id: productGroup.group_id,
             name: productGroup.summary ?? '',
-            dataPath: `/product_tree/product_groups/${i}/group_id`,
+            instancePath: `/product_tree/product_groups/${i}/group_id`,
           })
         }
       }
@@ -201,12 +201,12 @@ export default class DocumentEntity {
   }
 
   /**
-   * This method collects references to group ids and corresponding dataPaths in the given document and returns a result object.
+   * This method collects references to group ids and corresponding instancePaths in the given document and returns a result object.
    * @param {any} document
-   * @returns {{id: string, dataPath: string}[]}
+   * @returns {{id: string, instancePath: string}[]}
    */
   collectGroupIdRefs({ document }) {
-    const entries = /** @type {{id: string, dataPath: string}[]} */ ([])
+    const entries = /** @type {{id: string, instancePath: string}[]} */ ([])
 
     const vulnerabilities = document.vulnerabilities
     if (vulnerabilities) {
@@ -235,18 +235,20 @@ export default class DocumentEntity {
    * @param {{ document: {} }} params
    */
   strip({ document }) {
-    /** @type {Array<{ dataPath: string; message: string; error: boolean }>} */
+    /** @type {Array<{ instancePath: string; message: string; error: boolean }>} */
     const strippedPaths = []
 
     /**
      * @param {{}} doc
-     * @param {string} dataPath
+     * @param {string} instancePath
      * @returns {{}}
      */
-    const deleteEmptyNodes = (doc, dataPath) => {
+    const deleteEmptyNodes = (doc, instancePath) => {
       if (typeof doc === 'string' || typeof doc === 'number') return doc
       if (Array.isArray(doc))
-        return doc.map((item, i) => deleteEmptyNodes(item, `${dataPath}/${i}`))
+        return doc.map((item, i) =>
+          deleteEmptyNodes(item, `${instancePath}/${i}`)
+        )
       return {
         ...Object.fromEntries(
           Object.entries(doc)
@@ -258,7 +260,7 @@ export default class DocumentEntity {
 
               if (valueIsEmpty) {
                 strippedPaths.push({
-                  dataPath: `${dataPath}/${key}`,
+                  instancePath: `${instancePath}/${key}`,
                   message: 'value was empty',
                   error: false,
                 })
@@ -267,7 +269,7 @@ export default class DocumentEntity {
             })
             .map(([key, value]) => [
               key,
-              deleteEmptyNodes(value, `${dataPath}/${key}`),
+              deleteEmptyNodes(value, `${instancePath}/${key}`),
             ])
         ),
       }
@@ -278,7 +280,7 @@ export default class DocumentEntity {
     /**
      * @type {Array<{
      *    message?: string
-     *    dataPath: string
+     *    instancePath: string
      *  }>}
      */
     let errors
@@ -288,13 +290,13 @@ export default class DocumentEntity {
         JSON.stringify(
           errors.reduce((updatedDoc, error) => {
             strippedPaths.push({
-              dataPath: error.dataPath,
+              instancePath: error.instancePath,
               error: true,
               message: /** @type {string} */ (error.message),
             })
-            const parsedDataPath = parse(error.dataPath).join('.')
-            if (parsedDataPath === '') return {}
-            return unset(parsedDataPath, updatedDoc)
+            const parsedInstancePath = parse(error.instancePath).join('.')
+            if (parsedInstancePath === '') return {}
+            return unset(parsedInstancePath, updatedDoc)
           }, errorStrippedDocument),
           (_, value) => {
             if (Array.isArray(value)) {
@@ -388,7 +390,7 @@ export default class DocumentEntity {
     /**
      * @type {Array<{
      *    message?: string
-     *    dataPath: string
+     *    instancePath: string
      *  }>}
      */
     const errors = this.schemaValidator.errors ?? []
@@ -397,7 +399,7 @@ export default class DocumentEntity {
         isValid = false
         errors.push({
           message: 'is not a valid language-tag',
-          dataPath: '/document/lang',
+          instancePath: '/document/lang',
         })
       }
     }
@@ -406,7 +408,7 @@ export default class DocumentEntity {
         isValid = false
         errors.push({
           message: 'is not a valid language-tag',
-          dataPath: '/document/source_lang',
+          instancePath: '/document/source_lang',
         })
       }
     }
@@ -420,7 +422,7 @@ export default class DocumentEntity {
           if (!entry) {
             isValid = false
             errors.push({
-              dataPath: `/vulnerabilities/${i}/cwe/id`,
+              instancePath: `/vulnerabilities/${i}/cwe/id`,
               message: 'no weakness with this id is recognized',
             })
             continue
@@ -428,7 +430,7 @@ export default class DocumentEntity {
           if (entry.name !== vulnerability.cwe.name) {
             isValid = false
             errors.push({
-              dataPath: `/vulnerabilities/${i}/cwe/name`,
+              instancePath: `/vulnerabilities/${i}/cwe/name`,
               message: 'the name does not match the weakness with the given id',
             })
             continue
@@ -443,7 +445,7 @@ export default class DocumentEntity {
       duplicateProductIds.forEach((duplicateProductId) => {
         errors.push({
           message: 'duplicate definition product id',
-          dataPath: duplicateProductId.dataPath,
+          instancePath: duplicateProductId.instancePath,
         })
       })
     }
@@ -454,7 +456,7 @@ export default class DocumentEntity {
       duplicateGroupIds.forEach((duplicateEntry) => {
         errors.push({
           message: 'duplicate definition product group id',
-          dataPath: duplicateEntry.dataPath,
+          instancePath: duplicateEntry.instancePath,
         })
       })
     }
@@ -468,7 +470,7 @@ export default class DocumentEntity {
       missingProductDefinitions.forEach((missingProductDefinition) => {
         errors.push({
           message: 'definition of product id missing',
-          dataPath: missingProductDefinition.dataPath,
+          instancePath: missingProductDefinition.instancePath,
         })
       })
     }
@@ -482,7 +484,7 @@ export default class DocumentEntity {
       missingGroupDefinitions.forEach((missingGroupDefinition) => {
         errors.push({
           message: 'definition of group id missing',
-          dataPath: missingGroupDefinition.dataPath,
+          instancePath: missingGroupDefinition.instancePath,
         })
       })
     }
@@ -504,7 +506,7 @@ export default class DocumentEntity {
         isValid = false
         errors.push({
           message: 'version does not match latest revision',
-          dataPath: '/document/tracking/version',
+          instancePath: '/document/tracking/version',
         })
       }
     }
@@ -522,7 +524,7 @@ export default class DocumentEntity {
       isValid = false
       errors.push({
         message: 'the status is not compatible with the version',
-        dataPath: '/document/tracking/status',
+        instancePath: '/document/tracking/status',
       })
     }
 
@@ -541,7 +543,7 @@ export default class DocumentEntity {
       errors.push({
         message:
           'some revision-history entries are not compatible with the status',
-        dataPath: '/document/tracking/status',
+        instancePath: '/document/tracking/status',
       })
     }
 
@@ -557,7 +559,7 @@ export default class DocumentEntity {
           isValid = false
           errors.push({
             message: 'contains prerelease part',
-            dataPath: `/document/tracking/revision_history/${i}/number`,
+            instancePath: `/document/tracking/revision_history/${i}/number`,
           })
         }
       }
@@ -575,7 +577,7 @@ export default class DocumentEntity {
       isValid = false
       errors.push({
         message: 'pre-release part is not allowed for status',
-        dataPath: `/document/tracking/version`,
+        instancePath: `/document/tracking/version`,
       })
     }
 
@@ -594,7 +596,7 @@ export default class DocumentEntity {
           isValid = false
           errors.push({
             message: 'version was already used',
-            dataPath: `/document/tracking/revision_history/${index}/number`,
+            instancePath: `/document/tracking/revision_history/${index}/number`,
           })
         }
       })
@@ -669,30 +671,34 @@ const vulnerabilityHasCWEFields = (vulnerability) =>
 
 /**
  * @param {Array<Branch>} branches
- * @param {{id: string, name: string, dataPath: string}[]} entries
- * @param {string} dataPath
+ * @param {{id: string, name: string, instancePath: string}[]} entries
+ * @param {string} instancePath
  */
-const traverseBranches = (branches, entries, dataPath) => {
+const traverseBranches = (branches, entries, instancePath) => {
   for (let i = 0; i < branches.length; ++i) {
     const branch = branches[i]
-    const branchDataPath = `${dataPath}/${i}`
+    const branchInstancePath = `${instancePath}/${i}`
     const fullProductName = branch.product
     if (fullProductName) {
       if (fullProductName.product_id) {
         entries.push({
           id: fullProductName.product_id,
           name: fullProductName.name ?? '',
-          dataPath: `${branchDataPath}/product/product_id`,
+          instancePath: `${branchInstancePath}/product/product_id`,
         })
       }
     }
     if (branch.branches)
-      traverseBranches(branch.branches, entries, `${branchDataPath}/branches`)
+      traverseBranches(
+        branch.branches,
+        entries,
+        `${branchInstancePath}/branches`
+      )
   }
 }
 
 /**
- * @param {{id: string, name: string, dataPath: string}[]} entries
+ * @param {{id: string, name: string, instancePath: string}[]} entries
  */
 const findDuplicateEntries = (entries) => {
   const lookup = entries.reduce((/** @type {any} */ a, entry) => {
@@ -705,7 +711,7 @@ const findDuplicateEntries = (entries) => {
 
 /**
  * @param {{id: string}[]} entries
- * @param {{id: string, dataPath: string}[]} refs
+ * @param {{id: string, instancePath: string}[]} refs
  */
 const findMissingDefinitions = (entries, refs) => {
   return refs.filter(
@@ -715,17 +721,17 @@ const findMissingDefinitions = (entries, refs) => {
 
 /**
  * @param {string[]} refs
- * @param {string} dataPath
- * @param {{id: string, dataPath: string}[]} entries
+ * @param {string} instancePath
+ * @param {{id: string, instancePath: string}[]} entries
  */
-const findRefsInProductStatus = (refs, dataPath, entries) => {
+const findRefsInProductStatus = (refs, instancePath, entries) => {
   if (refs) {
     for (let i = 0; i < refs.length; ++i) {
       const ref = refs[i]
       if (ref) {
         entries.push({
           id: ref,
-          dataPath: `${dataPath}/${i}`,
+          instancePath: `${instancePath}/${i}`,
         })
       }
     }
@@ -733,59 +739,63 @@ const findRefsInProductStatus = (refs, dataPath, entries) => {
 }
 
 /**
- * @param {string} dataPath
+ * @param {string} instancePath
  * @param {{product_status: any}} vulnerability
  * @param {*} entries
  */
-const collectRefsInProductStatus = (dataPath, vulnerability, entries) => {
+const collectRefsInProductStatus = (instancePath, vulnerability, entries) => {
   findRefsInProductStatus(
     vulnerability.product_status?.first_affected,
-    `${dataPath}/first_affected`,
+    `${instancePath}/first_affected`,
     entries
   )
   findRefsInProductStatus(
     vulnerability.product_status?.first_fixed,
-    `${dataPath}/first_fixed`,
+    `${instancePath}/first_fixed`,
     entries
   )
   findRefsInProductStatus(
     vulnerability.product_status?.fixed,
-    `${dataPath}/fixed`,
+    `${instancePath}/fixed`,
     entries
   )
   findRefsInProductStatus(
     vulnerability.product_status?.known_affected,
-    `${dataPath}/known_affected`,
+    `${instancePath}/known_affected`,
     entries
   )
   findRefsInProductStatus(
     vulnerability.product_status?.known_not_affected,
-    `${dataPath}/known_not_affected`,
+    `${instancePath}/known_not_affected`,
     entries
   )
   findRefsInProductStatus(
     vulnerability.product_status?.last_affected,
-    `${dataPath}/last_affected`,
+    `${instancePath}/last_affected`,
     entries
   )
   findRefsInProductStatus(
     vulnerability.product_status?.recommended,
-    `${dataPath}/recommended`,
+    `${instancePath}/recommended`,
     entries
   )
   findRefsInProductStatus(
     vulnerability.product_status?.under_investigation,
-    `${dataPath}/under_investigation`,
+    `${instancePath}/under_investigation`,
     entries
   )
 }
 
 /**
- * @param {string} dataPath
+ * @param {string} instancePath
  * @param {{remediations: any}} vulnerability
  * @param {*} entries
  */
-const collectProductRefsInRemediations = (dataPath, vulnerability, entries) => {
+const collectProductRefsInRemediations = (
+  instancePath,
+  vulnerability,
+  entries
+) => {
   const remediations = vulnerability.remediations
   if (remediations) {
     for (let i = 0; i < remediations.length; ++i) {
@@ -797,7 +807,7 @@ const collectProductRefsInRemediations = (dataPath, vulnerability, entries) => {
           if (productId) {
             entries.push({
               id: productId,
-              dataPath: `${dataPath}/${i}/product_ids/${j}`,
+              instancePath: `${instancePath}/${i}/product_ids/${j}`,
             })
           }
         }
@@ -807,11 +817,11 @@ const collectProductRefsInRemediations = (dataPath, vulnerability, entries) => {
 }
 
 /**
- * @param {string} dataPath
+ * @param {string} instancePath
  * @param {{scores: any}} vulnerability
  * @param {*} entries
  */
-const collectRefsInScores = (dataPath, vulnerability, entries) => {
+const collectRefsInScores = (instancePath, vulnerability, entries) => {
   const scores = vulnerability.scores
   if (scores) {
     for (let i = 0; i < scores.length; ++i) {
@@ -823,7 +833,7 @@ const collectRefsInScores = (dataPath, vulnerability, entries) => {
           if (productId) {
             entries.push({
               id: productId,
-              dataPath: `${dataPath}/${i}/products/${j}`,
+              instancePath: `${instancePath}/${i}/products/${j}`,
             })
           }
         }
@@ -833,11 +843,11 @@ const collectRefsInScores = (dataPath, vulnerability, entries) => {
 }
 
 /**
- * @param {string} dataPath
+ * @param {string} instancePath
  * @param {{threats: any}} vulnerability
  * @param {*} entries
  */
-const collectProductRefsInThreats = (dataPath, vulnerability, entries) => {
+const collectProductRefsInThreats = (instancePath, vulnerability, entries) => {
   const threats = vulnerability.threats
   if (threats) {
     for (let i = 0; i < threats.length; ++i) {
@@ -849,7 +859,7 @@ const collectProductRefsInThreats = (dataPath, vulnerability, entries) => {
           if (productId) {
             entries.push({
               id: productId,
-              dataPath: `${dataPath}/${i}/product_ids/${j}`,
+              instancePath: `${instancePath}/${i}/product_ids/${j}`,
             })
           }
         }
@@ -859,11 +869,15 @@ const collectProductRefsInThreats = (dataPath, vulnerability, entries) => {
 }
 
 /**
- * @param {string} dataPath
+ * @param {string} instancePath
  * @param {{remediations: any}} vulnerability
  * @param {*} entries
  */
-const collectGroupRefsInRemediations = (dataPath, vulnerability, entries) => {
+const collectGroupRefsInRemediations = (
+  instancePath,
+  vulnerability,
+  entries
+) => {
   const remediations = vulnerability.remediations
   if (remediations) {
     for (let i = 0; i < remediations.length; ++i) {
@@ -875,7 +889,7 @@ const collectGroupRefsInRemediations = (dataPath, vulnerability, entries) => {
           if (groupId) {
             entries.push({
               id: groupId,
-              dataPath: `${dataPath}/${i}/group_ids/${j}`,
+              instancePath: `${instancePath}/${i}/group_ids/${j}`,
             })
           }
         }
@@ -885,11 +899,11 @@ const collectGroupRefsInRemediations = (dataPath, vulnerability, entries) => {
 }
 
 /**
- * @param {string} dataPath
+ * @param {string} instancePath
  * @param {{threats: any}} vulnerability
  * @param {*} entries
  */
-const collectGroupRefsInThreats = (dataPath, vulnerability, entries) => {
+const collectGroupRefsInThreats = (instancePath, vulnerability, entries) => {
   const threats = vulnerability.threats
   if (threats) {
     for (let i = 0; i < threats.length; ++i) {
@@ -901,7 +915,7 @@ const collectGroupRefsInThreats = (dataPath, vulnerability, entries) => {
           if (groupId) {
             entries.push({
               id: groupId,
-              dataPath: `${dataPath}/${i}/group_ids/${j}`,
+              instancePath: `${instancePath}/${i}/group_ids/${j}`,
             })
           }
         }

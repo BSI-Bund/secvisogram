@@ -8,15 +8,15 @@ export default React.memo(
   /**
    * @param {{
    *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
-   *  dataPath: string
+   *  instancePath: string
    *  value: unknown
-   *  onUpdate(dataPath: string, update: {}): void
+   *  onUpdate(instancePath: string, update: {}): void
    * }} props
    */
   function AggregateSeverity({
     value: aggregateSeverity,
     validationErrors,
-    dataPath,
+    instancePath,
     onUpdate,
   }) {
     return (
@@ -24,7 +24,7 @@ export default React.memo(
         label="Aggregate severity"
         description="Is a vehicle that is provided by the document producer to convey the urgency and criticality with which the one or more vulnerabilities reported should be addressed. It is a document-level metric and applied to the document as a whole — not any specific vulnerability. The range of values in this field is defined according to the document producer's policies and procedures."
         validationErrors={validationErrors}
-        dataPath={dataPath}
+        instancePath={instancePath}
         value={aggregateSeverity}
         defaultValue={() => ({
           text: '',

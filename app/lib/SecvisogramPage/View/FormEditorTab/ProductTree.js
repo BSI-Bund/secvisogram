@@ -14,8 +14,8 @@ export default React.memo(
    * @param {{
    *  value: unknown
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
-   *  dataPath: string
-   *  onUpdate(dataPath: string, update: {}): void
+   *  instancePath: string
+   *  onUpdate(instancePath: string, update: {}): void
    *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
    * }} props
    */
@@ -23,7 +23,7 @@ export default React.memo(
     const {
       value: productTree,
       validationErrors,
-      dataPath,
+      instancePath,
       onUpdate,
       onCollectProductIds,
     } = props
@@ -32,7 +32,7 @@ export default React.memo(
         label="Product tree"
         description="Is a container for all fully qualified product names that can be referenced elsewhere in the document."
         validationErrors={validationErrors}
-        dataPath={dataPath}
+        instancePath={instancePath}
         value={productTree}
         defaultValue={() => ({})}
         onUpdate={onUpdate}
@@ -62,8 +62,8 @@ const ProductGroups = React.memo(
    * @param {{
    *  value: unknown
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
-   *  dataPath: string
-   *  onUpdate(dataPath: string, update: {}): void
+   *  instancePath: string
+   *  onUpdate(instancePath: string, update: {}): void
    *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
    * }} props
    */
@@ -130,8 +130,8 @@ const FullProductNames = React.memo(
    * @param {{
    *  value: unknown
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
-   *  dataPath: string
-   *  onUpdate(dataPath: string, update: {}): void
+   *  instancePath: string
+   *  onUpdate(instancePath: string, update: {}): void
    * }} props
    */
   function FullProductNames(props) {
@@ -159,8 +159,8 @@ const Relationships = React.memo(
    * @param {{
    *  value: unknown
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
-   *  dataPath: string
-   *  onUpdate(dataPath: string, update: {}): void
+   *  instancePath: string
+   *  onUpdate(instancePath: string, update: {}): void
    *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
    * }} props
    */
@@ -184,15 +184,15 @@ const Relationships = React.memo(
             description="Establishes a link between two existing full_product_name_t elements, allowing the document producer to define a combination of two products that form a new full_product_name entry."
           >
             {(relationshipProps) => {
-              const productReference = /** @type {string} */ (relationshipProps(
-                'product_reference'
-              ).value ?? '')
-              const relatesToProductReference = /** @type {string} */ (relationshipProps(
-                'relates_to_product_reference'
-              ).value ?? '')
-              const category = /** @type {string} */ (relationshipProps(
-                'category'
-              ).value ?? '')
+              const productReference = /** @type {string} */ (
+                relationshipProps('product_reference').value ?? ''
+              )
+              const relatesToProductReference = /** @type {string} */ (
+                relationshipProps('relates_to_product_reference').value ?? ''
+              )
+              const category = /** @type {string} */ (
+                relationshipProps('category').value ?? ''
+              )
               return (
                 <>
                   <FullProductName

@@ -63,7 +63,7 @@ core.document.newDocMin().then((doc) => {
       errors: /** @type {ValidationError[]} */ ([]),
       stripResult: /**
        * @type {{
-       *    strippedPaths: Array<{ dataPath: string; message: string; error: boolean }>
+       *    strippedPaths: Array<{ instancePath: string; message: string; error: boolean }>
        *    doc: {}
        * } | null}
        */ (null),

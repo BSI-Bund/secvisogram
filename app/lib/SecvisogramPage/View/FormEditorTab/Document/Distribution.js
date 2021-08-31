@@ -7,15 +7,15 @@ import Tlp from './Distribution/Tlp'
 /**
  * @param {{
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
+ *  instancePath: string
  *  value: unknown
- *  onUpdate(dataPath: string, update: {}): void
+ *  onUpdate(instancePath: string, update: {}): void
  * }} props
  */
 export default function Distribution({
   value: distribution,
   validationErrors,
-  dataPath,
+  instancePath,
   onUpdate,
 }) {
   return (
@@ -23,7 +23,7 @@ export default function Distribution({
       label="Rules for sharing document"
       description="Describe any constraints on how this document might be shared."
       validationErrors={validationErrors}
-      dataPath={dataPath}
+      instancePath={instancePath}
       value={distribution}
       defaultValue={() => ({})}
       onUpdate={onUpdate}

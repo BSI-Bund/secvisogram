@@ -88,9 +88,10 @@ function View({
    * Initial values for the editors. Can be used to detect changes of the
    * document.
    */
-  const originalValues = React.useMemo(() => ({ doc: data?.doc ?? null }), [
-    data,
-  ])
+  const originalValues = React.useMemo(
+    () => ({ doc: data?.doc ?? null }),
+    [data]
+  )
 
   /**
    * Editor state.
@@ -98,7 +99,9 @@ function View({
   const [state, dispatch] = React.useReducer(Reducer, {
     formValues: originalValues,
   })
-  const formValues = /** @type {import('./shared/FormValues').default} */ (state.formValues)
+  const formValues = /** @type {import('./shared/FormValues').default} */ (
+    state.formValues
+  )
 
   /**
    * Enables debounced validation.
@@ -112,13 +115,13 @@ function View({
    * @see {Reducer}
    */
   const onUpdate =
-    /** @type {((update: {}) => void) & ((dataPath: string, update: {}) => void)} */ (
+    /** @type {((update: {}) => void) & ((instancePath: string, update: {}) => void)} */ (
       React.useCallback(
         (/** @type {any} */ newValue, /** @type {any?} */ update) => {
           if (typeof newValue === 'string') {
             dispatch({
               type: 'CHANGE_FORM_DOC',
-              dataPath: newValue,
+              instancePath: newValue,
               timestamp: new Date(),
               update: update,
               generatorEngineData,
@@ -141,11 +144,12 @@ function View({
    *
    * @see {JsonEditorTab}
    */
-  const onReplaceDoc = React.useCallback((
-    /** @type {unknown} */ newSerializedDoc
-  ) => {
-    dispatch({ type: 'RESET_FORM_DOC', doc: newSerializedDoc })
-  }, [])
+  const onReplaceDoc = React.useCallback(
+    (/** @type {unknown} */ newSerializedDoc) => {
+      dispatch({ type: 'RESET_FORM_DOC', doc: newSerializedDoc })
+    },
+    []
+  )
 
   const onStripCallback = React.useCallback(() => {
     onStrip(formValues.doc)
