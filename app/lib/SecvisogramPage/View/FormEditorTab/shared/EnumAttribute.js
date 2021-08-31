@@ -14,10 +14,10 @@ import Delete from './shared/Delete'
  *  required?: boolean
  *  deletable?: boolean
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
+ *  instancePath: string
  *  value: unknown
  *  freeSolo?: boolean
- *  onUpdate(dataPath: string, update: {}): void
+ *  onUpdate(instancePath: string, update: {}): void
  * }} props
  */
 export default function EnumAttribute({

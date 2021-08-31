@@ -46,7 +46,7 @@ suite('SecvisogramPage', () => {
 
         state = ViewReducer(state, {
           type: 'CHANGE_FORM_DOC',
-          dataPath: '/foobar/test',
+          instancePath: '/foobar/test',
           timestamp,
           update: { $set: 42 },
           generatorEngineData,
@@ -66,9 +66,10 @@ suite('SecvisogramPage', () => {
 
       test('The form can be reset', () => {
         let { state } = Fixture()
-        const values = /** @type {ReturnType<typeof ViewReducer>['formValues']} */ ({
-          doc: { test: 'it' },
-        })
+        const values =
+          /** @type {ReturnType<typeof ViewReducer>['formValues']} */ ({
+            doc: { test: 'it' },
+          })
 
         state = ViewReducer(state, {
           type: 'RESET_FORM',

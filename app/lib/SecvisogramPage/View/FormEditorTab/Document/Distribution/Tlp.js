@@ -7,15 +7,15 @@ import TextAttribute from '../../shared/TextAttribute'
 /**
  * @param {{
  *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
+ *  instancePath: string
  *  value: unknown
- *  onUpdate(dataPath: string, update: {}): void
+ *  onUpdate(instancePath: string, update: {}): void
  * }} props
  */
 export default function Tlp({
   value: tlp,
   validationErrors,
-  dataPath,
+  instancePath,
   onUpdate,
 }) {
   return (
@@ -23,7 +23,7 @@ export default function Tlp({
       label="Traffic Light Protocol (TLP)"
       description="Provides details about the TLP classification of the document."
       validationErrors={validationErrors}
-      dataPath={dataPath}
+      instancePath={instancePath}
       value={tlp}
       defaultValue={() => ({
         label: '',

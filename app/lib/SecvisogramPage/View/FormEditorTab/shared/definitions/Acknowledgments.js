@@ -8,9 +8,9 @@ export default React.memo(
   /**
    * @param {{
    *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
-   *  dataPath: string
+   *  instancePath: string
    *  value: unknown
-   *  onUpdate(dataPath: string, update: {}): void
+   *  onUpdate(instancePath: string, update: {}): void
    * }} props
    */
   function Acknowledgments(props) {

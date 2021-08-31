@@ -9,8 +9,8 @@ import CVSSV3Editor from './Scores/CVSS3Editor'
  * @param {{
  *  value: unknown
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
- *  onUpdate(dataPath: string, update: {}): void
+ *  instancePath: string
+ *  onUpdate(instancePath: string, update: {}): void
  *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
  * }} props
  */

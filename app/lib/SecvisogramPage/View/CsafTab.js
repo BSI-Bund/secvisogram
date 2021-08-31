@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
 /**
- * @typedef {Array<{ dataPath: string; message: string; error: boolean }>} StrippedPathArray
+ * @typedef {Array<{ instancePath: string; message: string; error: boolean }>} StrippedPathArray
  */
 
 /**
@@ -15,7 +15,7 @@ import React from 'react'
  *
  * @param {{
  *  stripResult: {
- *    strippedPaths: Array<{ dataPath: string; message: string; error: boolean }>
+ *    strippedPaths: Array<{ instancePath: string; message: string; error: boolean }>
  *    doc: {}
  *  } | null
  *  onStrip(): void
@@ -63,7 +63,7 @@ export default function CsafTab({ stripResult, onStrip, onExport }) {
             <div className="mx-2 flex-grow overflow-auto h-full">
               {stripResult?.strippedPaths.map((strippedPath, i) => (
                 <div key={i}>
-                  <b>{strippedPath.dataPath}</b>: {strippedPath.message}
+                  <b>{strippedPath.instancePath}</b>: {strippedPath.message}
                 </div>
               ))}
             </div>

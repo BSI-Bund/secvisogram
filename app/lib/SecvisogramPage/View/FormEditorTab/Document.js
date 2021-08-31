@@ -15,8 +15,8 @@ export default React.memo(
    * @param {{
    *  value: unknown
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
-   *  dataPath: string
-   *  onUpdate(dataPath: string, update: {}): void
+   *  instancePath: string
+   *  onUpdate(instancePath: string, update: {}): void
    * }} props
    */
   function Document(props) {

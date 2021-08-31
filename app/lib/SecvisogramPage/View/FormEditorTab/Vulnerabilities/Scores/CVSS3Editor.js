@@ -10,8 +10,8 @@ import CVSSVector from './CVSS3Editor/CVSSVector'
  * @param {{
  *  value: unknown
  *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
- *  onUpdate: (dataPath: string, update: {}) => void
+ *  instancePath: string
+ *  onUpdate: (instancePath: string, update: {}) => void
  * }} props
  */
 export default function CVSSV3Editor(props) {
@@ -45,14 +45,14 @@ export default function CVSSV3Editor(props) {
             onChange(/** @type {string} */ v) {
               if (key === 'vectorString') return
               const updatedCVSSMetrics = cvssVector.set(key, v)
-              props.onUpdate(props.dataPath, {
+              props.onUpdate(props.instancePath, {
                 $merge: { ...updatedCVSSMetrics.data },
               })
             },
             onDelete() {
               if (key === 'vectorString') return
               const updatedCVSSMetrics = cvssVector.remove(key)
-              props.onUpdate(props.dataPath, {
+              props.onUpdate(props.instancePath, {
                 $merge: { ...updatedCVSSMetrics.data },
               })
             },
@@ -78,7 +78,7 @@ export default function CVSSV3Editor(props) {
                     e.target.value
                   )
                   const metrics = updatedCVSSMetrics
-                  props.onUpdate(props.dataPath, {
+                  props.onUpdate(props.instancePath, {
                     $merge: { ...metrics.data },
                   })
                 }}
@@ -87,7 +87,7 @@ export default function CVSSV3Editor(props) {
                 {canBeUpgraded ? (
                   <DefaultButton
                     onClick={() => {
-                      props.onUpdate(props.dataPath, {
+                      props.onUpdate(props.instancePath, {
                         $merge: { ...cvssVector.updateVectorStringTo31().data },
                       })
                     }}

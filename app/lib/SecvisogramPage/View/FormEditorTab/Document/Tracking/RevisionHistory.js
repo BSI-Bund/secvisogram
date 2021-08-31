@@ -8,9 +8,9 @@ import TextAreaAttribute from '../../shared/TextAreaAttribute'
 /**
  * @param {{
  *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
+ *  instancePath: string
  *  value: unknown
- *  onUpdate(dataPath: string, update: {}): void
+ *  onUpdate(instancePath: string, update: {}): void
  * }} props
  */
 export default function RevisionHistory(props) {

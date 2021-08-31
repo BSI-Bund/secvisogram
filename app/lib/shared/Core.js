@@ -55,7 +55,7 @@ export default function createCore() {
        *   isValid: boolean;
        *   errors: {
        *     message?: string | undefined;
-       *     dataPath: string;
+       *     instancePath: string;
        *   }[];
        * }>}
        */
