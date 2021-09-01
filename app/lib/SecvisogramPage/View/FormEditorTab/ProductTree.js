@@ -204,8 +204,8 @@ const Relationships = React.memo(
                   />
                   <IdAttribute
                     {...relationshipProps('product_reference')}
-                    label="Reference token for product instance"
-                    description="Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document."
+                    label="Product reference"
+                    description="Holds a Product ID that refers to the Full Product Name element, which is referenced as the first element of the relationship."
                     placeholder="CSAFPID-0004 ..."
                     onCollectIds={onCollectProductIds}
                   />
@@ -223,8 +223,8 @@ const Relationships = React.memo(
                   />
                   <IdAttribute
                     {...relationshipProps('relates_to_product_reference')}
-                    label="Reference token for product instance"
-                    description="Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document."
+                    label="Relates to product reference"
+                    description="Holds a Product ID that refers to the Full Product Name element, which is referenced as the second element of the relationship."
                     placeholder="CSAFPID-0004 ..."
                     onCollectIds={onCollectProductIds}
                   />

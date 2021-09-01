@@ -109,8 +109,8 @@ export default function ProductIdentificationHelper({
             {...productIdentificationHelperProps('purl')}
             label="package URL representation"
             description="The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification."
-            pattern="^pkg:"
-            minLength={4}
+            pattern="^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+"
+            minLength={7}
             deletable
           />
           <ArrayContainer
