@@ -12,11 +12,7 @@ module.exports = function generatePreviewTemplatingTable(args) {
   const rootSchema = require(resolve(args.csaf20Schema))
   const cvss3Schema = require(resolve(args.cvss31Schema))
   const cvss2Schema = require(resolve(args.cvss20Schema))
-  Object.assign(
-    rootSchema.definitions,
-    cvss3Schema.definitions,
-    cvss2Schema.definitions
-  )
+  Object.assign(rootSchema.$defs, cvss3Schema.$defs, cvss2Schema.$defs)
 
   /** @typedef {{ path: string; schema: any; items?: Array<Entry>; depth: number }} Entry */
 

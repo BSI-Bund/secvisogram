@@ -10,7 +10,7 @@ const { resolve } = require('path')
 module.exports = function generateHTMLTemplate(args) {
   const rootSchema = require(resolve(args.csaf20Schema))
   const cvss3Schema = require(resolve(args.cvss31Schema))
-  Object.assign(rootSchema.definitions, cvss3Schema.definitions)
+  Object.assign(rootSchema.$defs, cvss3Schema.$defs)
 
   /** @typedef {{ path: string; schema: any; items?: Array<Entry>; headingLevel: number }} Entry */
 
