@@ -22,7 +22,12 @@ module.exports = function generatePreviewTemplatingTable(args) {
    * @param {number} depth
    * @returns {Array<Entry>}
    */
-  function generateSchemaPaths(schema, instancePath = [], depth = 1) {
+  function generateSchemaPaths(
+    schema,
+    instancePath = [],
+    depth = 1,
+    overwriteDescription = ''
+  ) {
     const path = instancePath.length ? instancePath.join('.') : '.'
     if (depth > 10) return [{ path, schema, depth }]
     switch (schema.type) {
@@ -44,11 +49,12 @@ module.exports = function generatePreviewTemplatingTable(args) {
         ]
       default:
         if (schema.$ref && schema.$ref.startsWith('#')) {
-          return generateSchemaPaths(
-            jsonPtr.get(rootSchema, schema.$ref.slice(1)),
-            instancePath,
-            depth
-          )
+          var refSchema = jsonPtr.get(rootSchema, schema.$ref.slice(1))
+          if (schema.description) {
+            refSchema = Object.assign({}, refSchema)
+            refSchema.description = schema.description
+          }
+          return generateSchemaPaths(refSchema, instancePath, depth)
         }
         if (
           schema.oneOf?.find(

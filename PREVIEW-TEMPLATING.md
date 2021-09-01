@@ -84,7 +84,7 @@ This is the full list of document properties. It reflects the structure as defin
 | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `.` | Representation of security advisory information as a JSON document. | |
 | `document` | Captures the meta-data about this document describing a particular set of security advisories. | |
-| `document.acknowledgments` | Contains a list of acknowledgment elements.| |
+| `document.acknowledgments` | Contains a list of acknowledgment elements associated with the whole document.| |
 | `document.acknowledgments[]` | Acknowledges contributions by describing those that contributed. | |
 | `document.acknowledgments[].names` | Contains the names of entities being recognized.| |
 | `document.acknowledgments[].names[]` | Contains the name of a single person. | Albert Einstein, Johann Sebastian Bach |
@@ -102,8 +102,8 @@ This is the full list of document properties. It reflects the structure as defin
 | `document.distribution.tlp` | Provides details about the TLP classification of the document. | |
 | `document.distribution.tlp.label` | Provides the TLP label of the document. | |
 | `document.distribution.tlp.url` | Provides a URL where to find the textual description of the TLP version which is used in this document. Default is the URL to the definition by FIRST. | https://www.us-cert.gov/tlp, https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Kritis/Merkblatt_TLP.pdf |
-| `document.lang` | Identifies a language, corresponding to IETF BCP 47 / RFC 5646. See IETF language registry: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry | de, en, fr, frc, jp |
-| `document.notes` | Contains notes which are specific to the current context.| |
+| `document.lang` | Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646. | de, en, fr, frc, jp |
+| `document.notes` | Holds notes associated with the whole document.| |
 | `document.notes[]` | Is a place to put all manner of text blobs related to the current context. | |
 | `document.notes[].audience` | Indicate who is intended to read it. | all, executives, operational management and system administrators, safety engineers |
 | `document.notes[].category` | Choice of what kind of note this is. | |
@@ -115,12 +115,12 @@ This is the full list of document properties. It reflects the structure as defin
 | `document.publisher.issuing_authority` | Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations. | |
 | `document.publisher.name` | Contains the name of the issuing party. | BSI, Cisco PSIRT, Siemens ProductCERT |
 | `document.publisher.namespace` | Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. | https://csaf.io, https://www.example.com |
-| `document.references` | Holds a list of references.| |
+| `document.references` | Holds a list of references associated with the whole document.| |
 | `document.references[]` | Holds any reference to conferences, papers, advisories, and other resources that are related and considered related to either a surrounding part of or the entire document and to be of value to the document consumer. | |
 | `document.references[].category` | Indicates whether the reference points to the same document or vulnerability in focus (depending on scope) or to an external resource. | |
 | `document.references[].summary` | Indicates what this reference refers to. | |
 | `document.references[].url` | Provides the URL for the reference. | |
-| `document.source_lang` | Identifies a language, corresponding to IETF BCP 47 / RFC 5646. See IETF language registry: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry | de, en, fr, frc, jp |
+| `document.source_lang` | If this copy of the document is a translation then the value of this property describes from which language this document was translated. | de, en, fr, frc, jp |
 | `document.title` | This SHOULD be a canonical name for the document, and sufficiently unique to distinguish it from similar documents. | Cisco IPv6 Crafted Packet Denial of Service Vulnerability, Example Company Cross-Site-Scripting Vulnerability in Example Generator |
 | `document.tracking` | Is a container designated to hold all management attributes necessary to track a CSAF document as a whole. | |
 | `document.tracking.aliases` | Contains a list of alternate names for the same document.| |
@@ -267,11 +267,11 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[]` | Provides a generic extension point for any identifier which is either vendor-specific or derived from a standard not yet supported. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].namespace` | Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].uri` | Contains the identifier itself. | |
-| `product_tree.relationships[].product_reference` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `product_tree.relationships[].relates_to_product_reference` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
+| `product_tree.relationships[].product_reference` | Holds a Product ID that refers to the Full Product Name element, which is referenced as the first element of the relationship. | CSAFPID-0004, CSAFPID-0008 |
+| `product_tree.relationships[].relates_to_product_reference` | Holds a Product ID that refers to the Full Product Name element, which is referenced as the second element of the relationship. | CSAFPID-0004, CSAFPID-0008 |
 | `vulnerabilities` | Represents a list of all relevant vulnerability information items.| |
 | `vulnerabilities[]` | Is a container for the aggregation of all fields that are related to a single vulnerability in the document. | |
-| `vulnerabilities[].acknowledgments` | Contains a list of acknowledgment elements.| |
+| `vulnerabilities[].acknowledgments` | Contains a list of acknowledgment elements associated with this vulnerability item.| |
 | `vulnerabilities[].acknowledgments[]` | Acknowledges contributions by describing those that contributed. | |
 | `vulnerabilities[].acknowledgments[].names` | Contains the names of entities being recognized.| |
 | `vulnerabilities[].acknowledgments[].names[]` | Contains the name of a single person. | Albert Einstein, Johann Sebastian Bach |
@@ -293,30 +293,30 @@ This is the full list of document properties. It reflects the structure as defin
 | `vulnerabilities[].involvements[].party` | Defines the category of the involved party. | |
 | `vulnerabilities[].involvements[].status` | Defines contact status of the involved party. | |
 | `vulnerabilities[].involvements[].summary` | Contains additional context regarding what is going on. | |
-| `vulnerabilities[].notes` | Contains notes which are specific to the current context.| |
+| `vulnerabilities[].notes` | Holds notes associated with this vulnerability item.| |
 | `vulnerabilities[].notes[]` | Is a place to put all manner of text blobs related to the current context. | |
 | `vulnerabilities[].notes[].audience` | Indicate who is intended to read it. | all, executives, operational management and system administrators, safety engineers |
 | `vulnerabilities[].notes[].category` | Choice of what kind of note this is. | |
 | `vulnerabilities[].notes[].text` | The contents of the note. Content varies depending on type. | |
 | `vulnerabilities[].notes[].title` | Provides a concise description of what is contained in the text of the note. | Details, Executive summary, Technical summary, Impact on safety systems |
 | `vulnerabilities[].product_status` | Contains different lists of product_ids which provide details on the status of the referenced product related to the current vulnerability.  | |
-| `vulnerabilities[].product_status.first_affected` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.first_affected` | These are the first versions of the releases known to be affected by the vulnerability.| |
 | `vulnerabilities[].product_status.first_affected[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.first_fixed` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.first_fixed` | These versions contain the first fix for the vulnerability but may not be the recommended fixed versions.| |
 | `vulnerabilities[].product_status.first_fixed[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.fixed` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.fixed` | These versions contain a fix for the vulnerability but may not be the recommended fixed versions.| |
 | `vulnerabilities[].product_status.fixed[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.known_affected` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.known_affected` | These versions are known to be affected by the vulnerability.| |
 | `vulnerabilities[].product_status.known_affected[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.known_not_affected` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.known_not_affected` | These versions are known not to be affected by the vulnerability.| |
 | `vulnerabilities[].product_status.known_not_affected[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.last_affected` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.last_affected` | These are the last versions in a release train known to be affected by the vulnerability. Subsequently released versions would contain a fix for the vulnerability.| |
 | `vulnerabilities[].product_status.last_affected[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.recommended` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.recommended` | These versions have a fix for the vulnerability and are the vendor-recommended versions for fixing the vulnerability.| |
 | `vulnerabilities[].product_status.recommended[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.under_investigation` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.under_investigation` | It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation - the result will be provided in a later release of the document.| |
 | `vulnerabilities[].product_status.under_investigation[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].references` | Holds a list of references.| |
+| `vulnerabilities[].references` | Holds a list of references associated with this vulnerability item.| |
 | `vulnerabilities[].references[]` | Holds any reference to conferences, papers, advisories, and other resources that are related and considered related to either a surrounding part of or the entire document and to be of value to the document consumer. | |
 | `vulnerabilities[].references[].category` | Indicates whether the reference points to the same document or vulnerability in focus (depending on scope) or to an external resource. | |
 | `vulnerabilities[].references[].summary` | Indicates what this reference refers to. | |
