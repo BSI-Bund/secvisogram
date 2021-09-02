@@ -23,7 +23,7 @@
 [Secvisogram](https://secvisogram.github.io) is a tool for creating and editing advisories in [CSAF](https://github.com/oasis-tcs/csaf/blob/master/csaf_2.0/prose/csaf-v2-editor-draft.md) [format](https://github.com/oasis-tcs/csaf/blob/master/csaf_2.0/json_schema/csaf_json_schema.json).
 
 Secvisogram is inspired by the project [Vulnogram](https://vulnogram.github.io/) - "a tool for creating and editing CVE information in CVE JSON format". Both names share the same Greek suffix '-gram' which is used for denoting something written or recorded in a particular way.
-Vulnerability-related information is often not enough - mostly, only the remediation information enables the end user to act efficiently in responding to these concerns. This information is usually conveyed in **Secutiry Advisories**. Therefore, the first part of the name Secvisogram abbreviates the words _Security Advisory_.
+Vulnerability-related information is often not enough - mostly, only the remediation information enables the end user to act efficiently in responding to these concerns. This information is usually conveyed in **Security Advisories**. Therefore, the first part of the name Secvisogram abbreviates the words _Security Advisory_.
 
 Secvisogram aims to make it easier for vendors and other security advisory issuing parties to record the advisory details in the CSAF format.
 
@@ -125,4 +125,4 @@ Please refer to [`SECURITY-CONSIDERATIONS.md`](SECURITY-CONSIDERATIONS.md) for d
 
 ## Contributing
 
-Please refer to [`CONTRIBUTING.md`](CONTRIBUTING.md) for details about how to conribute to the development of [Secvisogram](https://github.com/secvisogram/secvisogram).
+Please refer to [`CONTRIBUTING.md`](CONTRIBUTING.md) for details about how to contribute to the development of [Secvisogram](https://github.com/secvisogram/secvisogram).
