@@ -727,5 +727,158 @@ export default {
         ],
       },
     },
+
+    // Fails "6.1.25 Multiple Use of Same Hash Algorithm"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              name: 'Product A',
+              product_id: 'CSAFPID-9080700',
+              product_identification_helper: {
+                hashes: [
+                  {
+                    file_hashes: [
+                      {
+                        algorithm: 'sha256',
+                        value:
+                          '026a37919b182ef7c63791e82c9645e2f897a3f0b73c7a6028c7febf62e93838',
+                      },
+                      {
+                        algorithm: 'sha256',
+                        value:
+                          '0a853ce2337f0608489ac596a308dc5b7b19d35a52b10bf31261586ac368b175',
+                      },
+                    ],
+                    filename: 'product_a.so',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.25 Multiple Use of Same Hash Algorithm"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          relationships: [
+            {
+              full_product_name: {
+                name: 'A',
+                product_id: 'CSAFPID-0001',
+                product_identification_helper: {
+                  hashes: [
+                    {
+                      file_hashes: [
+                        {
+                          algorithm: 'sha256',
+                          value: '12312312312312312312312312312312',
+                        },
+                        {
+                          algorithm: 'sha256',
+                          value: '12312312312312312312312312312312',
+                        },
+                      ],
+                      filename: 'my-hash.a',
+                    },
+                  ],
+                },
+              },
+              product_reference: 'CSAFPID-0001',
+              category: 'default_component_of',
+              relates_to_product_reference: 'CSAFPID-0001',
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.25 Multiple Use of Same Hash Algorithm"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          branches: [
+            {
+              category: 'architecture',
+              name: 'My branch',
+              product: {
+                product_id: 'CSAFPID-0001',
+                name: 'My branch',
+                product_identification_helper: {
+                  hashes: [
+                    {
+                      file_hashes: [
+                        {
+                          algorithm: 'sha256',
+                          value: '12312312312312312312312312312312',
+                        },
+                        {
+                          algorithm: 'sha256',
+                          value: '12312312312312312312312312312312',
+                        },
+                      ],
+                      filename: 'my_hash.a',
+                    },
+                  ],
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.25 Multiple Use of Same Hash Algorithm"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          branches: [
+            {
+              category: 'architecture',
+              name: 'My branch',
+              branches: [
+                {
+                  category: 'architecture',
+                  name: 'My branch',
+                  product: {
+                    product_id: 'CSAFPID-0001',
+                    name: 'My branch',
+                    product_identification_helper: {
+                      hashes: [
+                        {
+                          file_hashes: [
+                            {
+                              algorithm: 'sha256',
+                              value: '12312312312312312312312312312312',
+                            },
+                            {
+                              algorithm: 'sha256',
+                              value: '12312312312312312312312312312312',
+                            },
+                          ],
+                          filename: 'my_hash.a',
+                        },
+                      ],
+                    },
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
+    },
   ],
 }

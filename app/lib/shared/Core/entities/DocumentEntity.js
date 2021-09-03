@@ -8,6 +8,7 @@ import cwec from '../cwec_4.3.json'
 import mandatoryTest_6_1_21 from './DocumentEntity/mandatoryTest_6_1_21'
 import mandatoryTest_6_1_23 from './DocumentEntity/mandatoryTest_6_1_23'
 import mandatoryTest_6_1_24 from './DocumentEntity/mandatoryTest_6_1_24'
+import mandatoryTest_6_1_25 from './DocumentEntity/mandatoryTest_6_1_25'
 import mandatoryTest_6_1_7 from './DocumentEntity/mandatoryTest_6_1_7'
 import icann from './DocumentEntity/subtags.json'
 
@@ -611,6 +612,7 @@ export default class DocumentEntity {
       mandatoryTest_6_1_21,
       mandatoryTest_6_1_23,
       mandatoryTest_6_1_24,
+      mandatoryTest_6_1_25,
     ]
     tests.forEach((test) => {
       const result = test(doc)
