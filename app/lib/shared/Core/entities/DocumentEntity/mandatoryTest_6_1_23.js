@@ -16,7 +16,7 @@ export default function mandatoryTest_6_1_23(doc) {
       if (cveStrings.has(vulnerability.cve)) {
         isValid = false
         errors.push({
-          message: `tracking-number was already used`,
+          message: `CVE identifier was already used`,
           instancePath: `/vulnerabilities/${vulnerabilityIndex}/cve`,
         })
       }

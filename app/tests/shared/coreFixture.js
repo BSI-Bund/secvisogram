@@ -346,18 +346,58 @@ export default {
                 products: ['CSAFPID-9080700'],
                 cvss_v2: {
                   version: '2.0',
-                  vectorString: 'CVSS:2.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H',
+                  vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
                   baseScore: 10,
-                  baseSeverity: 'CRITICAL',
                 },
               },
               {
                 products: ['CSAFPID-9080700'],
                 cvss_v2: {
                   version: '2.0',
-                  vectorString: 'CVSS:2.0/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H',
+                  vectorString: 'AV:N/AC:L/Au:S/C:P/I:P/A:P',
                   baseScore: 6.5,
-                  baseSeverity: 'MEDIUM',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Passes "6.1.7 Multiple Scores with same Version per Product"
+    {
+      valid: true,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v2: {
+                  version: '2.0',
+                  vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
+                  baseScore: 10,
+                },
+              },
+            ],
+          },
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v2: {
+                  version: '2.0',
+                  vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
+                  baseScore: 10,
                 },
               },
             ],
@@ -634,7 +674,7 @@ export default {
       },
     },
 
-    // Fails "6.1.24 Multiple Use of Same CVE"
+    // Fails "6.1.24 Definition in Involvements"
     {
       valid: false,
       content: {
