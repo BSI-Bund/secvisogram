@@ -446,6 +446,22 @@ export default {
       },
     },
 
+    // Fails "6.1.15 Translator"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          publisher: {
+            category: 'translator',
+            name: 'CSAF TC Translator',
+            namespace: 'https://csaf.io/translator',
+          },
+        },
+      },
+    },
+
     // Fails "6.1.18 Released Revision History"
     {
       valid: false,
