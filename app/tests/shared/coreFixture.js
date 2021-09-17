@@ -220,6 +220,30 @@ export default {
       strippedVersion: {},
     },
 
+    // Fails "6.1.6 Contradicting Product Status"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            product_status: {
+              known_affected: ['CSAFPID-9080700'],
+              known_not_affected: ['CSAFPID-9080700'],
+            },
+          },
+        ],
+      },
+    },
+
     // Fails "6.1.16 Released Revision History"
     {
       valid: false,

@@ -10,6 +10,7 @@ import mandatoryTest_6_1_21 from './DocumentEntity/mandatoryTest_6_1_21'
 import mandatoryTest_6_1_23 from './DocumentEntity/mandatoryTest_6_1_23'
 import mandatoryTest_6_1_24 from './DocumentEntity/mandatoryTest_6_1_24'
 import mandatoryTest_6_1_25 from './DocumentEntity/mandatoryTest_6_1_25'
+import mandatoryTest_6_1_6 from './DocumentEntity/mandatoryTest_6_1_6'
 import mandatoryTest_6_1_7 from './DocumentEntity/mandatoryTest_6_1_7'
 import icann from './DocumentEntity/subtags.json'
 
@@ -609,6 +610,7 @@ export default class DocumentEntity {
     }
 
     const tests = [
+      mandatoryTest_6_1_6,
       mandatoryTest_6_1_7,
       mandatoryTest_6_1_15,
       mandatoryTest_6_1_21,
