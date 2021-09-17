@@ -244,6 +244,101 @@ export default {
       },
     },
 
+    // Fails "6.1.13 PURL"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              name: 'Product A',
+              product_id: 'CSAFPID-9080700',
+              product_identification_helper: {
+                purl: 'pkg:maven/@1.3.4',
+              },
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.13 PURL"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          relationships: [
+            {
+              full_product_name: {
+                name: 'A',
+                product_id: 'CSAFPID-0001',
+                product_identification_helper: {
+                  purl: 'pkg:maven/@1.3.4',
+                },
+              },
+              product_reference: 'CSAFPID-0001',
+              category: 'default_component_of',
+              relates_to_product_reference: 'CSAFPID-0001',
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.13 PURL"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          branches: [
+            {
+              category: 'architecture',
+              name: 'My branch',
+              product: {
+                product_id: 'CSAFPID-0001',
+                name: 'My branch',
+                product_identification_helper: {
+                  purl: 'pkg:maven/@1.3.4',
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.13 PURL"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          branches: [
+            {
+              category: 'architecture',
+              name: 'My branch',
+              branches: [
+                {
+                  category: 'architecture',
+                  name: 'My branch',
+                  product: {
+                    product_id: 'CSAFPID-0001',
+                    name: 'My branch',
+                    product_identification_helper: {
+                      purl: 'pkg:maven/@1.3.4',
+                    },
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
+    },
+
     // Fails "6.1.14 Sorted Revision History"
     {
       valid: false,

@@ -14,6 +14,7 @@ import mandatoryTest_6_1_25 from './DocumentEntity/mandatoryTest_6_1_25'
 import mandatoryTest_6_1_6 from './DocumentEntity/mandatoryTest_6_1_6'
 import mandatoryTest_6_1_7 from './DocumentEntity/mandatoryTest_6_1_7'
 import icann from './DocumentEntity/subtags.json'
+import mandatoryTest_6_1_13 from './mandatoryTest_6_1_13'
 
 /**
  * This class abstracts central logic regarding the json-document used
@@ -613,6 +614,7 @@ export default class DocumentEntity {
     const tests = [
       mandatoryTest_6_1_6,
       mandatoryTest_6_1_7,
+      mandatoryTest_6_1_13,
       mandatoryTest_6_1_14,
       mandatoryTest_6_1_15,
       mandatoryTest_6_1_21,
