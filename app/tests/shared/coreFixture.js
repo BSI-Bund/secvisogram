@@ -244,6 +244,33 @@ export default {
       },
     },
 
+    // Fails "6.1.14 Sorted Revision History"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          tracking: {
+            ...MINIMAL_DOC.document.tracking,
+            revision_history: [
+              {
+                date: '2021-07-22T10:00:00.000Z',
+                number: '2',
+                summary: 'Second version.',
+              },
+              {
+                date: '2021-07-23T10:00:00.000Z',
+                number: '1',
+                summary: 'Initial version.',
+              },
+            ],
+            version: '1',
+          },
+        },
+      },
+    },
+
     // Fails "6.1.16 Released Revision History"
     {
       valid: false,
