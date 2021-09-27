@@ -12,11 +12,7 @@ module.exports = function generatePreviewTemplatingTable(args) {
   const rootSchema = require(resolve(args.csaf20Schema))
   const cvss3Schema = require(resolve(args.cvss31Schema))
   const cvss2Schema = require(resolve(args.cvss20Schema))
-  Object.assign(
-    rootSchema.definitions,
-    cvss3Schema.definitions,
-    cvss2Schema.definitions
-  )
+  Object.assign(rootSchema.$defs, cvss3Schema.$defs, cvss2Schema.$defs)
 
   /** @typedef {{ path: string; schema: any; items?: Array<Entry>; depth: number }} Entry */
 
@@ -26,7 +22,12 @@ module.exports = function generatePreviewTemplatingTable(args) {
    * @param {number} depth
    * @returns {Array<Entry>}
    */
-  function generateSchemaPaths(schema, instancePath = [], depth = 1) {
+  function generateSchemaPaths(
+    schema,
+    instancePath = [],
+    depth = 1,
+    overwriteDescription = ''
+  ) {
     const path = instancePath.length ? instancePath.join('.') : '.'
     if (depth > 10) return [{ path, schema, depth }]
     switch (schema.type) {
@@ -48,11 +49,12 @@ module.exports = function generatePreviewTemplatingTable(args) {
         ]
       default:
         if (schema.$ref && schema.$ref.startsWith('#')) {
-          return generateSchemaPaths(
-            jsonPtr.get(rootSchema, schema.$ref.slice(1)),
-            instancePath,
-            depth
-          )
+          var refSchema = jsonPtr.get(rootSchema, schema.$ref.slice(1))
+          if (schema.description) {
+            refSchema = Object.assign({}, refSchema)
+            refSchema.description = schema.description
+          }
+          return generateSchemaPaths(refSchema, instancePath, depth)
         }
         if (
           schema.oneOf?.find(

@@ -84,26 +84,26 @@ This is the full list of document properties. It reflects the structure as defin
 | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `.` | Representation of security advisory information as a JSON document. | |
 | `document` | Captures the meta-data about this document describing a particular set of security advisories. | |
-| `document.acknowledgments` | Contains a list of acknowledgment elements.| |
+| `document.acknowledgments` | Contains a list of acknowledgment elements associated with the whole document.| |
 | `document.acknowledgments[]` | Acknowledges contributions by describing those that contributed. | |
 | `document.acknowledgments[].names` | Contains the names of entities being recognized.| |
-| `document.acknowledgments[].names[]` | Contains the name of a single person. | Johann Sebastian Bach, Albert Einstein |
-| `document.acknowledgments[].organization` | Contains the name of a contributing organization being recognized. | CISA, Talos, Google Project Zero |
+| `document.acknowledgments[].names[]` | Contains the name of a single person. | Albert Einstein, Johann Sebastian Bach |
+| `document.acknowledgments[].organization` | Contains the name of a contributing organization being recognized. | CISA, Google Project Zero, Talos |
 | `document.acknowledgments[].summary` | SHOULD represent any contextual details the document producers wish to make known about the acknowledgment or acknowledged parties. | First analysis of Coordinated Multi-Stream Attack (CMSA) |
 | `document.acknowledgments[].urls` | Specifies a list of URLs or location of the reference to be acknowledged.| |
 | `document.acknowledgments[].urls[]` | Contains the URL or location of the reference to be acknowledged. | |
 | `document.aggregate_severity` | Is a vehicle that is provided by the document producer to convey the urgency and criticality with which the one or more vulnerabilities reported should be addressed. It is a document-level metric and applied to the document as a whole — not any specific vulnerability. The range of values in this field is defined according to the document producer's policies and procedures. | |
 | `document.aggregate_severity.namespace` | Points to the namespace so referenced. | |
-| `document.aggregate_severity.text` | Provides a severity which is independent of - and in addition to - any other standard metric for determining the impact or severity of a given vulnerability (such as CVSS). | Moderate, Important, Critical |
-| `document.category` | Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document. | Security Advisory, Security Notice, Vulnerability Report |
+| `document.aggregate_severity.text` | Provides a severity which is independent of - and in addition to - any other standard metric for determining the impact or severity of a given vulnerability (such as CVSS). | Critical, Important, Moderate |
+| `document.category` | Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document. | Example Company Security Notice, generic_csaf, security_advisory, vex |
 | `document.csaf_version` | Gives the version of the CSAF specification which the document was generated for. | |
 | `document.distribution` | Describe any constraints on how this document might be shared. | |
-| `document.distribution.text` | Provides a textual description of additional constraints. | Share only on a need-to-know-basis only., Distribute freely., Copyright 2019, Example Company, All Rights Reserved. |
+| `document.distribution.text` | Provides a textual description of additional constraints. | Copyright 2021, Example Company, All Rights Reserved., Distribute freely., Share only on a need-to-know-basis only. |
 | `document.distribution.tlp` | Provides details about the TLP classification of the document. | |
 | `document.distribution.tlp.label` | Provides the TLP label of the document. | |
 | `document.distribution.tlp.url` | Provides a URL where to find the textual description of the TLP version which is used in this document. Default is the URL to the definition by FIRST. | https://www.us-cert.gov/tlp, https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Kritis/Merkblatt_TLP.pdf |
-| `document.lang` | Identifies a language, corresponding to IETF BCP 47 / RFC 5646. See IETF language registry: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry | de, en, fr, frc, jp |
-| `document.notes` | Contains notes which are specific to the current context.| |
+| `document.lang` | Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646. | de, en, fr, frc, jp |
+| `document.notes` | Holds notes associated with the whole document.| |
 | `document.notes[]` | Is a place to put all manner of text blobs related to the current context. | |
 | `document.notes[].audience` | Indicate who is intended to read it. | all, executives, operational management and system administrators, safety engineers |
 | `document.notes[].category` | Choice of what kind of note this is. | |
@@ -114,14 +114,14 @@ This is the full list of document properties. It reflects the structure as defin
 | `document.publisher.contact_details` | Information on how to contact the publisher, possibly including details such as web sites, email addresses, phone numbers, and postal mail addresses. | Example Company can be reached at contact_us@example.com, or via our website at https://www.example.com/contact. |
 | `document.publisher.issuing_authority` | Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations. | |
 | `document.publisher.name` | Contains the name of the issuing party. | BSI, Cisco PSIRT, Siemens ProductCERT |
-| `document.publisher.namespace` | Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. | https://www.example.com, https://csaf.io |
-| `document.references` | Holds a list of references.| |
+| `document.publisher.namespace` | Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. | https://csaf.io, https://www.example.com |
+| `document.references` | Holds a list of references associated with the whole document.| |
 | `document.references[]` | Holds any reference to conferences, papers, advisories, and other resources that are related and considered related to either a surrounding part of or the entire document and to be of value to the document consumer. | |
 | `document.references[].category` | Indicates whether the reference points to the same document or vulnerability in focus (depending on scope) or to an external resource. | |
 | `document.references[].summary` | Indicates what this reference refers to. | |
 | `document.references[].url` | Provides the URL for the reference. | |
-| `document.source_lang` | Identifies a language, corresponding to IETF BCP 47 / RFC 5646. See IETF language registry: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry | de, en, fr, frc, jp |
-| `document.title` | This SHOULD be a canonical name for the document, and sufficiently unique to distinguish it from similar documents. | Example Company Cross-Site-Scripting Vulnerability in Example Generator, Cisco IPv6 Crafted Packet Denial of Service Vulnerability |
+| `document.source_lang` | If this copy of the document is a translation then the value of this property describes from which language this document was translated. | de, en, fr, frc, jp |
+| `document.title` | This SHOULD be a canonical name for the document, and sufficiently unique to distinguish it from similar documents. | Cisco IPv6 Crafted Packet Denial of Service Vulnerability, Example Company Cross-Site-Scripting Vulnerability in Example Generator |
 | `document.tracking` | Is a container designated to hold all management attributes necessary to track a CSAF document as a whole. | |
 | `document.tracking.aliases` | Contains a list of alternate names for the same document.| |
 | `document.tracking.aliases[]` | Specifies a non-empty string that represents a distinct optional alternative ID used to refer to the document. | CVE-2019-12345 |
@@ -130,7 +130,7 @@ This is the full list of document properties. It reflects the structure as defin
 | `document.tracking.generator.date` | This SHOULD be the current date that the document was generated. Because documents are often generated internally by a document producer and exist for a nonzero amount of time before being released, this field MAY be different from the Initial Release Date and Current Release Date. | |
 | `document.tracking.generator.engine` | Contains information about the engine that generated the CSAF document. | |
 | `document.tracking.generator.engine.name` | Represents the name of the engine that generated the CSAF document. | Red Hat rhsa-to-cvrf, Secvisogram, TVCE |
-| `document.tracking.generator.engine.version` | Contains the version of the engine that generated the CSAF document. | 0.6.0, 2, 1.0.0-beta+exp.sha.a1c44f85 |
+| `document.tracking.generator.engine.version` | Contains the version of the engine that generated the CSAF document. | 0.6.0, 1.0.0-beta+exp.sha.a1c44f85, 2 |
 | `document.tracking.id` | The ID is a simple label that provides for a wide range of numbering values, types, and schemes. Its value SHOULD be assigned and maintained by the original document issuing authority. | Example Company - 2019-YH3234, RHBA-2019:0024, cisco-sa-20190513-secureboot |
 | `document.tracking.initial_release_date` | The date when this document was first published. | |
 | `document.tracking.revision_history` | Holds one revision item for each version of the CSAF document, including the initial one.| |
@@ -150,11 +150,11 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.branches[].branches[].branches[].branches` | Contains branch elements as children of the current element.| |
 | `product_tree.branches[].branches[].branches[].branches[]` | Is a part of the hierarchical structure of the product tree. | |
 | `product_tree.branches[].branches[].branches[].branches[].category` | Describes the characteristics of the labeled branch. | |
-| `product_tree.branches[].branches[].branches[].branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | Microsoft, Siemens, Windows, Office, SIMATIC, 10, 365, PCS 7 |
+| `product_tree.branches[].branches[].branches[].branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | 10, 365, Microsoft, Office, PCS 7, SIMATIC, Siemens, Windows |
 | `product_tree.branches[].branches[].branches[].category` | Describes the characteristics of the labeled branch. | |
-| `product_tree.branches[].branches[].branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | Microsoft, Siemens, Windows, Office, SIMATIC, 10, 365, PCS 7 |
+| `product_tree.branches[].branches[].branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | 10, 365, Microsoft, Office, PCS 7, SIMATIC, Siemens, Windows |
 | `product_tree.branches[].branches[].branches[].product` | Specifies information about the product and assigns the product_id. | |
-| `product_tree.branches[].branches[].branches[].product.name` | The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document. | Microsoft Host Integration Server 2006 Service Pack 1, Cisco AnyConnect Secure Mobility Client 2.3.185 |
+| `product_tree.branches[].branches[].branches[].product.name` | The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document. | Cisco AnyConnect Secure Mobility Client 2.3.185, Microsoft Host Integration Server 2006 Service Pack 1 |
 | `product_tree.branches[].branches[].branches[].product.product_id` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
 | `product_tree.branches[].branches[].branches[].product.product_identification_helper` | Provides at least one method which aids in identifying the product in an asset database. | |
 | `product_tree.branches[].branches[].branches[].product.product_identification_helper.cpe` | The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification. | |
@@ -165,9 +165,9 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.branches[].branches[].branches[].product.product_identification_helper.skus` | Contains a list of parts, or full stock keeping units.| |
 | `product_tree.branches[].branches[].branches[].product.product_identification_helper.x_generic_uris` | Contains a list of identifiers which are either vendor-specific or derived from a standard not yet supported.| |
 | `product_tree.branches[].branches[].category` | Describes the characteristics of the labeled branch. | |
-| `product_tree.branches[].branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | Microsoft, Siemens, Windows, Office, SIMATIC, 10, 365, PCS 7 |
+| `product_tree.branches[].branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | 10, 365, Microsoft, Office, PCS 7, SIMATIC, Siemens, Windows |
 | `product_tree.branches[].branches[].product` | Specifies information about the product and assigns the product_id. | |
-| `product_tree.branches[].branches[].product.name` | The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document. | Microsoft Host Integration Server 2006 Service Pack 1, Cisco AnyConnect Secure Mobility Client 2.3.185 |
+| `product_tree.branches[].branches[].product.name` | The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document. | Cisco AnyConnect Secure Mobility Client 2.3.185, Microsoft Host Integration Server 2006 Service Pack 1 |
 | `product_tree.branches[].branches[].product.product_id` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
 | `product_tree.branches[].branches[].product.product_identification_helper` | Provides at least one method which aids in identifying the product in an asset database. | |
 | `product_tree.branches[].branches[].product.product_identification_helper.cpe` | The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification. | |
@@ -187,9 +187,9 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.branches[].branches[].product.product_identification_helper.x_generic_uris[].namespace` | Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid. | |
 | `product_tree.branches[].branches[].product.product_identification_helper.x_generic_uris[].uri` | Contains the identifier itself. | |
 | `product_tree.branches[].category` | Describes the characteristics of the labeled branch. | |
-| `product_tree.branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | Microsoft, Siemens, Windows, Office, SIMATIC, 10, 365, PCS 7 |
+| `product_tree.branches[].name` | Contains the canonical descriptor or 'friendly name' of the branch. | 10, 365, Microsoft, Office, PCS 7, SIMATIC, Siemens, Windows |
 | `product_tree.branches[].product` | Specifies information about the product and assigns the product_id. | |
-| `product_tree.branches[].product.name` | The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document. | Microsoft Host Integration Server 2006 Service Pack 1, Cisco AnyConnect Secure Mobility Client 2.3.185 |
+| `product_tree.branches[].product.name` | The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document. | Cisco AnyConnect Secure Mobility Client 2.3.185, Microsoft Host Integration Server 2006 Service Pack 1 |
 | `product_tree.branches[].product.product_id` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
 | `product_tree.branches[].product.product_identification_helper` | Provides at least one method which aids in identifying the product in an asset database. | |
 | `product_tree.branches[].product.product_identification_helper.cpe` | The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification. | |
@@ -197,8 +197,8 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.branches[].product.product_identification_helper.hashes[]` | Contains all information to identify a file based on its cryptographic hash values. | |
 | `product_tree.branches[].product.product_identification_helper.hashes[].file_hashes` | Contains a list of cryptographic hashes for this file.| |
 | `product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[]` | Contains one hash value and algorithm of the file to be identified. | |
-| `product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].algorithm` | Contains the name of the cryptographic hash algorithm used to calculate the value. | sha256, sha384, sha512, sha3-512, blake2b512 |
-| `product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c, 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3 |
+| `product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].algorithm` | Contains the name of the cryptographic hash algorithm used to calculate the value. | blake2b512, sha256, sha3-512, sha384, sha512 |
+| `product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3, 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c |
 | `product_tree.branches[].product.product_identification_helper.hashes[].filename` | Contains the name of the file which is identified by the hash values. | WINWORD.EXE, msotadddin.dll, sudoers.so |
 | `product_tree.branches[].product.product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
 | `product_tree.branches[].product.product_identification_helper.sbom_urls` | Contains a list of URLs where SBOMs for this product can be retrieved.| |
@@ -213,7 +213,7 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.branches[].product.product_identification_helper.x_generic_uris[].uri` | Contains the identifier itself. | |
 | `product_tree.full_product_names` | Contains a list of full product names.| |
 | `product_tree.full_product_names[]` | Specifies information about the product and assigns the product_id. | |
-| `product_tree.full_product_names[].name` | The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document. | Microsoft Host Integration Server 2006 Service Pack 1, Cisco AnyConnect Secure Mobility Client 2.3.185 |
+| `product_tree.full_product_names[].name` | The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document. | Cisco AnyConnect Secure Mobility Client 2.3.185, Microsoft Host Integration Server 2006 Service Pack 1 |
 | `product_tree.full_product_names[].product_id` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
 | `product_tree.full_product_names[].product_identification_helper` | Provides at least one method which aids in identifying the product in an asset database. | |
 | `product_tree.full_product_names[].product_identification_helper.cpe` | The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification. | |
@@ -221,8 +221,8 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.full_product_names[].product_identification_helper.hashes[]` | Contains all information to identify a file based on its cryptographic hash values. | |
 | `product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes` | Contains a list of cryptographic hashes for this file.| |
 | `product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[]` | Contains one hash value and algorithm of the file to be identified. | |
-| `product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].algorithm` | Contains the name of the cryptographic hash algorithm used to calculate the value. | sha256, sha384, sha512, sha3-512, blake2b512 |
-| `product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c, 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3 |
+| `product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].algorithm` | Contains the name of the cryptographic hash algorithm used to calculate the value. | blake2b512, sha256, sha3-512, sha384, sha512 |
+| `product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3, 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c |
 | `product_tree.full_product_names[].product_identification_helper.hashes[].filename` | Contains the name of the file which is identified by the hash values. | WINWORD.EXE, msotadddin.dll, sudoers.so |
 | `product_tree.full_product_names[].product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
 | `product_tree.full_product_names[].product_identification_helper.sbom_urls` | Contains a list of URLs where SBOMs for this product can be retrieved.| |
@@ -240,12 +240,12 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.product_groups[].group_id` | Token required to identify a group of products so that it can be referred to from other parts in the document. There is no predefined or required format for the product_group_id as long as it uniquely identifies a group in the context of the current document. | CSAFGID-0001, CSAFGID-0002, CSAFGID-0020 |
 | `product_tree.product_groups[].product_ids` | Lists the product_ids of those products which known as one group in the document.| |
 | `product_tree.product_groups[].product_ids[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `product_tree.product_groups[].summary` | Gives a short, optional description of the group. | The x64 versions of the operating system., Products supporting Modbus. |
+| `product_tree.product_groups[].summary` | Gives a short, optional description of the group. | Products supporting Modbus., The x64 versions of the operating system. |
 | `product_tree.relationships` | Contains a list of relationships.| |
 | `product_tree.relationships[]` | Establishes a link between two existing full_product_name_t elements, allowing the document producer to define a combination of two products that form a new full_product_name entry. | |
 | `product_tree.relationships[].category` | Defines the category of relationship for the referenced component. | |
 | `product_tree.relationships[].full_product_name` | Specifies information about the product and assigns the product_id. | |
-| `product_tree.relationships[].full_product_name.name` | The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document. | Microsoft Host Integration Server 2006 Service Pack 1, Cisco AnyConnect Secure Mobility Client 2.3.185 |
+| `product_tree.relationships[].full_product_name.name` | The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document. | Cisco AnyConnect Secure Mobility Client 2.3.185, Microsoft Host Integration Server 2006 Service Pack 1 |
 | `product_tree.relationships[].full_product_name.product_id` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
 | `product_tree.relationships[].full_product_name.product_identification_helper` | Provides at least one method which aids in identifying the product in an asset database. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.cpe` | The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification. | |
@@ -253,8 +253,8 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.relationships[].full_product_name.product_identification_helper.hashes[]` | Contains all information to identify a file based on its cryptographic hash values. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes` | Contains a list of cryptographic hashes for this file.| |
 | `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[]` | Contains one hash value and algorithm of the file to be identified. | |
-| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].algorithm` | Contains the name of the cryptographic hash algorithm used to calculate the value. | sha256, sha384, sha512, sha3-512, blake2b512 |
-| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c, 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3 |
+| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].algorithm` | Contains the name of the cryptographic hash algorithm used to calculate the value. | blake2b512, sha256, sha3-512, sha384, sha512 |
+| `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].value` | Contains the cryptographic hash value in hexadecimal representation. | 37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3, 4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc, 9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c |
 | `product_tree.relationships[].full_product_name.product_identification_helper.hashes[].filename` | Contains the name of the file which is identified by the hash values. | WINWORD.EXE, msotadddin.dll, sudoers.so |
 | `product_tree.relationships[].full_product_name.product_identification_helper.purl` | The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.sbom_urls` | Contains a list of URLs where SBOMs for this product can be retrieved.| |
@@ -267,22 +267,22 @@ This is the full list of document properties. It reflects the structure as defin
 | `product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[]` | Provides a generic extension point for any identifier which is either vendor-specific or derived from a standard not yet supported. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].namespace` | Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid. | |
 | `product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].uri` | Contains the identifier itself. | |
-| `product_tree.relationships[].product_reference` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `product_tree.relationships[].relates_to_product_reference` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
+| `product_tree.relationships[].product_reference` | Holds a Product ID that refers to the Full Product Name element, which is referenced as the first element of the relationship. | CSAFPID-0004, CSAFPID-0008 |
+| `product_tree.relationships[].relates_to_product_reference` | Holds a Product ID that refers to the Full Product Name element, which is referenced as the second element of the relationship. | CSAFPID-0004, CSAFPID-0008 |
 | `vulnerabilities` | Represents a list of all relevant vulnerability information items.| |
 | `vulnerabilities[]` | Is a container for the aggregation of all fields that are related to a single vulnerability in the document. | |
-| `vulnerabilities[].acknowledgments` | Contains a list of acknowledgment elements.| |
+| `vulnerabilities[].acknowledgments` | Contains a list of acknowledgment elements associated with this vulnerability item.| |
 | `vulnerabilities[].acknowledgments[]` | Acknowledges contributions by describing those that contributed. | |
 | `vulnerabilities[].acknowledgments[].names` | Contains the names of entities being recognized.| |
-| `vulnerabilities[].acknowledgments[].names[]` | Contains the name of a single person. | Johann Sebastian Bach, Albert Einstein |
-| `vulnerabilities[].acknowledgments[].organization` | Contains the name of a contributing organization being recognized. | CISA, Talos, Google Project Zero |
+| `vulnerabilities[].acknowledgments[].names[]` | Contains the name of a single person. | Albert Einstein, Johann Sebastian Bach |
+| `vulnerabilities[].acknowledgments[].organization` | Contains the name of a contributing organization being recognized. | CISA, Google Project Zero, Talos |
 | `vulnerabilities[].acknowledgments[].summary` | SHOULD represent any contextual details the document producers wish to make known about the acknowledgment or acknowledged parties. | First analysis of Coordinated Multi-Stream Attack (CMSA) |
 | `vulnerabilities[].acknowledgments[].urls` | Specifies a list of URLs or location of the reference to be acknowledged.| |
 | `vulnerabilities[].acknowledgments[].urls[]` | Contains the URL or location of the reference to be acknowledged. | |
 | `vulnerabilities[].cve` | Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. | |
 | `vulnerabilities[].cwe` | Holds the MITRE standard Common Weakness Enumeration (CWE) for the weakness associated. | |
-| `vulnerabilities[].cwe.id` | Holds the ID for the weakness associated. | CWE-79, CWE-22, CWE-352 |
-| `vulnerabilities[].cwe.name` | Holds the full name of the weakness as given in the CWE specification. | Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting'), Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal'), Cross-Site Request Forgery (CSRF) |
+| `vulnerabilities[].cwe.id` | Holds the ID for the weakness associated. | CWE-22, CWE-352, CWE-79 |
+| `vulnerabilities[].cwe.name` | Holds the full name of the weakness as given in the CWE specification. | Cross-Site Request Forgery (CSRF), Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal'), Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') |
 | `vulnerabilities[].discovery_date` | Holds the date and time the vulnerability was originally discovered. | |
 | `vulnerabilities[].id` | Gives the document producer a place to publish a unique label or tracking ID for the vulnerability (if such information exists). | |
 | `vulnerabilities[].id.system_name` | Indicates the name of the vulnerability tracking or numbering system. | Cisco Bug ID, GitHub Issue |
@@ -293,30 +293,30 @@ This is the full list of document properties. It reflects the structure as defin
 | `vulnerabilities[].involvements[].party` | Defines the category of the involved party. | |
 | `vulnerabilities[].involvements[].status` | Defines contact status of the involved party. | |
 | `vulnerabilities[].involvements[].summary` | Contains additional context regarding what is going on. | |
-| `vulnerabilities[].notes` | Contains notes which are specific to the current context.| |
+| `vulnerabilities[].notes` | Holds notes associated with this vulnerability item.| |
 | `vulnerabilities[].notes[]` | Is a place to put all manner of text blobs related to the current context. | |
 | `vulnerabilities[].notes[].audience` | Indicate who is intended to read it. | all, executives, operational management and system administrators, safety engineers |
 | `vulnerabilities[].notes[].category` | Choice of what kind of note this is. | |
 | `vulnerabilities[].notes[].text` | The contents of the note. Content varies depending on type. | |
 | `vulnerabilities[].notes[].title` | Provides a concise description of what is contained in the text of the note. | Details, Executive summary, Technical summary, Impact on safety systems |
 | `vulnerabilities[].product_status` | Contains different lists of product_ids which provide details on the status of the referenced product related to the current vulnerability.  | |
-| `vulnerabilities[].product_status.first_affected` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.first_affected` | These are the first versions of the releases known to be affected by the vulnerability.| |
 | `vulnerabilities[].product_status.first_affected[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.first_fixed` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.first_fixed` | These versions contain the first fix for the vulnerability but may not be the recommended fixed versions.| |
 | `vulnerabilities[].product_status.first_fixed[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.fixed` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.fixed` | These versions contain a fix for the vulnerability but may not be the recommended fixed versions.| |
 | `vulnerabilities[].product_status.fixed[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.known_affected` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.known_affected` | These versions are known to be affected by the vulnerability.| |
 | `vulnerabilities[].product_status.known_affected[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.known_not_affected` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.known_not_affected` | These versions are known not to be affected by the vulnerability.| |
 | `vulnerabilities[].product_status.known_not_affected[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.last_affected` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.last_affected` | These are the last versions in a release train known to be affected by the vulnerability. Subsequently released versions would contain a fix for the vulnerability.| |
 | `vulnerabilities[].product_status.last_affected[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.recommended` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.recommended` | These versions have a fix for the vulnerability and are the vendor-recommended versions for fixing the vulnerability.| |
 | `vulnerabilities[].product_status.recommended[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].product_status.under_investigation` | Specifies a list of product_ids to give context to the parent item.| |
+| `vulnerabilities[].product_status.under_investigation` | It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation - the result will be provided in a later release of the document.| |
 | `vulnerabilities[].product_status.under_investigation[]` | Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document. | CSAFPID-0004, CSAFPID-0008 |
-| `vulnerabilities[].references` | Holds a list of references.| |
+| `vulnerabilities[].references` | Holds a list of references associated with this vulnerability item.| |
 | `vulnerabilities[].references[]` | Holds any reference to conferences, papers, advisories, and other resources that are related and considered related to either a surrounding part of or the entire document and to be of value to the document consumer. | |
 | `vulnerabilities[].references[].category` | Indicates whether the reference points to the same document or vulnerability in focus (depending on scope) or to an external resource. | |
 | `vulnerabilities[].references[].summary` | Indicates what this reference refers to. | |

@@ -20,11 +20,11 @@
     "WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE ",
     "OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
   ],
-
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "JSON Schema for Common Vulnerability Scoring System version 2.0",
   "$id": "https://www.first.org/cvss/cvss-v2.0.json?20170531",
   "type": "object",
-  "definitions": {
+  "$defs": {
     "accessVectorType": {
       "type": "string",
       "enum": ["NETWORK", "ADJACENT_NETWORK", "LOCAL"]
@@ -100,27 +100,27 @@
       "type": "string",
       "pattern": "^((AV:[NAL]|AC:[LMH]|Au:[MSN]|[CIA]:[NPC]|E:(U|POC|F|H|ND)|RL:(OF|TF|W|U|ND)|RC:(UC|UR|C|ND)|CDP:(N|L|LM|MH|H|ND)|TD:(N|L|M|H|ND)|[CIA]R:(L|M|H|ND))/)*(AV:[NAL]|AC:[LMH]|Au:[MSN]|[CIA]:[NPC]|E:(U|POC|F|H|ND)|RL:(OF|TF|W|U|ND)|RC:(UC|UR|C|ND)|CDP:(N|L|LM|MH|H|ND)|TD:(N|L|M|H|ND)|[CIA]R:(L|M|H|ND))$"
     },
-    "accessVector": { "$ref": "#/definitions/accessVectorType" },
-    "accessComplexity": { "$ref": "#/definitions/accessComplexityType" },
-    "authentication": { "$ref": "#/definitions/authenticationType" },
-    "confidentialityImpact": { "$ref": "#/definitions/ciaType" },
-    "integrityImpact": { "$ref": "#/definitions/ciaType" },
-    "availabilityImpact": { "$ref": "#/definitions/ciaType" },
-    "baseScore": { "$ref": "#/definitions/scoreType" },
-    "exploitability": { "$ref": "#/definitions/exploitabilityType" },
-    "remediationLevel": { "$ref": "#/definitions/remediationLevelType" },
-    "reportConfidence": { "$ref": "#/definitions/reportConfidenceType" },
-    "temporalScore": { "$ref": "#/definitions/scoreType" },
+    "accessVector": { "$ref": "#/$defs/accessVectorType" },
+    "accessComplexity": { "$ref": "#/$defs/accessComplexityType" },
+    "authentication": { "$ref": "#/$defs/authenticationType" },
+    "confidentialityImpact": { "$ref": "#/$defs/ciaType" },
+    "integrityImpact": { "$ref": "#/$defs/ciaType" },
+    "availabilityImpact": { "$ref": "#/$defs/ciaType" },
+    "baseScore": { "$ref": "#/$defs/scoreType" },
+    "exploitability": { "$ref": "#/$defs/exploitabilityType" },
+    "remediationLevel": { "$ref": "#/$defs/remediationLevelType" },
+    "reportConfidence": { "$ref": "#/$defs/reportConfidenceType" },
+    "temporalScore": { "$ref": "#/$defs/scoreType" },
     "collateralDamagePotential": {
-      "$ref": "#/definitions/collateralDamagePotentialType"
+      "$ref": "#/$defs/collateralDamagePotentialType"
     },
-    "targetDistribution": { "$ref": "#/definitions/targetDistributionType" },
+    "targetDistribution": { "$ref": "#/$defs/targetDistributionType" },
     "confidentialityRequirement": {
-      "$ref": "#/definitions/ciaRequirementType"
+      "$ref": "#/$defs/ciaRequirementType"
     },
-    "integrityRequirement": { "$ref": "#/definitions/ciaRequirementType" },
-    "availabilityRequirement": { "$ref": "#/definitions/ciaRequirementType" },
-    "environmentalScore": { "$ref": "#/definitions/scoreType" }
+    "integrityRequirement": { "$ref": "#/$defs/ciaRequirementType" },
+    "availabilityRequirement": { "$ref": "#/$defs/ciaRequirementType" },
+    "environmentalScore": { "$ref": "#/$defs/scoreType" }
   },
   "required": ["version", "vectorString", "baseScore"]
 }

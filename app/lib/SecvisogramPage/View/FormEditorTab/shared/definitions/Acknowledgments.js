@@ -7,18 +7,24 @@ import validationErrorShallowEqual from '../validationErrorShallowEqual'
 export default React.memo(
   /**
    * @param {{
+   *  label?: string
+   *  description?: string
    *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
    *  instancePath: string
    *  value: unknown
    *  onUpdate(instancePath: string, update: {}): void
    * }} props
    */
-  function Acknowledgments(props) {
+  function Acknowledgments({
+    label = 'List of acknowledgments',
+    description = 'Contains a list of acknowledgment elements.',
+    ...props
+  }) {
     return (
       <ArrayContainer
         {...props}
-        label="List of acknowledgments"
-        description="Contains a list of acknowledgment elements."
+        label={label}
+        description={description}
         defaultItemValue={() => ({})}
       >
         {(acknowledgementsProps) => (

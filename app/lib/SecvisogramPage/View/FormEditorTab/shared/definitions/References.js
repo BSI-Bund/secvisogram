@@ -9,18 +9,24 @@ import validationErrorShallowEqual from '../validationErrorShallowEqual'
 export default React.memo(
   /**
    * @param {{
+   *  label?: string
+   *  description?: string
    *  value: unknown
    *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
    *  instancePath: string
    *  onUpdate(instancePath: string, update: {}): void
    * }} props
    */
-  function References(props) {
+  function References({
+    label = 'List of references',
+    description = 'Holds a list of references.',
+    ...props
+  }) {
     return (
       <ArrayContainer
         {...props}
-        label="List of references"
-        description="Holds a list of references."
+        label={label}
+        description={description}
         defaultItemValue={() => ({ summary: '', url: '' })}
       >
         {(itemProps) => (

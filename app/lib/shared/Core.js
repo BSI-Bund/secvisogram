@@ -1,5 +1,5 @@
-import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
+import Ajv2020 from 'ajv/dist/2020'
 import { compose, set } from 'lodash/fp'
 import csaf_2_0 from './Core/csaf_2.0.json'
 import csaf_2_0_strict from './Core/csaf_2.0_strict.json'
@@ -34,7 +34,7 @@ const setGeneratorFields = (/** @type {Date} */ date) =>
  * to be tested independently.
  */
 export default function createCore() {
-  const ajv = new Ajv({ strict: false, allErrors: true })
+  const ajv = new Ajv2020({ strict: false, allErrors: true })
   addFormats(ajv)
   ajv.addSchema(cvss_v2_0, 'https://www.first.org/cvss/cvss-v2.0.json')
   ajv.addSchema(cvss_v3_0, 'https://www.first.org/cvss/cvss-v3.0.json')

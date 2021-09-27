@@ -53,6 +53,8 @@ export default React.memo(
           <>
             <Acknowledgments
               {...documentLevelMetaDataProps('acknowledgments')}
+              label="Document acknowledgments"
+              description="Contains a list of acknowledgment elements associated with the whole document."
             />
             <AggregateSeverity
               {...documentLevelMetaDataProps('aggregate_severity')}
@@ -78,23 +80,27 @@ export default React.memo(
             />
             <Distribution {...documentLevelMetaDataProps('distribution')} />
             <Lang
+              {...documentLevelMetaDataProps('lang')}
               label="Document language"
               description="Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646."
               deletable
-              {...documentLevelMetaDataProps('lang')}
             />
             <Notes
               {...documentLevelMetaDataProps('notes')}
-              label="Notes associated with the whole document."
-              description="Holds notes about this set of vulnerabilities."
+              label="Document notes"
+              description="Holds notes associated with the whole document."
             />
             <Publisher {...documentLevelMetaDataProps('publisher')} />
-            <References {...documentLevelMetaDataProps('references')} />
+            <References
+              {...documentLevelMetaDataProps('references')}
+              label="Document references"
+              description="Holds a list of references associated with the whole document."
+            />
             <Lang
+              {...documentLevelMetaDataProps('source_lang')}
               label="Source language"
               description="If this copy of the document is a translation then the value of this property describes from which language this document was translated."
               deletable
-              {...documentLevelMetaDataProps('source_lang')}
             />
             <TextAttribute
               {...documentLevelMetaDataProps('title')}

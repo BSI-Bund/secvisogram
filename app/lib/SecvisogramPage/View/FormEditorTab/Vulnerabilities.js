@@ -74,7 +74,11 @@ const Vulnerability = React.memo(
       >
         {(vulnerabilityProps) => (
           <>
-            <Acknowledgments {...vulnerabilityProps('acknowledgments')} />
+            <Acknowledgments
+              {...vulnerabilityProps('acknowledgments')}
+              label="Vulnerability acknowledgments"
+              description="Contains a list of acknowledgment elements associated with this vulnerability item."
+            />
             <TextAttribute
               {...vulnerabilityProps('cve')}
               label="CVE"
@@ -177,8 +181,8 @@ const Vulnerability = React.memo(
             </ArrayContainer>
             <Notes
               {...vulnerabilityProps('notes')}
-              label="List of notes"
-              description="Contains notes which are specific to the current context."
+              label="Vulnerability notes"
+              description="Holds notes associated with this vulnerability item."
             />
             <ObjectContainer
               {...vulnerabilityProps('product_status')}
@@ -239,7 +243,11 @@ const Vulnerability = React.memo(
                 </>
               )}
             </ObjectContainer>
-            <References {...vulnerabilityProps('references')} />
+            <References
+              {...vulnerabilityProps('references')}
+              label="Vulnerability references"
+              description="Holds a list of references associated with this vulnerability item."
+            />
             <DateAttribute
               {...vulnerabilityProps('release_date')}
               label="Release date"

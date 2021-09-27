@@ -1,8 +1,7 @@
 {
-  "$id": "https://raw.githubusercontent.com/oasis-tcs/csaf/master/csaf_2.0/json_schema/csaf_json_schema.json#strict",
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "additionalProperties": false,
-  "definitions": {
+  "$id": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json?strict",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
     "acknowledgments_t": {
       "description": "Contains a list of acknowledgment elements.",
       "items": {
@@ -14,7 +13,7 @@
             "description": "Contains the names of entities being recognized.",
             "items": {
               "description": "Contains the name of a single person.",
-              "examples": ["Johann Sebastian Bach", "Albert Einstein"],
+              "examples": ["Albert Einstein", "Johann Sebastian Bach"],
               "minLength": 1,
               "title": "Name of entity being recognized",
               "type": "string"
@@ -25,7 +24,7 @@
           },
           "organization": {
             "description": "Contains the name of a contributing organization being recognized.",
-            "examples": ["CISA", "Talos", "Google Project Zero"],
+            "examples": ["CISA", "Google Project Zero", "Talos"],
             "minLength": 1,
             "title": "Contributing organization",
             "type": "string"
@@ -68,7 +67,7 @@
         "minProperties": 3,
         "properties": {
           "branches": {
-            "$ref": "#/definitions/branches_t"
+            "$ref": "#/$defs/branches_t"
           },
           "category": {
             "description": "Describes the characteristics of the labeled branch.",
@@ -91,21 +90,21 @@
           "name": {
             "description": "Contains the canonical descriptor or 'friendly name' of the branch.",
             "examples": [
-              "Microsoft",
-              "Siemens",
-              "Windows",
-              "Office",
-              "SIMATIC",
               "10",
               "365",
-              "PCS 7"
+              "Microsoft",
+              "Office",
+              "PCS 7",
+              "SIMATIC",
+              "Siemens",
+              "Windows"
             ],
             "minLength": 1,
             "title": "Name of the branch",
             "type": "string"
           },
           "product": {
-            "$ref": "#/definitions/full_product_name_t"
+            "$ref": "#/$defs/full_product_name_t"
           }
         },
         "required": ["category", "name"],
@@ -123,15 +122,15 @@
         "name": {
           "description": "The value should be the product\u2019s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.",
           "examples": [
-            "Microsoft Host Integration Server 2006 Service Pack 1",
-            "Cisco AnyConnect Secure Mobility Client 2.3.185"
+            "Cisco AnyConnect Secure Mobility Client 2.3.185",
+            "Microsoft Host Integration Server 2006 Service Pack 1"
           ],
           "minLength": 1,
           "title": "Textual description of the product",
           "type": "string"
         },
         "product_id": {
-          "$ref": "#/definitions/product_id_t"
+          "$ref": "#/$defs/product_id_t"
         },
         "product_identification_helper": {
           "additionalProperties": false,
@@ -139,7 +138,6 @@
           "minProperties": 1,
           "properties": {
             "cpe": {
-              "$comment": "TODO: This should have a full regular expression to enforce CPE syntax.",
               "description": "The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification.",
               "minLength": 5,
               "pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$",
@@ -162,11 +160,11 @@
                           "default": "sha256",
                           "description": "Contains the name of the cryptographic hash algorithm used to calculate the value.",
                           "examples": [
+                            "blake2b512",
                             "sha256",
-                            "sha384",
-                            "sha512",
                             "sha3-512",
-                            "blake2b512"
+                            "sha384",
+                            "sha512"
                           ],
                           "minLength": 1,
                           "title": "Algorithm of the cryptographic hash",
@@ -175,9 +173,9 @@
                         "value": {
                           "description": "Contains the cryptographic hash value in hexadecimal representation.",
                           "examples": [
+                            "37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3",
                             "4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc",
-                            "9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c",
-                            "37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3"
+                            "9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c"
                           ],
                           "minLength": 32,
                           "pattern": "^[0-9a-fA-F]{32,}$",
@@ -210,10 +208,10 @@
               "type": "array"
             },
             "purl": {
-              "$comment": "TODO: This should have a full regular expression to enforce purl syntax.",
               "description": "The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification.",
-              "minLength": 4,
-              "pattern": "^pkg:",
+              "format": "uri",
+              "minLength": 7,
+              "pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+",
               "title": "package URL representation",
               "type": "string"
             },
@@ -230,7 +228,6 @@
               "type": "array"
             },
             "serial_numbers": {
-              "$comment": "TODO: Add remark in prose that this should only be used if a certain range of serial numbers with a software version is affected, or the serial numbers change during update.",
               "description": "Contains a list of parts, or full serial numbers.",
               "items": {
                 "description": "Contains a part, or a full serial number of the component to identify.",
@@ -255,7 +252,6 @@
               "type": "array"
             },
             "x_generic_uris": {
-              "$comment": "TODO: Add remark in prose which kind of uris might be used here / add examples.",
               "description": "Contains a list of identifiers which are either vendor-specific or derived from a standard not yet supported.",
               "items": {
                 "additionalProperties": false,
@@ -294,7 +290,7 @@
     "lang_t": {
       "description": "Identifies a language, corresponding to IETF BCP 47 / RFC 5646. See IETF language registry: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry",
       "examples": ["de", "en", "fr", "frc", "jp"],
-      "pattern": "^[a-zA-Z]{2,3}(-.+)?$",
+      "pattern": "^(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3}){0,2})?|[A-Za-z]{4,8})(-[A-Za-z]{4})?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-[A-WY-Za-wy-z0-9](-[A-Za-z0-9]{2,8})+)*(-[Xx](-[A-Za-z0-9]{1,8})+)?|[Xx](-[A-Za-z0-9]{1,8})+|[Ii]-[Dd][Ee][Ff][Aa][Uu][Ll][Tt]|[Ii]-[Mm][Ii][Nn][Gg][Oo])$",
       "title": "Language type",
       "type": "string"
     },
@@ -367,7 +363,7 @@
     "product_groups_t": {
       "description": "Specifies a list of product_group_ids to give context to the parent item.",
       "items": {
-        "$ref": "#/definitions/product_group_id_t"
+        "$ref": "#/$defs/product_group_id_t"
       },
       "minItems": 1,
       "title": "List of product_group_ids",
@@ -384,7 +380,7 @@
     "products_t": {
       "description": "Specifies a list of product_ids to give context to the parent item.",
       "items": {
-        "$ref": "#/definitions/product_id_t"
+        "$ref": "#/$defs/product_id_t"
       },
       "minItems": 1,
       "title": "List of product_ids",
@@ -433,6 +429,7 @@
       "type": "string"
     }
   },
+  "additionalProperties": false,
   "description": "Representation of security advisory information as a JSON document.",
   "properties": {
     "document": {
@@ -440,7 +437,9 @@
       "description": "Captures the meta-data about this document describing a particular set of security advisories.",
       "properties": {
         "acknowledgments": {
-          "$ref": "#/definitions/acknowledgments_t"
+          "$ref": "#/$defs/acknowledgments_t",
+          "description": "Contains a list of acknowledgment elements associated with the whole document.",
+          "title": "Document acknowledgments"
         },
         "aggregate_severity": {
           "additionalProperties": false,
@@ -454,7 +453,7 @@
             },
             "text": {
               "description": "Provides a severity which is independent of - and in addition to - any other standard metric for determining the impact or severity of a given vulnerability (such as CVSS).",
-              "examples": ["Moderate", "Important", "Critical"],
+              "examples": ["Critical", "Important", "Moderate"],
               "minLength": 1,
               "title": "Text of aggregate severity",
               "type": "string"
@@ -467,9 +466,10 @@
         "category": {
           "description": "Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document.",
           "examples": [
-            "Security Advisory",
-            "Security Notice",
-            "Vulnerability Report"
+            "Example Company Security Notice",
+            "generic_csaf",
+            "security_advisory",
+            "vex"
           ],
           "minLength": 1,
           "title": "Document category",
@@ -489,9 +489,9 @@
             "text": {
               "description": "Provides a textual description of additional constraints.",
               "examples": [
-                "Share only on a need-to-know-basis only.",
+                "Copyright 2021, Example Company, All Rights Reserved.",
                 "Distribute freely.",
-                "Copyright 2019, Example Company, All Rights Reserved."
+                "Share only on a need-to-know-basis only."
               ],
               "minLength": 1,
               "title": "Textual description",
@@ -503,7 +503,7 @@
               "properties": {
                 "label": {
                   "description": "Provides the TLP label of the document.",
-                  "enum": ["RED", "AMBER", "GREEN", "WHITE"],
+                  "enum": ["AMBER", "GREEN", "RED", "WHITE"],
                   "title": "Label of TLP",
                   "type": "string"
                 },
@@ -528,14 +528,14 @@
           "type": "object"
         },
         "lang": {
-          "$ref": "#/definitions/lang_t",
+          "$ref": "#/$defs/lang_t",
           "description": "Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.",
           "title": "Document language"
         },
         "notes": {
-          "$ref": "#/definitions/notes_t",
-          "description": "Holds notes about this set of vulnerabilities.",
-          "title": "Notes associated with the whole document."
+          "$ref": "#/$defs/notes_t",
+          "description": "Holds notes associated with the whole document.",
+          "title": "Document notes"
         },
         "publisher": {
           "additionalProperties": false,
@@ -578,7 +578,7 @@
             },
             "namespace": {
               "description": "Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party.",
-              "examples": ["https://www.example.com", "https://csaf.io"],
+              "examples": ["https://csaf.io", "https://www.example.com"],
               "format": "uri",
               "title": "Namespace of publisher",
               "type": "string"
@@ -589,18 +589,20 @@
           "type": "object"
         },
         "references": {
-          "$ref": "#/definitions/references_t"
+          "$ref": "#/$defs/references_t",
+          "description": "Holds a list of references associated with the whole document.",
+          "title": "Document references"
         },
         "source_lang": {
-          "$ref": "#/definitions/lang_t",
+          "$ref": "#/$defs/lang_t",
           "description": "If this copy of the document is a translation then the value of this property describes from which language this document was translated.",
           "title": "Source language"
         },
         "title": {
           "description": "This SHOULD be a canonical name for the document, and sufficiently unique to distinguish it from similar documents.",
           "examples": [
-            "Example Company Cross-Site-Scripting Vulnerability in Example Generator",
-            "Cisco IPv6 Crafted Packet Denial of Service Vulnerability"
+            "Cisco IPv6 Crafted Packet Denial of Service Vulnerability",
+            "Example Company Cross-Site-Scripting Vulnerability in Example Generator"
           ],
           "minLength": 1,
           "title": "Title of this document",
@@ -657,7 +659,7 @@
                     },
                     "version": {
                       "description": "Contains the version of the engine that generated the CSAF document.",
-                      "examples": ["0.6.0", "2", "1.0.0-beta+exp.sha.a1c44f85"],
+                      "examples": ["0.6.0", "1.0.0-beta+exp.sha.a1c44f85", "2"],
                       "minLength": 1,
                       "title": "Engine version",
                       "type": "string"
@@ -702,7 +704,7 @@
                     "type": "string"
                   },
                   "number": {
-                    "$ref": "#/definitions/version_t"
+                    "$ref": "#/$defs/version_t"
                   },
                   "summary": {
                     "description": "Holds a single non-empty string representing a short description of the changes.",
@@ -727,7 +729,7 @@
               "type": "string"
             },
             "version": {
-              "$ref": "#/definitions/version_t"
+              "$ref": "#/$defs/version_t"
             }
           },
           "required": [
@@ -758,12 +760,12 @@
       "minProperties": 1,
       "properties": {
         "branches": {
-          "$ref": "#/definitions/branches_t"
+          "$ref": "#/$defs/branches_t"
         },
         "full_product_names": {
           "description": "Contains a list of full product names.",
           "items": {
-            "$ref": "#/definitions/full_product_name_t"
+            "$ref": "#/$defs/full_product_name_t"
           },
           "minItems": 1,
           "title": "List of full product names",
@@ -776,12 +778,12 @@
             "description": "Defines a new logical group of products that can then be referred to in other parts of the document to address a group of products with a single identifier.",
             "properties": {
               "group_id": {
-                "$ref": "#/definitions/product_group_id_t"
+                "$ref": "#/$defs/product_group_id_t"
               },
               "product_ids": {
                 "description": "Lists the product_ids of those products which known as one group in the document.",
                 "items": {
-                  "$ref": "#/definitions/product_id_t"
+                  "$ref": "#/$defs/product_id_t"
                 },
                 "minItems": 2,
                 "title": "List of Product IDs",
@@ -791,8 +793,8 @@
               "summary": {
                 "description": "Gives a short, optional description of the group.",
                 "examples": [
-                  "The x64 versions of the operating system.",
-                  "Products supporting Modbus."
+                  "Products supporting Modbus.",
+                  "The x64 versions of the operating system."
                 ],
                 "minLength": 1,
                 "title": "Summary of the product group",
@@ -826,13 +828,17 @@
                 "type": "string"
               },
               "full_product_name": {
-                "$ref": "#/definitions/full_product_name_t"
+                "$ref": "#/$defs/full_product_name_t"
               },
               "product_reference": {
-                "$ref": "#/definitions/product_id_t"
+                "$ref": "#/$defs/product_id_t",
+                "description": "Holds a Product ID that refers to the Full Product Name element, which is referenced as the first element of the relationship.",
+                "title": "Product reference"
               },
               "relates_to_product_reference": {
-                "$ref": "#/definitions/product_id_t"
+                "$ref": "#/$defs/product_id_t",
+                "description": "Holds a Product ID that refers to the Full Product Name element, which is referenced as the second element of the relationship.",
+                "title": "Relates to product reference"
               }
             },
             "required": [
@@ -860,7 +866,9 @@
         "minProperties": 1,
         "properties": {
           "acknowledgments": {
-            "$ref": "#/definitions/acknowledgments_t"
+            "$ref": "#/$defs/acknowledgments_t",
+            "description": "Contains a list of acknowledgment elements associated with this vulnerability item.",
+            "title": "Vulnerability acknowledgments"
           },
           "cve": {
             "description": "Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.",
@@ -874,7 +882,7 @@
             "properties": {
               "id": {
                 "description": "Holds the ID for the weakness associated.",
-                "examples": ["CWE-79", "CWE-22", "CWE-352"],
+                "examples": ["CWE-22", "CWE-352", "CWE-79"],
                 "pattern": "^CWE-[1-9]\\d{0,5}$",
                 "title": "Weakness ID",
                 "type": "string"
@@ -882,9 +890,9 @@
               "name": {
                 "description": "Holds the full name of the weakness as given in the CWE specification.",
                 "examples": [
-                  "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+                  "Cross-Site Request Forgery (CSRF)",
                   "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
-                  "Cross-Site Request Forgery (CSRF)"
+                  "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
                 ],
                 "minLength": 1,
                 "title": "Weakness name",
@@ -978,7 +986,9 @@
             "uniqueItems": true
           },
           "notes": {
-            "$ref": "#/definitions/notes_t"
+            "$ref": "#/$defs/notes_t",
+            "description": "Holds notes associated with this vulnerability item.",
+            "title": "Vulnerability notes"
           },
           "product_status": {
             "additionalProperties": false,
@@ -986,42 +996,42 @@
             "minProperties": 1,
             "properties": {
               "first_affected": {
-                "$ref": "#/definitions/products_t",
+                "$ref": "#/$defs/products_t",
                 "description": "These are the first versions of the releases known to be affected by the vulnerability.",
                 "title": "First affected"
               },
               "first_fixed": {
-                "$ref": "#/definitions/products_t",
+                "$ref": "#/$defs/products_t",
                 "description": "These versions contain the first fix for the vulnerability but may not be the recommended fixed versions.",
                 "title": "First fixed"
               },
               "fixed": {
-                "$ref": "#/definitions/products_t",
+                "$ref": "#/$defs/products_t",
                 "description": "These versions contain a fix for the vulnerability but may not be the recommended fixed versions.",
                 "title": "Fixed"
               },
               "known_affected": {
-                "$ref": "#/definitions/products_t",
+                "$ref": "#/$defs/products_t",
                 "description": "These versions are known to be affected by the vulnerability.",
                 "title": "Known affected"
               },
               "known_not_affected": {
-                "$ref": "#/definitions/products_t",
+                "$ref": "#/$defs/products_t",
                 "description": "These versions are known not to be affected by the vulnerability.",
                 "title": "Known not affected"
               },
               "last_affected": {
-                "$ref": "#/definitions/products_t",
+                "$ref": "#/$defs/products_t",
                 "description": "These are the last versions in a release train known to be affected by the vulnerability. Subsequently released versions would contain a fix for the vulnerability.",
                 "title": "Last affected"
               },
               "recommended": {
-                "$ref": "#/definitions/products_t",
+                "$ref": "#/$defs/products_t",
                 "description": "These versions have a fix for the vulnerability and are the vendor-recommended versions for fixing the vulnerability.",
                 "title": "Recommended"
               },
               "under_investigation": {
-                "$ref": "#/definitions/products_t",
+                "$ref": "#/$defs/products_t",
                 "description": "It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation - the result will be provided in a later release of the document.",
                 "title": "Under investigation"
               }
@@ -1030,7 +1040,9 @@
             "type": "object"
           },
           "references": {
-            "$ref": "#/definitions/references_t"
+            "$ref": "#/$defs/references_t",
+            "description": "Holds a list of references associated with this vulnerability item.",
+            "title": "Vulnerability references"
           },
           "release_date": {
             "description": "Holds the date and time the vulnerability was originally released into the wild.",
@@ -1047,11 +1059,11 @@
                 "category": {
                   "description": "Specifies the category which this remediation belongs to.",
                   "enum": [
-                    "workaround",
                     "mitigation",
-                    "vendor_fix",
+                    "no_fix_planned",
                     "none_available",
-                    "no_fix_planned"
+                    "vendor_fix",
+                    "workaround"
                   ],
                   "title": "Category of the remediation",
                   "type": "string"
@@ -1081,10 +1093,10 @@
                   "type": "array"
                 },
                 "group_ids": {
-                  "$ref": "#/definitions/product_groups_t"
+                  "$ref": "#/$defs/product_groups_t"
                 },
                 "product_ids": {
-                  "$ref": "#/definitions/products_t"
+                  "$ref": "#/$defs/products_t"
                 },
                 "restart_required": {
                   "additionalProperties": false,
@@ -1093,15 +1105,15 @@
                     "category": {
                       "description": "Specifies what category of restart is required by this remediation to become effective.",
                       "enum": [
-                        "none",
-                        "vulnerable_component",
-                        "service",
-                        "parent",
-                        "dependencies",
                         "connected",
+                        "dependencies",
                         "machine",
-                        "zone",
-                        "system"
+                        "none",
+                        "parent",
+                        "service",
+                        "system",
+                        "vulnerable_component",
+                        "zone"
                       ],
                       "title": "Category of restart",
                       "type": "string"
@@ -1137,7 +1149,7 @@
             "items": {
               "additionalProperties": false,
               "description": "specifies information about (at least one) score of the vulnerability and for which products the given value applies.",
-              "minItems": 2,
+              "minProperties": 2,
               "properties": {
                 "cvss_v2": {
                   "$ref": "https://www.first.org/cvss/cvss-v2.0.json"
@@ -1153,7 +1165,7 @@
                   ]
                 },
                 "products": {
-                  "$ref": "#/definitions/products_t"
+                  "$ref": "#/$defs/products_t"
                 }
               },
               "required": ["products"],
@@ -1189,10 +1201,10 @@
                   "type": "string"
                 },
                 "group_ids": {
-                  "$ref": "#/definitions/product_groups_t"
+                  "$ref": "#/$defs/product_groups_t"
                 },
                 "product_ids": {
-                  "$ref": "#/definitions/products_t"
+                  "$ref": "#/$defs/products_t"
                 }
               },
               "required": ["category", "details"],
