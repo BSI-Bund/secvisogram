@@ -286,6 +286,166 @@ export default {
       },
     },
 
+    // Fails "6.1.7 Multiple Scores with same Version per Product"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.1',
+                  vectorString: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H',
+                  baseScore: 10,
+                  baseSeverity: 'CRITICAL',
+                },
+              },
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.1',
+                  vectorString: 'CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H',
+                  baseScore: 6.5,
+                  baseSeverity: 'MEDIUM',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.7 Multiple Scores with same Version per Product"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v2: {
+                  version: '2.0',
+                  vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
+                  baseScore: 10,
+                },
+              },
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v2: {
+                  version: '2.0',
+                  vectorString: 'AV:N/AC:L/Au:S/C:P/I:P/A:P',
+                  baseScore: 6.5,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Passes "6.1.7 Multiple Scores with same Version per Product"
+    {
+      valid: true,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v2: {
+                  version: '2.0',
+                  vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
+                  baseScore: 10,
+                },
+              },
+            ],
+          },
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v2: {
+                  version: '2.0',
+                  vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
+                  baseScore: 10,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Passes "6.1.7 Multiple Scores with same Version per Product"
+    {
+      valid: true,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.1',
+                  vectorString: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H',
+                  baseScore: 10,
+                  baseSeverity: 'CRITICAL',
+                },
+              },
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.0',
+                  vectorString: 'CVSS:3.0/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H',
+                  baseScore: 6.5,
+                  baseSeverity: 'MEDIUM',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
     // Fails "6.1.18 Released Revision History"
     {
       valid: false,
@@ -495,6 +655,48 @@ export default {
             version: '1.0.0',
           },
         },
+      },
+    },
+
+    // Fails "6.1.23 Multiple Use of Same CVE"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        vulnerabilities: [
+          {
+            cve: 'CVE-2017-0145',
+          },
+          {
+            cve: 'CVE-2017-0145',
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.24 Definition in Involvements"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        vulnerabilities: [
+          {
+            involvements: [
+              {
+                date: '2021-04-23T10:00:00.000Z',
+                party: 'vendor',
+                status: 'in_progress',
+              },
+              {
+                date: '2021-04-23T10:00:00.000Z',
+                party: 'vendor',
+                status: 'in_progress',
+                summary:
+                  'The vendor has released a mitigation and is working to fully resolve the issue.',
+              },
+            ],
+          },
+        ],
       },
     },
   ],
