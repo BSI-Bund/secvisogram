@@ -105,6 +105,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [remove-accents@0.4.2](https://github.com/tyxla/remove-accents) - MIT
 - [require-from-string@2.0.2](https://github.com/floatdrop/require-from-string) - MIT
 - [scheduler@0.20.2](https://github.com/facebook/react) - MIT
+- [semver@5.7.1](https://github.com/npm/node-semver) - ISC
 - [shallowequal@1.1.0](https://github.com/dashed/shallowequal) - MIT
 - [tabbable@4.0.0](https://github.com/davidtheclark/tabbable) - MIT
 - [tiny-warning@1.0.3](https://github.com/alexreardon/tiny-warning) - MIT
