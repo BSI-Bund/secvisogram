@@ -29,42 +29,42 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 -->
 
 - [@babel/runtime@7.12.5](https://github.com/babel/babel) - MIT
-- [@babel/runtime@7.14.6](https://github.com/babel/babel) - MIT
+- [@babel/runtime@7.15.4](https://github.com/babel/babel) - MIT
 - [@emotion/hash@0.8.0](https://github.com/emotion-js/emotion/tree/master/packages/hash) - MIT
-- [@fortawesome/fontawesome-common-types@0.2.35](https://github.com/FortAwesome/Font-Awesome) - MIT
-- [@fortawesome/fontawesome-svg-core@1.2.35](https://github.com/FortAwesome/Font-Awesome) - MIT
-- [@fortawesome/free-solid-svg-icons@5.15.3](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
-- [@fortawesome/react-fontawesome@0.1.14](https://github.com/FortAwesome/react-fontawesome) - MIT
-- [@material-ui/core@4.12.2](https://github.com/mui-org/material-ui) - MIT
+- [@fortawesome/fontawesome-common-types@0.2.36](https://github.com/FortAwesome/Font-Awesome) - MIT
+- [@fortawesome/fontawesome-svg-core@1.2.36](https://github.com/FortAwesome/Font-Awesome) - MIT
+- [@fortawesome/free-solid-svg-icons@5.15.4](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
+- [@fortawesome/react-fontawesome@0.1.15](https://github.com/FortAwesome/react-fontawesome) - MIT
+- [@material-ui/core@4.12.3](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/lab@4.0.0-alpha.60](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/styles@4.11.4](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/system@4.12.1](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/types@5.1.0](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/utils@4.11.2](https://github.com/mui-org/material-ui) - MIT
-- [@reach/alert-dialog@0.15.3](https://github.com/reach/reach-ui) - MIT
-- [@reach/auto-id@0.15.3](https://github.com/reach/reach-ui) - MIT
-- [@reach/combobox@0.15.3](https://github.com/reach/reach-ui) - MIT
-- [@reach/descendants@0.15.3](https://github.com/reach/reach-ui) - MIT
-- [@reach/dialog@0.15.3](https://github.com/reach/reach-ui) - MIT
+- [@reach/alert-dialog@0.16.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/auto-id@0.16.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/combobox@0.16.1](https://github.com/reach/reach-ui) - MIT
+- [@reach/descendants@0.16.1](https://github.com/reach/reach-ui) - MIT
+- [@reach/dialog@0.16.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/observe-rect@1.2.0](https://github.com/reach/observe-rect) - MIT
-- [@reach/popover@0.15.3](https://github.com/reach/reach-ui) - MIT
-- [@reach/portal@0.15.3](https://github.com/reach/reach-ui) - MIT
-- [@reach/rect@0.15.3](https://github.com/reach/reach-ui) - MIT
-- [@reach/utils@0.15.3](https://github.com/reach/reach-ui) - MIT
+- [@reach/popover@0.16.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/portal@0.16.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/rect@0.16.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/utils@0.16.0](https://github.com/reach/reach-ui) - MIT
 - [@types/prop-types@15.7.4](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/react-transition-group@4.4.2](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/react@17.0.14](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/react@17.0.20](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/scheduler@0.16.2](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [ajv-formats@1.6.1](https://github.com/ajv-validator/ajv-formats) - MIT
-- [ajv@7.2.4](https://github.com/ajv-validator/ajv) - MIT
+- [ajv-formats@2.1.1](https://github.com/ajv-validator/ajv-formats) - MIT
+- [ajv@8.6.2](https://github.com/ajv-validator/ajv) - MIT
 - [clsx@1.1.1](https://github.com/lukeed/clsx) - MIT
 - [css-vendor@2.0.8](https://github.com/cssinjs/css-vendor) - MIT
 - [csstype@2.6.17](https://github.com/frenic/csstype) - MIT
-- [csstype@3.0.6](https://github.com/frenic/csstype) - MIT
+- [csstype@3.0.8](https://github.com/frenic/csstype) - MIT
 - [detect-node-es@1.1.0](https://github.com/thekashey/detect-node) - MIT
 - [dom-helpers@5.2.1](https://github.com/react-bootstrap/dom-helpers) - MIT
 - [fast-deep-equal@3.1.3](https://github.com/epoberezkin/fast-deep-equal) - MIT
-- [focus-lock@0.9.1](https://github.com/theKashey/focus-lock) - MIT
+- [focus-lock@0.9.2](https://github.com/theKashey/focus-lock) - MIT
 - [foreach@2.0.5](https://github.com/manuelstofer/foreach) - MIT
 - [get-nonce@1.0.1](https://github.com/theKashey/get-nonce) - MIT
 - [hoist-non-react-statics@3.3.2](https://github.com/mridgway/hoist-non-react-statics) - BSD-3-Clause
@@ -85,6 +85,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [jss@10.7.1](https://github.com/cssinjs/jss) - MIT
 - [lodash@4.17.21](https://github.com/lodash/lodash) - MIT
 - [loose-envify@1.4.0](https://github.com/zertosh/loose-envify) - MIT
+- [lru-cache@6.0.0](https://github.com/isaacs/node-lru-cache) - ISC
 - [match-sorter@6.3.0](https://github.com/kentcdodds/match-sorter) - MIT
 - [mustache@4.2.0](https://github.com/janl/mustache.js) - MIT
 - [object-assign@4.1.1](https://github.com/sindresorhus/object-assign) - MIT
@@ -105,15 +106,16 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [remove-accents@0.4.2](https://github.com/tyxla/remove-accents) - MIT
 - [require-from-string@2.0.2](https://github.com/floatdrop/require-from-string) - MIT
 - [scheduler@0.20.2](https://github.com/facebook/react) - MIT
-- [semver@5.7.1](https://github.com/npm/node-semver) - ISC
+- [semver@7.3.5](https://github.com/npm/node-semver) - ISC
 - [shallowequal@1.1.0](https://github.com/dashed/shallowequal) - MIT
 - [tabbable@4.0.0](https://github.com/davidtheclark/tabbable) - MIT
 - [tiny-warning@1.0.3](https://github.com/alexreardon/tiny-warning) - MIT
 - [tslib@1.14.1](https://github.com/Microsoft/tslib) - 0BSD
-- [tslib@2.3.0](https://github.com/Microsoft/tslib) - 0BSD
+- [tslib@2.3.1](https://github.com/Microsoft/tslib) - 0BSD
 - [uri-js@4.4.0](https://github.com/garycourt/uri-js) - BSD-2-Clause
 - [use-callback-ref@1.2.5](https://github.com/theKashey/use-callback-ref) - MIT
 - [use-sidecar@1.0.5](undefined) - MIT
+- [yallist@4.0.0](https://github.com/isaacs/yallist) - ISC
 
 
 ### [ace](https://ace.c9.io/)
