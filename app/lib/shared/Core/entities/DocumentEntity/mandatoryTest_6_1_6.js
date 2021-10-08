@@ -61,7 +61,7 @@ export default function (doc) {
             isValid = false
             errors.push({
               instancePath: `/vulnerabilities/${vulnerabilityIndex}/product_status`,
-              message: `product-id "${productID}" is mentioned in contradicting product status groups`,
+              message: `product id "${productID}" is mentioned in contradicting product status groups`,
             })
           }
         })
