@@ -5,6 +5,7 @@ import unset from 'lodash/fp/unset'
 import isEmpty from 'lodash/isEmpty'
 import { major, prerelease, valid } from 'semver'
 import cwec from '../cwec_4.3.json'
+import mandatoryTest_6_1_10 from './DocumentEntity/mandatoryTest_6_1_10'
 import mandatoryTest_6_1_13 from './DocumentEntity/mandatoryTest_6_1_13'
 import mandatoryTest_6_1_14 from './DocumentEntity/mandatoryTest_6_1_14'
 import mandatoryTest_6_1_15 from './DocumentEntity/mandatoryTest_6_1_15'
@@ -616,6 +617,7 @@ export default class DocumentEntity {
       mandatoryTest_6_1_6,
       mandatoryTest_6_1_7,
       mandatoryTest_6_1_9,
+      mandatoryTest_6_1_10,
       mandatoryTest_6_1_13,
       mandatoryTest_6_1_14,
       mandatoryTest_6_1_15,

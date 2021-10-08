@@ -602,6 +602,76 @@ export default {
       },
     },
 
+    // Fails "6.1.10 Inconsistent CVSS"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.1',
+                  vectorString: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H',
+                  baseScore: 9.8,
+                  baseSeverity: 'CRITICAL',
+                  attackVector: 'LOCAL',
+                  attackComplexity: 'LOW',
+                  privilegesRequired: 'NONE',
+                  userInteraction: 'NONE',
+                  scope: 'CHANGED',
+                  confidentialityImpact: 'HIGH',
+                  integrityImpact: 'HIGH',
+                  availabilityImpact: 'LOW',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.10 Inconsistent CVSS"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v2: {
+                  version: '2.0',
+                  vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
+                  accessVector: 'LOCAL',
+                  baseScore: 10,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
     // Fails "6.1.13 PURL"
     {
       valid: false,
