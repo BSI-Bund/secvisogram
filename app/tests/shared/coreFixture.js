@@ -220,6 +220,510 @@ export default {
       strippedVersion: {},
     },
 
+    // Fails "6.1.6 Contradicting Product Status"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            product_status: {
+              known_affected: ['CSAFPID-9080700'],
+              known_not_affected: ['CSAFPID-9080700'],
+            },
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.9 Invalid CVSS computation"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.1',
+                  vectorString: 'CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H',
+                  baseScore: 10.0,
+                  baseSeverity: 'MEDIUM',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.9 Invalid CVSS computation"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.1',
+                  vectorString: 'CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H',
+                  baseScore: 6.5,
+                  baseSeverity: 'LOW',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.9 Invalid CVSS computation"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.1',
+                  vectorString: 'CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H',
+                  baseScore: 6.5,
+                  baseSeverity: 'MEDIUM',
+                  temporalScore: 10,
+                  temporalSeverity: 'MEDIUM',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.9 Invalid CVSS computation"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.1',
+                  vectorString: 'CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H',
+                  baseScore: 6.5,
+                  baseSeverity: 'MEDIUM',
+                  temporalScore: 6.5,
+                  temporalSeverity: 'LOW',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.9 Invalid CVSS computation"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.1',
+                  vectorString: 'CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H',
+                  baseScore: 6.5,
+                  baseSeverity: 'MEDIUM',
+                  temporalScore: 6.5,
+                  temporalSeverity: 'MEDIUM',
+                  environmentalScore: 10,
+                  environmentalSeverity: 'MEDIUM',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.9 Invalid CVSS computation"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.1',
+                  vectorString: 'CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H',
+                  baseScore: 6.5,
+                  baseSeverity: 'MEDIUM',
+                  temporalScore: 6.5,
+                  temporalSeverity: 'MEDIUM',
+                  environmentalScore: 6.5,
+                  environmentalSeverity: 'LOW',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Skips "6.1.9 Invalid CVSS computation" - invalid v3 vector-string
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.1',
+                  vectorString: 'CVSS:3.1/AV:_/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H',
+                  baseScore: 6.5,
+                  baseSeverity: 'MEDIUM',
+                  temporalScore: 6.5,
+                  temporalSeverity: 'MEDIUM',
+                  environmentalScore: 6.5,
+                  environmentalSeverity: 'LOW',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.9 Invalid CVSS computation"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v2: {
+                  version: '2.0',
+                  vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
+                  baseScore: 5,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.9 Invalid CVSS computation"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v2: {
+                  version: '2.0',
+                  vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
+                  baseScore: 10,
+                  temporalScore: 5,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.9 Invalid CVSS computation"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v2: {
+                  version: '2.0',
+                  vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
+                  baseScore: 10,
+                  temporalScore: 10,
+                  environmentalScore: 5,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Skips "6.1.9 Invalid CVSS computation" - invalid v2 vector-string
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v2: {
+                  version: '2.0',
+                  vectorString: 'AV:_/AC:L/Au:N/C:C/I:C/A:C',
+                  baseScore: 10,
+                  temporalScore: 10,
+                  environmentalScore: 5,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.13 PURL"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              name: 'Product A',
+              product_id: 'CSAFPID-9080700',
+              product_identification_helper: {
+                purl: 'pkg:maven/@1.3.4',
+              },
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.13 PURL"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          relationships: [
+            {
+              full_product_name: {
+                name: 'A',
+                product_id: 'CSAFPID-0001',
+                product_identification_helper: {
+                  purl: 'pkg:maven/@1.3.4',
+                },
+              },
+              product_reference: 'CSAFPID-0001',
+              category: 'default_component_of',
+              relates_to_product_reference: 'CSAFPID-0001',
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.13 PURL"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          branches: [
+            {
+              category: 'architecture',
+              name: 'My branch',
+              product: {
+                product_id: 'CSAFPID-0001',
+                name: 'My branch',
+                product_identification_helper: {
+                  purl: 'pkg:maven/@1.3.4',
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.13 PURL"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          branches: [
+            {
+              category: 'architecture',
+              name: 'My branch',
+              branches: [
+                {
+                  category: 'architecture',
+                  name: 'My branch',
+                  product: {
+                    product_id: 'CSAFPID-0001',
+                    name: 'My branch',
+                    product_identification_helper: {
+                      purl: 'pkg:maven/@1.3.4',
+                    },
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.14 Sorted Revision History"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          tracking: {
+            ...MINIMAL_DOC.document.tracking,
+            revision_history: [
+              {
+                date: '2021-07-22T10:00:00.000Z',
+                number: '2',
+                summary: 'Second version.',
+              },
+              {
+                date: '2021-07-23T10:00:00.000Z',
+                number: '1',
+                summary: 'Initial version.',
+              },
+            ],
+            version: '1',
+          },
+        },
+      },
+    },
+
     // Fails "6.1.16 Released Revision History"
     {
       valid: false,
@@ -446,6 +950,22 @@ export default {
       },
     },
 
+    // Fails "6.1.15 Translator"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          publisher: {
+            category: 'translator',
+            name: 'CSAF TC Translator',
+            namespace: 'https://csaf.io/translator',
+          },
+        },
+      },
+    },
+
     // Fails "6.1.18 Released Revision History"
     {
       valid: false,
@@ -604,6 +1124,34 @@ export default {
       },
     },
 
+    // Fails "6.1.21 Missing Item in Revision History"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          tracking: {
+            ...MINIMAL_DOC.document.tracking,
+            revision_history: [
+              {
+                date: '2021-04-22T10:00:00.000Z',
+                number: '1',
+                summary: 'Initial version.',
+              },
+              {
+                date: '2021-07-21T10:00:00.000Z',
+                number: '3',
+                summary: 'Some other changes.',
+              },
+            ],
+            status: 'final',
+            version: '3',
+          },
+        },
+      },
+    },
+
     // Fails "6.1.22 Multiple Definition in Revision History"
     {
       valid: false,
@@ -697,6 +1245,159 @@ export default {
             ],
           },
         ],
+      },
+    },
+
+    // Fails "6.1.25 Multiple Use of Same Hash Algorithm"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              name: 'Product A',
+              product_id: 'CSAFPID-9080700',
+              product_identification_helper: {
+                hashes: [
+                  {
+                    file_hashes: [
+                      {
+                        algorithm: 'sha256',
+                        value:
+                          '026a37919b182ef7c63791e82c9645e2f897a3f0b73c7a6028c7febf62e93838',
+                      },
+                      {
+                        algorithm: 'sha256',
+                        value:
+                          '0a853ce2337f0608489ac596a308dc5b7b19d35a52b10bf31261586ac368b175',
+                      },
+                    ],
+                    filename: 'product_a.so',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.25 Multiple Use of Same Hash Algorithm"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          relationships: [
+            {
+              full_product_name: {
+                name: 'A',
+                product_id: 'CSAFPID-0001',
+                product_identification_helper: {
+                  hashes: [
+                    {
+                      file_hashes: [
+                        {
+                          algorithm: 'sha256',
+                          value: '12312312312312312312312312312312',
+                        },
+                        {
+                          algorithm: 'sha256',
+                          value: '12312312312312312312312312312312',
+                        },
+                      ],
+                      filename: 'my-hash.a',
+                    },
+                  ],
+                },
+              },
+              product_reference: 'CSAFPID-0001',
+              category: 'default_component_of',
+              relates_to_product_reference: 'CSAFPID-0001',
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.25 Multiple Use of Same Hash Algorithm"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          branches: [
+            {
+              category: 'architecture',
+              name: 'My branch',
+              product: {
+                product_id: 'CSAFPID-0001',
+                name: 'My branch',
+                product_identification_helper: {
+                  hashes: [
+                    {
+                      file_hashes: [
+                        {
+                          algorithm: 'sha256',
+                          value: '12312312312312312312312312312312',
+                        },
+                        {
+                          algorithm: 'sha256',
+                          value: '12312312312312312312312312312312',
+                        },
+                      ],
+                      filename: 'my_hash.a',
+                    },
+                  ],
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.25 Multiple Use of Same Hash Algorithm"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          branches: [
+            {
+              category: 'architecture',
+              name: 'My branch',
+              branches: [
+                {
+                  category: 'architecture',
+                  name: 'My branch',
+                  product: {
+                    product_id: 'CSAFPID-0001',
+                    name: 'My branch',
+                    product_identification_helper: {
+                      hashes: [
+                        {
+                          file_hashes: [
+                            {
+                              algorithm: 'sha256',
+                              value: '12312312312312312312312312312312',
+                            },
+                            {
+                              algorithm: 'sha256',
+                              value: '12312312312312312312312312312312',
+                            },
+                          ],
+                          filename: 'my_hash.a',
+                        },
+                      ],
+                    },
+                  },
+                },
+              ],
+            },
+          ],
+        },
       },
     },
   ],
