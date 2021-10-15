@@ -672,6 +672,30 @@ export default {
       },
     },
 
+    // Fails "6.1.12 Language"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          lang: 'EZ',
+        },
+      },
+    },
+
+    // Fails "6.1.12 Language"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          source_lang: 'EZ',
+        },
+      },
+    },
+
     // Fails "6.1.13 PURL"
     {
       valid: false,
