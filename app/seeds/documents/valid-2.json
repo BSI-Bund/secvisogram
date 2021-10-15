@@ -2,7 +2,7 @@
   "document": {
     "lang": "en",
     "title": "Red Hat Bug Fix Advisory: Red Hat OpenShift Container Platform 3.9 RPM Release Advisory",
-    "category": "security_advisory",
+    "category": "generic_csaf",
     "csaf_version": "2.0",
     "publisher": {
       "category": "vendor",
@@ -9111,9 +9111,7 @@
       ],
       "acknowledgments": [
         {
-          "names": [
-            "Ben Parees"
-          ],
+          "names": ["Ben Parees"],
           "organization": "Red Hat",
           "summary": "This issue was discovered by Ben Parees (Red Hat)."
         }
@@ -9585,9 +9583,7 @@
       ],
       "acknowledgments": [
         {
-          "names": [
-            "Jessica Forrester"
-          ],
+          "names": ["Jessica Forrester"],
           "organization": "Red Hat",
           "summary": "This issue was discovered by Jessica Forrester (Red Hat)."
         }

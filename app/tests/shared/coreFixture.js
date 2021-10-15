@@ -1494,5 +1494,23 @@ export default {
         },
       },
     },
+
+    // Fails "6.1.26 Prohibited Document Category Name"
+    ...[
+      'Security_Incident_Response',
+      'Informational Advisory',
+      'security-incident-response',
+      'Security      Advisory',
+      'veX',
+    ].map((category) => ({
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          category,
+        },
+      },
+    })),
   ],
 }
