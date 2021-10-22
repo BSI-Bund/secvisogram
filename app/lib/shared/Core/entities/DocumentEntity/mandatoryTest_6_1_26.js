@@ -9,15 +9,7 @@ export default function mandatoryTest_6_1_25(doc) {
   if (typeof doc.document?.category === 'string') {
     /** @type {string} */
     const category = doc.document.category
-    const prohibitedValues = [
-      'security_incident_response',
-      'informational_advisory',
-      'security_advisory',
-      'vex',
-    ]
-    if (
-      prohibitedValues.includes(category.replace(/[- ]+/g, '_').toLowerCase())
-    ) {
+    if (category.replace(/[- ]+/g, '_').toLowerCase() !== 'generic_csaf') {
       isValid = false
       errors.push({
         instancePath: `/document/category`,

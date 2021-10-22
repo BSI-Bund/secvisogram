@@ -3,7 +3,7 @@ import valid2 from '../../seeds/documents/valid-2.json'
 
 const MINIMAL_DOC = {
   document: {
-    category: 'Test Report',
+    category: 'Generic CSAF',
     csaf_version: '2.0',
     title: 'Minimal valid',
     publisher: {
@@ -43,7 +43,7 @@ export default {
       valid: false,
       content: {
         document: {
-          category: 'Test Report',
+          category: 'Generic CSAF',
           csaf_version: '2.0',
           title: 'Minimal valid',
           publisher: {
@@ -154,7 +154,7 @@ export default {
       valid: false,
       content: {
         document: {
-          category: 'Test Report',
+          category: 'Generic CSAF',
           csaf_version: '2.0',
           title: 'Minimal valid',
           publisher: {
@@ -183,7 +183,7 @@ export default {
       },
       strippedVersion: {
         document: {
-          category: 'Test Report',
+          category: 'Generic CSAF',
           csaf_version: '2.0',
           title: 'Minimal valid',
           publisher: {
