@@ -11,6 +11,7 @@ suite('bcpLanguageTagChecker', function () {
     'eo-arkaika',
     'de-1996',
     'i-DeFaULt',
+    'de-Adlm-AD-1996',
   ]
 
   correctLanguageTags.forEach((correctLanguageTag) => {
@@ -19,7 +20,7 @@ suite('bcpLanguageTagChecker', function () {
     })
   })
 
-  const incorrectLanguageTags = ['ez']
+  const incorrectLanguageTags = ['ez', 'ads-aeb', 'de-Adlm-AD-1694acad']
 
   incorrectLanguageTags.forEach((incorrectLanguageTag) => {
     test(`"${incorrectLanguageTag}" is not a valid language tag`, function () {

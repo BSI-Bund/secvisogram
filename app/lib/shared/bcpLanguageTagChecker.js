@@ -20,7 +20,8 @@ export default function (tag) {
       icann.subtags.some(
         (s) =>
           s.subtag.toLowerCase() === extlang.toLowerCase() &&
-          s.type === 'extlang'
+          s.type === 'extlang' &&
+          s.prefix === parsed.langtag.language.language?.toLowerCase()
       )
     ) &&
     (parsed.langtag.script === null ||
@@ -39,7 +40,8 @@ export default function (tag) {
       icann.subtags.some(
         (s) =>
           s.subtag.toLowerCase() === variant.toLowerCase() &&
-          s.type === 'variant'
+          s.type === 'variant' &&
+          s.prefix === parsed.langtag.language.language?.toLowerCase()
       )
     )
   )

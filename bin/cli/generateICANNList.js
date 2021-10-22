@@ -12,10 +12,10 @@ module.exports = function generateIcannList({ registry }) {
   })
 
   /**
-   * @type {Array<{ subtag: string; type: string }>}
+   * @type {Array<{ subtag: string; type: string; prefix?: string }>}
    */
   const subtags = []
-  /** @type {{ subtag: string; type: string } | null} */
+  /** @type {{ subtag: string; type: string; prefix?: string } | null} */
   let buffer = null
   rl.on('line', (line) => {
     if (line.startsWith('%%')) {
@@ -28,6 +28,9 @@ module.exports = function generateIcannList({ registry }) {
       }
       if (line.startsWith('Type: ')) {
         buffer.type = line.split(': ').slice(1).join(': ')
+      }
+      if (line.startsWith('Prefix: ')) {
+        buffer.prefix = line.split(': ').slice(1).join(': ')
       }
     }
   }).on('close', () => {

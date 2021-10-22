@@ -32714,959 +32714,1198 @@
     },
     {
       "type": "extlang",
-      "subtag": "aao"
+      "subtag": "aao",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "abh"
+      "subtag": "abh",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "abv"
+      "subtag": "abv",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "acm"
+      "subtag": "acm",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "acq"
+      "subtag": "acq",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "acw"
+      "subtag": "acw",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "acx"
+      "subtag": "acx",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "acy"
+      "subtag": "acy",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "adf"
+      "subtag": "adf",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "ads"
+      "subtag": "ads",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "aeb"
+      "subtag": "aeb",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "aec"
+      "subtag": "aec",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "aed"
+      "subtag": "aed",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "aen"
+      "subtag": "aen",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "afb"
+      "subtag": "afb",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "afg"
+      "subtag": "afg",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ajp"
+      "subtag": "ajp",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "apc"
+      "subtag": "apc",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "apd"
+      "subtag": "apd",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "arb"
+      "subtag": "arb",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "arq"
+      "subtag": "arq",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "ars"
+      "subtag": "ars",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "ary"
+      "subtag": "ary",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "arz"
+      "subtag": "arz",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "ase"
+      "subtag": "ase",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "asf"
+      "subtag": "asf",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "asp"
+      "subtag": "asp",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "asq"
+      "subtag": "asq",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "asw"
+      "subtag": "asw",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "auz"
+      "subtag": "auz",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "avl"
+      "subtag": "avl",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "ayh"
+      "subtag": "ayh",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "ayl"
+      "subtag": "ayl",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "ayn"
+      "subtag": "ayn",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "ayp"
+      "subtag": "ayp",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "bbz"
+      "subtag": "bbz",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "bfi"
+      "subtag": "bfi",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "bfk"
+      "subtag": "bfk",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "bjn"
+      "subtag": "bjn",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "bog"
+      "subtag": "bog",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "bqn"
+      "subtag": "bqn",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "bqy"
+      "subtag": "bqy",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "btj"
+      "subtag": "btj",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "bve"
+      "subtag": "bve",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "bvl"
+      "subtag": "bvl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "bvu"
+      "subtag": "bvu",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "bzs"
+      "subtag": "bzs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "cdo"
+      "subtag": "cdo",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "cds"
+      "subtag": "cds",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "cjy"
+      "subtag": "cjy",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "cmn"
+      "subtag": "cmn",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "cnp"
+      "subtag": "cnp",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "coa"
+      "subtag": "coa",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "cpx"
+      "subtag": "cpx",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "csc"
+      "subtag": "csc",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "csd"
+      "subtag": "csd",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "cse"
+      "subtag": "cse",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "csf"
+      "subtag": "csf",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "csg"
+      "subtag": "csg",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "csl"
+      "subtag": "csl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "csn"
+      "subtag": "csn",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "csp"
+      "subtag": "csp",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "csq"
+      "subtag": "csq",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "csr"
+      "subtag": "csr",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "czh"
+      "subtag": "czh",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "czo"
+      "subtag": "czo",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "doq"
+      "subtag": "doq",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "dse"
+      "subtag": "dse",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "dsl"
+      "subtag": "dsl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "dup"
+      "subtag": "dup",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "ecs"
+      "subtag": "ecs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "esl"
+      "subtag": "esl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "esn"
+      "subtag": "esn",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "eso"
+      "subtag": "eso",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "eth"
+      "subtag": "eth",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "fcs"
+      "subtag": "fcs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "fse"
+      "subtag": "fse",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "fsl"
+      "subtag": "fsl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "fss"
+      "subtag": "fss",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "gan"
+      "subtag": "gan",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "gds"
+      "subtag": "gds",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "gom"
+      "subtag": "gom",
+      "prefix": "kok"
     },
     {
       "type": "extlang",
-      "subtag": "gse"
+      "subtag": "gse",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "gsg"
+      "subtag": "gsg",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "gsm"
+      "subtag": "gsm",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "gss"
+      "subtag": "gss",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "gus"
+      "subtag": "gus",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "hab"
+      "subtag": "hab",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "haf"
+      "subtag": "haf",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "hak"
+      "subtag": "hak",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "hds"
+      "subtag": "hds",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "hji"
+      "subtag": "hji",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "hks"
+      "subtag": "hks",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "hos"
+      "subtag": "hos",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "hps"
+      "subtag": "hps",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "hsh"
+      "subtag": "hsh",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "hsl"
+      "subtag": "hsl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "hsn"
+      "subtag": "hsn",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "icl"
+      "subtag": "icl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "iks"
+      "subtag": "iks",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ils"
+      "subtag": "ils",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "inl"
+      "subtag": "inl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ins"
+      "subtag": "ins",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ise"
+      "subtag": "ise",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "isg"
+      "subtag": "isg",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "isr"
+      "subtag": "isr",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "jak"
+      "subtag": "jak",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "jax"
+      "subtag": "jax",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "jcs"
+      "subtag": "jcs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "jhs"
+      "subtag": "jhs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "jls"
+      "subtag": "jls",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "jos"
+      "subtag": "jos",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "jsl"
+      "subtag": "jsl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "jus"
+      "subtag": "jus",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "kgi"
+      "subtag": "kgi",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "knn"
+      "subtag": "knn",
+      "prefix": "kok"
     },
     {
       "type": "extlang",
-      "subtag": "kvb"
+      "subtag": "kvb",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "kvk"
+      "subtag": "kvk",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "kvr"
+      "subtag": "kvr",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "kxd"
+      "subtag": "kxd",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "lbs"
+      "subtag": "lbs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "lce"
+      "subtag": "lce",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "lcf"
+      "subtag": "lcf",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "liw"
+      "subtag": "liw",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "lls"
+      "subtag": "lls",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "lsg"
+      "subtag": "lsg",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "lsl"
+      "subtag": "lsl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "lsn"
+      "subtag": "lsn",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "lso"
+      "subtag": "lso",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "lsp"
+      "subtag": "lsp",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "lst"
+      "subtag": "lst",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "lsv"
+      "subtag": "lsv",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "lsy"
+      "subtag": "lsy",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ltg"
+      "subtag": "ltg",
+      "prefix": "lv"
     },
     {
       "type": "extlang",
-      "subtag": "lvs"
+      "subtag": "lvs",
+      "prefix": "lv"
     },
     {
       "type": "extlang",
-      "subtag": "lws"
+      "subtag": "lws",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "lzh"
+      "subtag": "lzh",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "max"
+      "subtag": "max",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "mdl"
+      "subtag": "mdl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "meo"
+      "subtag": "meo",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "mfa"
+      "subtag": "mfa",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "mfb"
+      "subtag": "mfb",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "mfs"
+      "subtag": "mfs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "min"
+      "subtag": "min",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "mnp"
+      "subtag": "mnp",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "mqg"
+      "subtag": "mqg",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "mre"
+      "subtag": "mre",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "msd"
+      "subtag": "msd",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "msi"
+      "subtag": "msi",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "msr"
+      "subtag": "msr",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "mui"
+      "subtag": "mui",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "mzc"
+      "subtag": "mzc",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "mzg"
+      "subtag": "mzg",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "mzy"
+      "subtag": "mzy",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "nan"
+      "subtag": "nan",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "nbs"
+      "subtag": "nbs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ncs"
+      "subtag": "ncs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "nsi"
+      "subtag": "nsi",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "nsl"
+      "subtag": "nsl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "nsp"
+      "subtag": "nsp",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "nsr"
+      "subtag": "nsr",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "nzs"
+      "subtag": "nzs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "okl"
+      "subtag": "okl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "orn"
+      "subtag": "orn",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "ors"
+      "subtag": "ors",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "pel"
+      "subtag": "pel",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "pga"
+      "subtag": "pga",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "pgz"
+      "subtag": "pgz",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "pks"
+      "subtag": "pks",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "prl"
+      "subtag": "prl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "prz"
+      "subtag": "prz",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "psc"
+      "subtag": "psc",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "psd"
+      "subtag": "psd",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "pse"
+      "subtag": "pse",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "psg"
+      "subtag": "psg",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "psl"
+      "subtag": "psl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "pso"
+      "subtag": "pso",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "psp"
+      "subtag": "psp",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "psr"
+      "subtag": "psr",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "pys"
+      "subtag": "pys",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "rms"
+      "subtag": "rms",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "rsi"
+      "subtag": "rsi",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "rsl"
+      "subtag": "rsl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "rsm"
+      "subtag": "rsm",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "sdl"
+      "subtag": "sdl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "sfb"
+      "subtag": "sfb",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "sfs"
+      "subtag": "sfs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "sgg"
+      "subtag": "sgg",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "sgx"
+      "subtag": "sgx",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "shu"
+      "subtag": "shu",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "slf"
+      "subtag": "slf",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "sls"
+      "subtag": "sls",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "sqk"
+      "subtag": "sqk",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "sqs"
+      "subtag": "sqs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ssh"
+      "subtag": "ssh",
+      "prefix": "ar"
     },
     {
       "type": "extlang",
-      "subtag": "ssp"
+      "subtag": "ssp",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ssr"
+      "subtag": "ssr",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "svk"
+      "subtag": "svk",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "swc"
+      "subtag": "swc",
+      "prefix": "sw"
     },
     {
       "type": "extlang",
-      "subtag": "swh"
+      "subtag": "swh",
+      "prefix": "sw"
     },
     {
       "type": "extlang",
-      "subtag": "swl"
+      "subtag": "swl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "syy"
+      "subtag": "syy",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "szs"
+      "subtag": "szs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "tmw"
+      "subtag": "tmw",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "tse"
+      "subtag": "tse",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "tsm"
+      "subtag": "tsm",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "tsq"
+      "subtag": "tsq",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "tss"
+      "subtag": "tss",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "tsy"
+      "subtag": "tsy",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "tza"
+      "subtag": "tza",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ugn"
+      "subtag": "ugn",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ugy"
+      "subtag": "ugy",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ukl"
+      "subtag": "ukl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "uks"
+      "subtag": "uks",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "urk"
+      "subtag": "urk",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "uzn"
+      "subtag": "uzn",
+      "prefix": "uz"
     },
     {
       "type": "extlang",
-      "subtag": "uzs"
+      "subtag": "uzs",
+      "prefix": "uz"
     },
     {
       "type": "extlang",
-      "subtag": "vgt"
+      "subtag": "vgt",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "vkk"
+      "subtag": "vkk",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "vkt"
+      "subtag": "vkt",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "vsi"
+      "subtag": "vsi",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "vsl"
+      "subtag": "vsl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "vsv"
+      "subtag": "vsv",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "wbs"
+      "subtag": "wbs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "wuu"
+      "subtag": "wuu",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "xki"
+      "subtag": "xki",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "xml"
+      "subtag": "xml",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "xmm"
+      "subtag": "xmm",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "xms"
+      "subtag": "xms",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "yds"
+      "subtag": "yds",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ygs"
+      "subtag": "ygs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "yhs"
+      "subtag": "yhs",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "ysl"
+      "subtag": "ysl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "yue"
+      "subtag": "yue",
+      "prefix": "zh"
     },
     {
       "type": "extlang",
-      "subtag": "zib"
+      "subtag": "zib",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "zlm"
+      "subtag": "zlm",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "zmi"
+      "subtag": "zmi",
+      "prefix": "ms"
     },
     {
       "type": "extlang",
-      "subtag": "zsl"
+      "subtag": "zsl",
+      "prefix": "sgn"
     },
     {
       "type": "extlang",
-      "subtag": "zsm"
+      "subtag": "zsm",
+      "prefix": "ms"
     },
     {
       "type": "script",
@@ -35694,35 +35933,43 @@
     },
     {
       "type": "variant",
-      "subtag": "1606nict"
+      "subtag": "1606nict",
+      "prefix": "frm"
     },
     {
       "type": "variant",
-      "subtag": "1694acad"
+      "subtag": "1694acad",
+      "prefix": "fr"
     },
     {
       "type": "variant",
-      "subtag": "1901"
+      "subtag": "1901",
+      "prefix": "de"
     },
     {
       "type": "variant",
-      "subtag": "1959acad"
+      "subtag": "1959acad",
+      "prefix": "be"
     },
     {
       "type": "variant",
-      "subtag": "1994"
+      "subtag": "1994",
+      "prefix": "sl-rozaj-solba"
     },
     {
       "type": "variant",
-      "subtag": "1996"
+      "subtag": "1996",
+      "prefix": "de"
     },
     {
       "type": "variant",
-      "subtag": "abl1943"
+      "subtag": "abl1943",
+      "prefix": "pt-BR"
     },
     {
       "type": "variant",
-      "subtag": "akuapem"
+      "subtag": "akuapem",
+      "prefix": "tw"
     },
     {
       "type": "variant",
@@ -35730,103 +35977,128 @@
     },
     {
       "type": "variant",
-      "subtag": "aluku"
+      "subtag": "aluku",
+      "prefix": "djk"
     },
     {
       "type": "variant",
-      "subtag": "ao1990"
+      "subtag": "ao1990",
+      "prefix": "gl"
     },
     {
       "type": "variant",
-      "subtag": "aranes"
+      "subtag": "aranes",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "arevela"
+      "subtag": "arevela",
+      "prefix": "hy"
     },
     {
       "type": "variant",
-      "subtag": "arevmda"
+      "subtag": "arevmda",
+      "prefix": "hy"
     },
     {
       "type": "variant",
-      "subtag": "arkaika"
+      "subtag": "arkaika",
+      "prefix": "eo"
     },
     {
       "type": "variant",
-      "subtag": "asante"
+      "subtag": "asante",
+      "prefix": "tw"
     },
     {
       "type": "variant",
-      "subtag": "auvern"
+      "subtag": "auvern",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "baku1926"
+      "subtag": "baku1926",
+      "prefix": "uz"
     },
     {
       "type": "variant",
-      "subtag": "balanka"
+      "subtag": "balanka",
+      "prefix": "blo"
     },
     {
       "type": "variant",
-      "subtag": "barla"
+      "subtag": "barla",
+      "prefix": "kea"
     },
     {
       "type": "variant",
-      "subtag": "basiceng"
+      "subtag": "basiceng",
+      "prefix": "en"
     },
     {
       "type": "variant",
-      "subtag": "bauddha"
+      "subtag": "bauddha",
+      "prefix": "sa"
     },
     {
       "type": "variant",
-      "subtag": "biscayan"
+      "subtag": "biscayan",
+      "prefix": "eu"
     },
     {
       "type": "variant",
-      "subtag": "biske"
+      "subtag": "biske",
+      "prefix": "sl-rozaj"
     },
     {
       "type": "variant",
-      "subtag": "bohoric"
+      "subtag": "bohoric",
+      "prefix": "sl"
     },
     {
       "type": "variant",
-      "subtag": "boont"
+      "subtag": "boont",
+      "prefix": "en"
     },
     {
       "type": "variant",
-      "subtag": "bornholm"
+      "subtag": "bornholm",
+      "prefix": "da"
     },
     {
       "type": "variant",
-      "subtag": "cisaup"
+      "subtag": "cisaup",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "colb1945"
+      "subtag": "colb1945",
+      "prefix": "pt"
     },
     {
       "type": "variant",
-      "subtag": "cornu"
+      "subtag": "cornu",
+      "prefix": "en"
     },
     {
       "type": "variant",
-      "subtag": "creiss"
+      "subtag": "creiss",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "dajnko"
+      "subtag": "dajnko",
+      "prefix": "sl"
     },
     {
       "type": "variant",
-      "subtag": "ekavsk"
+      "subtag": "ekavsk",
+      "prefix": "sr-Cyrl"
     },
     {
       "type": "variant",
-      "subtag": "emodeng"
+      "subtag": "emodeng",
+      "prefix": "en"
     },
     {
       "type": "variant",
@@ -35850,187 +36122,233 @@
     },
     {
       "type": "variant",
-      "subtag": "gascon"
+      "subtag": "gascon",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "grclass"
+      "subtag": "grclass",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "grital"
+      "subtag": "grital",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "grmistr"
+      "subtag": "grmistr",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "hepburn"
+      "subtag": "hepburn",
+      "prefix": "ja-Latn"
     },
     {
       "type": "variant",
-      "subtag": "heploc"
+      "subtag": "heploc",
+      "prefix": "ja-Latn-hepburn"
     },
     {
       "type": "variant",
-      "subtag": "hognorsk"
+      "subtag": "hognorsk",
+      "prefix": "nn"
     },
     {
       "type": "variant",
-      "subtag": "hsistemo"
+      "subtag": "hsistemo",
+      "prefix": "eo"
     },
     {
       "type": "variant",
-      "subtag": "ijekavsk"
+      "subtag": "ijekavsk",
+      "prefix": "sr-Cyrl"
     },
     {
       "type": "variant",
-      "subtag": "itihasa"
+      "subtag": "itihasa",
+      "prefix": "sa"
     },
     {
       "type": "variant",
-      "subtag": "ivanchov"
+      "subtag": "ivanchov",
+      "prefix": "bg"
     },
     {
       "type": "variant",
-      "subtag": "jauer"
+      "subtag": "jauer",
+      "prefix": "rm"
     },
     {
       "type": "variant",
-      "subtag": "jyutping"
+      "subtag": "jyutping",
+      "prefix": "yue"
     },
     {
       "type": "variant",
-      "subtag": "kkcor"
+      "subtag": "kkcor",
+      "prefix": "kw"
     },
     {
       "type": "variant",
-      "subtag": "kociewie"
+      "subtag": "kociewie",
+      "prefix": "pl"
     },
     {
       "type": "variant",
-      "subtag": "kscor"
+      "subtag": "kscor",
+      "prefix": "kw"
     },
     {
       "type": "variant",
-      "subtag": "laukika"
+      "subtag": "laukika",
+      "prefix": "sa"
     },
     {
       "type": "variant",
-      "subtag": "lemosin"
+      "subtag": "lemosin",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "lengadoc"
+      "subtag": "lengadoc",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "lipaw"
+      "subtag": "lipaw",
+      "prefix": "sl-rozaj"
     },
     {
       "type": "variant",
-      "subtag": "luna1918"
+      "subtag": "luna1918",
+      "prefix": "ru"
     },
     {
       "type": "variant",
-      "subtag": "metelko"
+      "subtag": "metelko",
+      "prefix": "sl"
     },
     {
       "type": "variant",
-      "subtag": "monoton"
+      "subtag": "monoton",
+      "prefix": "el"
     },
     {
       "type": "variant",
-      "subtag": "ndyuka"
+      "subtag": "ndyuka",
+      "prefix": "djk"
     },
     {
       "type": "variant",
-      "subtag": "nedis"
+      "subtag": "nedis",
+      "prefix": "sl"
     },
     {
       "type": "variant",
-      "subtag": "newfound"
+      "subtag": "newfound",
+      "prefix": "en-CA"
     },
     {
       "type": "variant",
-      "subtag": "nicard"
+      "subtag": "nicard",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "njiva"
+      "subtag": "njiva",
+      "prefix": "sl-rozaj"
     },
     {
       "type": "variant",
-      "subtag": "nulik"
+      "subtag": "nulik",
+      "prefix": "vo"
     },
     {
       "type": "variant",
-      "subtag": "osojs"
+      "subtag": "osojs",
+      "prefix": "sl-rozaj"
     },
     {
       "type": "variant",
-      "subtag": "oxendict"
+      "subtag": "oxendict",
+      "prefix": "en"
     },
     {
       "type": "variant",
-      "subtag": "pahawh2"
+      "subtag": "pahawh2",
+      "prefix": "hnj"
     },
     {
       "type": "variant",
-      "subtag": "pahawh3"
+      "subtag": "pahawh3",
+      "prefix": "hnj"
     },
     {
       "type": "variant",
-      "subtag": "pahawh4"
+      "subtag": "pahawh4",
+      "prefix": "hnj"
     },
     {
       "type": "variant",
-      "subtag": "pamaka"
+      "subtag": "pamaka",
+      "prefix": "djk"
     },
     {
       "type": "variant",
-      "subtag": "peano"
+      "subtag": "peano",
+      "prefix": "la"
     },
     {
       "type": "variant",
-      "subtag": "petr1708"
+      "subtag": "petr1708",
+      "prefix": "ru"
     },
     {
       "type": "variant",
-      "subtag": "pinyin"
+      "subtag": "pinyin",
+      "prefix": "bo-Latn"
     },
     {
       "type": "variant",
-      "subtag": "polyton"
+      "subtag": "polyton",
+      "prefix": "el"
     },
     {
       "type": "variant",
-      "subtag": "provenc"
+      "subtag": "provenc",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "puter"
+      "subtag": "puter",
+      "prefix": "rm"
     },
     {
       "type": "variant",
-      "subtag": "rigik"
+      "subtag": "rigik",
+      "prefix": "vo"
     },
     {
       "type": "variant",
-      "subtag": "rozaj"
+      "subtag": "rozaj",
+      "prefix": "sl"
     },
     {
       "type": "variant",
-      "subtag": "rumgr"
+      "subtag": "rumgr",
+      "prefix": "rm"
     },
     {
       "type": "variant",
-      "subtag": "scotland"
+      "subtag": "scotland",
+      "prefix": "en"
     },
     {
       "type": "variant",
-      "subtag": "scouse"
+      "subtag": "scouse",
+      "prefix": "en"
     },
     {
       "type": "variant",
@@ -36038,83 +36356,103 @@
     },
     {
       "type": "variant",
-      "subtag": "solba"
+      "subtag": "solba",
+      "prefix": "sl-rozaj"
     },
     {
       "type": "variant",
-      "subtag": "sotav"
+      "subtag": "sotav",
+      "prefix": "kea"
     },
     {
       "type": "variant",
-      "subtag": "spanglis"
+      "subtag": "spanglis",
+      "prefix": "es"
     },
     {
       "type": "variant",
-      "subtag": "surmiran"
+      "subtag": "surmiran",
+      "prefix": "rm"
     },
     {
       "type": "variant",
-      "subtag": "sursilv"
+      "subtag": "sursilv",
+      "prefix": "rm"
     },
     {
       "type": "variant",
-      "subtag": "sutsilv"
+      "subtag": "sutsilv",
+      "prefix": "rm"
     },
     {
       "type": "variant",
-      "subtag": "tarask"
+      "subtag": "tarask",
+      "prefix": "be"
     },
     {
       "type": "variant",
-      "subtag": "tongyong"
+      "subtag": "tongyong",
+      "prefix": "zh-Latn"
     },
     {
       "type": "variant",
-      "subtag": "tunumiit"
+      "subtag": "tunumiit",
+      "prefix": "kl"
     },
     {
       "type": "variant",
-      "subtag": "uccor"
+      "subtag": "uccor",
+      "prefix": "kw"
     },
     {
       "type": "variant",
-      "subtag": "ucrcor"
+      "subtag": "ucrcor",
+      "prefix": "kw"
     },
     {
       "type": "variant",
-      "subtag": "ulster"
+      "subtag": "ulster",
+      "prefix": "sco"
     },
     {
       "type": "variant",
-      "subtag": "unifon"
+      "subtag": "unifon",
+      "prefix": "yur"
     },
     {
       "type": "variant",
-      "subtag": "vaidika"
+      "subtag": "vaidika",
+      "prefix": "sa"
     },
     {
       "type": "variant",
-      "subtag": "valencia"
+      "subtag": "valencia",
+      "prefix": "ca"
     },
     {
       "type": "variant",
-      "subtag": "vallader"
+      "subtag": "vallader",
+      "prefix": "rm"
     },
     {
       "type": "variant",
-      "subtag": "vecdruka"
+      "subtag": "vecdruka",
+      "prefix": "lv"
     },
     {
       "type": "variant",
-      "subtag": "vivaraup"
+      "subtag": "vivaraup",
+      "prefix": "oc"
     },
     {
       "type": "variant",
-      "subtag": "wadegile"
+      "subtag": "wadegile",
+      "prefix": "zh-Latn"
     },
     {
       "type": "variant",
-      "subtag": "xsistemo"
+      "subtag": "xsistemo",
+      "prefix": "eo"
     },
     {
       "type": "grandfathered",
