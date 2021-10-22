@@ -1,7 +1,7 @@
 /**
  * @param {any} doc
  */
-export default function mandatoryTest_6_1_25(doc) {
+export default function mandatoryTest_6_1_26(doc) {
   /** @type {Array<{ message: string; instancePath: string }>} */
   const errors = []
   let isValid = true
@@ -9,12 +9,26 @@ export default function mandatoryTest_6_1_25(doc) {
   if (typeof doc.document?.category === 'string') {
     /** @type {string} */
     const category = doc.document.category
-    if (category.replace(/[- ]+/g, '_').toLowerCase() !== 'generic_csaf') {
-      isValid = false
-      errors.push({
-        instancePath: `/document/category`,
-        message: `invalid category`,
-      })
+    const otherProfileValues = [
+      'security_incident_response',
+      'informational_advisory',
+      'security_advisory',
+      'vex',
+    ]
+
+    // Skip test if profile is not "Generic CSAF" but one of the other profiles
+    if (!otherProfileValues.includes(category)) {
+      if (
+        otherProfileValues.includes(
+          category.replace(/[- ]+/g, '_').toLowerCase()
+        )
+      ) {
+        isValid = false
+        errors.push({
+          instancePath: `/document/category`,
+          message: `value prohibited`,
+        })
+      }
     }
   }
 
