@@ -1,7 +1,7 @@
 {
   "document": {
     "title": "Cisco IOS and IOS XE Software Smart Install Remote Code Execution Vulnerability",
-    "category": "Generic CSAF",
+    "category": "Cisco Security Advisory",
     "csaf_version": "2.0",
     "publisher": {
       "category": "vendor",
