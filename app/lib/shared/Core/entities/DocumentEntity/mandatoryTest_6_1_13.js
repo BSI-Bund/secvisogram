@@ -3,7 +3,7 @@ import { PackageURL } from 'packageurl-js'
 /**
  * @param {any} doc
  */
-export default function mandatoryTest_6_1_25(doc) {
+export default function mandatoryTest_6_1_13(doc) {
   /** @type {Array<{ message: string; instancePath: string }>} */
   const errors = []
   let isValid = true
