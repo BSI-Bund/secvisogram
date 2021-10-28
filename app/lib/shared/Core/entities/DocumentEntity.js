@@ -5,6 +5,7 @@ import unset from 'lodash/fp/unset'
 import isEmpty from 'lodash/isEmpty'
 import { major, prerelease, valid } from 'semver'
 import cwec from '../cwec_4.3.json'
+import mandatoryTest_6_1_13 from './DocumentEntity/mandatoryTest_6_1_13'
 import mandatoryTest_6_1_14 from './DocumentEntity/mandatoryTest_6_1_14'
 import mandatoryTest_6_1_15 from './DocumentEntity/mandatoryTest_6_1_15'
 import mandatoryTest_6_1_21 from './DocumentEntity/mandatoryTest_6_1_21'
@@ -15,7 +16,6 @@ import mandatoryTest_6_1_6 from './DocumentEntity/mandatoryTest_6_1_6'
 import mandatoryTest_6_1_7 from './DocumentEntity/mandatoryTest_6_1_7'
 import mandatoryTest_6_1_9 from './DocumentEntity/mandatoryTest_6_1_9'
 import icann from './DocumentEntity/subtags.json'
-import mandatoryTest_6_1_13 from './mandatoryTest_6_1_13'
 
 /**
  * This class abstracts central logic regarding the json-document used
