@@ -220,6 +220,69 @@ export default {
       strippedVersion: {},
     },
 
+    // Fails "6.1.3 Circular Definition of Product ID"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+          relationships: [
+            {
+              category: 'installed_on',
+              full_product_name: {
+                name: 'Product B',
+                product_id: 'CSAFPID-9080701',
+              },
+              product_reference: 'CSAFPID-9080700',
+              relates_to_product_reference: 'CSAFPID-9080701',
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.3 Circular Definition of Product ID"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-0001',
+              name: 'asd',
+            },
+          ],
+          relationships: [
+            {
+              full_product_name: {
+                name: 'asdf',
+                product_id: 'CSAFPID-0002',
+              },
+              product_reference: 'CSAFPID-0001',
+              category: 'installed_on',
+              relates_to_product_reference: 'CSAFPID-0003',
+            },
+            {
+              full_product_name: {
+                name: 'asdfg',
+                product_id: 'CSAFPID-0003',
+              },
+              product_reference: 'CSAFPID-0001',
+              category: 'installed_on',
+              relates_to_product_reference: 'CSAFPID-0002',
+            },
+          ],
+        },
+      },
+    },
+
     // Fails "6.1.6 Contradicting Product Status"
     {
       valid: false,
