@@ -1575,5 +1575,111 @@ export default {
         },
       },
     })),
+
+    // Fails "6.1.27.9 Impact Statement"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          category: 'vex',
+        },
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+            {
+              product_id: 'CSAFPID-9080701',
+              name: 'Product B',
+            },
+            {
+              product_id: 'CSAFPID-9080702',
+              name: 'Product C',
+            },
+          ],
+          product_groups: [
+            {
+              group_id: 'CSAFGID-0001',
+              product_ids: ['CSAFPID-9080700', 'CSAFPID-9080701'],
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            product_status: {
+              known_not_affected: [
+                'CSAFPID-9080700',
+                'CSAFPID-9080701',
+                'CSAFPID-9080702',
+              ],
+            },
+            threats: [
+              {
+                category: 'impact',
+                details:
+                  'The vulnerable code is not present in these products.',
+                group_ids: ['CSAFGID-0001'],
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.27.9 Impact Statement"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          category: 'vex',
+        },
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+            {
+              product_id: 'CSAFPID-9080701',
+              name: 'Product B',
+            },
+            {
+              product_id: 'CSAFPID-9080702',
+              name: 'Product C',
+            },
+          ],
+          product_groups: [
+            {
+              group_id: 'CSAFGID-0001',
+              product_ids: ['CSAFPID-9080700', 'CSAFPID-9080701'],
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            product_status: {
+              known_not_affected: [
+                'CSAFPID-9080700',
+                'CSAFPID-9080701',
+                'CSAFPID-9080702',
+              ],
+            },
+            threats: [
+              {
+                category: 'impact',
+                details:
+                  'The vulnerable code is not present in these products.',
+                product_ids: ['CSAFPID-9080700', 'CSAFPID-9080702'],
+              },
+            ],
+          },
+        ],
+      },
+    },
   ],
 }
