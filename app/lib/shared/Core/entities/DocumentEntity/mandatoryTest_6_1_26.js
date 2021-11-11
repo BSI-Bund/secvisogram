@@ -17,18 +17,18 @@ export default function mandatoryTest_6_1_26(doc) {
     ]
 
     // Skip test if profile is not "Generic CSAF" but one of the other profiles
-    if (!otherProfileValues.includes(category)) {
-      if (
-        otherProfileValues.includes(
-          category.replace(/[-\s]+/g, '_').toLowerCase()
-        )
-      ) {
-        isValid = false
-        errors.push({
-          instancePath: `/document/category`,
-          message: `value prohibited`,
-        })
-      }
+    if (otherProfileValues.includes(category)) return { errors, isValid }
+
+    if (
+      otherProfileValues.includes(
+        category.replace(/[-\s]+/g, '_').toLowerCase()
+      )
+    ) {
+      isValid = false
+      errors.push({
+        instancePath: `/document/category`,
+        message: `value prohibited`,
+      })
     }
   }
 
