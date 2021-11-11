@@ -1565,6 +1565,11 @@ export default {
       'security-incident-response',
       'Security      Advisory',
       'veX',
+      'Informational - Advisory',
+      'security-_ incident-response',
+      'Security\tAdvisory',
+      'Security\nAdvisory',
+      'Security\rAdvisory',
     ].map((category) => ({
       valid: false,
       content: {

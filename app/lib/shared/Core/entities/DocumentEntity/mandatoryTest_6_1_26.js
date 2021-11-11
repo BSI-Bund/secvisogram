@@ -21,7 +21,7 @@ export default function mandatoryTest_6_1_26(doc) {
 
     if (
       otherProfileValues.includes(
-        category.replace(/[-\s]+/g, '_').toLowerCase()
+        category.replace(/[_-\s]+/g, '_').toLowerCase()
       )
     ) {
       isValid = false
