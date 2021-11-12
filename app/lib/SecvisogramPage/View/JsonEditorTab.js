@@ -167,7 +167,7 @@ export default function JsonEditorTab({
     try {
       result = JSON.parse(debouncedValue)
       setState((state) => ({ ...state, parseError: null }))
-    } catch (e) {
+    } catch (/** @type {any} */ e) {
       setState((state) => ({ ...state, parseError: e }))
       return
     }

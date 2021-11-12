@@ -370,7 +370,7 @@ export default function downloadFile(
     element.download = fileName
     element.href = dataURI
     element.click()
-  } catch (e) {
+  } catch (/** @type {any} */ e) {
     alert('An error occured while serializing the download:\n\n' + e.message)
   }
 }
