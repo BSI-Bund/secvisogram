@@ -48,7 +48,7 @@ export default function (doc) {
  * @param {Relationship[]} relationships
  * @param {number} index
  * @param {string | null} key
- * @param {(params: { path: number []; key: string | null }) => void} onCycle
+ * @param {(params: { key: string | null }) => void} onCycle
  * @returns
  */
 function search(path, relationships, index, key, onCycle) {
@@ -57,7 +57,7 @@ function search(path, relationships, index, key, onCycle) {
     typeof relationship.full_product_name?.product_id === 'string' &&
     path.includes(index)
   ) {
-    return onCycle({ path, key })
+    return onCycle({ key })
   }
 
   const productRelationshipIndex = relationships.findIndex(
