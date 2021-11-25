@@ -5,6 +5,8 @@ import unset from 'lodash/fp/unset'
 import isEmpty from 'lodash/isEmpty'
 import { major, prerelease, valid } from 'semver'
 import cwec from '../cwec_4.3.json'
+import mandatoryTest_6_1_10 from './DocumentEntity/mandatoryTest_6_1_10'
+import mandatoryTest_6_1_12 from './DocumentEntity/mandatoryTest_6_1_12'
 import mandatoryTest_6_1_13 from './DocumentEntity/mandatoryTest_6_1_13'
 import mandatoryTest_6_1_14 from './DocumentEntity/mandatoryTest_6_1_14'
 import mandatoryTest_6_1_15 from './DocumentEntity/mandatoryTest_6_1_15'
@@ -12,10 +14,12 @@ import mandatoryTest_6_1_21 from './DocumentEntity/mandatoryTest_6_1_21'
 import mandatoryTest_6_1_23 from './DocumentEntity/mandatoryTest_6_1_23'
 import mandatoryTest_6_1_24 from './DocumentEntity/mandatoryTest_6_1_24'
 import mandatoryTest_6_1_25 from './DocumentEntity/mandatoryTest_6_1_25'
+import mandatoryTest_6_1_26 from './DocumentEntity/mandatoryTest_6_1_26'
+import mandatoryTest_6_1_27_9 from './DocumentEntity/mandatoryTest_6_1_27_9'
+import mandatoryTest_6_1_3 from './DocumentEntity/mandatoryTest_6_1_3'
 import mandatoryTest_6_1_6 from './DocumentEntity/mandatoryTest_6_1_6'
 import mandatoryTest_6_1_7 from './DocumentEntity/mandatoryTest_6_1_7'
 import mandatoryTest_6_1_9 from './DocumentEntity/mandatoryTest_6_1_9'
-import icann from './DocumentEntity/subtags.json'
 
 /**
  * This class abstracts central logic regarding the json-document used
@@ -404,24 +408,6 @@ export default class DocumentEntity {
      *  }>}
      */
     const errors = this.schemaValidator.errors ?? []
-    if (hasLangField(doc)) {
-      if (!icann.subtags.find((s) => s.subtag === doc.document.lang)) {
-        isValid = false
-        errors.push({
-          message: 'is not a valid language-tag',
-          instancePath: '/document/lang',
-        })
-      }
-    }
-    if (hasSourceLangField(doc)) {
-      if (!icann.subtags.find((s) => s.subtag === doc.document.source_lang)) {
-        isValid = false
-        errors.push({
-          message: 'is not a valid language-tag',
-          instancePath: '/document/source_lang',
-        })
-      }
-    }
     if (hasVulnerabilities(doc)) {
       for (let i = 0; i < doc.vulnerabilities.length; ++i) {
         const vulnerability = doc.vulnerabilities[i]
@@ -613,9 +599,12 @@ export default class DocumentEntity {
     }
 
     const tests = [
+      mandatoryTest_6_1_3,
       mandatoryTest_6_1_6,
       mandatoryTest_6_1_7,
       mandatoryTest_6_1_9,
+      mandatoryTest_6_1_10,
+      mandatoryTest_6_1_12,
       mandatoryTest_6_1_13,
       mandatoryTest_6_1_14,
       mandatoryTest_6_1_15,
@@ -623,6 +612,8 @@ export default class DocumentEntity {
       mandatoryTest_6_1_23,
       mandatoryTest_6_1_24,
       mandatoryTest_6_1_25,
+      mandatoryTest_6_1_26,
+      mandatoryTest_6_1_27_9
     ]
     tests.forEach((test) => {
       const result = test(doc)
@@ -661,22 +652,6 @@ const hasTrackingVersionField = (doc) =>
  */
 const hasTrackingStatusField = (doc) =>
   typeof doc?.document?.tracking?.status === 'string'
-
-/**
- * @param {any} doc
- * @returns {doc is { document: { lang: string } }}
- */
-const hasLangField = (doc) =>
-  doc && doc.document && typeof doc.document.lang === 'string' ? true : false
-
-/**
- * @param {any} doc
- * @returns {doc is { document: { source_lang: string } }}
- */
-const hasSourceLangField = (doc) =>
-  doc && doc.document && typeof doc.document.source_lang === 'string'
-    ? true
-    : false
 
 /**
  * @param {any} doc

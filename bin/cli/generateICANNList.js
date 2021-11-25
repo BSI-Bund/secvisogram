@@ -12,16 +12,29 @@ module.exports = function generateIcannList({ registry }) {
   })
 
   /**
-   * @type {Array<{ subtag: string }>}
+   * @type {Array<{ subtag: string; type: string; prefix?: string }>}
    */
   const subtags = []
+  /** @type {{ subtag: string; type: string; prefix?: string } | null} */
+  let buffer = null
   rl.on('line', (line) => {
-    if (line.startsWith('Subtag: ')) {
-      subtags.push({ subtag: line.substring(8) })
+    if (line.startsWith('%%')) {
+      if (buffer) subtags.push(buffer)
+      buffer = { type: '', subtag: '' }
+    }
+    if (buffer) {
+      if (line.startsWith('Subtag: ')) {
+        buffer.subtag = line.split(': ').slice(1).join(': ')
+      }
+      if (line.startsWith('Type: ')) {
+        buffer.type = line.split(': ').slice(1).join(': ')
+      }
+      if (line.startsWith('Prefix: ')) {
+        buffer.prefix = line.split(': ').slice(1).join(': ')
+      }
     }
   }).on('close', () => {
-    console.log('{"subtags":')
-    console.log(JSON.stringify(subtags, null, 2))
-    console.log('}')
+    if (buffer) subtags.push(buffer)
+    console.log(JSON.stringify({ subtags }, null, 2))
   })
 }

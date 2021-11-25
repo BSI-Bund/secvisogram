@@ -25,6 +25,7 @@
     "@reach/combobox": "^0.16.3",
     "ajv": "^8.7.1",
     "ajv-formats": "^2.1.1",
+    "bcp47": "^1.1.2",
     "cvss2js": "^1.1.0",
     "immutability-helper": "^3.1.1",
     "json-pointer": "^0.6.1",

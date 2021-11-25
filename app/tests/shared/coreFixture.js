@@ -220,6 +220,69 @@ export default {
       strippedVersion: {},
     },
 
+    // Fails "6.1.3 Circular Definition of Product ID"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+          relationships: [
+            {
+              category: 'installed_on',
+              full_product_name: {
+                name: 'Product B',
+                product_id: 'CSAFPID-9080701',
+              },
+              product_reference: 'CSAFPID-9080700',
+              relates_to_product_reference: 'CSAFPID-9080701',
+            },
+          ],
+        },
+      },
+    },
+
+    // Fails "6.1.3 Circular Definition of Product ID"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-0001',
+              name: 'asd',
+            },
+          ],
+          relationships: [
+            {
+              full_product_name: {
+                name: 'asdf',
+                product_id: 'CSAFPID-0002',
+              },
+              product_reference: 'CSAFPID-0001',
+              category: 'installed_on',
+              relates_to_product_reference: 'CSAFPID-0003',
+            },
+            {
+              full_product_name: {
+                name: 'asdfg',
+                product_id: 'CSAFPID-0003',
+              },
+              product_reference: 'CSAFPID-0001',
+              category: 'installed_on',
+              relates_to_product_reference: 'CSAFPID-0002',
+            },
+          ],
+        },
+      },
+    },
+
     // Fails "6.1.6 Contradicting Product Status"
     {
       valid: false,
@@ -599,6 +662,100 @@ export default {
             ],
           },
         ],
+      },
+    },
+
+    // Fails "6.1.10 Inconsistent CVSS"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v3: {
+                  version: '3.1',
+                  vectorString: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H',
+                  baseScore: 9.8,
+                  baseSeverity: 'CRITICAL',
+                  attackVector: 'LOCAL',
+                  attackComplexity: 'LOW',
+                  privilegesRequired: 'NONE',
+                  userInteraction: 'NONE',
+                  scope: 'CHANGED',
+                  confidentialityImpact: 'HIGH',
+                  integrityImpact: 'HIGH',
+                  availabilityImpact: 'LOW',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.10 Inconsistent CVSS"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            scores: [
+              {
+                products: ['CSAFPID-9080700'],
+                cvss_v2: {
+                  version: '2.0',
+                  vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
+                  accessVector: 'LOCAL',
+                  baseScore: 10,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.12 Language"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          lang: 'EZ',
+        },
+      },
+    },
+
+    // Fails "6.1.12 Language"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          source_lang: 'EZ',
+        },
       },
     },
 
@@ -1398,6 +1555,135 @@ export default {
             },
           ],
         },
+      },
+    },
+
+    // Fails "6.1.26 Prohibited Document Category Name"
+    ...[
+      'Security_Incident_Response',
+      'Informational Advisory',
+      'security-incident-response',
+      'Security      Advisory',
+      'veX',
+      'Informational - Advisory',
+      'security-_ incident-response',
+      'Security\tAdvisory',
+      'Security\nAdvisory',
+      'Security\rAdvisory',
+    ].map((category) => ({
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          category,
+        },
+      },
+    })),
+
+    // Fails "6.1.27.9 Impact Statement"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          category: 'vex',
+        },
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+            {
+              product_id: 'CSAFPID-9080701',
+              name: 'Product B',
+            },
+            {
+              product_id: 'CSAFPID-9080702',
+              name: 'Product C',
+            },
+          ],
+          product_groups: [
+            {
+              group_id: 'CSAFGID-0001',
+              product_ids: ['CSAFPID-9080700', 'CSAFPID-9080701'],
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            product_status: {
+              known_not_affected: [
+                'CSAFPID-9080700',
+                'CSAFPID-9080701',
+                'CSAFPID-9080702',
+              ],
+            },
+            threats: [
+              {
+                category: 'impact',
+                details:
+                  'The vulnerable code is not present in these products.',
+                group_ids: ['CSAFGID-0001'],
+              },
+            ],
+          },
+        ],
+      },
+    },
+
+    // Fails "6.1.27.9 Impact Statement"
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        document: {
+          ...MINIMAL_DOC.document,
+          category: 'vex',
+        },
+        product_tree: {
+          full_product_names: [
+            {
+              product_id: 'CSAFPID-9080700',
+              name: 'Product A',
+            },
+            {
+              product_id: 'CSAFPID-9080701',
+              name: 'Product B',
+            },
+            {
+              product_id: 'CSAFPID-9080702',
+              name: 'Product C',
+            },
+          ],
+          product_groups: [
+            {
+              group_id: 'CSAFGID-0001',
+              product_ids: ['CSAFPID-9080700', 'CSAFPID-9080701'],
+            },
+          ],
+        },
+        vulnerabilities: [
+          {
+            product_status: {
+              known_not_affected: [
+                'CSAFPID-9080700',
+                'CSAFPID-9080701',
+                'CSAFPID-9080702',
+              ],
+            },
+            threats: [
+              {
+                category: 'impact',
+                details:
+                  'The vulnerable code is not present in these products.',
+                product_ids: ['CSAFPID-9080700', 'CSAFPID-9080702'],
+              },
+            ],
+          },
+        ],
       },
     },
   ],
