@@ -1643,8 +1643,30 @@ export default [
       vulnerabilities: [
         {
           title: 'A vulnerability item without a note',
+          product_status: {
+            fixed: ['CSAFPID-0001'],
+          },
         },
       ],
     },
   })),
+
+  {
+    title: `Fails "6.1.27.6 Product Status"`,
+    valid: false,
+    content: {
+      ...minimalSecurityAdvisoryDoc,
+      vulnerabilities: [
+        {
+          title: 'A vulnerability item without a product status',
+          notes: [
+            {
+              category: 'description',
+              text: 'My note',
+            },
+          ],
+        },
+      ],
+    },
+  },
 ]
