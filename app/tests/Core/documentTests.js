@@ -1595,4 +1595,20 @@ export default [
       },
     })
   ),
+
+  {
+    title: `Fails "6.1.27.3 Vulnerabilities"`,
+    valid: false,
+    content: {
+      ...minimalInformationalAdvisoryDoc,
+      document: {
+        ...minimalInformationalAdvisoryDoc.document,
+      },
+      vulnerabilities: [
+        {
+          title: 'A vulnerability item that SHALL NOT exist',
+        },
+      ],
+    },
+  },
 ]
