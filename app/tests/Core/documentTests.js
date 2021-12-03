@@ -1,6 +1,8 @@
 import minimalDoc from '../shared/minimalGenericCSAFDoc'
 import minimalInformationalAdvisoryDoc from '../shared/minimalInformationalAdvisoryDoc'
+import minimalSecurityAdvisoryDoc from '../shared/minimalSecurityAdvisoryDoc'
 import minimalSecurityIncidentResponseDoc from '../shared/minimalSecurityIncidentResponseDoc'
+import minimalVexDoc from '../shared/minimalVexDoc'
 
 export default [
   // Fails "6.1.3 Circular Definition of Product ID"
@@ -1556,6 +1558,18 @@ export default [
     content: minimalInformationalAdvisoryDoc,
   },
 
+  {
+    title: 'Minimal security_advisory document is valid',
+    valid: true,
+    content: minimalSecurityAdvisoryDoc,
+  },
+
+  {
+    title: 'Minimal vex document is valid',
+    valid: true,
+    content: minimalVexDoc,
+  },
+
   ...[minimalSecurityIncidentResponseDoc, minimalInformationalAdvisoryDoc].map(
     (doc) => ({
       title: `Fails "6.1.27.1 Document Notes" (category "${doc.document.category}")`,
@@ -1611,4 +1625,13 @@ export default [
       ],
     },
   },
+
+  ...[minimalSecurityAdvisoryDoc, minimalVexDoc].map((doc) => ({
+    title: `Fails "6.1.27.4 Product Tree" (category "${doc.document.category}")`,
+    valid: false,
+    content: {
+      ...doc,
+      product_tree: undefined,
+    },
+  })),
 ]
