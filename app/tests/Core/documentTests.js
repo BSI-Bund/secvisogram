@@ -1541,4 +1541,25 @@ export default [
       ],
     },
   },
+
+  ...['security_incident_response', 'informational_advisory'].map(
+    (documentCategory) => ({
+      title: `Fails "6.1.27.1 Document Notes" (category "${documentCategory}")`,
+      valid: false,
+      content: {
+        ...minimalDoc,
+        document: {
+          ...minimalDoc.document,
+          category: documentCategory,
+          notes: [
+            {
+              category: 'legal_disclaimer',
+              text: 'The CSAF document is provided to You "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind.',
+              title: 'Terms of Use',
+            },
+          ],
+        },
+      },
+    })
+  ),
 ]
