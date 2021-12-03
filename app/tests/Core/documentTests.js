@@ -1634,4 +1634,17 @@ export default [
       product_tree: undefined,
     },
   })),
+
+  ...[minimalSecurityAdvisoryDoc, minimalVexDoc].map((doc) => ({
+    title: `Fails "6.1.27.5 Vulnerability Notes" (category "${doc.document.category}")`,
+    valid: false,
+    content: {
+      ...doc,
+      vulnerabilities: [
+        {
+          title: 'A vulnerability item without a note',
+        },
+      ],
+    },
+  })),
 ]
