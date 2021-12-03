@@ -15,18 +15,17 @@ export default function mandatoryTest_6_1_24(doc) {
       vulnerability.involvements.forEach((involvement, involvementIndex) => {
         if (
           typeof involvement.date === 'string' &&
-          typeof involvement.party === 'string' &&
-          typeof involvement.status === 'string'
+          typeof involvement.party === 'string'
         ) {
           const set = involvementMap.get(involvement.date) ?? new Set()
-          if (set.has(`${involvement.party}:${involvement.status}`)) {
+          if (set.has(`${involvement.party}`)) {
             isValid = false
             errors.push({
-              message: `party, status tuple was already used for the same date`,
+              message: `status for party was already given for the same date`,
               instancePath: `/vulnerabilities/${vulnerabilityIndex}/involvements/${involvementIndex}`,
             })
           }
-          set.add(`${involvement.party}:${involvement.status}`)
+          set.add(`${involvement.party}`)
           involvementMap.set(involvement.date, set)
         }
       })
