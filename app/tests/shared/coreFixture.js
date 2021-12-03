@@ -1405,6 +1405,31 @@ export default {
       },
     },
 
+    {
+      valid: false,
+      content: {
+        ...MINIMAL_DOC,
+        vulnerabilities: [
+          {
+            involvements: [
+              {
+                date: '2021-04-23T10:00:00.000Z',
+                party: 'vendor',
+                status: 'completed',
+              },
+              {
+                date: '2021-04-23T10:00:00.000Z',
+                party: 'vendor',
+                status: 'in_progress',
+                summary:
+                  'The vendor has released a mitigation and is working to fully resolve the issue.',
+              },
+            ],
+          },
+        ],
+      },
+    },
+
     // Fails "6.1.25 Multiple Use of Same Hash Algorithm"
     {
       valid: false,
