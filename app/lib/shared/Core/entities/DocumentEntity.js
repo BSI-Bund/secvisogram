@@ -489,15 +489,20 @@ export default class DocumentEntity {
     if (
       hasTrackingRevisionHistory(doc) &&
       hasTrackingVersionField(doc) &&
+      hasTrackingStatusField(doc) &&
       doc.document.tracking.revision_history.length > 0
     ) {
+      const version =
+        doc.document.tracking.status == 'draft'
+          ? doc.document.tracking.version.split(/[+-]/)[0]
+          : doc.document.tracking.version.split('+')[0]
       if (
         doc.document.tracking.revision_history
           .slice()
           .sort(
             (a, z) => new Date(z.date).getTime() - new Date(a.date).getTime()
           )[0]
-          .number.split('+')[0] !== doc.document.tracking.version.split('+')[0]
+          .number.split('+')[0] !== version
       ) {
         isValid = false
         errors.push({
@@ -613,7 +618,7 @@ export default class DocumentEntity {
       mandatoryTest_6_1_24,
       mandatoryTest_6_1_25,
       mandatoryTest_6_1_26,
-      mandatoryTest_6_1_27_9
+      mandatoryTest_6_1_27_9,
     ]
     tests.forEach((test) => {
       const result = test(doc)
