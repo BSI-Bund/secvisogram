@@ -1,4 +1,6 @@
-import minimalDoc from '../shared/minimalDoc'
+import minimalDoc from '../shared/minimalGenericCSAFDoc'
+import minimalInformationalAdvisoryDoc from '../shared/minimalInformationalAdvisoryDoc'
+import minimalSecurityIncidentResponseDoc from '../shared/minimalSecurityIncidentResponseDoc'
 
 export default [
   // Fails "6.1.3 Circular Definition of Product ID"
@@ -1542,20 +1544,51 @@ export default [
     },
   },
 
-  ...['security_incident_response', 'informational_advisory'].map(
-    (documentCategory) => ({
-      title: `Fails "6.1.27.1 Document Notes" (category "${documentCategory}")`,
+  {
+    title: 'Minimal security_incident_response document is valid',
+    valid: true,
+    content: minimalSecurityIncidentResponseDoc,
+  },
+
+  {
+    title: 'Minimal informational_advisory document is valid',
+    valid: true,
+    content: minimalInformationalAdvisoryDoc,
+  },
+
+  ...[minimalSecurityIncidentResponseDoc, minimalInformationalAdvisoryDoc].map(
+    (doc) => ({
+      title: `Fails "6.1.27.1 Document Notes" (category "${doc.document.category}")`,
       valid: false,
       content: {
-        ...minimalDoc,
+        ...doc,
         document: {
-          ...minimalDoc.document,
-          category: documentCategory,
+          ...doc.document,
           notes: [
             {
               category: 'legal_disclaimer',
               text: 'The CSAF document is provided to You "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind.',
               title: 'Terms of Use',
+            },
+          ],
+        },
+      },
+    })
+  ),
+
+  ...[minimalSecurityIncidentResponseDoc, minimalInformationalAdvisoryDoc].map(
+    (doc) => ({
+      title: `Fails "6.1.27.2 Document References" (category "${doc.document.category}")`,
+      valid: false,
+      content: {
+        ...doc,
+        document: {
+          ...doc.document,
+          references: [
+            {
+              category: 'self',
+              summary: 'The canonical URL.',
+              url: 'https://example.com/security/data/csaf/2021/OASIS_CSAF_TC-CSAF_2_0-2021-6-1-27-02-01.json',
             },
           ],
         },
