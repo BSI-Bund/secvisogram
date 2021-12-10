@@ -1629,6 +1629,7 @@ export default [
   ...[minimalSecurityAdvisoryDoc, minimalVexDoc].map((doc) => ({
     title: `Fails "6.1.27.4 Product Tree" (category "${doc.document.category}")`,
     valid: false,
+    expectedNumberOfErrors: 1,
     content: {
       ...doc,
       product_tree: undefined,
@@ -1647,6 +1648,14 @@ export default [
           product_status: {
             fixed: ['CSAFPID-0001'],
           },
+          ...(doc === minimalVexDoc
+            ? {
+                id: {
+                  system_name: 'My system',
+                  text: 'My system test',
+                },
+              }
+            : {}),
         },
       ],
     },
@@ -1686,9 +1695,36 @@ export default [
               text: 'My note',
             },
           ],
+          id: {
+            system_name: 'My system',
+            text: 'My system test',
+          },
           product_status: {
             first_fixed: ['CSAFPID-0001'],
             recommended: ['CSAFPID-0001'],
+          },
+        },
+      ],
+    },
+  },
+
+  {
+    title: `Fails "6.1.27.8 Vulnerability ID"`,
+    valid: false,
+    expectedNumberOfErrors: 1,
+    content: {
+      ...minimalVexDoc,
+      vulnerabilities: [
+        {
+          title: 'A vulnerability item with missing cve and id',
+          notes: [
+            {
+              category: 'description',
+              text: 'My note',
+            },
+          ],
+          product_status: {
+            fixed: ['CSAFPID-0001'],
           },
         },
       ],
