@@ -1670,4 +1670,28 @@ export default [
       ],
     },
   },
+
+  {
+    title: `Fails "6.1.27.7 VEX Product Status"`,
+    valid: false,
+    expectedNumberOfErrors: 1,
+    content: {
+      ...minimalVexDoc,
+      vulnerabilities: [
+        {
+          title: 'A vulnerability item with invalid product_status',
+          notes: [
+            {
+              category: 'description',
+              text: 'My note',
+            },
+          ],
+          product_status: {
+            first_fixed: ['CSAFPID-0001'],
+            recommended: ['CSAFPID-0001'],
+          },
+        },
+      ],
+    },
+  },
 ]

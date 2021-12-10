@@ -22,6 +22,7 @@ import mandatoryTest_6_1_27_3 from './DocumentEntity/mandatoryTest_6_1_27_3'
 import mandatoryTest_6_1_27_4 from './DocumentEntity/mandatoryTest_6_1_27_4'
 import mandatoryTest_6_1_27_5 from './DocumentEntity/mandatoryTest_6_1_27_5'
 import mandatoryTest_6_1_27_6 from './DocumentEntity/mandatoryTest_6_1_27_6'
+import mandatoryTest_6_1_27_7 from './DocumentEntity/mandatoryTest_6_1_27_7'
 import mandatoryTest_6_1_27_9 from './DocumentEntity/mandatoryTest_6_1_27_9'
 import mandatoryTest_6_1_3 from './DocumentEntity/mandatoryTest_6_1_3'
 import mandatoryTest_6_1_6 from './DocumentEntity/mandatoryTest_6_1_6'
@@ -631,6 +632,7 @@ export default class DocumentEntity {
       mandatoryTest_6_1_27_4,
       mandatoryTest_6_1_27_5,
       mandatoryTest_6_1_27_6,
+      mandatoryTest_6_1_27_7,
       mandatoryTest_6_1_27_9,
       mandatoryTest_6_1_27_10,
     ]
