@@ -1638,6 +1638,7 @@ export default [
   ...[minimalSecurityAdvisoryDoc, minimalVexDoc].map((doc) => ({
     title: `Fails "6.1.27.5 Vulnerability Notes" (category "${doc.document.category}")`,
     valid: false,
+    expectedNumberOfErrors: 1,
     content: {
       ...doc,
       vulnerabilities: [

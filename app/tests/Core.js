@@ -16,6 +16,12 @@ suite('Core', () => {
           strict: false,
         })
         expect(result.isValid).to.equal(documentTest.valid)
+        if (typeof documentTest.expectedNumberOfErrors === 'number') {
+          expect(
+            result.errors.length,
+            'Document has the correct number of errors'
+          ).to.equal(documentTest.expectedNumberOfErrors)
+        }
         if (documentTest.valid) {
           expect(result.errors).to.have.lengthOf(0)
         } else {
