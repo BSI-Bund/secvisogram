@@ -11,6 +11,7 @@
     "install:bin": "cd bin && npm ci",
     "generate-html-template": "node bin/cli.js generate-html-template --csaf app/lib/shared/Core/csaf_2.0.json --cvss-3.1 app/lib/shared/Core/cvss-v3.1.json > app/lib/SecvisogramPage/View/shared/HTMLTemplate/Template.html",
     "generate-icann-list": "node bin/cli.js generate-icann-list --registry data/language-subtag-registry.txt > app/lib/shared/Core/DocumentEntity/subtags.json",
+    "parse-language-tag-extension-list": "node bin/cli.js parse-language-tag-extension-list --registry data/language-tag-extensions-registry.txt > app/lib/shared/bcpLanguageTagChecker/extensions.json",
     "generate-cwe-list": "node bin/cli.js generate-cwe-list --cwec data/cwec_v4.3.xml > app/lib/shared/Core/cwec_4.3.json"
   },
   "repository": {

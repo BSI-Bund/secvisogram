@@ -1,5 +1,8 @@
 import bcp47 from 'bcp47'
+import extensions from './bcpLanguageTagChecker/extensions.json'
 import icann from './bcpLanguageTagChecker/subtags.json'
+
+const extensionIdentifierSet = new Set(extensions.map((e) => e.identifier))
 
 /**
  * @param {string} tag
@@ -52,6 +55,9 @@ export default function (tag) {
         parsed.langtag.extension.findIndex(
           (e) => e.singleton === extension.singleton
         ) !== index
-    ).length === 0
+    ).length === 0 &&
+    parsed.langtag.extension.every((extension) =>
+      extensionIdentifierSet.has(extension.singleton)
+    )
   )
 }
