@@ -43,6 +43,9 @@ export default function (tag) {
           s.type === 'variant' &&
           s.prefix === parsed.langtag.language.language?.toLowerCase()
       )
-    )
+    ) &&
+    parsed.langtag.variant.filter(
+      (item, index) => parsed.langtag.variant.indexOf(item) !== index
+    ).length === 0
   )
 }
