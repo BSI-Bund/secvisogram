@@ -46,6 +46,12 @@ export default function (tag) {
     ) &&
     parsed.langtag.variant.filter(
       (item, index) => parsed.langtag.variant.indexOf(item) !== index
+    ).length === 0 &&
+    parsed.langtag.extension.filter(
+      (extension, index) =>
+        parsed.langtag.extension.findIndex(
+          (e) => e.singleton === extension.singleton
+        ) !== index
     ).length === 0
   )
 }

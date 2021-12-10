@@ -26,6 +26,7 @@ suite('bcpLanguageTagChecker', function () {
     'de-Adlm-AD-1694acad',
     'eo-arkaika-arkaika',
     'de-DE-1901-1901',
+    'abx-u-mingo-u-mingo',
   ]
 
   incorrectLanguageTags.forEach((incorrectLanguageTag) => {
