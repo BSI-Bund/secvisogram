@@ -45,6 +45,26 @@ const REMEDIATION = `
   <p>{{details}}</p>
 {{/restart_required}}`
 
+const THREAT = `
+<h5>{{#replaceUnderscores}}{{#upperCase}}{{category}}{{/upperCase}}{{/replaceUnderscores}}{{#date}} ({{.}}){{/date}}</h5>
+<p>{{details}}</p>
+{{#product_ids.length}}
+  <h6>For products:</h6>
+  <ul>
+  {{#product_ids}}
+    <li>{{name}}</li>
+  {{/product_ids}}
+  </ul>
+{{/product_ids.length}}
+{{#group_ids.length}}
+  <h6>For groups:</h6>
+  <ul>
+  {{#group_ids}}
+   <li>{{name}}</li>
+  {{/group_ids}}
+  </ul>
+{{/group_ids.length}}`
+
 const VULNERABILITY_NOTE = `
 {{#title}}<b>{{.}}</b>{{/title}}{{#audience}} ({{.}}){{/audience}}
 {{#text}}<p>{{text}}</p>{{/text}}`
@@ -73,6 +93,7 @@ export default function HTMLTemplate({ document }) {
     product_status_header: PRODUCT_STATUS_HEADER,
     product_status_row: PRODUCT_STATUS_ROW,
     remediation: REMEDIATION,
+    threat: THREAT,
     vulnerability_note: VULNERABILITY_NOTE,
     document_note: DOCUMENT_NOTE,
     acknowledgment: ACKNOWLEDGEMENT,
