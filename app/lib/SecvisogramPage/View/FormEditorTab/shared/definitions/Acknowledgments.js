@@ -76,7 +76,7 @@ export default React.memo(
                       {...urlsItemProps}
                       label="URL of acknowledgment"
                       description="Contains the URL or location of the reference to be acknowledged."
-                      placeholder="CISA"
+                      placeholder="https://cisa.gov"
                       deletable
                     />
                   )}
