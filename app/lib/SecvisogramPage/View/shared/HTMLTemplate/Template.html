@@ -260,7 +260,7 @@
 
     {{#threats.length}}
       <h4>Threats</h4>
-      {{#.}}
+      {{#threats}}
         <h5>{{#replaceUnderscores}}{{#upperCase}}{{category}}{{/upperCase}}{{/replaceUnderscores}}{{#date}} ({{.}}){{/date}}</h5>
         <p>{{details}}</p>
         {{#product_ids.length}}
@@ -279,7 +279,7 @@
           {{/group_ids}}
           </ul>
         {{/group_ids.length}}  
-      {{/.}}
+      {{/threats}}
     {{/threats.length}}
 
   {{/vulnerabilities}}
