@@ -355,6 +355,7 @@ export default class DocumentEntity {
         const vulnerability = vulnerabilities[i]
         addProductStatusPreviewAttributes(vulnerability, productIds)
         addRemediationsPreviewAttributes(vulnerability, productIds, groupIds)
+        addThreatsPreviewAttributes(vulnerability, productIds, groupIds)
         addVulnerabilityNotesPreviewAttributes(vulnerability)
       }
     }
@@ -1190,7 +1191,7 @@ const addRemediationsPreviewAttributes = (
   if (remediations) {
     for (let i = 0; i < remediations.length; ++i) {
       const remediation = remediations[i]
-      extendRemediation(remediation, productIds, groupIds)
+      extendRemediationOrThreat(remediation, productIds, groupIds)
       switch (remediation.category) {
         case 'vendor_fix':
           vendorFix.push(remediation)
@@ -1222,16 +1223,59 @@ const addRemediationsPreviewAttributes = (
 }
 
 /**
- * Add full product name to remediations
+ * Categorize all threats by category
  *
- * @param {{product_ids: any, group_ids: any}} remediation
+ * @param {any} vulnerability
+ * @param {any} productIds
+ * @param {any} groupIds
+ */
+const addThreatsPreviewAttributes = (vulnerability, productIds, groupIds) => {
+  const exploitStatus = []
+  const impact = []
+  const targetSet = []
+  const unknown = []
+  const threats = vulnerability.threats
+  if (threats) {
+    for (let i = 0; i < threats.length; ++i) {
+      const threat = threats[i]
+      extendRemediationOrThreat(threat, productIds, groupIds)
+      switch (threat.category) {
+        case 'exploit_status':
+          exploitStatus.push(threat)
+          break
+        case 'impact':
+          impact.push(threat)
+          break
+        case 'target_set':
+          targetSet.push(threat)
+          break
+        default:
+          unknown.push(threat)
+      }
+    }
+  }
+
+  vulnerability.threats_exploit_status = exploitStatus.sort(sortByDate)
+  vulnerability.threats_impact = impact.sort(sortByDate)
+  vulnerability.threats_target_set = targetSet.sort(sortByDate)
+  vulnerability.threats_unknown = unknown.sort(sortByDate)
+}
+
+/**
+ * Add full product name to remediations or threats
+ *
+ * @param {{product_ids: any, group_ids: any}} remediationOrThreat
  * @param {{id: string, name: string}[]} extProductIds
  * @param {{id: string, name: string}[]} extGroupIds
  */
-const extendRemediation = (remediation, extProductIds, extGroupIds) => {
-  if (remediation) {
+const extendRemediationOrThreat = (
+  remediationOrThreat,
+  extProductIds,
+  extGroupIds
+) => {
+  if (remediationOrThreat) {
     const extendedProductIds = []
-    let productIds = remediation.product_ids
+    let productIds = remediationOrThreat.product_ids
     if (productIds) {
       for (let i = 0; i < productIds.length; ++i) {
         let productId = productIds[i]
@@ -1243,10 +1287,10 @@ const extendRemediation = (remediation, extProductIds, extGroupIds) => {
         }
       }
     }
-    remediation.product_ids = extendedProductIds
+    remediationOrThreat.product_ids = extendedProductIds
 
     const extendedGroupIds = []
-    let groupIds = remediation.group_ids
+    let groupIds = remediationOrThreat.group_ids
     if (groupIds) {
       for (let i = 0; i < groupIds.length; ++i) {
         let productId = groupIds[i]
@@ -1258,7 +1302,7 @@ const extendRemediation = (remediation, extProductIds, extGroupIds) => {
         }
       }
     }
-    remediation.group_ids = extendedGroupIds
+    remediationOrThreat.group_ids = extendedGroupIds
   }
 }
 

@@ -260,26 +260,18 @@
 
     {{#threats.length}}
       <h4>Threats</h4>
-      {{#.}}
-        <h5>{{#replaceUnderscores}}{{#upperCase}}{{category}}{{/upperCase}}{{/replaceUnderscores}}{{#date}} ({{.}}){{/date}}</h5>
-        <p>{{details}}</p>
-        {{#product_ids.length}}
-          <h6>For products:</h6>
-          <ul>
-          {{#product_ids}}
-            <li>{{name}}</li>
-          {{/product_ids}}
-          </ul>
-        {{/product_ids.length}}
-        {{#group_ids.length}}
-          <h6>For groups:</h6>
-          <ul>
-          {{#group_ids}}
-          <li>{{name}}</li>
-          {{/group_ids}}
-          </ul>
-        {{/group_ids.length}}  
-      {{/.}}
+      {{#threats_exploit_status}}
+        {{> threat}}
+      {{/threats_exploit_status}}
+      {{#threats_impact}}
+        {{> threat}}
+      {{/threats_impact}}
+      {{#threats_target_set}}
+        {{> threat}}
+      {{/threats_target_set}}
+      {{#threats_unknown}}
+        {{> threat}}
+      {{/threats_unknown}}
     {{/threats.length}}
 
   {{/vulnerabilities}}
