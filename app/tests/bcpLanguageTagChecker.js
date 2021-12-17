@@ -12,6 +12,9 @@ suite('bcpLanguageTagChecker', function () {
     'de-1996',
     'i-DeFaULt',
     'de-Adlm-AD-1996',
+    'qaa',
+    'qaa-Qaaa',
+    'qaa-Qaaa-QM',
   ]
 
   correctLanguageTags.forEach((correctLanguageTag) => {
