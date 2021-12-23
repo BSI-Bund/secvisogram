@@ -15,7 +15,14 @@ export default function (doc) {
   const vulnerabilities = doc.vulnerabilities
   if (Array.isArray(vulnerabilities)) {
     vulnerabilities.forEach((vulnerability, vulnerabilityIndex) => {
-      if (!vulnerability.product_status) return
+      if (!vulnerability.product_status) {
+        isValid = false
+        errors.push({
+          instancePath: `/vulnerabilities/${vulnerabilityIndex}`,
+          message: 'needs a `product_status` attribute',
+        })
+        return
+      }
       const neededArrays = [
         'fixed',
         'known_affected',

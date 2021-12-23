@@ -1681,6 +1681,30 @@ export default [
   },
 
   {
+    title: `Fails "6.1.27.7 VEX Product Status" (product_status attribute is missing)`,
+    valid: false,
+    expectedNumberOfErrors: 1,
+    content: {
+      ...minimalVexDoc,
+      vulnerabilities: [
+        {
+          title: 'A vulnerability item with invalid product_status',
+          notes: [
+            {
+              category: 'description',
+              text: 'My note',
+            },
+          ],
+          id: {
+            system_name: 'GitHub Issue',
+            text: 'oasis-tcs/csaf#210',
+          },
+        },
+      ],
+    },
+  },
+
+  {
     title: `Fails "6.1.27.7 VEX Product Status"`,
     valid: false,
     expectedNumberOfErrors: 1,
