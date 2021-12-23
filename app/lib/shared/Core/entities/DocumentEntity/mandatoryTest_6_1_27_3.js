@@ -16,7 +16,7 @@ export default function (doc) {
   if (!isValid) {
     errors.push({
       instancePath: '/vulnerabilities',
-      message: 'should not exist',
+      message: 'must not exist',
     })
   }
   return { errors, isValid }

@@ -1651,8 +1651,8 @@ export default [
           ...(doc === minimalVexDoc
             ? {
                 id: {
-                  system_name: 'My system',
-                  text: 'My system test',
+                  system_name: 'GitHub Issue',
+                  text: 'oasis-tcs/csaf#210',
                 },
               }
             : {}),
@@ -1696,8 +1696,8 @@ export default [
             },
           ],
           id: {
-            system_name: 'My system',
-            text: 'My system test',
+            system_name: 'GitHub Issue',
+            text: 'oasis-tcs/csaf#210',
           },
           product_status: {
             first_fixed: ['CSAFPID-0001'],
