@@ -15,6 +15,15 @@ import mandatoryTest_6_1_23 from './DocumentEntity/mandatoryTest_6_1_23'
 import mandatoryTest_6_1_24 from './DocumentEntity/mandatoryTest_6_1_24'
 import mandatoryTest_6_1_25 from './DocumentEntity/mandatoryTest_6_1_25'
 import mandatoryTest_6_1_26 from './DocumentEntity/mandatoryTest_6_1_26'
+import mandatoryTest_6_1_27_1 from './DocumentEntity/mandatoryTest_6_1_27_1'
+import mandatoryTest_6_1_27_10 from './DocumentEntity/mandatoryTest_6_1_27_10'
+import mandatoryTest_6_1_27_2 from './DocumentEntity/mandatoryTest_6_1_27_2'
+import mandatoryTest_6_1_27_3 from './DocumentEntity/mandatoryTest_6_1_27_3'
+import mandatoryTest_6_1_27_4 from './DocumentEntity/mandatoryTest_6_1_27_4'
+import mandatoryTest_6_1_27_5 from './DocumentEntity/mandatoryTest_6_1_27_5'
+import mandatoryTest_6_1_27_6 from './DocumentEntity/mandatoryTest_6_1_27_6'
+import mandatoryTest_6_1_27_7 from './DocumentEntity/mandatoryTest_6_1_27_7'
+import mandatoryTest_6_1_27_8 from './DocumentEntity/mandatoryTest_6_1_27_8'
 import mandatoryTest_6_1_27_9 from './DocumentEntity/mandatoryTest_6_1_27_9'
 import mandatoryTest_6_1_3 from './DocumentEntity/mandatoryTest_6_1_3'
 import mandatoryTest_6_1_6 from './DocumentEntity/mandatoryTest_6_1_6'
@@ -619,7 +628,16 @@ export default class DocumentEntity {
       mandatoryTest_6_1_24,
       mandatoryTest_6_1_25,
       mandatoryTest_6_1_26,
+      mandatoryTest_6_1_27_1,
+      mandatoryTest_6_1_27_2,
+      mandatoryTest_6_1_27_3,
+      mandatoryTest_6_1_27_4,
+      mandatoryTest_6_1_27_5,
+      mandatoryTest_6_1_27_6,
+      mandatoryTest_6_1_27_7,
+      mandatoryTest_6_1_27_8,
       mandatoryTest_6_1_27_9,
+      mandatoryTest_6_1_27_10,
     ]
     tests.forEach((test) => {
       const result = test(doc)

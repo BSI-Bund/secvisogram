@@ -2,10 +2,34 @@ import Ajv from 'ajv'
 import { expect } from 'chai'
 import createCore from '../lib/shared/Core'
 import { DocumentEntity } from '../lib/shared/Core/entities'
-import fixture from './shared/coreFixture'
+import fixture from './Core/coreFixture'
+import documentTests from './Core/documentTests'
 
 suite('Core', () => {
   const core = createCore()
+
+  suite('documentTests', () => {
+    documentTests.forEach((documentTest, i) => {
+      test(documentTest.title ?? `Test #${i + 1}`, async () => {
+        const result = await core.document.validate({
+          document: documentTest.content,
+          strict: false,
+        })
+        expect(result.isValid).to.equal(documentTest.valid)
+        if (typeof documentTest.expectedNumberOfErrors === 'number') {
+          expect(
+            result.errors.length,
+            'Document has the correct number of errors'
+          ).to.equal(documentTest.expectedNumberOfErrors)
+        }
+        if (documentTest.valid) {
+          expect(result.errors).to.have.lengthOf(0)
+        } else {
+          expect(result.errors).have.length.greaterThan(0)
+        }
+      })
+    })
+  })
 
   suite('DocumentService', () => {
     test('The document can be validated against the JSON-schema', async () => {
