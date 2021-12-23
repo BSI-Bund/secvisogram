@@ -3,6 +3,7 @@ const generateCWAList = require('./cli/generateCWAList')
 const generateHTMLTemplate = require('./cli/generateHTMLTemplate')
 const generateICANNList = require('./cli/generateICANNList')
 const generatePreviewTemplatingTable = require('./cli/generatePreviewTemplatingTable')
+const parseLanguageTagExtensionList = require('./cli/parseLanguageTagExtensionList')
 
 yargs(process.argv.slice(2))
   .command(
@@ -28,6 +29,13 @@ yargs(process.argv.slice(2))
     (command) =>
       command.option('registry', { type: 'string' }).demandOption('registry'),
     generateICANNList
+  )
+  .command(
+    'parse-language-tag-extension-list',
+    '',
+    (command) =>
+      command.option('registry', { type: 'string' }).demandOption('registry'),
+    parseLanguageTagExtensionList
   )
   .command(
     'generate-preview-templating-table',
