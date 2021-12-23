@@ -15,6 +15,8 @@ suite('bcpLanguageTagChecker', function () {
     'qaa',
     'qaa-Qaaa',
     'qaa-Qaaa-QM',
+    'az-baku1926',
+    'ba-baku1926',
   ]
 
   correctLanguageTags.forEach((correctLanguageTag) => {

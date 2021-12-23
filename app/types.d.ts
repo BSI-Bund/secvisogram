@@ -3,7 +3,11 @@ declare module '*/cwec_4.3.json' {
 }
 
 declare module '*/subtags.json' {
-  export const subtags: Array<{ type: string; subtag: string; prefix?: string }>
+  export const subtags: Array<{
+    type: string
+    subtag: string
+    prefix: string[]
+  }>
 }
 
 declare module '*/extensions.json' {

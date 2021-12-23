@@ -27,7 +27,11 @@ export default function (tag) {
         (s) =>
           s.subtag.toLowerCase() === extlang.toLowerCase() &&
           s.type === 'extlang' &&
-          s.prefix === parsed.langtag.language.language?.toLowerCase()
+          s.prefix.includes(
+            /** @type {string} */ (
+              parsed.langtag.language.language?.toLowerCase()
+            )
+          )
       )
     ) &&
     (parsed.langtag.script === null ||
@@ -53,7 +57,11 @@ export default function (tag) {
         (s) =>
           s.subtag.toLowerCase() === variant.toLowerCase() &&
           s.type === 'variant' &&
-          s.prefix === parsed.langtag.language.language?.toLowerCase()
+          s.prefix.includes(
+            /** @type {string} */ (
+              parsed.langtag.language.language?.toLowerCase()
+            )
+          )
       )
     ) &&
     parsed.langtag.variant.filter(
