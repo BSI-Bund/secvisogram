@@ -4,6 +4,7 @@ import { cloneDeep } from 'lodash'
 import unset from 'lodash/fp/unset'
 import isEmpty from 'lodash/isEmpty'
 import { major, prerelease, valid } from 'semver'
+import sortObjectKeys from '../../sortObjectKeys'
 import cwec from '../cwec_4.3.json'
 import mandatoryTest_6_1_10 from './DocumentEntity/mandatoryTest_6_1_10'
 import mandatoryTest_6_1_12 from './DocumentEntity/mandatoryTest_6_1_12'
@@ -334,7 +335,12 @@ export default class DocumentEntity {
       errors.length &&
       Object.keys(errorStrippedDocument).length > 0
     )
-    return { document: errorStrippedDocument, strippedPaths }
+    return {
+      document: /** @type {any} */ (
+        sortObjectKeys(new Intl.Collator(), errorStrippedDocument)
+      ),
+      strippedPaths,
+    }
   }
 
   /**
