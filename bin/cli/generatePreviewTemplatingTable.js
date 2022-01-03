@@ -85,6 +85,7 @@ module.exports = function generatePreviewTemplatingTable(args) {
           : entry.path
 
       switch (entry.schema.type) {
+        case 'number':
         case 'string':
           return (
             markdown +
