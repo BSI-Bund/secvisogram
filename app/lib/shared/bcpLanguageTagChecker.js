@@ -27,11 +27,7 @@ export default function (tag) {
         (s) =>
           s.subtag.toLowerCase() === extlang.toLowerCase() &&
           s.type === 'extlang' &&
-          s.prefix.includes(
-            /** @type {string} */ (
-              parsed.langtag.language.language?.toLowerCase()
-            )
-          )
+          s.prefix.some((p) => stringMatchesSubtagPrefix(tag, extlang, p))
       )
     ) &&
     (parsed.langtag.script === null ||
