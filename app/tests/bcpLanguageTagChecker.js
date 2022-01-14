@@ -23,6 +23,7 @@ suite('bcpLanguageTagChecker', function () {
     'sl-rozaj-1994',
     'sl-rozaj-solba-1994',
     'sl-rozaj-biske-1994',
+    'zh-gan',
   ]
 
   correctLanguageTags.forEach((correctLanguageTag) => {
@@ -39,6 +40,7 @@ suite('bcpLanguageTagChecker', function () {
     'de-DE-1901-1901',
     'abx-u-mingo-u-mingo',
     'abx-i-mingo',
+    'zh-gan-gan',
   ]
 
   incorrectLanguageTags.forEach((incorrectLanguageTag) => {
