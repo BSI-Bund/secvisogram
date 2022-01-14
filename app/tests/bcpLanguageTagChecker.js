@@ -17,6 +17,12 @@ suite('bcpLanguageTagChecker', function () {
     'qaa-Qaaa-QM',
     'az-baku1926',
     'ba-baku1926',
+    'de-CH-1996',
+    'pt-BR-abl1943',
+    'ja-Latn-hepburn-heploc',
+    'sl-rozaj-1994',
+    'sl-rozaj-solba-1994',
+    'sl-rozaj-biske-1994',
   ]
 
   correctLanguageTags.forEach((correctLanguageTag) => {

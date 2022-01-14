@@ -57,11 +57,7 @@ export default function (tag) {
         (s) =>
           s.subtag.toLowerCase() === variant.toLowerCase() &&
           s.type === 'variant' &&
-          s.prefix.includes(
-            /** @type {string} */ (
-              parsed.langtag.language.language?.toLowerCase()
-            )
-          )
+          s.prefix.some((p) => stringMatchesSubtagPrefix(tag, variant, p))
       )
     ) &&
     parsed.langtag.variant.filter(
@@ -93,4 +89,16 @@ function stringMatchesSubtag(str, subtag) {
     )
   }
   return subtag.toLowerCase() === tag
+}
+
+/**
+ * @param {string} str
+ * @param {string} subtag
+ * @param {string} prefix
+ */
+function stringMatchesSubtagPrefix(str, subtag, prefix) {
+  return str
+    .substring(0, str.toLowerCase().indexOf(subtag.toLowerCase()) - 1)
+    .toLowerCase()
+    .startsWith(prefix.toLowerCase())
 }
