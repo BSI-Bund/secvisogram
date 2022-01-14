@@ -22,6 +22,7 @@ export default function (tag) {
           )
         )
       })) &&
+    parsed.langtag.language.extlang.length <= 1 &&
     parsed.langtag.language.extlang.every((extlang) =>
       icann.subtags.some(
         (s) =>
