@@ -12,15 +12,15 @@ module.exports = function generateIcannList({ registry }) {
   })
 
   /**
-   * @type {Array<{ subtag: string; type: string; prefix?: string }>}
+   * @type {Array<{ subtag: string; type: string; prefix: string[] }>}
    */
   const subtags = []
-  /** @type {{ subtag: string; type: string; prefix?: string } | null} */
+  /** @type {{ subtag: string; type: string; prefix: string[] } | null} */
   let buffer = null
   rl.on('line', (line) => {
     if (line.startsWith('%%')) {
       if (buffer) subtags.push(buffer)
-      buffer = { type: '', subtag: '' }
+      buffer = { type: '', subtag: '', prefix: [] }
     }
     if (buffer) {
       if (line.startsWith('Subtag: ')) {
@@ -30,7 +30,7 @@ module.exports = function generateIcannList({ registry }) {
         buffer.type = line.split(': ').slice(1).join(': ')
       }
       if (line.startsWith('Prefix: ')) {
-        buffer.prefix = line.split(': ').slice(1).join(': ')
+        buffer.prefix.push(line.split(': ').slice(1).join(': '))
       }
     }
   }).on('close', () => {
