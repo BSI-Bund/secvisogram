@@ -43,7 +43,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [@material-ui/utils@4.11.2](https://github.com/mui-org/material-ui) - MIT
 - [@reach/alert-dialog@0.16.2](https://github.com/reach/reach-ui) - MIT
 - [@reach/auto-id@0.16.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/combobox@0.16.3](https://github.com/reach/reach-ui) - MIT
+- [@reach/combobox@0.16.5](https://github.com/reach/reach-ui) - MIT
 - [@reach/descendants@0.16.1](https://github.com/reach/reach-ui) - MIT
 - [@reach/dialog@0.16.2](https://github.com/reach/reach-ui) - MIT
 - [@reach/observe-rect@1.2.0](https://github.com/reach/observe-rect) - MIT
@@ -53,10 +53,10 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [@reach/utils@0.16.0](https://github.com/reach/reach-ui) - MIT
 - [@types/prop-types@15.7.4](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/react-transition-group@4.4.2](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/react@17.0.34](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/react@17.0.38](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/scheduler@0.16.2](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [ajv-formats@2.1.1](https://github.com/ajv-validator/ajv-formats) - MIT
-- [ajv@8.7.1](https://github.com/ajv-validator/ajv) - MIT
+- [ajv@8.9.0](https://github.com/ajv-validator/ajv) - MIT
 - [bcp47@1.1.2](https://github.com/gagle/node-bcp47) - MIT
 - [clsx@1.1.1](https://github.com/lukeed/clsx) - MIT
 - [css-vendor@2.0.8](https://github.com/cssinjs/css-vendor) - MIT

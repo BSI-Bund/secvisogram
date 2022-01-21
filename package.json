@@ -26,7 +26,7 @@
   "author": "eXXcellent solutions GmbH",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^2.3.2",
-    "typescript": "^4.4.4"
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4"
   }
 }
