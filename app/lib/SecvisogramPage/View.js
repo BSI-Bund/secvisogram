@@ -23,6 +23,10 @@ const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
  *  data: {
  *    doc: unknown
  *  } | null
+ *  generatorEngineData: {
+ *    name: string
+ *    version: string
+ *  }
  *  activeTab: 'EDITOR' | 'SOURCE' | 'PREVIEW' | 'CSAF-JSON'
  *  alert?: {
  *    confirmLabel: string
@@ -63,6 +67,7 @@ function View({
   stripResult,
   previewResult,
   strict,
+  generatorEngineData,
   onSetStrict,
   onDownload,
   onOpen,
@@ -83,9 +88,10 @@ function View({
    * Initial values for the editors. Can be used to detect changes of the
    * document.
    */
-  const originalValues = React.useMemo(() => ({ doc: data?.doc ?? null }), [
-    data,
-  ])
+  const originalValues = React.useMemo(
+    () => ({ doc: data?.doc ?? null }),
+    [data]
+  )
 
   /**
    * Editor state.
@@ -93,7 +99,9 @@ function View({
   const [state, dispatch] = React.useReducer(Reducer, {
     formValues: originalValues,
   })
-  const formValues = /** @type {import('./shared/FormValues').default} */ (state.formValues)
+  const formValues = /** @type {import('./shared/FormValues').default} */ (
+    state.formValues
+  )
 
   /**
    * Enables debounced validation.
@@ -106,36 +114,42 @@ function View({
    *
    * @see {Reducer}
    */
-  const onUpdate = /** @type {((update: {}) => void) & ((dataPath: string, update: {}) => void)} */ (React.useCallback(
-    (/** @type {any} */ newValue, /** @type {any?} */ update) => {
-      if (typeof newValue === 'string') {
-        dispatch({
-          type: 'CHANGE_FORM_DOC',
-          dataPath: newValue,
-          timestamp: new Date(),
-          update: update,
-        })
-      } else {
-        dispatch({
-          type: 'CHANGE_FORM_DOC',
-          timestamp: new Date(),
-          update: newValue,
-        })
-      }
-    },
-    []
-  ))
+  const onUpdate =
+    /** @type {((update: {}) => void) & ((instancePath: string, update: {}) => void)} */ (
+      React.useCallback(
+        (/** @type {any} */ newValue, /** @type {any?} */ update) => {
+          if (typeof newValue === 'string') {
+            dispatch({
+              type: 'CHANGE_FORM_DOC',
+              instancePath: newValue,
+              timestamp: new Date(),
+              update: update,
+              generatorEngineData,
+            })
+          } else {
+            dispatch({
+              type: 'CHANGE_FORM_DOC',
+              timestamp: new Date(),
+              update: newValue,
+              generatorEngineData,
+            })
+          }
+        },
+        [generatorEngineData]
+      )
+    )
 
   /**
    * Is used to replace the complete document in the json editor.
    *
    * @see {JsonEditorTab}
    */
-  const onReplaceDoc = React.useCallback((
-    /** @type {unknown} */ newSerializedDoc
-  ) => {
-    dispatch({ type: 'RESET_FORM_DOC', doc: newSerializedDoc })
-  }, [])
+  const onReplaceDoc = React.useCallback(
+    (/** @type {unknown} */ newSerializedDoc) => {
+      dispatch({ type: 'RESET_FORM_DOC', doc: newSerializedDoc })
+    },
+    []
+  )
 
   const onStripCallback = React.useCallback(() => {
     onStrip(formValues.doc)

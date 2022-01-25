@@ -6,10 +6,10 @@ import IdAttribute from '../IdAttribute'
  * @param {{
  *  value: unknown
  *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
+ *  instancePath: string
  *  label?: string
  *  description?: string
- *  onUpdate(dataPath: string, update: {}): void
+ *  onUpdate(instancePath: string, update: {}): void
  *  onCollectGroupIds(): Promise<void | {id: string, name: string}[]>
  * }} props
  */

@@ -20,11 +20,11 @@
     "WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE ",
     "OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
   ],
-
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "JSON Schema for Common Vulnerability Scoring System version 3.0",
   "$id": "https://www.first.org/cvss/cvss-v3.0.json?20170531",
   "type": "object",
-  "definitions": {
+  "$defs": {
     "attackVectorType": {
       "type": "string",
       "enum": ["NETWORK", "ADJACENT_NETWORK", "LOCAL", "PHYSICAL"]
@@ -127,46 +127,46 @@
       "type": "string",
       "pattern": "^CVSS:3.0/((AV:[NALP]|AC:[LH]|PR:[UNLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])/)*(AV:[NALP]|AC:[LH]|PR:[UNLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])$"
     },
-    "attackVector": { "$ref": "#/definitions/attackVectorType" },
-    "attackComplexity": { "$ref": "#/definitions/attackComplexityType" },
-    "privilegesRequired": { "$ref": "#/definitions/privilegesRequiredType" },
-    "userInteraction": { "$ref": "#/definitions/userInteractionType" },
-    "scope": { "$ref": "#/definitions/scopeType" },
-    "confidentialityImpact": { "$ref": "#/definitions/ciaType" },
-    "integrityImpact": { "$ref": "#/definitions/ciaType" },
-    "availabilityImpact": { "$ref": "#/definitions/ciaType" },
-    "baseScore": { "$ref": "#/definitions/scoreType" },
-    "baseSeverity": { "$ref": "#/definitions/severityType" },
-    "exploitCodeMaturity": { "$ref": "#/definitions/exploitCodeMaturityType" },
-    "remediationLevel": { "$ref": "#/definitions/remediationLevelType" },
-    "reportConfidence": { "$ref": "#/definitions/confidenceType" },
-    "temporalScore": { "$ref": "#/definitions/scoreType" },
-    "temporalSeverity": { "$ref": "#/definitions/severityType" },
+    "attackVector": { "$ref": "#/$defs/attackVectorType" },
+    "attackComplexity": { "$ref": "#/$defs/attackComplexityType" },
+    "privilegesRequired": { "$ref": "#/$defs/privilegesRequiredType" },
+    "userInteraction": { "$ref": "#/$defs/userInteractionType" },
+    "scope": { "$ref": "#/$defs/scopeType" },
+    "confidentialityImpact": { "$ref": "#/$defs/ciaType" },
+    "integrityImpact": { "$ref": "#/$defs/ciaType" },
+    "availabilityImpact": { "$ref": "#/$defs/ciaType" },
+    "baseScore": { "$ref": "#/$defs/scoreType" },
+    "baseSeverity": { "$ref": "#/$defs/severityType" },
+    "exploitCodeMaturity": { "$ref": "#/$defs/exploitCodeMaturityType" },
+    "remediationLevel": { "$ref": "#/$defs/remediationLevelType" },
+    "reportConfidence": { "$ref": "#/$defs/confidenceType" },
+    "temporalScore": { "$ref": "#/$defs/scoreType" },
+    "temporalSeverity": { "$ref": "#/$defs/severityType" },
     "confidentialityRequirement": {
-      "$ref": "#/definitions/ciaRequirementType"
+      "$ref": "#/$defs/ciaRequirementType"
     },
-    "integrityRequirement": { "$ref": "#/definitions/ciaRequirementType" },
-    "availabilityRequirement": { "$ref": "#/definitions/ciaRequirementType" },
+    "integrityRequirement": { "$ref": "#/$defs/ciaRequirementType" },
+    "availabilityRequirement": { "$ref": "#/$defs/ciaRequirementType" },
     "modifiedAttackVector": {
-      "$ref": "#/definitions/modifiedAttackVectorType"
+      "$ref": "#/$defs/modifiedAttackVectorType"
     },
     "modifiedAttackComplexity": {
-      "$ref": "#/definitions/modifiedAttackComplexityType"
+      "$ref": "#/$defs/modifiedAttackComplexityType"
     },
     "modifiedPrivilegesRequired": {
-      "$ref": "#/definitions/modifiedPrivilegesRequiredType"
+      "$ref": "#/$defs/modifiedPrivilegesRequiredType"
     },
     "modifiedUserInteraction": {
-      "$ref": "#/definitions/modifiedUserInteractionType"
+      "$ref": "#/$defs/modifiedUserInteractionType"
     },
-    "modifiedScope": { "$ref": "#/definitions/modifiedScopeType" },
+    "modifiedScope": { "$ref": "#/$defs/modifiedScopeType" },
     "modifiedConfidentialityImpact": {
-      "$ref": "#/definitions/modifiedCiaType"
+      "$ref": "#/$defs/modifiedCiaType"
     },
-    "modifiedIntegrityImpact": { "$ref": "#/definitions/modifiedCiaType" },
-    "modifiedAvailabilityImpact": { "$ref": "#/definitions/modifiedCiaType" },
-    "environmentalScore": { "$ref": "#/definitions/scoreType" },
-    "environmentalSeverity": { "$ref": "#/definitions/severityType" }
+    "modifiedIntegrityImpact": { "$ref": "#/$defs/modifiedCiaType" },
+    "modifiedAvailabilityImpact": { "$ref": "#/$defs/modifiedCiaType" },
+    "environmentalScore": { "$ref": "#/$defs/scoreType" },
+    "environmentalSeverity": { "$ref": "#/$defs/severityType" }
   },
   "required": ["version", "vectorString", "baseScore", "baseSeverity"]
 }

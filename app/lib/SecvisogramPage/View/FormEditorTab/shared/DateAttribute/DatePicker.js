@@ -12,6 +12,7 @@ const DatePicker = (
   const [dateString, timeString] = React.useMemo(() => {
     if (!value) return ['', '']
     const date = new Date(value)
+    if (Number.isNaN(date.getTime())) return ['', '']
     return [
       formatDate(date),
       date.getHours().toString().padStart(2, '0') +
@@ -31,7 +32,7 @@ const DatePicker = (
           onChange(
             e.target.value
               ? new Date(
-                  `${e.target.value} ${timeString || '12:00'}`
+                  `${e.target.value}T${timeString || '12:00'}`
                 ).toISOString()
               : ''
           )
@@ -45,7 +46,7 @@ const DatePicker = (
         onChange={(e) => {
           onChange(
             new Date(
-              `${dateString || formatDate(new Date())} ${
+              `${dateString || formatDate(new Date())}T${
                 e.target.value || '00:00'
               }`
             ).toISOString()

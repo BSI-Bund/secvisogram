@@ -7,18 +7,24 @@ import validationErrorShallowEqual from '../validationErrorShallowEqual'
 export default React.memo(
   /**
    * @param {{
+   *  label?: string
+   *  description?: string
    *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
-   *  dataPath: string
+   *  instancePath: string
    *  value: unknown
-   *  onUpdate(dataPath: string, update: {}): void
+   *  onUpdate(instancePath: string, update: {}): void
    * }} props
    */
-  function Acknowledgments(props) {
+  function Acknowledgments({
+    label = 'List of acknowledgments',
+    description = 'Contains a list of acknowledgment elements.',
+    ...props
+  }) {
     return (
       <ArrayContainer
         {...props}
-        label="List of acknowledgments"
-        description="Contains a list of acknowledgment elements."
+        label={label}
+        description={description}
         defaultItemValue={() => ({})}
       >
         {(acknowledgementsProps) => (
@@ -70,7 +76,7 @@ export default React.memo(
                       {...urlsItemProps}
                       label="URL of acknowledgment"
                       description="Contains the URL or location of the reference to be acknowledged."
-                      placeholder="CISA"
+                      placeholder="https://cisa.gov"
                       deletable
                     />
                   )}

@@ -8,8 +8,8 @@ import TextAttribute from '../TextAttribute'
  *  value: unknown
  *  deletable?: boolean
  *  validationErrors: import('../../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
- *  onUpdate(dataPath: string, update: {}): void
+ *  instancePath: string
+ *  onUpdate(instancePath: string, update: {}): void
  * }} props
  */
 export default function Lang({
@@ -24,8 +24,8 @@ export default function Lang({
       label={label}
       description={description}
       deletable={deletable}
-      pattern="^[a-zA-Z]{2,3}(-.+)?$"
-      placeholder="^[a-zA-Z]{2,3}(-.+)?$"
+      pattern="^(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3}){0,2})?|[A-Za-z]{4,8})(-[A-Za-z]{4})?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-[A-WY-Za-wy-z0-9](-[A-Za-z0-9]{2,8})+)*(-[Xx](-[A-Za-z0-9]{1,8})+)?|[Xx](-[A-Za-z0-9]{1,8})+|[Ii]-[Dd][Ee][Ff][Aa][Uu][Ll][Tt]|[Ii]-[Mm][Ii][Nn][Gg][Oo])$"
+      placeholder="en-US"
     />
   )
 }

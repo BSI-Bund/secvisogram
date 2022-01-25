@@ -1,8 +1,12 @@
-# Secvisogram Dependabot configuration file 
+# Secvisogram Dependabot configuration file
 
 version: 2
 updates:
-  - package-ecosystem: 'npm'
-    directory: '/app'
+  - package-ecosystem: "npm"
+    directory: "/app"
     schedule:
-      interval: 'weekly'
+      interval: "weekly"
+    # Disable version updates for this repository
+    open-pull-requests-limit: 0
+    allow:
+      - dependency-type: "production"

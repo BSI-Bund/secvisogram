@@ -8,9 +8,9 @@ const EMPTY_ARRAY = []
 /**
  * @typedef {Object} ChildProps
  * @property {unknown} value
- * @property {string} dataPath
+ * @property {string} instancePath
  * @property {import('../../../../shared/validationTypes').ValidationError[]} validationErrors
- * @property {(dataPath: string, update: {}) => void} onUpdate
+ * @property {(instancePath: string, update: {}) => void} onUpdate
  */
 
 /**
@@ -23,10 +23,10 @@ const EMPTY_ARRAY = []
  *  deletable?: boolean
  *  collapsible?: boolean
  *  validationErrors: import('../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
+ *  instancePath: string
  *  defaultValue?(): {}
  *  onDelete?(): void
- *  onUpdate: (dataPath: string, update: {}) => void
+ *  onUpdate: (instancePath: string, update: {}) => void
  *  children(props: (attributeName: string) => ChildProps): React.ReactNode;
  * }} props
  */
@@ -45,20 +45,22 @@ export default function ObjectContainer(props) {
     /** @type {Map<string, import('../../../../SecvisogramPage').ValidationError[]>} */
     const c = new Map()
     for (const e of props.validationErrors) {
-      if (e.dataPath.startsWith(props.dataPath + '/')) {
-        const attributeName = parse(e.dataPath)[parse(props.dataPath).length]
+      if (e.instancePath.startsWith(props.instancePath + '/')) {
+        const attributeName = parse(e.instancePath)[
+          parse(props.instancePath).length
+        ]
         c.set(attributeName, (c.get(attributeName) ?? []).concat([e]))
       }
     }
     return c
-  }, [props.dataPath, props.validationErrors])
+  }, [props.instancePath, props.validationErrors])
 
   return (
     <Container {...props} isValid={isValid}>
       {(childProps) =>
         props.children((attributeName) => ({
           ...childProps,
-          dataPath: `${props.dataPath}/${attributeName}`,
+          instancePath: `${props.instancePath}/${attributeName}`,
           value: childProps.value[attributeName],
           onUpdate: props.onUpdate,
           validationErrors:

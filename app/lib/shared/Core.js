@@ -1,5 +1,5 @@
-import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
+import Ajv2020 from 'ajv/dist/2020'
 import { compose, set } from 'lodash/fp'
 import csaf_2_0 from './Core/csaf_2.0.json'
 import csaf_2_0_strict from './Core/csaf_2.0_strict.json'
@@ -9,6 +9,8 @@ import cvss_v3_1 from './Core/cvss-v3.1.json'
 import doc_max from './Core/doc-max.json'
 import doc_min from './Core/doc-min.json'
 import { DocumentEntity } from './Core/entities'
+
+const secvisogramName = 'Secvisogram'
 
 /* eslint-disable */
 const secvisogramVersion =
@@ -21,7 +23,7 @@ const secvisogramVersion =
 
 const setGeneratorFields = (/** @type {Date} */ date) =>
   compose(
-    set('document.tracking.generator.engine.name', 'Secvisogram'),
+    set('document.tracking.generator.engine.name', secvisogramName),
     set('document.tracking.generator.engine.version', secvisogramVersion),
     set('document.tracking.generator.date', date.toISOString())
   )
@@ -31,8 +33,8 @@ const setGeneratorFields = (/** @type {Date} */ date) =>
  * Logic which can be abstracted without UI-interaction should be placed here
  * to be tested independently.
  */
-export default async function createCore() {
-  const ajv = new Ajv({ strict: false, allErrors: true })
+export default function createCore() {
+  const ajv = new Ajv2020({ strict: false, allErrors: true })
   addFormats(ajv)
   ajv.addSchema(cvss_v2_0, 'https://www.first.org/cvss/cvss-v2.0.json')
   ajv.addSchema(cvss_v3_0, 'https://www.first.org/cvss/cvss-v3.0.json')
@@ -53,7 +55,7 @@ export default async function createCore() {
        *   isValid: boolean;
        *   errors: {
        *     message?: string | undefined;
-       *     dataPath: string;
+       *     instancePath: string;
        *   }[];
        * }>}
        */
@@ -160,6 +162,13 @@ export default async function createCore() {
           : schemaValidatorLenient
         const documentEntity = new DocumentEntity({ schemaValidator })
         return documentEntity.preview({ document })
+      },
+
+      getGeneratorEngineData() {
+        return {
+          name: secvisogramName,
+          version: secvisogramVersion,
+        }
       },
     },
   }

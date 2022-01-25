@@ -7,15 +7,15 @@ import TextAttribute from '../../TextAttribute'
 /**
  * @param {{
  *  validationErrors: import('../../../../../../shared/validationTypes').ValidationError[]
- *  dataPath: string
+ *  instancePath: string
  *  value: unknown
- *  onUpdate(dataPath: string, update: {}): void
+ *  onUpdate(instancePath: string, update: {}): void
  * }} props
  */
 export default function ProductIdentificationHelper({
   value: productIdentificationHelper,
   validationErrors,
-  dataPath,
+  instancePath,
   onUpdate,
 }) {
   return (
@@ -23,7 +23,7 @@ export default function ProductIdentificationHelper({
       label="Helper to identify the product"
       description="Provides at least one method which aids in identifying the product in an asset database."
       validationErrors={validationErrors}
-      dataPath={dataPath}
+      instancePath={instancePath}
       value={productIdentificationHelper}
       defaultValue={() => ({})}
       onUpdate={onUpdate}
@@ -109,8 +109,8 @@ export default function ProductIdentificationHelper({
             {...productIdentificationHelperProps('purl')}
             label="package URL representation"
             description="The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification."
-            pattern="^pkg:"
-            minLength={4}
+            pattern="^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+"
+            minLength={7}
             deletable
           />
           <ArrayContainer

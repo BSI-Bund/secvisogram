@@ -15,8 +15,8 @@ export default React.memo(
    * @param {{
    *  value: unknown
    *  validationErrors: import('../../../shared/validationTypes').ValidationError[]
-   *  dataPath: string
-   *  onUpdate(dataPath: string, update: {}): void
+   *  instancePath: string
+   *  onUpdate(instancePath: string, update: {}): void
    * }} props
    */
   function Document(props) {
@@ -53,15 +53,24 @@ export default React.memo(
           <>
             <Acknowledgments
               {...documentLevelMetaDataProps('acknowledgments')}
+              label="Document acknowledgments"
+              description="Contains a list of acknowledgment elements associated with the whole document."
             />
             <AggregateSeverity
               {...documentLevelMetaDataProps('aggregate_severity')}
             />
-            <TextAttribute
+            <EnumAttribute
               {...documentLevelMetaDataProps('category')}
               label="Document category"
               description="Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document."
-              placeholder="Security Advisory"
+              freeSolo={true}
+              options={[
+                'generic_csaf',
+                'security_incident_response',
+                'informational_advisory',
+                'security_advisory',
+                'vex',
+              ]}
             />
             <EnumAttribute
               {...documentLevelMetaDataProps('csaf_version')}
@@ -71,23 +80,27 @@ export default React.memo(
             />
             <Distribution {...documentLevelMetaDataProps('distribution')} />
             <Lang
+              {...documentLevelMetaDataProps('lang')}
               label="Document language"
               description="Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646."
               deletable
-              {...documentLevelMetaDataProps('lang')}
             />
             <Notes
               {...documentLevelMetaDataProps('notes')}
-              label="Notes associated with the whole document."
-              description="Holds notes about this set of vulnerabilities."
+              label="Document notes"
+              description="Holds notes associated with the whole document."
             />
             <Publisher {...documentLevelMetaDataProps('publisher')} />
-            <References {...documentLevelMetaDataProps('references')} />
+            <References
+              {...documentLevelMetaDataProps('references')}
+              label="Document references"
+              description="Holds a list of references associated with the whole document."
+            />
             <Lang
+              {...documentLevelMetaDataProps('source_lang')}
               label="Source language"
               description="If this copy of the document is a translation then the value of this property describes from which language this document was translated."
               deletable
-              {...documentLevelMetaDataProps('source_lang')}
             />
             <TextAttribute
               {...documentLevelMetaDataProps('title')}
