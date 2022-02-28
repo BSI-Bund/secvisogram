@@ -80,6 +80,7 @@
               "product_family",
               "product_name",
               "product_version",
+              "product_version_range",
               "service_pack",
               "specification",
               "vendor"
@@ -207,6 +208,19 @@
               "title": "List of hashes",
               "type": "array"
             },
+            "model_numbers": {
+              "description": "Contains a list of parts, or full model numbers.",
+              "items": {
+                "description": "Contains a part, or a full model number of the component to identify.",
+                "minLength": 1,
+                "title": "Model number",
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "List of models",
+              "type": "array",
+              "uniqueItems": true
+            },
             "purl": {
               "description": "The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification.",
               "format": "uri",
@@ -237,7 +251,8 @@
               },
               "minItems": 1,
               "title": "List of serial numbers",
-              "type": "array"
+              "type": "array",
+              "uniqueItems": true
             },
             "skus": {
               "description": "Contains a list of parts, or full stock keeping units.",
@@ -466,12 +481,13 @@
         "category": {
           "description": "Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document.",
           "examples": [
-            "Example Company Security Notice",
-            "generic_csaf",
-            "security_advisory",
-            "vex"
+            "csaf_base",
+            "csaf_security_advisory",
+            "csaf_vex",
+            "Example Company Security Notice"
           ],
           "minLength": 1,
+          "pattern": "^[^\\s\\-_\\.](.*[^\\s\\-_\\.])?$",
           "title": "Document category",
           "type": "string"
         },
@@ -682,6 +698,7 @@
                 "cisco-sa-20190513-secureboot"
               ],
               "minLength": 1,
+              "pattern": "^[\\S](.*[\\S])?$",
               "title": "Unique identifier for the document",
               "type": "string"
             },
@@ -701,6 +718,12 @@
                     "description": "The date of the revision entry",
                     "format": "date-time",
                     "title": "Date of the revision",
+                    "type": "string"
+                  },
+                  "legacy_version": {
+                    "description": "Contains the version string used in an existing document with the same content.",
+                    "minLength": 1,
+                    "title": "Legacy version of the revision",
                     "type": "string"
                   },
                   "number": {
@@ -909,28 +932,75 @@
             "title": "Discovery date",
             "type": "string"
           },
-          "id": {
-            "additionalProperties": false,
-            "description": "Gives the document producer a place to publish a unique label or tracking ID for the vulnerability (if such information exists).",
-            "properties": {
-              "system_name": {
-                "description": "Indicates the name of the vulnerability tracking or numbering system.",
-                "examples": ["Cisco Bug ID", "GitHub Issue"],
-                "minLength": 1,
-                "title": "System name",
-                "type": "string"
+          "flags": {
+            "description": "Contains a list of machine readable flags.",
+            "items": {
+              "additionalProperties": false,
+              "description": "Contains product specific information in regard to this vulnerability as a single machine readable flag.",
+              "properties": {
+                "date": {
+                  "description": "Contains the date when assessment was done or the flag was assigned.",
+                  "format": "date-time",
+                  "title": "Date of the flag",
+                  "type": "string"
+                },
+                "group_ids": {
+                  "$ref": "#/$defs/product_groups_t"
+                },
+                "label": {
+                  "description": "Specifies the machine readable label.",
+                  "enum": [
+                    "component_not_present",
+                    "inline_mitigations_already_exist",
+                    "vulnerable_code_cannot_be_controlled_by_adversary",
+                    "vulnerable_code_not_in_execute_path",
+                    "vulnerable_code_not_present"
+                  ],
+                  "title": "Label of the flag",
+                  "type": "string"
+                },
+                "product_ids": {
+                  "$ref": "#/$defs/products_t"
+                }
               },
-              "text": {
-                "description": "Is unique label or tracking ID for the vulnerability (if such information exists).",
-                "examples": ["CSCso66472", "oasis-tcs/csaf#210"],
-                "minLength": 1,
-                "title": "Text",
-                "type": "string"
-              }
+              "required": ["label"],
+              "title": "Flag",
+              "type": "object"
             },
-            "required": ["system_name", "text"],
-            "title": "ID",
-            "type": "object"
+            "minItems": 1,
+            "title": "List of flags",
+            "type": "array",
+            "uniqueItems": true
+          },
+          "ids": {
+            "description": "Represents a list of unique labels or tracking IDs for the vulnerability (if such information exists).",
+            "items": {
+              "additionalProperties": false,
+              "description": "Contains a single unique label or tracking ID for the vulnerability.",
+              "properties": {
+                "system_name": {
+                  "description": "Indicates the name of the vulnerability tracking or numbering system.",
+                  "examples": ["Cisco Bug ID", "GitHub Issue"],
+                  "minLength": 1,
+                  "title": "System name",
+                  "type": "string"
+                },
+                "text": {
+                  "description": "Is unique label or tracking ID for the vulnerability (if such information exists).",
+                  "examples": ["CSCso66472", "oasis-tcs/csaf#210"],
+                  "minLength": 1,
+                  "title": "Text",
+                  "type": "string"
+                }
+              },
+              "required": ["system_name", "text"],
+              "title": "ID",
+              "type": "object"
+            },
+            "minItems": 1,
+            "title": "List of IDs",
+            "type": "array",
+            "uniqueItems": true
           },
           "involvements": {
             "description": "Contains a list of involvements.",
