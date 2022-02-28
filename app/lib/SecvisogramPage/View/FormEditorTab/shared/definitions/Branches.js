@@ -52,6 +52,7 @@ export default React.memo(
                       'product_family',
                       'product_name',
                       'product_version',
+                      'product_version_range',
                       'service_pack',
                       'specification',
                       'vendor',

@@ -93,32 +93,91 @@ const Vulnerability = React.memo(
               description="Holds the date and time the vulnerability was originally discovered."
               deletable
             />
-            <ObjectContainer
-              {...vulnerabilityProps('id')}
-              label="ID"
-              description="Gives the document producer a place to publish a unique label or tracking ID for the vulnerability (if such information exists)."
-              defaultValue={() => ({
+            <ArrayContainer
+              {...vulnerabilityProps('flags')}
+              label="List of flags"
+              description="Contains a list of machine readable flags."
+              defaultItemValue={() => ({
+                label: '',
+              })}
+            >
+              {(flagItemProps) => (
+                <ObjectContainer
+                  {...flagItemProps}
+                  label="Flag"
+                  description="Contains product specific information in regard to this vulnerability as a single machine readable flag."
+                >
+                  {(flagProps) => (
+                    <>
+                      <EnumAttribute
+                        {...flagProps('label')}
+                        label="Label of the flag"
+                        description="Specifies the machine readable label."
+                        options={[
+                          'component_not_present',
+                          'vulnerable_code_not_present',
+                          'vulnerable_code_not_in_execute_path',
+                          'vulnerable_code_cannot_be_controlled_by_adversary',
+                          'inline_mitigations_already_exist',
+                        ]}
+                      />
+                      <DateAttribute
+                        {...flagProps('date')}
+                        label="Date of the flag"
+                        description="Contains the date when assessment was done or the flag was assigned."
+                        deletable
+                      />
+                      <ProductGroups
+                        {...flagProps('group_ids')}
+                        onCollectGroupIds={onCollectGroupIds}
+                      />
+                      <Products
+                        {...flagProps('product_ids')}
+                        onCollectProductIds={onCollectProductIds}
+                      />
+                    </>
+                  )}
+                </ObjectContainer>
+              )}
+            </ArrayContainer>
+            <ArrayContainer
+              {...vulnerabilityProps('ids')}
+              label="List of IDs"
+              description="Represents a list of unique labels or tracking IDs for the vulnerability (if such information exists)."
+              defaultItemValue={() => ({
                 system_name: '',
                 text: '',
               })}
             >
-              {(idProps) => (
-                <>
-                  <TextAttribute
-                    {...idProps('system_name')}
-                    label="System name"
-                    description="Indicates the name of the vulnerability tracking or numbering system."
-                    placeholder="Cisco Bug ID ..."
-                  />
-                  <TextAttribute
-                    {...idProps('text')}
-                    label="Text"
-                    description="Is unique label or tracking ID for the vulnerability (if such information exists)."
-                    placeholder="CSCso66472 ..."
-                  />
-                </>
+              {(idItemProps) => (
+                <ObjectContainer
+                  {...idItemProps}
+                  label="ID"
+                  description="Contains a single unique label or tracking ID for the vulnerability."
+                  defaultValue={() => ({
+                    system_name: '',
+                    text: '',
+                  })}
+                >
+                  {(idProps) => (
+                    <>
+                      <TextAttribute
+                        {...idProps('system_name')}
+                        label="System name"
+                        description="Indicates the name of the vulnerability tracking or numbering system."
+                        placeholder="Cisco Bug ID ..."
+                      />
+                      <TextAttribute
+                        {...idProps('text')}
+                        label="Text"
+                        description="Is unique label or tracking ID for the vulnerability (if such information exists)."
+                        placeholder="CSCso66472 ..."
+                      />
+                    </>
+                  )}
+                </ObjectContainer>
               )}
-            </ObjectContainer>
+            </ArrayContainer>
             <ArrayContainer
               {...vulnerabilityProps('involvements')}
               label="List of involvements"

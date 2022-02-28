@@ -103,6 +103,7 @@ export default React.memo(
               {...trackingProps('id')}
               label="Unique identifier for the document"
               description="The ID is a simple label that provides for a wide range of numbering values, types, and schemes. Its value SHOULD be assigned and maintained by the original document issuing authority."
+              pattern="^[\\S](.*[\\S])?$"
               placeholder="Example Company - 2019-YH3234"
             />
             <DateAttribute

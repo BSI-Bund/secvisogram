@@ -105,6 +105,21 @@ export default function ProductIdentificationHelper({
               </ObjectContainer>
             )}
           </ArrayContainer>
+          <ArrayContainer
+            {...productIdentificationHelperProps('model_numbers')}
+            label="List of models"
+            description="Contains a list of parts, or full model numbers."
+            defaultItemValue={() => ''}
+          >
+            {(modelNumbersItemProps) => (
+              <TextAttribute
+                {...modelNumbersItemProps}
+                label="Model number"
+                description="Contains a part, or a full model number of the component to identify."
+                deletable
+              />
+            )}
+          </ArrayContainer>
           <TextAttribute
             {...productIdentificationHelperProps('purl')}
             label="package URL representation"
