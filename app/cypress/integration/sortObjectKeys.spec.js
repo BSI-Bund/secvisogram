@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { expect } from 'chai'
 import sortObjectKeys from '../../lib/shared/sortObjectKeys'
 

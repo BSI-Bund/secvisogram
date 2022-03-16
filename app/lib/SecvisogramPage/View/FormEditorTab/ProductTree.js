@@ -1,13 +1,13 @@
 import '@reach/combobox/styles.css'
 import React from 'react'
-import ArrayContainer from './shared/ArrayContainer'
-import { Branches, FullProductName } from './shared/definitions'
-import EnumAttribute from './shared/EnumAttribute'
-import IdAttribute from './shared/IdAttribute'
-import ObjectContainer from './shared/ObjectContainer'
-import TextAttribute from './shared/TextAttribute'
-import { uniqueGroupId, uniqueProductId } from './shared/unique-id'
-import validationErrorShallowEqual from './shared/validationErrorShallowEqual'
+import ArrayContainer from './shared/ArrayContainer.js'
+import { Branches, FullProductName } from './shared/definitions.js'
+import EnumAttribute from './shared/EnumAttribute.js'
+import IdAttribute from './shared/IdAttribute.js'
+import ObjectContainer from './shared/ObjectContainer.js'
+import TextAttribute from './shared/TextAttribute.js'
+import { uniqueGroupId, uniqueProductId } from './shared/unique-id.js'
+import validationErrorShallowEqual from './shared/validationErrorShallowEqual.js'
 
 export default React.memo(
   /**

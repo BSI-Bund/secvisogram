@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import Ajv from 'ajv'
 import { expect } from 'chai'
 import createCore from '../../lib/shared/Core'

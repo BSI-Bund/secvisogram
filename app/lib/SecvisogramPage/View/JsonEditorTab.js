@@ -10,8 +10,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { useAlert } from './shared/Alert'
-import useDebounce from './shared/useDebounce'
+import { useAlert } from './shared/Alert.js'
+import useDebounce from './shared/useDebounce.js'
 
 /**
  * Embeds the ace editor.

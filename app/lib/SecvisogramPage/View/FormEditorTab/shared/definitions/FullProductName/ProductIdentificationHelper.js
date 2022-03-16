@@ -1,8 +1,8 @@
 import '@reach/combobox/styles.css'
 import React from 'react'
-import ArrayContainer from '../../ArrayContainer'
-import ObjectContainer from '../../ObjectContainer'
-import TextAttribute from '../../TextAttribute'
+import ArrayContainer from '../../ArrayContainer.js'
+import ObjectContainer from '../../ObjectContainer.js'
+import TextAttribute from '../../TextAttribute.js'
 
 /**
  * @param {{

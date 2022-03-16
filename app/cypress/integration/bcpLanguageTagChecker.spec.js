@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { expect } from 'chai'
 import bcpLanguageTagChecker from '../../lib/shared/bcpLanguageTagChecker.js'
 

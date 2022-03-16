@@ -1,6 +1,6 @@
 import addFormats from 'ajv-formats'
-import Ajv2020 from 'ajv/dist/2020'
-import { compose, set } from 'lodash/fp'
+import Ajv2020 from 'ajv/dist/2020.js'
+import { compose, set } from 'lodash/fp.js'
 import csaf_2_0 from './Core/csaf_2.0.json'
 import csaf_2_0_strict from './Core/csaf_2.0_strict.json'
 import cvss_v2_0 from './Core/cvss-v2.0.json'
@@ -8,7 +8,7 @@ import cvss_v3_0 from './Core/cvss-v3.0.json'
 import cvss_v3_1 from './Core/cvss-v3.1.json'
 import doc_max from './Core/doc-max.json'
 import doc_min from './Core/doc-min.json'
-import { DocumentEntity } from './Core/entities'
+import { DocumentEntity } from './Core/entities.js'
 
 const secvisogramName = 'Secvisogram'
 

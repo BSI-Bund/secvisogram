@@ -1,6 +1,6 @@
 import React from 'react'
-import Attribute from './shared/Attribute'
-import Delete from './shared/Delete'
+import Attribute from './shared/Attribute.js'
+import Delete from './shared/Delete.js'
 
 /**
  * @param {Pick<React.HTMLProps<HTMLInputElement>, 'minLength' | 'onBlur'> & {

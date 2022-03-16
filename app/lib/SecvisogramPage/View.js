@@ -1,14 +1,14 @@
 import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import CsafTab from './View/CsafTab'
-import FormEditorTab from './View/FormEditorTab'
-import JsonEditorTab from './View/JsonEditorTab'
-import LoadingIndicator from './View/LoadingIndicator'
-import PreviewTab from './View/PreviewTab'
-import Reducer from './View/Reducer'
-import Alert from './View/shared/Alert'
-import useDebounce from './View/shared/useDebounce'
+import CsafTab from './View/CsafTab.js'
+import FormEditorTab from './View/FormEditorTab.js'
+import JsonEditorTab from './View/JsonEditorTab.js'
+import LoadingIndicator from './View/LoadingIndicator.js'
+import PreviewTab from './View/PreviewTab.js'
+import Reducer from './View/Reducer.js'
+import Alert from './View/shared/Alert.js'
+import useDebounce from './View/shared/useDebounce.js'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 

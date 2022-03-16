@@ -16,7 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import '../../vendor/first/cvsscalc30.js'
 import '../../vendor/first/cvsscalc31.js'
-import './commands'
+import './commands.js'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

@@ -2,13 +2,13 @@ import { get } from 'lodash'
 import React from 'react'
 import { render } from 'react-dom'
 import { ErrorBoundary, useErrorHandler } from 'react-error-boundary'
-import View from './SecvisogramPage/View'
+import View from './SecvisogramPage/View.js'
 import {
   uniqueGroupId,
   uniqueProductId,
-} from './SecvisogramPage/View/FormEditorTab/shared/unique-id'
-import createCore from './shared/Core'
-import ErrorScreen from './shared/ErrorScreen'
+} from './SecvisogramPage/View/FormEditorTab/shared/unique-id.js'
+import createCore from './shared/Core.js'
+import ErrorScreen from './shared/ErrorScreen.js'
 import './shared/style.css'
 
 /**

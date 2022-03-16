@@ -1,4 +1,4 @@
-import bcpLanguageTagChecker from '../../../bcpLanguageTagChecker'
+import bcpLanguageTagChecker from '../../../bcpLanguageTagChecker.js'
 
 /**
  * @param {any} doc

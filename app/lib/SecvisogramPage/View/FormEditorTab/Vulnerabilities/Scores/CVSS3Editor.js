@@ -1,10 +1,10 @@
 import React from 'react'
-import DefaultButton from '../../../shared/DefaultButton'
-import EnumAttribute from '../../shared/EnumAttribute'
-import NumberAttribute from '../../shared/NumberAttribute'
-import ObjectContainer from '../../shared/ObjectContainer'
-import TextAttribute from '../../shared/TextAttribute'
-import CVSSVector from './CVSS3Editor/CVSSVector'
+import DefaultButton from '../../../shared/DefaultButton.js'
+import EnumAttribute from '../../shared/EnumAttribute.js'
+import NumberAttribute from '../../shared/NumberAttribute.js'
+import ObjectContainer from '../../shared/ObjectContainer.js'
+import TextAttribute from '../../shared/TextAttribute.js'
+import CVSSVector from './CVSS3Editor/CVSSVector.js'
 
 /**
  * @param {{
