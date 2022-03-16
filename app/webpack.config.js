@@ -14,13 +14,6 @@ module.exports = {
       : {
           'view-tests': './viewTests/frame.js',
           'view-tests-canvas': './viewTests/canvas.js',
-          tests: [
-            'mocha/mocha.css',
-            'mocha/mocha.js',
-            './tests/mochaSetup.js',
-            './tests/index.js',
-            './tests/mochaRun.js',
-          ],
         }),
   },
   module: {
@@ -70,11 +63,6 @@ module.exports = {
             chunks: ['view-tests-canvas'],
             filename: 'view-tests-canvas.html',
             template: './lib/index.html',
-          }),
-          new HTMLWebpackPlugin({
-            chunks: ['tests'],
-            filename: 'tests.html',
-            template: './tests/index.html',
           }),
         ]),
   ],

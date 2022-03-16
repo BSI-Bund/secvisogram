@@ -1,8 +1,8 @@
-import minimalDoc from '../shared/minimalCSAFBaseDoc'
-import minimalInformationalAdvisoryDoc from '../shared/minimalInformationalAdvisoryDoc'
-import minimalSecurityAdvisoryDoc from '../shared/minimalSecurityAdvisoryDoc'
-import minimalSecurityIncidentResponseDoc from '../shared/minimalSecurityIncidentResponseDoc'
-import minimalVexDoc from '../shared/minimalVexDoc'
+import minimalDoc from './documentTests/minimalGenericCSAFDoc'
+import minimalInformationalAdvisoryDoc from './documentTests/minimalInformationalAdvisoryDoc'
+import minimalSecurityAdvisoryDoc from './documentTests/minimalSecurityAdvisoryDoc'
+import minimalSecurityIncidentResponseDoc from './documentTests/minimalSecurityIncidentResponseDoc'
+import minimalVexDoc from './documentTests/minimalVexDoc'
 
 export default [
   // Fails "6.1.3 Circular Definition of Product ID"
