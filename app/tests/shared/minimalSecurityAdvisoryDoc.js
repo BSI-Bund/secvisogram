@@ -4,7 +4,7 @@ export default {
   ...minimalDoc,
   document: {
     ...minimalDoc.document,
-    category: 'security_advisory',
+    category: 'csaf_security_advisory',
   },
   product_tree: {
     full_product_names: [

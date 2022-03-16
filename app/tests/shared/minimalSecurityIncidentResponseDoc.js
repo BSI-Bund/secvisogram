@@ -4,7 +4,7 @@ export default {
   ...minimalDoc,
   document: {
     ...minimalDoc.document,
-    category: 'security_incident_response',
+    category: 'csaf_security_incident_response',
     notes: [
       {
         category: 'description',

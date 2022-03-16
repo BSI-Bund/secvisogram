@@ -1,4 +1,4 @@
-import minimalDoc from '../shared/minimalGenericCSAFDoc'
+import minimalDoc from '../shared/minimalCSAFBaseDoc'
 import minimalInformationalAdvisoryDoc from '../shared/minimalInformationalAdvisoryDoc'
 import minimalSecurityAdvisoryDoc from '../shared/minimalSecurityAdvisoryDoc'
 import minimalSecurityIncidentResponseDoc from '../shared/minimalSecurityIncidentResponseDoc'
@@ -1324,6 +1324,7 @@ export default [
 
   // Fails "6.1.25 Multiple Use of Same Hash Algorithm"
   {
+    title: 'Fails 6.1.25 Multiple Use of Same Hash Algorithm',
     valid: false,
     content: {
       ...minimalDoc,
@@ -1367,18 +1368,44 @@ export default [
 
   // Fails "6.1.26 Prohibited Document Category Name"
   ...[
+    'Csaf_a',
     'Security_Incident_Response',
     'Informational Advisory',
     'security-incident-response',
     'Security      Advisory',
     'veX',
+    'V_ex',
+    'V___eX',
     'Informational - Advisory',
     'security-_ incident-response',
     'Security\tAdvisory',
     'Security\nAdvisory',
     'Security\rAdvisory',
   ].map((category) => ({
+    //    title: `Fails "6.1.26 Prohibited Document Category Name" (category "${category}")`,
     valid: false,
+    content: {
+      ...minimalDoc,
+      document: {
+        ...minimalDoc.document,
+        category,
+      },
+    },
+  })),
+
+  // Succeeds "6.1.26 Prohibited Document Category Name"
+  ...[
+    'CSAF Base',
+    'csaf_base',
+    //    'csaf_security_incident_response',
+    //    'csaf_informational_advisory',
+    //    'csaf_security_advisory',
+    //    'csaf_vex',
+    'Example Company Security Advisory',
+    'CSAF Security Notice',
+  ].map((category) => ({
+    //    title: `Succeeds "6.1.26 Prohibited Document Category Name" (category "${category}")`,
+    valid: true,
     content: {
       ...minimalDoc,
       document: {
@@ -1395,7 +1422,7 @@ export default [
       ...minimalDoc,
       document: {
         ...minimalDoc.document,
-        category: 'vex',
+        category: 'csaf_vex',
       },
       product_tree: {
         full_product_names: [
@@ -1447,7 +1474,7 @@ export default [
       ...minimalDoc,
       document: {
         ...minimalDoc.document,
-        category: 'vex',
+        category: 'csaf_vex',
       },
       product_tree: {
         full_product_names: [
@@ -1499,7 +1526,7 @@ export default [
       ...minimalDoc,
       document: {
         ...minimalDoc.document,
-        category: 'vex',
+        category: 'csaf_vex',
       },
       product_tree: {
         full_product_names: [
@@ -1650,10 +1677,12 @@ export default [
           },
           ...(doc === minimalVexDoc
             ? {
-                id: {
-                  system_name: 'GitHub Issue',
-                  text: 'oasis-tcs/csaf#210',
-                },
+                ids: [
+                  {
+                    system_name: 'GitHub Issue',
+                    text: 'oasis-tcs/csaf#210',
+                  },
+                ],
               }
             : {}),
         },
@@ -1695,10 +1724,12 @@ export default [
               text: 'My note',
             },
           ],
-          id: {
-            system_name: 'GitHub Issue',
-            text: 'oasis-tcs/csaf#210',
-          },
+          ids: [
+            {
+              system_name: 'GitHub Issue',
+              text: 'oasis-tcs/csaf#210',
+            },
+          ],
         },
       ],
     },
@@ -1719,10 +1750,12 @@ export default [
               text: 'My note',
             },
           ],
-          id: {
-            system_name: 'GitHub Issue',
-            text: 'oasis-tcs/csaf#210',
-          },
+          ids: [
+            {
+              system_name: 'GitHub Issue',
+              text: 'oasis-tcs/csaf#210',
+            },
+          ],
           product_status: {
             first_fixed: ['CSAFPID-0001'],
             recommended: ['CSAFPID-0001'],

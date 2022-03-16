@@ -4,6 +4,6 @@ export default {
   ...minimalDoc,
   document: {
     ...minimalDoc.document,
-    category: 'generic_csaf',
+    category: 'csaf_base',
   },
 }

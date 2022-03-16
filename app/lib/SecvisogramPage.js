@@ -371,7 +371,7 @@ export default function downloadFile(
     element.href = dataURI
     element.click()
   } catch (/** @type {any} */ e) {
-    alert('An error occured while serializing the download:\n\n' + e.message)
+    alert('An error occurred while serializing the download:\n\n' + e.message)
   }
 }
 
@@ -385,7 +385,7 @@ function createFileName(doc, isValid, extension) {
   if (trackingId.trim().length === 0) {
     trackingId = 'csaf_2_0'
   } else {
-    trackingId = trackingId.replace(/([^a-z0-9+\-_]+)/gi, '_')
+    trackingId = trackingId.replace(/([^+\-a-z0-9]+)/gi, '_')
   }
   const fileName = `${trackingId}${isValid ? '' : '_invalid'}.${extension}`
   return fileName

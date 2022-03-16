@@ -6,7 +6,7 @@ export default function (doc) {
   const errors = []
   let isValid = true
 
-  const checkedDocumentCategories = new Set(['vex'])
+  const checkedDocumentCategories = new Set(['csaf_vex'])
 
   if (!checkedDocumentCategories.has(doc.document?.category))
     return { errors, isValid }
@@ -15,11 +15,11 @@ export default function (doc) {
   const vulnerabilities = doc.vulnerabilities
   if (Array.isArray(vulnerabilities)) {
     vulnerabilities.forEach((vulnerability, vulnerabilityIndex) => {
-      if (['id', 'cve'].every((p) => vulnerability[p] === undefined)) {
+      if (['ids', 'cve'].every((p) => vulnerability[p] === undefined)) {
         isValid = false
         errors.push({
           instancePath: `/vulnerabilities/${vulnerabilityIndex}`,
-          message: 'needs at least one the following attributes: `id`, `cve`',
+          message: 'needs at least one the following attributes: `ids`, `cve`',
         })
       }
     })

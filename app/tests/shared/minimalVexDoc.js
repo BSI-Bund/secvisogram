@@ -4,7 +4,7 @@ export default {
   ...minimalDoc,
   document: {
     ...minimalDoc.document,
-    category: 'vex',
+    category: 'csaf_vex',
   },
   product_tree: {
     full_product_names: [

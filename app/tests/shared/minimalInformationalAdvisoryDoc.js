@@ -4,7 +4,7 @@ export default {
   ...minimalDoc,
   document: {
     ...minimalDoc.document,
-    category: 'informational_advisory',
+    category: 'csaf_informational_advisory',
     notes: [
       {
         category: 'description',

@@ -65,11 +65,11 @@ export default React.memo(
               description="Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document."
               freeSolo={true}
               options={[
-                'generic_csaf',
-                'security_incident_response',
-                'informational_advisory',
-                'security_advisory',
-                'vex',
+                'csaf_base',
+                'csaf_security_incident_response',
+                'csaf_informational_advisory',
+                'csaf_security_advisory',
+                'csaf_vex',
               ]}
             />
             <EnumAttribute

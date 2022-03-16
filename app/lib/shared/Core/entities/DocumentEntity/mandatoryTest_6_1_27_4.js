@@ -6,7 +6,10 @@ export default function (doc) {
   const errors = []
   let isValid = true
 
-  const checkedDocumentCategories = new Set(['security_advisory', 'vex'])
+  const checkedDocumentCategories = new Set([
+    'csaf_security_advisory',
+    'csaf_vex',
+  ])
 
   if (!checkedDocumentCategories.has(doc.document?.category))
     return { errors, isValid }
