@@ -12,8 +12,8 @@ export default function (doc) {
   let isValid = true
 
   const checkedDocumentCategories = new Set([
-    'security_incident_response',
-    'informational_advisory',
+    'csaf_security_incident_response',
+    'csaf_informational_advisory',
   ])
 
   if (!checkedDocumentCategories.has(doc.document?.category))

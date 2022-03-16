@@ -1,4 +1,4 @@
-import minimalDoc from '../shared/minimalGenericCSAFDoc'
+import minimalDoc from '../shared/minimalCSAFBaseDoc'
 import minimalInformationalAdvisoryDoc from '../shared/minimalInformationalAdvisoryDoc'
 import minimalSecurityAdvisoryDoc from '../shared/minimalSecurityAdvisoryDoc'
 import minimalSecurityIncidentResponseDoc from '../shared/minimalSecurityIncidentResponseDoc'
@@ -1395,7 +1395,7 @@ export default [
       ...minimalDoc,
       document: {
         ...minimalDoc.document,
-        category: 'vex',
+        category: 'csaf_vex',
       },
       product_tree: {
         full_product_names: [
@@ -1447,7 +1447,7 @@ export default [
       ...minimalDoc,
       document: {
         ...minimalDoc.document,
-        category: 'vex',
+        category: 'csaf_vex',
       },
       product_tree: {
         full_product_names: [
@@ -1499,7 +1499,7 @@ export default [
       ...minimalDoc,
       document: {
         ...minimalDoc.document,
-        category: 'vex',
+        category: 'csaf_vex',
       },
       product_tree: {
         full_product_names: [

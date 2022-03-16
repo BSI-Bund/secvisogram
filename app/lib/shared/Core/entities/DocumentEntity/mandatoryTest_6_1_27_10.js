@@ -19,7 +19,7 @@ export default function (doc) {
 
   /** @type {unknown} */
   const vulnerabilities = doc.vulnerabilities
-  if (doc.document?.category !== 'vex' || !Array.isArray(vulnerabilities))
+  if (doc.document?.category !== 'csaf_vex' || !Array.isArray(vulnerabilities))
     return { errors, isValid }
 
   vulnerabilities.forEach(
