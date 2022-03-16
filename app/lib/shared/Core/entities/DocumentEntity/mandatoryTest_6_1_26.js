@@ -17,18 +17,30 @@ export default function mandatoryTest_6_1_26(doc) {
       'csaf_vex',
     ]
     const otherProfileValues = [
-      'security_incident_response',
-      'informational_advisory',
-      'security_advisory',
+      'securityincidentresponse',
+      'informationaladvisory',
+      'securityadvisory',
       'vex',
     ]
 
     // Skip test if profile is not "CSAF Base" but one of the other profiles or matches exactly "csaf_base"
     if (profileValues.includes(category)) return { errors, isValid }
 
+    // Fail on reserved prefix
+    if (category.toLowerCase().startsWith('csaf_')) {
+      isValid = false
+      errors.push({
+        instancePath: `/document/category`,
+        message: `reserved prefix used`,
+      })
+
+      return { errors, isValid }
+    }
+
+    // Fail on name similarity
     if (
       otherProfileValues.includes(
-        category.replace(/[_-\s]+/g, '_').toLowerCase()
+        category.replace(/[_-\s]+/g, '').toLowerCase()
       )
     ) {
       isValid = false

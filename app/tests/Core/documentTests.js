@@ -1324,6 +1324,7 @@ export default [
 
   // Fails "6.1.25 Multiple Use of Same Hash Algorithm"
   {
+    title: 'Fails 6.1.25 Multiple Use of Same Hash Algorithm',
     valid: false,
     content: {
       ...minimalDoc,
@@ -1367,18 +1368,44 @@ export default [
 
   // Fails "6.1.26 Prohibited Document Category Name"
   ...[
+    'Csaf_a',
     'Security_Incident_Response',
     'Informational Advisory',
     'security-incident-response',
     'Security      Advisory',
     'veX',
+    'V_ex',
+    'V___eX',
     'Informational - Advisory',
     'security-_ incident-response',
     'Security\tAdvisory',
     'Security\nAdvisory',
     'Security\rAdvisory',
   ].map((category) => ({
+    //    title: `Fails "6.1.26 Prohibited Document Category Name" (category "${category}")`,
     valid: false,
+    content: {
+      ...minimalDoc,
+      document: {
+        ...minimalDoc.document,
+        category,
+      },
+    },
+  })),
+
+  // Succeeds "6.1.26 Prohibited Document Category Name"
+  ...[
+    'CSAF Base',
+    'csaf_base',
+    //    'csaf_security_incident_response',
+    //    'csaf_informational_advisory',
+    //    'csaf_security_advisory',
+    //    'csaf_vex',
+    'Example Company Security Advisory',
+    'CSAF Security Notice',
+  ].map((category) => ({
+    //    title: `Succeeds "6.1.26 Prohibited Document Category Name" (category "${category}")`,
+    valid: true,
     content: {
       ...minimalDoc,
       document: {
