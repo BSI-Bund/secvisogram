@@ -31,6 +31,7 @@ export default React.memo(
           publisher: {
             category: '',
             name: '',
+            namespace: '',
           },
           title: '',
           tracking: {
