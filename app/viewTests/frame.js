@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import '../lib/shared/style.css'
-import suites from './shared/suites'
+import suites from './shared/suites.js'
 
 const el = document.createElement('div')
 document.body.appendChild(el)

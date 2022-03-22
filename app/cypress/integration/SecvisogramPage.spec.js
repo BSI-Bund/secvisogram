@@ -1,16 +1,18 @@
-import { expect } from 'chai'
-import CVSSVector from '../lib/SecvisogramPage/View/FormEditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSVector'
-import ViewReducer from '../lib/SecvisogramPage/View/Reducer'
+/// <reference types="cypress" />
 
-suite('SecvisogramPage', () => {
-  suite('View', () => {
-    suite('Reducer', () => {
+import { expect } from 'chai'
+import CVSSVector from '../../lib/SecvisogramPage/View/FormEditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSVector'
+import ViewReducer from '../../lib/SecvisogramPage/View/Reducer'
+
+describe('SecvisogramPage', () => {
+  describe('View', () => {
+    describe('Reducer', () => {
       const generatorEngineData = {
         name: 'Secvisogram',
         version: 'some-version',
       }
 
-      test('The document can be updated', () => {
+      it('The document can be updated', () => {
         let { state } = Fixture()
         const timestamp = new Date('2020-01-01')
 
@@ -27,7 +29,7 @@ suite('SecvisogramPage', () => {
         )
       })
 
-      test('The document can be reset', () => {
+      it('The document can be reset', () => {
         let { state } = Fixture()
         const doc = {}
 
@@ -39,7 +41,7 @@ suite('SecvisogramPage', () => {
         expect(state.formValues.doc).to.equal(doc)
       })
 
-      test('The document can be updated using a data-path', () => {
+      it('The document can be updated using a data-path', () => {
         let { state } = Fixture()
         state.formValues.doc = { foobar: {} }
         const timestamp = new Date('2020-01-01')
@@ -64,7 +66,7 @@ suite('SecvisogramPage', () => {
         ).to.equal(generatorEngineData.version)
       })
 
-      test('The form can be reset', () => {
+      it('The form can be reset', () => {
         let { state } = Fixture()
         const values =
           /** @type {ReturnType<typeof ViewReducer>['formValues']} */ ({
@@ -90,8 +92,8 @@ suite('SecvisogramPage', () => {
       }
     })
 
-    suite('CVSSMetrics', () => {
-      test('3.1 metrics can be calculated', () => {
+    describe('CVSSMetrics', () => {
+      it('3.1 metrics can be calculated', () => {
         const vector = new CVSSVector({
           version: '3.1',
           attackVector: 'NETWORK',
@@ -117,7 +119,7 @@ suite('SecvisogramPage', () => {
         expect(data.baseSeverity).to.equal('HIGH')
       })
 
-      test('3.0 metrics can be calculated', () => {
+      it('3.0 metrics can be calculated', () => {
         const vector = new CVSSVector({
           version: '3.0',
           attackVector: 'NETWORK',
@@ -143,7 +145,7 @@ suite('SecvisogramPage', () => {
         expect(data.baseSeverity).to.equal('HIGH')
       })
 
-      test('Metrics can be updated from a 3.1 vector-string', () => {
+      it('Metrics can be updated from a 3.1 vector-string', () => {
         const vector = new CVSSVector({
           availabilityImpact: 'NONE',
         }).updateFromVectorString(
@@ -163,7 +165,7 @@ suite('SecvisogramPage', () => {
         })
       })
 
-      test('Metrics can be updated from a 3.0 vector-string', () => {
+      it('Metrics can be updated from a 3.0 vector-string', () => {
         const vector = new CVSSVector({
           availabilityImpact: 'NONE',
         }).updateFromVectorString(
@@ -183,7 +185,7 @@ suite('SecvisogramPage', () => {
         })
       })
 
-      test('Updating from an invalid vector-string clears all fields', () => {
+      it('Updating from an invalid vector-string clears all fields', () => {
         const vector = new CVSSVector({
           availabilityImpact: 'NONE',
           attackVector: '',
@@ -210,7 +212,7 @@ suite('SecvisogramPage', () => {
         expect(vector.data).to.not.contain({ exploitCodeMaturity: '' })
       })
 
-      test('CVSS3.0 metrics can be calculated', () => {
+      it('CVSS3.0 metrics can be calculated', () => {
         const vector = new CVSSVector({
           version: '3.0',
           attackVector: 'NETWORK',
@@ -237,7 +239,7 @@ suite('SecvisogramPage', () => {
         expect(data.version).to.equal('3.0')
       })
 
-      test('A 3.0 valid vector-string can be upgraded', () => {
+      it('A 3.0 valid vector-string can be upgraded', () => {
         const vector = new CVSSVector({
           vectorString: 'CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N',
         }).updateFromVectorString(
@@ -252,13 +254,13 @@ suite('SecvisogramPage', () => {
         expect(upgradedVector.data.version).to.equal('3.1')
       })
 
-      test('An invalid vector-string can not be upgraded', () => {
+      it('An invalid vector-string can not be upgraded', () => {
         const vector = new CVSSVector({})
 
         expect(vector.canBeUpgraded).to.be.false
       })
 
-      test('A 3.1 valid vector-string can not be upgraded', () => {
+      it('A 3.1 valid vector-string can not be upgraded', () => {
         const vector = new CVSSVector({})
           .updateFromVectorString(
             'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N'

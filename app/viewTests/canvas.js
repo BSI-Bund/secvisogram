@@ -1,5 +1,5 @@
 import { render } from 'react-dom'
-import suites from './shared/suites'
+import suites from './shared/suites.js'
 
 const viewTests = suites
 

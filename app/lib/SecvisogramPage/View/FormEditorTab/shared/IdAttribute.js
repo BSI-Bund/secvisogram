@@ -7,9 +7,9 @@ import {
 } from '@reach/combobox'
 import { matchSorter } from 'match-sorter'
 import React from 'react'
-import useDebounce from '../../shared/useDebounce'
-import Attribute from './shared/Attribute'
-import Delete from './shared/Delete'
+import useDebounce from '../../shared/useDebounce.js'
+import Attribute from './shared/Attribute.js'
+import Delete from './shared/Delete.js'
 
 /**
  * @param {string} term

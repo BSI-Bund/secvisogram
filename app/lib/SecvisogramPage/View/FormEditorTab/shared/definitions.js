@@ -3,12 +3,12 @@
  * json-schema.
  */
 
-export { default as Acknowledgments } from './definitions/Acknowledgments'
-export { default as Branches } from './definitions/Branches'
-export { default as FullProductName } from './definitions/FullProductName'
-export { default as Lang } from './definitions/Lang'
-export { default as Notes } from './definitions/Notes'
-export { default as ProductGroups } from './definitions/ProductGroups'
-export { default as Products } from './definitions/Products'
-export { default as References } from './definitions/References'
-export { default as Version } from './definitions/Version'
+export { default as Acknowledgments } from './definitions/Acknowledgments.js'
+export { default as Branches } from './definitions/Branches.js'
+export { default as FullProductName } from './definitions/FullProductName.js'
+export { default as Lang } from './definitions/Lang.js'
+export { default as Notes } from './definitions/Notes.js'
+export { default as ProductGroups } from './definitions/ProductGroups.js'
+export { default as Products } from './definitions/Products.js'
+export { default as References } from './definitions/References.js'
+export { default as Version } from './definitions/Version.js'

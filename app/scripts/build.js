@@ -1,4 +1,4 @@
-const { spawn } = require('child_process')
+import { spawn } from 'child_process'
 
 spawn('webpack --mode production', {
   env: {

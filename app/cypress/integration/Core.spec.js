@@ -1,16 +1,18 @@
+/// <reference types="cypress" />
+
 import Ajv from 'ajv'
 import { expect } from 'chai'
-import createCore from '../lib/shared/Core'
-import { DocumentEntity } from '../lib/shared/Core/entities'
-import fixture from './Core/coreFixture'
-import documentTests from './Core/documentTests'
+import createCore from '../../lib/shared/Core'
+import { DocumentEntity } from '../../lib/shared/Core/entities'
+import fixture from '../fixtures/coreFixture'
+import documentTests from '../fixtures/documentTests'
 
-suite('Core', () => {
+describe('Core', () => {
   const core = createCore()
 
-  suite('documentTests', () => {
+  describe('documentTests', () => {
     documentTests.forEach((documentTest, i) => {
-      test(documentTest.title ?? `Test #${i + 1}`, async () => {
+      it(documentTest.title ?? `Test #${i + 1}`, async () => {
         const result = await core.document.validate({
           document: documentTest.content,
           strict: false,
@@ -31,8 +33,8 @@ suite('Core', () => {
     })
   })
 
-  suite('DocumentService', () => {
-    test('The document can be validated against the JSON-schema', async () => {
+  describe('DocumentService', () => {
+    it('The document can be validated against the JSON-schema', async () => {
       for (const document of fixture.documents) {
         const result = await core.document.validate({
           document: document.content,
@@ -47,7 +49,7 @@ suite('Core', () => {
       }
     })
 
-    test('The document can be minified using the CSAF-strip algorithm', async () => {
+    it('The document can be minified using the CSAF-strip algorithm', async () => {
       for (const document of fixture.documents) {
         if (document.strippedVersion === undefined) continue
         const result = await core.document.strip({
@@ -59,8 +61,8 @@ suite('Core', () => {
     })
   })
 
-  suite('DocumentEntity', () => {
-    test('When stripping a json document properties with errors are removed', () => {
+  describe('DocumentEntity', () => {
+    it('When stripping a json document properties with errors are removed', () => {
       const schemaValidator = new Ajv({ allErrors: true }).compile({
         type: 'object',
         properties: { title: { type: 'string' } },
@@ -76,7 +78,7 @@ suite('Core', () => {
       ])
     })
 
-    test('When stripping a json document empty properties are removed', () => {
+    it('When stripping a json document empty properties are removed', () => {
       const schemaValidator = new Ajv({ allErrors: true }).compile({
         type: 'object',
         properties: { title: { type: 'string' } },

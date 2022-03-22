@@ -1,7 +1,9 @@
-import { expect } from 'chai'
-import bcpLanguageTagChecker from '../lib/shared/bcpLanguageTagChecker'
+/// <reference types="cypress" />
 
-suite('bcpLanguageTagChecker', function () {
+import { expect } from 'chai'
+import bcpLanguageTagChecker from '../../lib/shared/bcpLanguageTagChecker.js'
+
+describe('bcpLanguageTagChecker', function () {
   const correctLanguageTags = [
     'aa-DE',
     'sjo-Sora-AN',
@@ -27,7 +29,7 @@ suite('bcpLanguageTagChecker', function () {
   ]
 
   correctLanguageTags.forEach((correctLanguageTag) => {
-    test(`"${correctLanguageTag}" is a valid language tag`, function () {
+    it(`"${correctLanguageTag}" is a valid language tag`, function () {
       expect(bcpLanguageTagChecker(correctLanguageTag)).to.be.true
     })
   })
@@ -44,7 +46,7 @@ suite('bcpLanguageTagChecker', function () {
   ]
 
   incorrectLanguageTags.forEach((incorrectLanguageTag) => {
-    test(`"${incorrectLanguageTag}" is not a valid language tag`, function () {
+    it(`"${incorrectLanguageTag}" is not a valid language tag`, function () {
       expect(bcpLanguageTagChecker(incorrectLanguageTag)).to.be.false
     })
   })

@@ -1,15 +1,15 @@
-import minimalDoc from '../shared/minimalCSAFBaseDoc'
-import minimalInformationalAdvisoryDoc from '../shared/minimalInformationalAdvisoryDoc'
-import minimalSecurityAdvisoryDoc from '../shared/minimalSecurityAdvisoryDoc'
-import minimalSecurityIncidentResponseDoc from '../shared/minimalSecurityIncidentResponseDoc'
-import minimalVexDoc from '../shared/minimalVexDoc'
+import minimalCSAFBaseDoc from './documentTests/minimalCSAFBaseDoc.js'
+import minimalInformationalAdvisoryDoc from './documentTests/minimalInformationalAdvisoryDoc.js'
+import minimalSecurityAdvisoryDoc from './documentTests/minimalSecurityAdvisoryDoc.js'
+import minimalSecurityIncidentResponseDoc from './documentTests/minimalSecurityIncidentResponseDoc.js'
+import minimalVexDoc from './documentTests/minimalVexDoc.js'
 
 export default [
   // Fails "6.1.3 Circular Definition of Product ID"
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -36,7 +36,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -72,7 +72,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -96,7 +96,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -127,7 +127,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -158,7 +158,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -191,7 +191,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -224,7 +224,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -259,7 +259,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -294,7 +294,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -329,7 +329,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -359,7 +359,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -390,7 +390,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -422,7 +422,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -454,7 +454,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -493,7 +493,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -524,9 +524,9 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         lang: 'EZ',
       },
     },
@@ -536,9 +536,9 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         source_lang: 'EZ',
       },
     },
@@ -548,7 +548,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -567,7 +567,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         relationships: [
           {
@@ -591,7 +591,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         branches: [
           {
@@ -614,7 +614,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         branches: [
           {
@@ -643,11 +643,11 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               date: '2021-07-22T10:00:00.000Z',
@@ -670,11 +670,11 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               number: '2',
@@ -692,11 +692,11 @@ export default [
   {
     valid: true,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               number: '2.0.0+123',
@@ -713,11 +713,11 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               number: '0.1.0',
@@ -735,11 +735,11 @@ export default [
   {
     valid: true,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               number: '1.0.0',
@@ -758,7 +758,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -798,7 +798,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -836,7 +836,7 @@ export default [
   {
     valid: true,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -878,7 +878,7 @@ export default [
   {
     valid: true,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -918,9 +918,9 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         publisher: {
           category: 'translator',
           name: 'CSAF TC Translator',
@@ -934,11 +934,11 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               date: '2021-05-17T10:00:00.000Z',
@@ -962,11 +962,11 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               date: '2021-05-17T10:00:00.000Z',
@@ -990,11 +990,11 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               date: '2021-05-17T10:00:00.000Z',
@@ -1018,11 +1018,11 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               date: '2021-04-23T10:00:00.000Z',
@@ -1046,11 +1046,11 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               date: '2021-04-23T10:00:00.000Z',
@@ -1069,11 +1069,11 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               date: '2021-04-23T10:00:00.000Z',
@@ -1092,11 +1092,11 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               date: '2021-04-22T10:00:00.000Z',
@@ -1120,11 +1120,11 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               date: '2021-07-20T10:00:00.000Z',
@@ -1147,11 +1147,11 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         tracking: {
-          ...minimalDoc.document.tracking,
+          ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
               date: '2021-07-20T10:00:00.000Z',
@@ -1174,7 +1174,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       vulnerabilities: [
         {
           cve: 'CVE-2017-0145',
@@ -1190,7 +1190,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       vulnerabilities: [
         {
           involvements: [
@@ -1216,7 +1216,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         full_product_names: [
           {
@@ -1251,7 +1251,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         relationships: [
           {
@@ -1289,7 +1289,7 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         branches: [
           {
@@ -1327,7 +1327,7 @@ export default [
     title: 'Fails 6.1.25 Multiple Use of Same Hash Algorithm',
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       product_tree: {
         branches: [
           {
@@ -1385,9 +1385,9 @@ export default [
     //    title: `Fails "6.1.26 Prohibited Document Category Name" (category "${category}")`,
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         category,
       },
     },
@@ -1407,9 +1407,9 @@ export default [
     //    title: `Succeeds "6.1.26 Prohibited Document Category Name" (category "${category}")`,
     valid: true,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         category,
       },
     },
@@ -1419,9 +1419,9 @@ export default [
   {
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         category: 'csaf_vex',
       },
       product_tree: {
@@ -1471,9 +1471,9 @@ export default [
     title: 'Fails "6.1.27.9 Impact Statement"',
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         category: 'csaf_vex',
       },
       product_tree: {
@@ -1523,9 +1523,9 @@ export default [
     title: 'Fails "6.1.27.10 Action Statement"',
     valid: false,
     content: {
-      ...minimalDoc,
+      ...minimalCSAFBaseDoc,
       document: {
-        ...minimalDoc.document,
+        ...minimalCSAFBaseDoc.document,
         category: 'csaf_vex',
       },
       product_tree: {

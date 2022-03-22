@@ -1,10 +1,10 @@
 import React from 'react'
-import ArrayContainer from '../ArrayContainer'
-import EnumAttribute from '../EnumAttribute'
-import ObjectContainer from '../ObjectContainer'
-import TextAttribute from '../TextAttribute'
-import validationErrorShallowEqual from '../validationErrorShallowEqual'
-import FullProductName from './FullProductName'
+import ArrayContainer from '../ArrayContainer.js'
+import EnumAttribute from '../EnumAttribute.js'
+import ObjectContainer from '../ObjectContainer.js'
+import TextAttribute from '../TextAttribute.js'
+import validationErrorShallowEqual from '../validationErrorShallowEqual.js'
+import FullProductName from './FullProductName.js'
 
 export default React.memo(
   /**

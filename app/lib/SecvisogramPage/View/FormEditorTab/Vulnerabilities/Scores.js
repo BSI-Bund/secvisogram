@@ -1,9 +1,9 @@
 import React from 'react'
-import ArrayContainer from '../shared/ArrayContainer'
-import { Products } from '../shared/definitions'
-import ObjectContainer from '../shared/ObjectContainer'
-import TextAttribute from '../shared/TextAttribute'
-import CVSSV3Editor from './Scores/CVSS3Editor'
+import ArrayContainer from '../shared/ArrayContainer.js'
+import { Products } from '../shared/definitions.js'
+import ObjectContainer from '../shared/ObjectContainer.js'
+import TextAttribute from '../shared/TextAttribute.js'
+import CVSSV3Editor from './Scores/CVSS3Editor.js'
 
 /**
  * @param {{

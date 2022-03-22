@@ -1,4 +1,4 @@
-import minimalDoc from './shared/minimalDoc'
+import minimalDoc from './shared/minimalDoc.js'
 
 export default {
   ...minimalDoc,

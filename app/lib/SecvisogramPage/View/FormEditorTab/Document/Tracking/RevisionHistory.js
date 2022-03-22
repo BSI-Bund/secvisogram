@@ -1,9 +1,9 @@
 import React from 'react'
-import ArrayContainer from '../../shared/ArrayContainer'
-import DateAttribute from '../../shared/DateAttribute'
-import { Version } from '../../shared/definitions'
-import ObjectContainer from '../../shared/ObjectContainer'
-import TextAreaAttribute from '../../shared/TextAreaAttribute'
+import ArrayContainer from '../../shared/ArrayContainer.js'
+import DateAttribute from '../../shared/DateAttribute.js'
+import { Version } from '../../shared/definitions.js'
+import ObjectContainer from '../../shared/ObjectContainer.js'
+import TextAreaAttribute from '../../shared/TextAreaAttribute.js'
 
 /**
  * @param {{

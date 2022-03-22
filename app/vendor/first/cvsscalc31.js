@@ -751,3 +751,5 @@ CVSS31.generateXMLFromVector = function ( vectorString ) {
     metricValues.MAV, metricValues.MAC, metricValues.MPR, metricValues.MUI, metricValues.MS,
     metricValues.MC,  metricValues.MI,  metricValues.MA);
 };
+
+window.CVSS31 = CVSS31;

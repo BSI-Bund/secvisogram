@@ -2,8 +2,8 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { parse } from 'json-pointer'
 import React from 'react'
-import DefaultButton from '../../shared/DefaultButton'
-import Container from './shared/Container'
+import DefaultButton from '../../shared/DefaultButton.js'
+import Container from './shared/Container.js'
 
 /** @type {import('../../../../SecvisogramPage').ValidationError[]} */
 const EMPTY_ARRAY = []

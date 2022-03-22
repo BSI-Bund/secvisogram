@@ -1,6 +1,6 @@
 import { parse } from 'json-pointer'
 import React from 'react'
-import Container from './shared/Container'
+import Container from './shared/Container.js'
 
 /** @type {import('../../../../SecvisogramPage').ValidationError[]} */
 const EMPTY_ARRAY = []

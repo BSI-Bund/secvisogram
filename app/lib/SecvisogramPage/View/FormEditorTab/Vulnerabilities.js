@@ -1,21 +1,21 @@
 import '@reach/combobox/styles.css'
 import React from 'react'
-import ArrayContainer from './shared/ArrayContainer'
-import CweAttribute from './shared/CweAttribute'
-import DateAttribute from './shared/DateAttribute'
+import ArrayContainer from './shared/ArrayContainer.js'
+import CweAttribute from './shared/CweAttribute.js'
+import DateAttribute from './shared/DateAttribute.js'
 import {
   Acknowledgments,
   Notes,
   ProductGroups,
   Products,
   References,
-} from './shared/definitions'
-import EnumAttribute from './shared/EnumAttribute'
-import ObjectContainer from './shared/ObjectContainer'
-import TextAreaAttribute from './shared/TextAreaAttribute'
-import TextAttribute from './shared/TextAttribute'
-import validationErrorShallowEqual from './shared/validationErrorShallowEqual'
-import Scores from './Vulnerabilities/Scores'
+} from './shared/definitions.js'
+import EnumAttribute from './shared/EnumAttribute.js'
+import ObjectContainer from './shared/ObjectContainer.js'
+import TextAreaAttribute from './shared/TextAreaAttribute.js'
+import TextAttribute from './shared/TextAttribute.js'
+import validationErrorShallowEqual from './shared/validationErrorShallowEqual.js'
+import Scores from './Vulnerabilities/Scores.js'
 
 export default React.memo(
   /**

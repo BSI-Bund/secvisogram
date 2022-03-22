@@ -1,8 +1,8 @@
 import '@reach/combobox/styles.css'
 import React from 'react'
-import ObjectContainer from '../shared/ObjectContainer'
-import TextAreaAttribute from '../shared/TextAreaAttribute'
-import Tlp from './Distribution/Tlp'
+import ObjectContainer from '../shared/ObjectContainer.js'
+import TextAreaAttribute from '../shared/TextAreaAttribute.js'
+import Tlp from './Distribution/Tlp.js'
 
 /**
  * @param {{

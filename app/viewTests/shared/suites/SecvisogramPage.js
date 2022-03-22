@@ -1,5 +1,5 @@
 import React from 'react'
-import View from '../../../lib/SecvisogramPage/View'
+import View from '../../../lib/SecvisogramPage/View.js'
 import seed1 from '../../../seeds/documents/valid-1.json'
 import seed2 from '../../../seeds/documents/valid-2.json'
 

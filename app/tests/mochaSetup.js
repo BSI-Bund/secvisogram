@@ -1,3 +1,0 @@
-mocha.setup({
-  ui: 'tdd',
-})

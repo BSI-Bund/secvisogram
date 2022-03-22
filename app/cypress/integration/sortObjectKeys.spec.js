@@ -1,7 +1,9 @@
-import { expect } from 'chai'
-import sortObjectKeys from '../lib/shared/sortObjectKeys'
+/// <reference types="cypress" />
 
-suite('sortObjectKeys', function () {
+import { expect } from 'chai'
+import sortObjectKeys from '../../lib/shared/sortObjectKeys'
+
+describe('sortObjectKeys', function () {
   const examples = [
     {
       json: {
@@ -45,7 +47,7 @@ suite('sortObjectKeys', function () {
   ]
 
   examples.forEach((example, i) => {
-    test(`Example #${i + 1} is correctly sorted`, function () {
+    it(`Example #${i + 1} is correctly sorted`, function () {
       expect(
         JSON.stringify(
           sortObjectKeys(new Intl.Collator(), example.json),
