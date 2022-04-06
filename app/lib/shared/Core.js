@@ -1,11 +1,8 @@
-import addFormats from 'ajv-formats'
-import Ajv2020 from 'ajv/dist/2020.js'
 import { compose, set } from 'lodash/fp.js'
-import csaf_2_0 from './Core/csaf_2.0.json'
-import csaf_2_0_strict from './Core/csaf_2.0_strict.json'
-import cvss_v2_0 from './Core/cvss-v2.0.json'
-import cvss_v3_0 from './Core/cvss-v3.0.json'
-import cvss_v3_1 from './Core/cvss-v3.1.json'
+import * as mandatoryTests from '../../../csaf-validator-lib/mandatoryTests.js'
+import * as schemaTests from '../../../csaf-validator-lib/schemaTests.js'
+import strip from '../../../csaf-validator-lib/strip.js'
+import validate from '../../../csaf-validator-lib/validate.js'
 import doc_max from './Core/doc-max.json'
 import doc_min from './Core/doc-min.json'
 import { DocumentEntity } from './Core/entities.js'
@@ -34,14 +31,6 @@ const setGeneratorFields = (/** @type {Date} */ date) =>
  * to be tested independently.
  */
 export default function createCore() {
-  const ajv = new Ajv2020({ strict: false, allErrors: true })
-  addFormats(ajv)
-  ajv.addSchema(cvss_v2_0, 'https://www.first.org/cvss/cvss-v2.0.json')
-  ajv.addSchema(cvss_v3_0, 'https://www.first.org/cvss/cvss-v3.0.json')
-  ajv.addSchema(cvss_v3_1, 'https://www.first.org/cvss/cvss-v3.1.json')
-  const schemaValidatorLenient = ajv.compile(csaf_2_0)
-  const schemaValidatorStrict = ajv.compile(csaf_2_0_strict)
-
   return {
     document: {
       /**
@@ -60,11 +49,19 @@ export default function createCore() {
        * }>}
        */
       async validate({ document, strict = true }) {
-        const schemaValidator = strict
-          ? schemaValidatorStrict
-          : schemaValidatorLenient
-        const documentEntity = new DocumentEntity({ schemaValidator })
-        return documentEntity.validate({ document })
+        const res = await validate(
+          [
+            ...(strict
+              ? [schemaTests.csaf_2_0_strict]
+              : [schemaTests.csaf_2_0]),
+            ...Object.values(mandatoryTests),
+          ],
+          document
+        )
+        return {
+          isValid: res.isValid,
+          errors: res.tests.flatMap((t) => t.errors),
+        }
       },
 
       /**
@@ -88,11 +85,8 @@ export default function createCore() {
        * }} params
        * @returns {Promise<{id: string, name: string}[]>}
        */
-      async collectProductIds({ document, strict = true }) {
-        const schemaValidator = strict
-          ? schemaValidatorStrict
-          : schemaValidatorLenient
-        const documentEntity = new DocumentEntity({ schemaValidator })
+      async collectProductIds({ document }) {
+        const documentEntity = new DocumentEntity()
         return documentEntity.collectProductIds({ document })
       },
 
@@ -105,11 +99,8 @@ export default function createCore() {
        * }} params
        * @returns {Promise<{id: string, name: string}[]>}
        */
-      async collectGroupIds({ document, strict = true }) {
-        const schemaValidator = strict
-          ? schemaValidatorStrict
-          : schemaValidatorLenient
-        const documentEntity = new DocumentEntity({ schemaValidator })
+      async collectGroupIds({ document }) {
+        const documentEntity = new DocumentEntity()
         return documentEntity.collectGroupIds({ document })
       },
 
@@ -141,11 +132,17 @@ export default function createCore() {
        * }} params
        */
       async strip({ document, strict = true }) {
-        const schemaValidator = strict
-          ? schemaValidatorStrict
-          : schemaValidatorLenient
-        const documentEntity = new DocumentEntity({ schemaValidator })
-        return documentEntity.strip({ document })
+        const res = await strip(
+          [
+            ...(strict
+              ? [schemaTests.csaf_2_0_strict]
+              : [schemaTests.csaf_2_0]),
+            ...Object.values(mandatoryTests),
+          ],
+          document
+        )
+
+        return res
       },
 
       /**
@@ -156,11 +153,8 @@ export default function createCore() {
        *  strict?: boolean
        * }} params
        */
-      async preview({ document, strict = true }) {
-        const schemaValidator = strict
-          ? schemaValidatorStrict
-          : schemaValidatorLenient
-        const documentEntity = new DocumentEntity({ schemaValidator })
+      async preview({ document }) {
+        const documentEntity = new DocumentEntity()
         return documentEntity.preview({ document })
       },
 

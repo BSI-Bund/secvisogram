@@ -1,9 +1,7 @@
 /// <reference types="cypress" />
 
-import Ajv from 'ajv'
 import { expect } from 'chai'
 import createCore from '../../lib/shared/Core'
-import { DocumentEntity } from '../../lib/shared/Core/entities'
 import fixture from '../fixtures/coreFixture'
 import documentTests from '../fixtures/documentTests'
 
@@ -58,39 +56,6 @@ describe('Core', () => {
 
         expect(result.document).to.deep.equal(document.strippedVersion)
       }
-    })
-  })
-
-  describe('DocumentEntity', () => {
-    it('When stripping a json document properties with errors are removed', () => {
-      const schemaValidator = new Ajv({ allErrors: true }).compile({
-        type: 'object',
-        properties: { title: { type: 'string' } },
-        required: ['title'],
-      })
-      const documentEntity = new DocumentEntity({ schemaValidator })
-
-      const result = documentEntity.strip({ document: { title: 4 } })
-
-      expect(result.document).to.deep.equal({})
-      expect(result.strippedPaths).to.deep.equal([
-        { instancePath: '/title', error: true, message: 'must be string' },
-      ])
-    })
-
-    it('When stripping a json document empty properties are removed', () => {
-      const schemaValidator = new Ajv({ allErrors: true }).compile({
-        type: 'object',
-        properties: { title: { type: 'string' } },
-      })
-      const documentEntity = new DocumentEntity({ schemaValidator })
-
-      const result = documentEntity.strip({ document: { title: '' } })
-
-      expect(result.document).to.deep.equal({})
-      expect(result.strippedPaths).to.deep.equal([
-        { instancePath: '/title', error: false, message: 'value was empty' },
-      ])
     })
   })
 })

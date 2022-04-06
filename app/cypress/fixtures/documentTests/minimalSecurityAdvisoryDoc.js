@@ -14,4 +14,17 @@ export default {
       },
     ],
   },
+  vulnerabilities: [
+    {
+      notes: [
+        {
+          category: 'description',
+          text: 'This is a sample note',
+        },
+      ],
+      product_status: {
+        fixed: ['CSAFPID-0001'],
+      },
+    },
+  ],
 }

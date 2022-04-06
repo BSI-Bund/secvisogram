@@ -9106,7 +9106,8 @@
         {
           "details": "Before applying this update, ensure all previously released errata relevant to your system have been applied.\n\nFor instructions on new installations, see the following documentation:\n\nhttps://docs.openshift.com/container-platform/3.9/install_config/install/planning.html\n\nFor instructions on how to properly upgrade existing clusters to OpenShift\nContainer Platform 3.9, see the following documentation:\n\nhttps://docs.openshift.com/container-platform/3.9/upgrading/index.html",
           "category": "vendor_fix",
-          "url": "https://access.redhat.com/errata/RHBA-2018:0489"
+          "url": "https://access.redhat.com/errata/RHBA-2018:0489",
+          "product_ids": ["7Server-RH7-RHOSE-3.9"]
         }
       ],
       "acknowledgments": [
@@ -9578,7 +9579,8 @@
         {
           "details": "Before applying this update, ensure all previously released errata relevant to your system have been applied.\n\nFor instructions on new installations, see the following documentation:\n\nhttps://docs.openshift.com/container-platform/3.9/install_config/install/planning.html\n\nFor instructions on how to properly upgrade existing clusters to OpenShift\nContainer Platform 3.9, see the following documentation:\n\nhttps://docs.openshift.com/container-platform/3.9/upgrading/index.html",
           "category": "vendor_fix",
-          "url": "https://access.redhat.com/errata/RHBA-2018:0489"
+          "url": "https://access.redhat.com/errata/RHBA-2018:0489",
+          "product_ids": ["7Server-RH7-RHOSE-3.9:v8-1:3.14.5.10-25.el7"]
         }
       ],
       "acknowledgments": [
