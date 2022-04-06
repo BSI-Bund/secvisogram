@@ -688,8 +688,8 @@ export default [
     },
   },
 
-  // Passes "6.1.16 Released Revision History"
   {
+    title: 'Passes "6.1.16 Released Revision History"',
     valid: true,
     content: {
       ...minimalCSAFBaseDoc,
@@ -699,12 +699,12 @@ export default [
           ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
-              number: '2.0.0+123',
+              number: '1.0.0+123',
               date: '2021-01-14T00:00:00.000Z',
               summary: 'Summary',
             },
           ],
-          version: '2.0.0+234',
+          version: '1.0.0+234',
         },
       },
     },
@@ -1656,7 +1656,7 @@ export default [
   ...[minimalSecurityAdvisoryDoc, minimalVexDoc].map((doc) => ({
     title: `Fails "6.1.27.4 Product Tree" (category "${doc.document.category}")`,
     valid: false,
-    expectedNumberOfErrors: 1,
+    expectedNumberOfErrors: 2,
     content: {
       ...doc,
       product_tree: undefined,
