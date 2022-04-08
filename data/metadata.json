@@ -9,7 +9,13 @@
       "label": "DocumentLabel",
       "description": "DocumentDescription",
       "type": "OBJECT",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.acknowledgments",
@@ -19,7 +25,14 @@
       },
       "label": "DocumentAcknowledgmentsLabel",
       "description": "DocumentAcknowledgmentsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "optional",
+        "csaf_informational_advisory": "optional",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.document.acknowledgments[]",
@@ -29,7 +42,14 @@
       },
       "label": "AcknowledgmentsItemsLabel",
       "description": "AcknowledgmentsItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.document.acknowledgments[].names",
@@ -39,7 +59,14 @@
       },
       "label": "AcknowledgmentsItemsNamesLabel",
       "description": "AcknowledgmentsItemsNamesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "want_to_have",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.document.acknowledgments[].names[]",
@@ -55,7 +82,14 @@
       "examples": [
         "Albert Einstein",
         "Johann Sebastian Bach"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.document.acknowledgments[].organization",
@@ -72,7 +106,14 @@
         "CISA",
         "Google Project Zero",
         "Talos"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.document.acknowledgments[].summary",
@@ -87,7 +128,14 @@
       "string_min_length": 1,
       "examples": [
         "First analysis of Coordinated Multi-Stream Attack (CMSA)"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.document.acknowledgments[].urls",
@@ -97,7 +145,14 @@
       },
       "label": "AcknowledgmentsItemsUrlsLabel",
       "description": "AcknowledgmentsItemsUrlsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.document.acknowledgments[].urls[]",
@@ -107,7 +162,14 @@
       },
       "label": "AcknowledgmentsItemsUrlsItemsLabel",
       "description": "AcknowledgmentsItemsUrlsItemsDescription",
-      "type": "URI"
+      "type": "URI",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.document.aggregate_severity",
@@ -121,6 +183,13 @@
       "mandatory_level": {
         "csaf_base": "nice_to_know",
         "security_advisory": "required"
+      },
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "want_to_have",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "want_to_have"
       }
     },
     {
@@ -131,7 +200,14 @@
       },
       "label": "DocumentAggregateSeverityNamespaceLabel",
       "description": "DocumentAggregateSeverityNamespaceDescription",
-      "type": "URI"
+      "type": "URI",
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "want_to_have",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.document.aggregate_severity.text",
@@ -149,7 +225,14 @@
         "Important",
         "Moderate"
       ],
-      "mandatory_element": true
+      "mandatory_element": true,
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "want_to_have",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.document.category",
@@ -169,7 +252,13 @@
         "csaf_vex",
         "Example Company Security Notice"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.csaf_version",
@@ -183,7 +272,13 @@
       "enum_values": {
         "2.0": "CSAF version 2"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.distribution",
@@ -193,7 +288,14 @@
       },
       "label": "DocumentDistributionLabel",
       "description": "DocumentDistributionDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "best_practice",
+        "csaf_informational_advisory": "best_practice",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.document.distribution.text",
@@ -210,7 +312,14 @@
         "Copyright 2021, Example Company, All Rights Reserved.",
         "Distribute freely.",
         "Share only on a need-to-know-basis only."
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.document.distribution.tlp",
@@ -220,7 +329,14 @@
       },
       "label": "DocumentDistributionTlpLabel",
       "description": "DocumentDistributionTlpDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "want_to_have",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.document.distribution.tlp.label",
@@ -237,7 +353,13 @@
         "RED": "community wide",
         "WHITE": "unlimited"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.distribution.tlp.url",
@@ -252,7 +374,14 @@
         "https://www.us-cert.gov/tlp",
         "https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Kritis/Merkblatt_TLP.pdf"
       ],
-      "default": "https://www.first.org/tlp/"
+      "default": "https://www.first.org/tlp/",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "want_to_have",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.document.lang",
@@ -271,7 +400,14 @@
         "fr",
         "frc",
         "jp"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "want_to_have",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.document.notes",
@@ -281,7 +417,14 @@
       },
       "label": "DocumentNotesLabel",
       "description": "DocumentNotesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.document.notes[]",
@@ -291,7 +434,14 @@
       },
       "label": "NotesItemsLabel",
       "description": "NotesItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.document.notes[].audience",
@@ -309,7 +459,14 @@
         "executives",
         "operational management and system administrators",
         "safety engineers"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.document.notes[].category",
@@ -329,7 +486,13 @@
         "other": "indicates the note is something that doesn\u2019t fit the other categories",
         "summary": "indicates the note is a summary of something"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.notes[].text",
@@ -342,7 +505,13 @@
       "type": "STRING",
       "string_is_multiline": true,
       "string_min_length": 1,
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.notes[].title",
@@ -360,7 +529,14 @@
         "Executive summary",
         "Technical summary",
         "Impact on safety systems"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "best_practice",
+        "csaf_security_incident_response": "best_practice",
+        "csaf_informational_advisory": "best_practice",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "best_practice"
+      }
     },
     {
       "path": "$.document.publisher",
@@ -371,7 +547,13 @@
       "label": "DocumentPublisherLabel",
       "description": "DocumentPublisherDescription",
       "type": "OBJECT",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.publisher.category",
@@ -390,7 +572,13 @@
         "user": "indicates anyone using a vendor\u2019s product",
         "vendor": "indicates developers or maintainers of information system products or services"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.publisher.contact_details",
@@ -405,7 +593,14 @@
       "string_min_length": 1,
       "examples": [
         "Example Company can be reached at contact_us@example.com, or via our website at https://www.example.com/contact."
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "want_to_have",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "best_practice"
+      }
     },
     {
       "path": "$.document.publisher.issuing_authority",
@@ -417,7 +612,14 @@
       "description": "DocumentPublisherIssuingAuthorityDescription",
       "type": "STRING",
       "string_is_multiline": false,
-      "string_min_length": 1
+      "string_min_length": 1,
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "want_to_have",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.document.publisher.name",
@@ -435,7 +637,13 @@
         "Cisco PSIRT",
         "Siemens ProductCERT"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.publisher.namespace",
@@ -450,7 +658,13 @@
         "https://csaf.io",
         "https://www.example.com"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.references",
@@ -460,7 +674,14 @@
       },
       "label": "DocumentReferencesLabel",
       "description": "DocumentReferencesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "best_practice"
+      }
     },
     {
       "path": "$.document.references[]",
@@ -470,7 +691,14 @@
       },
       "label": "ReferencesItemsLabel",
       "description": "ReferencesItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.document.references[].category",
@@ -485,7 +713,14 @@
         "external": "indicates, that this document is an external reference to a document in focus",
         "self": "indicates, that this document is a reference to this same document"
       },
-      "default": "external"
+      "default": "external",
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.document.references[].summary",
@@ -498,7 +733,13 @@
       "type": "STRING",
       "string_is_multiline": true,
       "string_min_length": 1,
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.references[].url",
@@ -509,7 +750,13 @@
       "label": "ReferencesItemsUrlLabel",
       "description": "ReferencesItemsUrlDescription",
       "type": "URI",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.source_lang",
@@ -528,7 +775,14 @@
         "fr",
         "frc",
         "jp"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.document.title",
@@ -545,7 +799,13 @@
         "Cisco IPv6 Crafted Packet Denial of Service Vulnerability",
         "Example Company Cross-Site-Scripting Vulnerability in Example Generator"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.tracking",
@@ -556,7 +816,13 @@
       "label": "DocumentTrackingLabel",
       "description": "DocumentTrackingDescription",
       "type": "OBJECT",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.tracking.aliases",
@@ -566,7 +832,14 @@
       },
       "label": "DocumentTrackingAliasesLabel",
       "description": "DocumentTrackingAliasesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.document.tracking.aliases[]",
@@ -581,7 +854,14 @@
       "string_min_length": 1,
       "examples": [
         "CVE-2019-12345"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.document.tracking.current_release_date",
@@ -592,7 +872,13 @@
       "label": "DocumentTrackingCurrentReleaseDateLabel",
       "description": "DocumentTrackingCurrentReleaseDateDescription",
       "type": "DATETIME",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.tracking.generator",
@@ -602,7 +888,14 @@
       },
       "label": "DocumentTrackingGeneratorLabel",
       "description": "DocumentTrackingGeneratorDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.document.tracking.generator.date",
@@ -612,7 +905,14 @@
       },
       "label": "DocumentTrackingGeneratorDateLabel",
       "description": "DocumentTrackingGeneratorDateDescription",
-      "type": "DATETIME"
+      "type": "DATETIME",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.document.tracking.generator.engine",
@@ -623,7 +923,13 @@
       "label": "DocumentTrackingGeneratorEngineLabel",
       "description": "DocumentTrackingGeneratorEngineDescription",
       "type": "OBJECT",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.tracking.generator.engine.name",
@@ -641,7 +947,13 @@
         "Secvisogram",
         "TVCE"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.tracking.generator.engine.version",
@@ -658,7 +970,14 @@
         "0.6.0",
         "1.0.0-beta+exp.sha.a1c44f85",
         "2"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "want_to_have",
+        "csaf_security_advisory": "want_to_have",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.document.tracking.id",
@@ -677,7 +996,13 @@
         "RHBA-2019:0024",
         "cisco-sa-20190513-secureboot"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.tracking.initial_release_date",
@@ -688,7 +1013,13 @@
       "label": "DocumentTrackingInitialReleaseDateLabel",
       "description": "DocumentTrackingInitialReleaseDateDescription",
       "type": "DATETIME",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.tracking.revision_history",
@@ -699,7 +1030,13 @@
       "label": "DocumentTrackingRevisionHistoryLabel",
       "description": "DocumentTrackingRevisionHistoryDescription",
       "type": "ARRAY",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.tracking.revision_history[]",
@@ -709,7 +1046,14 @@
       },
       "label": "DocumentTrackingRevisionHistoryItemsLabel",
       "description": "DocumentTrackingRevisionHistoryItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.document.tracking.revision_history[].date",
@@ -720,7 +1064,13 @@
       "label": "DocumentTrackingRevisionHistoryItemsDateLabel",
       "description": "DocumentTrackingRevisionHistoryItemsDateDescription",
       "type": "DATETIME",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.tracking.revision_history[].legacy_version",
@@ -731,7 +1081,14 @@
       "label": "DocumentTrackingRevisionHistoryItemsLegacyVersionLabel",
       "description": "DocumentTrackingRevisionHistoryItemsLegacyVersionDescription",
       "type": "STRING",
-      "string_min_length": 1
+      "string_min_length": 1,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.document.tracking.revision_history[].number",
@@ -751,7 +1108,13 @@
         "1.4.3",
         "2.40.0+21AF26D3"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.tracking.revision_history[].summary",
@@ -767,7 +1130,13 @@
       "examples": [
         "Initial version."
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.tracking.status",
@@ -783,7 +1152,13 @@
         "final": "indicates that the issuing party asserts the content is unlikely to change",
         "interim": "indicates that the issuing party expects rapid updates"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.document.tracking.version",
@@ -795,7 +1170,13 @@
       "description": "VersionDescription",
       "type": "STRING",
       "string_pattern": "^(0|[1-9][0-9]*)$|^((0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)$",
-      "mandatory": true,
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      },
       "examples": [
         "1",
         "4",
@@ -812,7 +1193,14 @@
       },
       "label": "ProductTreeLabel",
       "description": "ProductTreeDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "want_to_have",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.branches",
@@ -822,7 +1210,14 @@
       },
       "label": "BranchesLabel",
       "description": "BranchesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "want_to_have",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "best_practice"
+      }
     },
     {
       "path": "$.product_tree.branches[]",
@@ -832,7 +1227,14 @@
       },
       "label": "BranchesItemsLabel",
       "description": "BranchesItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.branches[].branches",
@@ -842,7 +1244,14 @@
       },
       "label": "BranchesLabel",
       "description": "BranchesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.branches[].category",
@@ -867,7 +1276,13 @@
         "specification": "indicates the specification such as a standard, best common practice, etc",
         "vendor": "indicates the name of the vendor or manufacturer that makes the product"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.branches[].name",
@@ -890,7 +1305,13 @@
         "Siemens",
         "Windows"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.branches[].product",
@@ -900,7 +1321,14 @@
       },
       "label": "FullProductNameLabel",
       "description": "FullProductNameDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name",
@@ -910,7 +1338,14 @@
       },
       "label": "FullProductNameLabel",
       "description": "FullProductNameDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.name",
@@ -927,7 +1362,13 @@
         "Cisco AnyConnect Secure Mobility Client 2.3.185",
         "Microsoft Host Integration Server 2006 Service Pack 1"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_id",
@@ -944,7 +1385,13 @@
         "CSAFPID-0004",
         "CSAFPID-0008"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper",
@@ -954,7 +1401,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperLabel",
       "description": "FullProductNameProductIdentificationHelperDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "want_to_have",
+        "csaf_security_advisory": "want_to_have",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.cpe",
@@ -967,7 +1421,14 @@
       "type": "STRING",
       "string_is_multiline": false,
       "string_min_length": 5,
-      "string_pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$"
+      "string_pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes",
@@ -977,7 +1438,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperHashesLabel",
       "description": "FullProductNameProductIdentificationHelperHashesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[]",
@@ -987,7 +1455,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].file_hashes",
@@ -998,7 +1473,13 @@
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
       "type": "ARRAY",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].file_hashes[]",
@@ -1008,7 +1489,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].file_hashes[].algorithm",
@@ -1022,7 +1510,13 @@
       "string_is_multiline": false,
       "string_min_length": 1,
       "default": "sha256",
-      "mandatory": true,
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      },
       "examples": [
         "blake2b512",
         "sha256",
@@ -1048,7 +1542,13 @@
         "4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc",
         "9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].filename",
@@ -1066,7 +1566,13 @@
         "msotadddin.dll",
         "sudoers.so"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.model_numbers",
@@ -1078,7 +1584,14 @@
       "description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
       "type": "ARRAY",
       "uri_min_length": 32,
-      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+"
+      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.model_numbers[]",
@@ -1090,7 +1603,14 @@
       "description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
       "type": "STRING",
       "string_min_length": 1,
-      "string_is_multiline": false
+      "string_is_multiline": false,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.purl",
@@ -1102,7 +1622,14 @@
       "description": "FullProductNameProductIdentificationHelperPurlDescription",
       "type": "URI",
       "uri_min_length": 32,
-      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+"
+      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.sbom_urls",
@@ -1112,7 +1639,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperSbomUrlsLabel",
       "description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.sbom_urls[]",
@@ -1122,7 +1656,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperSbomUrlsItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription",
-      "type": "URI"
+      "type": "URI",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.serial_numbers",
@@ -1132,7 +1673,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperSerialNumbersLabel",
       "description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.serial_numbers[]",
@@ -1143,7 +1691,14 @@
       "label": "FullProductNameProductIdentificationHelperSerialNumbersItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
       "type": "STRING",
-      "string_is_multiline": false
+      "string_is_multiline": false,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.skus",
@@ -1153,7 +1708,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperSkusLabel",
       "description": "FullProductNameProductIdentificationHelperSkusDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.skus[]",
@@ -1164,7 +1726,14 @@
       "label": "FullProductNameProductIdentificationHelperSkusItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
       "type": "STRING",
-      "string_is_multiline": false
+      "string_is_multiline": false,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.x_generic_uris",
@@ -1174,7 +1743,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.x_generic_uris[]",
@@ -1184,7 +1760,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.x_generic_uris[].namespace",
@@ -1195,7 +1778,13 @@
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
       "type": "URI",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.x_generic_uris[].uri",
@@ -1206,7 +1795,13 @@
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
       "type": "URI",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.full_product_names",
@@ -1216,7 +1811,14 @@
       },
       "label": "ProductTreeFullProductNamesLabel",
       "description": "ProductTreeFullProductNamesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[]",
@@ -1226,7 +1828,14 @@
       },
       "label": "FullProductNameLabel",
       "description": "FullProductNameDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].name",
@@ -1239,7 +1848,13 @@
       "type": "STRING",
       "string_min_length": 1,
       "string_is_multiline": false,
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_id",
@@ -1256,7 +1871,13 @@
         "CSAFPID-0004",
         "CSAFPID-0008"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper",
@@ -1266,7 +1887,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperLabel",
       "description": "FullProductNameProductIdentificationHelperDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "want_to_have",
+        "csaf_security_advisory": "want_to_have",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.cpe",
@@ -1279,7 +1907,14 @@
       "type": "STRING",
       "string_is_multiline": false,
       "string_min_length": 5,
-      "string_pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$"
+      "string_pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes",
@@ -1289,7 +1924,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperHashesLabel",
       "description": "FullProductNameProductIdentificationHelperHashesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[]",
@@ -1299,7 +1941,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes",
@@ -1310,7 +1959,13 @@
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
       "type": "ARRAY",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[]",
@@ -1320,7 +1975,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].algorithm",
@@ -1334,7 +1996,13 @@
       "string_is_multiline": false,
       "string_min_length": 1,
       "default": "sha256",
-      "mandatory": true,
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      },
       "examples": [
         "blake2b512",
         "sha256",
@@ -1360,7 +2028,13 @@
         "4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc",
         "9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].filename",
@@ -1378,7 +2052,13 @@
         "msotadddin.dll",
         "sudoers.so"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.model_numbers",
@@ -1390,7 +2070,14 @@
       "description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
       "type": "ARRAY",
       "uri_min_length": 32,
-      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+"
+      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.model_numbers[]",
@@ -1402,7 +2089,14 @@
       "description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
       "type": "STRING",
       "string_min_length": 1,
-      "string_is_multiline": false
+      "string_is_multiline": false,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.purl",
@@ -1414,7 +2108,14 @@
       "description": "FullProductNameProductIdentificationHelperPurlDescription",
       "type": "URI",
       "uri_min_length": 32,
-      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+"
+      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.sbom_urls",
@@ -1424,7 +2125,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperSbomUrlsLabel",
       "description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.sbom_urls[]",
@@ -1434,7 +2142,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperSbomUrlsItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription",
-      "type": "URI"
+      "type": "URI",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.serial_numbers",
@@ -1444,7 +2159,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperSerialNumbersLabel",
       "description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.serial_numbers[]",
@@ -1456,7 +2178,14 @@
       "description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
       "type": "STRING",
       "string_is_multiline": false,
-      "string_min_length": 1
+      "string_min_length": 1,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.skus",
@@ -1466,7 +2195,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperSkusLabel",
       "description": "FullProductNameProductIdentificationHelperSkusDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.skus[]",
@@ -1478,7 +2214,14 @@
       "description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
       "type": "STRING",
       "string_is_multiline": false,
-      "string_min_length": 1
+      "string_min_length": 1,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris",
@@ -1488,7 +2231,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[]",
@@ -1498,7 +2248,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[].namespace",
@@ -1509,7 +2266,13 @@
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
       "type": "URI",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[].uri",
@@ -1520,7 +2283,13 @@
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
       "type": "URI",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.product_groups",
@@ -1530,7 +2299,14 @@
       },
       "label": "ProductTreeProductGroupsLabel",
       "description": "ProductTreeProductGroupsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "optional",
+        "csaf_informational_advisory": "optional",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "optional"
+      }
     },
     {
       "path": "$.product_tree.product_groups[]",
@@ -1540,7 +2316,14 @@
       },
       "label": "ProductTreeProductGroupsItemsLabel",
       "description": "ProductTreeProductGroupsItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.product_groups[].group_id",
@@ -1552,7 +2335,13 @@
       "description": "ProductGroupIdDescription",
       "type": "STRING",
       "string_is_multiline": false,
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.product_groups[].product_ids",
@@ -1563,7 +2352,13 @@
       "label": "ProductTreeProductGroupsItemsProductIdsLabel",
       "description": "ProductTreeProductGroupsItemsProductIdsDescription",
       "type": "ARRAY",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.product_groups[].product_ids[]",
@@ -1579,7 +2374,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.product_groups[].summary",
@@ -1595,7 +2397,14 @@
       "examples": [
         "Products supporting Modbus.",
         "The x64 versions of the operating system."
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "want_to_have",
+        "csaf_security_advisory": "want_to_have",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.product_tree.relationships",
@@ -1605,7 +2414,14 @@
       },
       "label": "ProductTreeRelationshipsLabel",
       "description": "ProductTreeRelationshipsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "optional",
+        "csaf_informational_advisory": "optional",
+        "csaf_security_advisory": "want_to_have",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.product_tree.relationships[]",
@@ -1615,7 +2431,14 @@
       },
       "label": "ProductTreeRelationshipsItemsLabel",
       "description": "ProductTreeRelationshipsItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.relationships[].category",
@@ -1633,7 +2456,13 @@
         "installed_with": "indicates that the entity labeled with one Product ID (e.g. CSAFPID-0001) is installed alongside an entity with another Product ID (e.g. CSAFPID-0002)",
         "optional_component_of": "indicates that the entity labeled with one Product ID (e.g. CSAFPID-0001) is an optional component of an entity with another Product ID (e.g. CSAFPID-0002)"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name",
@@ -1644,7 +2473,13 @@
       "label": "FullProductNameLabel",
       "description": "FullProductNameDescription",
       "type": "OBJECT",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.name",
@@ -1661,7 +2496,13 @@
         "Cisco AnyConnect Secure Mobility Client 2.3.185",
         "Microsoft Host Integration Server 2006 Service Pack 1"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_id",
@@ -1678,7 +2519,13 @@
         "CSAFPID-0004",
         "CSAFPID-0008"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper",
@@ -1688,7 +2535,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperLabel",
       "description": "FullProductNameProductIdentificationHelperDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "want_to_have",
+        "csaf_security_advisory": "want_to_have",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.cpe",
@@ -1701,7 +2555,14 @@
       "type": "STRING",
       "string_is_multiline": false,
       "string_min_length": 5,
-      "string_pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$"
+      "string_pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes",
@@ -1711,7 +2572,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperHashesLabel",
       "description": "FullProductNameProductIdentificationHelperHashesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[]",
@@ -1721,7 +2589,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes",
@@ -1732,7 +2607,13 @@
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
       "type": "ARRAY",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[]",
@@ -1742,7 +2623,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].algorithm",
@@ -1756,7 +2644,13 @@
       "string_is_multiline": false,
       "string_min_length": 1,
       "default": "sha256",
-      "mandatory": true,
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      },
       "examples": [
         "blake2b512",
         "sha256",
@@ -1782,7 +2676,13 @@
         "4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc",
         "9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].filename",
@@ -1800,7 +2700,13 @@
         "msotadddin.dll",
         "sudoers.so"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.purl",
@@ -1812,7 +2718,14 @@
       "description": "FullProductNameProductIdentificationHelperPurlDescription",
       "type": "URI",
       "uri_min_length": 32,
-      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+"
+      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.sbom_urls",
@@ -1822,7 +2735,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperSbomUrlsLabel",
       "description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.sbom_urls[]",
@@ -1832,7 +2752,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperSbomUrlsItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription",
-      "type": "URI"
+      "type": "URI",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers",
@@ -1842,7 +2769,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperSerialNumbersLabel",
       "description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers[]",
@@ -1853,7 +2787,14 @@
       "label": "FullProductNameProductIdentificationHelperSerialNumbersItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
       "type": "STRING",
-      "string_is_multiline": false
+      "string_is_multiline": false,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.skus",
@@ -1863,7 +2804,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperSkusLabel",
       "description": "FullProductNameProductIdentificationHelperSkusDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.skus[]",
@@ -1874,7 +2822,14 @@
       "label": "FullProductNameProductIdentificationHelperSkusItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
       "type": "STRING",
-      "string_is_multiline": false
+      "string_is_multiline": false,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris",
@@ -1884,7 +2839,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[]",
@@ -1894,7 +2856,14 @@
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].namespace",
@@ -1905,7 +2874,13 @@
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
       "type": "URI",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].uri",
@@ -1916,7 +2891,13 @@
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
       "type": "URI",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.relationships[].product_reference",
@@ -1933,7 +2914,13 @@
         "CSAFPID-0004",
         "CSAFPID-0008"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.product_tree.relationships[].relates_to_product_reference",
@@ -1950,7 +2937,13 @@
         "CSAFPID-0004",
         "CSAFPID-0008"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities",
@@ -1960,7 +2953,14 @@
       },
       "label": "VulnerabilitiesLabel",
       "description": "VulnerabilitiesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[]",
@@ -1970,7 +2970,14 @@
       },
       "label": "VulnerabilitiesItemsLabel",
       "description": "VulnerabilitiesItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].acknowledgments",
@@ -1980,7 +2987,14 @@
       },
       "label": "VulnerabilitiesItemsAcknowledgmentsLabel",
       "description": "VulnerabilitiesItemsAcknowledgmentsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "optional",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "want_to_have",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.vulnerabilities[].acknowledgments[]",
@@ -1990,7 +3004,14 @@
       },
       "label": "AcknowledgmentsItemsLabel",
       "description": "AcknowledgmentsItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].acknowledgments[].names",
@@ -2000,7 +3021,14 @@
       },
       "label": "AcknowledgmentsItemsNamesLabel",
       "description": "AcknowledgmentsItemsNamesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].acknowledgments[].names[]",
@@ -2016,7 +3044,14 @@
       "examples": [
         "Albert Einstein",
         "Johann Sebastian Bach"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].acknowledgments[].organization",
@@ -2033,7 +3068,14 @@
         "CISA",
         "Google Project Zero",
         "Talos"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].acknowledgments[].summary",
@@ -2048,7 +3090,14 @@
       "string_min_length": 1,
       "examples": [
         "First analysis of Coordinated Multi-Stream Attack (CMSA)"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].acknowledgments[].urls",
@@ -2058,7 +3107,14 @@
       },
       "label": "AcknowledgmentsItemsUrlsLabel",
       "description": "AcknowledgmentsItemsUrlsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].acknowledgments[].urls[]",
@@ -2068,7 +3124,14 @@
       },
       "label": "AcknowledgmentsItemsUrlsItemsLabel",
       "description": "AcknowledgmentsItemsUrlsItemsDescription",
-      "type": "URI"
+      "type": "URI",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].cve",
@@ -2080,7 +3143,14 @@
       "description": "VulnerabilitiesItemsCveDescription",
       "type": "STRING",
       "string_is_multiline": false,
-      "string_pattern": "^CVE-[0-9]{4}-[0-9]{4,}$"
+      "string_pattern": "^CVE-[0-9]{4}-[0-9]{4,}$",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "optional",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].cwe",
@@ -2090,7 +3160,14 @@
       },
       "label": "VulnerabilitiesItemsCweLabel",
       "description": "VulnerabilitiesItemsCweDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "optional",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "want_to_have"
+      }
     },
     {
       "path": "$.vulnerabilities[].cwe.id",
@@ -2108,7 +3185,13 @@
         "CWE-352",
         "CWE-79"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].cwe.name",
@@ -2126,7 +3209,13 @@
         "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
         "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].discovery_date",
@@ -2136,7 +3225,14 @@
       },
       "label": "VulnerabilitiesItemsDiscoveryDateLabel",
       "description": "VulnerabilitiesItemsDiscoveryDateDescription",
-      "type": "DATETIME"
+      "type": "DATETIME",
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.vulnerabilities[].flags",
@@ -2146,7 +3242,14 @@
       },
       "label": "VulnerabilitiesItemsFlagsLabel",
       "description": "VulnerabilitiesItemsFlagsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].flags[]",
@@ -2156,7 +3259,14 @@
       },
       "label": "VulnerabilitiesItemsFlagsItemsLabel",
       "description": "VulnerabilitiesItemsFlagsItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].flags[].date",
@@ -2166,7 +3276,14 @@
       },
       "label": "VulnerabilitiesItemsFlagsItemsDateLabel",
       "description": "VulnerabilitiesItemsFlagsItemsDateDescription",
-      "type": "DATETIME"
+      "type": "DATETIME",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].flags[].group_ids",
@@ -2176,7 +3293,14 @@
       },
       "label": "ProductGroupsLabel",
       "description": "ProductGroupsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].flags[].group_ids[]",
@@ -2193,7 +3317,14 @@
         "CSAFGID-0001",
         "CSAFGID-0002",
         "CSAFGID-0020"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].flags[].label",
@@ -2211,7 +3342,13 @@
         "vulnerable_code_not_in_execute_path",
         "vulnerable_code_not_present"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].flags[].product_ids",
@@ -2221,7 +3358,14 @@
       },
       "label": "ProductsLabel",
       "description": "ProductsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].flags[].product_ids[]",
@@ -2237,7 +3381,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].ids",
@@ -2247,7 +3398,14 @@
       },
       "label": "VulnerabilitiesItemsIdsLabel",
       "description": "VulnerabilitiesItemsIdsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].ids[]",
@@ -2257,7 +3415,14 @@
       },
       "label": "VulnerabilitiesItemsIdsItemsLabel",
       "description": "VulnerabilitiesItemsIdsItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].ids[].system_name",
@@ -2274,7 +3439,13 @@
         "Cisco Bug ID",
         "GitHub Issue"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].ids[].text",
@@ -2291,7 +3462,13 @@
         "CSCso66472",
         "oasis-tcs/csaf#210"
       ],
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].involvements",
@@ -2301,7 +3478,14 @@
       },
       "label": "VulnerabilitiesItemsInvolvementsLabel",
       "description": "VulnerabilitiesItemsInvolvementsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.vulnerabilities[].involvements[]",
@@ -2311,7 +3495,14 @@
       },
       "label": "VulnerabilitiesItemsInvolvementsItemsLabel",
       "description": "VulnerabilitiesItemsInvolvementsItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].involvements[].date",
@@ -2321,7 +3512,14 @@
       },
       "label": "VulnerabilitiesItemsInvolvementsItemsDateLabel",
       "description": "VulnerabilitiesItemsInvolvementsItemsDateDescription",
-      "type": "DATETIME"
+      "type": "DATETIME",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].involvements[].party",
@@ -2339,7 +3537,13 @@
         "user": "indicates anyone using a vendor\u2019s product",
         "vendor": "indicates developers or maintainers of information system products or services"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].involvements[].status",
@@ -2358,7 +3562,13 @@
         "not_contacted": "indicates that the document producer has not attempted to make contact with the party",
         "open": "the default status, doesn\u2019t indicate anything about the vulnerability remediation effort other than the fact that the party has acknowledged awareness of the vulnerability report"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].involvements[].summary",
@@ -2370,7 +3580,14 @@
       "description": "VulnerabilitiesItemsInvolvementsItemsSummaryDescription",
       "type": "STRING",
       "string_is_multiline": true,
-      "string_min_length": 1
+      "string_min_length": 1,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].notes",
@@ -2380,7 +3597,14 @@
       },
       "label": "VulnerabilitiesItemsNotesLabel",
       "description": "VulnerabilitiesItemsNotesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].notes[]",
@@ -2390,7 +3614,14 @@
       },
       "label": "NotesItemsLabel",
       "description": "NotesItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].notes[].audience",
@@ -2408,7 +3639,14 @@
         "executives",
         "operational management and system administrators",
         "safety engineers"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].notes[].category",
@@ -2428,7 +3666,13 @@
         "other": "indicates the note is something that doesn\u2019t fit the other categories",
         "summary": "indicates the note is a summary of something"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].notes[].text",
@@ -2441,7 +3685,13 @@
       "type": "STRING",
       "string_is_multiline": true,
       "string_min_length": 1,
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].notes[].title",
@@ -2459,7 +3709,14 @@
         "Executive summary",
         "Technical summary",
         "Impact on safety systems"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status",
@@ -2469,7 +3726,14 @@
       },
       "label": "VulnerabilitiesItemsProductStatusLabel",
       "description": "VulnerabilitiesItemsProductStatusDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.first_affected",
@@ -2479,7 +3743,14 @@
       },
       "label": "VulnerabilitiesItemsProductStatusFirstAffectedLabel",
       "description": "VulnerabilitiesItemsProductStatusFirstAffectedDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.first_affected[]",
@@ -2495,7 +3766,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.first_fixed",
@@ -2505,7 +3783,14 @@
       },
       "label": "VulnerabilitiesItemsProductStatusFirstFixedLabel",
       "description": "VulnerabilitiesItemsProductStatusFirstFixedDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.first_fixed[]",
@@ -2521,7 +3806,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.fixed",
@@ -2531,7 +3823,14 @@
       },
       "label": "VulnerabilitiesItemsProductStatusFixedLabel",
       "description": "VulnerabilitiesItemsProductStatusFixedDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.fixed[]",
@@ -2547,7 +3846,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.known_affected",
@@ -2557,7 +3863,14 @@
       },
       "label": "VulnerabilitiesItemsProductStatusKnownAffectedLabel",
       "description": "VulnerabilitiesItemsProductStatusKnownAffectedDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.known_affected[]",
@@ -2573,7 +3886,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.known_not_affected",
@@ -2583,7 +3903,14 @@
       },
       "label": "VulnerabilitiesItemsProductStatusKnownNotAffectedLabel",
       "description": "VulnerabilitiesItemsProductStatusKnownNotAffectedDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.known_not_affected[]",
@@ -2599,7 +3926,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.last_affected",
@@ -2609,7 +3943,14 @@
       },
       "label": "VulnerabilitiesItemsProductStatusLastAffectedLabel",
       "description": "VulnerabilitiesItemsProductStatusLastAffectedDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.last_affected[]",
@@ -2625,7 +3966,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.recommended",
@@ -2635,7 +3983,14 @@
       },
       "label": "VulnerabilitiesItemsProductStatusRecommendedLabel",
       "description": "VulnerabilitiesItemsProductStatusRecommendedDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.recommended[]",
@@ -2651,7 +4006,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.under_investigation",
@@ -2661,7 +4023,14 @@
       },
       "label": "VulnerabilitiesItemsProductStatusUnderInvestigationLabel",
       "description": "VulnerabilitiesItemsProductStatusUnderInvestigationDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].product_status.under_investigation[]",
@@ -2677,7 +4046,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].references",
@@ -2687,7 +4063,14 @@
       },
       "label": "VulnerabilitiesItemsReferencesLabel",
       "description": "VulnerabilitiesItemsReferencesDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "best_practice"
+      }
     },
     {
       "path": "$.vulnerabilities[].references[]",
@@ -2697,7 +4080,14 @@
       },
       "label": "ReferencesItemsLabel",
       "description": "ReferencesItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].references[].category",
@@ -2712,7 +4102,14 @@
         "external": "indicates, that this document is an external reference to a vulnerability in focus",
         "self": "indicates, that this document is a reference to this same vulnerability"
       },
-      "default": "external"
+      "default": "external",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].references[].summary",
@@ -2725,7 +4122,13 @@
       "type": "STRING",
       "string_is_multiline": true,
       "string_min_length": 1,
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].references[].url",
@@ -2736,7 +4139,13 @@
       "label": "ReferencesItemsUrlLabel",
       "description": "ReferencesItemsUrlDescription",
       "type": "URI",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].release_date",
@@ -2746,7 +4155,14 @@
       },
       "label": "VulnerabilitiesItemsReleaseDateLabel",
       "description": "VulnerabilitiesItemsReleaseDateDescription",
-      "type": "DATETIME"
+      "type": "DATETIME",
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations",
@@ -2756,7 +4172,14 @@
       },
       "label": "VulnerabilitiesItemsRemediationsLabel",
       "description": "VulnerabilitiesItemsRemediationsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[]",
@@ -2766,7 +4189,14 @@
       },
       "label": "VulnerabilitiesItemsRemediationsItemsLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].category",
@@ -2784,7 +4214,13 @@
         "vendor_fix": "indicates that the remediation contains information about an official fix that is issued by the original author of the affected product",
         "workaround": "indicates that the remediation contains information about a configuration or specific deployment scenario that can be used to avoid exposure to the vulnerability"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].date",
@@ -2794,7 +4230,14 @@
       },
       "label": "VulnerabilitiesItemsRemediationsItemsDateLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsDateDescription",
-      "type": "DATETIME"
+      "type": "DATETIME",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].details",
@@ -2807,7 +4250,13 @@
       "type": "STRING",
       "string_is_multiline": true,
       "string_min_length": 1,
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].entitlements",
@@ -2817,7 +4266,14 @@
       },
       "label": "VulnerabilitiesItemsRemediationsItemsEntitlementsLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsEntitlementsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].entitlements[]",
@@ -2829,7 +4285,14 @@
       "description": "VulnerabilitiesItemsRemediationsItemsEntitlementsItemsDescription",
       "type": "STRING",
       "string_is_multiline": false,
-      "string_min_length": 1
+      "string_min_length": 1,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].group_ids",
@@ -2839,7 +4302,14 @@
       },
       "label": "ProductGroupsLabel",
       "description": "ProductGroupsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].group_ids[]",
@@ -2856,7 +4326,14 @@
         "CSAFGID-0001",
         "CSAFGID-0002",
         "CSAFGID-0020"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].product_ids",
@@ -2866,7 +4343,14 @@
       },
       "label": "ProductsLabel",
       "description": "ProductsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].product_ids[]",
@@ -2882,7 +4366,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].restart_required",
@@ -2892,7 +4383,14 @@
       },
       "label": "VulnerabilitiesItemsRemediationsItemsRestartRequiredLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].restart_required.category",
@@ -2914,7 +4412,13 @@
         "vulnerable_component": "only the vulnerable component (as given by the elements of product_ids or group_ids in the current remediation item) needs to be restarted",
         "zone": "the security zone in which the machine resides on which the vulnerable component is installed needs to be restarted"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].restart_required.details",
@@ -2926,7 +4430,14 @@
       "description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsDescription",
       "type": "STRING",
       "string_is_multiline": true,
-      "string_min_length": 1
+      "string_min_length": 1,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].remediations[].url",
@@ -2936,7 +4447,14 @@
       },
       "label": "VulnerabilitiesItemsRemediationsItemsUrlLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsUrlDescription",
-      "type": "URI"
+      "type": "URI",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].scores",
@@ -2946,7 +4464,14 @@
       },
       "label": "VulnerabilitiesItemsScoresLabel",
       "description": "VulnerabilitiesItemsScoresDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].scores[]",
@@ -2956,7 +4481,14 @@
       },
       "label": "VulnerabilitiesItemsScoresItemsLabel",
       "description": "VulnerabilitiesItemsScoresItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].scores[].cvss_v2",
@@ -2966,7 +4498,14 @@
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].scores[].cvss_v2.version",
@@ -2979,6 +4518,13 @@
       "type": "ENUM",
       "enum_values": {
         "2.0": "CVSS Version 2.0"
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -2991,7 +4537,14 @@
       "description": "CvssV2PropertyDescription",
       "type": "STRING",
       "string_is_multiline": false,
-      "string_pattern": "^((AV:[NAL]|AC:[LMH]|Au:[MSN]|[CIA]:[NPC]|E:(U|POC|F|H|ND)|RL:(OF|TF|W|U|ND)|RC:(UC|UR|C|ND)|CDP:(N|L|LM|MH|H|ND)|TD:(N|L|M|H|ND)|[CIA]R:(L|M|H|ND))/)*(AV:[NAL]|AC:[LMH]|Au:[MSN]|[CIA]:[NPC]|E:(U|POC|F|H|ND)|RL:(OF|TF|W|U|ND)|RC:(UC|UR|C|ND)|CDP:(N|L|LM|MH|H|ND)|TD:(N|L|M|H|ND)|[CIA]R:(L|M|H|ND))$"
+      "string_pattern": "^((AV:[NAL]|AC:[LMH]|Au:[MSN]|[CIA]:[NPC]|E:(U|POC|F|H|ND)|RL:(OF|TF|W|U|ND)|RC:(UC|UR|C|ND)|CDP:(N|L|LM|MH|H|ND)|TD:(N|L|M|H|ND)|[CIA]R:(L|M|H|ND))/)*(AV:[NAL]|AC:[LMH]|Au:[MSN]|[CIA]:[NPC]|E:(U|POC|F|H|ND)|RL:(OF|TF|W|U|ND)|RC:(UC|UR|C|ND)|CDP:(N|L|LM|MH|H|ND)|TD:(N|L|M|H|ND)|[CIA]R:(L|M|H|ND))$",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].scores[].cvss_v2.accessVector",
@@ -3006,6 +4559,13 @@
         "NETWORK": "A vulnerability exploitable with network access means the vulnerable software is bound to the network stack and the attacker does not require local network access or local access. Such a vulnerability is often termed \"remotely exploitable\". An example of a network attack is an RPC buffer overflow.",
         "ADJACENT_NETWORK": "A vulnerability exploitable with adjacent network access requires the attacker to have access to either the broadcast or collision domain of the vulnerable software.  Examples of local networks include local IP subnet, Bluetooth, IEEE 802.11, and local Ethernet segment.",
         "LOCAL": "A vulnerability exploitable with only local access requires the attacker to have either physical access to the vulnerable system or a local (shell) account. Examples of locally exploitable vulnerabilities are peripheral attacks such as Firewire/USB DMA attacks, and local privilege escalations (e.g., sudo)."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3021,6 +4581,13 @@
         "HIGH": "Specialized access conditions exist. For example:\n- In most configurations, the attacking party must already have elevated privileges or spoof additional systems in addition to the attacking system (e.g., DNS hijacking).\n- The attack depends on social engineering methods that would be easily detected by knowledgeable people. For example, the victim must perform several suspicious or atypical actions.\n- The vulnerable configuration is seen very rarely in practice.\n- If a race condition exists, the window is very narrow.",
         "MEDIUM": "The access conditions are somewhat specialized; the following are examples:\n- The attacking party is limited to a group of systems or users at some level of authorization, possibly untrusted.\n- Some information must be gathered before a successful attack can be launched.\n- The affected configuration is non-default, and is not commonly configured (e.g., a vulnerability present when a server performs user account authentication via a specific scheme, but not present for another authentication scheme).\n- The attack requires a small amount of social engineering that might occasionally fool cautious users (e.g., phishing attacks that modify a web browsers status bar to show a false link, having to be on someones buddy list before sending an IM exploit).",
         "LOW": "Specialized access conditions or extenuating circumstances do not exist. The following are examples:\n- The affected product typically requires access to a wide range of systems and users, possibly anonymous and untrusted (e.g., Internet-facing web or mail server).\n- The affected configuration is default or ubiquitous.\n- The attack can be performed manually and requires little skill or additional information gathering.\n- The race condition is a lazy one (i.e., it is technically a race but easily winnable)."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3036,6 +4603,13 @@
         "MULTIPLE": "Exploiting the vulnerability requires that the attacker authenticate two or more times, even if the same credentials are used each time. An example is an attacker authenticating to an operating system in addition to providing credentials to access an application hosted on that system.",
         "SINGLE": "The vulnerability requires an attacker to be logged into the system (such as at a command line or via a desktop session or web interface).",
         "NONE": "Authentication is not required to exploit the vulnerability."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3051,6 +4625,13 @@
         "NONE": "There is no impact to the confidentiality of the system.",
         "PARTIAL": "There is considerable informational disclosure. Access to some system files is possible, but the attacker does not have control over what is obtained, or the scope of the loss is constrained. An example is a vulnerability that divulges only certain tables in a database.",
         "COMPLETE": "There is total information disclosure, resulting in all system files being revealed. The attacker is able to read all of the system's data (memory, files, etc.)"
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3066,6 +4647,13 @@
         "NONE": "There is no impact to the integrity of the system.",
         "PARTIAL": "Modification of some system files or information is possible, but the attacker does not have control over what can be modified, or the scope of what the attacker can affect is limited. For example, system or application files may be overwritten or modified, but either the attacker has no control over which files are affected or the attacker can modify files within only a limited context or scope.",
         "COMPLETE": "There is a total compromise of system integrity. There is a complete loss of system protection, resulting in the entire system being compromised. The attacker is able to modify any files on the target system."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3081,6 +4669,13 @@
         "NONE": "There is no impact to the availability of the system.",
         "PARTIAL": "There is reduced performance or interruptions in resource availability. An example is a network-based flood attack that permits a limited number of successful connections to an Internet service.",
         "COMPLETE": "There is a total shutdown of the affected resource. The attacker can render the resource completely unavailable."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3093,7 +4688,14 @@
       "description": "CvssV2PropertyDescription",
       "type": "NUMBER",
       "minimum": 0,
-      "maximum": 10
+      "maximum": 10,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].scores[].cvss_v2.exploitability",
@@ -3110,6 +4712,13 @@
         "FUNCTIONAL": "Functional exploit code is available. The code works in most situations where the vulnerability exists.",
         "HIGH": "Either the vulnerability is exploitable by functional mobile autonomous code, or no exploit is required (manual trigger) and details are widely available. The code works in every situation, or is actively being delivered via a mobile autonomous agent (such as a worm or virus).",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3127,6 +4736,13 @@
         "WORKAROUND": "There is an unofficial, non-vendor solution available. In some cases, users of the affected technology will create a patch of their own or provide steps to work around or otherwise mitigate the vulnerability.",
         "UNAVAILABLE": "There is either no solution available or it is impossible to apply.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3143,6 +4759,13 @@
         "UNCORROBORATED": "There are multiple non-official sources, possibly including independent security companies or research organizations. At this point there may be conflicting technical details or some other lingering ambiguity.",
         "CONFIRMED": "The vulnerability has been acknowledged by the vendor or author of the affected technology. The vulnerability may also be Confirmed when its existence is confirmed from an external event such as publication of functional or proof-of-concept exploit code or widespread exploitation.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3155,7 +4778,14 @@
       "description": "CvssV2PropertyDescription",
       "type": "NUMBER",
       "minimum": 0,
-      "maximum": 10
+      "maximum": 10,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].scores[].cvss_v2.collateralDamagePotential",
@@ -3173,6 +4803,13 @@
         "MEDIUM_HIGH": "A successful exploit of this vulnerability may result in significant physical or property damage or loss. Or, there may be a significant loss of revenue or productivity.",
         "HIGH": "A successful exploit of this vulnerability may result in catastrophic physical or property damage and loss. Or, there may be a catastrophic loss of revenue or productivity.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3190,6 +4827,13 @@
         "MEDIUM": "Targets exist inside the environment, but on a medium scale. Between 26% - 75% of the total environment is at risk.",
         "HIGH": "Targets exist inside the environment on a considerable scale. Between 76% - 100% of the total environment is considered at risk.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3206,6 +4850,13 @@
         "MEDIUM": "Loss of confidentiality is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
         "HIGH": "Loss of confidentiality is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3222,6 +4873,13 @@
         "MEDIUM": "Loss of integrity is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
         "HIGH": "Loss of integrity is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3238,6 +4896,13 @@
         "MEDIUM": "Loss of availability is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
         "HIGH": "Loss of availability is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3250,7 +4915,14 @@
       "description": "CvssV2PropertyDescription",
       "type": "NUMBER",
       "minimum": 0,
-      "maximum": 10
+      "maximum": 10,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].scores[].cvss_v3",
@@ -3260,7 +4932,14 @@
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].scores[].cvss_v3.version",
@@ -3274,6 +4953,13 @@
       "enum_values": {
         "3.0": "CVSS Version 3.0",
         "3.1": "CVSS Version 3.1"
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3289,6 +4975,13 @@
       "pattern": {
         "v3.0": "^CVSS:3[.]0/((AV:[NALP]|AC:[LH]|PR:[UNLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])/)*(AV:[NALP]|AC:[LH]|PR:[UNLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])$",
         "v3.1": "^CVSS:3[.]1/((AV:[NALP]|AC:[LH]|PR:[NLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])/)*(AV:[NALP]|AC:[LH]|PR:[NLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])$"
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3305,6 +4998,13 @@
         "ADJACENT_NETWORK": "A vulnerability exploitable with adjacent network access means the vulnerable component is bound to the network stack, however the attack is limited to the same shared physical (e.g. Bluetooth, IEEE 802.11), or logical (e.g. local IP subnet) network, and cannot be performed across an OSI layer 3 boundary (e.g. a router). An example of an Adjacent attack would be an ARP (IPv4) or neighbor discovery (IPv6) flood leading to a denial of service on the local LAN segment. See also CVE 2013 6014.",
         "LOCAL": "A vulnerability exploitable with Local access means that the vulnerable component is not bound to the network stack, and the attacker's path is via read/write/execute capabilities. In some cases, the attacker may be logged in locally in order to exploit the vulnerability, otherwise, she may rely on User Interaction to execute a malicious file.",
         "PHYSICAL": "A vulnerability exploitable with Physical access requires the attacker to physically touch or manipulate the vulnerable component. Physical interaction may be brief (e.g. evil maid attack [1]) or persistent. An example of such an attack is a cold boot attack which allows an attacker to access to disk encryption keys after gaining physical access to the system, or peripheral attacks such as Firewire/USB Direct Memory Access attacks."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3319,6 +5019,13 @@
       "enum_values": {
         "LOW": "Specialized access conditions or extenuating circumstances do not exist. An attacker can expect repeatable success against the vulnerable component.",
         "HIGH": "A successful attack depends on conditions beyond the attacker's control. That is, a successful attack cannot be accomplished at will, but requires the attacker to invest in some measurable amount of effort in preparation or execution against the vulnerable component before a successful attack can be expected. 2 For example, a successful attack may depend on an attacker overcoming any of the following conditions:\n- The attacker must conduct target-specific reconnaissance. For example, on target configuration settings, sequence numbers, shared secrets, etc.\n- The attacker must prepare the target environment to improve exploit reliability. For example, repeated exploitation to win a race condition, or overcoming advanced exploit mitigation techniques.\n- The attacker must inject herself into the logical network path between the target and the resource requested by the victim in order to read and/or modify network communications (e.g. man in the middle attack)."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3335,6 +5042,13 @@
         "LOW": "The attacker is authorized with (i.e. requires) privileges that provide basic user capabilities that could normally affect only settings and files owned by a user. Alternatively, an attacker with Low privileges may have the ability to cause an impact only to non-sensitive resources.",
         "HIGH": "The attacker is authorized with (i.e. requires) privileges that provide significant (e.g. administrative) control over the vulnerable component that could affect component-wide settings and files.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3350,6 +5064,13 @@
         "NONE": "The vulnerable system can be exploited without interaction from any user.",
         "REQUIRED": "Successful exploitation of this vulnerability requires a user to take some action before the vulnerability can be exploited. For example, a successful exploit may only be possible during the installation of an application by a system administrator.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3364,6 +5085,13 @@
       "enum_values": {
         "UNCHANGED": "An exploited vulnerability can only affect resources managed by the same authority. In this case the vulnerable component and the impacted component are the same.",
         "CHANGED": "An exploited vulnerability can affect resources beyond the authorization privileges intended by the vulnerable component. In this case the vulnerable component and the impacted component are different."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3379,6 +5107,13 @@
         "NONE": "There is no loss of confidentiality within the impacted component.",
         "LOW": "There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is constrained. The information disclosure does not cause a direct, serious loss to the impacted component.",
         "HIGH": "There is total loss of confidentiality, resulting in all resources within the impacted component being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact. For example, an attacker steals the administrator's password, or private encryption keys of a web server."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3394,6 +5129,13 @@
         "NONE": "There is no loss of integrity within the impacted component.",
         "LOW": "Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is constrained. The data modification does not have a direct, serious impact on the impacted component.",
         "HIGH": "There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the impacted component. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the impacted component."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3409,6 +5151,13 @@
         "NONE": "There is no impact to availability within the impacted component.",
         "LOW": "There is reduced performance or interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the impacted component are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the impacted component.",
         "HIGH": "There is total loss of availability, resulting in the attacker being able to fully deny access to resources in the impacted component; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the impacted component (e.g., the attacker cannot disrupt existing connections, but can prevent new connections; the attacker can repeatedly exploit a vulnerability that, in each instance of a successful attack, leaks a only small amount of memory, but after repeated exploitation causes a service to become completely unavailable)."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3421,7 +5170,14 @@
       "description": "CvssV3PropertyDescription",
       "type": "NUMBER",
       "minimum": 0,
-      "maximum": 10
+      "maximum": 10,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].scores[].cvss_v3.baseSeverity",
@@ -3438,6 +5194,13 @@
         "MEDIUM": "Base Score between 4.0 and 6.9",
         "HIGH": "Base Score between 7.0 and 8.9",
         "CRITICAL": "Base Score between 9.0 and 10.0"
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3455,6 +5218,13 @@
         "FUNCTIONAL": "Functional exploit code is available. The code works in most situations where the vulnerability exists.",
         "HIGH": "Functional autonomous code exists, or no exploit is required (manual trigger) and details are widely available. Exploit code works in every situation, or is actively being delivered via an autonomous agent (such as a worm or virus). Network-connected systems are likely to encounter scanning or exploitation attempts. Exploit development has reached the level of reliable, widely-available, easy-to-use automated tools.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to a scoring equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3472,6 +5242,13 @@
         "WORKAROUND": "There is an unofficial, non-vendor solution available. In some cases, users of the affected technology will create a patch of their own or provide steps to work around or otherwise mitigate the vulnerability.",
         "UNAVAILABLE": "There is either no solution available or it is impossible to apply.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to a scoring equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3488,6 +5265,13 @@
         "REASONABLE": "Significant details are published, but researchers either do not have full confidence in the root cause, or do not have access to source code to fully confirm all of the interactions that may lead to the result. Reasonable confidence exists, however, that the bug is reproducible and at least one impact is able to be verified (proof-of-concept exploits may provide this). An example is a detailed write-up of research into a vulnerability with an explanation (possibly obfuscated or \"left as an exercise to the reader\") that gives assurances on how to reproduce the results.",
         "CONFIRMED": "Detailed reports exist, or functional reproduction is possible (functional exploits may provide this). Source code is available to independently verify the assertions of the research, or the author or vendor of the affected code has confirmed the presence of the vulnerability.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to a scoring equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3500,7 +5284,14 @@
       "description": "CvssV3PropertyDescription",
       "type": "NUMBER",
       "minimum": 0,
-      "maximum": 10
+      "maximum": 10,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].scores[].cvss_v3.temporalSeverity",
@@ -3517,6 +5308,13 @@
         "MEDIUM": "Temporal Score between 4.0 and 6.9",
         "HIGH": "Temporal Score between 7.0 and 8.9",
         "CRITICAL": "Temporal Score between 9.0 and 10.0"
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3533,6 +5331,13 @@
         "MEDIUM": "Loss of confidentiality is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
         "HIGH": "Loss of confidentiality is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3549,6 +5354,13 @@
         "MEDIUM": "Loss of integrity is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
         "HIGH": "Loss of integrity is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3565,6 +5377,13 @@
         "MEDIUM": "Loss of availability is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
         "HIGH": "Loss of availability is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3582,6 +5401,13 @@
         "LOCAL": "A vulnerability exploitable with Local access means that the vulnerable component is not bound to the network stack, and the attacker's path is via read/write/execute capabilities. In some cases, the attacker may be logged in locally in order to exploit the vulnerability, otherwise, she may rely on User Interaction to execute a malicious file.",
         "PHYSICAL": "A vulnerability exploitable with Physical access requires the attacker to physically touch or manipulate the vulnerable component. Physical interaction may be brief (e.g. evil maid attack [1]) or persistent. An example of such an attack is a cold boot attack which allows an attacker to access to disk encryption keys after gaining physical access to the system, or peripheral attacks such as Firewire/USB Direct Memory Access attacks.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3597,6 +5423,13 @@
         "LOW": "Specialized access conditions or extenuating circumstances do not exist. An attacker can expect repeatable success against the vulnerable component.",
         "HIGH": "A successful attack depends on conditions beyond the attacker's control. That is, a successful attack cannot be accomplished at will, but requires the attacker to invest in some measurable amount of effort in preparation or execution against the vulnerable component before a successful attack can be expected. 2 For example, a successful attack may depend on an attacker overcoming any of the following conditions:\n- The attacker must conduct target-specific reconnaissance. For example, on target configuration settings, sequence numbers, shared secrets, etc.\n- The attacker must prepare the target environment to improve exploit reliability. For example, repeated exploitation to win a race condition, or overcoming advanced exploit mitigation techniques.\n- The attacker must inject herself into the logical network path between the target and the resource requested by the victim in order to read and/or modify network communications (e.g. man in the middle attack).",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3613,6 +5446,13 @@
         "LOW": "The attacker is authorized with (i.e. requires) privileges that provide basic user capabilities that could normally affect only settings and files owned by a user. Alternatively, an attacker with Low privileges may have the ability to cause an impact only to non-sensitive resources.",
         "HIGH": "The attacker is authorized with (i.e. requires) privileges that provide significant (e.g. administrative) control over the vulnerable component that could affect component-wide settings and files.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3628,6 +5468,13 @@
         "NONE": "The vulnerable system can be exploited without interaction from any user.",
         "REQUIRED": "Successful exploitation of this vulnerability requires a user to take some action before the vulnerability can be exploited. For example, a successful exploit may only be possible during the installation of an application by a system administrator.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3643,6 +5490,13 @@
         "UNCHANGED": "An exploited vulnerability can only affect resources managed by the same authority. In this case the vulnerable component and the impacted component are the same.",
         "CHANGED": "An exploited vulnerability can affect resources beyond the authorization privileges intended by the vulnerable component. In this case the vulnerable component and the impacted component are different.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3659,6 +5513,13 @@
         "LOW": "There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is constrained. The information disclosure does not cause a direct, serious loss to the impacted component.",
         "HIGH": "There is total loss of confidentiality, resulting in all resources within the impacted component being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact. For example, an attacker steals the administrator's password, or private encryption keys of a web server.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3675,6 +5536,13 @@
         "LOW": "Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is constrained. The data modification does not have a direct, serious impact on the impacted component.",
         "HIGH": "There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the impacted component. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the impacted component.",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3691,6 +5559,13 @@
         "LOW": "There is reduced performance or interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the impacted component are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the impacted component.",
         "HIGH": "There is total loss of availability, resulting in the attacker being able to fully deny access to resources in the impacted component; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the impacted component (e.g., the attacker cannot disrupt existing connections, but can prevent new connections; the attacker can repeatedly exploit a vulnerability that, in each instance of a successful attack, leaks a only small amount of memory, but after repeated exploitation causes a service to become completely unavailable).",
         "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      },
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
       }
     },
     {
@@ -3703,7 +5578,14 @@
       "description": "CvssV3PropertyDescription",
       "type": "NUMBER",
       "minimum": 0,
-      "maximum": 10
+      "maximum": 10,
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].scores[].products",
@@ -3714,7 +5596,13 @@
       "label": "ProductsLabel",
       "description": "ProductsDescription",
       "type": "ARRAY",
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].scores[].products[]",
@@ -3730,7 +5618,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].threats",
@@ -3740,7 +5635,14 @@
       },
       "label": "VulnerabilitiesItemsThreatsLabel",
       "description": "VulnerabilitiesItemsThreatsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].threats[]",
@@ -3750,7 +5652,14 @@
       },
       "label": "VulnerabilitiesItemsThreatsItemsLabel",
       "description": "VulnerabilitiesItemsThreatsItemsDescription",
-      "type": "OBJECT"
+      "type": "OBJECT",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].threats[].category",
@@ -3766,7 +5675,13 @@
         "impact": "indicates that the details field contains an assessment of the impact on the user or the target set if the vulnerability is successfully exploited or a description why it cannot be exploited",
         "target_set": "indicates that the details field contains a description of the currently known victim population in whatever terms are appropriate"
       },
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].threats[].date",
@@ -3776,7 +5691,14 @@
       },
       "label": "VulnerabilitiesItemsThreatsItemsDateLabel",
       "description": "VulnerabilitiesItemsThreatsItemsDateDescription",
-      "type": "DATETIME"
+      "type": "DATETIME",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].threats[].details",
@@ -3789,7 +5711,13 @@
       "type": "STRING",
       "string_is_multiline": true,
       "string_min_length": 1,
-      "mandatory": true
+      "mandatory": {
+        "csaf_base": "mandatory",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "mandatory",
+        "csaf_vex": "mandatory"
+      }
     },
     {
       "path": "$.vulnerabilities[].threats[].group_ids",
@@ -3799,7 +5727,14 @@
       },
       "label": "ProductGroupsLabel",
       "description": "ProductGroupsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].threats[].group_ids[]",
@@ -3816,7 +5751,14 @@
         "CSAFGID-0001",
         "CSAFGID-0002",
         "CSAFGID-0020"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].threats[].product_ids",
@@ -3826,7 +5768,14 @@
       },
       "label": "ProductsLabel",
       "description": "ProductsDescription",
-      "type": "ARRAY"
+      "type": "ARRAY",
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].threats[].product_ids[]",
@@ -3842,7 +5791,14 @@
       "examples": [
         "CSAFPID-0004",
         "CSAFPID-0008"
-      ]
+      ],
+      "mandatory": {
+        "csaf_base": "",
+        "csaf_security_incident_response": "",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "",
+        "csaf_vex": ""
+      }
     },
     {
       "path": "$.vulnerabilities[].title",
@@ -3854,7 +5810,14 @@
       "description": "VulnerabilitiesItemsTitleDescription",
       "type": "STRING",
       "string_is_multiline": false,
-      "string_min_length": 1
+      "string_min_length": 1,
+      "mandatory": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "want_to_have",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "want_to_have"
+      }
     }
   ]
 }
