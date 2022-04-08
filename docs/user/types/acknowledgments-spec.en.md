@@ -1,0 +1,15 @@
+# Acknowledgments - Specification
+
+List of Acknowledgments (`acknowledgments_t`) type instance of value type `array` with 1 or more elements contain a list
+of `Acknowledgment` elements.
+
+```
+"acknowledgments_t": {
+  // ...
+  "items": {
+    // ...
+  }
+}
+```
+
+[Specification of Acknowledgment items](docs/user/types/acknowledgments/acknowledgment-spec.en.md)

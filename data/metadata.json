@@ -1,0 +1,3860 @@
+{
+  "metaData": [
+    {
+      "path": "$.document",
+      "user_documentation": {
+        "specification": "docs/user/document-spec.en.md",
+        "usage": "docs/user/document-usage.en.md"
+      },
+      "label": "DocumentLabel",
+      "description": "DocumentDescription",
+      "type": "OBJECT",
+      "mandatory": true
+    },
+    {
+      "path": "$.document.acknowledgments",
+      "user_documentation": {
+        "specification": "docs/user/document/acknowledgments-spec.en.md",
+        "usage": "docs/user/document/acknowledgments-usage.en.md"
+      },
+      "label": "DocumentAcknowledgmentsLabel",
+      "description": "DocumentAcknowledgmentsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.document.acknowledgments[]",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsLabel",
+      "description": "AcknowledgmentsItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.document.acknowledgments[].names",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment/names-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment/names-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsNamesLabel",
+      "description": "AcknowledgmentsItemsNamesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.document.acknowledgments[].names[]",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment/names/name-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsNamesItemsLabel",
+      "description": "AcknowledgmentsItemsNamesItemsDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "Albert Einstein",
+        "Johann Sebastian Bach"
+      ]
+    },
+    {
+      "path": "$.document.acknowledgments[].organization",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment/organization-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsOrganizationLabel",
+      "description": "AcknowledgmentsItemsOrganizationDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CISA",
+        "Google Project Zero",
+        "Talos"
+      ]
+    },
+    {
+      "path": "$.document.acknowledgments[].summary",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment/summary-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsSummaryLabel",
+      "description": "AcknowledgmentsItemsSummaryDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "examples": [
+        "First analysis of Coordinated Multi-Stream Attack (CMSA)"
+      ]
+    },
+    {
+      "path": "$.document.acknowledgments[].urls",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment/urls-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsUrlsLabel",
+      "description": "AcknowledgmentsItemsUrlsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.document.acknowledgments[].urls[]",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment/urls/url-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsUrlsItemsLabel",
+      "description": "AcknowledgmentsItemsUrlsItemsDescription",
+      "type": "URI"
+    },
+    {
+      "path": "$.document.aggregate_severity",
+      "user_documentation": {
+        "specification": "docs/user/document/aggregate_severity-spec.en.md",
+        "usage": "docs/user/document/aggregate_severity-usage.en.md"
+      },
+      "label": "DocumentAggregateSeverityLabel",
+      "description": "DocumentAggregateSeverityDescription",
+      "type": "OBJECT",
+      "mandatory_level": {
+        "csaf_base": "nice_to_know",
+        "security_advisory": "required"
+      }
+    },
+    {
+      "path": "$.document.aggregate_severity.namespace",
+      "user_documentation": {
+        "specification": "docs/user/document/aggregate_severity/namespace-spec.en.md",
+        "usage": "docs/user/document/aggregate_severity/namespace-usage.en.md"
+      },
+      "label": "DocumentAggregateSeverityNamespaceLabel",
+      "description": "DocumentAggregateSeverityNamespaceDescription",
+      "type": "URI"
+    },
+    {
+      "path": "$.document.aggregate_severity.text",
+      "user_documentation": {
+        "specification": "docs/user/document/aggregate_severity/text-spec.en.md",
+        "usage": "docs/user/document/aggregate_severity/text-usage.en.md"
+      },
+      "label": "DocumentAggregateSeverityTextLabel",
+      "description": "DocumentAggregateSeverityTextDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "examples": [
+        "Critical",
+        "Important",
+        "Moderate"
+      ],
+      "mandatory_element": true
+    },
+    {
+      "path": "$.document.category",
+      "user_documentation": {
+        "specification": "docs/user/document/category-spec.en.md",
+        "usage": "docs/user/document/category-usage.en.md"
+      },
+      "label": "DocumentCategoryLabel",
+      "description": "DocumentCategoryDescription",
+      "type": "STRING",
+      "string_pattern": "^[^\\s\\-_\\.](.*[^\\s\\-_\\.])?$",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "csaf_base",
+        "csaf_security_advisory",
+        "csaf_vex",
+        "Example Company Security Notice"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.document.csaf_version",
+      "user_documentation": {
+        "specification": "docs/user/document/csaf_version-spec.en.md",
+        "usage": "docs/user/document/csaf_version-usage.en.md"
+      },
+      "label": "DocumentCsafVersionLabel",
+      "description": "DocumentCsafVersionDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "2.0": "CSAF version 2"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.document.distribution",
+      "user_documentation": {
+        "specification": "docs/user/document/distribution-spec.en.md",
+        "usage": "docs/user/document/distribution-usage.en.md"
+      },
+      "label": "DocumentDistributionLabel",
+      "description": "DocumentDistributionDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.document.distribution.text",
+      "user_documentation": {
+        "specification": "docs/user/document/distribution/text-spec.en.md",
+        "usage": "docs/user/document/distribution/text-usage.en.md"
+      },
+      "label": "DocumentDistributionTextLabel",
+      "description": "DocumentDistributionTextDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "examples": [
+        "Copyright 2021, Example Company, All Rights Reserved.",
+        "Distribute freely.",
+        "Share only on a need-to-know-basis only."
+      ]
+    },
+    {
+      "path": "$.document.distribution.tlp",
+      "user_documentation": {
+        "specification": "docs/user/document/distribution/tlp-spec.en.md",
+        "usage": "docs/user/document/distribution/tlp-usage.en.md"
+      },
+      "label": "DocumentDistributionTlpLabel",
+      "description": "DocumentDistributionTlpDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.document.distribution.tlp.label",
+      "user_documentation": {
+        "specification": "docs/user/document/distribution/tlp/label-spec.en.md",
+        "usage": "docs/user/document/distribution/tlp/label-usage.en.md"
+      },
+      "label": "DocumentDistributionTlpLabelLabel",
+      "description": "DocumentDistributionTlpLabelDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "AMBER": "personal for named recipients only",
+        "GREEN": "limited distribution",
+        "RED": "community wide",
+        "WHITE": "unlimited"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.document.distribution.tlp.url",
+      "user_documentation": {
+        "specification": "docs/user/document/distribution/tlp/url-spec.en.md",
+        "usage": "docs/user/document/distribution/tlp/url-usage.en.md"
+      },
+      "label": "DocumentDistributionTlpUrlLabel",
+      "description": "DocumentDistributionTlpUrlDescription",
+      "type": "URI",
+      "examples": [
+        "https://www.us-cert.gov/tlp",
+        "https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Kritis/Merkblatt_TLP.pdf"
+      ],
+      "default": "https://www.first.org/tlp/"
+    },
+    {
+      "path": "$.document.lang",
+      "user_documentation": {
+        "specification": "docs/user/document/lang-spec.en.md",
+        "usage": "docs/user/document/lang-usage.en.md"
+      },
+      "label": "DocumentLangLabel",
+      "description": "DocumentLangDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_pattern": "^(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3}){0,2})?|[A-Za-z]{4,8})(-[A-Za-z]{4})?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-[A-WY-Za-wy-z0-9](-[A-Za-z0-9]{2,8})+)*(-[Xx](-[A-Za-z0-9]{1,8})+)?|[Xx](-[A-Za-z0-9]{1,8})+|[Ii]-[Dd][Ee][Ff][Aa][Uu][Ll][Tt]|[Ii]-[Mm][Ii][Nn][Gg][Oo])$",
+      "examples": [
+        "de",
+        "en",
+        "fr",
+        "frc",
+        "jp"
+      ]
+    },
+    {
+      "path": "$.document.notes",
+      "user_documentation": {
+        "specification": "docs/user/document/notes-spec.en.md",
+        "usage": "docs/user/document/notes-usage.en.md"
+      },
+      "label": "DocumentNotesLabel",
+      "description": "DocumentNotesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.document.notes[]",
+      "user_documentation": {
+        "specification": "docs/user/types/notes/note-spec.en.md",
+        "usage": "docs/user/types/notes/note-usage.en.md"
+      },
+      "label": "NotesItemsLabel",
+      "description": "NotesItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.document.notes[].audience",
+      "user_documentation": {
+        "specification": "docs/user/types/notes/note/audience-spec.en.md",
+        "usage": "docs/user/types/notes/note/audience-usage.en.md"
+      },
+      "label": "NotesItemsAudienceLabel",
+      "description": "NotesItemsAudienceDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "all",
+        "executives",
+        "operational management and system administrators",
+        "safety engineers"
+      ]
+    },
+    {
+      "path": "$.document.notes[].category",
+      "user_documentation": {
+        "specification": "docs/user/types/notes/note/category-spec.en.md",
+        "usage": "docs/user/types/notes/note/category-usage.en.md"
+      },
+      "label": "NotesItemsCategoryLabel",
+      "description": "NotesItemsCategoryDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "description": "indicates the note is a description of something. The optional sibling property title MAY have more information in this case",
+        "details": "indicates the note is a low-level detailed discussion. The optional sibling property title MAY have more information in this case",
+        "faq": "indicates the note is a list of frequently asked questions",
+        "general": "indicates the note is a general, high-level note. The optional sibling property title MAY have more information in this case",
+        "legal_disclaimer": "indicates the note represents any possible legal discussion, including constraints, surrounding the document",
+        "other": "indicates the note is something that doesn\u2019t fit the other categories",
+        "summary": "indicates the note is a summary of something"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.document.notes[].text",
+      "user_documentation": {
+        "specification": "docs/user/types/notes/note/text-spec.en.md",
+        "usage": "docs/user/types/notes/note/text-usage.en.md"
+      },
+      "label": "NotesItemsTextLabel",
+      "description": "NotesItemsTextDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "mandatory": true
+    },
+    {
+      "path": "$.document.notes[].title",
+      "user_documentation": {
+        "specification": "docs/user/types/notes/note/title-spec.en.md",
+        "usage": "docs/user/types/notes/note/title-usage.en.md"
+      },
+      "label": "NotesItemsTitleLabel",
+      "description": "NotesItemsTitleDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "Details",
+        "Executive summary",
+        "Technical summary",
+        "Impact on safety systems"
+      ]
+    },
+    {
+      "path": "$.document.publisher",
+      "user_documentation": {
+        "specification": "docs/user/document/publisher-spec.en.md",
+        "usage": "docs/user/document/publisher-usage.en.md"
+      },
+      "label": "DocumentPublisherLabel",
+      "description": "DocumentPublisherDescription",
+      "type": "OBJECT",
+      "mandatory": true
+    },
+    {
+      "path": "$.document.publisher.category",
+      "user_documentation": {
+        "specification": "docs/user/document/publisher/category-spec.en.md",
+        "usage": "docs/user/document/publisher/category-usage.en.md"
+      },
+      "label": "DocumentPublisherCategoryLabel",
+      "description": "DocumentPublisherCategoryDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "coordinator": "indicates individuals or organizations that manage a single vendor\u2019s response or multiple vendors\u2019 responses to a vulnerability, a security flaw, or an incident",
+        "discoverer": "indicates individuals or organizations that find vulnerabilities or security weaknesses",
+        "translator": "indicates individuals or organizations that translate CSAF documents",
+        "other": "indicates a catchall for everyone else",
+        "user": "indicates anyone using a vendor\u2019s product",
+        "vendor": "indicates developers or maintainers of information system products or services"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.document.publisher.contact_details",
+      "user_documentation": {
+        "specification": "docs/user/document/publisher/contact_details-spec.en.md",
+        "usage": "docs/user/document/publisher/contact_details-usage.en.md"
+      },
+      "label": "DocumentPublisherContactDetailsLabel",
+      "description": "DocumentPublisherContactDetailsDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "examples": [
+        "Example Company can be reached at contact_us@example.com, or via our website at https://www.example.com/contact."
+      ]
+    },
+    {
+      "path": "$.document.publisher.issuing_authority",
+      "user_documentation": {
+        "specification": "docs/user/document/publisher/issuing_authority-spec.en.md",
+        "usage": "docs/user/document/publisher/issuing_authority-usage.en.md"
+      },
+      "label": "DocumentPublisherIssuingAuthorityLabel",
+      "description": "DocumentPublisherIssuingAuthorityDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1
+    },
+    {
+      "path": "$.document.publisher.name",
+      "user_documentation": {
+        "specification": "docs/user/document/publisher/name-spec.en.md",
+        "usage": "docs/user/document/publisher/name-usage.en.md"
+      },
+      "label": "DocumentPublisherNameLabel",
+      "description": "DocumentPublisherNameDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "BSI",
+        "Cisco PSIRT",
+        "Siemens ProductCERT"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.document.publisher.namespace",
+      "user_documentation": {
+        "specification": "docs/user/document/publisher/namespace-spec.en.md",
+        "usage": "docs/user/document/publisher/namespace-usage.en.md"
+      },
+      "label": "DocumentPublisherNamespaceLabel",
+      "description": "DocumentPublisherNamespaceDescription",
+      "type": "URI",
+      "examples": [
+        "https://csaf.io",
+        "https://www.example.com"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.document.references",
+      "user_documentation": {
+        "specification": "docs/user/document/references-spec.en.md",
+        "usage": "docs/user/document/references-usage.en.md"
+      },
+      "label": "DocumentReferencesLabel",
+      "description": "DocumentReferencesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.document.references[]",
+      "user_documentation": {
+        "specification": "docs/user/types/references/reference-spec.en.md",
+        "usage": "docs/user/types/references/reference-usage.en.md"
+      },
+      "label": "ReferencesItemsLabel",
+      "description": "ReferencesItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.document.references[].category",
+      "user_documentation": {
+        "specification": "docs/user/types/references/reference/category-spec.en.md",
+        "usage": "docs/user/types/references/reference/category-usage.en.md"
+      },
+      "label": "ReferencesItemsCategoryLabel",
+      "description": "ReferencesItemsCategoryDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "external": "indicates, that this document is an external reference to a document in focus",
+        "self": "indicates, that this document is a reference to this same document"
+      },
+      "default": "external"
+    },
+    {
+      "path": "$.document.references[].summary",
+      "user_documentation": {
+        "specification": "docs/user/types/references/reference/summary-spec.en.md",
+        "usage": "docs/user/types/references/reference/summary-usage.en.md"
+      },
+      "label": "ReferencesItemsSummaryLabel",
+      "description": "ReferencesItemsSummaryDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "mandatory": true
+    },
+    {
+      "path": "$.document.references[].url",
+      "user_documentation": {
+        "specification": "docs/user/types/references/reference/url-spec.en.md",
+        "usage": "docs/user/types/references/reference/url-usage.en.md"
+      },
+      "label": "ReferencesItemsUrlLabel",
+      "description": "ReferencesItemsUrlDescription",
+      "type": "URI",
+      "mandatory": true
+    },
+    {
+      "path": "$.document.source_lang",
+      "user_documentation": {
+        "specification": "docs/user/document/source_lang-spec.en.md",
+        "usage": "docs/user/document/source_lang-usage.en.md"
+      },
+      "label": "DocumentSourceLangLabel",
+      "description": "DocumentSourceLangDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_pattern": "^(([A-Za-z]{2,3}(-[A-Za-z]{3}(-[A-Za-z]{3}){0,2})?|[A-Za-z]{4,8})(-[A-Za-z]{4})?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-[A-WY-Za-wy-z0-9](-[A-Za-z0-9]{2,8})+)*(-[Xx](-[A-Za-z0-9]{1,8})+)?|[Xx](-[A-Za-z0-9]{1,8})+|[Ii]-[Dd][Ee][Ff][Aa][Uu][Ll][Tt]|[Ii]-[Mm][Ii][Nn][Gg][Oo])$",
+      "examples": [
+        "de",
+        "en",
+        "fr",
+        "frc",
+        "jp"
+      ]
+    },
+    {
+      "path": "$.document.title",
+      "user_documentation": {
+        "specification": "docs/user/document/title-spec.en.md",
+        "usage": "docs/user/document/title-usage.en.md"
+      },
+      "label": "DocumentTitleLabel",
+      "description": "DocumentTitleDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "Cisco IPv6 Crafted Packet Denial of Service Vulnerability",
+        "Example Company Cross-Site-Scripting Vulnerability in Example Generator"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.document.tracking",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking-spec.en.md",
+        "usage": "docs/user/document/tracking-usage.en.md"
+      },
+      "label": "DocumentTrackingLabel",
+      "description": "DocumentTrackingDescription",
+      "type": "OBJECT",
+      "mandatory": true
+    },
+    {
+      "path": "$.document.tracking.aliases",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/aliases-spec.en.md",
+        "usage": "docs/user/document/tracking/aliases-usage.en.md"
+      },
+      "label": "DocumentTrackingAliasesLabel",
+      "description": "DocumentTrackingAliasesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.document.tracking.aliases[]",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/aliases/alias-spec.en.md",
+        "usage": "docs/user/document/tracking/aliases/alias-usage.en.md"
+      },
+      "label": "DocumentTrackingAliasesItemsLabel",
+      "description": "DocumentTrackingAliasesItemsDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CVE-2019-12345"
+      ]
+    },
+    {
+      "path": "$.document.tracking.current_release_date",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/current_release_date-spec.en.md",
+        "usage": "docs/user/document/tracking/current_release_date-usage.en.md"
+      },
+      "label": "DocumentTrackingCurrentReleaseDateLabel",
+      "description": "DocumentTrackingCurrentReleaseDateDescription",
+      "type": "DATETIME",
+      "mandatory": true
+    },
+    {
+      "path": "$.document.tracking.generator",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/generator-spec.en.md",
+        "usage": "docs/user/document/tracking/generator-usage.en.md"
+      },
+      "label": "DocumentTrackingGeneratorLabel",
+      "description": "DocumentTrackingGeneratorDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.document.tracking.generator.date",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/generator/date-spec.en.md",
+        "usage": "docs/user/document/tracking/generator/date-usage.en.md"
+      },
+      "label": "DocumentTrackingGeneratorDateLabel",
+      "description": "DocumentTrackingGeneratorDateDescription",
+      "type": "DATETIME"
+    },
+    {
+      "path": "$.document.tracking.generator.engine",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/generator/engine-spec.en.md",
+        "usage": "docs/user/document/tracking/generator/engine-usage.en.md"
+      },
+      "label": "DocumentTrackingGeneratorEngineLabel",
+      "description": "DocumentTrackingGeneratorEngineDescription",
+      "type": "OBJECT",
+      "mandatory": true
+    },
+    {
+      "path": "$.document.tracking.generator.engine.name",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/generator/engine/name-spec.en.md",
+        "usage": "docs/user/document/tracking/generator/engine/name-usage.en.md"
+      },
+      "label": "DocumentTrackingGeneratorEngineNameLabel",
+      "description": "DocumentTrackingGeneratorEngineNameDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "Red Hat rhsa-to-cvrf",
+        "Secvisogram",
+        "TVCE"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.document.tracking.generator.engine.version",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/generator/engine/version-spec.en.md",
+        "usage": "docs/user/document/tracking/generator/engine/version-usage.en.md"
+      },
+      "label": "DocumentTrackingGeneratorEngineVersionLabel",
+      "description": "DocumentTrackingGeneratorEngineVersionDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "0.6.0",
+        "1.0.0-beta+exp.sha.a1c44f85",
+        "2"
+      ]
+    },
+    {
+      "path": "$.document.tracking.id",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/id-spec.en.md",
+        "usage": "docs/user/document/tracking/id-usage.en.md"
+      },
+      "label": "DocumentTrackingIdLabel",
+      "description": "DocumentTrackingIdDescription",
+      "type": "STRING",
+      "string_pattern": "^[\\S](.*[\\S])?$",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "Example Company - 2019-YH3234",
+        "RHBA-2019:0024",
+        "cisco-sa-20190513-secureboot"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.document.tracking.initial_release_date",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/initial_release_date-spec.en.md",
+        "usage": "docs/user/document/tracking/initial_release_date-usage.en.md"
+      },
+      "label": "DocumentTrackingInitialReleaseDateLabel",
+      "description": "DocumentTrackingInitialReleaseDateDescription",
+      "type": "DATETIME",
+      "mandatory": true
+    },
+    {
+      "path": "$.document.tracking.revision_history",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/revision_history-spec.en.md",
+        "usage": "docs/user/document/tracking/revision_history-usage.en.md"
+      },
+      "label": "DocumentTrackingRevisionHistoryLabel",
+      "description": "DocumentTrackingRevisionHistoryDescription",
+      "type": "ARRAY",
+      "mandatory": true
+    },
+    {
+      "path": "$.document.tracking.revision_history[]",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/revision_history/revision-spec.en.md",
+        "usage": "docs/user/document/tracking/revision_history/revision-usage.en.md"
+      },
+      "label": "DocumentTrackingRevisionHistoryItemsLabel",
+      "description": "DocumentTrackingRevisionHistoryItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.document.tracking.revision_history[].date",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/revision_history/revision/date-spec.en.md",
+        "usage": "docs/user/document/tracking/revision_history/revision/date-usage.en.md"
+      },
+      "label": "DocumentTrackingRevisionHistoryItemsDateLabel",
+      "description": "DocumentTrackingRevisionHistoryItemsDateDescription",
+      "type": "DATETIME",
+      "mandatory": true
+    },
+    {
+      "path": "$.document.tracking.revision_history[].legacy_version",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/revision_history/revision/legacy_version-spec.en.md",
+        "usage": "docs/user/document/tracking/revision_history/revision/legacy_version-usage.en.md"
+      },
+      "label": "DocumentTrackingRevisionHistoryItemsLegacyVersionLabel",
+      "description": "DocumentTrackingRevisionHistoryItemsLegacyVersionDescription",
+      "type": "STRING",
+      "string_min_length": 1
+    },
+    {
+      "path": "$.document.tracking.revision_history[].number",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/revision_history/revision/number-spec.en.md",
+        "usage": "docs/user/document/tracking/revision_history/revision/number-usage.en.md"
+      },
+      "label": "VersionLabel",
+      "description": "VersionDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_pattern": "^(0|[1-9][0-9]*)$|^((0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)$",
+      "examples": [
+        "1",
+        "4",
+        "0.9.0",
+        "1.4.3",
+        "2.40.0+21AF26D3"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.document.tracking.revision_history[].summary",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/revision_history/revision/summary-spec.en.md",
+        "usage": "docs/user/document/tracking/revision_history/revision/summary-usage.en.md"
+      },
+      "label": "DocumentTrackingRevisionHistoryItemsSummaryLabel",
+      "description": "DocumentTrackingRevisionHistoryItemsSummaryDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "examples": [
+        "Initial version."
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.document.tracking.status",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/status-spec.en.md",
+        "usage": "docs/user/document/tracking/status-usage.en.md"
+      },
+      "label": "DocumentTrackingStatusLabel",
+      "description": "DocumentTrackingStatusDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "draft": "indicates that this is a pre-release, intended for issuing party's internal use only, or possibly used externally when the party is seeking feedback or indicating its intentions regarding a specific issue",
+        "final": "indicates that the issuing party asserts the content is unlikely to change",
+        "interim": "indicates that the issuing party expects rapid updates"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.document.tracking.version",
+      "user_documentation": {
+        "specification": "docs/user/document/tracking/version-spec.en.md",
+        "usage": "docs/user/document/tracking/version-usage.en.md"
+      },
+      "label": "VersionLabel",
+      "description": "VersionDescription",
+      "type": "STRING",
+      "string_pattern": "^(0|[1-9][0-9]*)$|^((0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)$",
+      "mandatory": true,
+      "examples": [
+        "1",
+        "4",
+        "0.9.0",
+        "1.4.3",
+        "2.40.0+21AF26D3"
+      ]
+    },
+    {
+      "path": "$.product_tree",
+      "user_documentation": {
+        "specification": "docs/user/product_tree-spec.en.md",
+        "usage": "docs/user/product_tree-usage.en.md"
+      },
+      "label": "ProductTreeLabel",
+      "description": "ProductTreeDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.branches",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/branches-spec.en.md",
+        "usage": "docs/user/product_tree/branches-usage.en.md"
+      },
+      "label": "BranchesLabel",
+      "description": "BranchesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.branches[]",
+      "user_documentation": {
+        "specification": "docs/user/types/branches/branch-spec.en.md",
+        "usage": "docs/user/types/branches/branch-usage.en.md"
+      },
+      "label": "BranchesItemsLabel",
+      "description": "BranchesItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.branches[].branches",
+      "user_documentation": {
+        "specification": "docs/user/types/branches-spec.en.md",
+        "usage": "docs/user/types/branches-usage.en.md"
+      },
+      "label": "BranchesLabel",
+      "description": "BranchesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.branches[].category",
+      "user_documentation": {
+        "specification": "docs/user/types/branches/branch/category-spec.en.md",
+        "usage": "docs/user/types/branches/branch/category-usage.en.md"
+      },
+      "label": "BranchesItemsCategoryLabel",
+      "description": "BranchesItemsCategoryDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "architecture": "indicates the architecture for which the product is intended",
+        "host_name": "indicates the host name of a system/service",
+        "language": "indicates the language of the product",
+        "legacy": "indicates an entry that has reached its end of life",
+        "patch_level": "indicates the patch level of the product",
+        "product_family": "indicates the product family that the product falls into",
+        "product_name": "indicates the name of the product",
+        "product_version": "indicates exactly a single version of the product, MUST NOT contain version ranges of any kind",
+        "product_version_range": "indicates a range of versions for the product, SHOULD NOT be used to convey a single version",
+        "service_pack": "indicates the service pack of the product",
+        "specification": "indicates the specification such as a standard, best common practice, etc",
+        "vendor": "indicates the name of the vendor or manufacturer that makes the product"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.branches[].name",
+      "user_documentation": {
+        "specification": "docs/user/types/branches/branch/name-spec.en.md",
+        "usage": "docs/user/types/branches/branch/name-usage.en.md"
+      },
+      "label": "BranchesItemsNameLabel",
+      "description": "BranchesItemsNameDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "10",
+        "365",
+        "Microsoft",
+        "Office",
+        "PCS 7",
+        "SIMATIC",
+        "Siemens",
+        "Windows"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.branches[].product",
+      "user_documentation": {
+        "specification": "docs/user/types/branches/branch/product-spec.en.md",
+        "usage": "docs/user/types/branches/branch/product-usage.en.md"
+      },
+      "label": "FullProductNameLabel",
+      "description": "FullProductNameDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name-spec.en.md",
+        "usage": "docs/user/types/full_product_name-usage.en.md"
+      },
+      "label": "FullProductNameLabel",
+      "description": "FullProductNameDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.name",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/name-spec.en.md",
+        "usage": "docs/user/types/full_product_name/name-usage.en.md"
+      },
+      "label": "FullProductNameNameLabel",
+      "description": "FullProductNameNameDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "Cisco AnyConnect Secure Mobility Client 2.3.185",
+        "Microsoft Host Integration Server 2006 Service Pack 1"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_id",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_id-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_id-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperLabel",
+      "description": "FullProductNameProductIdentificationHelperDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.cpe",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperCpeLabel",
+      "description": "FullProductNameProductIdentificationHelperCpeDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 5,
+      "string_pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].file_hashes",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
+      "type": "ARRAY",
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].file_hashes[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].file_hashes[].algorithm",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "default": "sha256",
+      "mandatory": true,
+      "examples": [
+        "blake2b512",
+        "sha256",
+        "sha3-512",
+        "sha384",
+        "sha512"
+      ]
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].file_hashes[].value",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 32,
+      "string_pattern": "^[0-9a-fA-F]{32,}$",
+      "examples": [
+        "37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3",
+        "4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc",
+        "9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].filename",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFilenameLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "WINWORD.EXE",
+        "msotadddin.dll",
+        "sudoers.so"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.model_numbers",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperModelNumbersLabel",
+      "description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
+      "type": "ARRAY",
+      "uri_min_length": 32,
+      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.model_numbers[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperModelNumbersItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
+      "type": "STRING",
+      "string_min_length": 1,
+      "string_is_multiline": false
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.purl",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperPurlLabel",
+      "description": "FullProductNameProductIdentificationHelperPurlDescription",
+      "type": "URI",
+      "uri_min_length": 32,
+      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.sbom_urls",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSbomUrlsLabel",
+      "description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.sbom_urls[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSbomUrlsItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription",
+      "type": "URI"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.serial_numbers",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSerialNumbersLabel",
+      "description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.serial_numbers[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSerialNumbersItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
+      "type": "STRING",
+      "string_is_multiline": false
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.skus",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSkusLabel",
+      "description": "FullProductNameProductIdentificationHelperSkusDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.skus[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSkusItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
+      "type": "STRING",
+      "string_is_multiline": false
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.x_generic_uris",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperXGenericUrisLabel",
+      "description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.x_generic_uris[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.x_generic_uris[].namespace",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceLabel",
+      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
+      "type": "URI",
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.x_generic_uris[].uri",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriLabel",
+      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
+      "type": "URI",
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.full_product_names",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/full_product_names-spec.en.md",
+        "usage": "docs/user/product_tree/full_product_names-usage.en.md"
+      },
+      "label": "ProductTreeFullProductNamesLabel",
+      "description": "ProductTreeFullProductNamesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.full_product_names[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name-spec.en.md",
+        "usage": "docs/user/types/full_product_name-usage.en.md"
+      },
+      "label": "FullProductNameLabel",
+      "description": "FullProductNameDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].name",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/name-spec.en.md",
+        "usage": "docs/user/types/full_product_name/name-usage.en.md"
+      },
+      "label": "FullProductNameNameLabel",
+      "description": "FullProductNameNameDescription",
+      "type": "STRING",
+      "string_min_length": 1,
+      "string_is_multiline": false,
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_id",
+      "user_documentation": {
+        "specification": "docs/user/types/product_id-spec.en.md",
+        "usage": "docs/user/types/product_id-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperLabel",
+      "description": "FullProductNameProductIdentificationHelperDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.cpe",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperCpeLabel",
+      "description": "FullProductNameProductIdentificationHelperCpeDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 5,
+      "string_pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.hashes",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
+      "type": "ARRAY",
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].algorithm",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "default": "sha256",
+      "mandatory": true,
+      "examples": [
+        "blake2b512",
+        "sha256",
+        "sha3-512",
+        "sha384",
+        "sha512"
+      ]
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].value",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 32,
+      "string_pattern": "^[0-9a-fA-F]{32,}$",
+      "examples": [
+        "37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3",
+        "4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc",
+        "9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].filename",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFilenameLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "WINWORD.EXE",
+        "msotadddin.dll",
+        "sudoers.so"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.model_numbers",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperModelNumbersLabel",
+      "description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
+      "type": "ARRAY",
+      "uri_min_length": 32,
+      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.model_numbers[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperModelNumbersItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
+      "type": "STRING",
+      "string_min_length": 1,
+      "string_is_multiline": false
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.purl",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperPurlLabel",
+      "description": "FullProductNameProductIdentificationHelperPurlDescription",
+      "type": "URI",
+      "uri_min_length": 32,
+      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.sbom_urls",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSbomUrlsLabel",
+      "description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.sbom_urls[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSbomUrlsItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription",
+      "type": "URI"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.serial_numbers",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSerialNumbersLabel",
+      "description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.serial_numbers[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSerialNumbersItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.skus",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSkusLabel",
+      "description": "FullProductNameProductIdentificationHelperSkusDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.skus[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSkusItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperXGenericUrisLabel",
+      "description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[].namespace",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceLabel",
+      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
+      "type": "URI",
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[].uri",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriLabel",
+      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
+      "type": "URI",
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.product_groups",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/product_groups-spec.en.md",
+        "usage": "docs/user/product_tree/product_groups-usage.en.md"
+      },
+      "label": "ProductTreeProductGroupsLabel",
+      "description": "ProductTreeProductGroupsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.product_groups[]",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/product_groups/product_group-spec.en.md",
+        "usage": "docs/user/product_tree/product_groups/product_group-usage.en.md"
+      },
+      "label": "ProductTreeProductGroupsItemsLabel",
+      "description": "ProductTreeProductGroupsItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.product_groups[].group_id",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/product_groups/product_group/group_id-spec.en.md",
+        "usage": "docs/user/product_tree/product_groups/product_group/group_id-usage.en.md"
+      },
+      "label": "ProductGroupIdLabel",
+      "description": "ProductGroupIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.product_groups[].product_ids",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/product_groups/product_group/product_ids-spec.en.md",
+        "usage": "docs/user/product_tree/product_groups/product_group/product_ids-usage.en.md"
+      },
+      "label": "ProductTreeProductGroupsItemsProductIdsLabel",
+      "description": "ProductTreeProductGroupsItemsProductIdsDescription",
+      "type": "ARRAY",
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.product_groups[].product_ids[]",
+      "user_documentation": {
+        "specification": "docs/user/types/product_id-spec.en.md",
+        "usage": "docs/user/types/product_id-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.product_tree.product_groups[].summary",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/product_groups/product_group/summary-spec.en.md",
+        "usage": "docs/user/product_tree/product_groups/product_group/summary-usage.en.md"
+      },
+      "label": "ProductTreeProductGroupsItemsSummaryLabel",
+      "description": "ProductTreeProductGroupsItemsSummaryDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "examples": [
+        "Products supporting Modbus.",
+        "The x64 versions of the operating system."
+      ]
+    },
+    {
+      "path": "$.product_tree.relationships",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/relationships-spec.en.md",
+        "usage": "docs/user/product_tree/relationships-usage.en.md"
+      },
+      "label": "ProductTreeRelationshipsLabel",
+      "description": "ProductTreeRelationshipsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.relationships[]",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/relationships/relationship-spec.en.md",
+        "usage": "docs/user/product_tree/relationships/relationship-usage.en.md"
+      },
+      "label": "ProductTreeRelationshipsItemsLabel",
+      "description": "ProductTreeRelationshipsItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.relationships[].category",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/relationships/relationship/category-spec.en.md",
+        "usage": "docs/user/product_tree/relationships/relationship/category-usage.en.md"
+      },
+      "label": "ProductTreeRelationshipsItemsCategoryLabel",
+      "description": "ProductTreeRelationshipsItemsCategoryDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "default_component_of": "indicates that the entity labeled with one Product ID (e.g. CSAFPID-0001) is a default component of an entity with another Product ID (e.g. CSAFPID-0002)",
+        "external_component_of": "indicates that the entity labeled with one Product ID (e.g. CSAFPID-0001) is an external component of an entity with another Product ID (e.g. CSAFPID-0002)",
+        "installed_on": "indicates that the entity labeled with one Product ID (e.g. CSAFPID-0001) is installed on a platform entity with another Product ID (e.g. CSAFPID-0002)",
+        "installed_with": "indicates that the entity labeled with one Product ID (e.g. CSAFPID-0001) is installed alongside an entity with another Product ID (e.g. CSAFPID-0002)",
+        "optional_component_of": "indicates that the entity labeled with one Product ID (e.g. CSAFPID-0001) is an optional component of an entity with another Product ID (e.g. CSAFPID-0002)"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/relationships/relationship/full_product_name-spec.en.md",
+        "usage": "docs/user/product_tree/relationships/relationship/full_product_name-usage.en.md"
+      },
+      "label": "FullProductNameLabel",
+      "description": "FullProductNameDescription",
+      "type": "OBJECT",
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.name",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/name-spec.en.md",
+        "usage": "docs/user/types/full_product_name/name-usage.en.md"
+      },
+      "label": "FullProductNameNameLabel",
+      "description": "FullProductNameNameDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "Cisco AnyConnect Secure Mobility Client 2.3.185",
+        "Microsoft Host Integration Server 2006 Service Pack 1"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_id",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_id-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_id-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperLabel",
+      "description": "FullProductNameProductIdentificationHelperDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.cpe",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperCpeLabel",
+      "description": "FullProductNameProductIdentificationHelperCpeDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 5,
+      "string_pattern": "^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!\"#\\$%&'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$"
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
+      "type": "ARRAY",
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].algorithm",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "default": "sha256",
+      "mandatory": true,
+      "examples": [
+        "blake2b512",
+        "sha256",
+        "sha3-512",
+        "sha384",
+        "sha512"
+      ]
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].value",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 32,
+      "string_pattern": "^[0-9a-fA-F]{32,}$",
+      "examples": [
+        "37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3",
+        "4775203615d9534a8bfca96a93dc8b461a489f69124a130d786b42204f3341cc",
+        "9ea4c8200113d49d26505da0e02e2f49055dc078d1ad7a419b32e291c7afebbb84badfbd46dec42883bea0b2a1fa697c"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].filename",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperHashesItemsFilenameLabel",
+      "description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "WINWORD.EXE",
+        "msotadddin.dll",
+        "sudoers.so"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.purl",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperPurlLabel",
+      "description": "FullProductNameProductIdentificationHelperPurlDescription",
+      "type": "URI",
+      "uri_min_length": 32,
+      "uri_pattern": "^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+"
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.sbom_urls",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSbomUrlsLabel",
+      "description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.sbom_urls[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSbomUrlsItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription",
+      "type": "URI"
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSerialNumbersLabel",
+      "description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSerialNumbersItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
+      "type": "STRING",
+      "string_is_multiline": false
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.skus",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSkusLabel",
+      "description": "FullProductNameProductIdentificationHelperSkusDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.skus[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperSkusItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
+      "type": "STRING",
+      "string_is_multiline": false
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperXGenericUrisLabel",
+      "description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsLabel",
+      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].namespace",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceLabel",
+      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
+      "type": "URI",
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].uri",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md",
+        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
+      },
+      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriLabel",
+      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
+      "type": "URI",
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.relationships[].product_reference",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/relationships/relationship/product_reference-spec.en.md",
+        "usage": "docs/user/product_tree/relationships/relationship/product_reference-usage.en.md"
+      },
+      "label": "ProductTreeRelationshipsItemsProductReferenceLabel",
+      "description": "ProductTreeRelationshipsItemsProductReferenceDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.product_tree.relationships[].relates_to_product_reference",
+      "user_documentation": {
+        "specification": "docs/user/product_tree/relationships/relationship/relates_to_product_reference-spec.en.md",
+        "usage": "docs/user/product_tree/relationships/relationship/relates_to_product_reference-usage.en.md"
+      },
+      "label": "ProductTreeRelationshipsItemsRelatesToProductReferenceLabel",
+      "description": "ProductTreeRelationshipsItemsRelatesToProductReferenceDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities-spec.en.md",
+        "usage": "docs/user/vulnerabilities-usage.en.md"
+      },
+      "label": "VulnerabilitiesLabel",
+      "description": "VulnerabilitiesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[]",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsLabel",
+      "description": "VulnerabilitiesItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].acknowledgments",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/acknowledgments-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/acknowledgments-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsAcknowledgmentsLabel",
+      "description": "VulnerabilitiesItemsAcknowledgmentsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].acknowledgments[]",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsLabel",
+      "description": "AcknowledgmentsItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].acknowledgments[].names",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment/names-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment/names-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsNamesLabel",
+      "description": "AcknowledgmentsItemsNamesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].acknowledgments[].names[]",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment/names/name-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsNamesItemsLabel",
+      "description": "AcknowledgmentsItemsNamesItemsDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "Albert Einstein",
+        "Johann Sebastian Bach"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].acknowledgments[].organization",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment/organization-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsOrganizationLabel",
+      "description": "AcknowledgmentsItemsOrganizationDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CISA",
+        "Google Project Zero",
+        "Talos"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].acknowledgments[].summary",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment/summary-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsSummaryLabel",
+      "description": "AcknowledgmentsItemsSummaryDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "examples": [
+        "First analysis of Coordinated Multi-Stream Attack (CMSA)"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].acknowledgments[].urls",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment/urls-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsUrlsLabel",
+      "description": "AcknowledgmentsItemsUrlsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].acknowledgments[].urls[]",
+      "user_documentation": {
+        "specification": "docs/user/types/acknowledgments/acknowledgment/urls/url-spec.en.md",
+        "usage": "docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md"
+      },
+      "label": "AcknowledgmentsItemsUrlsItemsLabel",
+      "description": "AcknowledgmentsItemsUrlsItemsDescription",
+      "type": "URI"
+    },
+    {
+      "path": "$.vulnerabilities[].cve",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/cve-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/cve-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsCveLabel",
+      "description": "VulnerabilitiesItemsCveDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_pattern": "^CVE-[0-9]{4}-[0-9]{4,}$"
+    },
+    {
+      "path": "$.vulnerabilities[].cwe",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/cwe-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/cwe-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsCweLabel",
+      "description": "VulnerabilitiesItemsCweDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].cwe.id",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/cwe/id-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/cwe/id-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsCweIdLabel",
+      "description": "VulnerabilitiesItemsCweIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_pattern": "^CWE-[1-9]\\d{0,5}$",
+      "examples": [
+        "CWE-22",
+        "CWE-352",
+        "CWE-79"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].cwe.name",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/cwe/name-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/cwe/name-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsCweNameLabel",
+      "description": "VulnerabilitiesItemsCweNameDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "Cross-Site Request Forgery (CSRF)",
+        "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+        "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].discovery_date",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/discovery_date-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/discovery_date-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsDiscoveryDateLabel",
+      "description": "VulnerabilitiesItemsDiscoveryDateDescription",
+      "type": "DATETIME"
+    },
+    {
+      "path": "$.vulnerabilities[].flags",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/flags-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/flags-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsFlagsLabel",
+      "description": "VulnerabilitiesItemsFlagsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].flags[]",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/flags/flag-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/flags/flag-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsFlagsItemsLabel",
+      "description": "VulnerabilitiesItemsFlagsItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].flags[].date",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/flags/flag/date-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/flags/flag/date-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsFlagsItemsDateLabel",
+      "description": "VulnerabilitiesItemsFlagsItemsDateDescription",
+      "type": "DATETIME"
+    },
+    {
+      "path": "$.vulnerabilities[].flags[].group_ids",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/flags/flag/group_ids-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/flags/flag/group_ids-usage.en.md"
+      },
+      "label": "ProductGroupsLabel",
+      "description": "ProductGroupsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].flags[].group_ids[]",
+      "user_documentation": {
+        "specification": "docs/user/types/product_group_id-spec.en.md",
+        "usage": "docs/user/types/product_group_id-spec.en.md"
+      },
+      "label": "ProductGroupIdLabel",
+      "description": "ProductGroupIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFGID-0001",
+        "CSAFGID-0002",
+        "CSAFGID-0020"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].flags[].label",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/flags/flag/label-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/flags/flag/label-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsFlagsItemsLabelLabel",
+      "description": "VulnerabilitiesItemsFlagsItemsLabelDescription",
+      "type": "ENUM",
+      "enum_values": [
+        "component_not_present",
+        "inline_mitigations_already_exist",
+        "vulnerable_code_cannot_be_controlled_by_adversary",
+        "vulnerable_code_not_in_execute_path",
+        "vulnerable_code_not_present"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].flags[].product_ids",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/flags/flag/product_ids-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/flags/flag/product_ids-usage.en.md"
+      },
+      "label": "ProductsLabel",
+      "description": "ProductsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].flags[].product_ids[]",
+      "user_documentation": {
+        "specification": "docs/user/types/product_id-spec.en.md",
+        "usage": "docs/user/types/product_id-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_min_length": 1,
+      "string_is_multiline": false,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].ids",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/ids-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/ids-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsIdsLabel",
+      "description": "VulnerabilitiesItemsIdsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].ids[]",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/ids/id-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/ids/id-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsIdsItemsLabel",
+      "description": "VulnerabilitiesItemsIdsItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].ids[].system_name",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/ids/id/system_name-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/ids/id/system_name-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsIdsItemsSystemNameLabel",
+      "description": "VulnerabilitiesItemsIdsItemsSystemNameDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "Cisco Bug ID",
+        "GitHub Issue"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].ids[].text",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/ids/id/text-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/ids/id/text-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsIdsItemsTextLabel",
+      "description": "VulnerabilitiesItemsIdsItemsTextDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSCso66472",
+        "oasis-tcs/csaf#210"
+      ],
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].involvements",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/involvements-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/involvements-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsInvolvementsLabel",
+      "description": "VulnerabilitiesItemsInvolvementsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].involvements[]",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/involvements/involvement-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsInvolvementsItemsLabel",
+      "description": "VulnerabilitiesItemsInvolvementsItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].involvements[].date",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement/date-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/involvements/involvement/date-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsInvolvementsItemsDateLabel",
+      "description": "VulnerabilitiesItemsInvolvementsItemsDateDescription",
+      "type": "DATETIME"
+    },
+    {
+      "path": "$.vulnerabilities[].involvements[].party",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement/party-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/involvements/involvement/party-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsInvolvementsItemsPartyLabel",
+      "description": "VulnerabilitiesItemsInvolvementsItemsPartyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "coordinator": "indicates individuals or organizations that manage a single vendor\u2019s response or multiple vendors\u2019 responses to a vulnerability, a security flaw, or an incident",
+        "discoverer": "indicates individuals or organizations that find vulnerabilities or security weaknesses",
+        "other": "indicates a catchall for everyone else",
+        "user": "indicates anyone using a vendor\u2019s product",
+        "vendor": "indicates developers or maintainers of information system products or services"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].involvements[].status",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement/status-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/involvements/involvement/status-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsInvolvementsItemsStatusLabel",
+      "description": "VulnerabilitiesItemsInvolvementsItemsStatusDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "completed": "indicates that the party asserts that investigation of the vulnerability is complete",
+        "contact_attempted": "indicates that the document producer attempted to contact the party",
+        "disputed": "indicates that the party disputes the vulnerability report in its entirety",
+        "in_progress": "indicates that some hotfixes, permanent fixes, mitigations, workarounds, or patches may have been made available by the party, but more information or fixes may be released in the future",
+        "not_contacted": "indicates that the document producer has not attempted to make contact with the party",
+        "open": "the default status, doesn\u2019t indicate anything about the vulnerability remediation effort other than the fact that the party has acknowledged awareness of the vulnerability report"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].involvements[].summary",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement/summary-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/involvements/involvement/summary-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsInvolvementsItemsSummaryLabel",
+      "description": "VulnerabilitiesItemsInvolvementsItemsSummaryDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1
+    },
+    {
+      "path": "$.vulnerabilities[].notes",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/notes-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/notes-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsNotesLabel",
+      "description": "VulnerabilitiesItemsNotesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].notes[]",
+      "user_documentation": {
+        "specification": "docs/user/types/notes/note-spec.en.md",
+        "usage": "docs/user/types/notes/note-usage.en.md"
+      },
+      "label": "NotesItemsLabel",
+      "description": "NotesItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].notes[].audience",
+      "user_documentation": {
+        "specification": "docs/user/types/notes/note/audience-spec.en.md",
+        "usage": "docs/user/types/notes/note/audience-usage.en.md"
+      },
+      "label": "NotesItemsAudienceLabel",
+      "description": "NotesItemsAudienceDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "all",
+        "executives",
+        "operational management and system administrators",
+        "safety engineers"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].notes[].category",
+      "user_documentation": {
+        "specification": "docs/user/types/notes/note/category-spec.en.md",
+        "usage": "docs/user/types/notes/note/category-usage.en.md"
+      },
+      "label": "NotesItemsCategoryLabel",
+      "description": "NotesItemsCategoryDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "description": "indicates the note is a description of something. The optional sibling property title MAY have more information in this case",
+        "details": "indicates the note is a low-level detailed discussion. The optional sibling property title MAY have more information in this case",
+        "faq": "indicates the note is a list of frequently asked questions",
+        "general": "indicates the note is a general, high-level note. The optional sibling property title MAY have more information in this case",
+        "legal_disclaimer": "indicates the note represents any possible legal discussion, including constraints, surrounding the document",
+        "other": "indicates the note is something that doesn\u2019t fit the other categories",
+        "summary": "indicates the note is a summary of something"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].notes[].text",
+      "user_documentation": {
+        "specification": "docs/user/types/notes/note/text-spec.en.md",
+        "usage": "docs/user/types/notes/note/text-usage.en.md"
+      },
+      "label": "NotesItemsTextLabel",
+      "description": "NotesItemsTextDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].notes[].title",
+      "user_documentation": {
+        "specification": "docs/user/types/notes/note/title-spec.en.md",
+        "usage": "docs/user/types/notes/note/title-usage.en.md"
+      },
+      "label": "NotesItemsTitleLabel",
+      "description": "NotesItemsTitleDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "Details",
+        "Executive summary",
+        "Technical summary",
+        "Impact on safety systems"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].product_status",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/product_status-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/product_status-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsProductStatusLabel",
+      "description": "VulnerabilitiesItemsProductStatusDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.first_affected",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/product_status/first_affected-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/product_status/first_affected-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsProductStatusFirstAffectedLabel",
+      "description": "VulnerabilitiesItemsProductStatusFirstAffectedDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.first_affected[]",
+      "user_documentation": {
+        "specification": "docs/user/types/products-spec.en.md",
+        "usage": "docs/user/types/products-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.first_fixed",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/product_status/first_fixed-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/product_status/first_fixed-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsProductStatusFirstFixedLabel",
+      "description": "VulnerabilitiesItemsProductStatusFirstFixedDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.first_fixed[]",
+      "user_documentation": {
+        "specification": "docs/user/types/products-spec.en.md",
+        "usage": "docs/user/types/products-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.fixed",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/product_status/fixed-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/product_status/fixed-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsProductStatusFixedLabel",
+      "description": "VulnerabilitiesItemsProductStatusFixedDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.fixed[]",
+      "user_documentation": {
+        "specification": "docs/user/types/products-spec.en.md",
+        "usage": "docs/user/types/products-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.known_affected",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/product_status/known_affected-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/product_status/known_affected-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsProductStatusKnownAffectedLabel",
+      "description": "VulnerabilitiesItemsProductStatusKnownAffectedDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.known_affected[]",
+      "user_documentation": {
+        "specification": "docs/user/types/products-spec.en.md",
+        "usage": "docs/user/types/products-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.known_not_affected",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsProductStatusKnownNotAffectedLabel",
+      "description": "VulnerabilitiesItemsProductStatusKnownNotAffectedDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.known_not_affected[]",
+      "user_documentation": {
+        "specification": "docs/user/types/products-spec.en.md",
+        "usage": "docs/user/types/products-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.last_affected",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/product_status/last_affected-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/product_status/last_affected-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsProductStatusLastAffectedLabel",
+      "description": "VulnerabilitiesItemsProductStatusLastAffectedDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.last_affected[]",
+      "user_documentation": {
+        "specification": "docs/user/types/products-spec.en.md",
+        "usage": "docs/user/types/products-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.recommended",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/product_status/recommended-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/product_status/recommended-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsProductStatusRecommendedLabel",
+      "description": "VulnerabilitiesItemsProductStatusRecommendedDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.recommended[]",
+      "user_documentation": {
+        "specification": "docs/user/types/products-spec.en.md",
+        "usage": "docs/user/types/products-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.under_investigation",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/product_status/under_investigation-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/product_status/under_investigation-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsProductStatusUnderInvestigationLabel",
+      "description": "VulnerabilitiesItemsProductStatusUnderInvestigationDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].product_status.under_investigation[]",
+      "user_documentation": {
+        "specification": "docs/user/types/products-spec.en.md",
+        "usage": "docs/user/types/products-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].references",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/references-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/references-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsReferencesLabel",
+      "description": "VulnerabilitiesItemsReferencesDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].references[]",
+      "user_documentation": {
+        "specification": "docs/user/types/references/reference-spec.en.md",
+        "usage": "docs/user/types/references/reference-usage.en.md"
+      },
+      "label": "ReferencesItemsLabel",
+      "description": "ReferencesItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].references[].category",
+      "user_documentation": {
+        "specification": "docs/user/types/references/reference/category-spec.en.md",
+        "usage": "docs/user/types/references/reference/category-usage.en.md"
+      },
+      "label": "ReferencesItemsCategoryLabel",
+      "description": "ReferencesItemsCategoryDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "external": "indicates, that this document is an external reference to a vulnerability in focus",
+        "self": "indicates, that this document is a reference to this same vulnerability"
+      },
+      "default": "external"
+    },
+    {
+      "path": "$.vulnerabilities[].references[].summary",
+      "user_documentation": {
+        "specification": "docs/user/types/references/reference/summary-spec.en.md",
+        "usage": "docs/user/types/references/reference/summary-usage.en.md"
+      },
+      "label": "ReferencesItemsSummaryLabel",
+      "description": "ReferencesItemsSummaryDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].references[].url",
+      "user_documentation": {
+        "specification": "docs/user/types/references/reference/url-spec.en.md",
+        "usage": "docs/user/types/references/reference/url-usage.en.md"
+      },
+      "label": "ReferencesItemsUrlLabel",
+      "description": "ReferencesItemsUrlDescription",
+      "type": "URI",
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].release_date",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/release_date-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/release_date-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsReleaseDateLabel",
+      "description": "VulnerabilitiesItemsReleaseDateDescription",
+      "type": "DATETIME"
+    },
+    {
+      "path": "$.vulnerabilities[].remediations",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsRemediationsLabel",
+      "description": "VulnerabilitiesItemsRemediationsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[]",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsRemediationsItemsLabel",
+      "description": "VulnerabilitiesItemsRemediationsItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].category",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/category-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/category-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsRemediationsItemsCategoryLabel",
+      "description": "VulnerabilitiesItemsRemediationsItemsCategoryDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "mitigation": "indicates that the remediation contains information about a configuration or deployment scenario that helps to reduce the risk of the vulnerability but that does not resolve the vulnerability on the affected product",
+        "no_fix_planned": "indicates that there is no fix for the vulnerability and it is not planned to provide one at any time",
+        "none_available": "indicates that there is currently no fix available",
+        "vendor_fix": "indicates that the remediation contains information about an official fix that is issued by the original author of the affected product",
+        "workaround": "indicates that the remediation contains information about a configuration or specific deployment scenario that can be used to avoid exposure to the vulnerability"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].date",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/date-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/date-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsRemediationsItemsDateLabel",
+      "description": "VulnerabilitiesItemsRemediationsItemsDateDescription",
+      "type": "DATETIME"
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].details",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/details-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/details-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsRemediationsItemsDetailsLabel",
+      "description": "VulnerabilitiesItemsRemediationsItemsDetailsDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].entitlements",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsRemediationsItemsEntitlementsLabel",
+      "description": "VulnerabilitiesItemsRemediationsItemsEntitlementsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].entitlements[]",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsRemediationsItemsEntitlementsItemsLabel",
+      "description": "VulnerabilitiesItemsRemediationsItemsEntitlementsItemsDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].group_ids",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids-usage.en.md"
+      },
+      "label": "ProductGroupsLabel",
+      "description": "ProductGroupsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].group_ids[]",
+      "user_documentation": {
+        "specification": "docs/user/types/product_group_id-spec.en.md",
+        "usage": "docs/user/types/product_group_id-usage.en.md"
+      },
+      "label": "ProductGroupIdLabel",
+      "description": "ProductGroupIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFGID-0001",
+        "CSAFGID-0002",
+        "CSAFGID-0020"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].product_ids",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids-usage.en.md"
+      },
+      "label": "ProductsLabel",
+      "description": "ProductsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].product_ids[]",
+      "user_documentation": {
+        "specification": "docs/user/types/product_id-spec.en.md",
+        "usage": "docs/user/types/product_id-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].restart_required",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsRemediationsItemsRestartRequiredLabel",
+      "description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].restart_required.category",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/category-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/category-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsRemediationsItemsRestartRequiredCategoryLabel",
+      "description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredCategoryDescription",
+      "type": "STRING",
+      "enum_values": {
+        "connected": "the vulnerable component and all components connected (via network or any type of inter-process communication) to the vulnerable component need to be restarted",
+        "dependencies": "the vulnerable component and all components which require the vulnerable component to work need to be restarted",
+        "machine": "the machine on which the vulnerable component is installed on needs to be restarted",
+        "none": "no restart required",
+        "parent": "the vulnerable component and its parent process need to be restarted",
+        "service": "the vulnerable component and the background service used by the vulnerable component need to be restarted.",
+        "system": "the whole system which the machine resides on which the vulnerable component is installed needs to be restarted",
+        "vulnerable_component": "only the vulnerable component (as given by the elements of product_ids or group_ids in the current remediation item) needs to be restarted",
+        "zone": "the security zone in which the machine resides on which the vulnerable component is installed needs to be restarted"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].restart_required.details",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/details-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/details-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsLabel",
+      "description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1
+    },
+    {
+      "path": "$.vulnerabilities[].remediations[].url",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/url-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/url-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsRemediationsItemsUrlLabel",
+      "description": "VulnerabilitiesItemsRemediationsItemsUrlDescription",
+      "type": "URI"
+    },
+    {
+      "path": "$.vulnerabilities[].scores",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsScoresLabel",
+      "description": "VulnerabilitiesItemsScoresDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].scores[]",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsScoresItemsLabel",
+      "description": "VulnerabilitiesItemsScoresItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.version",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "VersionLabel",
+      "description": "VersionDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "2.0": "CVSS Version 2.0"
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.vectorString",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_pattern": "^((AV:[NAL]|AC:[LMH]|Au:[MSN]|[CIA]:[NPC]|E:(U|POC|F|H|ND)|RL:(OF|TF|W|U|ND)|RC:(UC|UR|C|ND)|CDP:(N|L|LM|MH|H|ND)|TD:(N|L|M|H|ND)|[CIA]R:(L|M|H|ND))/)*(AV:[NAL]|AC:[LMH]|Au:[MSN]|[CIA]:[NPC]|E:(U|POC|F|H|ND)|RL:(OF|TF|W|U|ND)|RC:(UC|UR|C|ND)|CDP:(N|L|LM|MH|H|ND)|TD:(N|L|M|H|ND)|[CIA]R:(L|M|H|ND))$"
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.accessVector",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NETWORK": "A vulnerability exploitable with network access means the vulnerable software is bound to the network stack and the attacker does not require local network access or local access. Such a vulnerability is often termed \"remotely exploitable\". An example of a network attack is an RPC buffer overflow.",
+        "ADJACENT_NETWORK": "A vulnerability exploitable with adjacent network access requires the attacker to have access to either the broadcast or collision domain of the vulnerable software.  Examples of local networks include local IP subnet, Bluetooth, IEEE 802.11, and local Ethernet segment.",
+        "LOCAL": "A vulnerability exploitable with only local access requires the attacker to have either physical access to the vulnerable system or a local (shell) account. Examples of locally exploitable vulnerabilities are peripheral attacks such as Firewire/USB DMA attacks, and local privilege escalations (e.g., sudo)."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.accessComplexity",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "HIGH": "Specialized access conditions exist. For example:\n- In most configurations, the attacking party must already have elevated privileges or spoof additional systems in addition to the attacking system (e.g., DNS hijacking).\n- The attack depends on social engineering methods that would be easily detected by knowledgeable people. For example, the victim must perform several suspicious or atypical actions.\n- The vulnerable configuration is seen very rarely in practice.\n- If a race condition exists, the window is very narrow.",
+        "MEDIUM": "The access conditions are somewhat specialized; the following are examples:\n- The attacking party is limited to a group of systems or users at some level of authorization, possibly untrusted.\n- Some information must be gathered before a successful attack can be launched.\n- The affected configuration is non-default, and is not commonly configured (e.g., a vulnerability present when a server performs user account authentication via a specific scheme, but not present for another authentication scheme).\n- The attack requires a small amount of social engineering that might occasionally fool cautious users (e.g., phishing attacks that modify a web browsers status bar to show a false link, having to be on someones buddy list before sending an IM exploit).",
+        "LOW": "Specialized access conditions or extenuating circumstances do not exist. The following are examples:\n- The affected product typically requires access to a wide range of systems and users, possibly anonymous and untrusted (e.g., Internet-facing web or mail server).\n- The affected configuration is default or ubiquitous.\n- The attack can be performed manually and requires little skill or additional information gathering.\n- The race condition is a lazy one (i.e., it is technically a race but easily winnable)."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.authentication",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "MULTIPLE": "Exploiting the vulnerability requires that the attacker authenticate two or more times, even if the same credentials are used each time. An example is an attacker authenticating to an operating system in addition to providing credentials to access an application hosted on that system.",
+        "SINGLE": "The vulnerability requires an attacker to be logged into the system (such as at a command line or via a desktop session or web interface).",
+        "NONE": "Authentication is not required to exploit the vulnerability."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.confidentialityImpact",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "There is no impact to the confidentiality of the system.",
+        "PARTIAL": "There is considerable informational disclosure. Access to some system files is possible, but the attacker does not have control over what is obtained, or the scope of the loss is constrained. An example is a vulnerability that divulges only certain tables in a database.",
+        "COMPLETE": "There is total information disclosure, resulting in all system files being revealed. The attacker is able to read all of the system's data (memory, files, etc.)"
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.integrityImpact",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "There is no impact to the integrity of the system.",
+        "PARTIAL": "Modification of some system files or information is possible, but the attacker does not have control over what can be modified, or the scope of what the attacker can affect is limited. For example, system or application files may be overwritten or modified, but either the attacker has no control over which files are affected or the attacker can modify files within only a limited context or scope.",
+        "COMPLETE": "There is a total compromise of system integrity. There is a complete loss of system protection, resulting in the entire system being compromised. The attacker is able to modify any files on the target system."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.availabilityImpact",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "There is no impact to the availability of the system.",
+        "PARTIAL": "There is reduced performance or interruptions in resource availability. An example is a network-based flood attack that permits a limited number of successful connections to an Internet service.",
+        "COMPLETE": "There is a total shutdown of the affected resource. The attacker can render the resource completely unavailable."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.baseScore",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "NUMBER",
+      "minimum": 0,
+      "maximum": 10
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.exploitability",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "UNPROVEN": "No exploit code is available, or an exploit is entirely theoretical.",
+        "PROOF_OF_CONCEPT": "Proof-of-concept exploit code or an attack demonstration that is not practical for most systems is available. The code or technique is not functional in all situations and may require substantial modification by a skilled attacker.",
+        "FUNCTIONAL": "Functional exploit code is available. The code works in most situations where the vulnerability exists.",
+        "HIGH": "Either the vulnerability is exploitable by functional mobile autonomous code, or no exploit is required (manual trigger) and details are widely available. The code works in every situation, or is actively being delivered via a mobile autonomous agent (such as a worm or virus).",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.remediationLevel",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "OFFICIAL_FIX": "A complete vendor solution is available. Either the vendor has issued an official patch, or an upgrade is available.",
+        "TEMPORARY_FIX": "There is an official but temporary fix available. This includes instances where the vendor issues a temporary hotfix, tool, or workaround.",
+        "WORKAROUND": "There is an unofficial, non-vendor solution available. In some cases, users of the affected technology will create a patch of their own or provide steps to work around or otherwise mitigate the vulnerability.",
+        "UNAVAILABLE": "There is either no solution available or it is impossible to apply.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.reportConfidence",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "UNCONFIRMED": "There is a single unconfirmed source or possibly multiple conflicting reports. There is little confidence in the validity of the reports. An example is a rumor that surfaces from the hacker underground.",
+        "UNCORROBORATED": "There are multiple non-official sources, possibly including independent security companies or research organizations. At this point there may be conflicting technical details or some other lingering ambiguity.",
+        "CONFIRMED": "The vulnerability has been acknowledged by the vendor or author of the affected technology. The vulnerability may also be Confirmed when its existence is confirmed from an external event such as publication of functional or proof-of-concept exploit code or widespread exploitation.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.temporalScore",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "NUMBER",
+      "minimum": 0,
+      "maximum": 10
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.collateralDamagePotential",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "There is no potential for loss of life, physical assets, productivity or revenue.",
+        "LOW": "A successful exploit of this vulnerability may result in slight physical or property damage. Or, there may be a slight loss of revenue or productivity to the organization.",
+        "LOW_MEDIUM": "A successful exploit of this vulnerability may result in moderate physical or property damage. Or, there may be a moderate loss of revenue or productivity to the organization.",
+        "MEDIUM_HIGH": "A successful exploit of this vulnerability may result in significant physical or property damage or loss. Or, there may be a significant loss of revenue or productivity.",
+        "HIGH": "A successful exploit of this vulnerability may result in catastrophic physical or property damage and loss. Or, there may be a catastrophic loss of revenue or productivity.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.targetDistribution",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "No target systems exist, or targets are so highly specialized that they only exist in a laboratory setting. Effectively 0% of the environment is at risk.",
+        "LOW": "Targets exist inside the environment, but on a small scale. Between 1% - 25% of the total environment is at risk.",
+        "MEDIUM": "Targets exist inside the environment, but on a medium scale. Between 26% - 75% of the total environment is at risk.",
+        "HIGH": "Targets exist inside the environment on a considerable scale. Between 76% - 100% of the total environment is considered at risk.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.confidentialityRequirement",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "LOW": "Loss of confidentiality is likely to have only a limited adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "MEDIUM": "Loss of confidentiality is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "HIGH": "Loss of confidentiality is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.integrityRequirement",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "LOW": "Loss of integrity is likely to have only a limited adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "MEDIUM": "Loss of integrity is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "HIGH": "Loss of integrity is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.availabilityRequirement",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "LOW": "Loss of availability is likely to have only a limited adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "MEDIUM": "Loss of availability is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "HIGH": "Loss of availability is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v2.environmentalScore",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      },
+      "label": "CvssV2PropertyLabel",
+      "description": "CvssV2PropertyDescription",
+      "type": "NUMBER",
+      "minimum": 0,
+      "maximum": 10
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.version",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "VersionLabel",
+      "description": "VersionDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "3.0": "CVSS Version 3.0",
+        "3.1": "CVSS Version 3.1"
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.vectorString",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "pattern": {
+        "v3.0": "^CVSS:3[.]0/((AV:[NALP]|AC:[LH]|PR:[UNLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])/)*(AV:[NALP]|AC:[LH]|PR:[UNLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])$",
+        "v3.1": "^CVSS:3[.]1/((AV:[NALP]|AC:[LH]|PR:[NLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])/)*(AV:[NALP]|AC:[LH]|PR:[NLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])$"
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.attackVector",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NETWORK": "A vulnerability exploitable with network access means the vulnerable component is bound to the network stack and the attacker's path is through OSI layer 3 (the network layer). Such a vulnerability is often termed \"remotely exploitable\" and can be thought of as an attack being exploitable one or more network hops away (e.g. across layer 3 boundaries from routers). An example of a network attack is an attacker causing a denial of service (DoS) by sending a specially crafted TCP packet from across the public Internet (e.g. CVE 2004 0230).",
+        "ADJACENT_NETWORK": "A vulnerability exploitable with adjacent network access means the vulnerable component is bound to the network stack, however the attack is limited to the same shared physical (e.g. Bluetooth, IEEE 802.11), or logical (e.g. local IP subnet) network, and cannot be performed across an OSI layer 3 boundary (e.g. a router). An example of an Adjacent attack would be an ARP (IPv4) or neighbor discovery (IPv6) flood leading to a denial of service on the local LAN segment. See also CVE 2013 6014.",
+        "LOCAL": "A vulnerability exploitable with Local access means that the vulnerable component is not bound to the network stack, and the attacker's path is via read/write/execute capabilities. In some cases, the attacker may be logged in locally in order to exploit the vulnerability, otherwise, she may rely on User Interaction to execute a malicious file.",
+        "PHYSICAL": "A vulnerability exploitable with Physical access requires the attacker to physically touch or manipulate the vulnerable component. Physical interaction may be brief (e.g. evil maid attack [1]) or persistent. An example of such an attack is a cold boot attack which allows an attacker to access to disk encryption keys after gaining physical access to the system, or peripheral attacks such as Firewire/USB Direct Memory Access attacks."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.attackComplexity",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "LOW": "Specialized access conditions or extenuating circumstances do not exist. An attacker can expect repeatable success against the vulnerable component.",
+        "HIGH": "A successful attack depends on conditions beyond the attacker's control. That is, a successful attack cannot be accomplished at will, but requires the attacker to invest in some measurable amount of effort in preparation or execution against the vulnerable component before a successful attack can be expected. 2 For example, a successful attack may depend on an attacker overcoming any of the following conditions:\n- The attacker must conduct target-specific reconnaissance. For example, on target configuration settings, sequence numbers, shared secrets, etc.\n- The attacker must prepare the target environment to improve exploit reliability. For example, repeated exploitation to win a race condition, or overcoming advanced exploit mitigation techniques.\n- The attacker must inject herself into the logical network path between the target and the resource requested by the victim in order to read and/or modify network communications (e.g. man in the middle attack)."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.privilegesRequired",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "The attacker is unauthorized prior to attack, and therefore does not require any access to settings or files to carry out an attack.",
+        "LOW": "The attacker is authorized with (i.e. requires) privileges that provide basic user capabilities that could normally affect only settings and files owned by a user. Alternatively, an attacker with Low privileges may have the ability to cause an impact only to non-sensitive resources.",
+        "HIGH": "The attacker is authorized with (i.e. requires) privileges that provide significant (e.g. administrative) control over the vulnerable component that could affect component-wide settings and files.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.userInteraction",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "The vulnerable system can be exploited without interaction from any user.",
+        "REQUIRED": "Successful exploitation of this vulnerability requires a user to take some action before the vulnerability can be exploited. For example, a successful exploit may only be possible during the installation of an application by a system administrator.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.scope",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "UNCHANGED": "An exploited vulnerability can only affect resources managed by the same authority. In this case the vulnerable component and the impacted component are the same.",
+        "CHANGED": "An exploited vulnerability can affect resources beyond the authorization privileges intended by the vulnerable component. In this case the vulnerable component and the impacted component are different."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.confidentialityImpact",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "There is no loss of confidentiality within the impacted component.",
+        "LOW": "There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is constrained. The information disclosure does not cause a direct, serious loss to the impacted component.",
+        "HIGH": "There is total loss of confidentiality, resulting in all resources within the impacted component being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact. For example, an attacker steals the administrator's password, or private encryption keys of a web server."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.integrityImpact",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "There is no loss of integrity within the impacted component.",
+        "LOW": "Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is constrained. The data modification does not have a direct, serious impact on the impacted component.",
+        "HIGH": "There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the impacted component. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the impacted component."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.availabilityImpact",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "There is no impact to availability within the impacted component.",
+        "LOW": "There is reduced performance or interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the impacted component are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the impacted component.",
+        "HIGH": "There is total loss of availability, resulting in the attacker being able to fully deny access to resources in the impacted component; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the impacted component (e.g., the attacker cannot disrupt existing connections, but can prevent new connections; the attacker can repeatedly exploit a vulnerability that, in each instance of a successful attack, leaks a only small amount of memory, but after repeated exploitation causes a service to become completely unavailable)."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.baseScore",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "NUMBER",
+      "minimum": 0,
+      "maximum": 10
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.baseSeverity",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "Base Score of 0.0",
+        "LOW": "Base Score between 0.1 and 3.9",
+        "MEDIUM": "Base Score between 4.0 and 6.9",
+        "HIGH": "Base Score between 7.0 and 8.9",
+        "CRITICAL": "Base Score between 9.0 and 10.0"
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.exploitCodeMaturity",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "UNPROVEN": "No exploit code is available, or an exploit is theoretical.",
+        "PROOF_OF_CONCEPT": "Proof-of-concept exploit code is available, or an attack demonstration is not practical for most systems. The code or technique is not functional in all situations and may require substantial modification by a skilled attacker.",
+        "FUNCTIONAL": "Functional exploit code is available. The code works in most situations where the vulnerability exists.",
+        "HIGH": "Functional autonomous code exists, or no exploit is required (manual trigger) and details are widely available. Exploit code works in every situation, or is actively being delivered via an autonomous agent (such as a worm or virus). Network-connected systems are likely to encounter scanning or exploitation attempts. Exploit development has reached the level of reliable, widely-available, easy-to-use automated tools.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to a scoring equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.remediationLevel",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "OFFICIAL_FIX": "A complete vendor solution is available. Either the vendor has issued an official patch, or an upgrade is available.",
+        "TEMPORARY_FIX": "There is an official but temporary fix available. This includes instances where the vendor issues a temporary hotfix, tool, or workaround.",
+        "WORKAROUND": "There is an unofficial, non-vendor solution available. In some cases, users of the affected technology will create a patch of their own or provide steps to work around or otherwise mitigate the vulnerability.",
+        "UNAVAILABLE": "There is either no solution available or it is impossible to apply.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to a scoring equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.reportConfidence",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "UNKNOWN": "There are reports of impacts that indicate a vulnerability is present. The reports indicate that the cause of the vulnerability is unknown, or reports may differ on the cause or impacts of the vulnerability. Reporters are uncertain of the true nature of the vulnerability, and there is little confidence in the validity of the reports or whether a static Base score can be applied given the differences described. An example is a bug report which notes that an intermittent but non-reproducible crash occurs, with evidence of memory corruption suggesting that denial of service, or possible more serious impacts, may result.",
+        "REASONABLE": "Significant details are published, but researchers either do not have full confidence in the root cause, or do not have access to source code to fully confirm all of the interactions that may lead to the result. Reasonable confidence exists, however, that the bug is reproducible and at least one impact is able to be verified (proof-of-concept exploits may provide this). An example is a detailed write-up of research into a vulnerability with an explanation (possibly obfuscated or \"left as an exercise to the reader\") that gives assurances on how to reproduce the results.",
+        "CONFIRMED": "Detailed reports exist, or functional reproduction is possible (functional exploits may provide this). Source code is available to independently verify the assertions of the research, or the author or vendor of the affected code has confirmed the presence of the vulnerability.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to a scoring equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.temporalScore",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "NUMBER",
+      "minimum": 0,
+      "maximum": 10
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.temporalSeverity",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "Temporal Score of 0.0",
+        "LOW": "Temporal Score between 0.1 and 3.9",
+        "MEDIUM": "Temporal Score between 4.0 and 6.9",
+        "HIGH": "Temporal Score between 7.0 and 8.9",
+        "CRITICAL": "Temporal Score between 9.0 and 10.0"
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.confidentialityRequirement",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "LOW": "Loss of confidentiality is likely to have only a limited adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "MEDIUM": "Loss of confidentiality is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "HIGH": "Loss of confidentiality is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.integrityRequirement",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "LOW": "Loss of integrity is likely to have only a limited adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "MEDIUM": "Loss of integrity is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "HIGH": "Loss of integrity is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.availabilityRequirement",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "LOW": "Loss of availability is likely to have only a limited adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "MEDIUM": "Loss of availability is likely to have a serious adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "HIGH": "Loss of availability is likely to have a catastrophic adverse effect on the organization or individuals associated with the organization (e.g., employees, customers).",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedAttackVector",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NETWORK": "A vulnerability exploitable with network access means the vulnerable component is bound to the network stack and the attacker's path is through OSI layer 3 (the network layer). Such a vulnerability is often termed \"remotely exploitable\" and can be thought of as an attack being exploitable one or more network hops away (e.g. across layer 3 boundaries from routers). An example of a network attack is an attacker causing a denial of service (DoS) by sending a specially crafted TCP packet from across the public Internet (e.g. CVE 2004 0230).",
+        "ADJACENT_NETWORK": "A vulnerability exploitable with adjacent network access means the vulnerable component is bound to the network stack, however the attack is limited to the same shared physical (e.g. Bluetooth, IEEE 802.11), or logical (e.g. local IP subnet) network, and cannot be performed across an OSI layer 3 boundary (e.g. a router). An example of an Adjacent attack would be an ARP (IPv4) or neighbor discovery (IPv6) flood leading to a denial of service on the local LAN segment. See also CVE 2013 6014.",
+        "LOCAL": "A vulnerability exploitable with Local access means that the vulnerable component is not bound to the network stack, and the attacker's path is via read/write/execute capabilities. In some cases, the attacker may be logged in locally in order to exploit the vulnerability, otherwise, she may rely on User Interaction to execute a malicious file.",
+        "PHYSICAL": "A vulnerability exploitable with Physical access requires the attacker to physically touch or manipulate the vulnerable component. Physical interaction may be brief (e.g. evil maid attack [1]) or persistent. An example of such an attack is a cold boot attack which allows an attacker to access to disk encryption keys after gaining physical access to the system, or peripheral attacks such as Firewire/USB Direct Memory Access attacks.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedAttackComplexity",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "LOW": "Specialized access conditions or extenuating circumstances do not exist. An attacker can expect repeatable success against the vulnerable component.",
+        "HIGH": "A successful attack depends on conditions beyond the attacker's control. That is, a successful attack cannot be accomplished at will, but requires the attacker to invest in some measurable amount of effort in preparation or execution against the vulnerable component before a successful attack can be expected. 2 For example, a successful attack may depend on an attacker overcoming any of the following conditions:\n- The attacker must conduct target-specific reconnaissance. For example, on target configuration settings, sequence numbers, shared secrets, etc.\n- The attacker must prepare the target environment to improve exploit reliability. For example, repeated exploitation to win a race condition, or overcoming advanced exploit mitigation techniques.\n- The attacker must inject herself into the logical network path between the target and the resource requested by the victim in order to read and/or modify network communications (e.g. man in the middle attack).",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedPrivilegesRequired",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "The attacker is unauthorized prior to attack, and therefore does not require any access to settings or files to carry out an attack.",
+        "LOW": "The attacker is authorized with (i.e. requires) privileges that provide basic user capabilities that could normally affect only settings and files owned by a user. Alternatively, an attacker with Low privileges may have the ability to cause an impact only to non-sensitive resources.",
+        "HIGH": "The attacker is authorized with (i.e. requires) privileges that provide significant (e.g. administrative) control over the vulnerable component that could affect component-wide settings and files.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedUserInteraction",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "The vulnerable system can be exploited without interaction from any user.",
+        "REQUIRED": "Successful exploitation of this vulnerability requires a user to take some action before the vulnerability can be exploited. For example, a successful exploit may only be possible during the installation of an application by a system administrator.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedScope",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "UNCHANGED": "An exploited vulnerability can only affect resources managed by the same authority. In this case the vulnerable component and the impacted component are the same.",
+        "CHANGED": "An exploited vulnerability can affect resources beyond the authorization privileges intended by the vulnerable component. In this case the vulnerable component and the impacted component are different.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedConfidentialityImpact",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "There is no loss of confidentiality within the impacted component.",
+        "LOW": "There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is constrained. The information disclosure does not cause a direct, serious loss to the impacted component.",
+        "HIGH": "There is total loss of confidentiality, resulting in all resources within the impacted component being divulged to the attacker. Alternatively, access to only some restricted information is obtained, but the disclosed information presents a direct, serious impact. For example, an attacker steals the administrator's password, or private encryption keys of a web server.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedIntegrityImpact",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "There is no loss of integrity within the impacted component.",
+        "LOW": "Modification of data is possible, but the attacker does not have control over the consequence of a modification, or the amount of modification is constrained. The data modification does not have a direct, serious impact on the impacted component.",
+        "HIGH": "There is a total loss of integrity, or a complete loss of protection. For example, the attacker is able to modify any/all files protected by the impacted component. Alternatively, only some files can be modified, but malicious modification would present a direct, serious consequence to the impacted component.",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedAvailabilityImpact",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "NONE": "There is no impact to availability within the impacted component.",
+        "LOW": "There is reduced performance or interruptions in resource availability. Even if repeated exploitation of the vulnerability is possible, the attacker does not have the ability to completely deny service to legitimate users. The resources in the impacted component are either partially available all of the time, or fully available only some of the time, but overall there is no direct, serious consequence to the impacted component.",
+        "HIGH": "There is total loss of availability, resulting in the attacker being able to fully deny access to resources in the impacted component; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed). Alternatively, the attacker has the ability to deny some availability, but the loss of availability presents a direct, serious consequence to the impacted component (e.g., the attacker cannot disrupt existing connections, but can prevent new connections; the attacker can repeatedly exploit a vulnerability that, in each instance of a successful attack, leaks a only small amount of memory, but after repeated exploitation causes a service to become completely unavailable).",
+        "NOT_DEFINED": "Assigning this value to the metric will not influence the score. It is a signal to the equation to skip this metric."
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.environmentalScore",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      },
+      "label": "CvssV3PropertyLabel",
+      "description": "CvssV3PropertyDescription",
+      "type": "NUMBER",
+      "minimum": 0,
+      "maximum": 10
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].products",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/products-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/products-usage.en.md"
+      },
+      "label": "ProductsLabel",
+      "description": "ProductsDescription",
+      "type": "ARRAY",
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].products[]",
+      "user_documentation": {
+        "specification": "docs/user/types/product_id-spec.en.md",
+        "usage": "docs/user/types/product_id-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].threats",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/threats-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/threats-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsThreatsLabel",
+      "description": "VulnerabilitiesItemsThreatsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].threats[]",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/threats/threat-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/threats/threat-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsThreatsItemsLabel",
+      "description": "VulnerabilitiesItemsThreatsItemsDescription",
+      "type": "OBJECT"
+    },
+    {
+      "path": "$.vulnerabilities[].threats[].category",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/category-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/threats/threat/category-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsThreatsItemsCategoryLabel",
+      "description": "VulnerabilitiesItemsThreatsItemsCategoryDescription",
+      "type": "ENUM",
+      "enum_values": {
+        "exploit_status": "indicates that the details field contains a description of the degree to which an exploit for the vulnerability is known",
+        "impact": "indicates that the details field contains an assessment of the impact on the user or the target set if the vulnerability is successfully exploited or a description why it cannot be exploited",
+        "target_set": "indicates that the details field contains a description of the currently known victim population in whatever terms are appropriate"
+      },
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].threats[].date",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/date-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/threats/threat/date-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsThreatsItemsDateLabel",
+      "description": "VulnerabilitiesItemsThreatsItemsDateDescription",
+      "type": "DATETIME"
+    },
+    {
+      "path": "$.vulnerabilities[].threats[].details",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/details-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/threats/threat/details-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsThreatsItemsDetailsLabel",
+      "description": "VulnerabilitiesItemsThreatsItemsDetailsDescription",
+      "type": "STRING",
+      "string_is_multiline": true,
+      "string_min_length": 1,
+      "mandatory": true
+    },
+    {
+      "path": "$.vulnerabilities[].threats[].group_ids",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/group_ids-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/threats/threat/group_ids-usage.en.md"
+      },
+      "label": "ProductGroupsLabel",
+      "description": "ProductGroupsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].threats[].group_ids[]",
+      "user_documentation": {
+        "specification": "docs/user/types/product_group_id-spec.en.md",
+        "usage": "docs/user/types/product_group_id-spec.en.md"
+      },
+      "label": "ProductGroupIdLabel",
+      "description": "ProductGroupIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFGID-0001",
+        "CSAFGID-0002",
+        "CSAFGID-0020"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].threats[].product_ids",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/product_ids-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/threats/threat/product_ids-usage.en.md"
+      },
+      "label": "ProductsLabel",
+      "description": "ProductsDescription",
+      "type": "ARRAY"
+    },
+    {
+      "path": "$.vulnerabilities[].threats[].product_ids[]",
+      "user_documentation": {
+        "specification": "docs/user/types/product_id-spec.en.md",
+        "usage": "docs/user/types/product_id-usage.en.md"
+      },
+      "label": "ProductIdLabel",
+      "description": "ProductIdDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1,
+      "examples": [
+        "CSAFPID-0004",
+        "CSAFPID-0008"
+      ]
+    },
+    {
+      "path": "$.vulnerabilities[].title",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/title-spec.en.md",
+        "usage": "docs/user/vulnerabilities/vulnerability/title-usage.en.md"
+      },
+      "label": "VulnerabilitiesItemsTitleLabel",
+      "description": "VulnerabilitiesItemsTitleDescription",
+      "type": "STRING",
+      "string_is_multiline": false,
+      "string_min_length": 1
+    }
+  ]
+}

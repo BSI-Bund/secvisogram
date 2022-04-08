@@ -1,0 +1,21 @@
+# Model Numbers - Specification
+
+The list of models (`model_numbers`) of value type `array` with 1 or more unique items contains a list of parts, or
+full model numbers.
+
+A list of models SHOULD only be used if a certain range of model numbers with its corresponding software version is
+affected, or the model numbers change during update.
+
+This can also be used to identify hardware. If necessary, the software, or any other related part, SHALL be bind to that
+via a product relationship.
+
+```
+"model_numbers": {
+    //...
+  "items": {
+    //...
+  }
+}
+```
+
+[Specification of Model Number items](model_numbers/model_number-spec.en.md)
