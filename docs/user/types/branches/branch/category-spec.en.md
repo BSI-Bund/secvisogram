@@ -38,7 +38,7 @@ can be numeric or some other descriptor. However, it MUST NOT contain version ra
 
 > It is recommended to enumerate versions wherever possible. Nevertheless, the TC understands that this is sometimes
 > impossible. To reflect that in the specification and aid in automatic processing of CSAF documents the value
-> `product_version_range` was introduced. See next section for details.
+> `product_version_range` was introduced.
 
 The value `product_version_range` indicates a range of versions for the product. The value of the adjacent `name`
 property SHOULD NOT be used to convey a single version.

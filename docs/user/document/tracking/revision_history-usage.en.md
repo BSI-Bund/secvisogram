@@ -1,1 +1,12 @@
 # Revision History - Usage
+
+* The revision items sorted by date must have `number` values in ascending order.
+
+* The `number` of the revision item with the most recent `date` value must be the same as in
+  `/document/tracking/version`. For this comparison build metadata is ignored. If the document status is `draft` any
+  pre-release part is also ignored.
+
+* The revision items sorted by date must not omit a version `number`. In case of semantic versioning, this applies only
+  to the major version. This sorted list of version numbers must start with (Major) version 0 or 1.
+
+* The same version `number` must not be repeated for multiple revision items.
