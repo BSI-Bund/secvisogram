@@ -10,3 +10,6 @@
   to the major version. This sorted list of version numbers must start with (Major) version 0 or 1.
 
 * The same version `number` must not be repeated for multiple revision items.
+
+* The oldest revision item must not have an earlier `date` than the Initial Release Date
+  `/document/tracking/initial_release_date`

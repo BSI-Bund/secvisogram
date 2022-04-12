@@ -19,3 +19,6 @@
   /vulnerabilities[]/scores[]/products[]
   /vulnerabilities[]/threats[]/product_ids[]
   ```
+
+* When used in Full Prodct Name elements, the `product_id` must be referenced somewhere within the same documents. This
+  is not required for the profile `csaf_informational_advisory`
