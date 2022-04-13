@@ -1331,24 +1331,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name",
-      "user_documentation": {
-        "specification": "docs/user/types/full_product_name-spec.en.md",
-        "usage": "docs/user/types/full_product_name-usage.en.md"
-      },
-      "label": "FullProductNameLabel",
-      "description": "FullProductNameDescription",
-      "type": "OBJECT",
-      "mandatory": {
-        "csaf_base": "",
-        "csaf_security_incident_response": "",
-        "csaf_informational_advisory": "",
-        "csaf_security_advisory": "",
-        "csaf_vex": ""
-      }
-    },
-    {
-      "path": "$.product_tree.branches[].product.full_product_name.name",
+      "path": "$.product_tree.branches[].product.name",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/name-spec.en.md",
         "usage": "docs/user/types/full_product_name/name-usage.en.md"
@@ -1371,7 +1354,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_id",
+      "path": "$.product_tree.branches[].product.product_id",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_id-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_id-usage.en.md"
@@ -1394,7 +1377,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper",
+      "path": "$.product_tree.branches[].product.product_identification_helper",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
@@ -1411,7 +1394,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.cpe",
+      "path": "$.product_tree.branches[].product.product_identification_helper.cpe",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
@@ -1431,7 +1414,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes",
+      "path": "$.product_tree.branches[].product.product_identification_helper.hashes",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
@@ -1448,7 +1431,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[]",
+      "path": "$.product_tree.branches[].product.product_identification_helper.hashes[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
@@ -1465,7 +1448,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].file_hashes",
+      "path": "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
@@ -1482,7 +1465,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].file_hashes[]",
+      "path": "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
@@ -1499,7 +1482,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].file_hashes[].algorithm",
+      "path": "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].algorithm",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
@@ -1526,7 +1509,7 @@
       ]
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].file_hashes[].value",
+      "path": "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].value",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
@@ -1551,7 +1534,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.hashes[].filename",
+      "path": "$.product_tree.branches[].product.product_identification_helper.hashes[].filename",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
@@ -1575,7 +1558,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.model_numbers",
+      "path": "$.product_tree.branches[].product.product_identification_helper.model_numbers",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
@@ -1594,7 +1577,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.model_numbers[]",
+      "path": "$.product_tree.branches[].product.product_identification_helper.model_numbers[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
@@ -1613,7 +1596,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.purl",
+      "path": "$.product_tree.branches[].product.product_identification_helper.purl",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
@@ -1632,7 +1615,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.sbom_urls",
+      "path": "$.product_tree.branches[].product.product_identification_helper.sbom_urls",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
@@ -1649,7 +1632,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.sbom_urls[]",
+      "path": "$.product_tree.branches[].product.product_identification_helper.sbom_urls[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
@@ -1666,7 +1649,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.serial_numbers",
+      "path": "$.product_tree.branches[].product.product_identification_helper.serial_numbers",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
@@ -1683,7 +1666,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.serial_numbers[]",
+      "path": "$.product_tree.branches[].product.product_identification_helper.serial_numbers[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
@@ -1701,7 +1684,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.skus",
+      "path": "$.product_tree.branches[].product.product_identification_helper.skus",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
@@ -1718,7 +1701,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.skus[]",
+      "path": "$.product_tree.branches[].product.product_identification_helper.skus[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
@@ -1736,7 +1719,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.x_generic_uris",
+      "path": "$.product_tree.branches[].product.product_identification_helper.x_generic_uris",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
@@ -1753,7 +1736,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.x_generic_uris[]",
+      "path": "$.product_tree.branches[].product.product_identification_helper.x_generic_uris[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
@@ -1770,7 +1753,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.x_generic_uris[].namespace",
+      "path": "$.product_tree.branches[].product.product_identification_helper.x_generic_uris[].namespace",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
@@ -1787,7 +1770,7 @@
       }
     },
     {
-      "path": "$.product_tree.branches[].product.full_product_name.product_identification_helper.x_generic_uris[].uri",
+      "path": "$.product_tree.branches[].product.product_identification_helper.x_generic_uris[].uri",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md",
         "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
