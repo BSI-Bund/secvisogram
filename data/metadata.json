@@ -4,7 +4,9 @@
       "path": "$.document",
       "user_documentation": {
         "specification": "docs/user/document-spec.en.md",
-        "usage": "docs/user/document-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document-usage.en.md"
+        }
       },
       "label": "DocumentLabel",
       "description": "DocumentDescription",
@@ -20,7 +22,9 @@
       "path": "$.document.acknowledgments",
       "user_documentation": {
         "specification": "docs/user/document/acknowledgments-spec.en.md",
-        "usage": "docs/user/document/acknowledgments-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/acknowledgments-usage.en.md"
+        }
       },
       "label": "DocumentAcknowledgmentsLabel",
       "description": "DocumentAcknowledgmentsDescription",
@@ -36,7 +40,9 @@
       "path": "$.document.acknowledgments[]",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsLabel",
       "description": "AcknowledgmentsItemsDescription",
@@ -52,7 +58,9 @@
       "path": "$.document.acknowledgments[].names",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment/names-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment/names-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment/names-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsNamesLabel",
       "description": "AcknowledgmentsItemsNamesDescription",
@@ -68,7 +76,9 @@
       "path": "$.document.acknowledgments[].names[]",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment/names/name-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsNamesItemsLabel",
       "description": "AcknowledgmentsItemsNamesItemsDescription",
@@ -85,7 +95,9 @@
       "path": "$.document.acknowledgments[].organization",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment/organization-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsOrganizationLabel",
       "description": "AcknowledgmentsItemsOrganizationDescription",
@@ -102,7 +114,9 @@
       "path": "$.document.acknowledgments[].summary",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment/summary-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsSummaryLabel",
       "description": "AcknowledgmentsItemsSummaryDescription",
@@ -119,7 +133,9 @@
       "path": "$.document.acknowledgments[].urls",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment/urls-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsUrlsLabel",
       "description": "AcknowledgmentsItemsUrlsDescription",
@@ -135,7 +151,9 @@
       "path": "$.document.acknowledgments[].urls[]",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment/urls/url-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsUrlsItemsLabel",
       "description": "AcknowledgmentsItemsUrlsItemsDescription",
@@ -151,7 +169,9 @@
       "path": "$.document.aggregate_severity",
       "user_documentation": {
         "specification": "docs/user/document/aggregate_severity-spec.en.md",
-        "usage": "docs/user/document/aggregate_severity-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/aggregate_severity-usage.en.md"
+        }
       },
       "label": "DocumentAggregateSeverityLabel",
       "description": "DocumentAggregateSeverityDescription",
@@ -167,7 +187,9 @@
       "path": "$.document.aggregate_severity.namespace",
       "user_documentation": {
         "specification": "docs/user/document/aggregate_severity/namespace-spec.en.md",
-        "usage": "docs/user/document/aggregate_severity/namespace-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/aggregate_severity/namespace-usage.en.md"
+        }
       },
       "label": "DocumentAggregateSeverityNamespaceLabel",
       "description": "DocumentAggregateSeverityNamespaceDescription",
@@ -183,7 +205,9 @@
       "path": "$.document.aggregate_severity.text",
       "user_documentation": {
         "specification": "docs/user/document/aggregate_severity/text-spec.en.md",
-        "usage": "docs/user/document/aggregate_severity/text-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/aggregate_severity/text-usage.en.md"
+        }
       },
       "label": "DocumentAggregateSeverityTextLabel",
       "description": "DocumentAggregateSeverityTextDescription",
@@ -200,7 +224,9 @@
       "path": "$.document.category",
       "user_documentation": {
         "specification": "docs/user/document/category-spec.en.md",
-        "usage": "docs/user/document/category-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/category-usage.en.md"
+        }
       },
       "label": "DocumentCategoryLabel",
       "description": "DocumentCategoryDescription",
@@ -217,7 +243,9 @@
       "path": "$.document.csaf_version",
       "user_documentation": {
         "specification": "docs/user/document/csaf_version-spec.en.md",
-        "usage": "docs/user/document/csaf_version-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/csaf_version-usage.en.md"
+        }
       },
       "label": "DocumentCsafVersionLabel",
       "description": "DocumentCsafVersionDescription",
@@ -233,7 +261,9 @@
       "path": "$.document.distribution",
       "user_documentation": {
         "specification": "docs/user/document/distribution-spec.en.md",
-        "usage": "docs/user/document/distribution-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/distribution-usage.en.md"
+        }
       },
       "label": "DocumentDistributionLabel",
       "description": "DocumentDistributionDescription",
@@ -249,7 +279,9 @@
       "path": "$.document.distribution.text",
       "user_documentation": {
         "specification": "docs/user/document/distribution/text-spec.en.md",
-        "usage": "docs/user/document/distribution/text-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/distribution/text-usage.en.md"
+        }
       },
       "label": "DocumentDistributionTextLabel",
       "description": "DocumentDistributionTextDescription",
@@ -266,7 +298,9 @@
       "path": "$.document.distribution.tlp",
       "user_documentation": {
         "specification": "docs/user/document/distribution/tlp-spec.en.md",
-        "usage": "docs/user/document/distribution/tlp-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/distribution/tlp-usage.en.md"
+        }
       },
       "label": "DocumentDistributionTlpLabel",
       "description": "DocumentDistributionTlpDescription",
@@ -282,7 +316,9 @@
       "path": "$.document.distribution.tlp.label",
       "user_documentation": {
         "specification": "docs/user/document/distribution/tlp/label-spec.en.md",
-        "usage": "docs/user/document/distribution/tlp/label-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/distribution/tlp/label-usage.en.md"
+        }
       },
       "label": "DocumentDistributionTlpLabelLabel",
       "description": "DocumentDistributionTlpLabelDescription",
@@ -298,7 +334,9 @@
       "path": "$.document.distribution.tlp.url",
       "user_documentation": {
         "specification": "docs/user/document/distribution/tlp/url-spec.en.md",
-        "usage": "docs/user/document/distribution/tlp/url-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/distribution/tlp/url-usage.en.md"
+        }
       },
       "label": "DocumentDistributionTlpUrlLabel",
       "description": "DocumentDistributionTlpUrlDescription",
@@ -314,7 +352,9 @@
       "path": "$.document.lang",
       "user_documentation": {
         "specification": "docs/user/document/lang-spec.en.md",
-        "usage": "docs/user/document/lang-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/lang-usage.en.md"
+        }
       },
       "label": "DocumentLangLabel",
       "description": "DocumentLangDescription",
@@ -331,7 +371,9 @@
       "path": "$.document.notes",
       "user_documentation": {
         "specification": "docs/user/document/notes-spec.en.md",
-        "usage": "docs/user/document/notes-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/notes-usage.en.md"
+        }
       },
       "label": "DocumentNotesLabel",
       "description": "DocumentNotesDescription",
@@ -347,7 +389,9 @@
       "path": "$.document.notes[]",
       "user_documentation": {
         "specification": "docs/user/types/notes/note-spec.en.md",
-        "usage": "docs/user/types/notes/note-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/notes/note-usage.en.md"
+        }
       },
       "label": "NotesItemsLabel",
       "description": "NotesItemsDescription",
@@ -363,7 +407,9 @@
       "path": "$.document.notes[].audience",
       "user_documentation": {
         "specification": "docs/user/types/notes/note/audience-spec.en.md",
-        "usage": "docs/user/types/notes/note/audience-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/notes/note/audience-usage.en.md"
+        }
       },
       "label": "NotesItemsAudienceLabel",
       "description": "NotesItemsAudienceDescription",
@@ -380,7 +426,9 @@
       "path": "$.document.notes[].category",
       "user_documentation": {
         "specification": "docs/user/types/notes/note/category-spec.en.md",
-        "usage": "docs/user/types/notes/note/category-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/notes/note/category-usage.en.md"
+        }
       },
       "label": "NotesItemsCategoryLabel",
       "description": "NotesItemsCategoryDescription",
@@ -396,7 +444,9 @@
       "path": "$.document.notes[].text",
       "user_documentation": {
         "specification": "docs/user/types/notes/note/text-spec.en.md",
-        "usage": "docs/user/types/notes/note/text-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/notes/note/text-usage.en.md"
+        }
       },
       "label": "NotesItemsTextLabel",
       "description": "NotesItemsTextDescription",
@@ -413,7 +463,9 @@
       "path": "$.document.notes[].title",
       "user_documentation": {
         "specification": "docs/user/types/notes/note/title-spec.en.md",
-        "usage": "docs/user/types/notes/note/title-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/notes/note/title-usage.en.md"
+        }
       },
       "label": "NotesItemsTitleLabel",
       "description": "NotesItemsTitleDescription",
@@ -430,7 +482,9 @@
       "path": "$.document.publisher",
       "user_documentation": {
         "specification": "docs/user/document/publisher-spec.en.md",
-        "usage": "docs/user/document/publisher-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/publisher-usage.en.md"
+        }
       },
       "label": "DocumentPublisherLabel",
       "description": "DocumentPublisherDescription",
@@ -446,7 +500,9 @@
       "path": "$.document.publisher.category",
       "user_documentation": {
         "specification": "docs/user/document/publisher/category-spec.en.md",
-        "usage": "docs/user/document/publisher/category-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/publisher/category-usage.en.md"
+        }
       },
       "label": "DocumentPublisherCategoryLabel",
       "description": "DocumentPublisherCategoryDescription",
@@ -462,7 +518,9 @@
       "path": "$.document.publisher.contact_details",
       "user_documentation": {
         "specification": "docs/user/document/publisher/contact_details-spec.en.md",
-        "usage": "docs/user/document/publisher/contact_details-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/publisher/contact_details-usage.en.md"
+        }
       },
       "label": "DocumentPublisherContactDetailsLabel",
       "description": "DocumentPublisherContactDetailsDescription",
@@ -479,7 +537,9 @@
       "path": "$.document.publisher.issuing_authority",
       "user_documentation": {
         "specification": "docs/user/document/publisher/issuing_authority-spec.en.md",
-        "usage": "docs/user/document/publisher/issuing_authority-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/publisher/issuing_authority-usage.en.md"
+        }
       },
       "label": "DocumentPublisherIssuingAuthorityLabel",
       "description": "DocumentPublisherIssuingAuthorityDescription",
@@ -496,7 +556,9 @@
       "path": "$.document.publisher.name",
       "user_documentation": {
         "specification": "docs/user/document/publisher/name-spec.en.md",
-        "usage": "docs/user/document/publisher/name-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/publisher/name-usage.en.md"
+        }
       },
       "label": "DocumentPublisherNameLabel",
       "description": "DocumentPublisherNameDescription",
@@ -513,7 +575,9 @@
       "path": "$.document.publisher.namespace",
       "user_documentation": {
         "specification": "docs/user/document/publisher/namespace-spec.en.md",
-        "usage": "docs/user/document/publisher/namespace-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/publisher/namespace-usage.en.md"
+        }
       },
       "label": "DocumentPublisherNamespaceLabel",
       "description": "DocumentPublisherNamespaceDescription",
@@ -529,7 +593,9 @@
       "path": "$.document.references",
       "user_documentation": {
         "specification": "docs/user/document/references-spec.en.md",
-        "usage": "docs/user/document/references-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/references-usage.en.md"
+        }
       },
       "label": "DocumentReferencesLabel",
       "description": "DocumentReferencesDescription",
@@ -545,7 +611,9 @@
       "path": "$.document.references[]",
       "user_documentation": {
         "specification": "docs/user/types/references/reference-spec.en.md",
-        "usage": "docs/user/types/references/reference-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/references/reference-usage.en.md"
+        }
       },
       "label": "ReferencesItemsLabel",
       "description": "ReferencesItemsDescription",
@@ -561,7 +629,9 @@
       "path": "$.document.references[].category",
       "user_documentation": {
         "specification": "docs/user/types/references/reference/category-spec.en.md",
-        "usage": "docs/user/types/references/reference/category-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/references/reference/category-usage.en.md"
+        }
       },
       "label": "ReferencesItemsCategoryLabel",
       "description": "ReferencesItemsCategoryDescription",
@@ -577,7 +647,9 @@
       "path": "$.document.references[].summary",
       "user_documentation": {
         "specification": "docs/user/types/references/reference/summary-spec.en.md",
-        "usage": "docs/user/types/references/reference/summary-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/references/reference/summary-usage.en.md"
+        }
       },
       "label": "ReferencesItemsSummaryLabel",
       "description": "ReferencesItemsSummaryDescription",
@@ -594,7 +666,9 @@
       "path": "$.document.references[].url",
       "user_documentation": {
         "specification": "docs/user/types/references/reference/url-spec.en.md",
-        "usage": "docs/user/types/references/reference/url-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/references/reference/url-usage.en.md"
+        }
       },
       "label": "ReferencesItemsUrlLabel",
       "description": "ReferencesItemsUrlDescription",
@@ -610,7 +684,9 @@
       "path": "$.document.source_lang",
       "user_documentation": {
         "specification": "docs/user/document/source_lang-spec.en.md",
-        "usage": "docs/user/document/source_lang-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/source_lang-usage.en.md"
+        }
       },
       "label": "DocumentSourceLangLabel",
       "description": "DocumentSourceLangDescription",
@@ -627,7 +703,9 @@
       "path": "$.document.title",
       "user_documentation": {
         "specification": "docs/user/document/title-spec.en.md",
-        "usage": "docs/user/document/title-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/title-usage.en.md"
+        }
       },
       "label": "DocumentTitleLabel",
       "description": "DocumentTitleDescription",
@@ -644,7 +722,9 @@
       "path": "$.document.tracking",
       "user_documentation": {
         "specification": "docs/user/document/tracking-spec.en.md",
-        "usage": "docs/user/document/tracking-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking-usage.en.md"
+        }
       },
       "label": "DocumentTrackingLabel",
       "description": "DocumentTrackingDescription",
@@ -660,7 +740,9 @@
       "path": "$.document.tracking.aliases",
       "user_documentation": {
         "specification": "docs/user/document/tracking/aliases-spec.en.md",
-        "usage": "docs/user/document/tracking/aliases-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/aliases-usage.en.md"
+        }
       },
       "label": "DocumentTrackingAliasesLabel",
       "description": "DocumentTrackingAliasesDescription",
@@ -676,7 +758,9 @@
       "path": "$.document.tracking.aliases[]",
       "user_documentation": {
         "specification": "docs/user/document/tracking/aliases/alias-spec.en.md",
-        "usage": "docs/user/document/tracking/aliases/alias-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/aliases/alias-usage.en.md"
+        }
       },
       "label": "DocumentTrackingAliasesItemsLabel",
       "description": "DocumentTrackingAliasesItemsDescription",
@@ -693,7 +777,9 @@
       "path": "$.document.tracking.current_release_date",
       "user_documentation": {
         "specification": "docs/user/document/tracking/current_release_date-spec.en.md",
-        "usage": "docs/user/document/tracking/current_release_date-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/current_release_date-usage.en.md"
+        }
       },
       "label": "DocumentTrackingCurrentReleaseDateLabel",
       "description": "DocumentTrackingCurrentReleaseDateDescription",
@@ -709,7 +795,9 @@
       "path": "$.document.tracking.generator",
       "user_documentation": {
         "specification": "docs/user/document/tracking/generator-spec.en.md",
-        "usage": "docs/user/document/tracking/generator-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/generator-usage.en.md"
+        }
       },
       "label": "DocumentTrackingGeneratorLabel",
       "description": "DocumentTrackingGeneratorDescription",
@@ -725,7 +813,9 @@
       "path": "$.document.tracking.generator.date",
       "user_documentation": {
         "specification": "docs/user/document/tracking/generator/date-spec.en.md",
-        "usage": "docs/user/document/tracking/generator/date-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/generator/date-usage.en.md"
+        }
       },
       "label": "DocumentTrackingGeneratorDateLabel",
       "description": "DocumentTrackingGeneratorDateDescription",
@@ -741,7 +831,9 @@
       "path": "$.document.tracking.generator.engine",
       "user_documentation": {
         "specification": "docs/user/document/tracking/generator/engine-spec.en.md",
-        "usage": "docs/user/document/tracking/generator/engine-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/generator/engine-usage.en.md"
+        }
       },
       "label": "DocumentTrackingGeneratorEngineLabel",
       "description": "DocumentTrackingGeneratorEngineDescription",
@@ -757,7 +849,9 @@
       "path": "$.document.tracking.generator.engine.name",
       "user_documentation": {
         "specification": "docs/user/document/tracking/generator/engine/name-spec.en.md",
-        "usage": "docs/user/document/tracking/generator/engine/name-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/generator/engine/name-usage.en.md"
+        }
       },
       "label": "DocumentTrackingGeneratorEngineNameLabel",
       "description": "DocumentTrackingGeneratorEngineNameDescription",
@@ -774,7 +868,9 @@
       "path": "$.document.tracking.generator.engine.version",
       "user_documentation": {
         "specification": "docs/user/document/tracking/generator/engine/version-spec.en.md",
-        "usage": "docs/user/document/tracking/generator/engine/version-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/generator/engine/version-usage.en.md"
+        }
       },
       "label": "DocumentTrackingGeneratorEngineVersionLabel",
       "description": "DocumentTrackingGeneratorEngineVersionDescription",
@@ -791,7 +887,9 @@
       "path": "$.document.tracking.id",
       "user_documentation": {
         "specification": "docs/user/document/tracking/id-spec.en.md",
-        "usage": "docs/user/document/tracking/id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/id-usage.en.md"
+        }
       },
       "label": "DocumentTrackingIdLabel",
       "description": "DocumentTrackingIdDescription",
@@ -808,7 +906,9 @@
       "path": "$.document.tracking.initial_release_date",
       "user_documentation": {
         "specification": "docs/user/document/tracking/initial_release_date-spec.en.md",
-        "usage": "docs/user/document/tracking/initial_release_date-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/initial_release_date-usage.en.md"
+        }
       },
       "label": "DocumentTrackingInitialReleaseDateLabel",
       "description": "DocumentTrackingInitialReleaseDateDescription",
@@ -824,7 +924,9 @@
       "path": "$.document.tracking.revision_history",
       "user_documentation": {
         "specification": "docs/user/document/tracking/revision_history-spec.en.md",
-        "usage": "docs/user/document/tracking/revision_history-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/revision_history-usage.en.md"
+        }
       },
       "label": "DocumentTrackingRevisionHistoryLabel",
       "description": "DocumentTrackingRevisionHistoryDescription",
@@ -840,7 +942,9 @@
       "path": "$.document.tracking.revision_history[]",
       "user_documentation": {
         "specification": "docs/user/document/tracking/revision_history/revision-spec.en.md",
-        "usage": "docs/user/document/tracking/revision_history/revision-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/revision_history/revision-usage.en.md"
+        }
       },
       "label": "DocumentTrackingRevisionHistoryItemsLabel",
       "description": "DocumentTrackingRevisionHistoryItemsDescription",
@@ -856,7 +960,9 @@
       "path": "$.document.tracking.revision_history[].date",
       "user_documentation": {
         "specification": "docs/user/document/tracking/revision_history/revision/date-spec.en.md",
-        "usage": "docs/user/document/tracking/revision_history/revision/date-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/revision_history/revision/date-usage.en.md"
+        }
       },
       "label": "DocumentTrackingRevisionHistoryItemsDateLabel",
       "description": "DocumentTrackingRevisionHistoryItemsDateDescription",
@@ -872,7 +978,9 @@
       "path": "$.document.tracking.revision_history[].legacy_version",
       "user_documentation": {
         "specification": "docs/user/document/tracking/revision_history/revision/legacy_version-spec.en.md",
-        "usage": "docs/user/document/tracking/revision_history/revision/legacy_version-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/revision_history/revision/legacy_version-usage.en.md"
+        }
       },
       "label": "DocumentTrackingRevisionHistoryItemsLegacyVersionLabel",
       "description": "DocumentTrackingRevisionHistoryItemsLegacyVersionDescription",
@@ -888,7 +996,9 @@
       "path": "$.document.tracking.revision_history[].number",
       "user_documentation": {
         "specification": "docs/user/document/tracking/revision_history/revision/number-spec.en.md",
-        "usage": "docs/user/document/tracking/revision_history/revision/number-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/revision_history/revision/number-usage.en.md"
+        }
       },
       "label": "VersionLabel",
       "description": "VersionDescription",
@@ -905,7 +1015,9 @@
       "path": "$.document.tracking.revision_history[].summary",
       "user_documentation": {
         "specification": "docs/user/document/tracking/revision_history/revision/summary-spec.en.md",
-        "usage": "docs/user/document/tracking/revision_history/revision/summary-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/revision_history/revision/summary-usage.en.md"
+        }
       },
       "label": "DocumentTrackingRevisionHistoryItemsSummaryLabel",
       "description": "DocumentTrackingRevisionHistoryItemsSummaryDescription",
@@ -922,7 +1034,9 @@
       "path": "$.document.tracking.status",
       "user_documentation": {
         "specification": "docs/user/document/tracking/status-spec.en.md",
-        "usage": "docs/user/document/tracking/status-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/status-usage.en.md"
+        }
       },
       "label": "DocumentTrackingStatusLabel",
       "description": "DocumentTrackingStatusDescription",
@@ -938,7 +1052,9 @@
       "path": "$.document.tracking.version",
       "user_documentation": {
         "specification": "docs/user/document/tracking/version-spec.en.md",
-        "usage": "docs/user/document/tracking/version-usage.en.md"
+        "usage": {
+          "generic": "docs/user/document/tracking/version-usage.en.md"
+        }
       },
       "label": "VersionLabel",
       "description": "VersionDescription",
@@ -954,7 +1070,9 @@
       "path": "$.product_tree",
       "user_documentation": {
         "specification": "docs/user/product_tree-spec.en.md",
-        "usage": "docs/user/product_tree-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree-usage.en.md"
+        }
       },
       "label": "ProductTreeLabel",
       "description": "ProductTreeDescription",
@@ -970,7 +1088,9 @@
       "path": "$.product_tree.branches",
       "user_documentation": {
         "specification": "docs/user/product_tree/branches-spec.en.md",
-        "usage": "docs/user/product_tree/branches-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/branches-usage.en.md"
+        }
       },
       "label": "BranchesLabel",
       "description": "BranchesDescription",
@@ -986,7 +1106,9 @@
       "path": "$.product_tree.branches[]",
       "user_documentation": {
         "specification": "docs/user/types/branches/branch-spec.en.md",
-        "usage": "docs/user/types/branches/branch-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/branches/branch-usage.en.md"
+        }
       },
       "label": "BranchesItemsLabel",
       "description": "BranchesItemsDescription",
@@ -1002,7 +1124,9 @@
       "path": "$.product_tree.branches[].branches",
       "user_documentation": {
         "specification": "docs/user/types/branches-spec.en.md",
-        "usage": "docs/user/types/branches-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/branches-usage.en.md"
+        }
       },
       "label": "BranchesLabel",
       "description": "BranchesDescription",
@@ -1018,7 +1142,9 @@
       "path": "$.product_tree.branches[].category",
       "user_documentation": {
         "specification": "docs/user/types/branches/branch/category-spec.en.md",
-        "usage": "docs/user/types/branches/branch/category-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/branches/branch/category-usage.en.md"
+        }
       },
       "label": "BranchesItemsCategoryLabel",
       "description": "BranchesItemsCategoryDescription",
@@ -1034,7 +1160,9 @@
       "path": "$.product_tree.branches[].name",
       "user_documentation": {
         "specification": "docs/user/types/branches/branch/name-spec.en.md",
-        "usage": "docs/user/types/branches/branch/name-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/branches/branch/name-usage.en.md"
+        }
       },
       "label": "BranchesItemsNameLabel",
       "description": "BranchesItemsNameDescription",
@@ -1051,7 +1179,9 @@
       "path": "$.product_tree.branches[].product",
       "user_documentation": {
         "specification": "docs/user/types/branches/branch/product-spec.en.md",
-        "usage": "docs/user/types/branches/branch/product-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/branches/branch/product-usage.en.md"
+        }
       },
       "label": "FullProductNameLabel",
       "description": "FullProductNameDescription",
@@ -1067,7 +1197,9 @@
       "path": "$.product_tree.branches[].product.name",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/name-spec.en.md",
-        "usage": "docs/user/types/full_product_name/name-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/name-usage.en.md"
+        }
       },
       "label": "FullProductNameNameLabel",
       "description": "FullProductNameNameDescription",
@@ -1084,7 +1216,9 @@
       "path": "$.product_tree.branches[].product.product_id",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_id-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_id-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -1101,7 +1235,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperLabel",
       "description": "FullProductNameProductIdentificationHelperDescription",
@@ -1117,7 +1253,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.cpe",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperCpeLabel",
       "description": "FullProductNameProductIdentificationHelperCpeDescription",
@@ -1134,7 +1272,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.hashes",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesLabel",
       "description": "FullProductNameProductIdentificationHelperHashesDescription",
@@ -1150,7 +1290,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.hashes[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsDescription",
@@ -1166,7 +1308,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
@@ -1182,7 +1326,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription",
@@ -1198,7 +1344,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].algorithm",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
@@ -1215,7 +1363,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].value",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
@@ -1232,7 +1382,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.hashes[].filename",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFilenameLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
@@ -1249,7 +1401,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.model_numbers",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperModelNumbersLabel",
       "description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
@@ -1265,7 +1419,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.model_numbers[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperModelNumbersItemsLabel",
       "description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
@@ -1282,7 +1438,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.purl",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperPurlLabel",
       "description": "FullProductNameProductIdentificationHelperPurlDescription",
@@ -1298,7 +1456,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.sbom_urls",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSbomUrlsLabel",
       "description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
@@ -1314,7 +1474,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.sbom_urls[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSbomUrlsItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription",
@@ -1330,7 +1492,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.serial_numbers",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSerialNumbersLabel",
       "description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
@@ -1346,7 +1510,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.serial_numbers[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSerialNumbersItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
@@ -1363,7 +1529,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.skus",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSkusLabel",
       "description": "FullProductNameProductIdentificationHelperSkusDescription",
@@ -1379,7 +1547,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.skus[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSkusItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
@@ -1396,7 +1566,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.x_generic_uris",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
@@ -1412,7 +1584,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.x_generic_uris[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription",
@@ -1428,7 +1602,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.x_generic_uris[].namespace",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
@@ -1444,7 +1620,9 @@
       "path": "$.product_tree.branches[].product.product_identification_helper.x_generic_uris[].uri",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
@@ -1460,7 +1638,9 @@
       "path": "$.product_tree.full_product_names",
       "user_documentation": {
         "specification": "docs/user/product_tree/full_product_names-spec.en.md",
-        "usage": "docs/user/product_tree/full_product_names-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/full_product_names-usage.en.md"
+        }
       },
       "label": "ProductTreeFullProductNamesLabel",
       "description": "ProductTreeFullProductNamesDescription",
@@ -1476,7 +1656,9 @@
       "path": "$.product_tree.full_product_names[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name-spec.en.md",
-        "usage": "docs/user/types/full_product_name-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name-usage.en.md"
+        }
       },
       "label": "FullProductNameLabel",
       "description": "FullProductNameDescription",
@@ -1492,7 +1674,9 @@
       "path": "$.product_tree.full_product_names[].name",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/name-spec.en.md",
-        "usage": "docs/user/types/full_product_name/name-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/name-usage.en.md"
+        }
       },
       "label": "FullProductNameNameLabel",
       "description": "FullProductNameNameDescription",
@@ -1509,7 +1693,9 @@
       "path": "$.product_tree.full_product_names[].product_id",
       "user_documentation": {
         "specification": "docs/user/types/product_id-spec.en.md",
-        "usage": "docs/user/types/product_id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/product_id-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -1526,7 +1712,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperLabel",
       "description": "FullProductNameProductIdentificationHelperDescription",
@@ -1542,7 +1730,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.cpe",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperCpeLabel",
       "description": "FullProductNameProductIdentificationHelperCpeDescription",
@@ -1559,7 +1749,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesLabel",
       "description": "FullProductNameProductIdentificationHelperHashesDescription",
@@ -1575,7 +1767,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsDescription",
@@ -1591,7 +1785,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
@@ -1607,7 +1803,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription",
@@ -1623,7 +1821,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].algorithm",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
@@ -1640,7 +1840,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].value",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
@@ -1657,7 +1859,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].filename",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFilenameLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
@@ -1674,7 +1878,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.model_numbers",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperModelNumbersLabel",
       "description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
@@ -1690,7 +1896,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.model_numbers[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperModelNumbersItemsLabel",
       "description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
@@ -1707,7 +1915,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.purl",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperPurlLabel",
       "description": "FullProductNameProductIdentificationHelperPurlDescription",
@@ -1723,7 +1933,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.sbom_urls",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSbomUrlsLabel",
       "description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
@@ -1739,7 +1951,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.sbom_urls[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSbomUrlsItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription",
@@ -1755,7 +1969,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.serial_numbers",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSerialNumbersLabel",
       "description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
@@ -1771,7 +1987,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.serial_numbers[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSerialNumbersItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
@@ -1788,7 +2006,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.skus",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSkusLabel",
       "description": "FullProductNameProductIdentificationHelperSkusDescription",
@@ -1804,7 +2024,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.skus[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSkusItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
@@ -1821,7 +2043,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
@@ -1837,7 +2061,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription",
@@ -1853,7 +2079,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[].namespace",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
@@ -1869,7 +2097,9 @@
       "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[].uri",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
@@ -1885,7 +2115,9 @@
       "path": "$.product_tree.product_groups",
       "user_documentation": {
         "specification": "docs/user/product_tree/product_groups-spec.en.md",
-        "usage": "docs/user/product_tree/product_groups-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/product_groups-usage.en.md"
+        }
       },
       "label": "ProductTreeProductGroupsLabel",
       "description": "ProductTreeProductGroupsDescription",
@@ -1901,7 +2133,9 @@
       "path": "$.product_tree.product_groups[]",
       "user_documentation": {
         "specification": "docs/user/product_tree/product_groups/product_group-spec.en.md",
-        "usage": "docs/user/product_tree/product_groups/product_group-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/product_groups/product_group-usage.en.md"
+        }
       },
       "label": "ProductTreeProductGroupsItemsLabel",
       "description": "ProductTreeProductGroupsItemsDescription",
@@ -1917,7 +2151,9 @@
       "path": "$.product_tree.product_groups[].group_id",
       "user_documentation": {
         "specification": "docs/user/product_tree/product_groups/product_group/group_id-spec.en.md",
-        "usage": "docs/user/product_tree/product_groups/product_group/group_id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/product_groups/product_group/group_id-usage.en.md"
+        }
       },
       "label": "ProductGroupIdLabel",
       "description": "ProductGroupIdDescription",
@@ -1934,7 +2170,9 @@
       "path": "$.product_tree.product_groups[].product_ids",
       "user_documentation": {
         "specification": "docs/user/product_tree/product_groups/product_group/product_ids-spec.en.md",
-        "usage": "docs/user/product_tree/product_groups/product_group/product_ids-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/product_groups/product_group/product_ids-usage.en.md"
+        }
       },
       "label": "ProductTreeProductGroupsItemsProductIdsLabel",
       "description": "ProductTreeProductGroupsItemsProductIdsDescription",
@@ -1950,7 +2188,9 @@
       "path": "$.product_tree.product_groups[].product_ids[]",
       "user_documentation": {
         "specification": "docs/user/types/product_id-spec.en.md",
-        "usage": "docs/user/types/product_id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/product_id-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -1967,7 +2207,9 @@
       "path": "$.product_tree.product_groups[].summary",
       "user_documentation": {
         "specification": "docs/user/product_tree/product_groups/product_group/summary-spec.en.md",
-        "usage": "docs/user/product_tree/product_groups/product_group/summary-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/product_groups/product_group/summary-usage.en.md"
+        }
       },
       "label": "ProductTreeProductGroupsItemsSummaryLabel",
       "description": "ProductTreeProductGroupsItemsSummaryDescription",
@@ -1984,7 +2226,9 @@
       "path": "$.product_tree.relationships",
       "user_documentation": {
         "specification": "docs/user/product_tree/relationships-spec.en.md",
-        "usage": "docs/user/product_tree/relationships-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/relationships-usage.en.md"
+        }
       },
       "label": "ProductTreeRelationshipsLabel",
       "description": "ProductTreeRelationshipsDescription",
@@ -2000,7 +2244,9 @@
       "path": "$.product_tree.relationships[]",
       "user_documentation": {
         "specification": "docs/user/product_tree/relationships/relationship-spec.en.md",
-        "usage": "docs/user/product_tree/relationships/relationship-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/relationships/relationship-usage.en.md"
+        }
       },
       "label": "ProductTreeRelationshipsItemsLabel",
       "description": "ProductTreeRelationshipsItemsDescription",
@@ -2016,7 +2262,9 @@
       "path": "$.product_tree.relationships[].category",
       "user_documentation": {
         "specification": "docs/user/product_tree/relationships/relationship/category-spec.en.md",
-        "usage": "docs/user/product_tree/relationships/relationship/category-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/relationships/relationship/category-usage.en.md"
+        }
       },
       "label": "ProductTreeRelationshipsItemsCategoryLabel",
       "description": "ProductTreeRelationshipsItemsCategoryDescription",
@@ -2032,7 +2280,9 @@
       "path": "$.product_tree.relationships[].full_product_name",
       "user_documentation": {
         "specification": "docs/user/product_tree/relationships/relationship/full_product_name-spec.en.md",
-        "usage": "docs/user/product_tree/relationships/relationship/full_product_name-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/relationships/relationship/full_product_name-usage.en.md"
+        }
       },
       "label": "FullProductNameLabel",
       "description": "FullProductNameDescription",
@@ -2048,7 +2298,9 @@
       "path": "$.product_tree.relationships[].full_product_name.name",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/name-spec.en.md",
-        "usage": "docs/user/types/full_product_name/name-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/name-usage.en.md"
+        }
       },
       "label": "FullProductNameNameLabel",
       "description": "FullProductNameNameDescription",
@@ -2065,7 +2317,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_id",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_id-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_id-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -2082,7 +2336,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperLabel",
       "description": "FullProductNameProductIdentificationHelperDescription",
@@ -2098,7 +2354,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.cpe",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperCpeLabel",
       "description": "FullProductNameProductIdentificationHelperCpeDescription",
@@ -2115,7 +2373,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesLabel",
       "description": "FullProductNameProductIdentificationHelperHashesDescription",
@@ -2131,7 +2391,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsDescription",
@@ -2147,7 +2409,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
@@ -2163,7 +2427,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription",
@@ -2179,7 +2445,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].algorithm",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
@@ -2196,7 +2464,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].value",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
@@ -2213,7 +2483,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].filename",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperHashesItemsFilenameLabel",
       "description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
@@ -2230,7 +2502,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.purl",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperPurlLabel",
       "description": "FullProductNameProductIdentificationHelperPurlDescription",
@@ -2246,7 +2520,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.sbom_urls",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSbomUrlsLabel",
       "description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
@@ -2262,7 +2538,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.sbom_urls[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSbomUrlsItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription",
@@ -2278,7 +2556,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSerialNumbersLabel",
       "description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
@@ -2294,7 +2574,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSerialNumbersItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
@@ -2311,7 +2593,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.skus",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSkusLabel",
       "description": "FullProductNameProductIdentificationHelperSkusDescription",
@@ -2327,7 +2611,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.skus[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperSkusItemsLabel",
       "description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
@@ -2344,7 +2630,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
@@ -2360,7 +2648,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[]",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription",
@@ -2376,7 +2666,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].namespace",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
@@ -2392,7 +2684,9 @@
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].uri",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md",
-        "usage": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
+        }
       },
       "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriLabel",
       "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
@@ -2408,7 +2702,9 @@
       "path": "$.product_tree.relationships[].product_reference",
       "user_documentation": {
         "specification": "docs/user/product_tree/relationships/relationship/product_reference-spec.en.md",
-        "usage": "docs/user/product_tree/relationships/relationship/product_reference-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/relationships/relationship/product_reference-usage.en.md"
+        }
       },
       "label": "ProductTreeRelationshipsItemsProductReferenceLabel",
       "description": "ProductTreeRelationshipsItemsProductReferenceDescription",
@@ -2425,7 +2721,9 @@
       "path": "$.product_tree.relationships[].relates_to_product_reference",
       "user_documentation": {
         "specification": "docs/user/product_tree/relationships/relationship/relates_to_product_reference-spec.en.md",
-        "usage": "docs/user/product_tree/relationships/relationship/relates_to_product_reference-usage.en.md"
+        "usage": {
+          "generic": "docs/user/product_tree/relationships/relationship/relates_to_product_reference-usage.en.md"
+        }
       },
       "label": "ProductTreeRelationshipsItemsRelatesToProductReferenceLabel",
       "description": "ProductTreeRelationshipsItemsRelatesToProductReferenceDescription",
@@ -2442,7 +2740,9 @@
       "path": "$.vulnerabilities",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities-spec.en.md",
-        "usage": "docs/user/vulnerabilities-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesLabel",
       "description": "VulnerabilitiesDescription",
@@ -2458,7 +2758,9 @@
       "path": "$.vulnerabilities[]",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsLabel",
       "description": "VulnerabilitiesItemsDescription",
@@ -2474,7 +2776,9 @@
       "path": "$.vulnerabilities[].acknowledgments",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/acknowledgments-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/acknowledgments-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/acknowledgments-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsAcknowledgmentsLabel",
       "description": "VulnerabilitiesItemsAcknowledgmentsDescription",
@@ -2490,7 +2794,9 @@
       "path": "$.vulnerabilities[].acknowledgments[]",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsLabel",
       "description": "AcknowledgmentsItemsDescription",
@@ -2506,7 +2812,9 @@
       "path": "$.vulnerabilities[].acknowledgments[].names",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment/names-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment/names-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment/names-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsNamesLabel",
       "description": "AcknowledgmentsItemsNamesDescription",
@@ -2522,7 +2830,9 @@
       "path": "$.vulnerabilities[].acknowledgments[].names[]",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment/names/name-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsNamesItemsLabel",
       "description": "AcknowledgmentsItemsNamesItemsDescription",
@@ -2539,7 +2849,9 @@
       "path": "$.vulnerabilities[].acknowledgments[].organization",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment/organization-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsOrganizationLabel",
       "description": "AcknowledgmentsItemsOrganizationDescription",
@@ -2556,7 +2868,9 @@
       "path": "$.vulnerabilities[].acknowledgments[].summary",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment/summary-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsSummaryLabel",
       "description": "AcknowledgmentsItemsSummaryDescription",
@@ -2573,7 +2887,9 @@
       "path": "$.vulnerabilities[].acknowledgments[].urls",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment/urls-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsUrlsLabel",
       "description": "AcknowledgmentsItemsUrlsDescription",
@@ -2589,7 +2905,9 @@
       "path": "$.vulnerabilities[].acknowledgments[].urls[]",
       "user_documentation": {
         "specification": "docs/user/types/acknowledgments/acknowledgment/urls/url-spec.en.md",
-        "usage": "docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md"
+        }
       },
       "label": "AcknowledgmentsItemsUrlsItemsLabel",
       "description": "AcknowledgmentsItemsUrlsItemsDescription",
@@ -2605,7 +2923,9 @@
       "path": "$.vulnerabilities[].cve",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/cve-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/cve-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/cve-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsCveLabel",
       "description": "VulnerabilitiesItemsCveDescription",
@@ -2622,7 +2942,9 @@
       "path": "$.vulnerabilities[].cwe",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/cwe-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/cwe-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/cwe-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsCweLabel",
       "description": "VulnerabilitiesItemsCweDescription",
@@ -2638,7 +2960,9 @@
       "path": "$.vulnerabilities[].cwe.id",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/cwe/id-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/cwe/id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/cwe/id-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsCweIdLabel",
       "description": "VulnerabilitiesItemsCweIdDescription",
@@ -2655,7 +2979,9 @@
       "path": "$.vulnerabilities[].cwe.name",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/cwe/name-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/cwe/name-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/cwe/name-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsCweNameLabel",
       "description": "VulnerabilitiesItemsCweNameDescription",
@@ -2672,7 +2998,9 @@
       "path": "$.vulnerabilities[].discovery_date",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/discovery_date-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/discovery_date-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/discovery_date-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsDiscoveryDateLabel",
       "description": "VulnerabilitiesItemsDiscoveryDateDescription",
@@ -2688,7 +3016,9 @@
       "path": "$.vulnerabilities[].flags",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/flags-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/flags-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/flags-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsFlagsLabel",
       "description": "VulnerabilitiesItemsFlagsDescription",
@@ -2704,7 +3034,9 @@
       "path": "$.vulnerabilities[].flags[]",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/flags/flag-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/flags/flag-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/flags/flag-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsFlagsItemsLabel",
       "description": "VulnerabilitiesItemsFlagsItemsDescription",
@@ -2720,7 +3052,9 @@
       "path": "$.vulnerabilities[].flags[].date",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/flags/flag/date-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/flags/flag/date-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/flags/flag/date-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsFlagsItemsDateLabel",
       "description": "VulnerabilitiesItemsFlagsItemsDateDescription",
@@ -2736,7 +3070,9 @@
       "path": "$.vulnerabilities[].flags[].group_ids",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/flags/flag/group_ids-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/flags/flag/group_ids-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/flags/flag/group_ids-usage.en.md"
+        }
       },
       "label": "ProductGroupsLabel",
       "description": "ProductGroupsDescription",
@@ -2752,7 +3088,9 @@
       "path": "$.vulnerabilities[].flags[].group_ids[]",
       "user_documentation": {
         "specification": "docs/user/types/product_group_id-spec.en.md",
-        "usage": "docs/user/types/product_group_id-spec.en.md"
+        "usage": {
+          "generic": "docs/user/types/product_group_id-spec.en.md"
+        }
       },
       "label": "ProductGroupIdLabel",
       "description": "ProductGroupIdDescription",
@@ -2769,7 +3107,9 @@
       "path": "$.vulnerabilities[].flags[].label",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/flags/flag/label-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/flags/flag/label-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/flags/flag/label-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsFlagsItemsLabelLabel",
       "description": "VulnerabilitiesItemsFlagsItemsLabelDescription",
@@ -2785,7 +3125,9 @@
       "path": "$.vulnerabilities[].flags[].product_ids",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/flags/flag/product_ids-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/flags/flag/product_ids-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/flags/flag/product_ids-usage.en.md"
+        }
       },
       "label": "ProductsLabel",
       "description": "ProductsDescription",
@@ -2801,7 +3143,9 @@
       "path": "$.vulnerabilities[].flags[].product_ids[]",
       "user_documentation": {
         "specification": "docs/user/types/product_id-spec.en.md",
-        "usage": "docs/user/types/product_id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/product_id-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -2818,7 +3162,9 @@
       "path": "$.vulnerabilities[].ids",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/ids-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/ids-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/ids-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsIdsLabel",
       "description": "VulnerabilitiesItemsIdsDescription",
@@ -2834,7 +3180,9 @@
       "path": "$.vulnerabilities[].ids[]",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/ids/id-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/ids/id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/ids/id-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsIdsItemsLabel",
       "description": "VulnerabilitiesItemsIdsItemsDescription",
@@ -2850,7 +3198,9 @@
       "path": "$.vulnerabilities[].ids[].system_name",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/ids/id/system_name-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/ids/id/system_name-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/ids/id/system_name-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsIdsItemsSystemNameLabel",
       "description": "VulnerabilitiesItemsIdsItemsSystemNameDescription",
@@ -2867,7 +3217,9 @@
       "path": "$.vulnerabilities[].ids[].text",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/ids/id/text-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/ids/id/text-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/ids/id/text-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsIdsItemsTextLabel",
       "description": "VulnerabilitiesItemsIdsItemsTextDescription",
@@ -2884,7 +3236,9 @@
       "path": "$.vulnerabilities[].involvements",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/involvements-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/involvements-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/involvements-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsInvolvementsLabel",
       "description": "VulnerabilitiesItemsInvolvementsDescription",
@@ -2900,7 +3254,9 @@
       "path": "$.vulnerabilities[].involvements[]",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/involvements/involvement-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsInvolvementsItemsLabel",
       "description": "VulnerabilitiesItemsInvolvementsItemsDescription",
@@ -2916,7 +3272,9 @@
       "path": "$.vulnerabilities[].involvements[].date",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement/date-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/involvements/involvement/date-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement/date-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsInvolvementsItemsDateLabel",
       "description": "VulnerabilitiesItemsInvolvementsItemsDateDescription",
@@ -2932,7 +3290,9 @@
       "path": "$.vulnerabilities[].involvements[].party",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement/party-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/involvements/involvement/party-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement/party-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsInvolvementsItemsPartyLabel",
       "description": "VulnerabilitiesItemsInvolvementsItemsPartyDescription",
@@ -2948,7 +3308,9 @@
       "path": "$.vulnerabilities[].involvements[].status",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement/status-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/involvements/involvement/status-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement/status-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsInvolvementsItemsStatusLabel",
       "description": "VulnerabilitiesItemsInvolvementsItemsStatusDescription",
@@ -2964,7 +3326,9 @@
       "path": "$.vulnerabilities[].involvements[].summary",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement/summary-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/involvements/involvement/summary-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement/summary-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsInvolvementsItemsSummaryLabel",
       "description": "VulnerabilitiesItemsInvolvementsItemsSummaryDescription",
@@ -2981,7 +3345,9 @@
       "path": "$.vulnerabilities[].notes",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/notes-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/notes-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/notes-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsNotesLabel",
       "description": "VulnerabilitiesItemsNotesDescription",
@@ -2997,7 +3363,9 @@
       "path": "$.vulnerabilities[].notes[]",
       "user_documentation": {
         "specification": "docs/user/types/notes/note-spec.en.md",
-        "usage": "docs/user/types/notes/note-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/notes/note-usage.en.md"
+        }
       },
       "label": "NotesItemsLabel",
       "description": "NotesItemsDescription",
@@ -3013,7 +3381,9 @@
       "path": "$.vulnerabilities[].notes[].audience",
       "user_documentation": {
         "specification": "docs/user/types/notes/note/audience-spec.en.md",
-        "usage": "docs/user/types/notes/note/audience-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/notes/note/audience-usage.en.md"
+        }
       },
       "label": "NotesItemsAudienceLabel",
       "description": "NotesItemsAudienceDescription",
@@ -3030,7 +3400,9 @@
       "path": "$.vulnerabilities[].notes[].category",
       "user_documentation": {
         "specification": "docs/user/types/notes/note/category-spec.en.md",
-        "usage": "docs/user/types/notes/note/category-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/notes/note/category-usage.en.md"
+        }
       },
       "label": "NotesItemsCategoryLabel",
       "description": "NotesItemsCategoryDescription",
@@ -3046,7 +3418,9 @@
       "path": "$.vulnerabilities[].notes[].text",
       "user_documentation": {
         "specification": "docs/user/types/notes/note/text-spec.en.md",
-        "usage": "docs/user/types/notes/note/text-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/notes/note/text-usage.en.md"
+        }
       },
       "label": "NotesItemsTextLabel",
       "description": "NotesItemsTextDescription",
@@ -3063,7 +3437,9 @@
       "path": "$.vulnerabilities[].notes[].title",
       "user_documentation": {
         "specification": "docs/user/types/notes/note/title-spec.en.md",
-        "usage": "docs/user/types/notes/note/title-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/notes/note/title-usage.en.md"
+        }
       },
       "label": "NotesItemsTitleLabel",
       "description": "NotesItemsTitleDescription",
@@ -3080,7 +3456,9 @@
       "path": "$.vulnerabilities[].product_status",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/product_status-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/product_status-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/product_status-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsProductStatusLabel",
       "description": "VulnerabilitiesItemsProductStatusDescription",
@@ -3096,7 +3474,9 @@
       "path": "$.vulnerabilities[].product_status.first_affected",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/product_status/first_affected-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/product_status/first_affected-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/product_status/first_affected-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsProductStatusFirstAffectedLabel",
       "description": "VulnerabilitiesItemsProductStatusFirstAffectedDescription",
@@ -3112,7 +3492,9 @@
       "path": "$.vulnerabilities[].product_status.first_affected[]",
       "user_documentation": {
         "specification": "docs/user/types/products-spec.en.md",
-        "usage": "docs/user/types/products-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/products-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -3129,7 +3511,9 @@
       "path": "$.vulnerabilities[].product_status.first_fixed",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/product_status/first_fixed-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/product_status/first_fixed-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/product_status/first_fixed-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsProductStatusFirstFixedLabel",
       "description": "VulnerabilitiesItemsProductStatusFirstFixedDescription",
@@ -3145,7 +3529,9 @@
       "path": "$.vulnerabilities[].product_status.first_fixed[]",
       "user_documentation": {
         "specification": "docs/user/types/products-spec.en.md",
-        "usage": "docs/user/types/products-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/products-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -3162,7 +3548,9 @@
       "path": "$.vulnerabilities[].product_status.fixed",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/product_status/fixed-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/product_status/fixed-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/product_status/fixed-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsProductStatusFixedLabel",
       "description": "VulnerabilitiesItemsProductStatusFixedDescription",
@@ -3178,7 +3566,9 @@
       "path": "$.vulnerabilities[].product_status.fixed[]",
       "user_documentation": {
         "specification": "docs/user/types/products-spec.en.md",
-        "usage": "docs/user/types/products-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/products-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -3195,7 +3585,9 @@
       "path": "$.vulnerabilities[].product_status.known_affected",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/product_status/known_affected-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/product_status/known_affected-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/product_status/known_affected-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsProductStatusKnownAffectedLabel",
       "description": "VulnerabilitiesItemsProductStatusKnownAffectedDescription",
@@ -3211,7 +3603,9 @@
       "path": "$.vulnerabilities[].product_status.known_affected[]",
       "user_documentation": {
         "specification": "docs/user/types/products-spec.en.md",
-        "usage": "docs/user/types/products-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/products-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -3228,7 +3622,9 @@
       "path": "$.vulnerabilities[].product_status.known_not_affected",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsProductStatusKnownNotAffectedLabel",
       "description": "VulnerabilitiesItemsProductStatusKnownNotAffectedDescription",
@@ -3244,7 +3640,9 @@
       "path": "$.vulnerabilities[].product_status.known_not_affected[]",
       "user_documentation": {
         "specification": "docs/user/types/products-spec.en.md",
-        "usage": "docs/user/types/products-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/products-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -3261,7 +3659,9 @@
       "path": "$.vulnerabilities[].product_status.last_affected",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/product_status/last_affected-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/product_status/last_affected-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/product_status/last_affected-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsProductStatusLastAffectedLabel",
       "description": "VulnerabilitiesItemsProductStatusLastAffectedDescription",
@@ -3277,7 +3677,9 @@
       "path": "$.vulnerabilities[].product_status.last_affected[]",
       "user_documentation": {
         "specification": "docs/user/types/products-spec.en.md",
-        "usage": "docs/user/types/products-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/products-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -3294,7 +3696,9 @@
       "path": "$.vulnerabilities[].product_status.recommended",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/product_status/recommended-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/product_status/recommended-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/product_status/recommended-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsProductStatusRecommendedLabel",
       "description": "VulnerabilitiesItemsProductStatusRecommendedDescription",
@@ -3310,7 +3714,9 @@
       "path": "$.vulnerabilities[].product_status.recommended[]",
       "user_documentation": {
         "specification": "docs/user/types/products-spec.en.md",
-        "usage": "docs/user/types/products-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/products-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -3327,7 +3733,9 @@
       "path": "$.vulnerabilities[].product_status.under_investigation",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/product_status/under_investigation-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/product_status/under_investigation-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/product_status/under_investigation-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsProductStatusUnderInvestigationLabel",
       "description": "VulnerabilitiesItemsProductStatusUnderInvestigationDescription",
@@ -3343,7 +3751,9 @@
       "path": "$.vulnerabilities[].product_status.under_investigation[]",
       "user_documentation": {
         "specification": "docs/user/types/products-spec.en.md",
-        "usage": "docs/user/types/products-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/products-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -3360,7 +3770,9 @@
       "path": "$.vulnerabilities[].references",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/references-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/references-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/references-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsReferencesLabel",
       "description": "VulnerabilitiesItemsReferencesDescription",
@@ -3376,7 +3788,9 @@
       "path": "$.vulnerabilities[].references[]",
       "user_documentation": {
         "specification": "docs/user/types/references/reference-spec.en.md",
-        "usage": "docs/user/types/references/reference-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/references/reference-usage.en.md"
+        }
       },
       "label": "ReferencesItemsLabel",
       "description": "ReferencesItemsDescription",
@@ -3392,7 +3806,9 @@
       "path": "$.vulnerabilities[].references[].category",
       "user_documentation": {
         "specification": "docs/user/types/references/reference/category-spec.en.md",
-        "usage": "docs/user/types/references/reference/category-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/references/reference/category-usage.en.md"
+        }
       },
       "label": "ReferencesItemsCategoryLabel",
       "description": "ReferencesItemsCategoryDescription",
@@ -3408,7 +3824,9 @@
       "path": "$.vulnerabilities[].references[].summary",
       "user_documentation": {
         "specification": "docs/user/types/references/reference/summary-spec.en.md",
-        "usage": "docs/user/types/references/reference/summary-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/references/reference/summary-usage.en.md"
+        }
       },
       "label": "ReferencesItemsSummaryLabel",
       "description": "ReferencesItemsSummaryDescription",
@@ -3425,7 +3843,9 @@
       "path": "$.vulnerabilities[].references[].url",
       "user_documentation": {
         "specification": "docs/user/types/references/reference/url-spec.en.md",
-        "usage": "docs/user/types/references/reference/url-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/references/reference/url-usage.en.md"
+        }
       },
       "label": "ReferencesItemsUrlLabel",
       "description": "ReferencesItemsUrlDescription",
@@ -3441,7 +3861,9 @@
       "path": "$.vulnerabilities[].release_date",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/release_date-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/release_date-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/release_date-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsReleaseDateLabel",
       "description": "VulnerabilitiesItemsReleaseDateDescription",
@@ -3457,7 +3879,9 @@
       "path": "$.vulnerabilities[].remediations",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsRemediationsLabel",
       "description": "VulnerabilitiesItemsRemediationsDescription",
@@ -3473,7 +3897,9 @@
       "path": "$.vulnerabilities[].remediations[]",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsRemediationsItemsLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsDescription",
@@ -3489,7 +3915,9 @@
       "path": "$.vulnerabilities[].remediations[].category",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/category-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/category-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/category-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsRemediationsItemsCategoryLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsCategoryDescription",
@@ -3505,7 +3933,9 @@
       "path": "$.vulnerabilities[].remediations[].date",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/date-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/date-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/date-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsRemediationsItemsDateLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsDateDescription",
@@ -3521,7 +3951,9 @@
       "path": "$.vulnerabilities[].remediations[].details",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/details-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/details-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/details-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsRemediationsItemsDetailsLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsDetailsDescription",
@@ -3538,7 +3970,9 @@
       "path": "$.vulnerabilities[].remediations[].entitlements",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsRemediationsItemsEntitlementsLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsEntitlementsDescription",
@@ -3554,7 +3988,9 @@
       "path": "$.vulnerabilities[].remediations[].entitlements[]",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsRemediationsItemsEntitlementsItemsLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsEntitlementsItemsDescription",
@@ -3571,7 +4007,9 @@
       "path": "$.vulnerabilities[].remediations[].group_ids",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids-usage.en.md"
+        }
       },
       "label": "ProductGroupsLabel",
       "description": "ProductGroupsDescription",
@@ -3587,7 +4025,9 @@
       "path": "$.vulnerabilities[].remediations[].group_ids[]",
       "user_documentation": {
         "specification": "docs/user/types/product_group_id-spec.en.md",
-        "usage": "docs/user/types/product_group_id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/product_group_id-usage.en.md"
+        }
       },
       "label": "ProductGroupIdLabel",
       "description": "ProductGroupIdDescription",
@@ -3604,7 +4044,9 @@
       "path": "$.vulnerabilities[].remediations[].product_ids",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids-usage.en.md"
+        }
       },
       "label": "ProductsLabel",
       "description": "ProductsDescription",
@@ -3620,7 +4062,9 @@
       "path": "$.vulnerabilities[].remediations[].product_ids[]",
       "user_documentation": {
         "specification": "docs/user/types/product_id-spec.en.md",
-        "usage": "docs/user/types/product_id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/product_id-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -3637,7 +4081,9 @@
       "path": "$.vulnerabilities[].remediations[].restart_required",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsRemediationsItemsRestartRequiredLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDescription",
@@ -3653,7 +4099,9 @@
       "path": "$.vulnerabilities[].remediations[].restart_required.category",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/category-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/category-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/category-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsRemediationsItemsRestartRequiredCategoryLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredCategoryDescription",
@@ -3669,7 +4117,9 @@
       "path": "$.vulnerabilities[].remediations[].restart_required.details",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/details-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/details-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/details-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsDescription",
@@ -3686,7 +4136,9 @@
       "path": "$.vulnerabilities[].remediations[].url",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/url-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/remediations/remediation/url-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/url-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsRemediationsItemsUrlLabel",
       "description": "VulnerabilitiesItemsRemediationsItemsUrlDescription",
@@ -3702,7 +4154,9 @@
       "path": "$.vulnerabilities[].scores",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsScoresLabel",
       "description": "VulnerabilitiesItemsScoresDescription",
@@ -3718,7 +4172,9 @@
       "path": "$.vulnerabilities[].scores[]",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsScoresItemsLabel",
       "description": "VulnerabilitiesItemsScoresItemsDescription",
@@ -3734,7 +4190,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3750,7 +4208,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.version",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "VersionLabel",
       "description": "VersionDescription",
@@ -3766,7 +4226,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.vectorString",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3783,7 +4245,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.accessVector",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3799,7 +4263,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.accessComplexity",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3815,7 +4281,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.authentication",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3831,7 +4299,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.confidentialityImpact",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3847,7 +4317,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.integrityImpact",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3863,7 +4335,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.availabilityImpact",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3879,7 +4353,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.baseScore",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3895,7 +4371,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.exploitability",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3911,7 +4389,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.remediationLevel",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3927,7 +4407,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.reportConfidence",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3943,7 +4425,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.temporalScore",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3959,7 +4443,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.collateralDamagePotential",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3975,7 +4461,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.targetDistribution",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -3991,7 +4479,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.confidentialityRequirement",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -4007,7 +4497,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.integrityRequirement",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -4023,7 +4515,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.availabilityRequirement",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -4039,7 +4533,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v2.environmentalScore",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+        }
       },
       "label": "CvssV2PropertyLabel",
       "description": "CvssV2PropertyDescription",
@@ -4055,7 +4551,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4071,7 +4569,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.version",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "VersionLabel",
       "description": "VersionDescription",
@@ -4087,7 +4587,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.vectorString",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4104,7 +4606,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.attackVector",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4120,7 +4624,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.attackComplexity",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4136,7 +4642,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.privilegesRequired",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4152,7 +4660,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.userInteraction",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4168,7 +4678,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.scope",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4184,7 +4696,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.confidentialityImpact",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4200,7 +4714,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.integrityImpact",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4216,7 +4732,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.availabilityImpact",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4232,7 +4750,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.baseScore",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4248,7 +4768,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.baseSeverity",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4264,7 +4786,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.exploitCodeMaturity",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4280,7 +4804,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.remediationLevel",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4296,7 +4822,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.reportConfidence",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4312,7 +4840,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.temporalScore",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4328,7 +4858,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.temporalSeverity",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4344,7 +4876,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.confidentialityRequirement",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4360,7 +4894,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.integrityRequirement",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4376,7 +4912,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.availabilityRequirement",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4392,7 +4930,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedAttackVector",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4408,7 +4948,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedAttackComplexity",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4424,7 +4966,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedPrivilegesRequired",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4440,7 +4984,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedUserInteraction",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4456,7 +5002,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedScope",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4472,7 +5020,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedConfidentialityImpact",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4488,7 +5038,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedIntegrityImpact",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4504,7 +5056,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.modifiedAvailabilityImpact",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4520,7 +5074,9 @@
       "path": "$.vulnerabilities[].scores[].cvss_v3.environmentalScore",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
       },
       "label": "CvssV3PropertyLabel",
       "description": "CvssV3PropertyDescription",
@@ -4536,7 +5092,9 @@
       "path": "$.vulnerabilities[].scores[].products",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/scores/score/products-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/scores/score/products-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/products-usage.en.md"
+        }
       },
       "label": "ProductsLabel",
       "description": "ProductsDescription",
@@ -4552,7 +5110,9 @@
       "path": "$.vulnerabilities[].scores[].products[]",
       "user_documentation": {
         "specification": "docs/user/types/product_id-spec.en.md",
-        "usage": "docs/user/types/product_id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/product_id-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -4569,7 +5129,9 @@
       "path": "$.vulnerabilities[].threats",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/threats-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/threats-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/threats-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsThreatsLabel",
       "description": "VulnerabilitiesItemsThreatsDescription",
@@ -4585,7 +5147,9 @@
       "path": "$.vulnerabilities[].threats[]",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/threats/threat-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/threats/threat-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/threats/threat-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsThreatsItemsLabel",
       "description": "VulnerabilitiesItemsThreatsItemsDescription",
@@ -4601,7 +5165,9 @@
       "path": "$.vulnerabilities[].threats[].category",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/category-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/threats/threat/category-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/category-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsThreatsItemsCategoryLabel",
       "description": "VulnerabilitiesItemsThreatsItemsCategoryDescription",
@@ -4617,7 +5183,9 @@
       "path": "$.vulnerabilities[].threats[].date",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/date-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/threats/threat/date-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/date-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsThreatsItemsDateLabel",
       "description": "VulnerabilitiesItemsThreatsItemsDateDescription",
@@ -4633,7 +5201,9 @@
       "path": "$.vulnerabilities[].threats[].details",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/details-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/threats/threat/details-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/details-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsThreatsItemsDetailsLabel",
       "description": "VulnerabilitiesItemsThreatsItemsDetailsDescription",
@@ -4650,7 +5220,9 @@
       "path": "$.vulnerabilities[].threats[].group_ids",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/group_ids-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/threats/threat/group_ids-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/group_ids-usage.en.md"
+        }
       },
       "label": "ProductGroupsLabel",
       "description": "ProductGroupsDescription",
@@ -4666,7 +5238,9 @@
       "path": "$.vulnerabilities[].threats[].group_ids[]",
       "user_documentation": {
         "specification": "docs/user/types/product_group_id-spec.en.md",
-        "usage": "docs/user/types/product_group_id-spec.en.md"
+        "usage": {
+          "generic": "docs/user/types/product_group_id-spec.en.md"
+        }
       },
       "label": "ProductGroupIdLabel",
       "description": "ProductGroupIdDescription",
@@ -4683,7 +5257,9 @@
       "path": "$.vulnerabilities[].threats[].product_ids",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/product_ids-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/threats/threat/product_ids-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/product_ids-usage.en.md"
+        }
       },
       "label": "ProductsLabel",
       "description": "ProductsDescription",
@@ -4699,7 +5275,9 @@
       "path": "$.vulnerabilities[].threats[].product_ids[]",
       "user_documentation": {
         "specification": "docs/user/types/product_id-spec.en.md",
-        "usage": "docs/user/types/product_id-usage.en.md"
+        "usage": {
+          "generic": "docs/user/types/product_id-usage.en.md"
+        }
       },
       "label": "ProductIdLabel",
       "description": "ProductIdDescription",
@@ -4716,7 +5294,9 @@
       "path": "$.vulnerabilities[].title",
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/title-spec.en.md",
-        "usage": "docs/user/vulnerabilities/vulnerability/title-usage.en.md"
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/title-usage.en.md"
+        }
       },
       "label": "VulnerabilitiesItemsTitleLabel",
       "description": "VulnerabilitiesItemsTitleDescription",
