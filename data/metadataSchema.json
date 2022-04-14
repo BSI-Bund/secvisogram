@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Field Metadata for CSAF Documents",
+  "description": "JSON schema for json file storing metadata on fields of CSAF documents",
+  "type": "object",
+  "$defs": {
+    "relevance_levels_t": {
+      "title": "Relevance Levels",
+      "description": "Defines the possible relevance levels",
+      "type": "string",
+      "enum": [
+        "mandatory",
+        "best_practice",
+        "want_to_have",
+        "nice_to_know",
+        "optional",
+        "excluded"
+      ]
+    },
+    "documentation_file_path_t": {
+      "title": "File Path",
+      "description": "Defines the path to a file on the file system",
+      "type": "string",
+      "pattern": "docs/user(/.+)+-(spec|usage)(-csaf_(base|security_incident_response|informational_advisory|security_advisory|vex))?\\.[a-z]{2}\\.md"
+    }
+  },
+  "properties": {
+    "metaData": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "user_documentation",
+          "description",
+          "label"
+        ],
+        "properties": {
+          "path": {
+            "title": "Json Path",
+            "description": "The json path of the field this item holds metadata for",
+            "type": "string",
+            "pattern": "\\$(\\.([A-Za-z_](\\[\\])?)+)+"
+          },
+          "relevance_levels": {
+            "title": "Relevance Levels",
+            "description": "Relevance levels of the field per profile",
+            "type": "object",
+            "properties": {
+              "csaf_base": {
+                "title": "CSAF Base Relevance Levels",
+                "description": "Relevance Levels for the CSAF Base profile",
+                "$ref": "#/$defs/relevance_levels_t"
+              },
+              "csaf_informational_advisory": {
+                "title": "CSAF Informational Advisory Relevance Levels",
+                "description": "Relevance Levels for the CSAF Informational Advisory profile",
+                "$ref": "#/$defs/relevance_levels_t"
+              },
+              "csaf_security_advisory": {
+                "title": "CSAF Security Advisory Relevance Levels",
+                "description": "Relevance Levels for the CSAF Security Advisory profile",
+                "$ref": "#/$defs/relevance_levels_t"
+              },
+              "csaf_security_incident_response": {
+                "title": "CSAF Security Incident Relevance Levels",
+                "description": "Relevance Levels for the CSAF Security Incident profile",
+                "$ref": "#/$defs/relevance_levels_t"
+              },
+              "csaf_vex": {
+                "title": "CSAF Vex Relevance Levels",
+                "description": "Relevance Levels for the CSAF Vex profile",
+                "$ref": "#/$defs/relevance_levels_t"
+              }
+            }
+          },
+          "description": {
+            "title": "Field Description",
+            "description": "Description of the field as string key for translation",
+            "type": "string"
+          },
+          "label": {
+            "title": "Field Label",
+            "description": "Label of the field as string key for translation",
+            "type": "string"
+          },
+          "user_documentation": {
+            "title": "User Documentation Links",
+            "description": "Container for user documentation of the field",
+            "type": "object",
+            "required": [
+              "specification",
+              "usage"
+            ],
+            "properties": {
+              "specification": {
+                "title": "Specification Link",
+                "description": "Link to specification markdown file",
+                "$ref": "#/$defs/documentation_file_path_t"
+              },
+              "usage": {
+                "title": "Usage Links",
+                "description": "Container for links to usage markdown files",
+                "type": "object",
+                "required": [
+                  "generic"
+                ],
+                "properties": {
+                  "generic": {
+                    "title": "Generic User Documentation",
+                    "description": "Usage Documentation for the field that applies to all cases",
+                    "$ref": "#/$defs/documentation_file_path_t"
+                  },
+                  "specific": {
+                    "title": "Specific User Documentation",
+                    "description": "Usage Documentation for the field that applies only in a specific context",
+                    "$ref": "#/$defs/documentation_file_path_t"
+                  },
+                  "csaf_base": {
+                    "title": "CSAF Base User Documentation",
+                    "description": "Usage Documentation specific to the CSAF Base profile",
+                    "$ref": "#/$defs/documentation_file_path_t"
+                  },
+                  "csaf_informational_advisory": {
+                    "title": "CSAF Informational Advisory User Documentation",
+                    "description": "Usage Documentation specific to the CSAF Informational Advisory profile",
+                    "$ref": "#/$defs/documentation_file_path_t"
+                  },
+                  "csaf_security_advisory": {
+                    "title": "CSAF Security Advisory User Documentation",
+                    "description": "Usage Documentation specific to the CSAF Security Advisory profile",
+                    "$ref": "#/$defs/documentation_file_path_t"
+                  },
+                  "csaf_security_incident_response": {
+                    "title": "CSAF Security Incident User Documentation",
+                    "description": "Usage Documentation specific to the CSAF Security Incident profile",
+                    "$ref": "#/$defs/documentation_file_path_t"
+                  },
+                  "csaf_vex": {
+                    "title": "CSAF Vex User Documentation",
+                    "description": "Usage Documentation specific to the CSAF Vex profile",
+                    "$ref": "#/$defs/documentation_file_path_t"
+                  }
+                }
+              }
+            }
+          },
+          "string_is_multiline": {
+            "title": "Multiline String",
+            "description": "Defines whether the field content may be multiline string",
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
