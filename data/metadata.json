@@ -372,7 +372,9 @@
       "user_documentation": {
         "specification": "docs/user/document/notes-spec.en.md",
         "usage": {
-          "generic": "docs/user/document/notes-usage.en.md"
+          "generic": "docs/user/document/notes-usage.en.md",
+          "csaf_informational_advisory": "docs/user/document/notes-usage-csaf_informational_advisory.en.md",
+          "csaf_security_incident_response": "docs/user/document/notes-usage-csaf_security_incident_response.en.md"
         }
       },
       "label": "DocumentNotesLabel",
@@ -594,7 +596,9 @@
       "user_documentation": {
         "specification": "docs/user/document/references-spec.en.md",
         "usage": {
-          "generic": "docs/user/document/references-usage.en.md"
+          "generic": "docs/user/document/references-usage.en.md",
+          "csaf_informational_advisory": "docs/user/document/references-usage-csaf_informational_advisory.en.md",
+          "csaf_security_incident_response": "docs/user/document/references-usage-csaf_security_incident_response.en.md"
         }
       },
       "label": "DocumentReferencesLabel",
@@ -1071,7 +1075,9 @@
       "user_documentation": {
         "specification": "docs/user/product_tree-spec.en.md",
         "usage": {
-          "generic": "docs/user/product_tree-usage.en.md"
+          "generic": "docs/user/product_tree-usage.en.md",
+          "csaf_security_advisory": "docs/user/product_tree-usage-csaf_security_advisory.en.md",
+          "csaf_vex": "docs/user/product_tree-usage-csaf_vex.en.md"
         }
       },
       "label": "ProductTreeLabel",
@@ -1694,7 +1700,8 @@
       "user_documentation": {
         "specification": "docs/user/types/product_id-spec.en.md",
         "usage": {
-          "generic": "docs/user/types/product_id-usage.en.md"
+          "generic": "docs/user/types/product_id-usage.en.md",
+          "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
       "label": "ProductIdLabel",
@@ -2189,7 +2196,8 @@
       "user_documentation": {
         "specification": "docs/user/types/product_id-spec.en.md",
         "usage": {
-          "generic": "docs/user/types/product_id-usage.en.md"
+          "generic": "docs/user/types/product_id-usage.en.md",
+          "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
       "label": "ProductIdLabel",
@@ -2741,7 +2749,10 @@
       "user_documentation": {
         "specification": "docs/user/vulnerabilities-spec.en.md",
         "usage": {
-          "generic": "docs/user/vulnerabilities-usage.en.md"
+          "generic": "docs/user/vulnerabilities-usage.en.md",
+          "csaf_informational_advisory": "docs/user/vulnerabilities-usage-csaf_informational_advisory.en.md",
+          "csaf_security_advisory": "docs/user/vulnerabilities-usage-csaf_security_advisory.en.md",
+          "csaf_vex": "docs/user/vulnerabilities-usage-csaf_vex.en.md"
         }
       },
       "label": "VulnerabilitiesLabel",
@@ -2759,7 +2770,9 @@
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability-spec.en.md",
         "usage": {
-          "generic": "docs/user/vulnerabilities/vulnerability-usage.en.md"
+          "generic": "docs/user/vulnerabilities/vulnerability-usage.en.md",
+          "csaf_security_advisory": "docs/user/vulnerabilities/vulnerability-usage-csaf_security_advisory.en.md",
+          "csaf_vex": "docs/user/vulnerabilities/vulnerability-usage-csaf_vex.en.md"
         }
       },
       "label": "VulnerabilitiesItemsLabel",
@@ -3144,7 +3157,8 @@
       "user_documentation": {
         "specification": "docs/user/types/product_id-spec.en.md",
         "usage": {
-          "generic": "docs/user/types/product_id-usage.en.md"
+          "generic": "docs/user/types/product_id-usage.en.md",
+          "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
       "label": "ProductIdLabel",
@@ -3346,7 +3360,9 @@
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/notes-spec.en.md",
         "usage": {
-          "generic": "docs/user/vulnerabilities/vulnerability/notes-usage.en.md"
+          "generic": "docs/user/vulnerabilities/vulnerability/notes-usage.en.md",
+          "csaf_security_advisory": "docs/user/vulnerabilities/vulnerability/notes-usage-csaf_security_advisory.en.md",
+          "csaf_vex": "docs/user/vulnerabilities/vulnerability/notes-usage-csaf_vex.en.md"
         }
       },
       "label": "VulnerabilitiesItemsNotesLabel",
@@ -3457,7 +3473,9 @@
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/product_status-spec.en.md",
         "usage": {
-          "generic": "docs/user/vulnerabilities/vulnerability/product_status-usage.en.md"
+          "generic": "docs/user/vulnerabilities/vulnerability/product_status-usage.en.md",
+          "csaf_security_advisory": "docs/user/vulnerabilities/vulnerability/product_status-usage-csaf_security_advisory.en.md",
+          "csaf_vex": "docs/user/vulnerabilities/vulnerability/product_status-usage-csaf_vex.en.md"
         }
       },
       "label": "VulnerabilitiesItemsProductStatusLabel",
@@ -3586,7 +3604,8 @@
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/product_status/known_affected-spec.en.md",
         "usage": {
-          "generic": "docs/user/vulnerabilities/vulnerability/product_status/known_affected-usage.en.md"
+          "generic": "docs/user/vulnerabilities/vulnerability/product_status/known_affected-usage.en.md",
+          "csaf_vex": "docs/user/vulnerabilities/vulnerability/product_status/known_affected-usage-csaf_vex.en.md"
         }
       },
       "label": "VulnerabilitiesItemsProductStatusKnownAffectedLabel",
@@ -3623,7 +3642,8 @@
       "user_documentation": {
         "specification": "docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-spec.en.md",
         "usage": {
-          "generic": "docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-usage.en.md"
+          "generic": "docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-usage.en.md",
+          "csaf_vex": "docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-usage-csaf_vex.en.md"
         }
       },
       "label": "VulnerabilitiesItemsProductStatusKnownNotAffectedLabel",
@@ -4063,7 +4083,8 @@
       "user_documentation": {
         "specification": "docs/user/types/product_id-spec.en.md",
         "usage": {
-          "generic": "docs/user/types/product_id-usage.en.md"
+          "generic": "docs/user/types/product_id-usage.en.md",
+          "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
       "label": "ProductIdLabel",
@@ -5111,7 +5132,8 @@
       "user_documentation": {
         "specification": "docs/user/types/product_id-spec.en.md",
         "usage": {
-          "generic": "docs/user/types/product_id-usage.en.md"
+          "generic": "docs/user/types/product_id-usage.en.md",
+          "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
       "label": "ProductIdLabel",
@@ -5276,7 +5298,8 @@
       "user_documentation": {
         "specification": "docs/user/types/product_id-spec.en.md",
         "usage": {
-          "generic": "docs/user/types/product_id-usage.en.md"
+          "generic": "docs/user/types/product_id-usage.en.md",
+          "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
       "label": "ProductIdLabel",
