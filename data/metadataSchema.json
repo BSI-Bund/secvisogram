@@ -72,7 +72,8 @@
                 "description": "Relevance Levels for the CSAF Vex profile",
                 "$ref": "#/$defs/relevance_levels_t"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "description": {
             "title": "Field Description",
@@ -141,17 +142,22 @@
                     "description": "Usage Documentation specific to the CSAF Vex profile",
                     "$ref": "#/$defs/documentation_file_path_t"
                   }
-                }
-              }
-            }
+                },
+                "additionalProperties": false
+              },
+              "additionalProperties": false
+            },
+            "additionalProperties": false
           },
           "string_is_multiline": {
             "title": "Multiline String",
             "description": "Defines whether the field content may be multiline string",
             "type": "boolean"
           }
-        }
+        },
+        "additionalProperties": false
       }
     }
-  }
+  },
+  "additionalProperties": false
 }
