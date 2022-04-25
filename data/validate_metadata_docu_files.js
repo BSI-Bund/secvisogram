@@ -1,18 +1,13 @@
 const fs = require('fs')
 
 const meta = JSON.parse(fs.readFileSync('metadata.json', 'utf-8'))
+const schema = JSON.parse(fs.readFileSync('metadataSchema.json', 'utf-8'))
 
 let allFilesExist = true
 
-const usageDocKeys = [
-  "generic",
-  "specific",
-  "csaf_base",
-  "csaf_security_incident_response",
-  "csaf_informational_advisory",
-  "csaf_security_advisory",
-  "csaf_vex"
-]
+const usageDocKeys = Object.keys(
+  schema.properties.field_metadata.items.properties.user_documentation.properties.usage.properties
+)
 
 meta["field_metadata"].forEach((metaItem) => {
   const docuFilePaths = [
