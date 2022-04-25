@@ -21,7 +21,7 @@
       "title": "File Path",
       "description": "Defines the path to a file on the file system",
       "type": "string",
-      "pattern": "docs/user(/.+)+-(spec|usage)(-csaf_(base|security_incident_response|informational_advisory|security_advisory|vex))?\\.[a-z]{2}\\.md"
+      "pattern": "^docs/user(/.+)+-(spec|usage)(-csaf_(base|security_incident_response|informational_advisory|security_advisory|vex))?\\.[a-z]{2,3}\\.md$"
     }
   },
   "properties": {
