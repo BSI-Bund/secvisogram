@@ -36,8 +36,8 @@
         "required": [
           "path",
           "user_documentation",
-          "description",
-          "label"
+          "field_description",
+          "field_title"
         ],
         "properties": {
           "path": {
@@ -80,13 +80,13 @@
             },
             "additionalProperties": false
           },
-          "description": {
+          "field_description": {
             "title": "Field Description",
             "description": "Description of the field as string key for translation",
             "type": "string",
             "minLength": 1
           },
-          "label": {
+          "field_title": {
             "title": "Field Label",
             "description": "Label of the field as string key for translation",
             "type": "string",
