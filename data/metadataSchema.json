@@ -22,6 +22,7 @@
       "title": "File Path",
       "description": "Defines the path to a file on the file system",
       "type": "string",
+      "minLength": 1,
       "pattern": "^docs/user(/.+)+-(spec|usage)(-csaf_(base|security_incident_response|informational_advisory|security_advisory|vex))?\\.[a-z]{2,3}\\.md$"
     }
   },
@@ -43,6 +44,7 @@
             "title": "Json Path",
             "description": "The JSON path of the field this item holds metadata for",
             "type": "string",
+            "minLength": 1,
             "pattern": "^\\$(\\.([A-Za-z_](\\[\\])?)+)+$"
           },
           "relevance_levels": {
@@ -81,12 +83,14 @@
           "description": {
             "title": "Field Description",
             "description": "Description of the field as string key for translation",
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
           "label": {
             "title": "Field Label",
             "description": "Label of the field as string key for translation",
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
           "user_documentation": {
             "title": "User Documentation Links",
