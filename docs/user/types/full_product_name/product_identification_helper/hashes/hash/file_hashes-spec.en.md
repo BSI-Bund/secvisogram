@@ -1,9 +1,9 @@
 # File Hashes - Specification
 
-List of file hashes (`file_hashes`) of value type `array` holding at least one item contains a list of cryptographic
-hashes for this file.
+List of file hashes (`file_hashes`) of value type `array` holding at least one
+item contains a list of cryptographic hashes for this file.
 
-```
+```json
 "file_hashes": {
   // ...
   "items": {

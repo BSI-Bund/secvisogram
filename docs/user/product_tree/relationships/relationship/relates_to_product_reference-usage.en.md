@@ -1,3 +1,4 @@
 # Relates To Product Reference - Usage
 
-* A corresponding Full Product Name element with matching `product_id` must be defined.
+* A corresponding Full Product Name element with matching `product_id` must be
+  defined.

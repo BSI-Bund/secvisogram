@@ -1,8 +1,7 @@
 # Full Product Name - Specification
 
-Full Product Name (`full_product_name_t`) with value type `object` specifies information about the product and assigns
-the product ID.
-The properties
+Full Product Name (`full_product_name_t`) with value type `object` specifies
+information about the product and assigns the product ID. The properties
 
 * [Name](full_product_name/name-spec.en.md) (`name`)
 * [Product ID](full_product_name/product_id-spec.en.md) (`product_id`)
@@ -14,7 +13,7 @@ are required. The property
 
 is optional.
 
-```
+```json
 "full_product_name_t": {
   // ...
   "properties": {

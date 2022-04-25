@@ -1,6 +1,7 @@
 # Engine - Specification
 
-Engine of document generation (`engine`) of value type `object` with mandatory property
+Engine of document generation (`engine`) of value type `object` with mandatory
+property
 
 * [Engine Name](engine/name-spec.en.md) (`name`)
 
@@ -10,7 +11,7 @@ and optional property
 
 contains information about the engine that generated the CSAF document.
 
-```
+```json
 "engine": {
   // ...
   "properties": {

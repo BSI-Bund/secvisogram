@@ -1,12 +1,13 @@
 # Uri - Specification
 
-The URI (`uri`) of value type `string` with format `uri` contains the identifier itself.
+The URI (`uri`) of value type `string` with format `uri` contains the identifier
+itself.
 
 > These elements can be used to reference a specific component from an SBOM:
 
 *Example linking a component from a CycloneDX SBOM using the bomlink mechanism:*
 
-```
+```json
 "x_generic_uris": [
   {
     "namespace": "https://cyclonedx.org/capabilities/bomlink/",
@@ -17,7 +18,7 @@ The URI (`uri`) of value type `string` with format `uri` contains the identifier
 
 *Example linking a component from an SPDX SBOM:*
 
-```
+```json
 "x_generic_uris": [
   {
     "namespace": "https://spdx.github.io/spdx-spec/document-creation-information/#65-spdx-document-namespace-field",
