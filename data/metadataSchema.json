@@ -45,7 +45,7 @@
             "description": "The JSON path of the field this item holds metadata for",
             "type": "string",
             "minLength": 1,
-            "pattern": "^\\$(\\.([A-Za-z_](\\[\\])?)+)+$"
+            "pattern": "^\\$(\\.(([A-Za-z_])+|(cvss_v[23]))(\\[\\])?)+$"
           },
           "relevance_levels": {
             "title": "Relevance Levels",
