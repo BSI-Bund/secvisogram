@@ -7,7 +7,7 @@
   "$defs": {
     "relevance_levels_t": {
       "title": "Relevance Levels",
-      "description": "Defines the possible relevance levels",
+      "description": "Defines the possible relevance levels of a field",
       "type": "string",
       "enum": [
         "mandatory",
@@ -20,7 +20,7 @@
     },
     "documentation_file_path_t": {
       "title": "File Path",
-      "description": "Defines the path to a file on the file system",
+      "description": "Defines the path to a documentation file on the file system",
       "type": "string",
       "minLength": 1,
       "pattern": "^docs/user(/.+)+-(spec|usage)(-csaf_(base|security_incident_response|informational_advisory|security_advisory|vex))?\\.[a-z]{2,3}\\.md$"
@@ -49,32 +49,32 @@
           },
           "relevance_levels": {
             "title": "Relevance Levels",
-            "description": "Relevance levels of the field per profile",
+            "description": "Relevance levels of the field for each profile",
             "type": "object",
             "properties": {
               "csaf_base": {
                 "title": "CSAF Base Relevance Levels",
-                "description": "Relevance Levels for the CSAF Base profile",
+                "description": "The relevance level of this field for the CSAF Base profile",
                 "$ref": "#/$defs/relevance_levels_t"
               },
               "csaf_informational_advisory": {
                 "title": "CSAF Informational Advisory Relevance Levels",
-                "description": "Relevance Levels for the CSAF Informational Advisory profile",
+                "description": "The relevance level of this field for the CSAF Informational Advisory profile",
                 "$ref": "#/$defs/relevance_levels_t"
               },
               "csaf_security_advisory": {
                 "title": "CSAF Security Advisory Relevance Levels",
-                "description": "Relevance Levels for the CSAF Security Advisory profile",
+                "description": "The relevance level of this field for the CSAF Security Advisory profile",
                 "$ref": "#/$defs/relevance_levels_t"
               },
               "csaf_security_incident_response": {
                 "title": "CSAF Security Incident Relevance Levels",
-                "description": "Relevance Levels for the CSAF Security Incident profile",
+                "description": "The relevance level of this field for the CSAF Security Incident profile",
                 "$ref": "#/$defs/relevance_levels_t"
               },
               "csaf_vex": {
                 "title": "CSAF VEX Relevance Levels",
-                "description": "Relevance Levels for the CSAF VEX profile",
+                "description": "The relevance level of this field for the CSAF VEX profile",
                 "$ref": "#/$defs/relevance_levels_t"
               }
             },
@@ -82,19 +82,19 @@
           },
           "field_description": {
             "title": "Field Description",
-            "description": "Description of the field as string key for translation",
+            "description": "The key for looking up the description text of this field in a translation file",
             "type": "string",
             "minLength": 1
           },
           "field_title": {
-            "title": "Field Label",
-            "description": "Label of the field as string key for translation",
+            "title": "Field Title",
+            "description": "The key for looking up the title of this field in a translation file",
             "type": "string",
             "minLength": 1
           },
           "user_documentation": {
             "title": "User Documentation Links",
-            "description": "Container for user documentation of the field",
+            "description": "Container for user documentation files of the field",
             "type": "object",
             "required": [
               "specification",
@@ -103,7 +103,7 @@
             "properties": {
               "specification": {
                 "title": "Specification Link",
-                "description": "Link to specification markdown file",
+                "description": "Contains a link to a markdown file with the specification of this field",
                 "$ref": "#/$defs/documentation_file_path_t"
               },
               "usage": {
@@ -116,37 +116,37 @@
                 "properties": {
                   "generic": {
                     "title": "Generic User Documentation",
-                    "description": "Usage Documentation for the field that applies to all cases",
+                    "description": "A link to a markdown file with the usage documentation of this field that applies in all contexts",
                     "$ref": "#/$defs/documentation_file_path_t"
                   },
                   "specific": {
                     "title": "Specific User Documentation",
-                    "description": "Usage Documentation for the field that applies only in a specific context",
+                    "description": "A link to a markdown file with the usage documentation of this field that applies only in a specific context",
                     "$ref": "#/$defs/documentation_file_path_t"
                   },
                   "csaf_base": {
                     "title": "CSAF Base User Documentation",
-                    "description": "Usage Documentation specific to the CSAF Base profile",
+                    "description": "A link to a markdown file with the usage documentation of this field that applies only for the CSAF Base profile",
                     "$ref": "#/$defs/documentation_file_path_t"
                   },
                   "csaf_informational_advisory": {
                     "title": "CSAF Informational Advisory User Documentation",
-                    "description": "Usage Documentation specific to the CSAF Informational Advisory profile",
+                    "description": "A link to a markdown file with the usage documentation of this field that applies only for the CSAF Informational Advisory profile",
                     "$ref": "#/$defs/documentation_file_path_t"
                   },
                   "csaf_security_advisory": {
                     "title": "CSAF Security Advisory User Documentation",
-                    "description": "Usage Documentation specific to the CSAF Security Advisory profile",
+                    "description": "A link to a markdown file with the usage documentation of this field that applies only for the CSAF Security Advisory profile",
                     "$ref": "#/$defs/documentation_file_path_t"
                   },
                   "csaf_security_incident_response": {
                     "title": "CSAF Security Incident User Documentation",
-                    "description": "Usage Documentation specific to the CSAF Security Incident profile",
+                    "description": "A link to a markdown file with the usage documentation of this field that applies only for the CSAF Security Incident profile",
                     "$ref": "#/$defs/documentation_file_path_t"
                   },
                   "csaf_vex": {
                     "title": "CSAF VEX User Documentation",
-                    "description": "Usage Documentation specific to the CSAF VEX profile",
+                    "description": "A link to a markdown file with the usage documentation of this field that applies only for the CSAF VEX profile",
                     "$ref": "#/$defs/documentation_file_path_t"
                   }
                 },
@@ -158,7 +158,7 @@
           },
           "string_is_multiline": {
             "title": "Multiline String",
-            "description": "Defines whether the field content may be multiline string",
+            "description": "Defines whether the field content may be multiline string or is a shorter string",
             "type": "boolean"
           }
         },
