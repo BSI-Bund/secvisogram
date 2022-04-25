@@ -25,9 +25,11 @@
       "pattern": "^docs/user(/.+)+-(spec|usage)(-csaf_(base|security_incident_response|informational_advisory|security_advisory|vex))?\\.[a-z]{2,3}\\.md$"
     }
   },
+  "required": ["field_metadata"],
   "properties": {
     "field_metadata": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
         "required": [
