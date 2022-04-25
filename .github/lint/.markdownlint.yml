@@ -1,0 +1,4 @@
+---
+default: true
+# allow HTML
+MD033: false
