@@ -1,5 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/secvisogram/secvisogram/main/data/metadataSchema.json",
   "title": "Field Metadata for CSAF Documents",
   "description": "JSON schema for documentation (specification and usage) on fields of CSAF documents",
   "type": "object",
