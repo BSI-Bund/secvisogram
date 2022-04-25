@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const meta = require('./metadata.json')
+const meta = JSON.parse(fs.readFileSync('metadata.json', 'utf-8'))
 
 let allFilesExist = true
 

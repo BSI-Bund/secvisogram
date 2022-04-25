@@ -1,5 +1,8 @@
-const meta = require('./metadata.json')
-const schema = require('./metadataSchema.json')
+const fs = require('fs')
+
+const meta = JSON.parse(fs.readFileSync('metadata.json', 'utf-8'))
+const schema = JSON.parse(fs.readFileSync('metadataSchema.json', 'utf-8'))
+
 
 const Ajv2020 = require("ajv/dist/2020")
 const ajv = new Ajv2020({allErrors: true})
