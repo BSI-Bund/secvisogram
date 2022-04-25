@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Field Metadata for CSAF Documents",
-  "description": "JSON schema for json file storing metadata on fields of CSAF documents",
+  "description": "JSON schema for documentation (specification and usage) on fields of CSAF documents",
   "type": "object",
   "$defs": {
     "relevance_levels_t": {
