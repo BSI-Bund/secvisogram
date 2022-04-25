@@ -14,7 +14,7 @@ const usageDocKeys = [
   "csaf_vex"
 ]
 
-meta["metaData"].forEach((metaItem) => {
+meta["field_metadata"].forEach((metaItem) => {
   const docuFilePaths = [
     metaItem.user_documentation.specification,
     ...usageDocKeys
