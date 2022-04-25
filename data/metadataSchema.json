@@ -69,8 +69,8 @@
                 "$ref": "#/$defs/relevance_levels_t"
               },
               "csaf_vex": {
-                "title": "CSAF Vex Relevance Levels",
-                "description": "Relevance Levels for the CSAF Vex profile",
+                "title": "CSAF VEX Relevance Levels",
+                "description": "Relevance Levels for the CSAF VEX profile",
                 "$ref": "#/$defs/relevance_levels_t"
               }
             },
@@ -139,8 +139,8 @@
                     "$ref": "#/$defs/documentation_file_path_t"
                   },
                   "csaf_vex": {
-                    "title": "CSAF Vex User Documentation",
-                    "description": "Usage Documentation specific to the CSAF Vex profile",
+                    "title": "CSAF VEX User Documentation",
+                    "description": "Usage Documentation specific to the CSAF VEX profile",
                     "$ref": "#/$defs/documentation_file_path_t"
                   }
                 },
