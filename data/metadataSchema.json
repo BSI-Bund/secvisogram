@@ -38,7 +38,7 @@
         "properties": {
           "path": {
             "title": "Json Path",
-            "description": "The json path of the field this item holds metadata for",
+            "description": "The JSON path of the field this item holds metadata for",
             "type": "string",
             "pattern": "\\$(\\.([A-Za-z_](\\[\\])?)+)+"
           },
