@@ -6,8 +6,7 @@ import {
   faFolderOpen,
   faMinusSquare,
   faPlusSquare,
-  faSave,
-  faWindowClose
+  faWindowClose,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
@@ -37,7 +36,6 @@ export default function FormEditorTab({
   validationErrors: errors,
   onUpdate,
   onOpen,
-  onDownload,
   onNewDocMin,
   onNewDocMax,
   onCollectProductIds,
@@ -194,16 +192,6 @@ export default function FormEditorTab({
                 onOpen(e.target.files[0])
               }}
             />
-            <button
-              type="button"
-              className="mb-2 py-1 px-3 rounded shadow border border-blue-400 bg-blue-400 text-white hover:text-blue-400 hover:bg-white"
-              onClick={() => {
-                onDownload(doc)
-              }}
-            >
-              <FontAwesomeIcon className="mr-1" icon={faSave} />
-              Save
-            </button>
             <button
               type="button"
               className="mb-2 py-1 px-3 rounded shadow border border-gray-400 bg-gray-400 text-white hover:text-gray-400 hover:bg-white"

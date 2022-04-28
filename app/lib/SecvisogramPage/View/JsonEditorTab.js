@@ -5,7 +5,6 @@ import {
   faFile,
   faFileAlt,
   faFolderOpen,
-  faSave,
   faWindowClose,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -38,7 +37,6 @@ export default function JsonEditorTab({
   onSetStrict,
   onChange,
   onOpen,
-  onDownload,
   onNewDocMin,
   onNewDocMax,
   onLockTab,
@@ -285,16 +283,6 @@ export default function JsonEditorTab({
                 handleOpen(e.target.files[0])
               }}
             />
-            <button
-              type="button"
-              className="mb-2 py-1 px-3 rounded shadow border border-blue-400 bg-blue-400 text-white hover:text-blue-400 hover:bg-white"
-              onClick={() => {
-                onDownload(doc)
-              }}
-            >
-              <FontAwesomeIcon className="mr-1" icon={faSave} />
-              Save
-            </button>
           </div>
           <div>
             {showExpertSettings ? (

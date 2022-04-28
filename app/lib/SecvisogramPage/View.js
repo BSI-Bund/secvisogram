@@ -209,12 +209,10 @@ function View({
         type: /** @type {'button'} */ ('button'),
         disabled: Boolean(activeTab !== tab && isTabLocked),
         className:
-          'ml-3 px-2 pb-2 pt-1 ' +
+          'text-sm font-bold p-4 h-auto ' +
           (activeTab === tab
-            ? 'bg-white text-blue-400'
-            : isTabLocked
-            ? 'bg-blue-100 text-white'
-            : 'bg-blue-400 text-white hover:bg-white hover:text-blue-400'),
+            ? 'bg-gray-900 text-white'
+            : 'hover:bg-gray-800 hover:text-white text-gray-300'),
         onClick() {
           onChangeTab(tab, formValues.doc)
         },
@@ -227,29 +225,41 @@ function View({
     <>
       {alert ? <Alert {...alert} /> : null}
       <div className="mx-auto w-full h-screen flex flex-col">
-        <div className="bg-gray-500 flex justify-between items-baseline pt-2">
-          <div>
-            <button {...tabButtonProps('EDITOR')}>Form Editor</button>
-            <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
-            <button {...tabButtonProps('PREVIEW')}>Preview</button>
-            <button {...tabButtonProps('CSAF-JSON')}>CSAF Document</button>
-          </div>
-          <div className="mr-4">
-            <div className="text-xs float-left text-gray-400 mr-4 mt-2">
-              <a
-                href="https://github.com/secvisogram/secvisogram/"
-                className="mr-3"
-              >
-                <FontAwesomeIcon className="mx-1" icon={faCodeBranch} />
-                <span>{secvisogramVersion}</span>
-              </a>
-              <a href="https://github.com/secvisogram/secvisogram/blob/main/LICENSE.md">
-                License: MIT
-              </a>
+        <div>
+          <div className="flex justify-between bg-gray-700">
+            <div className="flex pl-5">
+              <button className="text-sm font-bold p-4 h-auto hover:bg-gray-800 hover:text-white text-gray-300">
+                Wizard
+              </button>
+              <button {...tabButtonProps('EDITOR')}>Form Editor</button>
+              <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
+              <button {...tabButtonProps('PREVIEW')}>Preview</button>
+              <button {...tabButtonProps('CSAF-JSON')}>CSAF Document</button>
             </div>
-            <h1 className="text-2xl text-blue-200 font-mono float-right">
-              Secvisogram
-            </h1>
+            <div className="pr-5 flex items-center text-white">
+              <div>
+                <a href="https://github.com/secvisogram/secvisogram">
+                  <FontAwesomeIcon className="mx-1" icon={faCodeBranch} />
+                  <span>{secvisogramVersion}</span>
+                </a>
+                ,{' '}
+                <a href="https://github.com/secvisogram/secvisogram/blob/main/LICENSE.md">
+                  License: MIT
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="bg-gray-400">
+            <div className="pl-5">
+              <button
+                className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                onClick={() => {
+                  onDownload(formValues.doc)
+                }}
+              >
+                Save
+              </button>
+            </div>
           </div>
         </div>
         <div
