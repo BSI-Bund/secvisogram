@@ -1,4 +1,4 @@
-name: 'Validate Metadata Json'
+name: 'Validate Docs Metadata'
 
 on: [pull_request]
 
