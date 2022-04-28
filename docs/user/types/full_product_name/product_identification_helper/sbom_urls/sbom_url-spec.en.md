@@ -1,7 +1,6 @@
 # Sbom Url - Specification
 
-Any given SBOM URL of value type `string` with format `uri` contains a URL of
-one SBOM for this product.
+Any given SBOM URL of value type `string` with format `uri` contains a URL of one SBOM for this product.
 
 *Examples:*
 

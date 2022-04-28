@@ -1,7 +1,6 @@
 # Document - Specification
 
-Document level meta-data (`document`) of value type `object` with the 5
-mandatory properties
+Document level meta-data (`document`) of value type `object` with the 5 mandatory properties
 
 * [Category](document/category-spec.en.md) (`category`)
 * [CSAF Version](document/csaf_version-spec.en.md) (`csaf_version`)
@@ -9,9 +8,8 @@ mandatory properties
 * [Title](document/title-spec.en.md) (`title`)
 * [Tracking](document/tracking-spec.en.md) (`tracking`)
 
-captures the meta-data about this document describing a particular set of
-security advisories. In addition, the `document` object MAY provide the 7
-optional properties
+captures the meta-data about this document describing a particular set of security advisories.
+In addition, the `document` object MAY provide the 7 optional properties
 
 * [Acknowledgments](document/acknowledgments-spec.en.md) (`acknowledgments`)
 * [Aggregate Severity](document/aggregate_severity-spec.en.md) (`aggregate_severity`)

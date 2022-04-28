@@ -1,8 +1,8 @@
 # Product Identification Helper - Specification
 
-Helper to identify the product (`product_identification_helper`) of value
-type `object` provides in its properties at least one method which aids in
-identifying the product in an asset database. Of the given eight properties
+Helper to identify the product (`product_identification_helper`) of value type `object` provides in its properties at
+least one method which aids in identifying the product in an asset database.
+Of the given eight properties
 
 * [CPE](product_identification_helper/cpe-spec.en.md) (`cpe`)
 * [Hashes](product_identification_helper/hashes-spec.en.md) (`hashes`)

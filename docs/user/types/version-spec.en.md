@@ -1,14 +1,13 @@
 # Version specification
 
-The Version (`version_t`) type has value type `string` with `pattern` (regular
-expression):
+The Version (`version_t`) type has value type `string` with `pattern` (regular expression):
 
 ```regexp
 ^(0|[1-9][0-9]*)$|^((0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)$
 ```
 
-The version specifies a version string to denote clearly the evolution of the
-content of the document. There are two options how it can be used:
+The version specifies a version string to denote clearly the evolution of the content of the document. There are two
+options how it can be used:
 
 * semantic versioning (preferred; according to the rules below)
 * integer versioning
@@ -25,9 +24,8 @@ A CSAF document MUST use only one versioning system.
 
 ## Integer versioning
 
-Integer versioning increments for each version where
-the `/document/tracking/status` is `final` the version number by one. The
-regular expression for this type is:
+Integer versioning increments for each version where the `/document/tracking/status` is `final` the version number by
+one. The regular expression for this type is:
 
 ```regexp
 ^(0|[1-9][0-9]*)$
@@ -35,68 +33,54 @@ regular expression for this type is:
 
 The following rules apply:
 
-1. Once a versioned document has been released, the contents of that version
-   MUST NOT be modified. Any modifications MUST be released as a new version.
-2. Version zero (0) is for initial development before the `initial_release_date`
-   . The document status MUST be `draft`. Anything MAY change at any time. The
-   document SHOULD NOT be considered stable.
-3. Version 1 defines the initial public release. Each new version
-   where `/document/tracking/status` is `final` has a version number incremented
-   by one.
-4. Pre-release versions (document status `draft`) MUST carry the new version
-   number. Sole exception is before the initial release (see rule 2). The
-   combination of document status `draft` and version 1 MAY be used to indicate
-   that the content is unlikely to change.
+1. Once a versioned document has been released, the contents of that version MUST NOT be modified. Any modifications
+   MUST be released as a new version.
+2. Version zero (0) is for initial development before the `initial_release_date`. The document status MUST be `draft`.
+   Anything MAY change at any time. The document SHOULD NOT be considered stable.
+3. Version 1 defines the initial public release. Each new version where `/document/tracking/status` is `final` has a
+   version number incremented by one.
+4. Pre-release versions (document status `draft`) MUST carry the new version number. Sole exception is before the
+   initial release (see rule 2). The combination of document status `draft` and version 1 MAY be used to indicate that
+   the content is unlikely to change.
 5. Build metadata is never included in the version.
 6. Precedence MUST be calculate by integer comparison.
 
 ## Semantic versioning
 
-Semantic versioning derived the rules from [[SemVer]](#semver). The regular
-expression for this type is:
+Semantic versioning derived the rules from [[SemVer]](#semver). The regular expression for this type is:
 
 ```regexp
 ^((0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)$
 ```
 
-The goal of this structure is to provide additional information to the end user
-whether a new comparison with the asset database is needed. The "public API" in
-regards to CSAF is the CSAF document with its structure and content. This
+The goal of this structure is to provide additional information to the end user whether a new comparison with the asset
+database is needed. The "public API" in regards to CSAF is the CSAF document with its structure and content. This
 results in the following rules:
 
-1. A normal version number MUST take the form X.Y.Z where X, Y, and Z are
-   non-negative integers, and MUST NOT contain leading zeroes. X is the major
-   version, Y is the minor version, and Z is the patch version. Each element
-   MUST increase numerically. For instance: 1.9.0 -> 1.10.0 -> 1.11.0.
-2. Once a versioned document has been released, the contents of that version
-   MUST NOT be modified. Any modifications MUST be released as a new version.
-3. Major version zero (0.y.z) is for initial development before
-   the `initial_release_date`. The document status MUST be
-   `draft`. Anything MAY change at any time. The document SHOULD NOT be
-   considered stable. Changes which would increment the major version according
-   to rule 7 are tracked in this stage with (0.y.z) by incrementing the minor
-   version y instead. Changes that would increment the minor or patch version
-   according to rule 6 or 5 are both tracked in this stage with (0.y.z) by
-   incrementing the patch version z instead.
-4. Version 1.0.0 defines the initial public release. The way in which the
-   version number is incremented after this release is dependent on the content
-   and structure of the document and how it changes.
-5. Patch version Z (x.y.Z | x > 0) MUST be incremented if only backwards
-   compatible bug fixes are introduced. A bug fix is defined as an internal
-   change that fixes incorrect behavior.
+1. A normal version number MUST take the form X.Y.Z where X, Y, and Z are non-negative integers, and MUST NOT contain
+   leading zeroes. X is the major version, Y is the minor version, and Z is the patch version. Each element MUST
+   increase numerically. For instance: 1.9.0 -> 1.10.0 -> 1.11.0.
+2. Once a versioned document has been released, the contents of that version MUST NOT be modified. Any modifications
+   MUST be released as a new version.
+3. Major version zero (0.y.z) is for initial development before the `initial_release_date`. The document status MUST be
+   `draft`. Anything MAY change at any time. The document SHOULD NOT be considered stable. Changes which would increment
+   the major version according to rule 7 are tracked in this stage with (0.y.z) by incrementing the minor version y
+   instead. Changes that would increment the minor or patch version according to rule 6 or 5 are both tracked in this
+   stage with (0.y.z) by incrementing the patch version z instead.
+4. Version 1.0.0 defines the initial public release. The way in which the version number is incremented after this
+   release is dependent on the content and structure of the document and how it changes.
+5. Patch version Z (x.y.Z | x > 0) MUST be incremented if only backwards compatible bug fixes are introduced. A bug fix
+   is defined as an internal change that fixes incorrect behavior.
 
    > In the context of the document this is the case e.g. for spelling mistakes.
 
-6. Minor version Y (x.Y.z | x > 0) MUST be incremented if the content of an
-   existing element changes except for those which are covert through rule 7. It
-   MUST be incremented if substantial new information are introduced or new
-   elements are provided. It MAY include patch level changes. Patch version MUST
-   be reset to 0 when minor version is incremented.
-7. Major version X (X.y.z | X > 0) MUST be incremented if a new comparison with
-   the end user's asset database is required. This includes:
+6. Minor version Y (x.Y.z | x > 0) MUST be incremented if the content of an existing element changes except for those
+   which are covert through rule 7. It MUST be incremented if substantial new information are introduced or new elements
+   are provided. It MAY include patch level changes. Patch version MUST be reset to 0 when minor version is incremented.
+7. Major version X (X.y.z | X > 0) MUST be incremented if a new comparison with the end user's asset database is
+   required. This includes:
 
-   * changes (adding, removing elements or modifying content) in `/product_tree`
-     or elements which contain
+   * changes (adding, removing elements or modifying content) in `/product_tree` or elements which contain
      `/product_tree` in their path
    * adding or removing items of `/vulnerabilities`
    * adding or removing elements in:
@@ -108,32 +92,28 @@ results in the following rules:
      * `/vulnerabilities[]/product_status/fixed`
      * `/vulnerabilities[]/product_status/known_not_affected`
 
-   It MAY also include minor and patch level changes. Patch and minor version
-   MUST be reset to 0 when major version is incremented.
-8. A pre-release version (document status `draft`) MAY be denoted by appending a
-   hyphen and a series of dot separated identifiers immediately following the
-   patch version. Identifiers MUST comprise only ASCII alphanumerics and hyphens
-   [0-9A-Za-z-]. Identifiers MUST NOT be empty. Numeric identifiers MUST NOT
-   include leading zeroes. Pre-release versions have a lower precedence than the
-   associated normal version. A pre-release version indicates that the version
-   is unstable and might not satisfy the intended compatibility requirements as
-   denoted by its associated normal version.
+   It MAY also include minor and patch level changes. Patch and minor version MUST be reset to 0 when major version is
+   incremented.
+8. A pre-release version (document status `draft`) MAY be denoted by appending a hyphen and a series of dot separated
+   identifiers immediately following the patch version. Identifiers MUST comprise only ASCII alphanumerics and hyphens
+   [0-9A-Za-z-]. Identifiers MUST NOT be empty. Numeric identifiers MUST NOT include leading zeroes. Pre-release
+   versions have a lower precedence than the associated normal version. A pre-release version indicates that the version
+   is unstable and might not satisfy the intended compatibility requirements as denoted by its associated normal
+   version.
 
    *Examples:*
 
-     * `1.0.0-0.3.7`
-     * `1.0.0-alpha`
-     * `1.0.0-alpha.1`
-     * `1.0.0-x-y-z.–`
-     * `1.0.0-x.7.z.92`
+   * `1.0.0-0.3.7`
+   * `1.0.0-alpha`
+   * `1.0.0-alpha.1`
+   * `1.0.0-x-y-z.–`
+   * `1.0.0-x.7.z.92`
 
 9. Pre-release MUST NOT be included if `/document/tracking/status` is `final`.
-10. Build metadata MAY be denoted by appending a plus sign and a series of dot
-    separated identifiers immediately following the patch or pre-release
-    version. Identifiers MUST comprise only ASCII alphanumerics and hyphens
-    [0-9A-Za-z-]. Identifiers MUST NOT be empty. Build metadata MUST be ignored
-    when determining version precedence. Thus two versions that differ only in
-    the build metadata, have the same precedence.
+10. Build metadata MAY be denoted by appending a plus sign and a series of dot separated identifiers immediately
+    following the patch or pre-release version. Identifiers MUST comprise only ASCII alphanumerics and hyphens
+    [0-9A-Za-z-]. Identifiers MUST NOT be empty. Build metadata MUST be ignored when determining version precedence.
+    Thus two versions that differ only in the build metadata, have the same precedence.
 
     *Examples:*
 
@@ -174,14 +154,12 @@ results in the following rules:
 19. A larger set of pre-release fields has a higher precedence than a smaller
     set, if all of the preceding identifiers are equal.
 
-     *Example:*
+    *Example:*
 
-     * `1.0.0-alpha < 1.0.0-alpha.1 < 1.0.0-alpha.beta < 1.0.0-beta <
-        1.0.0-beta.2 < 1.0.0-beta.11 < 1.0.0-rc.1 < 1.0.0`
+    * `1.0.0-alpha < 1.0.0-alpha.1 < 1.0.0-alpha.beta < 1.0.0-beta < 1.0.0-beta.2 < 1.0.0-beta.11 < 1.0.0-rc.1 < 1.0.0`
 
 ___
 
 <a name="semver"/>**[SemVer]**
 
-*Semantic Versioning 2.0.0*, T. Preston-Werner, June 2013,
-[https://semver.org/](https://semver.org/).
+*Semantic Versioning 2.0.0*, T. Preston-Werner, June 2013, [https://semver.org/](https://semver.org/).

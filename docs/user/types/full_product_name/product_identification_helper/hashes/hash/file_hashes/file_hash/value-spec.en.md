@@ -1,15 +1,13 @@
 # Value - Specification
 
-The Value of the cryptographic hash representation (`value`) of value
-type `string` of 32 or more characters with
+The Value of the cryptographic hash representation (`value`) of value type `string` of 32 or more characters with
 `pattern` (regular expression):
 
 ```regexp
 ^[0-9a-fA-F]{32,}$
 ```
 
-The Value of the cryptographic hash attribute contains the cryptographic hash
-value in hexadecimal representation.
+The Value of the cryptographic hash attribute contains the cryptographic hash value in hexadecimal representation.
 
 *Examples:*
 

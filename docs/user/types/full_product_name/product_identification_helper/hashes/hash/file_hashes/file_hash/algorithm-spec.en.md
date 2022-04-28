@@ -1,9 +1,8 @@
 # Algorithm - Specification
 
-The algorithm of the cryptographic hash representation (`algorithm`) of value
-type `string` with one or more characters contains the name of the cryptographic
-hash algorithm used to calculate the value. The default value for `algorithm`
-is `sha256`.
+The algorithm of the cryptographic hash representation (`algorithm`) of value type `string` with one or more characters
+contains the name of the cryptographic hash algorithm used to calculate the value.
+The default value for `algorithm` is `sha256`.
 
 *Examples:*
 
@@ -13,8 +12,8 @@ is `sha256`.
 * `sha384`
 * `sha512`
 
-These values are derived from the currently supported digests OpenSSL
-[[OPENSSL]](#openssl). Leading dashes were removed.
+These values are derived from the currently supported digests OpenSSL [[OPENSSL]](#openssl). Leading dashes were
+removed.
 
 > The command `openssl dgst -list` (Version 1.1.1f from 2020-03-31) outputs the following:
 >
@@ -35,5 +34,4 @@ ___
 
 <a name="openssl"/>**[OPENSSL]**
 
-*GTLS/SSL and crypto library*, OpenSSL Software
-Foundation, [https://www.openssl.org/](https://www.openssl.org/).
+*GTLS/SSL and crypto library*, OpenSSL Software Foundation, [https://www.openssl.org/](https://www.openssl.org/).

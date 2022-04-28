@@ -1,7 +1,6 @@
 # Engine - Specification
 
-Engine of document generation (`engine`) of value type `object` with mandatory
-property
+Engine of document generation (`engine`) of value type `object` with mandatory property
 
 * [Engine Name](engine/name-spec.en.md) (`name`)
 

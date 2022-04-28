@@ -9,8 +9,8 @@ Tracking (`tracking`) of value type `object` with the six mandatory properties:
 * [Status](tracking/status-spec.en.md) (`status`)
 * [Version](tracking/version-spec.en.md) (`version`)
 
-is a container designated to hold all management attributes necessary to track a
-CSAF document as a whole. The two optional additional properties are
+is a container designated to hold all management attributes necessary to track a CSAF document as a whole.
+The two optional additional properties are
 
 * [Aliases](tracking/aliases-spec.en.md) (`aliases`)
 * [Generator](tracking/generator-spec.en.md) (`generator`).

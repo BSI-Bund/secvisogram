@@ -1,7 +1,6 @@
 # Uri - Specification
 
-The URI (`uri`) of value type `string` with format `uri` contains the identifier
-itself.
+The URI (`uri`) of value type `string` with format `uri` contains the identifier itself.
 
 > These elements can be used to reference a specific component from an SBOM:
 
