@@ -8,7 +8,6 @@ Reference objects.
   // ...
   "items": {
     // ...
-    }
   }
 }
 ```
