@@ -12,7 +12,7 @@ and the optional
 
 property.
 
-```json
+```javascript
     "properties": {
       "group_id": {
         // ...

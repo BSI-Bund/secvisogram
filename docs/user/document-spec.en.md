@@ -21,7 +21,7 @@ optional properties
 * [References](document/references-spec.en.md) (`references`)
 * [Source Language](document/source_lang-spec.en.md) (`source_lang`)
 
-```json
+```javascript
 "document": {
   // ...
   "properties": {

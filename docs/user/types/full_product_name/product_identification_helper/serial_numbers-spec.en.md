@@ -7,7 +7,7 @@ A list of serial numbers SHOULD only be used if a certain range of serial
 numbers with its corresponding software version is affected, or the serial
 numbers change during update.
 
-```json
+```javascript
 "serial_numbers": {
     //...
   "items": {

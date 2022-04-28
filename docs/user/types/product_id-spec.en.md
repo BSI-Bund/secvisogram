@@ -7,7 +7,7 @@ other parts in the document. There is no predefined or required format for the
 Product ID (`product_id`) as long as it uniquely identifies a product in the
 context of the current document.
 
-```json
+```javascript
 "product_id_t": {
   // ...
 }

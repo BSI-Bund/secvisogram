@@ -12,7 +12,7 @@ is a container to hold all elements related to the generation of the document.
 These items will reference when the document was actually created, including the
 date it was generated and the entity that generated it.
 
-```json
+```javascript
 "generator": {
   // ...
   "properties": {

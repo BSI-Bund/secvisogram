@@ -14,7 +14,7 @@ or a
 
 * [Product](branch/product-spec.en.md) `product` property.
 
-```json
+```javascript
 "properties": {
   "branches": {
     // ...

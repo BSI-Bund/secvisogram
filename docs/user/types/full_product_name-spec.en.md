@@ -13,7 +13,7 @@ are required. The property
 
 is optional.
 
-```json
+```javascript
 "full_product_name_t": {
   // ...
   "properties": {

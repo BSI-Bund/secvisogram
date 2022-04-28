@@ -6,7 +6,7 @@ contains a list of URLs where SBOMs for this product can be retrieved.
 > The SBOMs might differ in format or depth of detail. Currently supported
 > formats are SPDX, CycloneDX, and SWID.
 
-```json
+```javascript
 "sbom_urls": {
     //...
   "items": {

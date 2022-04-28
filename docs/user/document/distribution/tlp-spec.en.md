@@ -11,7 +11,7 @@ and the optional property
 
 provides details about the TLP classification of the document.
 
-```json
+```javascript
 "tlp": {
   // ...
   "properties": {

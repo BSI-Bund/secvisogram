@@ -12,7 +12,7 @@ properties are:
 * [Contact Details](publisher/issuing_authority-spec.en.md) (`contact_details`)
 * [Issuing Authority](publisher/issuing_authority-spec.en.md) (`issuing_authority`)
 
-```json
+```javascript
 "publisher": {
   // ...
   "properties": {

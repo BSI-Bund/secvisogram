@@ -12,7 +12,7 @@ stock keeping units is or a description how it can be obtained.
 > Otherwise, the end user is unable to identify which version (the affected or
 > the not affected / fixed one) is used.
 
-```json
+```javascript
 "skus": {
     //...
   "items": {

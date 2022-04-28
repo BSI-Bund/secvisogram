@@ -13,7 +13,7 @@ reference `object` MAY provide the optional property
 
 * [Category](reference/category-spec.en.md) (`category`)
 
-```json
+```javascript
 "properties": {
   "category": {
     // ...

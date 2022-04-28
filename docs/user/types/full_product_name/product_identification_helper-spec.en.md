@@ -15,7 +15,7 @@ identifying the product in an asset database. Of the given eight properties
 
 one is mandatory.
 
-```json
+```javascript
 "product_identification_helper": {
   // ...
   "properties": {

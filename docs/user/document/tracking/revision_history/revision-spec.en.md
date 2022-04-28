@@ -12,7 +12,7 @@ In addition, a Revision MAY expose the optional property
 
 * [Legacy Version](revision/legacy_version-spec.en.md) `legacy_version`
 
-```json
+```javascript
 "properties": {
   "date": {
     // ...

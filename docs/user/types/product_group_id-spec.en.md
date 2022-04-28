@@ -7,7 +7,7 @@ to from other parts in the document. There is no predefined or required format
 for the Product Group ID (`product_group_id`) as long as it uniquely identifies
 a product group in the context of the current document.
 
-```json
+```javascript
 "product_group_id_t": {
   // ...
 }

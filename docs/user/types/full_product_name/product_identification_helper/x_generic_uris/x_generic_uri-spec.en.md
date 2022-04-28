@@ -6,7 +6,7 @@ properties
 * [Namespace](x_generic_uri/namespace-spec.en.md) (`namespace`)
 * [URI](x_generic_uri/uri-spec.en.md) (`uri`)
 
-```json
+```javascript
 "properties": {
   "namespace": {
     // ...

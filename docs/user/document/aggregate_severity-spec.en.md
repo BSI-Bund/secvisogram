@@ -15,7 +15,7 @@ addressed. It is a document-level metric and applied to the document as a whole
 — not any specific vulnerability. The range of values in this field is defined
 according to the document producer's policies and procedures.
 
-```json
+```javascript
 "aggregate_severity": {
   // ...
   "properties": {

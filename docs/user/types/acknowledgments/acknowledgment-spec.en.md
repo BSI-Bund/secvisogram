@@ -9,7 +9,7 @@ that contributed. The properties are:
 * [Summary](acknowledgment/summary-spec.en.md) (`summary`)
 * [URLs](acknowledgment/urls-spec.en.md) (`urls`)
 
-```json
+```javascript
 "properties": {
   "names": {
     // ...
@@ -28,7 +28,7 @@ that contributed. The properties are:
 
 *Example:*
 
-```json
+```javascript
 "acknowledgments": [
   {
     "names": [

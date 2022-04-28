@@ -9,7 +9,7 @@ elsewhere in the document. The properties are
 * [Product Groups](product_tree/product_groups-spec.en.md) (`product_groups`)
 * [Relationships](product_tree/relationships-spec.en.md) (`relationships`)
 
-```json
+```javascript
 "product_tree": {
   // ...
   "properties": {

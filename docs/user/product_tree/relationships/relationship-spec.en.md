@@ -15,7 +15,7 @@ The Relationship item establishes a link between two
 existing `full_product_name_t` elements, allowing the document producer to
 define a combination of two products that form a new `full_product_name` entry.
 
-```json
+```javascript
 "properties": {
   "category": {
     // ...

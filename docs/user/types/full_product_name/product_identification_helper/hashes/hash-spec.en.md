@@ -7,7 +7,7 @@ has the 2 mandatory properties
 * [File Hashes](hash/file_hashes-spec.en.md) (`file_hashes`)
 * [File Name](hash/filename-spec.en.md) (`filename`)
 
-```json
+```javascript
 "properties": {
   "file_hashes": {
     // ...

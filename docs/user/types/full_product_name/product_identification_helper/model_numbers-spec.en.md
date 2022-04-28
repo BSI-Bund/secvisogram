@@ -10,7 +10,7 @@ during update.
 This can also be used to identify hardware. If necessary, the software, or any
 other related part, SHALL be bind to that via a product relationship.
 
-```json
+```javascript
 "model_numbers": {
     //...
   "items": {

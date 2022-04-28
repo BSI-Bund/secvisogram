@@ -15,7 +15,7 @@ CSAF document as a whole. The two optional additional properties are
 * [Aliases](tracking/aliases-spec.en.md) (`aliases`)
 * [Generator](tracking/generator-spec.en.md) (`generator`).
 
-```json
+```javascript
 "tracking": {
   // ...
   "properties": {

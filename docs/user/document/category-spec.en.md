@@ -12,7 +12,7 @@ producer, which will inform the end user as to the category of document.
 
 > It is directly related to the profiles defined in section 4 of the specification.
 
-```json
+```javascript
 "category": {
   // ...
 }

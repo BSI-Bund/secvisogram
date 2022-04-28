@@ -3,7 +3,7 @@
 List of notes (`notes_t`) of value type array with 1 or more items of
 type `Note` contains notes which are specific to the current context.
 
-```json
+```javascript
 "notes_t": {
   // ...
   "items": {

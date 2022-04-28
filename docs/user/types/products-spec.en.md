@@ -5,7 +5,7 @@ items (a `set`) of type Product ID
 (`product_id_t`) specifies a list of `product_ids` to give context to the parent
 item.
 
-```json
+```javascript
 "products_t": {
   // ...
   "items": {
