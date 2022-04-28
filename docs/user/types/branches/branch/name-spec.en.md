@@ -59,10 +59,10 @@ The value of MUST obey to exactly one of the following options:
 
    *Examples for `name` when using `product_version_range` with vers:*
 
-  * `vers:gem/>=2.2.0|!= 2.2.1|<2.3.0`
-  * `vers:npm/1.2.3|>=2.0.0|<5.0.0`
-  * `vers:pypi/0.0.0|0.0.1|0.0.2|0.0.3|1.0|2.0pre1`
-  * `vers:tomee/>=8.0.0-M1|<=8.0.1`
+   * `vers:gem/>=2.2.0|!= 2.2.1|<2.3.0`
+   * `vers:npm/1.2.3|>=2.0.0|<5.0.0`
+   * `vers:pypi/0.0.0|0.0.1|0.0.2|0.0.3|1.0|2.0pre1`
+   * `vers:tomee/>=8.0.0-M1|<=8.0.1`
 
    > Through the definitions of the vers specification a user can compute whether a given version is in a given range.
 
@@ -77,7 +77,7 @@ The value of MUST obey to exactly one of the following options:
 
    *Examples for `name` when using `product_version_range` with vls:*
 
-  * `<=2`
-  * `<4.2`
-  * `<V3.0.29`
-  * `>=8.1.5`
+   * `<=2`
+   * `<4.2`
+   * `<V3.0.29`
+   * `>=8.1.5`
