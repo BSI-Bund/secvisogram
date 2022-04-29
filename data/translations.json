@@ -1,8 +1,6 @@
 {
   "resources": {
     "en": {
-      "AcknowledgmentsTitle": "List of acknowledgments",
-      "AcknowledgmentsDescription": "Contains a list of acknowledgment elements.",
       "AcknowledgmentsItemsTitle": "Acknowledgment",
       "AcknowledgmentsItemsDescription": "Acknowledges contributions by describing those that contributed.",
       "AcknowledgmentsItemsNamesTitle": "List of acknowledged names",
@@ -73,10 +71,6 @@
       "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription": "Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid.",
       "FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle": "URI",
       "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription": "Contains the identifier itself.",
-      "LangTitle": "Language type",
-      "LangDescription": "Identifies a language, corresponding to IETF BCP 47 / RFC 5646. See IETF language registry: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry",
-      "NotesTitle": "List of notes",
-      "NotesDescription": "Contains notes which are specific to the current context.",
       "NotesItemsTitle": "Note",
       "NotesItemsDescription": "Is a place to put all manner of text blobs related to the current context.",
       "NotesItemsAudienceTitle": "Audience of note",
@@ -95,8 +89,6 @@
       "ProductIdDescription": "Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.",
       "ProductsTitle": "List of product_ids",
       "ProductsDescription": "Specifies a list of product_ids to give context to the parent item.",
-      "ReferencesTitle": "List of references",
-      "ReferencesDescription": "Holds a list of references.",
       "ReferencesItemsTitle": "Reference",
       "ReferencesItemsDescription": "Holds any reference to conferences, papers, advisories, and other resources that are related and considered related to either a surrounding part of or the entire document and to be of value to the document consumer.",
       "ReferencesItemsCategoryTitle": "Category of reference",
@@ -391,8 +383,6 @@
       "CvssV3ModifiedAvailabilityImpactDescription": "This metric enables the analyst to adjust the availability impact according to modifications that exist within the analyst's environment."
     },
     "de": {
-      "AcknowledgmentsTitle": "Liste der Danksagungen",
-      "AcknowledgmentsDescription": "Enthält eine Liste von Danksagungen.",
       "AcknowledgmentsItemsTitle": "Danksagung",
       "AcknowledgmentsItemsDescription": "Dient der Anerkennung von Beiträgen durch Beschreibung der Personen, die beigetragen haben.",
       "AcknowledgmentsItemsNamesTitle": "Liste der anzuerkennenden Namen",
@@ -463,10 +453,6 @@
       "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription": "Verweist auf eine URL, die den Namen und das Wissen über die verwendete Spezifikation bereitstellt, oder ist der Namespace, in dem diese Werte gültig sind.",
       "FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle": "URI",
       "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription": "Enthält den Bezeichner selbst.",
-      "LangTitle": "Art der Sprache",
-      "LangDescription": "Identifiziert eine Sprache, entsprechend IETF BCP 47 / RFC 5646. Siehe IETF-Sprachregistrierung: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry",
-      "NotesTitle": "Liste der Anmerkungen",
-      "NotesDescription": "Enthält Anmerkungen, die sich auf den aktuellen Kontext beziehen.",
       "NotesItemsTitle": "Hinweis",
       "NotesItemsDescription": "Ist ein Platz für alle Arten von Textblöcken, die sich auf den aktuellen Kontext beziehen.",
       "NotesItemsAudienceTitle": "Zielgruppe der Anmerkung",
@@ -485,8 +471,6 @@
       "ProductIdDescription": "Token, das zur Identifizierung eines vollständigen Produktnamens erforderlich ist, damit von anderen Teilen des Dokuments aus auf ihn verwiesen werden kann. Es gibt kein vorgegebenes oder erforderliches Format für die product_id, solange sie ein Produkt im Kontext des aktuellen Dokuments eindeutig identifiziert.",
       "ProductsTitle": "Liste von product_ids",
       "ProductsDescription": "Gibt eine Liste von product_ids an, um dem übergeordneten Element einen Kontext zu geben.",
-      "ReferencesTitle": "Liste der Referenzen",
-      "ReferencesDescription": "Enthält eine Liste von Referenzen.",
       "ReferencesItemsTitle": "Referenz",
       "ReferencesItemsDescription": "Enthält Verweise auf Konferenzen, Papiere, Advisories und andere Ressourcen, die entweder mit einem umgebenden Teil des Dokuments oder mit dem gesamten Dokument in Verbindung stehen und für den Nutzer des Dokuments von Wert sind.",
       "ReferencesItemsCategoryTitle": "Kategorie der Referenz",
