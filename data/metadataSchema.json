@@ -41,7 +41,7 @@
         ],
         "properties": {
           "path": {
-            "title": "Json Path",
+            "title": "JSON Path",
             "description": "The JSON path of the field this item holds metadata for",
             "type": "string",
             "minLength": 1,
