@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 import { expect } from 'chai'
-import CVSSVector from '../../lib/SecvisogramPage/View/FormEditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSVector'
-import ViewReducer from '../../lib/SecvisogramPage/View/Reducer'
+import CVSSVector from '../../lib/app/SecvisogramPage/View/FormEditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSVector.js'
+import ViewReducer from '../../lib/app/SecvisogramPage/View/Reducer.js'
 
 describe('SecvisogramPage', () => {
   describe('View', () => {

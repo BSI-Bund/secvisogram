@@ -69,12 +69,13 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
   "references": [{ "path": "../csaf-validator-lib" }],
-  "include": ["**/*.js", "*.d.ts", "**/*.json"],
+  "include": ["**/*.js", "**/*.ts", "**/*.json"],
   "exclude": [
     "node_modules",
     "dist",
     "postcss.config.js",
     "vendor",
+    "build",
 
     // This is workaround which can be removed once the new csaf-validator-lib is included
     "cypress/support"

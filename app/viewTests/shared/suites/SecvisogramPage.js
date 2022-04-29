@@ -1,131 +1,16 @@
 import React from 'react'
-import View from '../../../lib/SecvisogramPage/View.js'
+import DocumentsTabView from '../../../lib/app/SecvisogramPage/DocumentsTab/View.js'
+import View from '../../../lib/app/SecvisogramPage/View.js'
 import seed1 from '../../../seeds/documents/valid-1.json'
 import seed2 from '../../../seeds/documents/valid-2.json'
+import {
+  documentsTabViewSample,
+  secvisogramPageViewSample,
+} from '../../../viewSamples.js'
 
 export const title = 'SecvisogramPage'
 
-const props = {
-  isLoading: false,
-  isSaving: false,
-  isTabLocked: false,
-  errors: [],
-  stripResult: null,
-  previewResult: null,
-  strict: true,
-  data: {
-    documentIsValid: null,
-    doc: {
-      document: {
-        csaf_version: '',
-        title: '',
-        publisher: {
-          type: '',
-        },
-        type: '',
-        tracking: {
-          current_release_date: '',
-          id: '',
-          initial_release_date: '',
-          revision_history: [
-            {
-              number: '',
-              date: '',
-              summary: '',
-            },
-          ],
-          status: '',
-          version: '',
-        },
-        acknowledgments: [
-          {
-            names: [],
-            organizations: [],
-            summary: '',
-            urls: [],
-          },
-        ],
-        aggregate_severity: {
-          namespace: '',
-          text: '',
-        },
-        notes: [],
-      },
-      product_tree: {},
-      vulnerabilities: [
-        {
-          notes: [
-            {
-              type: '',
-              text: '',
-            },
-          ],
-          scores: [{ cvss_v3: { vectorString: '', baseScore: 0 } }],
-        },
-      ],
-    },
-  },
-  activeTab: /** @type {'EDITOR'} */ ('EDITOR'),
-  generatorEngineData: { name: 'Secvisogram', version: 'unidentified version' },
-  onSetStrict: console.log.bind(console, 'onSetStrict'),
-  onNew: console.log.bind(console, 'onNew'),
-  onDownload: console.log.bind(console, 'onDownload'),
-  onOpen: () => {
-    console.log('onOpen')
-    return new Promise(() => {})
-  },
-  onSave: console.log.bind(console, 'onSave'),
-  onChangeTab: console.log.bind(console, 'onChangeTab'),
-  onValidate: console.log.bind(console, 'onValidate'),
-  onNewDocMin: () => {
-    console.log('onNewDocMin')
-    return new Promise(() => {})
-  },
-  onNewDocMax: () => {
-    console.log('onNewDocMax')
-    return new Promise(() => {})
-  },
-  onStrip: (/** @type {any[]} */ ...args) => {
-    console.log('onStrip', ...args)
-    return new Promise((resolve) => {
-      setTimeout(
-        () =>
-          resolve({
-            document: seed1,
-            strippedPaths: [
-              {
-                message: 'value is empty',
-                instancePath: '/my/data/path',
-                error: false,
-              },
-              {
-                message: 'value is invalid',
-                instancePath: '/my/data/path',
-                error: true,
-              },
-            ],
-          }),
-        500
-      )
-    })
-  },
-  onPreview: () => {
-    console.log('onPreview')
-    return new Promise(() => {})
-  },
-  onExportCSAF: console.log.bind(console, 'onExportCSAF'),
-  onExportHTML: console.log.bind(console, 'onExportHTML'),
-  onLockTab: console.log.bind(console, 'onLockTab'),
-  onUnlockTab: console.log.bind(console, 'onUnlockTab'),
-  onCollectProductIds: () => {
-    console.log('onCollectProductIds')
-    return new Promise(() => {})
-  },
-  onCollectGroupIds: () => {
-    console.log('onCollectGroupIds')
-    return new Promise(() => {})
-  },
-}
+const props = secvisogramPageViewSample.basic.props
 
 export const tests = [
   {
@@ -360,6 +245,24 @@ export const tests = [
         onStrip={async () => {
           return { document: seed1, strippedPaths: [] }
         }}
+      />
+    ),
+  },
+  {
+    title: 'DOCUMENTS tab',
+    render: () => <View {...secvisogramPageViewSample.documentsTab.props} />,
+  },
+  {
+    title: 'DOCUMENTS tab (loading)',
+    render: () => (
+      <View
+        {...secvisogramPageViewSample.documentsTab.props}
+        DocumentsTab={(props) => (
+          <DocumentsTabView
+            {...documentsTabViewSample.withoutData.props}
+            {...props}
+          />
+        )}
       />
     ),
   },

@@ -8,12 +8,17 @@ const gitRevisionPlugin = new GitRevisionPlugin()
 /** @type {import('webpack').Configuration} */
 module.exports = {
   entry: {
-    secvisogram: './lib/SecvisogramPage.js',
+    style: [
+      './lib/style.css',
+      '@reach/combobox/styles.css',
+      '@reach/dialog/styles.css',
+    ],
+    app: ['./lib/app.js'],
     ...(process.env.NODE_ENV === 'production'
       ? {}
       : {
-          'view-tests': './viewTests/frame.js',
-          'view-tests-canvas': './viewTests/canvas.js',
+          'view-tests': ['./viewTests/frame.js'],
+          'view-tests-canvas': ['./viewTests/canvas.js'],
         }),
   },
   module: {
@@ -37,7 +42,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
     new HTMLWebpackPlugin({
-      chunks: ['secvisogram'],
+      chunks: ['style', 'app'],
       template: './lib/index.html',
     }),
     new CopyWebpackPlugin({
@@ -56,14 +61,25 @@ module.exports = {
       ? []
       : [
           new HTMLWebpackPlugin({
-            chunks: ['view-tests'],
+            chunks: ['style'],
+            template: './lib/index.html',
+            filename: 'cypress/index.html',
+          }),
+          new HTMLWebpackPlugin({
+            chunks: ['style', 'view-tests'],
             filename: 'view-tests.html',
           }),
           new HTMLWebpackPlugin({
-            chunks: ['view-tests-canvas'],
+            chunks: ['style', 'view-tests-canvas'],
             filename: 'view-tests-canvas.html',
             template: './lib/index.html',
           }),
         ]),
   ],
+  devServer: {
+    historyApiFallback: true,
+    proxy: {
+      '/api': 'http://localhost:8081',
+    },
+  },
 }
