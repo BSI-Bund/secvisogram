@@ -4,9 +4,7 @@ Document acknowledgments (`acknowledgments`) of value type Acknowledgments Type 
 acknowledgment elements associated with the whole document.
 
 ```javascript
-"acknowledgments"
-:
-{
+"acknowledgments": {
   // ...
 }
 ```

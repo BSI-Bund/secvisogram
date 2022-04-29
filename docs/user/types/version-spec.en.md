@@ -6,8 +6,8 @@ The Version (`version_t`) type has value type `string` with `pattern` (regular e
 ^(0|[1-9][0-9]*)$|^((0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)$
 ```
 
-The version specifies a version string to denote clearly the evolution of the content of the document. There are two
-options how it can be used:
+The version specifies a version string to denote clearly the evolution of the content of the document.
+There are two options how it can be used:
 
 * semantic versioning (preferred; according to the rules below)
 * integer versioning

@@ -12,8 +12,8 @@ The default value for `algorithm` is `sha256`.
 * `sha384`
 * `sha512`
 
-These values are derived from the currently supported digests OpenSSL [[OPENSSL]](#openssl). Leading dashes were
-removed.
+These values are derived from the currently supported digests OpenSSL [[OPENSSL]](#openssl).
+Leading dashes were removed.
 
 > The command `openssl dgst -list` (Version 1.1.1f from 2020-03-31) outputs the following:
 >

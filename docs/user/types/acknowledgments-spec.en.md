@@ -12,4 +12,4 @@ of `Acknowledgment` elements.
 }
 ```
 
-[Specification of Acknowledgment items](docs/user/types/acknowledgments/acknowledgment-spec.en.md)
+[Specification of Acknowledgment items](acknowledgments/acknowledgment-spec.en.md)
