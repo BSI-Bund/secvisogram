@@ -3861,8 +3861,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2Title",
+      "field_description": "CvssV2Description",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -3879,8 +3879,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "VersionTitle",
-      "field_description": "VersionDescription",
+      "field_title": "CvssVersionTitle",
+      "field_description": "CvssVersionDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -3893,8 +3893,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssVectorStringTitle",
+      "field_description": "CvssVectorStringDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3908,8 +3908,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2AccessVectorTitle",
+      "field_description": "CvssV2AccessVectorDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -3926,8 +3926,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2AccessComplexityTitle",
+      "field_description": "CvssV2AccessComplexityDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -3944,8 +3944,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2AuthenticationTitle",
+      "field_description": "CvssV2AuthenticationDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -3962,8 +3962,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssConfidentialityImpactTitle",
+      "field_description": "CvssConfidentialityImpactDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -3980,8 +3980,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssIntegrityImpactTitle",
+      "field_description": "CvssIntegrityImpactDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -3998,8 +3998,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssAvailabilityImpactTitle",
+      "field_description": "CvssAvailabilityImpactDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4016,8 +4016,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssBaseScoreTitle",
+      "field_description": "CvssBaseScoreDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -4030,8 +4030,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2ExploitabilityTitle",
+      "field_description": "CvssV2ExploitabilityDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -4048,8 +4048,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssRemediationLevelTitle",
+      "field_description": "CvssRemediationLevelDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4066,8 +4066,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssReportConfidenceTitle",
+      "field_description": "CvssReportConfidenceDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4084,8 +4084,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssTemporalScoreTitle",
+      "field_description": "CvssTemporalScoreDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4102,8 +4102,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2CollateralDamagePotentialTitle",
+      "field_description": "CvssV2CollateralDamagePotentialDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4120,8 +4120,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2TargetDistributionTitle",
+      "field_description": "CvssV2TargetDistributionDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4138,8 +4138,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssConfidentialityRequirementTitle",
+      "field_description": "CvssConfidentialityRequirementDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4156,8 +4156,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssIntegrityRequirementTitle",
+      "field_description": "CvssIntegrityRequirementDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4174,8 +4174,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssAvailabilityRequirementTitle",
+      "field_description": "CvssAvailabilityRequirementDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4192,8 +4192,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "field_title": "CvssV2PropertyTitle",
-      "field_description": "CvssV2PropertyDescription",
+      "field_title": "CvssEnvironmentalScoreTitle",
+      "field_description": "CvssEnvironmentalScoreDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4210,8 +4210,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3Title",
+      "field_description": "CvssV3Description",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4228,8 +4228,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "VersionTitle",
-      "field_description": "VersionDescription",
+      "field_title": "CvssVersionTitle",
+      "field_description": "CvssVersionDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -4242,8 +4242,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssVectorStringTitle",
+      "field_description": "CvssVectorStringDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -4257,8 +4257,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3AttackVectorTitle",
+      "field_description": "CvssV3AttackVectorDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4275,8 +4275,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3AttackComplexityTitle",
+      "field_description": "CvssV3AttackComplexityDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4293,8 +4293,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3PrivilegesRequiredTitle",
+      "field_description": "CvssV3PrivilegesRequiredDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4311,8 +4311,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3UserInteractionTitle",
+      "field_description": "CvssV3UserInteractionDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4329,8 +4329,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ScopeTitle",
+      "field_description": "CvssV3ScopeDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4347,8 +4347,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssConfidentialityImpactTitle",
+      "field_description": "CvssConfidentialityImpactDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4365,8 +4365,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssIntegrityImpactTitle",
+      "field_description": "CvssIntegrityImpactDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4383,8 +4383,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssAvailabilityImpactTitle",
+      "field_description": "CvssAvailabilityImpactDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4401,8 +4401,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssBaseScoreTitle",
+      "field_description": "CvssBaseScoreDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -4415,8 +4415,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3BaseSeverityTitle",
+      "field_description": "CvssV3BaseSeverityDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -4429,8 +4429,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ExploitCodeMaturityTitle",
+      "field_description": "CvssV3ExploitCodeMaturityDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -4447,8 +4447,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssRemediationLevelTitle",
+      "field_description": "CvssRemediationLevelDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4465,8 +4465,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssReportConfidenceTitle",
+      "field_description": "CvssReportConfidenceDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4483,8 +4483,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssTemporalScoreTitle",
+      "field_description": "CvssTemporalScoreDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4501,8 +4501,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3TemporalSeverityTitle",
+      "field_description": "CvssV3TemporalSeverityDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4519,8 +4519,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssConfidentialityRequirementTitle",
+      "field_description": "CvssConfidentialityRequirementDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4537,8 +4537,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssIntegrityRequirementTitle",
+      "field_description": "CvssIntegrityRequirementDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4555,8 +4555,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssAvailabilityRequirementTitle",
+      "field_description": "CvssAvailabilityRequirementDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4573,8 +4573,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedAttackVectorTitle",
+      "field_description": "CvssV3ModifiedAttackVectorDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4591,8 +4591,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedAttackComplexityTitle",
+      "field_description": "CvssV3ModifiedAttackComplexityDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4609,8 +4609,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedPrivilegesRequiredTitle",
+      "field_description": "CvssV3ModifiedPrivilegesRequiredDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4627,8 +4627,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedUserInteractionTitle",
+      "field_description": "CvssV3ModifiedUserInteractionDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4645,8 +4645,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedScopeTitle",
+      "field_description": "CvssV3ModifiedScopeDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4663,8 +4663,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedConfidentialityImpactTitle",
+      "field_description": "CvssV3ModifiedConfidentialityImpactDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4681,8 +4681,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedIntegrityImpactTitle",
+      "field_description": "CvssV3ModifiedIntegrityImpactDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4699,8 +4699,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedAvailabilityImpactTitle",
+      "field_description": "CvssV3ModifiedAvailabilityImpactDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4717,8 +4717,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "field_title": "CvssV3PropertyTitle",
-      "field_description": "CvssV3PropertyDescription",
+      "field_title": "CvssEnvironmentalScoreTitle",
+      "field_description": "CvssEnvironmentalScoreDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
