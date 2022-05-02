@@ -11,4 +11,4 @@ List of hashes (`hashes`) of value type `array` holding at least one item contai
 }
 ```
 
-[Specification of Hash items](hashes/hash-spec.en.md)
+[Specification of Hash items](types/full_product_name/product_identification_helper/hashes/hash-spec.en.md)

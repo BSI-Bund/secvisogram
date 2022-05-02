@@ -17,4 +17,4 @@ In the latter case the remediations SHALL include the new stock keeping units is
 }
 ```
 
-[Specification of SKU items](skus/sku-spec.en.md)
+[Specification of SKU items](types/full_product_name/product_identification_helper/skus/sku-spec.en.md)

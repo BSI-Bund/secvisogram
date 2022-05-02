@@ -11,4 +11,4 @@ List of Acknowledgments (`acknowledgments_t`) type instance of value type `array
 }
 ```
 
-[Specification of Acknowledgment items](acknowledgments/acknowledgment-spec.en.md)
+[Specification of Acknowledgment items](types/acknowledgments/acknowledgment-spec.en.md)

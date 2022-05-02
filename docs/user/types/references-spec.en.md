@@ -11,4 +11,4 @@ List of references (`references_t`) of value type `array` with 1 or more items o
 }
 ```
 
-[Specification of Reference items](references/reference-spec.en.md)
+[Specification of Reference items](types/references/reference-spec.en.md)

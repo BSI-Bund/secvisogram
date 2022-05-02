@@ -11,4 +11,4 @@ The Revision History (`revision_history`) with value type `array` of 1 or more R
 }
 ```
 
-[Specification of Revision items](revision_history/revision-spec.en.md)
+[Specification of Revision items](document/tracking/revision_history/revision-spec.en.md)

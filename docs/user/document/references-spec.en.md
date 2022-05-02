@@ -8,4 +8,4 @@ Document references (`references`) of value type References Type (`references_t`
 }
 ```
 
-[Specification of References Type](../types/references-spec.en.md)
+[Specification of References Type](types/references-spec.en.md)

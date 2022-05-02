@@ -3,13 +3,13 @@
 Each Revision contains all the information elements required to track the evolution of a CSAF document.
 Revision History Entry items are of value type `object` with the three mandatory properties:
 
-* [Date](revision/date-spec.en.md) (`date`)
-* [Number](revision/number-spec.en.md) (`number`)
-* [Summary](revision/summary-spec.en.md) (`summary`)
+* [Date](document/tracking/revision_history/revision/date-spec.en.md) (`date`)
+* [Number](document/tracking/revision_history/revision/number-spec.en.md) (`number`)
+* [Summary](document/tracking/revision_history/revision/summary-spec.en.md) (`summary`)
 
 In addition, a Revision MAY expose the optional property
 
-* [Legacy Version](revision/legacy_version-spec.en.md) `legacy_version`
+* [Legacy Version](document/tracking/revision_history/revision/legacy_version-spec.en.md) `legacy_version`
 
 ```javascript
 "properties": {

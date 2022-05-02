@@ -11,4 +11,4 @@ List of Product IDs (`products_t`) of value type `array` with 1 or more unique i
 }
 ```
 
-[Specification fo Product ID items](product_id-spec.en.md)
+[Specification fo Product ID items](types/product_id-spec.en.md)
