@@ -6,7 +6,7 @@ The URI (`uri`) of value type `string` with format `uri` contains the identifier
 
 *Example linking a component from a CycloneDX SBOM using the bomlink mechanism:*
 
-```
+```javascript
 "x_generic_uris": [
   {
     "namespace": "https://cyclonedx.org/capabilities/bomlink/",
@@ -17,7 +17,7 @@ The URI (`uri`) of value type `string` with format `uri` contains the identifier
 
 *Example linking a component from an SPDX SBOM:*
 
-```
+```javascript
 "x_generic_uris": [
   {
     "namespace": "https://spdx.github.io/spdx-spec/document-creation-information/#65-spdx-document-namespace-field",

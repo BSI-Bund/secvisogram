@@ -10,7 +10,7 @@ and optional property
 
 contains information about the engine that generated the CSAF document.
 
-```
+```javascript
 "engine": {
   // ...
   "properties": {

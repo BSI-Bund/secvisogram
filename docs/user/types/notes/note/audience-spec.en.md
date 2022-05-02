@@ -4,9 +4,7 @@ Audience of note (`audience`) of value type `string` with 1 or more characters i
 
 *Examples:*
 
-```
-all
-executives
-operational management and system administrators
-safety engineers
-```
+* `all`
+* `executives`
+* `operational management and system administrators`
+* `safety engineers`

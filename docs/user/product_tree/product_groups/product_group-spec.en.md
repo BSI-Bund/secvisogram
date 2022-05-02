@@ -11,7 +11,7 @@ and the optional
 
 property.
 
-```
+```javascript
     "properties": {
       "group_id": {
         // ...

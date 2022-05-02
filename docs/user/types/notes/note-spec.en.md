@@ -11,7 +11,7 @@ A Note `object` MAY provide the optional properties
 * [Audience](note/audience-spec.en.md) (`audience`)
 * [Title](note/title-spec.en.md) (`title`)
 
-```
+```javascript
 "properties": {
   "audience": {
     // ...

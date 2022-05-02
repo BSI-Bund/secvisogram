@@ -4,8 +4,6 @@ The Name of publisher (`name`) of value type `string` with 1 or more characters 
 
 *Example:*
 
-```
-BSI
-Cisco PSIRT
-Siemens ProductCERT
-```
+* `BSI`
+* `Cisco PSIRT`
+* `Siemens ProductCERT`

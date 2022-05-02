@@ -1,7 +1,7 @@
 # Acknowledgment - Specification
 
-The value type of Acknowledgment is `object` with at least 1 and at most 4 properties. Every such element acknowledges
-contributions by describing those that contributed.
+The value type of Acknowledgment is `object` with at least 1 and at most 4 properties.
+Every such element acknowledges contributions by describing those that contributed.
 The properties are:
 
 * [Names](acknowledgment/names-spec.en.md) (`names`)
@@ -9,7 +9,7 @@ The properties are:
 * [Summary](acknowledgment/summary-spec.en.md) (`summary`)
 * [URLs](acknowledgment/urls-spec.en.md) (`urls`)
 
-```
+```javascript
 "properties": {
   "names": {
     // ...
@@ -28,7 +28,7 @@ The properties are:
 
 *Example:*
 
-```
+```javascript
 "acknowledgments": [
   {
     "names": [
@@ -40,7 +40,7 @@ The properties are:
     "summary": "wonderful music"
   },
   {
-    "organization": "CISA"
+    "organization": "CISA",
     "summary": "coordination efforts",
     "urls": [
       "https://cisa.gov"
@@ -61,8 +61,9 @@ The properties are:
 
 The example above SHOULD lead to the following outcome in a human-readable advisory:
 
->  We thank the following parties for their efforts:
->  * Johann Sebastian Bach, Georg Philipp Telemann, Georg Friedrich Händel from Baroque composers for wonderful music
->  * CISA for coordination efforts (see: https://cisa.gov)
->  * BSI for assistance in coordination
->  * Antonio Vivaldi for influencing other composers
+> We thank the following parties for their efforts:
+>
+> * Johann Sebastian Bach, Georg Philipp Telemann, Georg Friedrich Händel from Baroque composers for wonderful music
+> * CISA for coordination efforts (see: [https://cisa.gov](https://cisa.gov))
+> * BSI for assistance in coordination
+> * Antonio Vivaldi for influencing other composers

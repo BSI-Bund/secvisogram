@@ -19,7 +19,7 @@ In addition, the `document` object MAY provide the 7 optional properties
 * [References](document/references-spec.en.md) (`references`)
 * [Source Language](document/source_lang-spec.en.md) (`source_lang`)
 
-```
+```javascript
 "document": {
   // ...
   "properties": {

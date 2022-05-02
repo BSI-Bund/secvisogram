@@ -6,7 +6,8 @@ The properties
 * [Name](branch/name-spec.en.md) (`name`)
 * [Category](branch/category-spec.en.md) (`category`)
 
-are mandatory. In addition, the object contains either a
+are mandatory.
+In addition, the object contains either a
 
 * [Branches](../branches-spec.en.md) (`branches`)
 
@@ -14,7 +15,7 @@ or a
 
 * [Product](branch/product-spec.en.md) `product` property.
 
-```
+```javascript
 "properties": {
   "branches": {
     // ...

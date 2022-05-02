@@ -4,7 +4,5 @@ Any given SBOM URL of value type `string` with format `uri` contains a URL of on
 
 *Examples:*
 
-```
-https://raw.githubusercontent.com/CycloneDX/bom-examples/master/SBOM/keycloak-10.0.2/bom.json
-https://swinslow.net/spdx-examples/example4/main-bin-v2
-```
+* `https://raw.githubusercontent.com/CycloneDX/bom-examples/master/SBOM/keycloak-10.0.2/bom.json`
+* `https://swinslow.net/spdx-examples/example4/main-bin-v2`

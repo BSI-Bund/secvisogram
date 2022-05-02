@@ -7,7 +7,7 @@ Rules for sharing document (`distribution`) of value type `object` with at least
 
 describes any constraints on how this document might be shared.
 
-```
+```javascript
 "distribution": {
   // ...
   "properties": {
