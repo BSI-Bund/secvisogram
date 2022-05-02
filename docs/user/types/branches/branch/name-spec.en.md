@@ -14,13 +14,11 @@ Name of the branch (`name`) of value type `string` with 1 or more characters con
 * `Siemens`
 * `Windows`
 
-A leading `v` or `V` in the value of `name` SHOULD only exist for the categories `product_version` or
-`product_version_range` if it is part of the product version as given by the vendor.
+A leading `v` or `V` in the value of `name` SHOULD only exist for the categories `product_version` or `product_version_range` if it is part of the product version as given by the vendor.
 
 ## Name under Product Version
 
-If adjacent property `category` has the value `product_version`, the value of `name` MUST NOT contain version ranges
-of any kind.
+If adjacent property `category` has the value `product_version`, the value of `name` MUST NOT contain version ranges of any kind.
 
 *Examples for `name` when using `product_version`:*
 
@@ -54,8 +52,7 @@ The value of MUST obey to exactly one of the following options:
    > vers is an ongoing community effort to address the problem of version ranges. Its draft specification is available
    > at [VERS].
 
-   vers MUST be used in its canonical form. To convey the term "all versions" the special string `vers:all/*` MUST be
-   used.
+   vers MUST be used in its canonical form. To convey the term "all versions" the special string `vers:all/*` MUST be used.
 
    *Examples for `name` when using `product_version_range` with vers:*
 

@@ -1,7 +1,6 @@
 # Algorithm - Specification
 
-The algorithm of the cryptographic hash representation (`algorithm`) of value type `string` with one or more characters
-contains the name of the cryptographic hash algorithm used to calculate the value.
+The algorithm of the cryptographic hash representation (`algorithm`) of value type `string` with one or more characters contains the name of the cryptographic hash algorithm used to calculate the value.
 The default value for `algorithm` is `sha256`.
 
 *Examples:*

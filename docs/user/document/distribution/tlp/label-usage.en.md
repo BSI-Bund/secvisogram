@@ -4,9 +4,8 @@
 
   * `RED` - *personal for named recipients only*:
 
-    In the context of a meeting, for example, RED information is limited to those present at the meeting. The
-    distribution of RED information will generally be via a defined list and in extreme circumstances may only be passed
-    verbally or in person.
+    In the context of a meeting, for example, RED information is limited to those present at the meeting.
+    The distribution of RED information will generally be via a defined list and in extreme circumstances may only be passed verbally or in person.
 
   * `AMBER` - *limited distribution*:
 
@@ -15,8 +14,8 @@
 
   * `GREEN` - *community wide*:
 
-    Information in this category can be circulated widely within a particular community. However, the information may
-    not be published or posted publicly on the Internet, nor released outside of the community.
+    Information in this category can be circulated widely within a particular community.
+    However, the information may not be published or posted publicly on the Internet, nor released outside of the community.
 
   * `WHITE` - *unlimited*:
 

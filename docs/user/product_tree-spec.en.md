@@ -1,7 +1,6 @@
 # Product Tree - Specification
 
-Product Tree (`product_tree`) has value type `object` with 1 or more properties is a container for all fully qualified
-product names that can be referenced elsewhere in the document.
+Product Tree (`product_tree`) has value type `object` with 1 or more properties is a container for all fully qualified product names that can be referenced elsewhere in the document.
 The properties are
 
 * [Branches](product_tree/branches-spec.en.md) (`branches`)

@@ -1,7 +1,6 @@
 # Acknowledgments - Specification
 
-Document acknowledgments (`acknowledgments`) of value type Acknowledgments Type (`acknowledgments_t`) contains a list of
-acknowledgment elements associated with the whole document.
+Document acknowledgments (`acknowledgments`) of value type Acknowledgments Type (`acknowledgments_t`) contains a list of acknowledgment elements associated with the whole document.
 
 ```javascript
 "acknowledgments": {

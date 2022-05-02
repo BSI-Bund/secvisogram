@@ -1,7 +1,6 @@
 # Text - Specification
 
-The Textual description (`text`) of value type `string` with 1 or more characters provides a textual description of
-additional constraints.
+The Textual description (`text`) of value type `string` with 1 or more characters provides a textual description of additional constraints.
 
 *Examples:*
 

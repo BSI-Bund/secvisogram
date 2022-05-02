@@ -2,8 +2,7 @@
 
 Textual description of the product (`name`) has value type `string` with 1 or more characters.
 
-The value SHOULD be the product's full canonical name, including version number and other attributes, as it would be
-used in a human-friendly document.
+The value SHOULD be the product's full canonical name, including version number and other attributes, as it would be used in a human-friendly document.
 
 *Examples:*
 

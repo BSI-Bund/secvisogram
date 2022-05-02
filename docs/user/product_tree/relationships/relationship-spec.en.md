@@ -7,8 +7,7 @@ The Relationship item is of value type `object` and has four mandatory propertie
 * [Product Reference](relationship/product_reference-spec.en.md) (`product_reference`)
 * [Relates to Product Reference](relationship/relates_to_product_reference-spec.en.md) (`relates_to_product_reference`)
 
-The Relationship item establishes a link between two existing `full_product_name_t` elements, allowing the document
-producer to define a combination of two products that form a new `full_product_name` entry.
+The Relationship item establishes a link between two existing `full_product_name_t` elements, allowing the document producer to define a combination of two products that form a new `full_product_name` entry.
 
 ```javascript
 "properties": {

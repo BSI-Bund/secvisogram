@@ -1,7 +1,7 @@
 # Acknowledgment - Specification
 
-The value type of Acknowledgment is `object` with at least 1 and at most 4 properties. Every such element acknowledges
-contributions by describing those that contributed.
+The value type of Acknowledgment is `object` with at least 1 and at most 4 properties.
+Every such element acknowledges contributions by describing those that contributed.
 The properties are:
 
 * [Names](acknowledgment/names-spec.en.md) (`names`)
