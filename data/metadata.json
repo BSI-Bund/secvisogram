@@ -517,7 +517,7 @@
       },
       "field_title": "DocumentPublisherIssuingAuthorityTitle",
       "field_description": "DocumentPublisherIssuingAuthorityDescription",
-      "string_is_multiline": false,
+      "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
