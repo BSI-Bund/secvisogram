@@ -1,11 +1,14 @@
-import { deleteAdvisory } from '../../../lib/app/SecvisogramPage/DocumentsTab/service.js'
 import { getAdvisories, getAdvisory } from '../../fixtures/cmsBackendData.js'
 import testsSample from '../../fixtures/samples/cmsBackendData/tests.js'
 
-describe('SecvisogramPage / DocumentsTab / service', function () {
-  it('can fetch documents from the csaf cms backend', function () {
-    cy.intercept('/api/2.0/advisories/', getAdvisories(testsSample))
+describe('SecvisogramPage / DocumentsTab', function () {
+  beforeEach(function () {
+    cy.intercept('/api/2.0/advisories/', getAdvisories(testsSample)).as(
+      'apiGetAdvisories'
+    )
+  })
 
+  it('can fetch documents from the csaf cms backend', function () {
     cy.visit('?tab=DOCUMENTS')
 
     for (const advisory of getAdvisories(testsSample)) {
@@ -36,11 +39,30 @@ describe('SecvisogramPage / DocumentsTab / service', function () {
           advisoryDetail
         ).as('apiGetAdvisoryDetail')
 
-        cy.then(async () => {
-          await deleteAdvisory({ advisoryId: advisory.advisoryId })
-        })
+        cy.visit('?tab=DOCUMENTS')
+        cy.wait('@apiGetAdvisories')
 
-        cy.wait(['@apiGetAdvisoryDetail', '@apiDeleteAdvisory'])
+        // Pretend to have the advisory removed
+        cy.intercept(
+          '/api/2.0/advisories/',
+          getAdvisories(testsSample).filter(
+            (a) => a.advisoryId !== advisory.advisoryId
+          )
+        ).as('apiGetAdvisories')
+
+        cy.get(
+          `[data-testid="advisory-${advisory.advisoryId}-list_entry-delete_button"]`
+        ).click()
+        cy.get('[data-testid="alert-confirm_button"]').click()
+        cy.wait([
+          '@apiGetAdvisoryDetail',
+          '@apiDeleteAdvisory',
+          '@apiGetAdvisories',
+        ])
+        cy.get('[data-testid="loading_indicator"]').should('not.exist')
+        cy.get(
+          `[data-testid="advisory-${advisory.advisoryId}-list_entry"]`
+        ).should('not.exist')
       })
     }
   })
