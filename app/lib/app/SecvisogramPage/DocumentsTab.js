@@ -1,6 +1,6 @@
 import React from 'react'
 import { useErrorHandler } from 'react-error-boundary'
-import { getData } from './DocumentsTab/service.js'
+import { deleteAdvisory, getData } from './DocumentsTab/service.js'
 import DocumentsTabView from './DocumentsTab/View.js'
 
 export default function DocumentsTab() {
@@ -16,5 +16,12 @@ export default function DocumentsTab() {
     [handleError]
   )
 
-  return <DocumentsTabView onGetData={onGetData} />
+  return (
+    <DocumentsTabView
+      onGetData={onGetData}
+      onDeleteAdvisory={(params, callback) => {
+        deleteAdvisory(params).then(callback).catch(handleError)
+      }}
+    />
+  )
 }

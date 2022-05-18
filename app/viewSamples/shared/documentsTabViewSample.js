@@ -10,6 +10,7 @@ const props = {
     ],
   },
   onGetData() {},
+  onDeleteAdvisory() {},
 }
 
 export default {
