@@ -1,7 +1,4 @@
-import {
-  deleteAdvisory,
-  getData,
-} from '../../../lib/app/SecvisogramPage/DocumentsTab/service.js'
+import { deleteAdvisory } from '../../../lib/app/SecvisogramPage/DocumentsTab/service.js'
 import { getAdvisories, getAdvisory } from '../../fixtures/cmsBackendData.js'
 import testsSample from '../../fixtures/samples/cmsBackendData/tests.js'
 
@@ -9,11 +6,16 @@ describe('SecvisogramPage / DocumentsTab / service', function () {
   it('can fetch documents from the csaf cms backend', function () {
     cy.intercept('/api/2.0/advisories/', getAdvisories(testsSample))
 
-    cy.then(async () => {
-      const data = await getData()
+    cy.visit('?tab=DOCUMENTS')
 
-      expect(data.advisories).to.deep.equal(getAdvisories(testsSample))
-    })
+    for (const advisory of getAdvisories(testsSample)) {
+      cy.get(
+        `[data-testid="advisory-${advisory.advisoryId}-list_entry"]`
+      ).should('exist')
+      cy.get(
+        `[data-testid="advisory-${advisory.advisoryId}-list_entry-workflow_state"]`
+      ).should('have.text', advisory.workflowState)
+    }
   })
 
   describe('can delete documents', function () {
