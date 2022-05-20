@@ -66,4 +66,32 @@ describe('SecvisogramPage / DocumentsTab', function () {
       })
     }
   })
+
+  describe('can open documents', function () {
+    for (const advisory of getAdvisories(testsSample)) {
+      it(`advisoryId=${advisory.advisoryId}`, function () {
+        const advisoryDetail = getAdvisory(testsSample, {
+          advisoryId: advisory.advisoryId,
+        })
+        cy.intercept(
+          `/api/2.0/advisories/${advisory.advisoryId}/`,
+          advisoryDetail
+        ).as('apiGetAdvisoryDetail')
+
+        cy.visit('?tab=DOCUMENTS')
+        cy.wait('@apiGetAdvisories')
+
+        cy.get(
+          `[data-testid="advisory-${advisory.advisoryId}-list_entry-open_button"]`
+        ).click()
+        cy.wait('@apiGetAdvisoryDetail')
+        cy.get('[data-testid="loading_indicator"]').should('not.exist')
+        cy.location('search').should('equal', '?tab=EDITOR')
+        cy.get('[data-testid="attribute-/document/title"] input').should(
+          'have.value',
+          JSON.parse(advisoryDetail.csaf).document.title
+        )
+      })
+    }
+  })
 })

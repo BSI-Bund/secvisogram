@@ -53,7 +53,7 @@ export default function Attribute({
   )
 
   return (
-    <section className="mb-2">
+    <section className="mb-2" data-testid={`attribute-${instancePath}`}>
       {value != null ? (
         <label>
           <div

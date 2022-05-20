@@ -1,11 +1,19 @@
 import React from 'react'
 import { useErrorHandler } from 'react-error-boundary'
-import { deleteAdvisory, getData } from './DocumentsTab/service.js'
+import {
+  deleteAdvisory,
+  getData,
+  loadAdvisory,
+} from './DocumentsTab/service.js'
 import DocumentsTabView from './DocumentsTab/View.js'
 
-export default function DocumentsTab() {
-  /** @typedef {React.ComponentProps<typeof DocumentsTabView>} ViewProps */
+/** @typedef {React.ComponentProps<typeof DocumentsTabView>} ViewProps */
 
+/**
+ * @param {Pick<ViewProps, 'onOpenAdvisory'>} props
+ * @returns
+ */
+export default function DocumentsTab(props) {
   const handleError = useErrorHandler()
 
   /** @type {ViewProps['onGetData']} */
@@ -18,9 +26,13 @@ export default function DocumentsTab() {
 
   return (
     <DocumentsTabView
+      {...props}
       onGetData={onGetData}
       onDeleteAdvisory={(params, callback) => {
         deleteAdvisory(params).then(callback).catch(handleError)
+      }}
+      onLoadAdvisory={(params, callback) => {
+        loadAdvisory(params).then(callback).catch(handleError)
       }}
     />
   )

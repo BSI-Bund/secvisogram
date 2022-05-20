@@ -130,6 +130,7 @@ const props = {
     console.log('onCollectGroupIds')
     return new Promise(() => {})
   },
+  onOpenAdvisory() {},
 }
 
 export const basic = { props }

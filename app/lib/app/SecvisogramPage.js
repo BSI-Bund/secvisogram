@@ -107,6 +107,17 @@ const SecvisogramPage = () => {
       alert={alert}
       strict={strict}
       DocumentsTab={DocumentsTab}
+      onOpenAdvisory={(params, callback) => {
+        setState((state) => ({
+          ...state,
+          isLoading: false,
+          data: {
+            ...state.data,
+            doc: params.advisory.csaf,
+          },
+        }))
+        callback()
+      }}
       onLockTab={React.useCallback(() => {
         setState((state) => ({ ...state, isTabLocked: true }))
       }, [])}

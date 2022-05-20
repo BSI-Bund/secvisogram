@@ -1,4 +1,6 @@
 import React from 'react'
+import HistoryContext from '../../shared/HistoryContext.js'
+import sitemap from '../../shared/sitemap.js'
 import LoadingIndicator from '../View/LoadingIndicator.js'
 import Alert from '../View/shared/Alert.js'
 
@@ -8,9 +10,13 @@ import Alert from '../View/shared/Alert.js'
  */
 export default function DocumentsTabView({
   defaultData = null,
+  onLoadAdvisory,
+  onOpenAdvisory,
   onGetData,
   onDeleteAdvisory,
 }) {
+  const history = React.useContext(HistoryContext)
+
   const [alert, setAlert] = React.useState(
     /** @type {React.ComponentProps<typeof Alert> | null} */ (null)
   )
@@ -52,7 +58,26 @@ export default function DocumentsTabView({
                     data-testid={`advisory-${advisory.advisoryId}-list_entry`}
                   >
                     <td className="p-2">
-                      {advisory.title} | {advisory.owner}
+                      <button
+                        data-testid={`advisory-${advisory.advisoryId}-list_entry-open_button`}
+                        type="button"
+                        onClick={() => {
+                          onLoadAdvisory(
+                            { advisoryId: advisory.advisoryId },
+                            (advisoryJSON) => {
+                              onOpenAdvisory({ advisory: advisoryJSON }, () => {
+                                history.pushState(
+                                  null,
+                                  '',
+                                  sitemap.home.href([['tab', 'EDITOR']])
+                                )
+                              })
+                            }
+                          )
+                        }}
+                      >
+                        {advisory.title}
+                      </button>
                     </td>
                     <td className="p-2">
                       <span

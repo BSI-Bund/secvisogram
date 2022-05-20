@@ -30,6 +30,7 @@ function View({
   strict,
   generatorEngineData,
   DocumentsTab,
+  onOpenAdvisory,
   onSetStrict,
   onDownload,
   onOpen,
@@ -279,7 +280,7 @@ function View({
                 onExport={onExportCSAFCallback}
               />
             ) : activeTab === 'DOCUMENTS' ? (
-              <DocumentsTab />
+              <DocumentsTab onOpenAdvisory={onOpenAdvisory} />
             ) : null}
           </>
         </div>

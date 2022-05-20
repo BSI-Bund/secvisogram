@@ -11,6 +11,7 @@ const props = {
   },
   onGetData() {},
   onDeleteAdvisory() {},
+  onLoadAdvisory() {},
 }
 
 export default {

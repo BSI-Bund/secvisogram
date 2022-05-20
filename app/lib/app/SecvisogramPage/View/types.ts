@@ -2,6 +2,11 @@ import React from 'react'
 import CsafTab from './CsafTab.js'
 import PreviewTab from './PreviewTab.js'
 
+type OnOpenAdvisory = (
+  params: { advisory: { csaf: {} } },
+  callback: () => void
+) => void
+
 export interface Props {
   isLoading: boolean
   isSaving: boolean
@@ -26,7 +31,10 @@ export interface Props {
   stripResult: React.ComponentProps<typeof CsafTab>['stripResult']
   previewResult: React.ComponentProps<typeof PreviewTab>['previewResult']
   strict: boolean
-  DocumentsTab: React.ComponentType<{}>
+  DocumentsTab: React.ComponentType<{
+    onOpenAdvisory: OnOpenAdvisory
+  }>
+  onOpenAdvisory: OnOpenAdvisory
   onSetStrict(strict: boolean): void
   onDownload(doc: {}): void
   onOpen(file: File): Promise<void | {}>
