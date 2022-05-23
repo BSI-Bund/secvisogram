@@ -406,7 +406,9 @@
       "CvssV3ModifiedAvailabilityImpactTitle": "CVSS Modified Availability Impact",
       "CvssV3ModifiedAvailabilityImpactDescription": "This metric enables the analyst to adjust the availability impact according to modifications that exist within the analyst's environment.",
       "CvssV3EnvironmentalScoreTitle": "CVSS Environmental Score",
-      "CvssV3EnvironmentalScoreDescription": "The environmental score assigned according to CVSS"
+      "CvssV3EnvironmentalScoreDescription": "The environmental score assigned according to CVSS",
+      "CvssV3EnvironmentalSeverityTitle": "The Environmental Severity",
+      "CvssV3EnvironmentalSeverityDescription": "This metric reflects the environmental severity of a vulnerability."
     },
     "de": {
       "AcknowledgmentsItemsTitle": "Danksagung",
@@ -814,7 +816,9 @@
       "CvssV3ModifiedAvailabilityImpactTitle": "CVSS Modified Availability Auswirkungen",
       "CvssV3ModifiedAvailabilityImpactDescription": "Diese Metrik ermöglicht es dem Analysten, die Verfügbarkeitsauswirkungen entsprechend den Änderungen in der Umgebung des Analysten anzupassen.",
       "CvssV3EnvironmentalScoreTitle": "CVSS Umgebungsbewertung",
-      "CvssV3EnvironmentalScoreDescription": "Die nach CVSS zugewiesene Umgebungsbewertung"
+      "CvssV3EnvironmentalScoreDescription": "Die nach CVSS zugewiesene Umgebungsbewertung",
+      "CvssV3EnvironmentalSeverityTitle": "CVSS Umgebungsschweregrad",
+      "CvssV3EnvironmentalSeverityDescription": "Diese Metrik gibt den Umgebungsschweregrad einer Schwachstelle an."
     }
   }
 }
