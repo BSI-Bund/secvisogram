@@ -10,7 +10,6 @@ import Alert from '../View/shared/Alert.js'
  */
 export default function DocumentsTabView({
   defaultData = null,
-  onLoadAdvisory,
   onOpenAdvisory,
   onGetData,
   onDeleteAdvisory,
@@ -62,16 +61,14 @@ export default function DocumentsTabView({
                         data-testid={`advisory-${advisory.advisoryId}-list_entry-open_button`}
                         type="button"
                         onClick={() => {
-                          onLoadAdvisory(
+                          onOpenAdvisory(
                             { advisoryId: advisory.advisoryId },
-                            (advisoryJSON) => {
-                              onOpenAdvisory({ advisory: advisoryJSON }, () => {
-                                history.pushState(
-                                  null,
-                                  '',
-                                  sitemap.home.href([['tab', 'EDITOR']])
-                                )
-                              })
+                            () => {
+                              history.pushState(
+                                null,
+                                '',
+                                sitemap.home.href([['tab', 'EDITOR']])
+                              )
                             }
                           )
                         }}

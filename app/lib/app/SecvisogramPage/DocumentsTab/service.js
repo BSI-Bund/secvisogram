@@ -27,20 +27,3 @@ export async function deleteAdvisory({ advisoryId }) {
     new Request(deleteURL.toString(), { method: 'DELETE' })
   ).send()
 }
-
-/**
- * @param {object} params
- * @param {string} params.advisoryId
- * @returns
- */
-export async function loadAdvisory({ advisoryId }) {
-  const advisoryJSONRes = await new APIRequest(
-    new Request(`/api/2.0/advisories/${advisoryId}/`)
-  ).send()
-  /** @type {{ csaf: string }} */
-  const advisory = await advisoryJSONRes.json()
-  return {
-    ...advisory,
-    csaf: JSON.parse(advisory.csaf),
-  }
-}

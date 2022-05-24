@@ -43,7 +43,7 @@ export interface Props {
   DocumentsTab: React.ComponentType<{
     onOpenAdvisory(
       params: {
-        advisory: Advisory
+        advisoryId: string
       },
       callback: () => void
     ): void

@@ -19,7 +19,6 @@ const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
  */
 function View({
   activeTab,
-  isLoading,
   isTabLocked,
   errors,
   data,
@@ -47,6 +46,7 @@ function View({
   onUnlockTab,
   onCollectProductIds,
   onCollectGroupIds,
+  ...props
 }) {
   const [advisoryState, setAdvisoryState] = React.useState(
     /** @type {import('./View/types.js').AdvisoryState | null} */ (
@@ -63,6 +63,11 @@ function View({
         : state
     )
   }, [data])
+
+  const [isLoading, setLoading] = React.useState(props.isLoading)
+  React.useEffect(() => {
+    setLoading(props.isLoading)
+  }, [props.isLoading])
 
   const [isSaving, setSaving] = React.useState(false)
 
@@ -345,9 +350,13 @@ function View({
               />
             ) : activeTab === 'DOCUMENTS' ? (
               <DocumentsTab
-                onOpenAdvisory={({ advisory }, callback) => {
-                  setAdvisoryState({ type: 'ADVISORY', advisory })
-                  callback()
+                onOpenAdvisory={({ advisoryId }, callback) => {
+                  setLoading(true)
+                  onLoadAdvisory({ advisoryId }, (advisory) => {
+                    setAdvisoryState({ type: 'ADVISORY', advisory })
+                    callback()
+                    setLoading(false)
+                  })
                 }}
               />
             ) : null}
