@@ -7,7 +7,6 @@ import documentsTabViewSample from './shared/documentsTabViewSample.js'
 
 const props = {
   isLoading: false,
-  isSaving: false,
   isTabLocked: false,
   errors: [],
   stripResult: null,
@@ -72,6 +71,8 @@ const props = {
       <DocumentsTabView {...documentsTabViewSample.basic.props} {...props} />
     )
   ),
+  onUpdateAdvisory() {},
+  onLoadAdvisory() {},
   onSetStrict: console.log.bind(console, 'onSetStrict'),
   onNew: console.log.bind(console, 'onNew'),
   onDownload: console.log.bind(console, 'onDownload'),
@@ -130,7 +131,6 @@ const props = {
     console.log('onCollectGroupIds')
     return new Promise(() => {})
   },
-  onOpenAdvisory() {},
 }
 
 export const basic = { props }

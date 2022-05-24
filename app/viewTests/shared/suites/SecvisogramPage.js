@@ -18,10 +18,6 @@ export const tests = [
     render: () => <View {...props} data={null} isLoading={true} />,
   },
   {
-    title: 'Is saving',
-    render: () => <View {...props} isSaving={true} />,
-  },
-  {
     title: 'With alert',
     render: () => (
       <View
@@ -79,6 +75,42 @@ export const tests = [
             message: '',
           },
         ]}
+      />
+    ),
+  },
+  {
+    title: 'With loaded advisory',
+    render: () => (
+      <View
+        {...props}
+        data={null}
+        defaultAdvisoryState={{
+          type: 'ADVISORY',
+          advisory: {
+            csaf: {},
+            advisoryId: 'my-advisory',
+            revision: 'my-revision',
+            documentTrackingId: 'My_document',
+          },
+        }}
+      />
+    ),
+  },
+  {
+    title: 'Empty document tracking id',
+    render: () => (
+      <View
+        {...props}
+        data={null}
+        defaultAdvisoryState={{
+          type: 'ADVISORY',
+          advisory: {
+            csaf: {},
+            advisoryId: 'my-advisory',
+            revision: 'my-revision',
+            documentTrackingId: '',
+          },
+        }}
       />
     ),
   },

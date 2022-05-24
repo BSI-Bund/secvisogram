@@ -2,6 +2,7 @@ import { get } from 'lodash'
 import React from 'react'
 import { useErrorHandler } from 'react-error-boundary'
 import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
+import { loadAdvisory, updateAdvisory } from './SecvisogramPage/service.js'
 import View from './SecvisogramPage/View.js'
 import {
   uniqueGroupId,
@@ -98,7 +99,6 @@ const SecvisogramPage = () => {
       }
       isTabLocked={isTabLocked}
       isLoading={isLoading}
-      isSaving={false}
       errors={errors}
       stripResult={stripResult}
       previewResult={previewResult}
@@ -107,16 +107,11 @@ const SecvisogramPage = () => {
       alert={alert}
       strict={strict}
       DocumentsTab={DocumentsTab}
-      onOpenAdvisory={(params, callback) => {
-        setState((state) => ({
-          ...state,
-          isLoading: false,
-          data: {
-            ...state.data,
-            doc: params.advisory.csaf,
-          },
-        }))
-        callback()
+      onLoadAdvisory={(params, callback) => {
+        loadAdvisory(params).then(callback).catch(handleError)
+      }}
+      onUpdateAdvisory={(params, callback) => {
+        updateAdvisory(params).then(callback).catch(handleError)
       }}
       onLockTab={React.useCallback(() => {
         setState((state) => ({ ...state, isTabLocked: true }))

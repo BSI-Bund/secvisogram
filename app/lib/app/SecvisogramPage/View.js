@@ -20,17 +20,18 @@ const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 function View({
   activeTab,
   isLoading,
-  isSaving,
   isTabLocked,
   errors,
   data,
+  defaultAdvisoryState = null,
   alert,
   stripResult,
   previewResult,
   strict,
   generatorEngineData,
   DocumentsTab,
-  onOpenAdvisory,
+  onLoadAdvisory,
+  onUpdateAdvisory,
   onSetStrict,
   onDownload,
   onOpen,
@@ -47,13 +48,38 @@ function View({
   onCollectProductIds,
   onCollectGroupIds,
 }) {
+  const [advisoryState, setAdvisoryState] = React.useState(
+    /** @type {import('./View/types.js').AdvisoryState | null} */ (
+      defaultAdvisoryState ?? {
+        type: 'NEW_ADVISORY',
+        csaf: /** @type {{}} */ (data?.doc),
+      }
+    )
+  )
+  React.useEffect(() => {
+    setAdvisoryState((state) =>
+      data
+        ? { type: 'NEW_ADVISORY', csaf: /** @type {{}} */ (data.doc) }
+        : state
+    )
+  }, [data])
+
+  const [isSaving, setSaving] = React.useState(false)
+
   /**
    * Initial values for the editors. Can be used to detect changes of the
    * document.
    */
   const originalValues = React.useMemo(
-    () => ({ doc: data?.doc ?? null }),
-    [data]
+    () => ({
+      doc:
+        advisoryState?.type === 'NEW_ADVISORY'
+          ? advisoryState.csaf
+          : advisoryState?.type === 'ADVISORY'
+          ? advisoryState.advisory.csaf
+          : null,
+    }),
+    [advisoryState]
   )
 
   /**
@@ -199,6 +225,15 @@ function View({
               <button {...tabButtonProps('PREVIEW')}>Preview</button>
               <button {...tabButtonProps('CSAF-JSON')}>CSAF Document</button>
             </div>
+            {advisoryState?.type === 'ADVISORY' && (
+              <div className="text-gray-400 p-4">
+                Document:{' '}
+                <span data-testid="document_tracking_id">
+                  {advisoryState.advisory.documentTrackingId ||
+                    '<document without tracking-id>'}
+                </span>
+              </div>
+            )}
             <div className="pr-5 flex items-center text-white">
               <button {...tabButtonProps('DOCUMENTS')}>CSAF Documents</button>
             </div>
@@ -206,14 +241,43 @@ function View({
           {activeTab !== 'DOCUMENTS' && (
             <div className="bg-gray-400 flex items-center justify-between">
               <div className="pl-5">
-                <button
-                  className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                  onClick={() => {
-                    onDownload(formValues.doc)
-                  }}
-                >
-                  Save
-                </button>
+                {advisoryState?.type === 'NEW_ADVISORY' ? (
+                  <button
+                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                    onClick={() => {
+                      onDownload(formValues.doc)
+                    }}
+                  >
+                    Save
+                  </button>
+                ) : advisoryState?.type === 'ADVISORY' ? (
+                  <button
+                    data-testid="save_button"
+                    type="button"
+                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                    onClick={() => {
+                      setSaving(true)
+                      onUpdateAdvisory(
+                        {
+                          advisoryId: advisoryState.advisory.advisoryId,
+                          revision: advisoryState.advisory.revision,
+                          csaf: formValues.doc,
+                        },
+                        () => {
+                          onLoadAdvisory(
+                            { advisoryId: advisoryState.advisory.advisoryId },
+                            (advisory) => {
+                              setAdvisoryState({ type: 'ADVISORY', advisory })
+                              setSaving(false)
+                            }
+                          )
+                        }
+                      )
+                    }}
+                  >
+                    Save
+                  </button>
+                ) : null}
               </div>
               <div className="pr-5 text-gray-300">
                 <a
@@ -280,7 +344,12 @@ function View({
                 onExport={onExportCSAFCallback}
               />
             ) : activeTab === 'DOCUMENTS' ? (
-              <DocumentsTab onOpenAdvisory={onOpenAdvisory} />
+              <DocumentsTab
+                onOpenAdvisory={({ advisory }, callback) => {
+                  setAdvisoryState({ type: 'ADVISORY', advisory })
+                  callback()
+                }}
+              />
             ) : null}
           </>
         </div>
