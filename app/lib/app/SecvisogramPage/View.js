@@ -234,7 +234,7 @@ function View({
               <div className="text-gray-400 p-4">
                 Document:{' '}
                 <span data-testid="document_tracking_id">
-                  {advisoryState.advisory.documentTrackingId ||
+                  {advisoryState.advisory.csaf.document?.title ||
                     '<document without tracking-id>'}
                 </span>
               </div>

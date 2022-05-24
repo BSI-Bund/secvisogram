@@ -93,7 +93,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
         )
         cy.get('[data-testid="document_tracking_id"]').should(
           'have.text',
-          advisoryDetail.documentTrackingId
+          JSON.parse(advisoryDetail.csaf).document.title
         )
       })
     }

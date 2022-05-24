@@ -5,7 +5,11 @@ import PreviewTab from './PreviewTab.js'
 type Advisory = {
   advisoryId: string
   revision: string
-  csaf: {}
+  csaf: {
+    document?: {
+      title?: string
+    }
+  }
   documentTrackingId: string
 }
 
