@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { GitRevisionPlugin } = require('git-revision-webpack-plugin')
 const Webpack = require('webpack')
 const gitRevisionPlugin = new GitRevisionPlugin()
+const path = require('path');
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -78,6 +79,14 @@ module.exports = {
   ],
   devServer: {
     historyApiFallback: true,
+    static: [
+      {
+        directory: path.join(__dirname, 'public')
+      },
+      {
+        directory: path.join(__dirname, 'public/.well-known/appspecific'),
+      }
+    ],
     proxy: {
       '/api': 'http://localhost:8081',
     },
