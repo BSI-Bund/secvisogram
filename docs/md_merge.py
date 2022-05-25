@@ -1,19 +1,40 @@
+"""
+This script merges markdown files in a hierarchic directory structure.
+
+Heading lines will be adjusted by prepending additional '#' according to the depth of the corresponding file in the
+ directory hierarchy.
+Links to other markdown files will be converted to internal anchor links.
+Local images will be copied to a new image directory.
+
+The directory structure for input may look like this:
+
+- second_level
+    - third_level
+        - third_level_1.md
+    - second_level_1.md
+    - second_level_2.md
+    - img.jpg
+- top_level_1.md
+- top_level_2.md
+
+This script was developed and expects to be run with Python 3.9+.
+"""
+
+
 import argparse
-import os
 import re
 import shutil
-from argparse import BooleanOptionalAction
 from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Union, List, Any, Dict
 
 MD_HEADER_REGEX = (
     r"^"            # start of line
     r"(\s{0,3})"    # Group 1: zero to three whitespaces, tabs etc (four and more spaces are no heading)
     r"(#{1,6})"     # Group 2: one or up to 6 '#'
-    r"(\s{0,})"     # Group 3: zero or more whitespaces
-    r"([^#].*)"     # Group 4: one or more chars but not starting with another #         
+    r"(\s+)"        # Group 3: one or more whitespaces
+    r"([^#].*)"     # Group 4: one or more chars but not starting with another #
     r"$"            # end of line
 )
 
@@ -88,7 +109,14 @@ class TextLinkLine(LinkLine):
         return self.link.startswith("#")
 
 
-def parse_line(line: str):
+def parse_line(line: str) -> Union[HeaderLine, ImageLine, TextLinkLine, str]:
+    """
+    parses a given line from a markdown file into an object with more information. Could be one of `HeaderLine`,
+     `ImageLine` oder `TextLinkLine`. In case no such line is found, the initial string is returned
+
+    :param line: the line to parse
+    :return: an object the line has been parsed into, or the initial line as string if no parsing succeeded
+    """
     header_search = re.search(MD_HEADER_REGEX, line, re.IGNORECASE)
     if header_search:
         return HeaderLine(depth=len(header_search.group(2)), text=header_search.group(4))
@@ -112,7 +140,7 @@ def parse_line(line: str):
     return line
 
 
-def get_dir_content(dir_path: Path, language: str = "en", files_only=False):
+def get_dir_content(dir_path: Path, language: str = "en", files_only=False) -> List[str]:
     """lists the contents of a directory and sorts it alphabetically
     starting with files and then directories
     if files_only is set to True, directories will be excluded
@@ -129,9 +157,14 @@ def get_dir_content(dir_path: Path, language: str = "en", files_only=False):
         vulnerabilities
 
     the results later on influence the ordering of content in a merged file
+
+    :param dir_path: the path to the directory to get contents of
+    :param language: the language code to match file suffixes for
+    :param files_only: whether to only retrieve files from the input dir
+    :return: list of file and directory names
     """
 
-    dirs = [p for p in os.listdir(dir_path) if os.path.isdir(dir_path / p)]
+    dirs = [p.parts[-1] for p in dir_path.iterdir() if p.is_dir()]
     files = get_md_language_files(dir_path, language)
 
     if files_only:
@@ -153,13 +186,18 @@ def get_dir_content(dir_path: Path, language: str = "en", files_only=False):
 LANGUAGE_MD_FILE_NAME_PATTERN = "(.+)[.](.{2,3})[.]md"
 
 
-def get_md_language_files(dir_path: Path, language: str = "en"):
+def get_md_language_files(dir_path: Path, language: str = "en") -> List[str]:
     """tries to fetch all markdown files with a language specific suffix
     assumes that files in English (suffix '.en.md') are all present
-    and uses these as fallback"""
+    and uses these as fallback
+
+    :param dir_path: the directory to check for markdown files
+    :param language: the language code to match file suffixes for
+    :return: list of markdown file names
+    """
     lang_to_file_prefix = defaultdict(list)
-    for md_file in os.listdir(dir_path):
-        match = re.match(LANGUAGE_MD_FILE_NAME_PATTERN, md_file)
+    for md_file in dir_path.iterdir():
+        match = re.match(LANGUAGE_MD_FILE_NAME_PATTERN, str(md_file.parts[-1]))
         if match:
             lang = match.group(2)
             lang_to_file_prefix[lang].append(match.group(1))
@@ -174,27 +212,33 @@ def get_md_language_files(dir_path: Path, language: str = "en"):
     return result
 
 
-LINK_COUNT = 1
-IMG_COUNT = 1
-PATH_TO_DEPTH_AND_CONTENT = OrderedDict()
-PATH_TO_LINK_ID = defaultdict(list)
+LINK_COUNT = "LINK_COUNT"
+IMG_COUNT = "IMG_COUNT"
+PATH_TO_DEPTH_AND_CONTENT = "PATH_TO_DEPTH_AND_CONTENT"
+PATH_TO_LINK_ID = "PATH_TO_LINK_ID"
+_STATE = {}
 
 
 def parse_dir_recursive(
-        start_dir: Path,
         current_dir: Path,
-        output_dir: Path,
-        language: str,
-        depth=1,
-        max_depth=-1,
-        paths_relative_to_input_dir=False
+        current_depth: int,
+        current_max_depth: int,
+        fixed_args: Dict[str, Any]
 ):
-    global LINK_COUNT
-    global IMG_COUNT
+    """
+    parses the given directory recursively for files and subdirectories, handling links in files filling the variables
+     of internal state
+     Also copies local images to their new location for the merged markdown file
 
-    files_only = max_depth == 0
+    :param current_dir: the currently parsed directory
+    :param current_depth: depth level of current directory in directory hierarchy, required for adjusting header lines
+    :param current_max_depth: the maximum depth to still enter subdirectories
+    :param fixed_args: a dictionary containing fixed arguments for parsing
+    """
 
-    dir_content = get_dir_content(current_dir, language, files_only=files_only)
+    files_only = current_max_depth == 0
+
+    dir_content = get_dir_content(current_dir, fixed_args["language"], files_only=files_only)
     for dc in dir_content:
         path = current_dir / dc
         if path.is_file():
@@ -202,59 +246,51 @@ def parse_dir_recursive(
             for line in path.read_text().splitlines():
                 parsed_line = parse_line(line)
                 if isinstance(parsed_line, ImageLine) and not parsed_line.is_external:
-                    new_image_name = f"md-merge-img-{IMG_COUNT}-" + Path(parsed_line.link).name
-                    new_image_path = output_dir / "images" / new_image_name
+                    new_image_name = f"md-merge-img-{_STATE[IMG_COUNT]}-" + Path(parsed_line.link).name
+                    new_image_path = fixed_args["output_dir"] / "images" / new_image_name
                     shutil.copyfile(current_dir / parsed_line.link, new_image_path)
-                    parsed_line.link = str(new_image_path.relative_to(output_dir))
-                if isinstance(parsed_line, TextLinkLine) and not (parsed_line.is_external
-                                                                  or parsed_line.is_anchor_link):
-                    if paths_relative_to_input_dir:
-                        linked_path = start_dir / parsed_line.link
-                    else:
-                        linked_path = path.parent / parsed_line.link
-                    link_name = f"md-merge-link-{LINK_COUNT}"
+                    parsed_line.link = str(new_image_path.relative_to(fixed_args["output_dir"]))
+                    _STATE[IMG_COUNT] += 1
+                elif isinstance(parsed_line, TextLinkLine) and not (parsed_line.is_external
+                                                                    or parsed_line.is_anchor_link):
+                    linked_path = (path.parent if fixed_args["relative_to_file"] else fixed_args["start_dir"]) / parsed_line.link
+                    link_name = f"md-merge-link-{_STATE[LINK_COUNT]}"
                     parsed_line.link = "#" + link_name
-                    PATH_TO_LINK_ID[linked_path].append(link_name)
-                    LINK_COUNT += 1
+                    _STATE[PATH_TO_LINK_ID][linked_path].append(link_name)
+                    _STATE[LINK_COUNT] += 1
                 file_lines.append(parsed_line)
-            PATH_TO_DEPTH_AND_CONTENT[path] = (depth, file_lines)
+            _STATE[PATH_TO_DEPTH_AND_CONTENT][path] = (current_depth, file_lines)
         elif path.is_dir():
-            parse_dir_recursive(start_dir, path, output_dir, language, depth + 1, max_depth - 1, paths_relative_to_input_dir)
+            parse_dir_recursive(path, current_depth + 1, current_max_depth - 1, fixed_args)
 
 
 def main(args):
 
-    global LINK_COUNT
-    global IMG_COUNT
-    global PATH_TO_DEPTH_AND_CONTENT
-    global PATH_TO_LINK_ID
-
-    LINK_COUNT = 1
-    IMG_COUNT = 1
-    PATH_TO_DEPTH_AND_CONTENT = OrderedDict()
-    PATH_TO_LINK_ID = defaultdict(list)
+    _STATE[LINK_COUNT] = 1
+    _STATE[IMG_COUNT] = 1
+    _STATE[PATH_TO_DEPTH_AND_CONTENT] = OrderedDict()
+    _STATE[PATH_TO_LINK_ID] = defaultdict(list)
 
     input_dir = Path(args.input)
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "images").mkdir(exist_ok=True)
 
-    parse_dir_recursive(
-        input_dir,
-        input_dir,
-        output_dir,
-        args.language,
-        depth=args.depth,
-        max_depth=args.max_depth,
-        paths_relative_to_input_dir=args.paths_relative_to_input_dir
-    )
+    fixed_args = {
+        "start_dir": input_dir,
+        "output_dir": output_dir,
+        "language": args.language,
+        "relative_to_file": args.relative_to_file
+    }
 
-    output_file_path = os.path.join(args.output, args.name)
+    parse_dir_recursive(input_dir, args.depth, args.max_depth, fixed_args)
+
+    output_file_path = Path(args.output) / args.name
 
     with open(output_file_path, "w+", encoding="UTF-8") as output_file:
 
-        for file_path, (depth, content) in PATH_TO_DEPTH_AND_CONTENT.items():
-            for linked_path, link_names in PATH_TO_LINK_ID.items():
+        for file_path, (depth, content) in _STATE[PATH_TO_DEPTH_AND_CONTENT].items():
+            for linked_path, link_names in _STATE[PATH_TO_LINK_ID].items():
                 if not linked_path.exists():
                     raise ValueError(f"Linked file '{str(linked_path)}' does not exist! (link in '{str(file_path)}')")
                 if file_path.samefile(linked_path):
@@ -274,7 +310,7 @@ def main(args):
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Merge multiple markdown files into one."
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument(
         "-i",
@@ -326,31 +362,31 @@ def parse_args():
         help="the maximum depth for stepping into subdirectories, -1 disables this feature"
     )
     parser.add_argument(
-        "--paths-relative-to-input-dir",
-        dest="paths_relative_to_input_dir",
+        "--relative-to-file",
+        dest="relative_to_file",
         default=False,
-        action=BooleanOptionalAction,
+        action=argparse.BooleanOptionalAction,
         type=bool,
-        help="when this is set, paths inside markdown files are interpreted as relative to the top level input"
-             " directory, otherwise, they are treated as relative to the markdown files they are contained in (default)"
+        help="when this is set, paths inside markdown files are interpreted as relative to the files they are contained"
+             " in. Otherwise they are interpreted as relative to the top level input directory (default)"
     )
     return parser.parse_args()
 
 
-def handle_input_path(path):
-    if os.path.isdir(path):
+def handle_input_path(path: Union[Path, str]):
+    path = Path(path)
+    if path.is_dir():
         return path
-    else:
-        raise argparse.ArgumentTypeError(f"'{path}' is not a valid path")
+    raise argparse.ArgumentTypeError(f"'{path}' is not a valid path")
 
 
-def handle_output_path(path):
-    if os.path.isdir(path):
+def handle_output_path(path: Union[Path, str]):
+    path = Path(path)
+    if path.is_dir():
         return path
-    else:
-        print("Output path does not yet exist. Creating...")
-        os.makedirs(path)
-        return path
+    print("Output path does not yet exist. Creating...")
+    path.mkdir(parents=True)
+    return path
 
 
 if __name__ == "__main__":
