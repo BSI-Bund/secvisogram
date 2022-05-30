@@ -14,7 +14,7 @@
   "scripts": {
     "test": "eslint . && cypress run",
     "build": "node scripts/build.js",
-    "dev": "webpack serve --mode development --port=$npm_config_port"
+    "dev": "node scripts/dev.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
