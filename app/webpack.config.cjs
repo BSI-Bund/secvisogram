@@ -89,6 +89,8 @@ module.exports = {
     ],
     proxy: {
       '/api': 'http://localhost:8081',
+      '/auth': 'http://localhost:9000',
+      '/oauth2': 'http://localhost:4180',
     },
   },
 }
