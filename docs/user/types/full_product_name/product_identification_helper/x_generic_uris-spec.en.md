@@ -11,4 +11,4 @@ List of generic URIs (`x_generic_uris`) of value type `array` with at least 1 it
 }
 ```
 
-[Specification of generic URI items](x_generic_uris/x_generic_uri-spec.en.md)
+[Specification of generic URI items](types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md)

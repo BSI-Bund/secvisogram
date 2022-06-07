@@ -15,4 +15,4 @@ This can also be used to identify hardware. If necessary, the software, or any o
 }
 ```
 
-[Specification of Model Number items](model_numbers/model_number-spec.en.md)
+[Specification of Model Number items](types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md)

@@ -11,4 +11,4 @@ List of product groups (`product_groups`) of value type `array` with 1 or more i
 }
 ```
 
-[Specification of Product Group items](product_groups/product_group-spec.en.md)
+[Specification of Product Group items](product_tree/product_groups/product_group-spec.en.md)

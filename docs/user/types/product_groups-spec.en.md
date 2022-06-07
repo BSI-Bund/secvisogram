@@ -11,4 +11,4 @@ List of Product Group ID (`product_groups_t`) of value type `array` with 1 or mo
 }
 ```
 
-[Specification of Product Group ID items](product_group_id-spec.en.md)
+[Specification of Product Group ID items](types/product_group_id-spec.en.md)

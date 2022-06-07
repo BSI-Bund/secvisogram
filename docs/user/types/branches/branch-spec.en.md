@@ -3,17 +3,17 @@
 Every Branch holds exactly 3 properties and is a part of the hierarchical structure of the product tree.
 The properties
 
-* [Name](branch/name-spec.en.md) (`name`)
-* [Category](branch/category-spec.en.md) (`category`)
+* [Name](types/branches/branch/name-spec.en.md) (`name`)
+* [Category](types/branches/branch/category-spec.en.md) (`category`)
 
 are mandatory.
 In addition, the object contains either a
 
-* [Branches](../branches-spec.en.md) (`branches`)
+* [Branches](product_tree/branches-spec.en.md) (`branches`)
 
 or a
 
-* [Product](branch/product-spec.en.md) `product` property.
+* [Product](types/branches/branch/product-spec.en.md) `product` property.
 
 ```javascript
 "properties": {

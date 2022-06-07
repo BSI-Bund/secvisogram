@@ -8,4 +8,4 @@ Document notes (`notes`) of value type Notes Type (`notes_t`) holds notes associ
 }
 ```
 
-[Specification of Notes Type](../types/notes-spec.en.md)
+[Specification of Notes Type](types/notes-spec.en.md)

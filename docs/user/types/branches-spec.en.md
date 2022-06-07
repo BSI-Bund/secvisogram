@@ -11,4 +11,4 @@ List of branches(`branches_t`) with value type `array` contains 1 or more branch
 }
 ```
 
-[Specification of Branch items](branches/branch-spec.en.md)
+[Specification of Branch items](types/branches/branch-spec.en.md)

@@ -8,4 +8,4 @@ Document acknowledgments (`acknowledgments`) of value type Acknowledgments Type 
 }
 ```
 
-[Specification of Acknowledgments Type](../types/acknowledgments-spec.en.md)
+[Specification of Acknowledgments Type](types/acknowledgments-spec.en.md)
