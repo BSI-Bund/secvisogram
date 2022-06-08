@@ -49,7 +49,12 @@ export default class APIRequest {
 
   async send() {
     const res = await fetch(this.request)
-    if (!res.ok) throw new Error(res.statusText)
+    if (!res.ok) {
+      /** @type {any} */
+      const error = new Error(res.statusText)
+      error.status = res.status
+      throw error
+    }
 
     return res
   }

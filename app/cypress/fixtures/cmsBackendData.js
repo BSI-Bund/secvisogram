@@ -1,3 +1,12 @@
+const users = /** @type {const} */ ([
+  {
+    user: 'editor',
+    preferredUsername: 'editor',
+    email: '',
+    groups: ['editor'],
+  },
+])
+
 /**
  * @param {import('./cmsBackendData/types').Sample} sample
  * @returns
@@ -16,4 +25,15 @@ export function getAdvisory(sample, { advisoryId }) {
   const advisory = sample.advisories.find((a) => a.advisoryId === advisoryId)
   if (!advisory) throw new Error('Advisory not found')
   return advisory
+}
+
+/**
+ * @param {(typeof users)[number]} user
+ */
+export function getUserInfo(user) {
+  return user
+}
+
+export function getUsers() {
+  return users
 }

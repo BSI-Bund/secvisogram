@@ -1,6 +1,8 @@
 import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import AppConfigContext from '../shared/context/AppConfigContext.js'
+import UserInfoContext from '../shared/context/UserInfoContext.js'
 import CsafTab from './View/CsafTab.js'
 import FormEditorTab from './View/FormEditorTab.js'
 import JsonEditorTab from './View/JsonEditorTab.js'
@@ -48,6 +50,9 @@ function View({
   onCollectGroupIds,
   ...props
 }) {
+  const appConfig = React.useContext(AppConfigContext)
+  const userInfo = React.useContext(UserInfoContext)
+
   const [advisoryState, setAdvisoryState] = React.useState(
     /** @type {import('./View/types.js').AdvisoryState | null} */ (
       defaultAdvisoryState ?? {
@@ -239,9 +244,34 @@ function View({
                 </span>
               </div>
             )}
-            <div className="pr-5 flex items-center text-white">
-              <button {...tabButtonProps('DOCUMENTS')}>CSAF Documents</button>
-            </div>
+
+            {appConfig.loginAvailable &&
+              (userInfo ? (
+                <div className="pr-5 flex items-center text-white">
+                  <button {...tabButtonProps('DOCUMENTS')}>
+                    CSAF Documents
+                  </button>
+                  <button
+                    className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 p-4 text-white"
+                    onClick={() => {
+                      window.location.href = appConfig.logoutUrl
+                    }}
+                  >
+                    {userInfo.preferredUsername}
+                  </button>
+                </div>
+              ) : (
+                <div className="pr-5 flex items-center text-white">
+                  <button
+                    className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 p-4 text-white"
+                    onClick={() => {
+                      window.location.href = appConfig.loginUrl
+                    }}
+                  >
+                    Login
+                  </button>
+                </div>
+              ))}
           </div>
           {activeTab !== 'DOCUMENTS' && (
             <div className="bg-gray-400 flex items-center justify-between">

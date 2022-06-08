@@ -1,13 +1,13 @@
 import React from 'react'
 
 /**
- * @typedef {object} Context
+ * @typedef {object} HistoryContext
  * @property {Location} location
  * @property {any} state
  * @property {History['pushState']} pushState
  */
 
-/** @type {Context} */
+/** @type {HistoryContext} */
 const defaultValue = {
   location: window.location,
   state: null,
