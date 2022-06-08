@@ -9,6 +9,8 @@ import PreviewTab from './View/PreviewTab.js'
 import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
+import AppConfigContext from '../shared/context/AppConfigContext.js'
+import UserContext from '../shared/context/UserContext.js'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 
@@ -48,6 +50,9 @@ function View({
   onCollectGroupIds,
   ...props
 }) {
+  const configContext = React.useContext(AppConfigContext)
+  const userContext = React.useContext(UserContext)
+
   const [advisoryState, setAdvisoryState] = React.useState(
     /** @type {import('./View/types.js').AdvisoryState | null} */ (
       defaultAdvisoryState ?? {

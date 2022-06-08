@@ -1,5 +1,5 @@
 import React from 'react'
-import HistoryContext from '../../shared/HistoryContext.js'
+import HistoryContext from '../../shared/context/HistoryContext.js'
 import sitemap from '../../shared/sitemap.js'
 import LoadingIndicator from '../View/LoadingIndicator.js'
 import Alert from '../View/shared/Alert.js'

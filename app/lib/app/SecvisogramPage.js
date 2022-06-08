@@ -9,7 +9,7 @@ import {
   uniqueProductId,
 } from './SecvisogramPage/View/FormEditorTab/shared/unique-id.js'
 import createCore from './shared/Core.js'
-import HistoryContext from './shared/HistoryContext.js'
+import HistoryContext from './shared/context/HistoryContext.js'
 import sitemap from './shared/sitemap.js'
 
 /**
