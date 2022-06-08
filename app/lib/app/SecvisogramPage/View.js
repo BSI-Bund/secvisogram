@@ -244,9 +244,34 @@ function View({
                 </span>
               </div>
             )}
-            <div className="pr-5 flex items-center text-white">
-              <button {...tabButtonProps('DOCUMENTS')}>CSAF Documents</button>
-            </div>
+
+            {configContext.loginAvailable &&
+              (userContext.isUserSignedIn === true ? (
+                <div className="pr-5 flex items-center text-white">
+                  <button {...tabButtonProps('DOCUMENTS')}>
+                    CSAF Documents
+                  </button>
+                  <button
+                    className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 p-4 text-white"
+                    onClick={() => {
+                      window.location.href = configContext.logoutUrl
+                    }}
+                  >
+                    {userContext.preferredUsername}
+                  </button>
+                </div>
+              ) : (
+                <div className="pr-5 flex items-center text-white">
+                  <button
+                    className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 p-4 text-white"
+                    onClick={() => {
+                      window.location.href = configContext.loginUrl
+                    }}
+                  >
+                    Login
+                  </button>
+                </div>
+              ))}
           </div>
           {activeTab !== 'DOCUMENTS' && (
             <div className="bg-gray-400 flex items-center justify-between">
