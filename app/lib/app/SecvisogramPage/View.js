@@ -1,6 +1,8 @@
 import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import AppConfigContext from '../shared/context/AppConfigContext.js'
+import UserInfoContext from '../shared/context/UserInfoContext.js'
 import CsafTab from './View/CsafTab.js'
 import FormEditorTab from './View/FormEditorTab.js'
 import JsonEditorTab from './View/JsonEditorTab.js'
@@ -9,8 +11,6 @@ import PreviewTab from './View/PreviewTab.js'
 import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
-import AppConfigContext from '../shared/context/AppConfigContext.js'
-import UserInfoContext from '../shared/context/UserInfoContext.js'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 
@@ -50,8 +50,8 @@ function View({
   onCollectGroupIds,
   ...props
 }) {
-  const configContext = React.useContext(AppConfigContext)
-  const userContext = React.useContext(UserInfoContext)
+  const appConfig = React.useContext(AppConfigContext)
+  const userInfo = React.useContext(UserInfoContext)
 
   const [advisoryState, setAdvisoryState] = React.useState(
     /** @type {import('./View/types.js').AdvisoryState | null} */ (
@@ -245,8 +245,8 @@ function View({
               </div>
             )}
 
-            {configContext.loginAvailable &&
-              (userContext.isUserSignedIn === true ? (
+            {appConfig.loginAvailable &&
+              (userInfo ? (
                 <div className="pr-5 flex items-center text-white">
                   <button {...tabButtonProps('DOCUMENTS')}>
                     CSAF Documents
@@ -254,10 +254,10 @@ function View({
                   <button
                     className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 p-4 text-white"
                     onClick={() => {
-                      window.location.href = configContext.logoutUrl
+                      window.location.href = appConfig.logoutUrl
                     }}
                   >
-                    {userContext.preferredUsername}
+                    {userInfo.preferredUsername}
                   </button>
                 </div>
               ) : (
@@ -265,7 +265,7 @@ function View({
                   <button
                     className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 p-4 text-white"
                     onClick={() => {
-                      window.location.href = configContext.loginUrl
+                      window.location.href = appConfig.loginUrl
                     }}
                   >
                     Login

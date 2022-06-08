@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { ErrorBoundary, useErrorHandler } from 'react-error-boundary'
 import ErrorScreen from './App/ErrorScreen.js'
 import useHistory from './App/useHistory.js'
-import HistoryContext from './shared/context/HistoryContext.js'
-import AppConfigContext from './shared/context/AppConfigContext.js'
-import UserInfoContext from './shared/context/UserInfoContext.js'
 import * as api from './shared/api.js'
+import AppConfigContext from './shared/context/AppConfigContext.js'
+import HistoryContext from './shared/context/HistoryContext.js'
+import UserInfoContext from './shared/context/UserInfoContext.js'
 
 /**
  * @param {object} props
@@ -16,54 +16,38 @@ export default function App({ secvisogramPage }) {
   const history = useHistory()
 
   const defaultAppConfig = React.useContext(AppConfigContext)
-  const [appConfigContext, setAppConfigContext] = useState(defaultAppConfig)
+  const [appConfig, setAppConfig] = useState(defaultAppConfig)
 
   useEffect(() => {
-    api.appConfig
-      .getAppConfig()
-      .then((response) => setAppConfigContext(response))
+    api.appConfig.getAppConfig().then((response) => setAppConfig(response))
   }, [])
 
   const defaultUserInfo = React.useContext(UserInfoContext)
-  const [userContext, setUserContext] = useState(defaultUserInfo)
+  const [userInfo, setUserInfo] = useState(defaultUserInfo)
 
   const handleError = useErrorHandler()
   useEffect(() => {
-    if (appConfigContext.loginAvailable) {
+    if (appConfig.loginAvailable) {
       api.auth
-        .getUserInfo(appConfigContext.userInfoUrl)
+        .getUserInfo(appConfig.userInfoUrl)
         .then(
           (result) => {
-            setUserContext({ ...result, isUserSignedIn: true })
+            setUserInfo(result)
           },
           (error) => {
             if (401 !== error.status) throw error
-            setUserSignedOut()
+            setUserInfo(null)
           }
         )
         .catch(handleError)
     } else {
-      setUserSignedOut()
+      setUserInfo(null)
     }
-
-    function setUserSignedOut() {
-      setUserContext({
-        isUserSignedIn: false,
-        user: '',
-        email: '',
-        preferredUsername: '',
-        groups: [],
-      })
-    }
-  }, [
-    handleError,
-    appConfigContext.loginAvailable,
-    appConfigContext.userInfoUrl,
-  ])
+  }, [handleError, appConfig.loginAvailable, appConfig.userInfoUrl])
 
   return (
-    <AppConfigContext.Provider value={appConfigContext}>
-      <UserInfoContext.Provider value={userContext}>
+    <AppConfigContext.Provider value={appConfig}>
+      <UserInfoContext.Provider value={userInfo}>
         <HistoryContext.Provider value={history}>
           <ErrorBoundary FallbackComponent={ErrorScreen}>
             {secvisogramPage}
