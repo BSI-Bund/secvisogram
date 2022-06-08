@@ -2,7 +2,11 @@ import { get } from 'lodash'
 import React from 'react'
 import { useErrorHandler } from 'react-error-boundary'
 import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
-import { loadAdvisory, updateAdvisory } from './SecvisogramPage/service.js'
+import {
+  loadAdvisory,
+  updateAdvisory,
+  validate,
+} from './SecvisogramPage/service.js'
 import View from './SecvisogramPage/View.js'
 import {
   uniqueGroupId,
@@ -355,6 +359,9 @@ const SecvisogramPage = () => {
         },
         [strict]
       )}
+      onServiceValidate={(params, callback) => {
+        validate(params).then(callback).catch(handleError)
+      }}
     />
   )
 }

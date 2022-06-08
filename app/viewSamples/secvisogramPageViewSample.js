@@ -131,6 +131,7 @@ const props = {
     console.log('onCollectGroupIds')
     return new Promise(() => {})
   },
+  onServiceValidate() {},
 }
 
 export const basic = { props }

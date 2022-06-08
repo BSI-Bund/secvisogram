@@ -22,7 +22,6 @@ const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 function View({
   activeTab,
   isTabLocked,
-  errors,
   data,
   defaultAdvisoryState = null,
   alert,
@@ -48,6 +47,7 @@ function View({
   onUnlockTab,
   onCollectProductIds,
   onCollectGroupIds,
+  onServiceValidate,
   ...props
 }) {
   const appConfig = React.useContext(AppConfigContext)
@@ -75,6 +75,11 @@ function View({
   }, [props.isLoading])
 
   const [isSaving, setSaving] = React.useState(false)
+
+  const [errors, setErrors] = React.useState(props.errors)
+  React.useEffect(() => {
+    setErrors(props.errors)
+  }, [props.errors])
 
   /**
    * Initial values for the editors. Can be used to detect changes of the
@@ -273,6 +278,9 @@ function View({
                 </div>
               ))}
           </div>
+          <div data-testid="number_of_validation_errors" className="hidden">
+            {errors.length}
+          </div>
           {activeTab !== 'DOCUMENTS' && (
             <div className="bg-gray-400 flex items-center justify-between">
               <div className="pl-5">
@@ -313,6 +321,29 @@ function View({
                     Save
                   </button>
                 ) : null}
+                {appConfig.loginAvailable && userInfo && (
+                  <button
+                    data-testid="validate_button"
+                    type="button"
+                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                    onClick={async () => {
+                      setLoading(true)
+                      onServiceValidate(
+                        {
+                          validatorUrl: appConfig.validatorUrl,
+                          csaf: formValues.doc,
+                        },
+                        (json) => {
+                          const errors = json.tests.flatMap((t) => t.errors)
+                          setErrors(errors)
+                          setLoading(false)
+                        }
+                      )
+                    }}
+                  >
+                    Validate
+                  </button>
+                )}
               </div>
               <div className="pr-5 text-gray-300">
                 <a
