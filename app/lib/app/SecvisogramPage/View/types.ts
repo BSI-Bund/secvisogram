@@ -72,6 +72,12 @@ export interface Props {
     document: {}
   ): void
   onValidate(document: {}): void
+  onServiceValidate(
+    params: { validatorUrl: string; csaf: {} },
+    callback: (result: {
+      tests: Array<{ errors: Array<{ instancePath: string; message: string }> }>
+    }) => void
+  ): void
   onNewDocMin(): Promise<void | {}>
   onNewDocMax(): Promise<void | {}>
   onStrip(document: {}): void

@@ -3,8 +3,86 @@
 import { expect } from 'chai'
 import CVSSVector from '../../lib/app/SecvisogramPage/View/FormEditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSVector.js'
 import ViewReducer from '../../lib/app/SecvisogramPage/View/Reducer.js'
+import { getLoginEnabledConfig } from '../fixtures/appConfigData.js'
+import {
+  getAdvisories,
+  getAdvisory,
+  getUserInfo,
+  getUsers,
+} from '../fixtures/cmsBackendData.js'
+import { getValidationResponse } from '../fixtures/csafValidatorServiceData.js'
+import testsSample from '../fixtures/samples/cmsBackendData/tests.js'
 
 describe('SecvisogramPage', () => {
+  describe('can validate the document against the rest service', function () {
+    for (const user of getUsers()) {
+      for (const advisory of getAdvisories(testsSample)) {
+        const { advisoryId } = advisory
+
+        it(`user: ${user.preferredUsername}, advisoryId: ${advisoryId}`, function () {
+          cy.intercept(
+            '/.well-known/appspecific/de.bsi.secvisogram.json',
+            getLoginEnabledConfig()
+          ).as('wellKnownAppConfig')
+          cy.intercept(
+            getLoginEnabledConfig().userInfoUrl,
+            getUserInfo(user)
+          ).as('apiGetUserInfo')
+          cy.intercept('/api/2.0/advisories/', getAdvisories(testsSample)).as(
+            'apiGetAdvisories'
+          )
+          const advisoryDetail = getAdvisory(testsSample, {
+            advisoryId: advisory.advisoryId,
+          })
+          cy.intercept(
+            `/api/2.0/advisories/${advisory.advisoryId}/`,
+            advisoryDetail
+          ).as('apiGetAdvisoryDetail')
+          const validationResponse = getValidationResponse({
+            document: JSON.parse(advisoryDetail.csaf),
+          })
+          cy.intercept('POST', '/api/v1/validate', validationResponse).as(
+            'apiValidate'
+          )
+
+          cy.visit('?tab=DOCUMENTS')
+          cy.wait('@wellKnownAppConfig')
+          cy.wait('@apiGetUserInfo')
+          cy.wait('@apiGetAdvisories')
+
+          cy.get(
+            `[data-testid="advisory-${advisory.advisoryId}-list_entry-open_button"]`
+          ).click()
+          cy.wait('@apiGetAdvisoryDetail')
+          cy.get('[data-testid="loading_indicator"]').should('not.exist')
+          cy.location('search').should('equal', '?tab=EDITOR')
+          cy.wait(500)
+          cy.get('[data-testid="validate_button"]').click()
+          cy.wait('@apiValidate')
+            .its('request.body')
+            .should('deep.equal', {
+              tests: [
+                { type: 'test', name: 'csaf_2_0_strict' },
+                { type: 'preset', name: 'mandatory' },
+                { type: 'preset', name: 'optional' },
+                { type: 'preset', name: 'informative' },
+              ],
+              document: JSON.parse(advisoryDetail.csaf),
+            })
+          cy.get('[data-testid="number_of_validation_errors"]').should(
+            'have.text',
+            String(validationResponse.tests.flatMap((t) => t.errors).length)
+          )
+          for (const error of validationResponse.tests.flatMap(
+            (t) => t.errors
+          )) {
+            cy.get(`[data-testid="attribute_error-${error.instancePath}"]`)
+          }
+        })
+      }
+    }
+  })
+
   describe('View', () => {
     describe('Reducer', () => {
       const generatorEngineData = {
