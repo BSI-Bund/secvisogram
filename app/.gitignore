@@ -3,4 +3,4 @@
 /build
 
 # local .well-known/appspecific config
-/public/.well-known/appspecific/localhost.json
+/public/.well-known/appspecific/de.bsi.secvisogram.json
