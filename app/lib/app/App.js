@@ -4,9 +4,8 @@ import ErrorScreen from './App/ErrorScreen.js'
 import useHistory from './App/useHistory.js'
 import HistoryContext from './shared/context/HistoryContext.js'
 import AppConfigContext from './shared/context/AppConfigContext.js'
-import UserContext from './shared/context/UserContext.js'
+import UserInfoContext from './shared/context/UserInfoContext.js'
 import * as api from './shared/api.js'
-import APIRequest from './shared/APIRequest.js'
 
 /**
  * @param {object} props
@@ -25,44 +24,52 @@ export default function App({ secvisogramPage }) {
       .then((response) => setAppConfigContext(response))
   }, [])
 
-  const defaultUser = React.useContext(UserContext)
-  const [userContext, setUserContext] = useState(defaultUser)
+  const defaultUserInfo = React.useContext(UserInfoContext)
+  const [userContext, setUserContext] = useState(defaultUserInfo)
 
   const handleError = useErrorHandler()
   useEffect(() => {
     if (appConfigContext.loginAvailable) {
-      new APIRequest(new Request(appConfigContext.userInfoUrl))
-        .produces('application/json')
-        .send()
-        .then((response) => response.json())
-        .then((response) => {
-          setUserContext({ ...response, isUserSignedIn: true })
-        })
-        .catch((error) => {
-          if (401 !== error.status) {
-            throw error
+      api.auth
+        .getUserInfo(appConfigContext.userInfoUrl)
+        .then(
+          (result) => {
+            setUserContext({ ...result, isUserSignedIn: true })
+          },
+          (error) => {
+            if (401 !== error.status) throw error
+            setUserSignedOut()
           }
-        })
+        )
         .catch(handleError)
     } else {
-      setUserContext({ ...userContext, isUserSignedIn: true })
+      setUserSignedOut()
+    }
+
+    function setUserSignedOut() {
+      setUserContext({
+        isUserSignedIn: false,
+        user: '',
+        email: '',
+        preferredUsername: '',
+        groups: [],
+      })
     }
   }, [
     handleError,
-    userContext,
     appConfigContext.loginAvailable,
     appConfigContext.userInfoUrl,
   ])
 
   return (
     <AppConfigContext.Provider value={appConfigContext}>
-      <UserContext.Provider value={userContext}>
+      <UserInfoContext.Provider value={userContext}>
         <HistoryContext.Provider value={history}>
           <ErrorBoundary FallbackComponent={ErrorScreen}>
             {secvisogramPage}
           </ErrorBoundary>
         </HistoryContext.Provider>
-      </UserContext.Provider>
+      </UserInfoContext.Provider>
     </AppConfigContext.Provider>
   )
 }

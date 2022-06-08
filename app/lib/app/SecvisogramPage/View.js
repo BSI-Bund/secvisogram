@@ -10,7 +10,7 @@ import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
 import AppConfigContext from '../shared/context/AppConfigContext.js'
-import UserContext from '../shared/context/UserContext.js'
+import UserInfoContext from '../shared/context/UserInfoContext.js'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 
@@ -51,7 +51,7 @@ function View({
   ...props
 }) {
   const configContext = React.useContext(AppConfigContext)
-  const userContext = React.useContext(UserContext)
+  const userContext = React.useContext(UserInfoContext)
 
   const [advisoryState, setAdvisoryState] = React.useState(
     /** @type {import('./View/types.js').AdvisoryState | null} */ (

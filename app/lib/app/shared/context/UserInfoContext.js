@@ -1,15 +1,15 @@
 import React from 'react'
 
 /**
- * @typedef {object} UserContext
+ * @typedef {object} UserInfoContext
  * @property {boolean} isUserSignedIn
  * @property {string} user
  * @property {string} email
  * @property {string} preferredUsername
- * @property {[]} groups
+ * @property {string[]} groups
  */
 
-/** @type {UserContext} */
+/** @type {UserInfoContext} */
 const defaultValue = {
   isUserSignedIn: false,
   user: '',
