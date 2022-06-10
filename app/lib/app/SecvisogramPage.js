@@ -3,17 +3,14 @@ import React from 'react'
 import { useErrorHandler } from 'react-error-boundary'
 import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
 import {
+  createAdvisory,
   loadAdvisory,
   updateAdvisory,
   validate,
 } from './SecvisogramPage/service.js'
 import View from './SecvisogramPage/View.js'
-import {
-  uniqueGroupId,
-  uniqueProductId,
-} from './SecvisogramPage/View/FormEditorTab/shared/unique-id.js'
-import createCore from './shared/Core.js'
 import HistoryContext from './shared/context/HistoryContext.js'
+import createCore from './shared/Core.js'
 import sitemap from './shared/sitemap.js'
 
 /**
@@ -231,36 +228,20 @@ const SecvisogramPage = () => {
         },
         [handleError]
       )}
-      onNewDocMin={React.useCallback(() => {
-        const doc = core.document.newDocMin()
-        setState((state) => ({
-          ...state,
-          data: {
-            ...state.data,
-            doc: doc,
-          },
-        }))
-        uniqueGroupId(true)
-        uniqueProductId(true)
-        return doc
-      }, [])}
-      onNewDocMax={React.useCallback(() => {
-        return core.document
+      onGetDocMin={(callback) => {
+        callback(core.document.newDocMin())
+      }}
+      onGetDocMax={(callback) => {
+        core.document
           .newDocMax()
           .then((doc) => {
-            setState((state) => ({
-              ...state,
-              data: {
-                ...state.data,
-                doc: doc,
-              },
-            }))
-            uniqueGroupId(true)
-            uniqueProductId(true)
-            return doc
+            callback(doc)
           })
           .catch(handleError)
-      }, [handleError])}
+      }}
+      onCreateAdvisory={(params, callback) => {
+        createAdvisory(params).then(callback).catch(handleError)
+      }}
       onStrip={React.useCallback(
         (document) => {
           core.document

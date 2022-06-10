@@ -5,6 +5,10 @@ import AppConfigContext from '../shared/context/AppConfigContext.js'
 import UserInfoContext from '../shared/context/UserInfoContext.js'
 import CsafTab from './View/CsafTab.js'
 import FormEditorTab from './View/FormEditorTab.js'
+import {
+  uniqueGroupId,
+  uniqueProductId,
+} from './View/FormEditorTab/shared/unique-id.js'
 import JsonEditorTab from './View/JsonEditorTab.js'
 import LoadingIndicator from './View/LoadingIndicator.js'
 import PreviewTab from './View/PreviewTab.js'
@@ -37,8 +41,9 @@ function View({
   onOpen,
   onChangeTab,
   onValidate,
-  onNewDocMin,
-  onNewDocMax,
+  onGetDocMin,
+  onGetDocMax,
+  onCreateAdvisory,
   onStrip,
   onPreview,
   onExportCSAF,
@@ -176,6 +181,56 @@ function View({
   }, [formValues.doc, onCollectGroupIds])
 
   /**
+   * @param {{}} doc
+   * @param {() => void} callback
+   */
+  const createDocFromTemplate = (doc, callback) => {
+    if (!userInfo) {
+      setAdvisoryState({ type: 'NEW_ADVISORY', csaf: doc })
+      uniqueGroupId(true)
+      uniqueProductId(true)
+      callback()
+    } else {
+      setLoading(true)
+      onCreateAdvisory({ csaf: doc }, (advisoryData) => {
+        setAdvisoryState({
+          type: 'ADVISORY',
+          advisory: {
+            advisoryId: advisoryData.id,
+            csaf: doc,
+            documentTrackingId: '',
+            revision: advisoryData.revision,
+          },
+        })
+        uniqueGroupId(true)
+        uniqueProductId(true)
+        setLoading(false)
+        callback()
+      })
+    }
+  }
+
+  const onNewDocMin = async () => {
+    return new Promise((resolve) => {
+      onGetDocMin((doc) => {
+        createDocFromTemplate(doc, () => {
+          resolve(doc)
+        })
+      })
+    })
+  }
+
+  const onNewDocMax = async () => {
+    return new Promise((resolve) => {
+      onGetDocMax((doc) => {
+        createDocFromTemplate(doc, () => {
+          resolve(doc)
+        })
+      })
+    })
+  }
+
+  /**
    * Resets the editor state if a new document is created.
    */
   React.useEffect(() => {
@@ -247,6 +302,12 @@ function View({
                   {advisoryState.advisory.csaf.document?.title ||
                     '<document without tracking-id>'}
                 </span>
+                <span data-testid="advisory_id" className="hidden">
+                  {advisoryState.advisory.advisoryId}
+                </span>
+                <span data-testid="advisory_revision" className="hidden">
+                  {advisoryState.advisory.revision}
+                </span>
               </div>
             )}
 
@@ -257,7 +318,7 @@ function View({
                     CSAF Documents
                   </button>
                   <button
-                    className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 p-4 text-white"
+                    className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 text-white"
                     onClick={() => {
                       window.location.href = appConfig.logoutUrl
                     }}
@@ -268,7 +329,7 @@ function View({
               ) : (
                 <div className="pr-5 flex items-center text-white">
                   <button
-                    className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 p-4 text-white"
+                    className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 text-white"
                     onClick={() => {
                       window.location.href = appConfig.loginUrl
                     }}

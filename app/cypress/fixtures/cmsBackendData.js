@@ -27,6 +27,13 @@ export function getAdvisory(sample, { advisoryId }) {
   return advisory
 }
 
+export function getCreateAdvisoryResponse() {
+  return {
+    id: '9690e3a3-614f-44be-8709-3aa8d58b6cb5',
+    revision: '2-efaa5db9409b2d4300535c70aaf6a66b',
+  }
+}
+
 /**
  * @param {(typeof users)[number]} user
  */

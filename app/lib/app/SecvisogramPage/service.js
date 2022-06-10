@@ -39,6 +39,22 @@ export async function updateAdvisory({ advisoryId, revision, csaf }) {
 
 /**
  * @param {object} params
+ * @param {{}} params.csaf
+ */
+export async function createAdvisory({ csaf }) {
+  const res = await new APIRequest(
+    new Request('/api/2.0/advisories', { method: 'POST' })
+  )
+    .jsonRequestBody(csaf)
+    .send()
+
+  /** @type {{ id: string; revision: string }} */
+  const advisoryData = await res.json()
+  return advisoryData
+}
+
+/**
+ * @param {object} params
  * @param {string} params.validatorUrl
  * @param {{}} params.csaf
  * @returns

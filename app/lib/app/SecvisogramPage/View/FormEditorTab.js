@@ -155,6 +155,7 @@ export default function FormEditorTab({
         <div className="pl-3 pr-6 py-6 w-72 flex flex-col justify-between">
           <div className="flex flex-col">
             <button
+              data-testid="new_with_minimal_fields_button"
               type="button"
               className="mb-2 py-1 px-3 rounded shadow border border-blue-400 bg-blue-400 text-white hover:text-blue-400 hover:bg-white"
               onClick={showMin}
@@ -163,6 +164,7 @@ export default function FormEditorTab({
               New (minimal fields)
             </button>
             <button
+              data-testid="new_with_all_fields_button"
               type="button"
               className="mb-2 py-1 px-3 rounded shadow border border-blue-400 bg-blue-400 text-white hover:text-blue-400 hover:bg-white"
               onClick={showMax}

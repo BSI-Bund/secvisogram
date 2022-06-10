@@ -78,8 +78,12 @@ export interface Props {
       tests: Array<{ errors: Array<{ instancePath: string; message: string }> }>
     }) => void
   ): void
-  onNewDocMin(): Promise<void | {}>
-  onNewDocMax(): Promise<void | {}>
+  onGetDocMin(callback: (csaf: {}) => void): void
+  onGetDocMax(callback: (csaf: {}) => void): void
+  onCreateAdvisory(
+    params: { csaf: {} },
+    callback: (advisoryData: { id: string; revision: string }) => void
+  ): void
   onStrip(document: {}): void
   onPreview(document: {}): void
   onExportCSAF(doc: {}): void
