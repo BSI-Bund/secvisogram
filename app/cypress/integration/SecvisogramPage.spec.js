@@ -39,7 +39,7 @@ describe('SecvisogramPage', () => {
             advisoryDetail
           ).as('apiGetAdvisoryDetail')
           const validationResponse = getValidationResponse({
-            document: JSON.parse(advisoryDetail.csaf),
+            document: advisoryDetail.csaf,
           })
           cy.intercept('POST', '/api/v1/validate', validationResponse).as(
             'apiValidate'
@@ -67,7 +67,7 @@ describe('SecvisogramPage', () => {
                 { type: 'preset', name: 'optional' },
                 { type: 'preset', name: 'informative' },
               ],
-              document: JSON.parse(advisoryDetail.csaf),
+              document: advisoryDetail.csaf,
             })
           cy.get('[data-testid="number_of_validation_errors"]').should(
             'have.text',

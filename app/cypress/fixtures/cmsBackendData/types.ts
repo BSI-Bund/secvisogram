@@ -3,7 +3,7 @@ export interface Sample {
   advisories: Array<{
     advisoryId: string
     revision: string
-    csaf: string
+    csaf: {}
     documentTrackingId: string
   }>
 }

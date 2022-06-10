@@ -9,11 +9,10 @@ export async function loadAdvisory({ advisoryId }) {
   const advisoryJSONRes = await new APIRequest(
     new Request(`/api/2.0/advisories/${advisoryId}/`)
   ).send()
-  /** @type {{ csaf: string; advisoryId: string; revision: string; documentTrackingId: string }} */
+  /** @type {{ csaf: {}; advisoryId: string; revision: string; documentTrackingId: string }} */
   const advisory = await advisoryJSONRes.json()
   return {
     ...advisory,
-    csaf: JSON.parse(advisory.csaf),
   }
 }
 

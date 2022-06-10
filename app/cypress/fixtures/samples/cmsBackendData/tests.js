@@ -22,7 +22,7 @@ const testsSample = {
       deletable: false,
       allowedStateChanges: ['Approved', 'Published'],
       revision: '1-1e6381e13c091b5b0b8b523ce3d412ba',
-      csaf: '{"document":{"title":"my first document"}}',
+      csaf: { document: { title: 'my first document' } },
     },
   ],
 }

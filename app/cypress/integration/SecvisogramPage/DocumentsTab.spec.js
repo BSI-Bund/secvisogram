@@ -124,11 +124,11 @@ describe('SecvisogramPage / DocumentsTab', function () {
           cy.location('search').should('equal', '?tab=EDITOR')
           cy.get('[data-testid="attribute-/document/title"] input').should(
             'have.value',
-            JSON.parse(advisoryDetail.csaf).document.title
+            /** @type {any} */ (advisoryDetail.csaf).document.title
           )
           cy.get('[data-testid="document_tracking_id"]').should(
             'have.text',
-            JSON.parse(advisoryDetail.csaf).document.title
+            /** @type {any} */ (advisoryDetail.csaf).document.title
           )
         })
       }

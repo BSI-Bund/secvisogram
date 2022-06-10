@@ -48,7 +48,8 @@ describe('SecvisogramPage / EditorTab', function () {
           cy.location('search').should('equal', '?tab=EDITOR')
 
           const documentTitle =
-            JSON.parse(advisoryDetail.csaf).document.title + '-some-more-text'
+            /** @type {any} */ (advisoryDetail.csaf).document.title +
+            '-some-more-text'
           cy.get('[data-testid="attribute-/document/title"] input')
             .clear()
             .type(documentTitle)
