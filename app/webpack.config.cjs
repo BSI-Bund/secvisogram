@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { GitRevisionPlugin } = require('git-revision-webpack-plugin')
 const Webpack = require('webpack')
 const gitRevisionPlugin = new GitRevisionPlugin()
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 const path = require('path')
 
 /** @type {import('webpack').Configuration} */
@@ -76,6 +77,9 @@ module.exports = {
             template: './lib/index.html',
           }),
         ]),
+    new MonacoWebpackPlugin({
+      languages: ['json'],
+    }),
   ],
   devServer: {
     historyApiFallback: true,
