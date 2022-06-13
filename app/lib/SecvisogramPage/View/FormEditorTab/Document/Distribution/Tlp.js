@@ -1,8 +1,8 @@
 import '@reach/combobox/styles.css'
 import React from 'react'
-import EnumAttribute from '../../shared/EnumAttribute'
-import ObjectContainer from '../../shared/ObjectContainer'
-import TextAttribute from '../../shared/TextAttribute'
+import EnumAttribute from '../../shared/EnumAttribute.js'
+import ObjectContainer from '../../shared/ObjectContainer.js'
+import TextAttribute from '../../shared/TextAttribute.js'
 
 /**
  * @param {{

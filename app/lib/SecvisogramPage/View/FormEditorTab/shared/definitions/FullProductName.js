@@ -1,8 +1,8 @@
 import React from 'react'
-import ObjectContainer from '../ObjectContainer'
-import TextAttribute from '../TextAttribute'
-import { uniqueProductId } from '../unique-id'
-import ProductIdentificationHelper from './FullProductName/ProductIdentificationHelper'
+import ObjectContainer from '../ObjectContainer.js'
+import TextAttribute from '../TextAttribute.js'
+import { uniqueProductId } from '../unique-id.js'
+import ProductIdentificationHelper from './FullProductName/ProductIdentificationHelper.js'
 
 /**
  * @param {{

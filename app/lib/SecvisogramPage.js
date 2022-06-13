@@ -2,13 +2,13 @@ import { get } from 'lodash'
 import React from 'react'
 import { render } from 'react-dom'
 import { ErrorBoundary, useErrorHandler } from 'react-error-boundary'
-import View from './SecvisogramPage/View'
+import View from './SecvisogramPage/View.js'
 import {
   uniqueGroupId,
   uniqueProductId,
-} from './SecvisogramPage/View/FormEditorTab/shared/unique-id'
-import createCore from './shared/Core'
-import ErrorScreen from './shared/ErrorScreen'
+} from './SecvisogramPage/View/FormEditorTab/shared/unique-id.js'
+import createCore from './shared/Core.js'
+import ErrorScreen from './shared/ErrorScreen.js'
 import './shared/style.css'
 
 /**
@@ -371,7 +371,7 @@ export default function downloadFile(
     element.href = dataURI
     element.click()
   } catch (/** @type {any} */ e) {
-    alert('An error occured while serializing the download:\n\n' + e.message)
+    alert('An error occurred while serializing the download:\n\n' + e.message)
   }
 }
 
@@ -385,7 +385,7 @@ function createFileName(doc, isValid, extension) {
   if (trackingId.trim().length === 0) {
     trackingId = 'csaf_2_0'
   } else {
-    trackingId = trackingId.replace(/([^a-z0-9+\-_]+)/gi, '_')
+    trackingId = trackingId.toLowerCase().replace(/([^+\-a-z0-9]+)/gi, '_')
   }
   const fileName = `${trackingId}${isValid ? '' : '_invalid'}.${extension}`
   return fileName

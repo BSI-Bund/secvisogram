@@ -1,6 +1,6 @@
 import React from 'react'
-import ArrayContainer from '../ArrayContainer'
-import IdAttribute from '../IdAttribute'
+import ArrayContainer from '../ArrayContainer.js'
+import IdAttribute from '../IdAttribute.js'
 
 /**
  * @param {{

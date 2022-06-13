@@ -1,5 +1,5 @@
 import React from 'react'
-import LoadingIndicator from '../../../lib/SecvisogramPage/View/LoadingIndicator'
+import LoadingIndicator from '../../../lib/SecvisogramPage/View/LoadingIndicator.js'
 
 export const title = 'LoadingIndicator'
 

@@ -5,4 +5,4 @@
  * use-cases.
  */
 
-export { default as DocumentEntity } from './entities/DocumentEntity'
+export { default as DocumentEntity } from './entities/DocumentEntity.js'

@@ -1,13 +1,13 @@
 import '@reach/combobox/styles.css'
 import React from 'react'
-import ArrayContainer from '../shared/ArrayContainer'
-import DateAttribute from '../shared/DateAttribute'
-import { Version } from '../shared/definitions'
-import EnumAttribute from '../shared/EnumAttribute'
-import ObjectContainer from '../shared/ObjectContainer'
-import TextAttribute from '../shared/TextAttribute'
-import validationErrorShallowEqual from '../shared/validationErrorShallowEqual'
-import RevisionHistory from './Tracking/RevisionHistory'
+import ArrayContainer from '../shared/ArrayContainer.js'
+import DateAttribute from '../shared/DateAttribute.js'
+import { Version } from '../shared/definitions.js'
+import EnumAttribute from '../shared/EnumAttribute.js'
+import ObjectContainer from '../shared/ObjectContainer.js'
+import TextAttribute from '../shared/TextAttribute.js'
+import validationErrorShallowEqual from '../shared/validationErrorShallowEqual.js'
+import RevisionHistory from './Tracking/RevisionHistory.js'
 
 export default React.memo(
   /**
@@ -103,6 +103,7 @@ export default React.memo(
               {...trackingProps('id')}
               label="Unique identifier for the document"
               description="The ID is a simple label that provides for a wide range of numbering values, types, and schemes. Its value SHOULD be assigned and maintained by the original document issuing authority."
+              pattern="^[\S](.*[\S])?$"
               placeholder="Example Company - 2019-YH3234"
             />
             <DateAttribute

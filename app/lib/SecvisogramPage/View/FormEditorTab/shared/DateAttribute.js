@@ -1,7 +1,7 @@
 import React from 'react'
-import DatePicker from './DateAttribute/DatePicker'
-import Attribute from './shared/Attribute'
-import Delete from './shared/Delete'
+import DatePicker from './DateAttribute/DatePicker.js'
+import Attribute from './shared/Attribute.js'
+import Delete from './shared/Delete.js'
 
 /**
  * @param {{

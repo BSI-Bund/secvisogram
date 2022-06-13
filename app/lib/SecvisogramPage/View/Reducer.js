@@ -1,6 +1,6 @@
 import update from 'immutability-helper'
 import { parse } from 'json-pointer'
-import { compose, set } from 'lodash/fp'
+import { compose, set } from 'lodash/fp.js'
 
 /** @typedef {unknown} Doc */
 

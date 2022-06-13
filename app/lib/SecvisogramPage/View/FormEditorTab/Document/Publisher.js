@@ -1,9 +1,9 @@
 import '@reach/combobox/styles.css'
 import React from 'react'
-import EnumAttribute from '../shared/EnumAttribute'
-import ObjectContainer from '../shared/ObjectContainer'
-import TextAttribute from '../shared/TextAttribute'
-import validationErrorShallowEqual from '../shared/validationErrorShallowEqual'
+import EnumAttribute from '../shared/EnumAttribute.js'
+import ObjectContainer from '../shared/ObjectContainer.js'
+import TextAttribute from '../shared/TextAttribute.js'
+import validationErrorShallowEqual from '../shared/validationErrorShallowEqual.js'
 
 export default React.memo(
   /**

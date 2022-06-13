@@ -1,8 +1,8 @@
 import React from 'react'
-import ArrayContainer from '../ArrayContainer'
-import ObjectContainer from '../ObjectContainer'
-import TextAttribute from '../TextAttribute'
-import validationErrorShallowEqual from '../validationErrorShallowEqual'
+import ArrayContainer from '../ArrayContainer.js'
+import ObjectContainer from '../ObjectContainer.js'
+import TextAttribute from '../TextAttribute.js'
+import validationErrorShallowEqual from '../validationErrorShallowEqual.js'
 
 export default React.memo(
   /**

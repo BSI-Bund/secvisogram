@@ -2,8 +2,8 @@ import { TextField } from '@material-ui/core'
 import { Autocomplete } from '@material-ui/lab'
 import '@reach/combobox/styles.css'
 import React from 'react'
-import Attribute from './shared/Attribute'
-import Delete from './shared/Delete'
+import Attribute from './shared/Attribute.js'
+import Delete from './shared/Delete.js'
 
 /**
  * @param {{

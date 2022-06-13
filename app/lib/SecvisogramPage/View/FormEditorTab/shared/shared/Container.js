@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '@reach/dialog/styles.css'
 import { compile, parse } from 'json-pointer'
 import React from 'react'
-import { useAlert } from '../../../shared/Alert'
-import DefaultButton from '../../../shared/DefaultButton'
-import ContainerErrors from '../ContainerErrors'
+import { useAlert } from '../../../shared/Alert.js'
+import DefaultButton from '../../../shared/DefaultButton.js'
+import ContainerErrors from '../ContainerErrors.js'
 
 const numberRegExp = /^(0|[1-9][0-9]*)$/
 

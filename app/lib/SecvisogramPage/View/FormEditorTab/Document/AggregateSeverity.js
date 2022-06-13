@@ -1,8 +1,8 @@
 import '@reach/combobox/styles.css'
 import React from 'react'
-import ObjectContainer from '../shared/ObjectContainer'
-import TextAttribute from '../shared/TextAttribute'
-import validationErrorShallowEqual from '../shared/validationErrorShallowEqual'
+import ObjectContainer from '../shared/ObjectContainer.js'
+import TextAttribute from '../shared/TextAttribute.js'
+import validationErrorShallowEqual from '../shared/validationErrorShallowEqual.js'
 
 export default React.memo(
   /**

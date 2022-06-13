@@ -8,9 +8,9 @@ import {
 import { matchSorter } from 'match-sorter'
 import React from 'react'
 import cwec_4_3 from '../../../../shared/Core/cwec_4.3.json'
-import useDebounce from '../../shared/useDebounce'
-import ObjectContainer from './ObjectContainer'
-import Attribute from './shared/Attribute'
+import useDebounce from '../../shared/useDebounce.js'
+import ObjectContainer from './ObjectContainer.js'
+import Attribute from './shared/Attribute.js'
 
 /**
  * Custom attribute.

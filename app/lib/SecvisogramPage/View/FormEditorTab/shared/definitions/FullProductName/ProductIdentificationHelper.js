@@ -1,8 +1,8 @@
 import '@reach/combobox/styles.css'
 import React from 'react'
-import ArrayContainer from '../../ArrayContainer'
-import ObjectContainer from '../../ObjectContainer'
-import TextAttribute from '../../TextAttribute'
+import ArrayContainer from '../../ArrayContainer.js'
+import ObjectContainer from '../../ObjectContainer.js'
+import TextAttribute from '../../TextAttribute.js'
 
 /**
  * @param {{
@@ -103,6 +103,21 @@ export default function ProductIdentificationHelper({
                   </>
                 )}
               </ObjectContainer>
+            )}
+          </ArrayContainer>
+          <ArrayContainer
+            {...productIdentificationHelperProps('model_numbers')}
+            label="List of models"
+            description="Contains a list of parts, or full model numbers."
+            defaultItemValue={() => ''}
+          >
+            {(modelNumbersItemProps) => (
+              <TextAttribute
+                {...modelNumbersItemProps}
+                label="Model number"
+                description="Contains a part, or a full model number of the component to identify."
+                deletable
+              />
             )}
           </ArrayContainer>
           <TextAttribute

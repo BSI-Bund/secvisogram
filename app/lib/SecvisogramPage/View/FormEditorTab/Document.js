@@ -1,14 +1,19 @@
 import '@reach/combobox/styles.css'
 import React from 'react'
-import AggregateSeverity from './Document/AggregateSeverity'
-import Distribution from './Document/Distribution'
-import Publisher from './Document/Publisher'
-import Tracking from './Document/Tracking'
-import { Acknowledgments, Lang, Notes, References } from './shared/definitions'
-import EnumAttribute from './shared/EnumAttribute'
-import ObjectContainer from './shared/ObjectContainer'
-import TextAttribute from './shared/TextAttribute'
-import validationErrorShallowEqual from './shared/validationErrorShallowEqual'
+import AggregateSeverity from './Document/AggregateSeverity.js'
+import Distribution from './Document/Distribution.js'
+import Publisher from './Document/Publisher.js'
+import Tracking from './Document/Tracking.js'
+import {
+  Acknowledgments,
+  Lang,
+  Notes,
+  References,
+} from './shared/definitions.js'
+import EnumAttribute from './shared/EnumAttribute.js'
+import ObjectContainer from './shared/ObjectContainer.js'
+import TextAttribute from './shared/TextAttribute.js'
+import validationErrorShallowEqual from './shared/validationErrorShallowEqual.js'
 
 export default React.memo(
   /**
@@ -31,6 +36,7 @@ export default React.memo(
           publisher: {
             category: '',
             name: '',
+            namespace: '',
           },
           title: '',
           tracking: {
@@ -65,11 +71,11 @@ export default React.memo(
               description="Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document."
               freeSolo={true}
               options={[
-                'generic_csaf',
-                'security_incident_response',
-                'informational_advisory',
-                'security_advisory',
-                'vex',
+                'csaf_base',
+                'csaf_security_incident_response',
+                'csaf_informational_advisory',
+                'csaf_security_advisory',
+                'csaf_vex',
               ]}
             />
             <EnumAttribute

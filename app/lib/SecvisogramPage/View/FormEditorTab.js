@@ -7,15 +7,15 @@ import {
   faMinusSquare,
   faPlusSquare,
   faSave,
-  faWindowClose,
+  faWindowClose
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import Document from './FormEditorTab/Document'
-import ProductTree from './FormEditorTab/ProductTree'
-import ObjectContainer from './FormEditorTab/shared/ObjectContainer'
-import Vulnerabilities from './FormEditorTab/Vulnerabilities'
-import { useAlert } from './shared/Alert'
+import Document from './FormEditorTab/Document.js'
+import ProductTree from './FormEditorTab/ProductTree.js'
+import ObjectContainer from './FormEditorTab/shared/ObjectContainer.js'
+import Vulnerabilities from './FormEditorTab/Vulnerabilities.js'
+import { useAlert } from './shared/Alert.js'
 
 /**
  * Defines the layout of the form editor.

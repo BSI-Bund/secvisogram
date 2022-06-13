@@ -1,7 +1,7 @@
 import { compile, parse } from 'json-pointer'
 import React from 'react'
-import DefaultButton from '../../../shared/DefaultButton'
-import AttributeErrors from '../AttributeErrors'
+import DefaultButton from '../../../shared/DefaultButton.js'
+import AttributeErrors from '../AttributeErrors.js'
 
 const numberRegExp = /^(0|[1-9][0-9]*)$/
 

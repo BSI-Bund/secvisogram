@@ -7,6 +7,6 @@ updates:
     schedule:
       interval: "weekly"
     # Disable version updates for this repository
-    open-pull-requests-limit: 0
+    open-pull-requests-limit: 5
     allow:
       - dependency-type: "production"
