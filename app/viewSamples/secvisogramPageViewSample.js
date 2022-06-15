@@ -132,6 +132,9 @@ const props = {
     return new Promise(() => {})
   },
   onServiceValidate() {},
+  onGetDocMin() {},
+  onGetDocMax() {},
+  onCreateAdvisory() {},
 }
 
 export const basic = { props }
