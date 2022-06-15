@@ -317,14 +317,55 @@ function View({
                   <button {...tabButtonProps('DOCUMENTS')}>
                     CSAF Documents
                   </button>
-                  <button
-                    className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 text-white"
-                    onClick={() => {
-                      window.location.href = appConfig.logoutUrl
-                    }}
-                  >
-                    {userInfo.preferredUsername}
-                  </button>
+                  <div className="dropdown relative">
+                    <div className="text-sm font-bold p-4 h-auto text-gray-300 flex items-center">
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      <div className="ml-4">{userInfo.preferredUsername}</div>
+                    </div>
+                    <div
+                      className="dropdown-content absolute bottom-0 right-0 z-10 bg-white text-black p-4 rounded-b shadow"
+                      style={{
+                        height: 133,
+                        marginBottom: -133,
+                      }}
+                    >
+                      <span className="w-full whitespace-nowrap overflow-ellipsis">
+                        <span className="text-sm font-bold">E-Mail:</span>{' '}
+                        <span className="text-sm">{userInfo.email}</span>
+                      </span>
+                      <br />
+                      <span className="w-full whitespace-nowrap overflow-ellipsis">
+                        <span className="text-sm font-bold">Groups:</span>{' '}
+                        <span className="text-sm">
+                          {userInfo.groups.join(', ')}
+                        </span>
+                      </span>
+                      <hr className="my-2" />
+                      <div className="text-right">
+                        <button
+                          className="text-sm font-bold p-2 w-full h-auto bg-blue-400 hover:bg-blue-500 text-white"
+                          onClick={() => {
+                            window.location.href = appConfig.logoutUrl
+                          }}
+                        >
+                          Logout
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <div className="pr-5 flex items-center text-white">
