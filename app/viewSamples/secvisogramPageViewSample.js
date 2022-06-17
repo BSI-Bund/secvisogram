@@ -9,6 +9,7 @@ const props = {
   isLoading: false,
   isTabLocked: false,
   errors: [],
+  alert: null,
   stripResult: null,
   previewResult: null,
   strict: true,
@@ -135,6 +136,8 @@ const props = {
   onGetDocMin() {},
   onGetDocMax() {},
   onCreateAdvisory() {},
+  onGetTemplates() {},
+  onGetTemplateContent() {},
 }
 
 export const basic = { props }

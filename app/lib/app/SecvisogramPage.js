@@ -9,6 +9,7 @@ import {
   validate,
 } from './SecvisogramPage/service.js'
 import View from './SecvisogramPage/View.js'
+import APIRequest from './shared/APIRequest.js'
 import HistoryContext from './shared/context/HistoryContext.js'
 import createCore from './shared/Core.js'
 import sitemap from './shared/sitemap.js'
@@ -342,6 +343,24 @@ const SecvisogramPage = () => {
       )}
       onServiceValidate={(params, callback) => {
         validate(params).then(callback).catch(handleError)
+      }}
+      onGetTemplates={(callback) => {
+        new APIRequest(new Request('/api/2.0/advisories/templates'))
+          .produces('application/json')
+          .send()
+          .then((res) => res.json())
+          .then(callback)
+          .catch(handleError)
+      }}
+      onGetTemplateContent={({ templateId }, callback) => {
+        new APIRequest(
+          new Request(`/api/2.0/advisories/templates/${templateId}`)
+        )
+          .produces('application/json')
+          .send()
+          .then((templateContentRes) => templateContentRes.json())
+          .then(callback)
+          .catch(handleError)
       }}
     />
   )

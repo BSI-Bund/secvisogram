@@ -3,6 +3,7 @@ import {
   getAdvisories,
   getAdvisory,
   getCreateAdvisoryResponse,
+  getGetAdvisoryDetailResponse,
   getUserInfo,
   getUsers,
 } from '../../fixtures/cmsBackendData.js'
@@ -27,8 +28,8 @@ describe('SecvisogramPage / EditorTab', function () {
             getAdvisories(testsSample)
           ).as('apiGetAdvisories')
 
-          const advisoryDetail = getAdvisory(testsSample, {
-            advisoryId: advisory.advisoryId,
+          const advisoryDetail = getGetAdvisoryDetailResponse({
+            advisory: getAdvisory({ advisoryId: advisory.advisoryId }),
           })
           cy.intercept(
             'GET',

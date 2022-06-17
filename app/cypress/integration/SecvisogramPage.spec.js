@@ -7,6 +7,11 @@ import { getLoginEnabledConfig } from '../fixtures/appConfigData.js'
 import {
   getAdvisories,
   getAdvisory,
+  getCreateAdvisoryResponse,
+  getGetAdvisoryDetailResponse,
+  getGetTemplateContentResponse,
+  getGetTemplatesResponse,
+  getTemplates,
   getUserInfo,
   getUsers,
 } from '../fixtures/cmsBackendData.js'
@@ -31,8 +36,8 @@ describe('SecvisogramPage', () => {
           cy.intercept('/api/2.0/advisories/', getAdvisories(testsSample)).as(
             'apiGetAdvisories'
           )
-          const advisoryDetail = getAdvisory(testsSample, {
-            advisoryId: advisory.advisoryId,
+          const advisoryDetail = getGetAdvisoryDetailResponse({
+            advisory: getAdvisory({ advisoryId }),
           })
           cy.intercept(
             `/api/2.0/advisories/${advisory.advisoryId}/`,
@@ -78,6 +83,76 @@ describe('SecvisogramPage', () => {
           )) {
             cy.get(`[data-testid="attribute_error-${error.instancePath}"]`)
           }
+        })
+      }
+    }
+  })
+
+  describe('can open a new document based on a template', function () {
+    for (const user of getUsers()) {
+      for (const template of getTemplates()) {
+        it(`user: ${user.email}, templateId: ${template.templateId}`, function () {
+          cy.intercept(
+            '/.well-known/appspecific/de.bsi.secvisogram.json',
+            getLoginEnabledConfig()
+          ).as('wellKnownAppConfig')
+          cy.intercept(
+            getLoginEnabledConfig().userInfoUrl,
+            getUserInfo(user)
+          ).as('apiGetUserInfo')
+          cy.intercept(
+            '/api/2.0/advisories/templates',
+            getGetTemplatesResponse()
+          ).as('apiGetTemplates')
+
+          cy.visit('?tab=EDITOR')
+          cy.wait('@wellKnownAppConfig')
+          cy.wait('@apiGetUserInfo')
+
+          cy.get('[data-testid="new_document_button"]').click()
+          cy.wait('@apiGetTemplates')
+
+          // cy.get('select[data-testid="new_document-templates-select"]').should(
+          //   'exist'
+          // )
+          for (const template of getTemplates()) {
+            cy.get(
+              `select[data-testid="new_document-templates-select"] option[value="${template.templateId}"]`
+            ).should('exist')
+          }
+          cy.get(`select[data-testid="new_document-templates-select"]`).select(
+            template.templateId
+          )
+
+          cy.intercept(
+            `/api/2.0/advisories/templates/${template.templateId}`,
+            getGetTemplateContentResponse({ template })
+          ).as('apiGetTemplateContent')
+          const createAdvisoryResponse = getCreateAdvisoryResponse()
+          cy.intercept(
+            'POST',
+            '/api/2.0/advisories',
+            createAdvisoryResponse
+          ).as('apiCreateAdvisory')
+          cy.intercept(
+            'GET',
+            `/api/2.0/advisories/${createAdvisoryResponse.id}/`,
+            getGetAdvisoryDetailResponse({
+              advisory: getAdvisory({ advisoryId: createAdvisoryResponse.id }),
+            })
+          ).as('apiGetAdvisoryDetail')
+          cy.get(`[data-testid="new_document-create_document_button"]`).click()
+          cy.wait('@apiCreateAdvisory').then((xhr) => {
+            expect(xhr.request.body).deep.equal(template.templateContent)
+          })
+          cy.wait('@apiGetAdvisoryDetail')
+          cy.get('[data-testid="advisory_id"]').should(
+            'have.text',
+            createAdvisoryResponse.id
+          )
+          cy.get('[data-testid="new_document_dialog"]').then((el) => {
+            expect(/** @type {any} */ (el[0]).open).to.be.false
+          })
         })
       }
     }

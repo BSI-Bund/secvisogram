@@ -11,6 +11,7 @@ import {
 } from './View/FormEditorTab/shared/unique-id.js'
 import JsonEditorTab from './View/JsonEditorTab.js'
 import LoadingIndicator from './View/LoadingIndicator.js'
+import NewDocumentDialog from './View/NewDocumentDialog.js'
 import PreviewTab from './View/PreviewTab.js'
 import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
@@ -53,10 +54,21 @@ function View({
   onCollectProductIds,
   onCollectGroupIds,
   onServiceValidate,
+  onGetTemplates,
+  onGetTemplateContent,
   ...props
 }) {
   const appConfig = React.useContext(AppConfigContext)
   const userInfo = React.useContext(UserInfoContext)
+
+  const [newDocumentDialogData, setNewDocumentDialogData] = React.useState(
+    /** @type {{ templates: Array<{ templateId: string; templateDescription: string }> } | null} */ (
+      null
+    )
+  )
+  const newDocumentDialogRef = React.useRef(
+    /** @type {HTMLDialogElement | null} */ (null)
+  )
 
   const [advisoryState, setAdvisoryState] = React.useState(
     /** @type {import('./View/types.js').AdvisoryState | null} */ (
@@ -283,6 +295,32 @@ function View({
   return (
     <>
       {alert ? <Alert {...alert} /> : null}
+      <NewDocumentDialog
+        ref={newDocumentDialogRef}
+        data={newDocumentDialogData}
+        onSubmit={({ templateId }) => {
+          setLoading(true)
+          onGetTemplateContent({ templateId }, (templateContent) => {
+            onCreateAdvisory(
+              { csaf: templateContent },
+              ({ id: advisoryId }) => {
+                onLoadAdvisory({ advisoryId }, (advisory) => {
+                  setAdvisoryState({
+                    type: 'ADVISORY',
+                    advisory: {
+                      advisoryId,
+                      csaf: advisory.csaf,
+                      documentTrackingId: advisory.documentTrackingId,
+                      revision: advisory.revision,
+                    },
+                  })
+                  setLoading(false)
+                })
+              }
+            )
+          })
+        }}
+      />
       <div className="mx-auto w-full h-screen flex flex-col">
         <div>
           <div className="flex justify-between bg-gray-700">
@@ -386,6 +424,24 @@ function View({
           {activeTab !== 'DOCUMENTS' && (
             <div className="bg-gray-400 flex items-center justify-between">
               <div className="pl-5">
+                {appConfig.loginAvailable && userInfo ? (
+                  <button
+                    data-testid="new_document_button"
+                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                    onClick={() => {
+                      setLoading(true)
+                      onGetTemplates((templates) => {
+                        setLoading(false)
+                        setNewDocumentDialogData({ templates })
+                        /** @type {any} */
+                        const dialog = newDocumentDialogRef.current
+                        dialog?.showModal()
+                      })
+                    }}
+                  >
+                    New
+                  </button>
+                ) : null}
                 {advisoryState?.type === 'NEW_ADVISORY' ? (
                   <button
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"

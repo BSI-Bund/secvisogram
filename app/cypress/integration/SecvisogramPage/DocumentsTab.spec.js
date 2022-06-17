@@ -2,6 +2,7 @@ import { getLoginEnabledConfig } from '../../fixtures/appConfigData.js'
 import {
   getAdvisories,
   getAdvisory,
+  getGetAdvisoryDetailResponse,
   getUserInfo,
   getUsers,
 } from '../../fixtures/cmsBackendData.js'
@@ -49,8 +50,8 @@ describe('SecvisogramPage / DocumentsTab', function () {
             getLoginEnabledConfig().userInfoUrl,
             getUserInfo(user)
           ).as('apiGetUserInfo')
-          const advisoryDetail = getAdvisory(testsSample, {
-            advisoryId: advisory.advisoryId,
+          const advisoryDetail = getGetAdvisoryDetailResponse({
+            advisory: getAdvisory({ advisoryId: advisory.advisoryId }),
           })
           cy.intercept(
             {
@@ -103,8 +104,8 @@ describe('SecvisogramPage / DocumentsTab', function () {
             getLoginEnabledConfig().userInfoUrl,
             getUserInfo(user)
           ).as('apiGetUserInfo')
-          const advisoryDetail = getAdvisory(testsSample, {
-            advisoryId: advisory.advisoryId,
+          const advisoryDetail = getGetAdvisoryDetailResponse({
+            advisory: getAdvisory({ advisoryId: advisory.advisoryId }),
           })
           cy.intercept(
             `/api/2.0/advisories/${advisory.advisoryId}/`,

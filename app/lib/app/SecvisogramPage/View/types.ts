@@ -33,7 +33,7 @@ export interface Props {
     version: string
   }
   activeTab: 'EDITOR' | 'SOURCE' | 'PREVIEW' | 'CSAF-JSON' | 'DOCUMENTS'
-  alert?: {
+  alert: {
     confirmLabel: string
     cancelLabel: string
     label: string
@@ -96,4 +96,13 @@ export interface Props {
   onCollectGroupIds(document: {}): Promise<
     void | { id: string; name: string }[]
   >
+  onGetTemplates(
+    callback: (
+      templates: Array<{ templateId: string; templateDescription: string }>
+    ) => void
+  ): void
+  onGetTemplateContent(
+    params: { templateId: string },
+    callback: (templateContent: {}) => void
+  ): void
 }
