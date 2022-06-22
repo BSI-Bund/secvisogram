@@ -7,11 +7,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import useDebounce from './shared/useDebounce.js'
+import MonacoEditor from 'react-monaco-editor'
 
 /**
- * Embeds the ace editor.
- * @see https://ace.c9.io/
- *
  * @param {{
  *  originalValues: import('../shared/types').FormValues
  *  formValues: import('../shared/types').FormValues
@@ -141,6 +139,76 @@ export default function JsonEditorTab({
     else onUnlockTab()
   }, [parseError, onLockTab, onUnlockTab])
 
+  const [editor, setEditor] = React.useState(
+    /** @type {monacoEditor.editor} */ {}
+  )
+  const [monacoState, setMonaco] = React.useState(/** @type {monaco} */ {})
+
+  const stringifiedDoc = React.useMemo(
+    () => JSON.stringify(doc, null, 2),
+    [doc]
+  )
+
+  /**
+   * The initial value of the state used to prevent a re-render of the ace editor
+   * when the document changes from outside.
+   */
+  // const [initialValue] = React.useState(stringifiedDoc)
+
+  /**
+   * Holds the value and potential parse errors of the ace editor input.
+   */
+  const [{ value, parseError }, setState] = React.useState({
+    value: stringifiedDoc,
+    parseError: null,
+  })
+  const [showExpertSettings, setShowExpertSettings] = React.useState(!strict)
+  const [showErrors, setShowErrors] = React.useState(false)
+  const debouncedValue = useDebounce(value)
+
+  /**
+   * Toggles between strict and lenient validation.
+   */
+  const toggleStrict = () => {
+    onSetStrict(!strict)
+  }
+
+  const toggleExpertSettings = () => {
+    setShowExpertSettings(!showExpertSettings)
+  }
+
+  const toggleShowErrors = () => {
+    setShowErrors(!showErrors)
+  }
+
+  const confirmMin = () => {
+    onNewDocMin().then((newDoc) => {
+      editor.getModel().setValue(JSON.stringify(newDoc, null, 2))
+    })
+    hideMin()
+  }
+
+  const confirmMax = () => {
+    onNewDocMax().then((newDoc) => {
+      editor.getModel().setValue(JSON.stringify(newDoc, null, 2))
+    })
+    hideMax()
+  }
+
+  const handleOpen = (/** @type {File} */ file) => {
+    onOpen(file).then((openedDoc) => {
+      editor.getModel().setValue(JSON.stringify(openedDoc, null, 2))
+    })
+  }
+
+  /**
+   * Locks the tab navigation if there are any parse errors.
+   */
+  React.useEffect(() => {
+    if (parseError) onLockTab()
+    else onUnlockTab()
+  }, [parseError, onLockTab, onUnlockTab])
+
   /**
    * Parses the ace editor input and replaces the document.
    */
@@ -163,14 +231,72 @@ export default function JsonEditorTab({
     }
   }, [errors])
 
+  const {
+    show: showMin,
+    hide: hideMin,
+    Alert: MinAlert,
+  } = useAlert({
+    description:
+      'This will create a new CSAF document. All current content will be lost. Are you sure?',
+    confirmLabel: 'Yes, create new document',
+    cancelLabel: 'No, resume editing',
+    confirm: confirmMin,
+  })
+
+  const {
+    show: showMax,
+    hide: hideMax,
+    Alert: MaxAlert,
+  } = useAlert({
+    description:
+      'This will create a new CSAF document. All current content will be lost. Are you sure?',
+    confirmLabel: 'Yes, create new document',
+    cancelLabel: 'No, resume editing',
+    confirm: confirmMax,
+  })
+
+  const [code] = React.useState(stringifiedDoc)
+
+  const editorDidMount = (
+    /** @type {any } */ editor,
+    /** @type {any} */ monaco
+  ) => {
+    console.log('editorDidMount', editor)
+    setEditor(editor)
+    setMonaco(monaco)
+  }
+
+  const editorWillMount = () => {}
+
+  const onChangeMonaco = (
+    /** @type {any} */ newValue,
+    /** @type {any} */ e
+  ) => {
+    console.log('onChangeMonaco', newValue, e)
+  }
+  const options = {
+    selectOnLineNumbers: true,
+    automaticLayout: true,
+  }
+
   return (
     <>
+      <MinAlert />
+      <MaxAlert />
+
       <div className="json-editor flex h-full mr-3 bg-white">
-        <div className="p-3 w-full">
+        <div className=" w-full">
           <div className={'relative ' + (showErrors ? 'h-4/5' : 'h-full')}>
-            <div
-              ref={ref}
-              className="absolute top-0 right-0 bottom-0 left-0 h-full bg-white"
+            <MonacoEditor
+              width="inherit"
+              height="inherit"
+              language="json"
+              theme="vs-white"
+              value={code}
+              options={options}
+              onChange={onChangeMonaco}
+              editorDidMount={editorDidMount}
+              editorWillMount={editorWillMount}
             />
           </div>
           <div
