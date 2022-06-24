@@ -13,4 +13,4 @@ A list of serial numbers SHOULD only be used if a certain range of serial number
 }
 ```
 
-[Specification of Serial Number items](serial_numbers/serial_number-spec.en.md)
+[Specification of Serial Number items](types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md)

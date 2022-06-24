@@ -13,4 +13,4 @@ The list of SBOM URLs (`sbom_urls`) of value type `array` with 1 or more items c
 }
 ```
 
-[Specification of SBOM URL items](sbom_urls/sbom_url-spec.en.md)
+[Specification of SBOM URL items](types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md)

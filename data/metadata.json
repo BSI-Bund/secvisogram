@@ -1,5 +1,5 @@
 {
-  "metaData": [
+  "field_metadata": [
     {
       "path": "$.document",
       "user_documentation": {
@@ -8,8 +8,8 @@
           "generic": "docs/user/document-usage.en.md"
         }
       },
-      "label": "DocumentLabel",
-      "description": "DocumentDescription",
+      "field_title": "DocumentTitle",
+      "field_description": "DocumentDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -26,8 +26,8 @@
           "generic": "docs/user/document/acknowledgments-usage.en.md"
         }
       },
-      "label": "DocumentAcknowledgmentsLabel",
-      "description": "DocumentAcknowledgmentsDescription",
+      "field_title": "DocumentAcknowledgmentsTitle",
+      "field_description": "DocumentAcknowledgmentsDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -44,8 +44,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsLabel",
-      "description": "AcknowledgmentsItemsDescription"
+      "field_title": "AcknowledgmentsItemsTitle",
+      "field_description": "AcknowledgmentsItemsDescription"
     },
     {
       "path": "$.document.acknowledgments[].names",
@@ -55,8 +55,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment/names-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsNamesLabel",
-      "description": "AcknowledgmentsItemsNamesDescription",
+      "field_title": "AcknowledgmentsItemsNamesTitle",
+      "field_description": "AcknowledgmentsItemsNamesDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -73,8 +73,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsNamesItemsLabel",
-      "description": "AcknowledgmentsItemsNamesItemsDescription",
+      "field_title": "AcknowledgmentsItemsNamesItemsTitle",
+      "field_description": "AcknowledgmentsItemsNamesItemsDescription",
       "string_is_multiline": false
     },
     {
@@ -85,8 +85,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsOrganizationLabel",
-      "description": "AcknowledgmentsItemsOrganizationDescription",
+      "field_title": "AcknowledgmentsItemsOrganizationTitle",
+      "field_description": "AcknowledgmentsItemsOrganizationDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
@@ -104,8 +104,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsSummaryLabel",
-      "description": "AcknowledgmentsItemsSummaryDescription",
+      "field_title": "AcknowledgmentsItemsSummaryTitle",
+      "field_description": "AcknowledgmentsItemsSummaryDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
@@ -123,8 +123,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsUrlsLabel",
-      "description": "AcknowledgmentsItemsUrlsDescription",
+      "field_title": "AcknowledgmentsItemsUrlsTitle",
+      "field_description": "AcknowledgmentsItemsUrlsDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -141,8 +141,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsUrlsItemsLabel",
-      "description": "AcknowledgmentsItemsUrlsItemsDescription"
+      "field_title": "AcknowledgmentsItemsUrlsItemsTitle",
+      "field_description": "AcknowledgmentsItemsUrlsItemsDescription"
     },
     {
       "path": "$.document.aggregate_severity",
@@ -152,8 +152,8 @@
           "generic": "docs/user/document/aggregate_severity-usage.en.md"
         }
       },
-      "label": "DocumentAggregateSeverityLabel",
-      "description": "DocumentAggregateSeverityDescription",
+      "field_title": "DocumentAggregateSeverityTitle",
+      "field_description": "DocumentAggregateSeverityDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "want_to_have",
@@ -170,8 +170,8 @@
           "generic": "docs/user/document/aggregate_severity/namespace-usage.en.md"
         }
       },
-      "label": "DocumentAggregateSeverityNamespaceLabel",
-      "description": "DocumentAggregateSeverityNamespaceDescription",
+      "field_title": "DocumentAggregateSeverityNamespaceTitle",
+      "field_description": "DocumentAggregateSeverityNamespaceDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "nice_to_know",
@@ -188,8 +188,8 @@
           "generic": "docs/user/document/aggregate_severity/text-usage.en.md"
         }
       },
-      "label": "DocumentAggregateSeverityTextLabel",
-      "description": "DocumentAggregateSeverityTextDescription",
+      "field_title": "DocumentAggregateSeverityTextTitle",
+      "field_description": "DocumentAggregateSeverityTextDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "optional",
@@ -207,8 +207,8 @@
           "generic": "docs/user/document/category-usage.en.md"
         }
       },
-      "label": "DocumentCategoryLabel",
-      "description": "DocumentCategoryDescription",
+      "field_title": "DocumentCategoryTitle",
+      "field_description": "DocumentCategoryDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -226,8 +226,8 @@
           "generic": "docs/user/document/csaf_version-usage.en.md"
         }
       },
-      "label": "DocumentCsafVersionLabel",
-      "description": "DocumentCsafVersionDescription",
+      "field_title": "DocumentCsafVersionTitle",
+      "field_description": "DocumentCsafVersionDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -244,8 +244,8 @@
           "generic": "docs/user/document/distribution-usage.en.md"
         }
       },
-      "label": "DocumentDistributionLabel",
-      "description": "DocumentDistributionDescription",
+      "field_title": "DocumentDistributionTitle",
+      "field_description": "DocumentDistributionDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "best_practice",
@@ -262,8 +262,8 @@
           "generic": "docs/user/document/distribution/text-usage.en.md"
         }
       },
-      "label": "DocumentDistributionTextLabel",
-      "description": "DocumentDistributionTextDescription",
+      "field_title": "DocumentDistributionTextTitle",
+      "field_description": "DocumentDistributionTextDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
@@ -281,8 +281,8 @@
           "generic": "docs/user/document/distribution/tlp-usage.en.md"
         }
       },
-      "label": "DocumentDistributionTlpLabel",
-      "description": "DocumentDistributionTlpDescription",
+      "field_title": "DocumentDistributionTlpTitle",
+      "field_description": "DocumentDistributionTlpDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -299,8 +299,8 @@
           "generic": "docs/user/document/distribution/tlp/label-usage.en.md"
         }
       },
-      "label": "DocumentDistributionTlpLabelLabel",
-      "description": "DocumentDistributionTlpLabelDescription",
+      "field_title": "DocumentDistributionTlpLabelTitle",
+      "field_description": "DocumentDistributionTlpLabelDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -317,8 +317,8 @@
           "generic": "docs/user/document/distribution/tlp/url-usage.en.md"
         }
       },
-      "label": "DocumentDistributionTlpUrlLabel",
-      "description": "DocumentDistributionTlpUrlDescription",
+      "field_title": "DocumentDistributionTlpUrlTitle",
+      "field_description": "DocumentDistributionTlpUrlDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -335,8 +335,8 @@
           "generic": "docs/user/document/lang-usage.en.md"
         }
       },
-      "label": "DocumentLangLabel",
-      "description": "DocumentLangDescription",
+      "field_title": "DocumentLangTitle",
+      "field_description": "DocumentLangDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
@@ -356,8 +356,8 @@
           "csaf_security_incident_response": "docs/user/document/notes-usage-csaf_security_incident_response.en.md"
         }
       },
-      "label": "DocumentNotesLabel",
-      "description": "DocumentNotesDescription",
+      "field_title": "DocumentNotesTitle",
+      "field_description": "DocumentNotesDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "mandatory",
@@ -374,8 +374,8 @@
           "generic": "docs/user/types/notes/note-usage.en.md"
         }
       },
-      "label": "NotesItemsLabel",
-      "description": "NotesItemsDescription"
+      "field_title": "NotesItemsTitle",
+      "field_description": "NotesItemsDescription"
     },
     {
       "path": "$.document.notes[].audience",
@@ -385,8 +385,8 @@
           "generic": "docs/user/types/notes/note/audience-usage.en.md"
         }
       },
-      "label": "NotesItemsAudienceLabel",
-      "description": "NotesItemsAudienceDescription",
+      "field_title": "NotesItemsAudienceTitle",
+      "field_description": "NotesItemsAudienceDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "optional",
@@ -404,8 +404,8 @@
           "generic": "docs/user/types/notes/note/category-usage.en.md"
         }
       },
-      "label": "NotesItemsCategoryLabel",
-      "description": "NotesItemsCategoryDescription",
+      "field_title": "NotesItemsCategoryTitle",
+      "field_description": "NotesItemsCategoryDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -422,8 +422,8 @@
           "generic": "docs/user/types/notes/note/text-usage.en.md"
         }
       },
-      "label": "NotesItemsTextLabel",
-      "description": "NotesItemsTextDescription",
+      "field_title": "NotesItemsTextTitle",
+      "field_description": "NotesItemsTextDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -441,8 +441,8 @@
           "generic": "docs/user/types/notes/note/title-usage.en.md"
         }
       },
-      "label": "NotesItemsTitleLabel",
-      "description": "NotesItemsTitleDescription",
+      "field_title": "NotesItemsTitleTitle",
+      "field_description": "NotesItemsTitleDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "best_practice",
@@ -460,8 +460,8 @@
           "generic": "docs/user/document/publisher-usage.en.md"
         }
       },
-      "label": "DocumentPublisherLabel",
-      "description": "DocumentPublisherDescription",
+      "field_title": "DocumentPublisherTitle",
+      "field_description": "DocumentPublisherDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -478,8 +478,8 @@
           "generic": "docs/user/document/publisher/category-usage.en.md"
         }
       },
-      "label": "DocumentPublisherCategoryLabel",
-      "description": "DocumentPublisherCategoryDescription",
+      "field_title": "DocumentPublisherCategoryTitle",
+      "field_description": "DocumentPublisherCategoryDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -496,8 +496,8 @@
           "generic": "docs/user/document/publisher/contact_details-usage.en.md"
         }
       },
-      "label": "DocumentPublisherContactDetailsLabel",
-      "description": "DocumentPublisherContactDetailsDescription",
+      "field_title": "DocumentPublisherContactDetailsTitle",
+      "field_description": "DocumentPublisherContactDetailsDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "want_to_have",
@@ -515,9 +515,9 @@
           "generic": "docs/user/document/publisher/issuing_authority-usage.en.md"
         }
       },
-      "label": "DocumentPublisherIssuingAuthorityLabel",
-      "description": "DocumentPublisherIssuingAuthorityDescription",
-      "string_is_multiline": false,
+      "field_title": "DocumentPublisherIssuingAuthorityTitle",
+      "field_description": "DocumentPublisherIssuingAuthorityDescription",
+      "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -534,8 +534,8 @@
           "generic": "docs/user/document/publisher/name-usage.en.md"
         }
       },
-      "label": "DocumentPublisherNameLabel",
-      "description": "DocumentPublisherNameDescription",
+      "field_title": "DocumentPublisherNameTitle",
+      "field_description": "DocumentPublisherNameDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -553,8 +553,8 @@
           "generic": "docs/user/document/publisher/namespace-usage.en.md"
         }
       },
-      "label": "DocumentPublisherNamespaceLabel",
-      "description": "DocumentPublisherNamespaceDescription",
+      "field_title": "DocumentPublisherNamespaceTitle",
+      "field_description": "DocumentPublisherNamespaceDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -573,8 +573,8 @@
           "csaf_security_incident_response": "docs/user/document/references-usage-csaf_security_incident_response.en.md"
         }
       },
-      "label": "DocumentReferencesLabel",
-      "description": "DocumentReferencesDescription",
+      "field_title": "DocumentReferencesTitle",
+      "field_description": "DocumentReferencesDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "mandatory",
@@ -591,8 +591,8 @@
           "generic": "docs/user/types/references/reference-usage.en.md"
         }
       },
-      "label": "ReferencesItemsLabel",
-      "description": "ReferencesItemsDescription"
+      "field_title": "ReferencesItemsTitle",
+      "field_description": "ReferencesItemsDescription"
     },
     {
       "path": "$.document.references[].category",
@@ -602,8 +602,8 @@
           "generic": "docs/user/types/references/reference/category-usage.en.md"
         }
       },
-      "label": "ReferencesItemsCategoryLabel",
-      "description": "ReferencesItemsCategoryDescription",
+      "field_title": "ReferencesItemsCategoryTitle",
+      "field_description": "ReferencesItemsCategoryDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "nice_to_know",
@@ -620,8 +620,8 @@
           "generic": "docs/user/types/references/reference/summary-usage.en.md"
         }
       },
-      "label": "ReferencesItemsSummaryLabel",
-      "description": "ReferencesItemsSummaryDescription",
+      "field_title": "ReferencesItemsSummaryTitle",
+      "field_description": "ReferencesItemsSummaryDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -639,8 +639,8 @@
           "generic": "docs/user/types/references/reference/url-usage.en.md"
         }
       },
-      "label": "ReferencesItemsUrlLabel",
-      "description": "ReferencesItemsUrlDescription",
+      "field_title": "ReferencesItemsUrlTitle",
+      "field_description": "ReferencesItemsUrlDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -657,8 +657,8 @@
           "generic": "docs/user/document/source_lang-usage.en.md"
         }
       },
-      "label": "DocumentSourceLangLabel",
-      "description": "DocumentSourceLangDescription",
+      "field_title": "DocumentSourceLangTitle",
+      "field_description": "DocumentSourceLangDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
@@ -676,8 +676,8 @@
           "generic": "docs/user/document/title-usage.en.md"
         }
       },
-      "label": "DocumentTitleLabel",
-      "description": "DocumentTitleDescription",
+      "field_title": "DocumentTitleTitle",
+      "field_description": "DocumentTitleDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -695,8 +695,8 @@
           "generic": "docs/user/document/tracking-usage.en.md"
         }
       },
-      "label": "DocumentTrackingLabel",
-      "description": "DocumentTrackingDescription",
+      "field_title": "DocumentTrackingTitle",
+      "field_description": "DocumentTrackingDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -713,8 +713,8 @@
           "generic": "docs/user/document/tracking/aliases-usage.en.md"
         }
       },
-      "label": "DocumentTrackingAliasesLabel",
-      "description": "DocumentTrackingAliasesDescription",
+      "field_title": "DocumentTrackingAliasesTitle",
+      "field_description": "DocumentTrackingAliasesDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "nice_to_know",
@@ -731,8 +731,8 @@
           "generic": "docs/user/document/tracking/aliases/alias-usage.en.md"
         }
       },
-      "label": "DocumentTrackingAliasesItemsLabel",
-      "description": "DocumentTrackingAliasesItemsDescription",
+      "field_title": "DocumentTrackingAliasesItemsTitle",
+      "field_description": "DocumentTrackingAliasesItemsDescription",
       "string_is_multiline": false
     },
     {
@@ -743,8 +743,8 @@
           "generic": "docs/user/document/tracking/current_release_date-usage.en.md"
         }
       },
-      "label": "DocumentTrackingCurrentReleaseDateLabel",
-      "description": "DocumentTrackingCurrentReleaseDateDescription",
+      "field_title": "DocumentTrackingCurrentReleaseDateTitle",
+      "field_description": "DocumentTrackingCurrentReleaseDateDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -761,8 +761,8 @@
           "generic": "docs/user/document/tracking/generator-usage.en.md"
         }
       },
-      "label": "DocumentTrackingGeneratorLabel",
-      "description": "DocumentTrackingGeneratorDescription",
+      "field_title": "DocumentTrackingGeneratorTitle",
+      "field_description": "DocumentTrackingGeneratorDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -779,8 +779,8 @@
           "generic": "docs/user/document/tracking/generator/date-usage.en.md"
         }
       },
-      "label": "DocumentTrackingGeneratorDateLabel",
-      "description": "DocumentTrackingGeneratorDateDescription",
+      "field_title": "DocumentTrackingGeneratorDateTitle",
+      "field_description": "DocumentTrackingGeneratorDateDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -797,8 +797,8 @@
           "generic": "docs/user/document/tracking/generator/engine-usage.en.md"
         }
       },
-      "label": "DocumentTrackingGeneratorEngineLabel",
-      "description": "DocumentTrackingGeneratorEngineDescription",
+      "field_title": "DocumentTrackingGeneratorEngineTitle",
+      "field_description": "DocumentTrackingGeneratorEngineDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -815,8 +815,8 @@
           "generic": "docs/user/document/tracking/generator/engine/name-usage.en.md"
         }
       },
-      "label": "DocumentTrackingGeneratorEngineNameLabel",
-      "description": "DocumentTrackingGeneratorEngineNameDescription",
+      "field_title": "DocumentTrackingGeneratorEngineNameTitle",
+      "field_description": "DocumentTrackingGeneratorEngineNameDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -834,8 +834,8 @@
           "generic": "docs/user/document/tracking/generator/engine/version-usage.en.md"
         }
       },
-      "label": "DocumentTrackingGeneratorEngineVersionLabel",
-      "description": "DocumentTrackingGeneratorEngineVersionDescription",
+      "field_title": "DocumentTrackingGeneratorEngineVersionTitle",
+      "field_description": "DocumentTrackingGeneratorEngineVersionDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "want_to_have",
@@ -853,8 +853,8 @@
           "generic": "docs/user/document/tracking/id-usage.en.md"
         }
       },
-      "label": "DocumentTrackingIdLabel",
-      "description": "DocumentTrackingIdDescription",
+      "field_title": "DocumentTrackingIdTitle",
+      "field_description": "DocumentTrackingIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -872,8 +872,8 @@
           "generic": "docs/user/document/tracking/initial_release_date-usage.en.md"
         }
       },
-      "label": "DocumentTrackingInitialReleaseDateLabel",
-      "description": "DocumentTrackingInitialReleaseDateDescription",
+      "field_title": "DocumentTrackingInitialReleaseDateTitle",
+      "field_description": "DocumentTrackingInitialReleaseDateDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -890,8 +890,8 @@
           "generic": "docs/user/document/tracking/revision_history-usage.en.md"
         }
       },
-      "label": "DocumentTrackingRevisionHistoryLabel",
-      "description": "DocumentTrackingRevisionHistoryDescription",
+      "field_title": "DocumentTrackingRevisionHistoryTitle",
+      "field_description": "DocumentTrackingRevisionHistoryDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -908,8 +908,8 @@
           "generic": "docs/user/document/tracking/revision_history/revision-usage.en.md"
         }
       },
-      "label": "DocumentTrackingRevisionHistoryItemsLabel",
-      "description": "DocumentTrackingRevisionHistoryItemsDescription"
+      "field_title": "DocumentTrackingRevisionHistoryItemsTitle",
+      "field_description": "DocumentTrackingRevisionHistoryItemsDescription"
     },
     {
       "path": "$.document.tracking.revision_history[].date",
@@ -919,8 +919,8 @@
           "generic": "docs/user/document/tracking/revision_history/revision/date-usage.en.md"
         }
       },
-      "label": "DocumentTrackingRevisionHistoryItemsDateLabel",
-      "description": "DocumentTrackingRevisionHistoryItemsDateDescription",
+      "field_title": "DocumentTrackingRevisionHistoryItemsDateTitle",
+      "field_description": "DocumentTrackingRevisionHistoryItemsDateDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -937,8 +937,8 @@
           "generic": "docs/user/document/tracking/revision_history/revision/legacy_version-usage.en.md"
         }
       },
-      "label": "DocumentTrackingRevisionHistoryItemsLegacyVersionLabel",
-      "description": "DocumentTrackingRevisionHistoryItemsLegacyVersionDescription",
+      "field_title": "DocumentTrackingRevisionHistoryItemsLegacyVersionTitle",
+      "field_description": "DocumentTrackingRevisionHistoryItemsLegacyVersionDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -955,8 +955,8 @@
           "generic": "docs/user/document/tracking/revision_history/revision/number-usage.en.md"
         }
       },
-      "label": "VersionLabel",
-      "description": "VersionDescription",
+      "field_title": "VersionTitle",
+      "field_description": "VersionDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -974,8 +974,8 @@
           "generic": "docs/user/document/tracking/revision_history/revision/summary-usage.en.md"
         }
       },
-      "label": "DocumentTrackingRevisionHistoryItemsSummaryLabel",
-      "description": "DocumentTrackingRevisionHistoryItemsSummaryDescription",
+      "field_title": "DocumentTrackingRevisionHistoryItemsSummaryTitle",
+      "field_description": "DocumentTrackingRevisionHistoryItemsSummaryDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -993,8 +993,8 @@
           "generic": "docs/user/document/tracking/status-usage.en.md"
         }
       },
-      "label": "DocumentTrackingStatusLabel",
-      "description": "DocumentTrackingStatusDescription",
+      "field_title": "DocumentTrackingStatusTitle",
+      "field_description": "DocumentTrackingStatusDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -1011,8 +1011,8 @@
           "generic": "docs/user/document/tracking/version-usage.en.md"
         }
       },
-      "label": "VersionLabel",
-      "description": "VersionDescription",
+      "field_title": "VersionTitle",
+      "field_description": "VersionDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -1031,8 +1031,8 @@
           "csaf_vex": "docs/user/product_tree-usage-csaf_vex.en.md"
         }
       },
-      "label": "ProductTreeLabel",
-      "description": "ProductTreeDescription",
+      "field_title": "ProductTreeTitle",
+      "field_description": "ProductTreeDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "nice_to_know",
@@ -1049,8 +1049,8 @@
           "generic": "docs/user/product_tree/branches-usage.en.md"
         }
       },
-      "label": "BranchesLabel",
-      "description": "BranchesDescription",
+      "field_title": "BranchesTitle",
+      "field_description": "BranchesDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -1067,8 +1067,8 @@
           "generic": "docs/user/types/branches/branch-usage.en.md"
         }
       },
-      "label": "BranchesItemsLabel",
-      "description": "BranchesItemsDescription"
+      "field_title": "BranchesItemsTitle",
+      "field_description": "BranchesItemsDescription"
     },
     {
       "path": "$.product_tree.branches[].branches",
@@ -1078,8 +1078,8 @@
           "generic": "docs/user/types/branches-usage.en.md"
         }
       },
-      "label": "BranchesLabel",
-      "description": "BranchesDescription"
+      "field_title": "BranchesTitle",
+      "field_description": "BranchesDescription"
     },
     {
       "path": "$.product_tree.branches[].category",
@@ -1089,8 +1089,8 @@
           "generic": "docs/user/types/branches/branch/category-usage.en.md"
         }
       },
-      "label": "BranchesItemsCategoryLabel",
-      "description": "BranchesItemsCategoryDescription",
+      "field_title": "BranchesItemsCategoryTitle",
+      "field_description": "BranchesItemsCategoryDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -1107,8 +1107,8 @@
           "generic": "docs/user/types/branches/branch/name-usage.en.md"
         }
       },
-      "label": "BranchesItemsNameLabel",
-      "description": "BranchesItemsNameDescription",
+      "field_title": "BranchesItemsNameTitle",
+      "field_description": "BranchesItemsNameDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -1126,8 +1126,8 @@
           "generic": "docs/user/types/branches/branch/product-usage.en.md"
         }
       },
-      "label": "FullProductNameLabel",
-      "description": "FullProductNameDescription"
+      "field_title": "FullProductNameTitle",
+      "field_description": "FullProductNameDescription"
     },
     {
       "path": "$.product_tree.branches[].product.name",
@@ -1137,8 +1137,8 @@
           "generic": "docs/user/types/full_product_name/name-usage.en.md"
         }
       },
-      "label": "FullProductNameNameLabel",
-      "description": "FullProductNameNameDescription",
+      "field_title": "FullProductNameNameTitle",
+      "field_description": "FullProductNameNameDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -1157,8 +1157,8 @@
           "specific": "docs/user/types/full_product_name/product_id-usage.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -1176,8 +1176,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperLabel",
-      "description": "FullProductNameProductIdentificationHelperDescription",
+      "field_title": "FullProductNameProductIdentificationHelperTitle",
+      "field_description": "FullProductNameProductIdentificationHelperDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -1194,8 +1194,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperCpeLabel",
-      "description": "FullProductNameProductIdentificationHelperCpeDescription",
+      "field_title": "FullProductNameProductIdentificationHelperCpeTitle",
+      "field_description": "FullProductNameProductIdentificationHelperCpeDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
@@ -1213,8 +1213,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1231,8 +1231,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsDescription"
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsDescription"
     },
     {
       "path": "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes",
@@ -1242,8 +1242,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -1260,8 +1260,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription"
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription"
     },
     {
       "path": "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].algorithm",
@@ -1271,8 +1271,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -1290,8 +1290,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -1309,8 +1309,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFilenameLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFilenameTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -1328,8 +1328,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperModelNumbersLabel",
-      "description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
+      "field_title": "FullProductNameProductIdentificationHelperModelNumbersTitle",
+      "field_description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1346,8 +1346,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperModelNumbersItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
+      "field_title": "FullProductNameProductIdentificationHelperModelNumbersItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
       "string_is_multiline": false
     },
     {
@@ -1358,8 +1358,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperPurlLabel",
-      "description": "FullProductNameProductIdentificationHelperPurlDescription",
+      "field_title": "FullProductNameProductIdentificationHelperPurlTitle",
+      "field_description": "FullProductNameProductIdentificationHelperPurlDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1376,8 +1376,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSbomUrlsLabel",
-      "description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSbomUrlsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1394,8 +1394,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSbomUrlsItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription"
+      "field_title": "FullProductNameProductIdentificationHelperSbomUrlsItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription"
     },
     {
       "path": "$.product_tree.branches[].product.product_identification_helper.serial_numbers",
@@ -1405,8 +1405,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSerialNumbersLabel",
-      "description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSerialNumbersTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1423,8 +1423,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSerialNumbersItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSerialNumbersItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
       "string_is_multiline": false
     },
     {
@@ -1435,8 +1435,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSkusLabel",
-      "description": "FullProductNameProductIdentificationHelperSkusDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSkusTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSkusDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1453,8 +1453,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSkusItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSkusItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
       "string_is_multiline": false
     },
     {
@@ -1465,8 +1465,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperXGenericUrisLabel",
-      "description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
+      "field_title": "FullProductNameProductIdentificationHelperXGenericUrisTitle",
+      "field_description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1483,8 +1483,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription"
+      "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription"
     },
     {
       "path": "$.product_tree.branches[].product.product_identification_helper.x_generic_uris[].namespace",
@@ -1494,8 +1494,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceLabel",
-      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
+      "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceTitle",
+      "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -1512,8 +1512,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriLabel",
-      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
+      "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle",
+      "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -1530,8 +1530,8 @@
           "generic": "docs/user/product_tree/full_product_names-usage.en.md"
         }
       },
-      "label": "ProductTreeFullProductNamesLabel",
-      "description": "ProductTreeFullProductNamesDescription",
+      "field_title": "ProductTreeFullProductNamesTitle",
+      "field_description": "ProductTreeFullProductNamesDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1548,8 +1548,8 @@
           "generic": "docs/user/types/full_product_name-usage.en.md"
         }
       },
-      "label": "FullProductNameLabel",
-      "description": "FullProductNameDescription"
+      "field_title": "FullProductNameTitle",
+      "field_description": "FullProductNameDescription"
     },
     {
       "path": "$.product_tree.full_product_names[].name",
@@ -1559,8 +1559,8 @@
           "generic": "docs/user/types/full_product_name/name-usage.en.md"
         }
       },
-      "label": "FullProductNameNameLabel",
-      "description": "FullProductNameNameDescription",
+      "field_title": "FullProductNameNameTitle",
+      "field_description": "FullProductNameNameDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -1579,8 +1579,8 @@
           "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -1598,8 +1598,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperLabel",
-      "description": "FullProductNameProductIdentificationHelperDescription",
+      "field_title": "FullProductNameProductIdentificationHelperTitle",
+      "field_description": "FullProductNameProductIdentificationHelperDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -1616,8 +1616,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperCpeLabel",
-      "description": "FullProductNameProductIdentificationHelperCpeDescription",
+      "field_title": "FullProductNameProductIdentificationHelperCpeTitle",
+      "field_description": "FullProductNameProductIdentificationHelperCpeDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
@@ -1635,8 +1635,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1653,8 +1653,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsDescription"
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsDescription"
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes",
@@ -1664,8 +1664,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -1682,8 +1682,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription"
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription"
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].algorithm",
@@ -1693,8 +1693,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -1712,8 +1712,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -1731,8 +1731,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFilenameLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFilenameTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -1750,8 +1750,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperModelNumbersLabel",
-      "description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
+      "field_title": "FullProductNameProductIdentificationHelperModelNumbersTitle",
+      "field_description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1768,8 +1768,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperModelNumbersItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
+      "field_title": "FullProductNameProductIdentificationHelperModelNumbersItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
       "string_is_multiline": false
     },
     {
@@ -1780,8 +1780,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperPurlLabel",
-      "description": "FullProductNameProductIdentificationHelperPurlDescription",
+      "field_title": "FullProductNameProductIdentificationHelperPurlTitle",
+      "field_description": "FullProductNameProductIdentificationHelperPurlDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1798,8 +1798,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSbomUrlsLabel",
-      "description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSbomUrlsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1816,8 +1816,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSbomUrlsItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription"
+      "field_title": "FullProductNameProductIdentificationHelperSbomUrlsItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription"
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.serial_numbers",
@@ -1827,8 +1827,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSerialNumbersLabel",
-      "description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSerialNumbersTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1845,8 +1845,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSerialNumbersItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSerialNumbersItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
       "string_is_multiline": false
     },
     {
@@ -1857,8 +1857,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSkusLabel",
-      "description": "FullProductNameProductIdentificationHelperSkusDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSkusTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSkusDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1875,8 +1875,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSkusItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSkusItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
       "string_is_multiline": false
     },
     {
@@ -1887,8 +1887,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperXGenericUrisLabel",
-      "description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
+      "field_title": "FullProductNameProductIdentificationHelperXGenericUrisTitle",
+      "field_description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -1905,8 +1905,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription"
+      "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription"
     },
     {
       "path": "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[].namespace",
@@ -1916,8 +1916,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceLabel",
-      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
+      "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceTitle",
+      "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -1934,8 +1934,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriLabel",
-      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
+      "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle",
+      "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -1952,8 +1952,8 @@
           "generic": "docs/user/product_tree/product_groups-usage.en.md"
         }
       },
-      "label": "ProductTreeProductGroupsLabel",
-      "description": "ProductTreeProductGroupsDescription",
+      "field_title": "ProductTreeProductGroupsTitle",
+      "field_description": "ProductTreeProductGroupsDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -1970,8 +1970,8 @@
           "generic": "docs/user/product_tree/product_groups/product_group-usage.en.md"
         }
       },
-      "label": "ProductTreeProductGroupsItemsLabel",
-      "description": "ProductTreeProductGroupsItemsDescription"
+      "field_title": "ProductTreeProductGroupsItemsTitle",
+      "field_description": "ProductTreeProductGroupsItemsDescription"
     },
     {
       "path": "$.product_tree.product_groups[].group_id",
@@ -1981,8 +1981,8 @@
           "generic": "docs/user/product_tree/product_groups/product_group/group_id-usage.en.md"
         }
       },
-      "label": "ProductGroupIdLabel",
-      "description": "ProductGroupIdDescription",
+      "field_title": "ProductGroupIdTitle",
+      "field_description": "ProductGroupIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -2000,8 +2000,8 @@
           "generic": "docs/user/product_tree/product_groups/product_group/product_ids-usage.en.md"
         }
       },
-      "label": "ProductTreeProductGroupsItemsProductIdsLabel",
-      "description": "ProductTreeProductGroupsItemsProductIdsDescription",
+      "field_title": "ProductTreeProductGroupsItemsProductIdsTitle",
+      "field_description": "ProductTreeProductGroupsItemsProductIdsDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -2020,8 +2020,8 @@
           "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false
     },
     {
@@ -2032,8 +2032,8 @@
           "generic": "docs/user/product_tree/product_groups/product_group/summary-usage.en.md"
         }
       },
-      "label": "ProductTreeProductGroupsItemsSummaryLabel",
-      "description": "ProductTreeProductGroupsItemsSummaryDescription",
+      "field_title": "ProductTreeProductGroupsItemsSummaryTitle",
+      "field_description": "ProductTreeProductGroupsItemsSummaryDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "want_to_have",
@@ -2051,8 +2051,8 @@
           "generic": "docs/user/product_tree/relationships-usage.en.md"
         }
       },
-      "label": "ProductTreeRelationshipsLabel",
-      "description": "ProductTreeRelationshipsDescription",
+      "field_title": "ProductTreeRelationshipsTitle",
+      "field_description": "ProductTreeRelationshipsDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -2069,8 +2069,8 @@
           "generic": "docs/user/product_tree/relationships/relationship-usage.en.md"
         }
       },
-      "label": "ProductTreeRelationshipsItemsLabel",
-      "description": "ProductTreeRelationshipsItemsDescription"
+      "field_title": "ProductTreeRelationshipsItemsTitle",
+      "field_description": "ProductTreeRelationshipsItemsDescription"
     },
     {
       "path": "$.product_tree.relationships[].category",
@@ -2080,8 +2080,8 @@
           "generic": "docs/user/product_tree/relationships/relationship/category-usage.en.md"
         }
       },
-      "label": "ProductTreeRelationshipsItemsCategoryLabel",
-      "description": "ProductTreeRelationshipsItemsCategoryDescription",
+      "field_title": "ProductTreeRelationshipsItemsCategoryTitle",
+      "field_description": "ProductTreeRelationshipsItemsCategoryDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -2098,8 +2098,8 @@
           "generic": "docs/user/product_tree/relationships/relationship/full_product_name-usage.en.md"
         }
       },
-      "label": "FullProductNameLabel",
-      "description": "FullProductNameDescription",
+      "field_title": "FullProductNameTitle",
+      "field_description": "FullProductNameDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -2116,8 +2116,8 @@
           "generic": "docs/user/types/full_product_name/name-usage.en.md"
         }
       },
-      "label": "FullProductNameNameLabel",
-      "description": "FullProductNameNameDescription",
+      "field_title": "FullProductNameNameTitle",
+      "field_description": "FullProductNameNameDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -2135,8 +2135,8 @@
           "generic": "docs/user/types/full_product_name/product_id-usage.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -2154,8 +2154,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperLabel",
-      "description": "FullProductNameProductIdentificationHelperDescription",
+      "field_title": "FullProductNameProductIdentificationHelperTitle",
+      "field_description": "FullProductNameProductIdentificationHelperDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -2172,8 +2172,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperCpeLabel",
-      "description": "FullProductNameProductIdentificationHelperCpeDescription",
+      "field_title": "FullProductNameProductIdentificationHelperCpeTitle",
+      "field_description": "FullProductNameProductIdentificationHelperCpeDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
@@ -2191,8 +2191,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -2209,8 +2209,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsDescription"
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsDescription"
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes",
@@ -2220,8 +2220,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -2238,8 +2238,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription"
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription"
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].algorithm",
@@ -2249,8 +2249,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -2268,8 +2268,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -2287,8 +2287,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperHashesItemsFilenameLabel",
-      "description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
+      "field_title": "FullProductNameProductIdentificationHelperHashesItemsFilenameTitle",
+      "field_description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -2299,6 +2299,36 @@
       }
     },
     {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.model_numbers",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md",
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
+        }
+      },
+      "field_title": "FullProductNameProductIdentificationHelperModelNumbersTitle",
+      "field_description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
+      "relevance_levels": {
+        "csaf_base": "nice_to_know",
+        "csaf_security_incident_response": "nice_to_know",
+        "csaf_informational_advisory": "nice_to_know",
+        "csaf_security_advisory": "nice_to_know",
+        "csaf_vex": "nice_to_know"
+      }
+    },
+    {
+      "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.model_numbers[]",
+      "user_documentation": {
+        "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md",
+        "usage": {
+          "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
+        }
+      },
+      "field_title": "FullProductNameProductIdentificationHelperModelNumbersItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
+      "string_is_multiline": false
+    },
+    {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.purl",
       "user_documentation": {
         "specification": "docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md",
@@ -2306,8 +2336,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperPurlLabel",
-      "description": "FullProductNameProductIdentificationHelperPurlDescription",
+      "field_title": "FullProductNameProductIdentificationHelperPurlTitle",
+      "field_description": "FullProductNameProductIdentificationHelperPurlDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -2324,8 +2354,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSbomUrlsLabel",
-      "description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSbomUrlsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -2342,8 +2372,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSbomUrlsItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription"
+      "field_title": "FullProductNameProductIdentificationHelperSbomUrlsItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription"
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers",
@@ -2353,8 +2383,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSerialNumbersLabel",
-      "description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSerialNumbersTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -2371,8 +2401,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSerialNumbersItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSerialNumbersItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
       "string_is_multiline": false
     },
     {
@@ -2383,8 +2413,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSkusLabel",
-      "description": "FullProductNameProductIdentificationHelperSkusDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSkusTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSkusDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -2401,8 +2431,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperSkusItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
+      "field_title": "FullProductNameProductIdentificationHelperSkusItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
       "string_is_multiline": false
     },
     {
@@ -2413,8 +2443,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperXGenericUrisLabel",
-      "description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
+      "field_title": "FullProductNameProductIdentificationHelperXGenericUrisTitle",
+      "field_description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -2431,8 +2461,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsLabel",
-      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription"
+      "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsTitle",
+      "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription"
     },
     {
       "path": "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].namespace",
@@ -2442,8 +2472,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceLabel",
-      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
+      "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceTitle",
+      "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -2460,8 +2490,8 @@
           "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
         }
       },
-      "label": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriLabel",
-      "description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
+      "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle",
+      "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -2479,8 +2509,8 @@
           "specific": "docs/user/product_tree/relationships/relationship/product_reference-usage.en.md"
         }
       },
-      "label": "ProductTreeRelationshipsItemsProductReferenceLabel",
-      "description": "ProductTreeRelationshipsItemsProductReferenceDescription",
+      "field_title": "ProductTreeRelationshipsItemsProductReferenceTitle",
+      "field_description": "ProductTreeRelationshipsItemsProductReferenceDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -2499,8 +2529,8 @@
           "specific": "docs/user/product_tree/relationships/relationship/relates_to_product_reference-usage.en.md"
         }
       },
-      "label": "ProductTreeRelationshipsItemsRelatesToProductReferenceLabel",
-      "description": "ProductTreeRelationshipsItemsRelatesToProductReferenceDescription",
+      "field_title": "ProductTreeRelationshipsItemsRelatesToProductReferenceTitle",
+      "field_description": "ProductTreeRelationshipsItemsRelatesToProductReferenceDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -2521,8 +2551,8 @@
           "csaf_vex": "docs/user/vulnerabilities-usage-csaf_vex.en.md"
         }
       },
-      "label": "VulnerabilitiesLabel",
-      "description": "VulnerabilitiesDescription",
+      "field_title": "VulnerabilitiesTitle",
+      "field_description": "VulnerabilitiesDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "nice_to_know",
@@ -2541,8 +2571,8 @@
           "csaf_vex": "docs/user/vulnerabilities/vulnerability-usage-csaf_vex.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsLabel",
-      "description": "VulnerabilitiesItemsDescription",
+      "field_title": "VulnerabilitiesItemsTitle",
+      "field_description": "VulnerabilitiesItemsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -2555,8 +2585,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/acknowledgments-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsAcknowledgmentsLabel",
-      "description": "VulnerabilitiesItemsAcknowledgmentsDescription",
+      "field_title": "VulnerabilitiesItemsAcknowledgmentsTitle",
+      "field_description": "VulnerabilitiesItemsAcknowledgmentsDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -2573,8 +2603,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsLabel",
-      "description": "AcknowledgmentsItemsDescription",
+      "field_title": "AcknowledgmentsItemsTitle",
+      "field_description": "AcknowledgmentsItemsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -2587,8 +2617,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment/names-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsNamesLabel",
-      "description": "AcknowledgmentsItemsNamesDescription",
+      "field_title": "AcknowledgmentsItemsNamesTitle",
+      "field_description": "AcknowledgmentsItemsNamesDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -2605,8 +2635,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsNamesItemsLabel",
-      "description": "AcknowledgmentsItemsNamesItemsDescription",
+      "field_title": "AcknowledgmentsItemsNamesItemsTitle",
+      "field_description": "AcknowledgmentsItemsNamesItemsDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -2620,8 +2650,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsOrganizationLabel",
-      "description": "AcknowledgmentsItemsOrganizationDescription",
+      "field_title": "AcknowledgmentsItemsOrganizationTitle",
+      "field_description": "AcknowledgmentsItemsOrganizationDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
@@ -2639,8 +2669,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsSummaryLabel",
-      "description": "AcknowledgmentsItemsSummaryDescription",
+      "field_title": "AcknowledgmentsItemsSummaryTitle",
+      "field_description": "AcknowledgmentsItemsSummaryDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
@@ -2658,8 +2688,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsUrlsLabel",
-      "description": "AcknowledgmentsItemsUrlsDescription",
+      "field_title": "AcknowledgmentsItemsUrlsTitle",
+      "field_description": "AcknowledgmentsItemsUrlsDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -2676,8 +2706,8 @@
           "generic": "docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md"
         }
       },
-      "label": "AcknowledgmentsItemsUrlsItemsLabel",
-      "description": "AcknowledgmentsItemsUrlsItemsDescription",
+      "field_title": "AcknowledgmentsItemsUrlsItemsTitle",
+      "field_description": "AcknowledgmentsItemsUrlsItemsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -2690,8 +2720,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/cve-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsCveLabel",
-      "description": "VulnerabilitiesItemsCveDescription",
+      "field_title": "VulnerabilitiesItemsCveTitle",
+      "field_description": "VulnerabilitiesItemsCveDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "want_to_have",
@@ -2708,8 +2738,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/cwe-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsCweLabel",
-      "description": "VulnerabilitiesItemsCweDescription",
+      "field_title": "VulnerabilitiesItemsCweTitle",
+      "field_description": "VulnerabilitiesItemsCweDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "optional",
@@ -2726,8 +2756,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/cwe/id-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsCweIdLabel",
-      "description": "VulnerabilitiesItemsCweIdDescription",
+      "field_title": "VulnerabilitiesItemsCweIdTitle",
+      "field_description": "VulnerabilitiesItemsCweIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -2745,8 +2775,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/cwe/name-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsCweNameLabel",
-      "description": "VulnerabilitiesItemsCweNameDescription",
+      "field_title": "VulnerabilitiesItemsCweNameTitle",
+      "field_description": "VulnerabilitiesItemsCweNameDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -2764,8 +2794,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/discovery_date-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsDiscoveryDateLabel",
-      "description": "VulnerabilitiesItemsDiscoveryDateDescription",
+      "field_title": "VulnerabilitiesItemsDiscoveryDateTitle",
+      "field_description": "VulnerabilitiesItemsDiscoveryDateDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "want_to_have",
@@ -2782,8 +2812,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/flags-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsFlagsLabel",
-      "description": "VulnerabilitiesItemsFlagsDescription",
+      "field_title": "VulnerabilitiesItemsFlagsTitle",
+      "field_description": "VulnerabilitiesItemsFlagsDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -2799,8 +2829,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/flags/flag-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsFlagsItemsLabel",
-      "description": "VulnerabilitiesItemsFlagsItemsDescription",
+      "field_title": "VulnerabilitiesItemsFlagsItemsTitle",
+      "field_description": "VulnerabilitiesItemsFlagsItemsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -2813,8 +2843,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/flags/flag/date-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsFlagsItemsDateLabel",
-      "description": "VulnerabilitiesItemsFlagsItemsDateDescription",
+      "field_title": "VulnerabilitiesItemsFlagsItemsDateTitle",
+      "field_description": "VulnerabilitiesItemsFlagsItemsDateDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -2831,8 +2861,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/flags/flag/group_ids-usage.en.md"
         }
       },
-      "label": "ProductGroupsLabel",
-      "description": "ProductGroupsDescription",
+      "field_title": "ProductGroupsTitle",
+      "field_description": "ProductGroupsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -2845,8 +2875,8 @@
           "generic": "docs/user/types/product_group_id-spec.en.md"
         }
       },
-      "label": "ProductGroupIdLabel",
-      "description": "ProductGroupIdDescription",
+      "field_title": "ProductGroupIdTitle",
+      "field_description": "ProductGroupIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -2860,8 +2890,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/flags/flag/label-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsFlagsItemsLabelLabel",
-      "description": "VulnerabilitiesItemsFlagsItemsLabelDescription",
+      "field_title": "VulnerabilitiesItemsFlagsItemsLabelTitle",
+      "field_description": "VulnerabilitiesItemsFlagsItemsLabelDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -2878,8 +2908,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/flags/flag/product_ids-usage.en.md"
         }
       },
-      "label": "ProductsLabel",
-      "description": "ProductsDescription",
+      "field_title": "ProductsTitle",
+      "field_description": "ProductsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -2893,8 +2923,8 @@
           "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -2908,8 +2938,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/ids-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsIdsLabel",
-      "description": "VulnerabilitiesItemsIdsDescription",
+      "field_title": "VulnerabilitiesItemsIdsTitle",
+      "field_description": "VulnerabilitiesItemsIdsDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "nice_to_know",
@@ -2925,8 +2955,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/ids/id-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsIdsItemsLabel",
-      "description": "VulnerabilitiesItemsIdsItemsDescription",
+      "field_title": "VulnerabilitiesItemsIdsItemsTitle",
+      "field_description": "VulnerabilitiesItemsIdsItemsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -2939,8 +2969,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/ids/id/system_name-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsIdsItemsSystemNameLabel",
-      "description": "VulnerabilitiesItemsIdsItemsSystemNameDescription",
+      "field_title": "VulnerabilitiesItemsIdsItemsSystemNameTitle",
+      "field_description": "VulnerabilitiesItemsIdsItemsSystemNameDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -2958,8 +2988,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/ids/id/text-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsIdsItemsTextLabel",
-      "description": "VulnerabilitiesItemsIdsItemsTextDescription",
+      "field_title": "VulnerabilitiesItemsIdsItemsTextTitle",
+      "field_description": "VulnerabilitiesItemsIdsItemsTextDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -2977,8 +3007,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/involvements-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsInvolvementsLabel",
-      "description": "VulnerabilitiesItemsInvolvementsDescription",
+      "field_title": "VulnerabilitiesItemsInvolvementsTitle",
+      "field_description": "VulnerabilitiesItemsInvolvementsDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "nice_to_know",
@@ -2995,8 +3025,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsInvolvementsItemsLabel",
-      "description": "VulnerabilitiesItemsInvolvementsItemsDescription",
+      "field_title": "VulnerabilitiesItemsInvolvementsItemsTitle",
+      "field_description": "VulnerabilitiesItemsInvolvementsItemsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -3009,8 +3039,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement/date-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsInvolvementsItemsDateLabel",
-      "description": "VulnerabilitiesItemsInvolvementsItemsDateDescription",
+      "field_title": "VulnerabilitiesItemsInvolvementsItemsDateTitle",
+      "field_description": "VulnerabilitiesItemsInvolvementsItemsDateDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -3027,8 +3057,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement/party-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsInvolvementsItemsPartyLabel",
-      "description": "VulnerabilitiesItemsInvolvementsItemsPartyDescription",
+      "field_title": "VulnerabilitiesItemsInvolvementsItemsPartyTitle",
+      "field_description": "VulnerabilitiesItemsInvolvementsItemsPartyDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -3045,8 +3075,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement/status-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsInvolvementsItemsStatusLabel",
-      "description": "VulnerabilitiesItemsInvolvementsItemsStatusDescription",
+      "field_title": "VulnerabilitiesItemsInvolvementsItemsStatusTitle",
+      "field_description": "VulnerabilitiesItemsInvolvementsItemsStatusDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -3063,8 +3093,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement/summary-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsInvolvementsItemsSummaryLabel",
-      "description": "VulnerabilitiesItemsInvolvementsItemsSummaryDescription",
+      "field_title": "VulnerabilitiesItemsInvolvementsItemsSummaryTitle",
+      "field_description": "VulnerabilitiesItemsInvolvementsItemsSummaryDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "want_to_have",
@@ -3084,8 +3114,8 @@
           "csaf_vex": "docs/user/vulnerabilities/vulnerability/notes-usage-csaf_vex.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsNotesLabel",
-      "description": "VulnerabilitiesItemsNotesDescription",
+      "field_title": "VulnerabilitiesItemsNotesTitle",
+      "field_description": "VulnerabilitiesItemsNotesDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -3102,8 +3132,8 @@
           "generic": "docs/user/types/notes/note-usage.en.md"
         }
       },
-      "label": "NotesItemsLabel",
-      "description": "NotesItemsDescription",
+      "field_title": "NotesItemsTitle",
+      "field_description": "NotesItemsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -3116,8 +3146,8 @@
           "generic": "docs/user/types/notes/note/audience-usage.en.md"
         }
       },
-      "label": "NotesItemsAudienceLabel",
-      "description": "NotesItemsAudienceDescription",
+      "field_title": "NotesItemsAudienceTitle",
+      "field_description": "NotesItemsAudienceDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "nice_to_know",
@@ -3135,8 +3165,8 @@
           "generic": "docs/user/types/notes/note/category-usage.en.md"
         }
       },
-      "label": "NotesItemsCategoryLabel",
-      "description": "NotesItemsCategoryDescription",
+      "field_title": "NotesItemsCategoryTitle",
+      "field_description": "NotesItemsCategoryDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -3153,8 +3183,8 @@
           "generic": "docs/user/types/notes/note/text-usage.en.md"
         }
       },
-      "label": "NotesItemsTextLabel",
-      "description": "NotesItemsTextDescription",
+      "field_title": "NotesItemsTextTitle",
+      "field_description": "NotesItemsTextDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -3172,8 +3202,8 @@
           "generic": "docs/user/types/notes/note/title-usage.en.md"
         }
       },
-      "label": "NotesItemsTitleLabel",
-      "description": "NotesItemsTitleDescription",
+      "field_title": "NotesItemsTitleTitle",
+      "field_description": "NotesItemsTitleDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "want_to_have",
@@ -3193,8 +3223,8 @@
           "csaf_vex": "docs/user/vulnerabilities/vulnerability/product_status-usage-csaf_vex.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsProductStatusLabel",
-      "description": "VulnerabilitiesItemsProductStatusDescription",
+      "field_title": "VulnerabilitiesItemsProductStatusTitle",
+      "field_description": "VulnerabilitiesItemsProductStatusDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -3210,8 +3240,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/product_status/first_affected-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsProductStatusFirstAffectedLabel",
-      "description": "VulnerabilitiesItemsProductStatusFirstAffectedDescription",
+      "field_title": "VulnerabilitiesItemsProductStatusFirstAffectedTitle",
+      "field_description": "VulnerabilitiesItemsProductStatusFirstAffectedDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -3228,8 +3258,8 @@
           "generic": "docs/user/types/products-usage.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3243,8 +3273,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/product_status/first_fixed-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsProductStatusFirstFixedLabel",
-      "description": "VulnerabilitiesItemsProductStatusFirstFixedDescription",
+      "field_title": "VulnerabilitiesItemsProductStatusFirstFixedTitle",
+      "field_description": "VulnerabilitiesItemsProductStatusFirstFixedDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -3261,8 +3291,8 @@
           "generic": "docs/user/types/products-usage.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3276,8 +3306,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/product_status/fixed-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsProductStatusFixedLabel",
-      "description": "VulnerabilitiesItemsProductStatusFixedDescription",
+      "field_title": "VulnerabilitiesItemsProductStatusFixedTitle",
+      "field_description": "VulnerabilitiesItemsProductStatusFixedDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "nice_to_know",
@@ -3293,8 +3323,8 @@
           "generic": "docs/user/types/products-usage.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3309,8 +3339,8 @@
           "csaf_vex": "docs/user/vulnerabilities/vulnerability/product_status/known_affected-usage-csaf_vex.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsProductStatusKnownAffectedLabel",
-      "description": "VulnerabilitiesItemsProductStatusKnownAffectedDescription",
+      "field_title": "VulnerabilitiesItemsProductStatusKnownAffectedTitle",
+      "field_description": "VulnerabilitiesItemsProductStatusKnownAffectedDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "nice_to_know",
@@ -3326,8 +3356,8 @@
           "generic": "docs/user/types/products-usage.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3342,8 +3372,8 @@
           "csaf_vex": "docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-usage-csaf_vex.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsProductStatusKnownNotAffectedLabel",
-      "description": "VulnerabilitiesItemsProductStatusKnownNotAffectedDescription",
+      "field_title": "VulnerabilitiesItemsProductStatusKnownNotAffectedTitle",
+      "field_description": "VulnerabilitiesItemsProductStatusKnownNotAffectedDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -3359,8 +3389,8 @@
           "generic": "docs/user/types/products-usage.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3374,8 +3404,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/product_status/last_affected-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsProductStatusLastAffectedLabel",
-      "description": "VulnerabilitiesItemsProductStatusLastAffectedDescription",
+      "field_title": "VulnerabilitiesItemsProductStatusLastAffectedTitle",
+      "field_description": "VulnerabilitiesItemsProductStatusLastAffectedDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -3392,8 +3422,8 @@
           "generic": "docs/user/types/products-usage.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3407,8 +3437,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/product_status/recommended-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsProductStatusRecommendedLabel",
-      "description": "VulnerabilitiesItemsProductStatusRecommendedDescription",
+      "field_title": "VulnerabilitiesItemsProductStatusRecommendedTitle",
+      "field_description": "VulnerabilitiesItemsProductStatusRecommendedDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "nice_to_know",
@@ -3425,8 +3455,8 @@
           "generic": "docs/user/types/products-usage.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3440,8 +3470,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/product_status/under_investigation-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsProductStatusUnderInvestigationLabel",
-      "description": "VulnerabilitiesItemsProductStatusUnderInvestigationDescription",
+      "field_title": "VulnerabilitiesItemsProductStatusUnderInvestigationTitle",
+      "field_description": "VulnerabilitiesItemsProductStatusUnderInvestigationDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -3457,8 +3487,8 @@
           "generic": "docs/user/types/products-usage.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3472,8 +3502,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/references-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsReferencesLabel",
-      "description": "VulnerabilitiesItemsReferencesDescription",
+      "field_title": "VulnerabilitiesItemsReferencesTitle",
+      "field_description": "VulnerabilitiesItemsReferencesDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "want_to_have",
@@ -3490,8 +3520,8 @@
           "generic": "docs/user/types/references/reference-usage.en.md"
         }
       },
-      "label": "ReferencesItemsLabel",
-      "description": "ReferencesItemsDescription",
+      "field_title": "ReferencesItemsTitle",
+      "field_description": "ReferencesItemsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -3504,8 +3534,8 @@
           "generic": "docs/user/types/references/reference/category-usage.en.md"
         }
       },
-      "label": "ReferencesItemsCategoryLabel",
-      "description": "ReferencesItemsCategoryDescription",
+      "field_title": "ReferencesItemsCategoryTitle",
+      "field_description": "ReferencesItemsCategoryDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -3522,8 +3552,8 @@
           "generic": "docs/user/types/references/reference/summary-usage.en.md"
         }
       },
-      "label": "ReferencesItemsSummaryLabel",
-      "description": "ReferencesItemsSummaryDescription",
+      "field_title": "ReferencesItemsSummaryTitle",
+      "field_description": "ReferencesItemsSummaryDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -3541,8 +3571,8 @@
           "generic": "docs/user/types/references/reference/url-usage.en.md"
         }
       },
-      "label": "ReferencesItemsUrlLabel",
-      "description": "ReferencesItemsUrlDescription",
+      "field_title": "ReferencesItemsUrlTitle",
+      "field_description": "ReferencesItemsUrlDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -3559,8 +3589,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/release_date-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsReleaseDateLabel",
-      "description": "VulnerabilitiesItemsReleaseDateDescription",
+      "field_title": "VulnerabilitiesItemsReleaseDateTitle",
+      "field_description": "VulnerabilitiesItemsReleaseDateDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "nice_to_know",
@@ -3577,8 +3607,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsRemediationsLabel",
-      "description": "VulnerabilitiesItemsRemediationsDescription",
+      "field_title": "VulnerabilitiesItemsRemediationsTitle",
+      "field_description": "VulnerabilitiesItemsRemediationsDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -3594,8 +3624,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsRemediationsItemsLabel",
-      "description": "VulnerabilitiesItemsRemediationsItemsDescription",
+      "field_title": "VulnerabilitiesItemsRemediationsItemsTitle",
+      "field_description": "VulnerabilitiesItemsRemediationsItemsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -3608,8 +3638,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/category-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsRemediationsItemsCategoryLabel",
-      "description": "VulnerabilitiesItemsRemediationsItemsCategoryDescription",
+      "field_title": "VulnerabilitiesItemsRemediationsItemsCategoryTitle",
+      "field_description": "VulnerabilitiesItemsRemediationsItemsCategoryDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -3626,8 +3656,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/date-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsRemediationsItemsDateLabel",
-      "description": "VulnerabilitiesItemsRemediationsItemsDateDescription",
+      "field_title": "VulnerabilitiesItemsRemediationsItemsDateTitle",
+      "field_description": "VulnerabilitiesItemsRemediationsItemsDateDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -3644,8 +3674,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/details-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsRemediationsItemsDetailsLabel",
-      "description": "VulnerabilitiesItemsRemediationsItemsDetailsDescription",
+      "field_title": "VulnerabilitiesItemsRemediationsItemsDetailsTitle",
+      "field_description": "VulnerabilitiesItemsRemediationsItemsDetailsDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -3663,8 +3693,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsRemediationsItemsEntitlementsLabel",
-      "description": "VulnerabilitiesItemsRemediationsItemsEntitlementsDescription",
+      "field_title": "VulnerabilitiesItemsRemediationsItemsEntitlementsTitle",
+      "field_description": "VulnerabilitiesItemsRemediationsItemsEntitlementsDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -3681,8 +3711,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsRemediationsItemsEntitlementsItemsLabel",
-      "description": "VulnerabilitiesItemsRemediationsItemsEntitlementsItemsDescription",
+      "field_title": "VulnerabilitiesItemsRemediationsItemsEntitlementsItemsTitle",
+      "field_description": "VulnerabilitiesItemsRemediationsItemsEntitlementsItemsDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3696,8 +3726,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids-usage.en.md"
         }
       },
-      "label": "ProductGroupsLabel",
-      "description": "ProductGroupsDescription",
+      "field_title": "ProductGroupsTitle",
+      "field_description": "ProductGroupsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -3711,8 +3741,8 @@
           "specific": "docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids/group_id-usage.en.md"
         }
       },
-      "label": "ProductGroupIdLabel",
-      "description": "ProductGroupIdDescription",
+      "field_title": "ProductGroupIdTitle",
+      "field_description": "ProductGroupIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3726,8 +3756,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids-usage.en.md"
         }
       },
-      "label": "ProductsLabel",
-      "description": "ProductsDescription",
+      "field_title": "ProductsTitle",
+      "field_description": "ProductsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -3742,8 +3772,8 @@
           "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3757,8 +3787,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsRemediationsItemsRestartRequiredLabel",
-      "description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDescription",
+      "field_title": "VulnerabilitiesItemsRemediationsItemsRestartRequiredTitle",
+      "field_description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -3775,8 +3805,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/category-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsRemediationsItemsRestartRequiredCategoryLabel",
-      "description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredCategoryDescription",
+      "field_title": "VulnerabilitiesItemsRemediationsItemsRestartRequiredCategoryTitle",
+      "field_description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredCategoryDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -3793,8 +3823,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/details-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsLabel",
-      "description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsDescription",
+      "field_title": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsTitle",
+      "field_description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "optional",
@@ -3812,8 +3842,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/url-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsRemediationsItemsUrlLabel",
-      "description": "VulnerabilitiesItemsRemediationsItemsUrlDescription",
+      "field_title": "VulnerabilitiesItemsRemediationsItemsUrlTitle",
+      "field_description": "VulnerabilitiesItemsRemediationsItemsUrlDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -3830,8 +3860,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsScoresLabel",
-      "description": "VulnerabilitiesItemsScoresDescription",
+      "field_title": "VulnerabilitiesItemsScoresTitle",
+      "field_description": "VulnerabilitiesItemsScoresDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -3847,8 +3877,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsScoresItemsLabel",
-      "description": "VulnerabilitiesItemsScoresItemsDescription",
+      "field_title": "VulnerabilitiesItemsScoresItemsTitle",
+      "field_description": "VulnerabilitiesItemsScoresItemsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -3861,8 +3891,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2Title",
+      "field_description": "CvssV2Description",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -3879,8 +3909,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "VersionLabel",
-      "description": "VersionDescription",
+      "field_title": "CvssV2VersionTitle",
+      "field_description": "CvssV2VersionDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -3893,8 +3923,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2VectorStringTitle",
+      "field_description": "CvssV2VectorStringDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -3908,8 +3938,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2AccessVectorTitle",
+      "field_description": "CvssV2AccessVectorDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -3926,8 +3956,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2AccessComplexityTitle",
+      "field_description": "CvssV2AccessComplexityDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -3944,8 +3974,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2AuthenticationTitle",
+      "field_description": "CvssV2AuthenticationDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -3962,8 +3992,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2ConfidentialityImpactTitle",
+      "field_description": "CvssV2ConfidentialityImpactDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -3980,8 +4010,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2IntegrityImpactTitle",
+      "field_description": "CvssV2IntegrityImpactDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -3998,8 +4028,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2AvailabilityImpactTitle",
+      "field_description": "CvssV2AvailabilityImpactDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4016,8 +4046,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2BaseScoreTitle",
+      "field_description": "CvssV2BaseScoreDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -4030,8 +4060,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2ExploitabilityTitle",
+      "field_description": "CvssV2ExploitabilityDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -4048,8 +4078,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2RemediationLevelTitle",
+      "field_description": "CvssV2RemediationLevelDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4066,8 +4096,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2ReportConfidenceTitle",
+      "field_description": "CvssV2ReportConfidenceDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4084,8 +4114,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2TemporalScoreTitle",
+      "field_description": "CvssV2TemporalScoreDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4102,8 +4132,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2CollateralDamagePotentialTitle",
+      "field_description": "CvssV2CollateralDamagePotentialDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4120,8 +4150,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2TargetDistributionTitle",
+      "field_description": "CvssV2TargetDistributionDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4138,8 +4168,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2ConfidentialityRequirementTitle",
+      "field_description": "CvssV2ConfidentialityRequirementDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4156,8 +4186,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2IntegrityRequirementTitle",
+      "field_description": "CvssV2IntegrityRequirementDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4174,8 +4204,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2AvailabilityRequirementTitle",
+      "field_description": "CvssV2AvailabilityRequirementDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4192,8 +4222,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
         }
       },
-      "label": "CvssV2PropertyLabel",
-      "description": "CvssV2PropertyDescription",
+      "field_title": "CvssV2EnvironmentalScoreTitle",
+      "field_description": "CvssV2EnvironmentalScoreDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4210,8 +4240,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3Title",
+      "field_description": "CvssV3Description",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4228,8 +4258,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "VersionLabel",
-      "description": "VersionDescription",
+      "field_title": "CvssV3VersionTitle",
+      "field_description": "CvssV3VersionDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -4242,8 +4272,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3VectorStringTitle",
+      "field_description": "CvssV3VectorStringDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -4257,8 +4287,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3AttackVectorTitle",
+      "field_description": "CvssV3AttackVectorDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4275,8 +4305,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3AttackComplexityTitle",
+      "field_description": "CvssV3AttackComplexityDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4293,8 +4323,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3PrivilegesRequiredTitle",
+      "field_description": "CvssV3PrivilegesRequiredDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4311,8 +4341,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3UserInteractionTitle",
+      "field_description": "CvssV3UserInteractionDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4329,8 +4359,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ScopeTitle",
+      "field_description": "CvssV3ScopeDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4347,8 +4377,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ConfidentialityImpactTitle",
+      "field_description": "CvssV3ConfidentialityImpactDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4365,8 +4395,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3IntegrityImpactTitle",
+      "field_description": "CvssV3IntegrityImpactDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4383,8 +4413,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3AvailabilityImpactTitle",
+      "field_description": "CvssV3AvailabilityImpactDescription",
       "relevance_levels": {
         "csaf_base": "best_practice",
         "csaf_security_incident_response": "best_practice",
@@ -4401,8 +4431,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3BaseScoreTitle",
+      "field_description": "CvssV3BaseScoreDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -4415,8 +4445,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3BaseSeverityTitle",
+      "field_description": "CvssV3BaseSeverityDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -4429,8 +4459,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ExploitCodeMaturityTitle",
+      "field_description": "CvssV3ExploitCodeMaturityDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -4447,8 +4477,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3RemediationLevelTitle",
+      "field_description": "CvssV3RemediationLevelDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4465,8 +4495,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ReportConfidenceTitle",
+      "field_description": "CvssV3ReportConfidenceDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4483,8 +4513,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3TemporalScoreTitle",
+      "field_description": "CvssV3TemporalScoreDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4501,8 +4531,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3TemporalSeverityTitle",
+      "field_description": "CvssV3TemporalSeverityDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4519,8 +4549,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ConfidentialityRequirementTitle",
+      "field_description": "CvssV3ConfidentialityRequirementDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4537,8 +4567,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3IntegrityRequirementTitle",
+      "field_description": "CvssV3IntegrityRequirementDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4555,8 +4585,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3AvailabilityRequirementTitle",
+      "field_description": "CvssV3AvailabilityRequirementDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4573,8 +4603,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedAttackVectorTitle",
+      "field_description": "CvssV3ModifiedAttackVectorDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4591,8 +4621,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedAttackComplexityTitle",
+      "field_description": "CvssV3ModifiedAttackComplexityDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4609,8 +4639,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedPrivilegesRequiredTitle",
+      "field_description": "CvssV3ModifiedPrivilegesRequiredDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4627,8 +4657,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedUserInteractionTitle",
+      "field_description": "CvssV3ModifiedUserInteractionDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4645,8 +4675,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedScopeTitle",
+      "field_description": "CvssV3ModifiedScopeDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4663,8 +4693,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedConfidentialityImpactTitle",
+      "field_description": "CvssV3ModifiedConfidentialityImpactDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4681,8 +4711,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedIntegrityImpactTitle",
+      "field_description": "CvssV3ModifiedIntegrityImpactDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4699,8 +4729,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3ModifiedAvailabilityImpactTitle",
+      "field_description": "CvssV3ModifiedAvailabilityImpactDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4717,8 +4747,26 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
         }
       },
-      "label": "CvssV3PropertyLabel",
-      "description": "CvssV3PropertyDescription",
+      "field_title": "CvssV3EnvironmentalScoreTitle",
+      "field_description": "CvssV3EnvironmentalScoreDescription",
+      "relevance_levels": {
+        "csaf_base": "optional",
+        "csaf_security_incident_response": "optional",
+        "csaf_informational_advisory": "excluded",
+        "csaf_security_advisory": "optional",
+        "csaf_vex": "optional"
+      }
+    },
+    {
+      "path": "$.vulnerabilities[].scores[].cvss_v3.environmentalSeverity",
+      "user_documentation": {
+        "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+        "usage": {
+          "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+        }
+      },
+      "field_title": "CvssV3EnvironmentalSeverityTitle",
+      "field_description": "CvssV3EnvironmentalSeverityDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "optional",
@@ -4735,8 +4783,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/scores/score/products-usage.en.md"
         }
       },
-      "label": "ProductsLabel",
-      "description": "ProductsDescription",
+      "field_title": "ProductsTitle",
+      "field_description": "ProductsDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -4755,8 +4803,8 @@
           "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -4770,8 +4818,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/threats-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsThreatsLabel",
-      "description": "VulnerabilitiesItemsThreatsDescription",
+      "field_title": "VulnerabilitiesItemsThreatsTitle",
+      "field_description": "VulnerabilitiesItemsThreatsDescription",
       "relevance_levels": {
         "csaf_base": "optional",
         "csaf_security_incident_response": "nice_to_know",
@@ -4787,8 +4835,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/threats/threat-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsThreatsItemsLabel",
-      "description": "VulnerabilitiesItemsThreatsItemsDescription",
+      "field_title": "VulnerabilitiesItemsThreatsItemsTitle",
+      "field_description": "VulnerabilitiesItemsThreatsItemsDescription",
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
       }
@@ -4801,8 +4849,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/category-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsThreatsItemsCategoryLabel",
-      "description": "VulnerabilitiesItemsThreatsItemsCategoryDescription",
+      "field_title": "VulnerabilitiesItemsThreatsItemsCategoryTitle",
+      "field_description": "VulnerabilitiesItemsThreatsItemsCategoryDescription",
       "relevance_levels": {
         "csaf_base": "mandatory",
         "csaf_security_incident_response": "mandatory",
@@ -4819,8 +4867,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/date-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsThreatsItemsDateLabel",
-      "description": "VulnerabilitiesItemsThreatsItemsDateDescription",
+      "field_title": "VulnerabilitiesItemsThreatsItemsDateTitle",
+      "field_description": "VulnerabilitiesItemsThreatsItemsDateDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -4837,8 +4885,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/details-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsThreatsItemsDetailsLabel",
-      "description": "VulnerabilitiesItemsThreatsItemsDetailsDescription",
+      "field_title": "VulnerabilitiesItemsThreatsItemsDetailsTitle",
+      "field_description": "VulnerabilitiesItemsThreatsItemsDetailsDescription",
       "string_is_multiline": true,
       "relevance_levels": {
         "csaf_base": "mandatory",
@@ -4856,8 +4904,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/group_ids-usage.en.md"
         }
       },
-      "label": "ProductGroupsLabel",
-      "description": "ProductGroupsDescription",
+      "field_title": "ProductGroupsTitle",
+      "field_description": "ProductGroupsDescription",
       "relevance_levels": {
         "csaf_base": "nice_to_know",
         "csaf_security_incident_response": "nice_to_know",
@@ -4874,8 +4922,8 @@
           "specific": "docs/user/vulnerabilities/vulnerability/threats/threat/group_ids/group_id-usage.en.md"
         }
       },
-      "label": "ProductGroupIdLabel",
-      "description": "ProductGroupIdDescription",
+      "field_title": "ProductGroupIdTitle",
+      "field_description": "ProductGroupIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -4889,8 +4937,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/product_ids-usage.en.md"
         }
       },
-      "label": "ProductsLabel",
-      "description": "ProductsDescription",
+      "field_title": "ProductsTitle",
+      "field_description": "ProductsDescription",
       "relevance_levels": {
         "csaf_base": "want_to_have",
         "csaf_security_incident_response": "want_to_have",
@@ -4908,8 +4956,8 @@
           "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
-      "label": "ProductIdLabel",
-      "description": "ProductIdDescription",
+      "field_title": "ProductIdTitle",
+      "field_description": "ProductIdDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_informational_advisory": "excluded"
@@ -4923,8 +4971,8 @@
           "generic": "docs/user/vulnerabilities/vulnerability/title-usage.en.md"
         }
       },
-      "label": "VulnerabilitiesItemsTitleLabel",
-      "description": "VulnerabilitiesItemsTitleDescription",
+      "field_title": "VulnerabilitiesItemsTitleTitle",
+      "field_description": "VulnerabilitiesItemsTitleDescription",
       "string_is_multiline": false,
       "relevance_levels": {
         "csaf_base": "nice_to_know",

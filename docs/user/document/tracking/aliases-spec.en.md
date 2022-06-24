@@ -11,4 +11,4 @@ Aliases (`aliases`) of value type `array` with 1 or more unique items (a `set`) 
 }
 ```
 
-[Specification of Alias items](aliases/alias-spec.en.md)
+[Specification of Alias items](document/tracking/aliases/alias-spec.en.md)

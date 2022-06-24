@@ -2,8 +2,8 @@
 
 Any such Generic URI item of value type `object` provides the two mandatory properties
 
-* [Namespace](x_generic_uri/namespace-spec.en.md) (`namespace`)
-* [URI](x_generic_uri/uri-spec.en.md) (`uri`)
+* [Namespace](types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md) (`namespace`)
+* [URI](types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md) (`uri`)
 
 ```javascript
 "properties": {

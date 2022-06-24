@@ -11,4 +11,4 @@ List of notes (`notes_t`) of value type array with 1 or more items of type `Note
 }
 ```
 
-[Specification of Note items](notes/note-spec.en.md)
+[Specification of Note items](types/notes/note-spec.en.md)
