@@ -351,7 +351,7 @@ function View({
 
             {appConfig.loginAvailable &&
               (userInfo ? (
-                <div className="pr-5 flex items-center text-white">
+                <div className="pr-5 flex text-white">
                   <button {...tabButtonProps('DOCUMENTS')}>
                     CSAF Documents
                   </button>
