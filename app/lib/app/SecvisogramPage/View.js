@@ -355,8 +355,8 @@ function View({
                   <button {...tabButtonProps('DOCUMENTS')}>
                     CSAF Documents
                   </button>
-                  <div className="dropdown relative">
-                    <div className="text-sm font-bold p-4 h-auto text-gray-300 flex items-center">
+                  <div className="dropdown relative hover:bg-gray-800 hover:text-white text-gray-300">
+                    <div className="text-sm font-bold p-4 h-auto flex items-center">
                       <svg
                         className="w-6 h-6"
                         fill="none"
