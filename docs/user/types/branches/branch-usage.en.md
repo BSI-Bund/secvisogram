@@ -15,6 +15,7 @@ It is possible that the exact version that is affected is not known. In this cas
 *Example:*
 
 Version 4.2 of a product may be affected and version 4.3 contains a patch.
+
 - Version 4.3 listed as fixed product version
   - if it is not known since which version the product is affected
     - <=4.2 (range) listed as affected

@@ -1,6 +1,7 @@
 # TLP - Usage
 
-The Traffic Light Protocol (TLP) is a standardized agreement for the exchange of information worthy of protection (see https://de.wikipedia.org/wiki/Traffic_Light_Protocol).
+The Traffic Light Protocol (TLP) is a standardized agreement for the exchange of information worthy of protection
+(see [en.wikipedia.org/wiki/Traffic_Light_Protocol](https://en.wikipedia.org/wiki/Traffic_Light_Protocol)).
 
 Public Advisories should generally be classified as `TLP:WHITE`.
 
