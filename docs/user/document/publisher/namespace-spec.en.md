@@ -12,8 +12,7 @@ If an issuing party decides to change its Namespace it SHOULD reissue all CSAF d
 * the new publisher information
 * the updated revision history
 * the updated item in `/document/references[]` which points to the new version of the CSAF document
-* an added item in `/document/references[]` which points to the previous version of the CSAF document (if the URL
-* changed)
+* an added item in `/document/references[]` which points to the previous version of the CSAF document (if the URL changed)
 
 *Example:*
 

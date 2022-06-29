@@ -1,4 +1,4 @@
-# Tlp - Specification
+# TLP - Specification
 
 Traffic Light Protocol (TLP) (`tlp`) of value type `object` with the mandatory property
 

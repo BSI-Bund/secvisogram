@@ -1,3 +1,3 @@
 # Vulnerabilities - Usage
 
-* For the `csaf_vex` profile vulnerabilities must exist.
+For the `csaf_vex` profile vulnerabilities must exist.

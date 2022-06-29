@@ -1,6 +1,6 @@
 # Purl - Usage
 
-* A purl is a URL composed of seven components which are separated by a specific character for unambiguous parsing:
+A purl is a URL composed of seven components which are separated by a specific character for unambiguous parsing:
 
   ```text
   scheme:type/namespace/name@version?qualifiers#subpath
@@ -18,4 +18,6 @@
 
   Components are designed such that they form a hierarchy from the most significant component on the left to the least significant component on the right.
 
-* A purl must NOT contain a URL Authority i.e. there is no support for username, password, host and port components. A namespace segment may sometimes look like a host but its interpretation is specific to a type.
+A purl must NOT contain a URL Authority i.e. there is no support for username, password, host and port components. A namespace segment may sometimes look like a host but its interpretation is specific to a type.
+
+Purls are particularly well suited for identifying components within the package types supported by PURL.
