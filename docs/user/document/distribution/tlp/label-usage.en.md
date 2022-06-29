@@ -1,6 +1,6 @@
 # Label - Usage
 
-The label should be set and must be valid. There are four color (or traffic light) values:
+The label should be set and be valid. There are four color (or traffic light) values:
 
 * `RED` - *personal for named recipients only*:
 
