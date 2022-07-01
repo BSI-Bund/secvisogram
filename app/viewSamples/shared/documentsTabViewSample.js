@@ -6,12 +6,14 @@ const props = {
         title: 'Cisco IPv6 Crafted Packet Denial of Service Vulnerability',
         owner: 'Mustermann',
         workflowState: 'Approved',
+        allowedStateChanges: ['Review', 'Draft'],
       },
     ],
   },
   onGetData() {},
   onDeleteAdvisory() {},
   onLoadAdvisory() {},
+  onChangeWorkflowState() {},
 }
 
 export default {

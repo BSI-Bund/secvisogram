@@ -8,7 +8,7 @@ const testsSample = {
       owner: 'Mustermann',
       changeable: true,
       deletable: false,
-      allowedStateChanges: ['Approved', 'Published'],
+      allowedStateChanges: ['Review'],
     },
   ],
   advisories: [
@@ -20,7 +20,12 @@ const testsSample = {
       owner: 'Mustermann',
       changeable: true,
       deletable: false,
-      allowedStateChanges: ['Approved', 'Published'],
+      allowedStateChanges: /** @type {const} */ ([
+        'Review',
+        'Approved',
+        'Published',
+        'Draft',
+      ]),
       revision: '1-1e6381e13c091b5b0b8b523ce3d412ba',
       csaf: { document: { title: 'my first document' } },
     },

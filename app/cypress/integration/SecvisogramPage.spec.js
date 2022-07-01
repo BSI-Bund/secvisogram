@@ -5,9 +5,9 @@ import CVSSVector from '../../lib/app/SecvisogramPage/View/FormEditorTab/Vulnera
 import ViewReducer from '../../lib/app/SecvisogramPage/View/Reducer.js'
 import { getLoginEnabledConfig } from '../fixtures/appConfigData.js'
 import {
-  getAdvisories,
   getAdvisory,
   getCreateAdvisoryResponse,
+  getGetAdvisoriesResponse,
   getGetAdvisoryDetailResponse,
   getGetTemplateContentResponse,
   getGetTemplatesResponse,
@@ -16,12 +16,11 @@ import {
   getUsers,
 } from '../fixtures/cmsBackendData.js'
 import { getValidationResponse } from '../fixtures/csafValidatorServiceData.js'
-import testsSample from '../fixtures/samples/cmsBackendData/tests.js'
 
 describe('SecvisogramPage', () => {
   describe('can validate the document against the rest service', function () {
     for (const user of getUsers()) {
-      for (const advisory of getAdvisories(testsSample)) {
+      for (const advisory of getGetAdvisoriesResponse()) {
         const { advisoryId } = advisory
 
         it(`user: ${user.preferredUsername}, advisoryId: ${advisoryId}`, function () {
@@ -33,7 +32,7 @@ describe('SecvisogramPage', () => {
             getLoginEnabledConfig().userInfoUrl,
             getUserInfo(user)
           ).as('apiGetUserInfo')
-          cy.intercept('/api/2.0/advisories/', getAdvisories(testsSample)).as(
+          cy.intercept('/api/2.0/advisories/', getGetAdvisoriesResponse()).as(
             'apiGetAdvisories'
           )
           const advisoryDetail = getGetAdvisoryDetailResponse({

@@ -4,6 +4,7 @@ interface Data {
     title: string
     owner: string
     workflowState: string
+    allowedStateChanges: string[]
   }>
 }
 
@@ -12,4 +13,12 @@ export interface Props {
   onGetData(callback: (data: Data) => void): void
   onDeleteAdvisory(params: { advisoryId: string }, callback: () => void): void
   onOpenAdvisory(params: { advisoryId: string }, callback: () => void): void
+  onChangeWorkflowState(
+    params: {
+      advisoryId: string
+      workflowState: string
+      documentTrackingStatus: string | null
+    },
+    callback: () => void
+  ): void
 }

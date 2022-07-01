@@ -2,11 +2,11 @@ import { getLoginEnabledConfig } from '../../fixtures/appConfigData.js'
 import {
   getAdvisories,
   getAdvisory,
+  getGetAdvisoriesResponse,
   getGetAdvisoryDetailResponse,
   getUserInfo,
   getUsers,
 } from '../../fixtures/cmsBackendData.js'
-import testsSample from '../../fixtures/samples/cmsBackendData/tests.js'
 
 describe('SecvisogramPage / DocumentsTab', function () {
   beforeEach(function () {
@@ -14,7 +14,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
       '/.well-known/appspecific/de.bsi.secvisogram.json',
       getLoginEnabledConfig()
     ).as('wellKnownAppConfig')
-    cy.intercept('/api/2.0/advisories/', getAdvisories(testsSample)).as(
+    cy.intercept('/api/2.0/advisories/', getGetAdvisoriesResponse()).as(
       'apiGetAdvisories'
     )
   })
@@ -30,7 +30,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
 
         cy.wait('@wellKnownAppConfig')
         cy.wait('@apiGetUserInfo')
-        for (const advisory of getAdvisories(testsSample)) {
+        for (const advisory of getGetAdvisoriesResponse()) {
           cy.get(
             `[data-testid="advisory-${advisory.advisoryId}-list_entry"]`
           ).should('exist')
@@ -44,7 +44,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
 
   describe('can delete documents', function () {
     for (const user of getUsers()) {
-      for (const advisory of getAdvisories(testsSample)) {
+      for (const advisory of getGetAdvisoriesResponse()) {
         it(`user: ${user.preferredUsername}, advisoryId: ${advisory.advisoryId}`, function () {
           cy.intercept(
             getLoginEnabledConfig().userInfoUrl,
@@ -73,7 +73,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
           // Pretend to have the advisory removed
           cy.intercept(
             '/api/2.0/advisories/',
-            getAdvisories(testsSample).filter(
+            getGetAdvisoriesResponse().filter(
               (a) => a.advisoryId !== advisory.advisoryId
             )
           ).as('apiGetAdvisories')
@@ -98,7 +98,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
 
   describe('can open documents', function () {
     for (const user of getUsers()) {
-      for (const advisory of getAdvisories(testsSample)) {
+      for (const advisory of getGetAdvisoriesResponse()) {
         it(`user: ${user.preferredUsername}, advisoryId: ${advisory.advisoryId}`, function () {
           cy.intercept(
             getLoginEnabledConfig().userInfoUrl,
@@ -132,6 +132,76 @@ describe('SecvisogramPage / DocumentsTab', function () {
             /** @type {any} */ (advisoryDetail.csaf).document.title
           )
         })
+      }
+    }
+  })
+
+  describe('can move a document into a new workflow state', function () {
+    for (const user of getUsers()) {
+      for (const advisory of getAdvisories()) {
+        for (const workflowState of advisory.allowedStateChanges) {
+          it(`user: ${user.preferredUsername}, advisoryId: ${advisory.advisoryId}, workflowState: ${workflowState}`, function () {
+            cy.intercept(
+              getLoginEnabledConfig().userInfoUrl,
+              getUserInfo(user)
+            ).as('apiGetUserInfo')
+            cy.intercept(
+              `/api/2.0/advisories/${advisory.advisoryId}/`,
+              getGetAdvisoryDetailResponse({
+                advisory,
+              })
+            ).as('apiGetAdvisoryDetail')
+
+            cy.visit('?tab=DOCUMENTS')
+            cy.wait('@wellKnownAppConfig')
+            cy.wait('@apiGetUserInfo')
+            cy.wait('@apiGetAdvisories')
+
+            const httpPathSegments = /** @type {const} */ ({
+              Review: 'Review',
+              Approved: 'Approve',
+              Published: 'Publish',
+              Draft: 'Draft',
+            })
+            if (workflowState === 'Published') {
+              cy.intercept(
+                'PATCH',
+                `/api/2.0/advisories/${advisory.advisoryId}/workflowstate/${httpPathSegments[workflowState]}?revision=${advisory.revision}&documentTrackingStatus=Final`,
+                {}
+              ).as('apiChangeWorkflowState')
+            } else {
+              cy.intercept(
+                'PATCH',
+                `/api/2.0/advisories/${advisory.advisoryId}/workflowstate/${httpPathSegments[workflowState]}?revision=${advisory.revision}`,
+                {}
+              ).as('apiChangeWorkflowState')
+            }
+
+            cy.get(
+              `[data-testid="advisory-${advisory.advisoryId}-list_entry-edit_workflow_state_button"]`
+            ).click()
+            cy.get(
+              `select[data-testid="advisory-${advisory.advisoryId}-list_entry-workflow_state_select"]`
+            ).select(workflowState)
+            if (workflowState === 'Published') {
+              for (const trackingStatus of ['Final', 'Interim']) {
+                cy.get(
+                  `select[data-testid="advisory-${advisory.advisoryId}-edit_workflow_state_dialog-tracking_status_select"] option[value="${trackingStatus}"]`
+                ).should('exist')
+              }
+              cy.get(
+                `select[data-testid="advisory-${advisory.advisoryId}-edit_workflow_state_dialog-tracking_status_select"]`
+              ).select('Final')
+            }
+            cy.get(
+              `select[data-testid="advisory-${advisory.advisoryId}-list_entry-workflow_state_select"]`
+            )
+              .closest('form')
+              .submit()
+            cy.wait('@apiChangeWorkflowState')
+            cy.wait('@apiGetAdvisories')
+          })
+        }
       }
     }
   })

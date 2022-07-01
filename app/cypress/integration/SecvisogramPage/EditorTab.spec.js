@@ -1,18 +1,17 @@
 import { getLoginEnabledConfig } from '../../fixtures/appConfigData.js'
 import {
-  getAdvisories,
   getAdvisory,
   getCreateAdvisoryResponse,
+  getGetAdvisoriesResponse,
   getGetAdvisoryDetailResponse,
   getUserInfo,
   getUsers,
 } from '../../fixtures/cmsBackendData.js'
-import testsSample from '../../fixtures/samples/cmsBackendData/tests.js'
 
 describe('SecvisogramPage / EditorTab', function () {
   describe('can save documents', function () {
     for (const user of getUsers()) {
-      for (const advisory of getAdvisories(testsSample)) {
+      for (const advisory of getGetAdvisoriesResponse()) {
         it(`user: ${user.preferredUsername}, advisoryId: ${advisory.advisoryId}`, function () {
           cy.intercept(
             '/.well-known/appspecific/de.bsi.secvisogram.json',
@@ -25,7 +24,7 @@ describe('SecvisogramPage / EditorTab', function () {
           cy.intercept(
             'GET',
             '/api/2.0/advisories/',
-            getAdvisories(testsSample)
+            getGetAdvisoriesResponse()
           ).as('apiGetAdvisories')
 
           const advisoryDetail = getGetAdvisoryDetailResponse({

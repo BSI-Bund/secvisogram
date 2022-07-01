@@ -2,6 +2,10 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+dialog::backdrop {
+  @apply bg-black opacity-50;
+}
+
 .dropdown-content {
   display: none;
 }

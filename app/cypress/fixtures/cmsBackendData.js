@@ -10,12 +10,21 @@ const users = /** @type {const} */ ([
   },
 ])
 
-/**
- * @param {import('./cmsBackendData/types').Sample} sample
- * @returns
- */
-export function getAdvisories(sample) {
-  return sample.advisoriesList
+export function getGetAdvisoriesResponse() {
+  return getAdvisories().map((advisory) => ({
+    advisoryId: advisory.advisoryId,
+    workflowState: advisory.workflowState,
+    documentTrackingId: advisory.documentTrackingId,
+    title: advisory.title,
+    owner: advisory.owner,
+    changeable: advisory.changeable,
+    deletable: advisory.deletable,
+    allowedStateChanges: advisory.allowedStateChanges,
+  }))
+}
+
+export function getAdvisories() {
+  return testsSample.advisories
 }
 
 /**
