@@ -52,9 +52,16 @@ export default React.forwardRef(
                 const trackingStatus = /** @type {string | null} */ (
                   formData.get('tracking_status')
                 )
+                const proposedTimeRaw = /** @type {string | null} */ (
+                  formData.get('proposed_time_input')
+                )
+                const proposedTime = proposedTimeRaw
+                  ? new Date(proposedTimeRaw)
+                  : null
                 onSubmit({
                   workflowState: newWorkflowState,
                   documentTrackingStatus: trackingStatus,
+                  proposedTime,
                 })
               }}
             >
@@ -105,6 +112,24 @@ export default React.forwardRef(
                         </option>
                       ))}
                     </select>
+                  </div>
+                )}
+                {(newWorkflowState === 'Published' ||
+                  newWorkflowState === 'RfPublication') && (
+                  <div className="mt-3">
+                    <label
+                      className="block"
+                      htmlFor={`advisory-${data.advisoryId}-edit_workflow_state_dialog-proposed_time_input`}
+                    >
+                      Proposed Time
+                    </label>
+                    <input
+                      className="border border-gray-400 py-1 px-2 w-full shadow-inner rounded max-w-xs"
+                      type="datetime-local"
+                      id={`advisory-${data.advisoryId}-edit_workflow_state_dialog-proposed_time_input`}
+                      data-testid={`advisory-${data.advisoryId}-edit_workflow_state_dialog-proposed_time_input`}
+                      name="proposed_time_input"
+                    />
                   </div>
                 )}
               </div>

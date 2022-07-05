@@ -162,20 +162,39 @@ describe('SecvisogramPage / DocumentsTab', function () {
               Approved: 'Approve',
               Published: 'Publish',
               Draft: 'Draft',
+              RfPublication: 'RfPublication',
             })
+            const documentTrackingStatus = 'Final'
+            const proposedTime = '2017-06-01T08:30'
+            const apiChangeWorkflowStateURL = new URL(
+              `/api/2.0/advisories/${advisory.advisoryId}/workflowstate/${httpPathSegments[workflowState]}`,
+              window.location.href
+            )
+            apiChangeWorkflowStateURL.searchParams.set(
+              'revision',
+              advisory.revision
+            )
             if (workflowState === 'Published') {
-              cy.intercept(
-                'PATCH',
-                `/api/2.0/advisories/${advisory.advisoryId}/workflowstate/${httpPathSegments[workflowState]}?revision=${advisory.revision}&documentTrackingStatus=Final`,
-                {}
-              ).as('apiChangeWorkflowState')
-            } else {
-              cy.intercept(
-                'PATCH',
-                `/api/2.0/advisories/${advisory.advisoryId}/workflowstate/${httpPathSegments[workflowState]}?revision=${advisory.revision}`,
-                {}
-              ).as('apiChangeWorkflowState')
+              apiChangeWorkflowStateURL.searchParams.set(
+                'documentTrackingStatus',
+                documentTrackingStatus
+              )
             }
+            if (
+              workflowState === 'Published' ||
+              workflowState === 'RfPublication'
+            ) {
+              apiChangeWorkflowStateURL.searchParams.set(
+                'proposedTime',
+                new Date(proposedTime).toISOString()
+              )
+            }
+            cy.intercept(
+              'PATCH',
+              apiChangeWorkflowStateURL.pathname +
+                apiChangeWorkflowStateURL.search,
+              {}
+            ).as('apiChangeWorkflowState')
 
             cy.get(
               `[data-testid="advisory-${advisory.advisoryId}-list_entry-edit_workflow_state_button"]`
@@ -191,7 +210,15 @@ describe('SecvisogramPage / DocumentsTab', function () {
               }
               cy.get(
                 `select[data-testid="advisory-${advisory.advisoryId}-edit_workflow_state_dialog-tracking_status_select"]`
-              ).select('Final')
+              ).select(documentTrackingStatus)
+            }
+            if (
+              workflowState === 'Published' ||
+              workflowState === 'RfPublication'
+            ) {
+              cy.get(
+                `[data-testid="advisory-${advisory.advisoryId}-edit_workflow_state_dialog-proposed_time_input"]`
+              ).type(proposedTime)
             }
             cy.get(
               `select[data-testid="advisory-${advisory.advisoryId}-list_entry-workflow_state_select"]`

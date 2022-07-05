@@ -30,11 +30,13 @@ export async function deleteAdvisory({ advisoryId }) {
  * @param {string} params.advisoryId
  * @param {string} params.workflowState
  * @param {string | null} params.documentTrackingStatus
+ * @param {Date | null} params.proposedTime
  */
 export async function changeWorkflowState({
   advisoryId,
   workflowState,
   documentTrackingStatus,
+  proposedTime,
 }) {
   const { revision } = await backend.getAdvisoryDetail({ advisoryId })
   await backend.changeWorkflowState({
@@ -42,5 +44,6 @@ export async function changeWorkflowState({
     revision,
     workflowState,
     documentTrackingStatus,
+    proposedTime,
   })
 }

@@ -18,12 +18,14 @@ export async function getAdvisoryDetail({ advisoryId }) {
  * @param {string} params.revision
  * @param {string} params.workflowState
  * @param {string | null} params.documentTrackingStatus
+ * @param {Date | null} params.proposedTime
  */
 export async function changeWorkflowState({
   advisoryId,
   revision,
   workflowState,
   documentTrackingStatus,
+  proposedTime,
 }) {
   const newWorkflowState = workflowState
   const httpPathSegments = new Map([
@@ -31,6 +33,7 @@ export async function changeWorkflowState({
     ['Approved', 'Approve'],
     ['Published', 'Publish'],
     ['Draft', 'Draft'],
+    ['RfPublication', 'RfPublication'],
   ])
   const changeWorkflowStateURL = new URL(
     `/api/2.0/advisories/${advisoryId}/workflowstate/${httpPathSegments.get(
@@ -43,6 +46,12 @@ export async function changeWorkflowState({
     changeWorkflowStateURL.searchParams.set(
       'documentTrackingStatus',
       documentTrackingStatus
+    )
+  }
+  if (proposedTime !== null) {
+    changeWorkflowStateURL.searchParams.set(
+      'proposedTime',
+      proposedTime.toISOString()
     )
   }
   return new APIRequest(

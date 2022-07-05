@@ -6,5 +6,6 @@ export interface Props {
   onSubmit(params: {
     workflowState: string
     documentTrackingStatus: string | null
+    proposedTime: Date | null
   }): void
 }

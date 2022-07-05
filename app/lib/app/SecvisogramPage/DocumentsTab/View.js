@@ -125,6 +125,7 @@ export default function DocumentsTabView({
                               onSubmit({
                                 workflowState,
                                 documentTrackingStatus,
+                                proposedTime,
                               }) {
                                 setLoading(true)
                                 onChangeWorkflowState(
@@ -132,6 +133,7 @@ export default function DocumentsTabView({
                                     advisoryId: advisory.advisoryId,
                                     workflowState,
                                     documentTrackingStatus,
+                                    proposedTime,
                                   },
                                   () => {
                                     onGetData((data) => {

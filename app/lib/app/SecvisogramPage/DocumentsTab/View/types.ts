@@ -18,6 +18,7 @@ export interface Props {
       advisoryId: string
       workflowState: string
       documentTrackingStatus: string | null
+      proposedTime: Date | null
     },
     callback: () => void
   ): void
