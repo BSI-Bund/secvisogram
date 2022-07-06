@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import useDebounce from './shared/useDebounce.js'
 import MonacoEditor from 'react-monaco-editor'
+import myJson from './JsonEditorTab/Monaco_editor_schema.json'
 
 /**
  * @param {{
@@ -34,130 +35,14 @@ export default function JsonEditorTab({
 }) {
   const { doc } = formValues
 
-  /**
-   * Holds the reference to the container element of the ace editor.
-   */
-  const ref = React.useRef(/** @type {HTMLDivElement | null} */ (null))
-
-  /**
-   * Holds the instance of the ace editor.
-   */
-  const editorRef =
-    /** @type {React.MutableRefObject<import('../../../../vendor/ace-builds/ace').Ace.Editor | undefined>} */ (
-      React.useRef()
-    )
-  /**
-   * Initializes the ace editor.
-   */
-  React.useEffect(() => {
-    const editorEl = /** @type {HTMLDivElement} */ (ref.current)
-    if (!editorRef.current) {
-      editorRef.current = ace.edit(editorEl)
-    }
-    const changeHandler = () => {
-      setState((state) => ({
-        ...state,
-        value: editorRef.current?.getValue() ?? '',
-      }))
-    }
-    editorEl.style.fontSize = '14px'
-
-    editorRef.current.session.setMode('ace/mode/json')
-    editorRef.current.setTheme('ace/theme/eclipse')
-    editorRef.current.setOptions({
-      foldStyle: 'markbeginend',
-      fadeFoldWidgets: true,
-      enableBasicAutocompletion: true,
-      enableLiveAutocompletion: true,
-      enableSnippets: true,
-    })
-    editorRef.current.on('change', changeHandler)
-
-    return () => {
-      editorRef.current?.off('change', changeHandler)
-      editorRef.current?.destroy()
-    }
-  }, [])
-
-  const initialMountRef = React.useRef(true)
-
-  /**
-   * The initial value of the state used to prevent a re-render of the ace editor
-   * when the document changes from outside.
-   */
-  const initialValue = React.useMemo(
-    () => JSON.stringify(originalValues.doc, null, 2),
-    [originalValues.doc]
-  )
-  /**
-   * Updates the editor value if the document was changed outside (e.g. created from template)
-   */
-  React.useEffect(() => {
-    if (!initialMountRef.current && editorRef.current) {
-      editorRef.current?.setValue(initialValue)
-    }
-  }, [initialValue])
-
-  /**
-   * Holds the value and potential parse errors of the ace editor input.
-   */
-  const [{ value, parseError }, setState] = React.useState(() => ({
-    value: JSON.stringify(doc, null, 2),
-    parseError: null,
-  }))
-  React.useEffect(() => {
-    if (initialMountRef.current && editorRef.current) {
-      initialMountRef.current = false
-      editorRef.current.setValue(value)
-    }
-  }, [value])
-
-  const [showExpertSettings, setShowExpertSettings] = React.useState(!strict)
-  const [showErrors, setShowErrors] = React.useState(false)
-  const debouncedValue = useDebounce(value)
-
-  /**
-   * Toggles between strict and lenient validation.
-   */
-  const toggleStrict = () => {
-    onSetStrict(!strict)
-  }
-
-  const toggleExpertSettings = () => {
-    setShowExpertSettings(!showExpertSettings)
-  }
-
-  const toggleShowErrors = () => {
-    setShowErrors(!showErrors)
-  }
-
-  /**
-   * Locks the tab navigation if there are any parse errors.
-   */
-  React.useEffect(() => {
-    if (parseError) onLockTab()
-    else onUnlockTab()
-  }, [parseError, onLockTab, onUnlockTab])
-
-  const [editor, setEditor] = React.useState(
-    /** @type {monacoEditor.editor} */ {}
-  )
-  const [monacoState, setMonaco] = React.useState(/** @type {monaco} */ {})
+  const [editor, setEditor] = React.useState(/** @type {MonacoEditor} */ null)
+  const [monacoState, setMonaco] = React.useState(/** @type {monaco} */ null)
 
   const stringifiedDoc = React.useMemo(
     () => JSON.stringify(doc, null, 2),
     [doc]
   )
 
-  /**
-   * The initial value of the state used to prevent a re-render of the ace editor
-   * when the document changes from outside.
-   */
-  // const [initialValue] = React.useState(stringifiedDoc)
-
-  /**
-   * Holds the value and potential parse errors of the ace editor input.
-   */
   const [{ value, parseError }, setState] = React.useState({
     value: stringifiedDoc,
     parseError: null,
@@ -210,7 +95,7 @@ export default function JsonEditorTab({
   }, [parseError, onLockTab, onUnlockTab])
 
   /**
-   * Parses the ace editor input and replaces the document.
+   * Parses the editor input and replaces the document.
    */
   React.useEffect(() => {
     /** @type {{} | null} */
@@ -264,6 +149,18 @@ export default function JsonEditorTab({
     console.log('editorDidMount', editor)
     setEditor(editor)
     setMonaco(monaco)
+
+    monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+      validate: true,
+      enableSchemaRequest: true,
+      schemas: [
+        {
+          uri: '',
+          fileMatch: ['*'],
+          schema: myJson,
+        },
+      ],
+    })
   }
 
   const editorWillMount = () => {}
@@ -272,8 +169,10 @@ export default function JsonEditorTab({
     /** @type {any} */ newValue,
     /** @type {any} */ e
   ) => {
-    console.log('onChangeMonaco', newValue, e)
+    // console.log('onChangeMonaco', newValue, e)
+    console.log(editor.getModel().getValue())
   }
+
   const options = {
     selectOnLineNumbers: true,
     automaticLayout: true,
@@ -288,12 +187,12 @@ export default function JsonEditorTab({
         <div className=" w-full">
           <div className={'relative ' + (showErrors ? 'h-4/5' : 'h-full')}>
             <MonacoEditor
-              width="inherit"
-              height="inherit"
+              width="100%"
+              height="100%"
               language="json"
               theme="vs-white"
-              value={code}
               options={options}
+              defaultValue={code}
               onChange={onChangeMonaco}
               editorDidMount={editorDidMount}
               editorWillMount={editorWillMount}
