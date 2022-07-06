@@ -36,7 +36,6 @@ export default function JsonEditorTab({
   const { doc } = formValues
 
   const [editor, setEditor] = React.useState(/** @type {MonacoEditor} */ null)
-  const [monacoState, setMonaco] = React.useState(/** @type {monaco} */ null)
 
   const stringifiedDoc = React.useMemo(
     () => JSON.stringify(doc, null, 2),
@@ -148,7 +147,6 @@ export default function JsonEditorTab({
   ) => {
     console.log('editorDidMount', editor)
     setEditor(editor)
-    setMonaco(monaco)
 
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
@@ -171,13 +169,17 @@ export default function JsonEditorTab({
   ) => {
     // console.log('onChangeMonaco', newValue, e)
     console.log(editor.getModel().getValue())
+
+    setState((state) => ({
+      ...state,
+      value: newValue,
+    }))
   }
 
   const options = {
     selectOnLineNumbers: true,
     automaticLayout: true,
   }
-
   return (
     <>
       <MinAlert />
