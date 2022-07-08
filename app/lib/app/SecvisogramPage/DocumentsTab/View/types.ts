@@ -5,6 +5,7 @@ interface Data {
     owner: string
     workflowState: string
     allowedStateChanges: string[]
+    deletable: boolean
   }>
 }
 

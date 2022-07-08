@@ -6,6 +6,7 @@ const props = {
         title: 'Cisco IPv6 Crafted Packet Denial of Service Vulnerability',
         owner: 'Mustermann',
         workflowState: 'Approved',
+        deletable: true,
         allowedStateChanges: ['Review', 'Draft'],
       },
     ],

@@ -1,24 +1,52 @@
 import templates from './cmsBackendData/templates.js'
 import testsSample from './samples/cmsBackendData/tests.js'
 
-const users = /** @type {const} */ ([
+const users = [
   {
     user: 'editor',
     preferredUsername: 'editor',
     email: '',
     groups: ['editor'],
   },
-])
+  {
+    user: 'reviewer',
+    preferredUsername: 'reviewer',
+    email: '',
+    groups: ['reviewer'],
+  },
+]
 
-export function getGetAdvisoriesResponse() {
+/**
+ * @param {string} userName
+ * @returns
+ */
+function canChangeDocument(userName) {
+  return users.find((u) => u.user === userName)?.groups.includes('editor')
+}
+
+/**
+ * @param {string} userName
+ * @returns
+ */
+export function canDeleteDocument(userName) {
+  return users.find((u) => u.user === userName)?.groups.includes('editor')
+}
+
+/**
+ * @param {string} [userName]
+ * @returns
+ */
+export function getGetAdvisoriesResponse(userName) {
   return getAdvisories().map((advisory) => ({
     advisoryId: advisory.advisoryId,
     workflowState: advisory.workflowState,
     documentTrackingId: advisory.documentTrackingId,
     title: advisory.title,
     owner: advisory.owner,
-    changeable: advisory.changeable,
-    deletable: advisory.deletable,
+    changeable:
+      typeof userName === 'string' ? canChangeDocument(userName) : true,
+    deletable:
+      typeof userName === 'string' ? canDeleteDocument(userName) : true,
     allowedStateChanges: advisory.allowedStateChanges,
   }))
 }

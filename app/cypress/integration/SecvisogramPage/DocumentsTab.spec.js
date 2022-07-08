@@ -1,5 +1,6 @@
 import { getLoginEnabledConfig } from '../../fixtures/appConfigData.js'
 import {
+  canDeleteDocument,
   getAdvisories,
   getAdvisory,
   getGetAdvisoriesResponse,
@@ -45,11 +46,17 @@ describe('SecvisogramPage / DocumentsTab', function () {
   describe('can delete documents', function () {
     for (const user of getUsers()) {
       for (const advisory of getGetAdvisoriesResponse()) {
-        it(`user: ${user.preferredUsername}, advisoryId: ${advisory.advisoryId}`, function () {
+        it(`user: ${user.preferredUsername}, advisoryId: ${
+          advisory.advisoryId
+        }, canDelete: ${canDeleteDocument(user.user)}`, function () {
           cy.intercept(
             getLoginEnabledConfig().userInfoUrl,
             getUserInfo(user)
           ).as('apiGetUserInfo')
+          cy.intercept(
+            '/api/2.0/advisories/',
+            getGetAdvisoriesResponse(user.user)
+          ).as('apiGetAdvisories')
           const advisoryDetail = getGetAdvisoryDetailResponse({
             advisory: getAdvisory({ advisoryId: advisory.advisoryId }),
           })
@@ -78,19 +85,25 @@ describe('SecvisogramPage / DocumentsTab', function () {
             )
           ).as('apiGetAdvisories')
 
-          cy.get(
-            `[data-testid="advisory-${advisory.advisoryId}-list_entry-delete_button"]`
-          ).click()
-          cy.get('[data-testid="alert-confirm_button"]').click()
-          cy.wait([
-            '@apiGetAdvisoryDetail',
-            '@apiDeleteAdvisory',
-            '@apiGetAdvisories',
-          ])
-          cy.get('[data-testid="loading_indicator"]').should('not.exist')
-          cy.get(
-            `[data-testid="advisory-${advisory.advisoryId}-list_entry"]`
-          ).should('not.exist')
+          if (!canDeleteDocument(user.user)) {
+            cy.get(
+              `[data-testid="advisory-${advisory.advisoryId}-list_entry-delete_button"]`
+            ).should('not.exist')
+          } else {
+            cy.get(
+              `[data-testid="advisory-${advisory.advisoryId}-list_entry-delete_button"]`
+            ).click()
+            cy.get('[data-testid="alert-confirm_button"]').click()
+            cy.wait([
+              '@apiGetAdvisoryDetail',
+              '@apiDeleteAdvisory',
+              '@apiGetAdvisories',
+            ])
+            cy.get('[data-testid="loading_indicator"]').should('not.exist')
+            cy.get(
+              `[data-testid="advisory-${advisory.advisoryId}-list_entry"]`
+            ).should('not.exist')
+          }
         })
       }
     }
