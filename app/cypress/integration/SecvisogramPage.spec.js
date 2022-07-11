@@ -3,6 +3,7 @@
 import { expect } from 'chai'
 import CVSSVector from '../../lib/app/SecvisogramPage/View/FormEditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSVector.js'
 import ViewReducer from '../../lib/app/SecvisogramPage/View/Reducer.js'
+import { canCreateDocuments } from '../../lib/app/shared/permissions.js'
 import { getLoginEnabledConfig } from '../fixtures/appConfigData.js'
 import {
   getAdvisory,
@@ -90,7 +91,7 @@ describe('SecvisogramPage', () => {
   describe('can open a new document based on a template', function () {
     for (const user of getUsers()) {
       for (const template of getTemplates()) {
-        it(`user: ${user.email}, templateId: ${template.templateId}`, function () {
+        it(`user: ${user.preferredUsername}, templateId: ${template.templateId}`, function () {
           cy.intercept(
             '/.well-known/appspecific/de.bsi.secvisogram.json',
             getLoginEnabledConfig()
@@ -108,50 +109,56 @@ describe('SecvisogramPage', () => {
           cy.wait('@wellKnownAppConfig')
           cy.wait('@apiGetUserInfo')
 
-          cy.get('[data-testid="new_document_button"]').click()
-          cy.wait('@apiGetTemplates')
+          cy.get('[data-testid="user_info"]').should('exist')
+          if (!canCreateDocuments(user.groups)) {
+            cy.get('[data-testid="new_document_button"]').should('not.exist')
+          } else {
+            cy.get('[data-testid="new_document_button"]').click()
+            cy.wait('@apiGetTemplates')
 
-          // cy.get('select[data-testid="new_document-templates-select"]').should(
-          //   'exist'
-          // )
-          for (const template of getTemplates()) {
+            for (const template of getTemplates()) {
+              cy.get(
+                `select[data-testid="new_document-templates-select"] option[value="${template.templateId}"]`
+              ).should('exist')
+            }
             cy.get(
-              `select[data-testid="new_document-templates-select"] option[value="${template.templateId}"]`
-            ).should('exist')
-          }
-          cy.get(`select[data-testid="new_document-templates-select"]`).select(
-            template.templateId
-          )
+              `select[data-testid="new_document-templates-select"]`
+            ).select(template.templateId)
 
-          cy.intercept(
-            `/api/2.0/advisories/templates/${template.templateId}`,
-            getGetTemplateContentResponse({ template })
-          ).as('apiGetTemplateContent')
-          const createAdvisoryResponse = getCreateAdvisoryResponse()
-          cy.intercept(
-            'POST',
-            '/api/2.0/advisories',
-            createAdvisoryResponse
-          ).as('apiCreateAdvisory')
-          cy.intercept(
-            'GET',
-            `/api/2.0/advisories/${createAdvisoryResponse.id}/`,
-            getGetAdvisoryDetailResponse({
-              advisory: getAdvisory({ advisoryId: createAdvisoryResponse.id }),
+            cy.intercept(
+              `/api/2.0/advisories/templates/${template.templateId}`,
+              getGetTemplateContentResponse({ template })
+            ).as('apiGetTemplateContent')
+            const createAdvisoryResponse = getCreateAdvisoryResponse()
+            cy.intercept(
+              'POST',
+              '/api/2.0/advisories',
+              createAdvisoryResponse
+            ).as('apiCreateAdvisory')
+            cy.intercept(
+              'GET',
+              `/api/2.0/advisories/${createAdvisoryResponse.id}/`,
+              getGetAdvisoryDetailResponse({
+                advisory: getAdvisory({
+                  advisoryId: createAdvisoryResponse.id,
+                }),
+              })
+            ).as('apiGetAdvisoryDetail')
+            cy.get(
+              `[data-testid="new_document-create_document_button"]`
+            ).click()
+            cy.wait('@apiCreateAdvisory').then((xhr) => {
+              expect(xhr.request.body).deep.equal(template.templateContent)
             })
-          ).as('apiGetAdvisoryDetail')
-          cy.get(`[data-testid="new_document-create_document_button"]`).click()
-          cy.wait('@apiCreateAdvisory').then((xhr) => {
-            expect(xhr.request.body).deep.equal(template.templateContent)
-          })
-          cy.wait('@apiGetAdvisoryDetail')
-          cy.get('[data-testid="advisory_id"]').should(
-            'have.text',
-            createAdvisoryResponse.id
-          )
-          cy.get('[data-testid="new_document_dialog"]').then((el) => {
-            expect(/** @type {any} */ (el[0]).open).to.be.false
-          })
+            cy.wait('@apiGetAdvisoryDetail')
+            cy.get('[data-testid="advisory_id"]').should(
+              'have.text',
+              createAdvisoryResponse.id
+            )
+            cy.get('[data-testid="new_document_dialog"]').then((el) => {
+              expect(/** @type {any} */ (el[0]).open).to.be.false
+            })
+          }
         })
       }
     }

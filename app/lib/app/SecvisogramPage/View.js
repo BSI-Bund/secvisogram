@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import AppConfigContext from '../shared/context/AppConfigContext.js'
 import UserInfoContext from '../shared/context/UserInfoContext.js'
+import { canCreateDocuments } from '../shared/permissions.js'
 import CsafTab from './View/CsafTab.js'
 import FormEditorTab from './View/FormEditorTab.js'
 import {
@@ -355,7 +356,10 @@ function View({
                   <button {...tabButtonProps('DOCUMENTS')}>
                     CSAF Documents
                   </button>
-                  <div className="dropdown relative hover:bg-gray-800 hover:text-white text-gray-300">
+                  <div
+                    data-testid="user_info"
+                    className="dropdown relative hover:bg-gray-800 hover:text-white text-gray-300"
+                  >
                     <div className="text-sm font-bold p-4 h-auto flex items-center">
                       <svg
                         className="w-6 h-6"
@@ -424,7 +428,9 @@ function View({
           {activeTab !== 'DOCUMENTS' && (
             <div className="bg-gray-400 flex items-center justify-between">
               <div className="pl-5">
-                {appConfig.loginAvailable && userInfo ? (
+                {appConfig.loginAvailable &&
+                userInfo &&
+                canCreateDocuments(userInfo.groups) ? (
                   <button
                     data-testid="new_document_button"
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"

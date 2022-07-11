@@ -6,7 +6,7 @@ const users = [
     user: 'editor',
     preferredUsername: 'editor',
     email: '',
-    groups: ['editor'],
+    groups: ['editor', 'author'],
   },
   {
     user: 'reviewer',
