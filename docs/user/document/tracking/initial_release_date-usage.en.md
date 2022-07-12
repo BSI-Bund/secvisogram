@@ -1,4 +1,4 @@
-# Initial Release Date - Usage
+**Initial Release Date - Usage**
 
 The date when the first version of the document was published.
 In pre-release versions the planned publication date is used.

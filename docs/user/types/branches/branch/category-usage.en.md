@@ -1,4 +1,4 @@
-# Category - Usage
+**Category - Usage**
 
 Specifies how the value in the adjacent name field should be understood.
 

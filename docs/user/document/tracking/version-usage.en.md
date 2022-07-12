@@ -1,4 +1,4 @@
-# Version - Usage
+**Version - Usage**
 
 The version of the present document.
 

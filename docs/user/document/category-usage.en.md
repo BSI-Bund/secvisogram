@@ -1,4 +1,4 @@
-# Category - Usage
+**Category - Usage**
 
 This value determines the profile name for the CSAF document.
 It should always be the value of the profile defined in the [specification](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html#4-profiles).

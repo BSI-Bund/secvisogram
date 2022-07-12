@@ -1,4 +1,4 @@
-# Name - Usage
+**Name - Usage**
 
 The name of the product as used in a human-readable advisory.
 

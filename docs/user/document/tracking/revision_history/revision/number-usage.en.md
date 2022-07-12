@@ -1,4 +1,4 @@
-# Number - Usage
+**Number - Usage**
 
 The document version of the document this revision history element corresponds to is used as value here.
 

@@ -1,4 +1,4 @@
-# Product ID - Usage
+**Product ID - Usage**
 
 The product ID is used to reference the product later in the document and there is no specified format.
 The value is usually assigned by the generator.

@@ -1,4 +1,4 @@
-# Date - Usage
+**Date - Usage**
 
 The date when this version was published. For pre-release versions the planned publication date is used.
 For final and interim versions the actual publication date is used.

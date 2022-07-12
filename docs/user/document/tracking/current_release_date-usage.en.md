@@ -1,4 +1,4 @@
-# Current Release Date - Usage
+**Current Release Date - Usage**
 
 Defines when the current version of the document was published.
 

@@ -1,4 +1,4 @@
-# Title - Usage
+**Title - Usage**
 
 The title should provide a quick overview of what this document is about to the user.
 

@@ -1,4 +1,4 @@
-# Legacy Version - Usage
+**Legacy Version - Usage**
 
 The legacy version can be used to create a mapping to a human-readable version of the document that follows a version scheme other than
 [integer versioning](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html#31112-version-type---semantic-versioning) or

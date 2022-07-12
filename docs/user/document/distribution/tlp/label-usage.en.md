@@ -1,4 +1,4 @@
-# Label - Usage
+**Label - Usage**
 
 The label should be set and must be valid. There are four traffic light values:
 

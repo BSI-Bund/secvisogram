@@ -1,4 +1,4 @@
-# Namespace - Usage
+**Namespace - Usage**
 
 The namespace is useful to unambiguously and globally identify the vendor or manufacturer.
 

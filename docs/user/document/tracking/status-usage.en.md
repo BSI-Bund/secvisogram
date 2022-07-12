@@ -1,4 +1,4 @@
-# Status - Usage
+**Status - Usage**
 
 The working status of the document. Possible values are `draft`, `interim` and `final`.
 

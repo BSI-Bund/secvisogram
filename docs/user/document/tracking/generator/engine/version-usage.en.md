@@ -1,4 +1,4 @@
-# Version - Usage
+**Version - Usage**
 
 Different versions of the generator may generate CSAF documents with potentially different structure.
 Based on this value, different paths may need to be used for matching.

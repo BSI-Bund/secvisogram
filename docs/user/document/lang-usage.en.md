@@ -1,4 +1,4 @@
-# Lang - Usage
+**Lang - Usage**
 
 The language the document is written in.
 

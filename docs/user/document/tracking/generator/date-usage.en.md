@@ -1,4 +1,4 @@
-# Date - Usage
+**Date - Usage**
 
 The date when the document was generated.
 
