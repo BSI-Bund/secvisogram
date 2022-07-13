@@ -423,12 +423,18 @@ function View({
                                     },
                                   ],
                                 }}
-                                onSubmit={({ templateId }) => {
+                                onSubmit={(params) => {
                                   confirmDocumentReplacement(() => {
-                                    setAdvisoryState({
-                                      type: 'NEW_ADVISORY',
-                                      csaf: templates.get(templateId) ?? {},
-                                    })
+                                    if (params.source === 'TEMPLATE') {
+                                      setAdvisoryState({
+                                        type: 'NEW_ADVISORY',
+                                        csaf:
+                                          templates.get(params.templateId) ??
+                                          {},
+                                      })
+                                    } else {
+                                      onOpen(params.file)
+                                    }
                                   })
                                 }}
                               />
@@ -443,35 +449,39 @@ function View({
                             <NewDocumentDialog
                               ref={newDocumentDialogRef}
                               data={{ templates }}
-                              onSubmit={({ templateId }) => {
+                              onSubmit={(params) => {
                                 confirmDocumentReplacement(() => {
-                                  setLoading(true)
-                                  onGetTemplateContent(
-                                    { templateId },
-                                    (templateContent) => {
-                                      onCreateAdvisory(
-                                        { csaf: templateContent },
-                                        ({ id: advisoryId }) => {
-                                          onLoadAdvisory(
-                                            { advisoryId },
-                                            (advisory) => {
-                                              setAdvisoryState({
-                                                type: 'ADVISORY',
-                                                advisory: {
-                                                  advisoryId,
-                                                  csaf: advisory.csaf,
-                                                  documentTrackingId:
-                                                    advisory.documentTrackingId,
-                                                  revision: advisory.revision,
-                                                },
-                                              })
-                                              setLoading(false)
-                                            }
-                                          )
-                                        }
-                                      )
-                                    }
-                                  )
+                                  if (params.source === 'TEMPLATE') {
+                                    setLoading(true)
+                                    onGetTemplateContent(
+                                      { templateId: params.templateId },
+                                      (templateContent) => {
+                                        onCreateAdvisory(
+                                          { csaf: templateContent },
+                                          ({ id: advisoryId }) => {
+                                            onLoadAdvisory(
+                                              { advisoryId },
+                                              (advisory) => {
+                                                setAdvisoryState({
+                                                  type: 'ADVISORY',
+                                                  advisory: {
+                                                    advisoryId,
+                                                    csaf: advisory.csaf,
+                                                    documentTrackingId:
+                                                      advisory.documentTrackingId,
+                                                    revision: advisory.revision,
+                                                  },
+                                                })
+                                                setLoading(false)
+                                              }
+                                            )
+                                          }
+                                        )
+                                      }
+                                    )
+                                  } else {
+                                    onOpen(params.file)
+                                  }
                                 })
                               }}
                             />

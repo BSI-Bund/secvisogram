@@ -15,6 +15,10 @@ export const tests = [
     title: 'simple',
     render: () => <Wrapper {...props} />,
   },
+  {
+    title: 'from filesystem',
+    render: () => <Wrapper {...props} defaultSource="FILESYSTEM" />,
+  },
 ]
 
 /**

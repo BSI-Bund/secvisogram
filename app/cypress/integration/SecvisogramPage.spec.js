@@ -17,6 +17,7 @@ import {
   getUsers,
 } from '../fixtures/cmsBackendData.js'
 import { getValidationResponse } from '../fixtures/csafValidatorServiceData.js'
+import sampleUploadDocument from '../fixtures/sampleUploadDocument.js'
 
 describe('SecvisogramPage', () => {
   describe('can validate the document against the rest service', function () {
@@ -85,6 +86,86 @@ describe('SecvisogramPage', () => {
           }
         })
       }
+    }
+  })
+
+  describe('can open a minimal new document from filesystem in standalone mode', function () {
+    it(`sampleUploadDocument`, function () {
+      cy.intercept('/.well-known/appspecific/de.bsi.secvisogram.json', {
+        statusCode: 404,
+        body: {},
+      }).as('wellKnownAppConfig')
+
+      cy.visit('?tab=EDITOR')
+      cy.wait('@wellKnownAppConfig')
+
+      cy.get('[data-testid="new_document_button"]').click()
+
+      cy.get(`[data-testid="new_document-file_selector_button"]`).click()
+      cy.get(`[data-testid="new_document-file_input"]`).selectFile({
+        contents: /** @type {any} */ (Cypress.Buffer).from(
+          JSON.stringify(sampleUploadDocument)
+        ),
+        fileName: 'some_file.json',
+        mimeType: 'application/json',
+        lastModified: Date.now(),
+      })
+
+      cy.get(`[data-testid="new_document-create_document_button"]`).click()
+      cy.get('[data-testid="new_document_dialog"]').then((el) => {
+        expect(/** @type {any} */ (el[0]).open).to.be.false
+      })
+      cy.get('[data-testid="attribute-/document/title"] input').should(
+        'have.value',
+        sampleUploadDocument.document.title
+      )
+    })
+  })
+
+  describe('can open a minimal new document from filesystem in connected mode', function () {
+    for (const user of getUsers().filter((user) =>
+      canCreateDocuments(user.groups)
+    )) {
+      it(`user: ${user.preferredUsername}`, function () {
+        cy.intercept(
+          '/.well-known/appspecific/de.bsi.secvisogram.json',
+          getLoginEnabledConfig()
+        ).as('wellKnownAppConfig')
+        cy.intercept(getLoginEnabledConfig().userInfoUrl, getUserInfo(user)).as(
+          'apiGetUserInfo'
+        )
+        cy.intercept(
+          '/api/2.0/advisories/templates',
+          getGetTemplatesResponse()
+        ).as('apiGetTemplates')
+
+        cy.visit('?tab=EDITOR')
+        cy.wait('@wellKnownAppConfig')
+        cy.wait('@apiGetUserInfo')
+
+        cy.get('[data-testid="user_info"]').should('exist')
+
+        cy.get('[data-testid="new_document_button"]').click()
+
+        cy.get(`[data-testid="new_document-file_selector_button"]`).click()
+        cy.get(`[data-testid="new_document-file_input"]`).selectFile({
+          contents: /** @type {any} */ (Cypress.Buffer).from(
+            JSON.stringify(sampleUploadDocument)
+          ),
+          fileName: 'some_file.json',
+          mimeType: 'application/json',
+          lastModified: Date.now(),
+        })
+
+        cy.get(`[data-testid="new_document-create_document_button"]`).click()
+        cy.get('[data-testid="new_document_dialog"]').then((el) => {
+          expect(/** @type {any} */ (el[0]).open).to.be.false
+        })
+        cy.get('[data-testid="attribute-/document/title"] input').should(
+          'have.value',
+          sampleUploadDocument.document.title
+        )
+      })
     }
   })
 
