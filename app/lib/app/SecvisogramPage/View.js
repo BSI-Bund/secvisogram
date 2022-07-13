@@ -583,7 +583,6 @@ function View({
                 formValues={formValues}
                 validationErrors={errors}
                 onUpdate={onUpdate}
-                onOpen={onOpen}
                 onDownload={onDownload}
                 onCollectProductIds={onCollectProductIdsCallback}
                 onCollectGroupIds={onCollectGroupIdsCallback}
@@ -596,7 +595,6 @@ function View({
                 strict={strict}
                 onSetStrict={onSetStrict}
                 onChange={onReplaceDoc}
-                onOpen={onOpen}
                 onDownload={onDownload}
                 onLockTab={onLockTab}
                 onUnlockTab={onUnlockTab}

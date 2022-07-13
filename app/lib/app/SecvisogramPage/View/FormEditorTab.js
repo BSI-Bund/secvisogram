@@ -1,7 +1,6 @@
 import {
   faCheckCircle,
   faExclamationTriangle,
-  faFolderOpen,
   faMinusSquare,
   faPlusSquare,
   faWindowClose,
@@ -20,7 +19,6 @@ import Vulnerabilities from './FormEditorTab/Vulnerabilities.js'
  *  formValues: import('../shared/types').FormValues
  *  validationErrors: import('../shared/types').ValidationError[]
  *  onUpdate: ((update: {}) => void) & ((instancePath: string, update: {}) => void)
- *  onOpen(file: File): void
  *  onDownload(doc: {}): void
  *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
  *  onCollectGroupIds(): Promise<void | {id: string, name: string}[]>
@@ -30,7 +28,6 @@ export default function FormEditorTab({
   formValues,
   validationErrors: errors,
   onUpdate,
-  onOpen,
   onCollectProductIds,
   onCollectGroupIds,
 }) {
@@ -111,28 +108,6 @@ export default function FormEditorTab({
         </div>
         <div className="pl-3 pr-6 py-6 w-72 flex flex-col justify-between">
           <div className="flex flex-col">
-            <label
-              htmlFor="openFile"
-              className="mb-2 py-1 px-3 text-center rounded shadow border border-blue-400 bg-blue-400 text-white hover:text-blue-400 hover:bg-white"
-            >
-              <FontAwesomeIcon className="mr-1" icon={faFolderOpen} />
-              Open
-            </label>
-            <input
-              id="openFile"
-              title="open file"
-              type="file"
-              className="hidden"
-              accept="application/json"
-              onChange={(e) => {
-                if (!e.target.files || !e.target.files[0]) return
-                if (e.target.files[0].size > 1 * 1024 * 1024) {
-                  window.alert('File too large!')
-                  return
-                }
-                onOpen(e.target.files[0])
-              }}
-            />
             <button
               type="button"
               className="mb-2 py-1 px-3 rounded shadow border border-gray-400 bg-gray-400 text-white hover:text-gray-400 hover:bg-white"
