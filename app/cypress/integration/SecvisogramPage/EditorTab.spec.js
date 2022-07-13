@@ -1,7 +1,6 @@
 import { getLoginEnabledConfig } from '../../fixtures/appConfigData.js'
 import {
   getAdvisory,
-  getCreateAdvisoryResponse,
   getGetAdvisoriesResponse,
   getGetAdvisoryDetailResponse,
   getUserInfo,
@@ -68,74 +67,6 @@ describe('SecvisogramPage / EditorTab', function () {
           cy.wait('@apiGetAdvisoryDetail')
         })
       }
-    }
-  })
-
-  describe('can create a new document from a minimal template', function () {
-    for (const user of getUsers()) {
-      it(`user: ${user.preferredUsername}`, function () {
-        cy.intercept(
-          '/.well-known/appspecific/de.bsi.secvisogram.json',
-          getLoginEnabledConfig()
-        ).as('wellKnownAppConfig')
-        cy.intercept(getLoginEnabledConfig().userInfoUrl, getUserInfo(user)).as(
-          'apiGetUserInfo'
-        )
-        const createAdvisoryResponse = getCreateAdvisoryResponse()
-        cy.intercept('POST', '/api/2.0/advisories', createAdvisoryResponse).as(
-          'apiCreateAdvisory'
-        )
-
-        cy.visit('?tab=EDITOR')
-        cy.wait('@wellKnownAppConfig')
-        cy.wait('@apiGetUserInfo')
-
-        cy.get('[data-testid="new_with_minimal_fields_button"]').click()
-        cy.get('[data-testid="alert-confirm_button"]').click()
-        cy.wait('@apiCreateAdvisory').then((xhr) => {
-          expect(xhr.request.body.document).to.contain({
-            csaf_version: '2.0',
-          })
-        })
-        cy.get('[data-testid="advisory_id"]').should(
-          'have.text',
-          createAdvisoryResponse.id
-        )
-      })
-    }
-  })
-
-  describe('can create a new document from the all-fields template', function () {
-    for (const user of getUsers()) {
-      it(`user: ${user.preferredUsername}`, function () {
-        cy.intercept(
-          '/.well-known/appspecific/de.bsi.secvisogram.json',
-          getLoginEnabledConfig()
-        ).as('wellKnownAppConfig')
-        cy.intercept(getLoginEnabledConfig().userInfoUrl, getUserInfo(user)).as(
-          'apiGetUserInfo'
-        )
-        const createAdvisoryResponse = getCreateAdvisoryResponse()
-        cy.intercept('POST', '/api/2.0/advisories', createAdvisoryResponse).as(
-          'apiCreateAdvisory'
-        )
-
-        cy.visit('?tab=EDITOR')
-        cy.wait('@wellKnownAppConfig')
-        cy.wait('@apiGetUserInfo')
-
-        cy.get('[data-testid="new_with_all_fields_button"]').click()
-        cy.get('[data-testid="alert-confirm_button"]').click()
-        cy.wait('@apiCreateAdvisory').then((xhr) => {
-          expect(xhr.request.body.document).to.contain({
-            csaf_version: '2.0',
-          })
-        })
-        cy.get('[data-testid="advisory_id"]').should(
-          'have.text',
-          createAdvisoryResponse.id
-        )
-      })
     }
   })
 })

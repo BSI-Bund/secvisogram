@@ -126,7 +126,7 @@ function View({
           ? advisoryState.csaf
           : advisoryState?.type === 'ADVISORY'
           ? advisoryState.advisory.csaf
-          : null,
+          : {},
     }),
     [advisoryState]
   )
@@ -231,52 +231,6 @@ function View({
     } else {
       callback()
     }
-  }
-
-  /**
-   * @param {{}} doc
-   * @param {() => void} callback
-   */
-  const createDocFromTemplate = (doc, callback) => {
-    if (!userInfo) {
-      setAdvisoryState({ type: 'NEW_ADVISORY', csaf: doc })
-      callback()
-    } else {
-      setLoading(true)
-      onCreateAdvisory({ csaf: doc }, (advisoryData) => {
-        setAdvisoryState({
-          type: 'ADVISORY',
-          advisory: {
-            advisoryId: advisoryData.id,
-            csaf: doc,
-            documentTrackingId: '',
-            revision: advisoryData.revision,
-          },
-        })
-        setLoading(false)
-        callback()
-      })
-    }
-  }
-
-  const onNewDocMin = async () => {
-    return new Promise((resolve) => {
-      onGetDocMin((doc) => {
-        createDocFromTemplate(doc, () => {
-          resolve(doc)
-        })
-      })
-    })
-  }
-
-  const onNewDocMax = async () => {
-    return new Promise((resolve) => {
-      onGetDocMax((doc) => {
-        createDocFromTemplate(doc, () => {
-          resolve(doc)
-        })
-      })
-    })
   }
 
   /**
@@ -621,13 +575,12 @@ function View({
                 onUpdate={onUpdate}
                 onOpen={onOpen}
                 onDownload={onDownload}
-                onNewDocMin={onNewDocMin}
-                onNewDocMax={onNewDocMax}
                 onCollectProductIds={onCollectProductIdsCallback}
                 onCollectGroupIds={onCollectGroupIdsCallback}
               />
             ) : activeTab === 'SOURCE' ? (
               <JsonEditorTab
+                originalValues={originalValues}
                 formValues={formValues}
                 validationErrors={errors}
                 strict={strict}
@@ -635,8 +588,6 @@ function View({
                 onChange={onReplaceDoc}
                 onOpen={onOpen}
                 onDownload={onDownload}
-                onNewDocMin={onNewDocMin}
-                onNewDocMax={onNewDocMax}
                 onLockTab={onLockTab}
                 onUnlockTab={onUnlockTab}
               />

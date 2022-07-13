@@ -2,14 +2,11 @@ import {
   faCheckCircle,
   faCog,
   faExclamationTriangle,
-  faFile,
-  faFileAlt,
   faFolderOpen,
   faWindowClose,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { useAlert } from './shared/Alert.js'
 import useDebounce from './shared/useDebounce.js'
 
 /**
@@ -17,6 +14,7 @@ import useDebounce from './shared/useDebounce.js'
  * @see https://ace.c9.io/
  *
  * @param {{
+ *  originalValues: import('../shared/types').FormValues
  *  formValues: import('../shared/types').FormValues
  *  validationErrors: import('../shared/types').ValidationError[]
  *  strict: boolean
@@ -24,21 +22,18 @@ import useDebounce from './shared/useDebounce.js'
  *  onChange(doc: {} | null): void
  *  onOpen(file: File): Promise<void | {}>
  *  onDownload(doc: {}): void
- *  onNewDocMin(): Promise<void | {}>
- *  onNewDocMax(): Promise<void | {}>
  *  onLockTab(): void
  *  onUnlockTab(): void
  * }} props
  */
 export default function JsonEditorTab({
+  originalValues,
   formValues,
   validationErrors: errors,
   strict,
   onSetStrict,
   onChange,
   onOpen,
-  onNewDocMin,
-  onNewDocMax,
   onLockTab,
   onUnlockTab,
 }) {
@@ -57,24 +52,22 @@ export default function JsonEditorTab({
       React.useRef()
     )
 
-  const stringifiedDoc = React.useMemo(
-    () => JSON.stringify(doc, null, 2),
-    [doc]
-  )
-
   /**
    * The initial value of the state used to prevent a re-render of the ace editor
    * when the document changes from outside.
    */
-  const [initialValue] = React.useState(stringifiedDoc)
+  const initialValue = React.useMemo(
+    () => JSON.stringify(originalValues.doc, null, 2),
+    [originalValues.doc]
+  )
 
   /**
    * Holds the value and potential parse errors of the ace editor input.
    */
-  const [{ value, parseError }, setState] = React.useState({
-    value: stringifiedDoc,
+  const [{ value, parseError }, setState] = React.useState(() => ({
+    value: JSON.stringify(doc, null, 2),
     parseError: null,
-  })
+  }))
   const [showExpertSettings, setShowExpertSettings] = React.useState(!strict)
   const [showErrors, setShowErrors] = React.useState(false)
   const debouncedValue = useDebounce(value)
@@ -92,26 +85,6 @@ export default function JsonEditorTab({
 
   const toggleShowErrors = () => {
     setShowErrors(!showErrors)
-  }
-
-  const confirmMin = () => {
-    onNewDocMin().then((newDoc) => {
-      editorRef.current?.setValue(JSON.stringify(newDoc, null, 2))
-    })
-    hideMin()
-  }
-
-  const confirmMax = () => {
-    onNewDocMax().then((newDoc) => {
-      editorRef.current?.setValue(JSON.stringify(newDoc, null, 2))
-    })
-    hideMax()
-  }
-
-  const handleOpen = (/** @type {File} */ file) => {
-    onOpen(file).then((openedDoc) => {
-      editorRef.current?.setValue(JSON.stringify(openedDoc, null, 2))
-    })
   }
 
   /**
@@ -148,12 +121,18 @@ export default function JsonEditorTab({
       enableSnippets: true,
     })
     editorRef.current.on('change', changeHandler)
-    editorRef.current.setValue(initialValue)
 
     return () => {
       editorRef.current?.off('change', changeHandler)
       editorRef.current?.destroy()
     }
+  }, [])
+
+  /**
+   * Updates the editor value if the document was changed outside (e.g. created from template)
+   */
+  React.useEffect(() => {
+    editorRef.current?.setValue(initialValue)
   }, [initialValue])
 
   /**
@@ -178,34 +157,8 @@ export default function JsonEditorTab({
     }
   }, [errors])
 
-  const {
-    show: showMin,
-    hide: hideMin,
-    Alert: MinAlert,
-  } = useAlert({
-    description:
-      'This will create a new CSAF document. All current content will be lost. Are you sure?',
-    confirmLabel: 'Yes, create new document',
-    cancelLabel: 'No, resume editing',
-    confirm: confirmMin,
-  })
-
-  const {
-    show: showMax,
-    hide: hideMax,
-    Alert: MaxAlert,
-  } = useAlert({
-    description:
-      'This will create a new CSAF document. All current content will be lost. Are you sure?',
-    confirmLabel: 'Yes, create new document',
-    cancelLabel: 'No, resume editing',
-    confirm: confirmMax,
-  })
-
   return (
     <>
-      <MinAlert />
-      <MaxAlert />
       <div className="json-editor flex h-full mr-3 bg-white">
         <div className="p-3 w-full">
           <div className={'relative ' + (showErrors ? 'h-4/5' : 'h-full')}>
@@ -245,22 +198,6 @@ export default function JsonEditorTab({
         </div>
         <div className="pl-3 pr-6 py-6 w-72 flex flex-col justify-between">
           <div className="flex flex-col">
-            <button
-              type="button"
-              className="mb-2 py-1 px-3 rounded shadow border border-blue-400 bg-blue-400 text-white hover:text-blue-400 hover:bg-white"
-              onClick={showMin}
-            >
-              <FontAwesomeIcon className="mr-1" icon={faFile} />
-              New (minimal fields)
-            </button>
-            <button
-              type="button"
-              className="mb-2 py-1 px-3 rounded shadow border border-blue-400 bg-blue-400 text-white hover:text-blue-400 hover:bg-white"
-              onClick={showMax}
-            >
-              <FontAwesomeIcon className="mr-1" icon={faFileAlt} />
-              New (all fields)
-            </button>
             <label
               htmlFor="openFile"
               className="mb-2 py-1 px-3 text-center rounded shadow border border-blue-400 bg-blue-400 text-white hover:text-blue-400 hover:bg-white"
@@ -280,7 +217,7 @@ export default function JsonEditorTab({
                   window.alert('File too large!')
                   return
                 }
-                handleOpen(e.target.files[0])
+                onOpen(e.target.files[0])
               }}
             />
           </div>

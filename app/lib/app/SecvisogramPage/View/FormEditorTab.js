@@ -1,8 +1,6 @@
 import {
   faCheckCircle,
   faExclamationTriangle,
-  faFile,
-  faFileAlt,
   faFolderOpen,
   faMinusSquare,
   faPlusSquare,
@@ -14,7 +12,6 @@ import Document from './FormEditorTab/Document.js'
 import ProductTree from './FormEditorTab/ProductTree.js'
 import ObjectContainer from './FormEditorTab/shared/ObjectContainer.js'
 import Vulnerabilities from './FormEditorTab/Vulnerabilities.js'
-import { useAlert } from './shared/Alert.js'
 
 /**
  * Defines the layout of the form editor.
@@ -25,8 +22,6 @@ import { useAlert } from './shared/Alert.js'
  *  onUpdate: ((update: {}) => void) & ((instancePath: string, update: {}) => void)
  *  onOpen(file: File): void
  *  onDownload(doc: {}): void
- *  onNewDocMin(): void
- *  onNewDocMax(): void
  *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
  *  onCollectGroupIds(): Promise<void | {id: string, name: string}[]>
  * }} props
@@ -36,8 +31,6 @@ export default function FormEditorTab({
   validationErrors: errors,
   onUpdate,
   onOpen,
-  onNewDocMin,
-  onNewDocMax,
   onCollectProductIds,
   onCollectGroupIds,
 }) {
@@ -47,16 +40,6 @@ export default function FormEditorTab({
   const toggleErrors = () => {
     setShowErrors(!showErrors)
     if (!showErrors) setExpanded(true)
-  }
-
-  const confirmMin = () => {
-    onNewDocMin()
-    hideMin()
-  }
-
-  const confirmMax = () => {
-    onNewDocMax()
-    hideMax()
   }
 
   /**
@@ -81,34 +64,8 @@ export default function FormEditorTab({
 
   const { doc } = formValues
 
-  const {
-    show: showMin,
-    hide: hideMin,
-    Alert: MinAlert,
-  } = useAlert({
-    description:
-      'This will create a new CSAF document. All current content will be lost. Are you sure?',
-    confirmLabel: 'Yes, create new document',
-    cancelLabel: 'No, resume editing',
-    confirm: confirmMin,
-  })
-
-  const {
-    show: showMax,
-    hide: hideMax,
-    Alert: MaxAlert,
-  } = useAlert({
-    description:
-      'This will create a new CSAF document. All current content will be lost. Are you sure?',
-    confirmLabel: 'Yes, create new document',
-    cancelLabel: 'No, resume editing',
-    confirm: confirmMax,
-  })
-
   return (
     <>
-      <MinAlert />
-      <MaxAlert />
       <div ref={ref} className="form-editor flex h-full mr-3 bg-white">
         <div className="p-3 w-full">
           <div className={'overflow-auto ' + (showErrors ? 'h-4/5' : 'h-full')}>
@@ -154,24 +111,6 @@ export default function FormEditorTab({
         </div>
         <div className="pl-3 pr-6 py-6 w-72 flex flex-col justify-between">
           <div className="flex flex-col">
-            <button
-              data-testid="new_with_minimal_fields_button"
-              type="button"
-              className="mb-2 py-1 px-3 rounded shadow border border-blue-400 bg-blue-400 text-white hover:text-blue-400 hover:bg-white"
-              onClick={showMin}
-            >
-              <FontAwesomeIcon className="mr-1" icon={faFile} />
-              New (minimal fields)
-            </button>
-            <button
-              data-testid="new_with_all_fields_button"
-              type="button"
-              className="mb-2 py-1 px-3 rounded shadow border border-blue-400 bg-blue-400 text-white hover:text-blue-400 hover:bg-white"
-              onClick={showMax}
-            >
-              <FontAwesomeIcon className="mr-1" icon={faFileAlt} />
-              New (all fields)
-            </button>
             <label
               htmlFor="openFile"
               className="mb-2 py-1 px-3 text-center rounded shadow border border-blue-400 bg-blue-400 text-white hover:text-blue-400 hover:bg-white"
