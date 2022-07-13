@@ -30,7 +30,6 @@ function View({
   isTabLocked,
   data,
   defaultAdvisoryState = null,
-  alert,
   stripResult,
   previewResult,
   strict,
@@ -62,14 +61,18 @@ function View({
   const appConfig = React.useContext(AppConfigContext)
   const userInfo = React.useContext(UserInfoContext)
 
-  const [newDocumentDialogData, setNewDocumentDialogData] = React.useState(
-    /** @type {{ templates: Array<{ templateId: string; templateDescription: string }> } | null} */ (
-      null
-    )
+  const [newDocumentDialog, setNewDocumentDialog] = React.useState(
+    /** @type {JSX.Element | null} */ (null)
   )
   const newDocumentDialogRef = React.useRef(
     /** @type {HTMLDialogElement | null} */ (null)
   )
+  React.useEffect(() => {
+    if (newDocumentDialog) {
+      const modal = /** @type {any} */ (newDocumentDialogRef.current)
+      modal?.showModal()
+    }
+  }, [newDocumentDialog])
 
   const [advisoryState, setAdvisoryState] = React.useState(
     /** @type {import('./View/types.js').AdvisoryState | null} */ (
@@ -86,6 +89,10 @@ function View({
         : state
     )
   }, [data])
+  React.useEffect(() => {
+    uniqueGroupId(true)
+    uniqueProductId(true)
+  }, [advisoryState])
 
   const [isLoading, setLoading] = React.useState(props.isLoading)
   React.useEffect(() => {
@@ -98,6 +105,15 @@ function View({
   React.useEffect(() => {
     setErrors(props.errors)
   }, [props.errors])
+
+  const [alert, setAlert] = React.useState(
+    /** @type {JSX.Element | null} */ (
+      props.alert ? <Alert {...props.alert} /> : null
+    )
+  )
+  React.useEffect(() => {
+    setAlert(props.alert ? <Alert {...props.alert} /> : null)
+  }, [props.alert])
 
   /**
    * Initial values for the editors. Can be used to detect changes of the
@@ -194,14 +210,36 @@ function View({
   }, [formValues.doc, onCollectGroupIds])
 
   /**
+   * @param {() => void} callback
+   */
+  const confirmDocumentReplacement = (callback) => {
+    if (formValues !== originalValues) {
+      setAlert(
+        <Alert
+          description="This will create a new CSAF document. All current content will be lost. Are you sure?"
+          confirmLabel="Yes, create new document"
+          cancelLabel="No, resume editing"
+          onCancel={() => {
+            setAlert(null)
+          }}
+          onConfirm={() => {
+            setAlert(null)
+            callback()
+          }}
+        />
+      )
+    } else {
+      callback()
+    }
+  }
+
+  /**
    * @param {{}} doc
    * @param {() => void} callback
    */
   const createDocFromTemplate = (doc, callback) => {
     if (!userInfo) {
       setAdvisoryState({ type: 'NEW_ADVISORY', csaf: doc })
-      uniqueGroupId(true)
-      uniqueProductId(true)
       callback()
     } else {
       setLoading(true)
@@ -215,8 +253,6 @@ function View({
             revision: advisoryData.revision,
           },
         })
-        uniqueGroupId(true)
-        uniqueProductId(true)
         setLoading(false)
         callback()
       })
@@ -295,33 +331,8 @@ function View({
 
   return (
     <>
-      {alert ? <Alert {...alert} /> : null}
-      <NewDocumentDialog
-        ref={newDocumentDialogRef}
-        data={newDocumentDialogData}
-        onSubmit={({ templateId }) => {
-          setLoading(true)
-          onGetTemplateContent({ templateId }, (templateContent) => {
-            onCreateAdvisory(
-              { csaf: templateContent },
-              ({ id: advisoryId }) => {
-                onLoadAdvisory({ advisoryId }, (advisory) => {
-                  setAdvisoryState({
-                    type: 'ADVISORY',
-                    advisory: {
-                      advisoryId,
-                      csaf: advisory.csaf,
-                      documentTrackingId: advisory.documentTrackingId,
-                      revision: advisory.revision,
-                    },
-                  })
-                  setLoading(false)
-                })
-              }
-            )
-          })
-        }}
-      />
+      {alert}
+      {newDocumentDialog}
       <div className="mx-auto w-full h-screen flex flex-col">
         <div>
           <div className="flex justify-between bg-gray-700">
@@ -428,21 +439,91 @@ function View({
           {activeTab !== 'DOCUMENTS' && (
             <div className="bg-gray-400 flex items-center justify-between">
               <div className="pl-5">
-                {appConfig.loginAvailable &&
-                userInfo &&
-                canCreateDocuments(userInfo.groups) ? (
+                {(appConfig.loginAvailable &&
+                  userInfo &&
+                  canCreateDocuments(userInfo.groups)) ||
+                !appConfig.loginAvailable ? (
                   <button
                     data-testid="new_document_button"
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                     onClick={() => {
-                      setLoading(true)
-                      onGetTemplates((templates) => {
-                        setLoading(false)
-                        setNewDocumentDialogData({ templates })
-                        /** @type {any} */
-                        const dialog = newDocumentDialogRef.current
-                        dialog?.showModal()
-                      })
+                      if (!appConfig.loginAvailable) {
+                        onGetDocMin((minimalTemplate) => {
+                          onGetDocMax((allFieldsTemplate) => {
+                            const templates = new Map([
+                              ['MINIMAL', minimalTemplate],
+                              ['ALL_FIELDS', allFieldsTemplate],
+                            ])
+                            setNewDocumentDialog(
+                              <NewDocumentDialog
+                                ref={newDocumentDialogRef}
+                                data={{
+                                  templates: [
+                                    {
+                                      templateId: 'MINIMAL',
+                                      templateDescription: 'Minimal',
+                                    },
+                                    {
+                                      templateId: 'ALL_FIELDS',
+                                      templateDescription: 'All Fields',
+                                    },
+                                  ],
+                                }}
+                                onSubmit={({ templateId }) => {
+                                  confirmDocumentReplacement(() => {
+                                    setAdvisoryState({
+                                      type: 'NEW_ADVISORY',
+                                      csaf: templates.get(templateId) ?? {},
+                                    })
+                                  })
+                                }}
+                              />
+                            )
+                          })
+                        })
+                      } else {
+                        setLoading(true)
+                        onGetTemplates((templates) => {
+                          setLoading(false)
+                          setNewDocumentDialog(
+                            <NewDocumentDialog
+                              ref={newDocumentDialogRef}
+                              data={{ templates }}
+                              onSubmit={({ templateId }) => {
+                                confirmDocumentReplacement(() => {
+                                  setLoading(true)
+                                  onGetTemplateContent(
+                                    { templateId },
+                                    (templateContent) => {
+                                      onCreateAdvisory(
+                                        { csaf: templateContent },
+                                        ({ id: advisoryId }) => {
+                                          onLoadAdvisory(
+                                            { advisoryId },
+                                            (advisory) => {
+                                              setAdvisoryState({
+                                                type: 'ADVISORY',
+                                                advisory: {
+                                                  advisoryId,
+                                                  csaf: advisory.csaf,
+                                                  documentTrackingId:
+                                                    advisory.documentTrackingId,
+                                                  revision: advisory.revision,
+                                                },
+                                              })
+                                              setLoading(false)
+                                            }
+                                          )
+                                        }
+                                      )
+                                    }
+                                  )
+                                })
+                              }}
+                            />
+                          )
+                        })
+                      }
                     }}
                   >
                     New

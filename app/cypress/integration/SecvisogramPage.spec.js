@@ -88,6 +88,34 @@ describe('SecvisogramPage', () => {
     }
   })
 
+  describe('can open a minimal new document in standalone mode', function () {
+    for (const template of [
+      { templateId: 'MINIMAL' },
+      { templateId: 'ALL_FIELDS' },
+    ]) {
+      it(`templateId: ${template.templateId}`, function () {
+        cy.intercept('/.well-known/appspecific/de.bsi.secvisogram.json', {
+          statusCode: 404,
+          body: {},
+        }).as('wellKnownAppConfig')
+
+        cy.visit('?tab=EDITOR')
+        cy.wait('@wellKnownAppConfig')
+
+        cy.get('[data-testid="new_document_button"]').click()
+
+        cy.get(`select[data-testid="new_document-templates-select"]`).select(
+          template.templateId
+        )
+
+        cy.get(`[data-testid="new_document-create_document_button"]`).click()
+        cy.get('[data-testid="new_document_dialog"]').then((el) => {
+          expect(/** @type {any} */ (el[0]).open).to.be.false
+        })
+      })
+    }
+  })
+
   describe('can open a new document based on a template', function () {
     for (const user of getUsers()) {
       for (const template of getTemplates()) {
