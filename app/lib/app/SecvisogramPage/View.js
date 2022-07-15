@@ -405,23 +405,28 @@ function View({
                         onGetDocMin((minimalTemplate) => {
                           onGetDocMax((allFieldsTemplate) => {
                             const templates = new Map([
-                              ['MINIMAL', minimalTemplate],
-                              ['ALL_FIELDS', allFieldsTemplate],
+                              [
+                                'MINIMAL',
+                                {
+                                  templateContent: minimalTemplate,
+                                  templateDescription: 'Minimal',
+                                },
+                              ],
+                              [
+                                'ALL_FIELDS',
+                                {
+                                  templateContent: allFieldsTemplate,
+                                  templateDescription: 'All Fields',
+                                },
+                              ],
                             ])
                             setNewDocumentDialog(
                               <NewDocumentDialog
                                 ref={newDocumentDialogRef}
                                 data={{
-                                  templates: [
-                                    {
-                                      templateId: 'MINIMAL',
-                                      templateDescription: 'Minimal',
-                                    },
-                                    {
-                                      templateId: 'ALL_FIELDS',
-                                      templateDescription: 'All Fields',
-                                    },
-                                  ],
+                                  templates: Array.from(
+                                    templates.entries()
+                                  ).map((e) => ({ ...e[1], templateId: e[0] })),
                                 }}
                                 onSubmit={(params) => {
                                   confirmDocumentReplacement(() => {
@@ -429,8 +434,8 @@ function View({
                                       setAdvisoryState({
                                         type: 'NEW_ADVISORY',
                                         csaf:
-                                          templates.get(params.templateId) ??
-                                          {},
+                                          templates.get(params.templateId)
+                                            ?.templateContent ?? {},
                                       })
                                     } else {
                                       onOpen(params.file)
@@ -456,27 +461,11 @@ function View({
                                     onGetTemplateContent(
                                       { templateId: params.templateId },
                                       (templateContent) => {
-                                        onCreateAdvisory(
-                                          { csaf: templateContent },
-                                          ({ id: advisoryId }) => {
-                                            onLoadAdvisory(
-                                              { advisoryId },
-                                              (advisory) => {
-                                                setAdvisoryState({
-                                                  type: 'ADVISORY',
-                                                  advisory: {
-                                                    advisoryId,
-                                                    csaf: advisory.csaf,
-                                                    documentTrackingId:
-                                                      advisory.documentTrackingId,
-                                                    revision: advisory.revision,
-                                                  },
-                                                })
-                                                setLoading(false)
-                                              }
-                                            )
-                                          }
-                                        )
+                                        setAdvisoryState({
+                                          type: 'NEW_ADVISORY',
+                                          csaf: templateContent,
+                                        })
+                                        setLoading(false)
                                       }
                                     )
                                   } else {
@@ -532,6 +521,7 @@ function View({
                   </button>
                 ) : null}
                 <button
+                  data-testid="download_button"
                   className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                   onClick={() => {
                     onDownload(formValues.doc)
