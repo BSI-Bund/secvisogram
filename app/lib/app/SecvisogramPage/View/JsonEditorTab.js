@@ -9,6 +9,7 @@ import React from 'react'
 import useDebounce from './shared/useDebounce.js'
 import MonacoEditor from 'react-monaco-editor'
 import myJson from './JsonEditorTab/Monaco_editor_schema.json'
+import * as jsonMap from 'json-source-map'
 
 /**
  * @param {{
@@ -36,6 +37,7 @@ export default function JsonEditorTab({
   const { doc } = formValues
 
   const [editor, setEditor] = React.useState(/** @type {MonacoEditor} */ null)
+  const [monaco, setMonaco] = React.useState(/** @type {any} */ null)
 
   const stringifiedDoc = React.useMemo(
     () => JSON.stringify(doc, null, 2),
@@ -115,6 +117,27 @@ export default function JsonEditorTab({
     }
   }, [errors])
 
+  React.useEffect(() => {
+    if (monaco && doc) {
+      let errorList = []
+      let result = jsonMap.stringify(doc, null, 2)
+      for (const e of errors) {
+        let path = e.instancePath
+        let positionData = result.pointers[path]
+
+        errorList.push({
+          startLineNumber: positionData.value.line + 1,
+          startColumn: positionData.value.column + 1,
+          endLineNumber: positionData.valueEnd.line + 1,
+          endColumn: positionData.valueEnd.column + 1,
+          message: e.message,
+          severity: monaco.MarkerSeverity.error,
+        })
+      }
+      monaco.editor.setModelMarkers(editor.getModel(), 'setMarkers', errorList)
+    }
+  }, [errors])
+
   const {
     show: showMin,
     hide: hideMin,
@@ -147,6 +170,7 @@ export default function JsonEditorTab({
   ) => {
     console.log('editorDidMount', editor)
     setEditor(editor)
+    setMonaco(monaco)
 
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
@@ -168,7 +192,7 @@ export default function JsonEditorTab({
     /** @type {any} */ e
   ) => {
     // console.log('onChangeMonaco', newValue, e)
-    console.log(editor.getModel().getValue())
+    console.log(editor.getModel().getAllDecorations())
 
     setState((state) => ({
       ...state,
