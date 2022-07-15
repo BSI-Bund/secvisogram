@@ -493,43 +493,52 @@ function View({
                     New
                   </button>
                 ) : null}
-                {advisoryState?.type === 'NEW_ADVISORY' ? (
-                  <button
-                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                    onClick={() => {
-                      onDownload(formValues.doc)
-                    }}
-                  >
-                    Save
-                  </button>
-                ) : advisoryState?.type === 'ADVISORY' ? (
+                {userInfo ? (
                   <button
                     data-testid="save_button"
                     type="button"
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                     onClick={() => {
-                      setSaving(true)
-                      onUpdateAdvisory(
-                        {
-                          advisoryId: advisoryState.advisory.advisoryId,
-                          revision: advisoryState.advisory.revision,
-                          csaf: formValues.doc,
-                        },
-                        () => {
-                          onLoadAdvisory(
-                            { advisoryId: advisoryState.advisory.advisoryId },
-                            (advisory) => {
-                              setAdvisoryState({ type: 'ADVISORY', advisory })
-                              setSaving(false)
-                            }
-                          )
-                        }
-                      )
+                      if (advisoryState?.type === 'NEW_ADVISORY') {
+                        setSaving(true)
+                        onCreateAdvisory({ csaf: formValues.doc }, ({ id }) => {
+                          onLoadAdvisory({ advisoryId: id }, (advisory) => {
+                            setAdvisoryState({ type: 'ADVISORY', advisory })
+                            setSaving(false)
+                          })
+                        })
+                      } else if (advisoryState?.type === 'ADVISORY') {
+                        setSaving(true)
+                        onUpdateAdvisory(
+                          {
+                            advisoryId: advisoryState.advisory.advisoryId,
+                            revision: advisoryState.advisory.revision,
+                            csaf: formValues.doc,
+                          },
+                          () => {
+                            onLoadAdvisory(
+                              { advisoryId: advisoryState.advisory.advisoryId },
+                              (advisory) => {
+                                setAdvisoryState({ type: 'ADVISORY', advisory })
+                                setSaving(false)
+                              }
+                            )
+                          }
+                        )
+                      }
                     }}
                   >
                     Save
                   </button>
                 ) : null}
+                <button
+                  className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                  onClick={() => {
+                    onDownload(formValues.doc)
+                  }}
+                >
+                  Download
+                </button>
                 {appConfig.loginAvailable && userInfo && (
                   <button
                     data-testid="validate_button"
