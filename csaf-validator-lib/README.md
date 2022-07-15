@@ -33,6 +33,7 @@
             <li><a href="#module-informativetestsjs">Module informativeTests.js</a></li>
             <li><a href="#module-validatejs">Module validate.js</a></li>
             <li><a href="#module-stripjs">Module strip.js</a></li>
+            <li><a href="#module-cwejs">Module cwe.js</a></li>
           </ul>
         </li>
       </ul>
@@ -244,6 +245,14 @@ type StripFn = (
 }>
 
 export default StripFn
+```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+#### Module `cwe.js`
+
+```typescript
+export const weaknesses: Array<{ id: string; name: string }>
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>

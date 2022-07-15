@@ -11,6 +11,20 @@ export default {
       {
         product_id: 'CSAFPID-0001',
         name: 'Some sample product',
+        product_identification_helper: {
+          hashes: [
+            {
+              file_hashes: [
+                {
+                  algorithm: 'sha256',
+                  value:
+                    '6ae24620ea9656230f49234efd0789356ae24620ea9656230f49234efd078935',
+                },
+              ],
+              filename: 'product_a.so',
+            },
+          ],
+        },
       },
     ],
   },

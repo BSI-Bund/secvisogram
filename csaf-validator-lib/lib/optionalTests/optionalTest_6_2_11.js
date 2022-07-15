@@ -46,11 +46,15 @@ export default function optionalTest_6_2_11(doc) {
       /** @type {Array<{ instancePath: string; message: string }>} */ ([]),
   }
 
-  if (!validate(doc)) {
+  function warn() {
     ctx.warnings.push({
       message: 'missing canonical url',
-      instancePath: '/document',
+      instancePath: '/document/references',
     })
+  }
+
+  if (!validate(doc)) {
+    warn()
     return ctx
   }
 
@@ -58,17 +62,15 @@ export default function optionalTest_6_2_11(doc) {
     (r) =>
       validateReference(r) &&
       r.category === 'self' &&
+      r.url.startsWith('https://') &&
       r.url.endsWith(
-        doc.document.tracking.id.toLowerCase().replace(/[^a-z0-9\+]/g, '_') +
+        doc.document.tracking.id.toLowerCase().replace(/[^+\-a-z0-9]+/g, '_') +
           '.json'
       )
   )
 
   if (!hasCanonicalURL) {
-    ctx.warnings.push({
-      message: 'missing canonical url',
-      instancePath: '/document',
-    })
+    warn()
   }
 
   return ctx
