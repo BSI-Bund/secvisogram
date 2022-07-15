@@ -19,6 +19,7 @@ declare module '*.json' {
   const content: {}
   export default content
 }
+
 declare module 'json-source-map' {
   export interface ParseOptions {
     bigint?: boolean
