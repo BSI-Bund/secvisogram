@@ -170,17 +170,10 @@ describe('SecvisogramPage / DocumentsTab', function () {
             cy.wait('@apiGetUserInfo')
             cy.wait('@apiGetAdvisories')
 
-            const httpPathSegments = /** @type {const} */ ({
-              Review: 'Review',
-              Approved: 'Approve',
-              Published: 'Publish',
-              Draft: 'Draft',
-              RfPublication: 'RfPublication',
-            })
             const documentTrackingStatus = 'Final'
             const proposedTime = '2017-06-01T08:30'
             const apiChangeWorkflowStateURL = new URL(
-              `/api/2.0/advisories/${advisory.advisoryId}/workflowstate/${httpPathSegments[workflowState]}`,
+              `/api/2.0/advisories/${advisory.advisoryId}/workflowstate/${workflowState}`,
               window.location.href
             )
             apiChangeWorkflowStateURL.searchParams.set(

@@ -28,17 +28,8 @@ export async function changeWorkflowState({
   proposedTime,
 }) {
   const newWorkflowState = workflowState
-  const httpPathSegments = new Map([
-    ['Review', 'Review'],
-    ['Approved', 'Approve'],
-    ['Published', 'Publish'],
-    ['Draft', 'Draft'],
-    ['RfPublication', 'RfPublication'],
-  ])
   const changeWorkflowStateURL = new URL(
-    `/api/2.0/advisories/${advisoryId}/workflowstate/${httpPathSegments.get(
-      newWorkflowState
-    )}`,
+    `/api/2.0/advisories/${advisoryId}/workflowstate/${newWorkflowState}`,
     window.location.href
   )
   changeWorkflowStateURL.searchParams.set('revision', revision)
