@@ -2,5 +2,10 @@ export interface Props {
   data: {
     templates: Array<{ templateId: string; templateDescription: string }>
   } | null
-  onSubmit(params: { templateId: string }): void
+  defaultSource?: 'TEMPLATE' | 'FILESYSTEM' | ''
+  onSubmit(
+    params:
+      | { source: 'TEMPLATE'; templateId: string }
+      | { source: 'FILESYSTEM'; file: File }
+  ): void
 }
