@@ -33,7 +33,7 @@ export default function (doc, hashName) {
     if (hashSet.has(hashName) && hashSet.size === 1) {
       ctx.warnings.push({
         instancePath: path,
-        message: 'use of md5 as the only hash algorithm',
+        message: `use of ${hashName} as the only hash algorithm`,
       })
     }
   })

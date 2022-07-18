@@ -36,7 +36,18 @@ const inputSchema = /** @type {const} */ ({
       },
     },
   },
+
+  optionalProperties: {
+    document: {
+      additionalProperties: true,
+
+      optionalProperties: {
+        category: { type: 'string' },
+      },
+    },
+  },
 })
+const validate = ajv.compile(inputSchema)
 
 const fullProductNameSchema = /** @type {const} */ ({
   additionalProperties: true,
@@ -45,9 +56,30 @@ const fullProductNameSchema = /** @type {const} */ ({
     product_id: { type: 'string' },
   },
 })
-
-const validate = ajv.compile(inputSchema)
 const validateFullProductName = ajv.compile(fullProductNameSchema)
+
+const branchSchema = /** @type {const} */ ({
+  additionalProperties: true,
+  optionalProperties: {
+    product: fullProductNameSchema,
+    branches: {
+      elements: {
+        additionalProperties: true,
+        properties: {},
+      },
+    },
+  },
+})
+const validateBranch = ajv.compile(branchSchema)
+
+const relationshipSchema = /** @type {const} */ ({
+  additionalProperties: true,
+
+  properties: {
+    full_product_name: fullProductNameSchema,
+  },
+})
+const validateRelationship = ajv.compile(relationshipSchema)
 
 /**
  * @param {any} doc
@@ -57,9 +89,45 @@ export default function optionalTest_6_2_1(doc) {
   const warnings = []
   const context = { warnings }
 
-  if (!validate(doc)) {
+  if (
+    !validate(doc) ||
+    doc.document?.category === 'csaf_informational_advisory'
+  ) {
     return context
   }
+
+  /**
+   * @param {object} params
+   * @param {string} params.path
+   * @param {unknown[]} params.branches
+   */
+  function checkBranches({ path, branches }) {
+    branches.forEach((branch, branchIndex) => {
+      if (validateBranch(branch)) {
+        if (
+          typeof branch.product?.product_id === 'string' &&
+          !isReferenced(doc, branch.product.product_id)
+        ) {
+          warnings.push({
+            instancePath: `${path}/${branchIndex}/product/product_id`,
+            message: 'is not referenced',
+          })
+        }
+
+        if (Array.isArray(branch.branches)) {
+          checkBranches({
+            path: `${path}/${branchIndex}/branches`,
+            branches: branch.branches,
+          })
+        }
+      }
+    })
+  }
+
+  checkBranches({
+    path: '/product_tree/branches',
+    branches: doc.product_tree?.branches ?? [],
+  })
 
   doc.product_tree.full_product_names?.forEach(
     (fullProductName, fullProductNameIndex) => {
@@ -72,6 +140,16 @@ export default function optionalTest_6_2_1(doc) {
       }
     }
   )
+
+  doc.product_tree.relationships?.forEach((relationship, relationshipIndex) => {
+    if (!validateRelationship(relationship)) return
+    if (!isReferenced(doc, relationship.full_product_name.product_id)) {
+      context.warnings.push({
+        instancePath: `/product_tree/relationships/${relationshipIndex}/full_product_name/product_id`,
+        message: 'is not referenced',
+      })
+    }
+  })
 
   return context
 }
@@ -259,14 +337,14 @@ function isReferenced(doc, productId) {
   ) {
     referenced = doc.vulnerabilities.some((vulnerability) => {
       return (
-        vulnerability.remediations?.some(
-          (remediation) => remediation.product_ids?.includes(productId) ?? false
+        vulnerability.remediations?.some((remediation) =>
+          remediation.product_ids?.includes(productId)
         ) ||
-        vulnerability.scores?.some(
-          (score) => score.products?.includes(productId) ?? false
+        vulnerability.scores?.some((score) =>
+          score.products?.includes(productId)
         ) ||
-        vulnerability.threats?.some(
-          (threat) => threat.product_ids?.includes(productId) ?? false
+        vulnerability.threats?.some((threat) =>
+          threat.product_ids?.includes(productId)
         ) ||
         false
       )
