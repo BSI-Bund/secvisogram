@@ -10,7 +10,11 @@ dialog::backdrop {
   display: none;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover:not(button) .dropdown-content {
+  display: block;
+}
+
+input[type='checkbox'].dropdown:checked + .dropdown-content {
   display: block;
 }
 

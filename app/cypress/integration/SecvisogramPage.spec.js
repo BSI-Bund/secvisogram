@@ -312,6 +312,86 @@ describe('SecvisogramPage', () => {
     }
   })
 
+  describe('can export a document from server', function () {
+    for (const user of getUsers()) {
+      for (const advisory of getAdvisories()) {
+        it(`user: ${user.preferredUsername}, advisoryId: ${advisory.advisoryId}`, function () {
+          cy.intercept(
+            '/.well-known/appspecific/de.bsi.secvisogram.json',
+            getLoginEnabledConfig()
+          ).as('wellKnownAppConfig')
+          cy.intercept(
+            getLoginEnabledConfig().userInfoUrl,
+            getUserInfo(user)
+          ).as('apiGetUserInfo')
+          cy.intercept('/api/2.0/advisories/', getGetAdvisoriesResponse()).as(
+            'apiGetAdvisories'
+          )
+
+          const advisoryDetail = getGetAdvisoryDetailResponse({
+            advisoryId: advisory.advisoryId,
+          })
+          cy.intercept(
+            `/api/2.0/advisories/${advisory.advisoryId}/`,
+            advisoryDetail
+          ).as('apiGetAdvisoryDetail')
+
+          cy.visit('?tab=DOCUMENTS')
+          cy.wait('@wellKnownAppConfig')
+          cy.wait('@apiGetUserInfo')
+          cy.wait('@apiGetAdvisories')
+
+          cy.get(
+            `[data-testid="advisory-${advisory.advisoryId}-list_entry-open_button"]`
+          ).click()
+          cy.wait('@apiGetAdvisoryDetail')
+          cy.get('[data-testid="loading_indicator"]').should('not.exist')
+          cy.location('search').should('equal', '?tab=EDITOR')
+
+          cy.get('[data-testid="export_button"]').click()
+          for (const type of /** @type {const} */ ([
+            'Markdown',
+            'HTML',
+            'JSON',
+            'PDF',
+          ])) {
+            const fileContent = '{"my": "doc"}'
+            cy.intercept(
+              `/api/2.0/advisories/${advisory.advisoryId}/csaf?format=${type}`,
+              {
+                body: fileContent,
+                headers: {
+                  'Content-Type':
+                    type === 'Markdown'
+                      ? 'text/plain'
+                      : type === 'HTML'
+                      ? 'text/html'
+                      : type === 'JSON'
+                      ? 'application/json'
+                      : 'application/pdf',
+                },
+              }
+            ).as('apiExportAdvisory')
+            cy.get(
+              `[data-testid="export_button-${type.toLowerCase()}"]`
+            ).click()
+            cy.wait('@apiExportAdvisory')
+            cy.readFile(
+              `cypress/downloads/${advisory.advisoryId}.${type.toLowerCase()}`,
+              'utf-8'
+            ).then((c) => {
+              if (type === 'JSON') {
+                expect(c).to.deep.equal(JSON.parse(fileContent))
+              } else {
+                expect(c).to.equal(fileContent)
+              }
+            })
+          }
+        })
+      }
+    }
+  })
+
   describe('View', () => {
     describe('Reducer', () => {
       const generatorEngineData = {

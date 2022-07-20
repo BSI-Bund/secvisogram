@@ -533,6 +533,73 @@ function View({
                 >
                   Download
                 </button>
+                {appConfig.loginAvailable &&
+                  userInfo &&
+                  advisoryState?.type === 'ADVISORY' && (
+                    <>
+                      <div className="inline-block relative">
+                        <label
+                          htmlFor="export_button"
+                          data-testid="export_button"
+                          className="cursor-pointer block text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                        >
+                          Export
+                        </label>
+                        <input
+                          id="export_button"
+                          type="checkbox"
+                          className="dropdown hidden"
+                        />
+                        <div
+                          className="dropdown-content absolute z-10 left-0 bottom-0 shadow p-2 pr-4 bg-white"
+                          style={{ height: 125, marginBottom: -125 }}
+                        >
+                          <div className="flex flex-col gap-1">
+                            <a
+                              data-testid="export_button-markdown"
+                              className="block"
+                              href={`/api/2.0/advisories/${advisoryState.advisory.advisoryId}/csaf?format=Markdown`}
+                              download={
+                                advisoryState.advisory.advisoryId + '.markdown'
+                              }
+                            >
+                              Markdown
+                            </a>
+                            <a
+                              data-testid="export_button-json"
+                              className="block"
+                              href={`/api/2.0/advisories/${advisoryState.advisory.advisoryId}/csaf?format=JSON`}
+                              download={
+                                advisoryState.advisory.advisoryId + '.json'
+                              }
+                            >
+                              JSON
+                            </a>
+                            <a
+                              data-testid="export_button-html"
+                              className="block"
+                              href={`/api/2.0/advisories/${advisoryState.advisory.advisoryId}/csaf?format=HTML`}
+                              download={
+                                advisoryState.advisory.advisoryId + '.html'
+                              }
+                            >
+                              HTML
+                            </a>
+                            <a
+                              data-testid="export_button-pdf"
+                              className="block"
+                              href={`/api/2.0/advisories/${advisoryState.advisory.advisoryId}/csaf?format=PDF`}
+                              download={
+                                advisoryState.advisory.advisoryId + '.pdf'
+                              }
+                            >
+                              PDF
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 {appConfig.loginAvailable && userInfo && (
                   <button
                     data-testid="validate_button"
