@@ -5,6 +5,7 @@ import PreviewTab from './PreviewTab.js'
 type Advisory = {
   advisoryId: string
   revision: string
+  changeable: boolean
   csaf: {
     document?: {
       title?: string

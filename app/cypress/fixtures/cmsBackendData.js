@@ -20,7 +20,7 @@ const users = [
  * @param {string} userName
  * @returns
  */
-function canChangeDocument(userName) {
+export function canChangeDocument(userName) {
   return users.find((u) => u.user === userName)?.groups.includes('editor')
 }
 
@@ -96,14 +96,16 @@ export function getGetTemplateContentResponse({ template }) {
 
 /**
  * @param {object} params
- * @param {{ advisoryId: string }} params.advisory
+ * @param {string} params.advisoryId
+ * @param {string} [params.userName]
  */
-export function getGetAdvisoryDetailResponse({ advisory }) {
-  const res = testsSample.advisories.find(
-    (a) => a.advisoryId === advisory.advisoryId
-  )
+export function getGetAdvisoryDetailResponse({ advisoryId, userName }) {
+  const res = testsSample.advisories.find((a) => a.advisoryId === advisoryId)
   if (!res) throw new Error('Advisory not found')
-  return res
+  return {
+    ...res,
+    changeable: userName ? canChangeDocument(userName) : res.changeable,
+  }
 }
 
 /**
