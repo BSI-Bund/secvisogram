@@ -482,13 +482,17 @@ function View({
                     New
                   </button>
                 ) : null}
-                {userInfo ? (
+                {userInfo &&
+                ((advisoryState?.type === 'ADVISORY' &&
+                  advisoryState.advisory.changeable) ||
+                  (advisoryState?.type === 'NEW_ADVISORY' &&
+                    canCreateDocuments(userInfo.groups))) ? (
                   <button
                     data-testid="save_button"
                     type="button"
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                     onClick={() => {
-                      if (advisoryState?.type === 'NEW_ADVISORY') {
+                      if (advisoryState.type === 'NEW_ADVISORY') {
                         setSaving(true)
                         onCreateAdvisory({ csaf: formValues.doc }, ({ id }) => {
                           onLoadAdvisory({ advisoryId: id }, (advisory) => {
@@ -496,7 +500,7 @@ function View({
                             setSaving(false)
                           })
                         })
-                      } else if (advisoryState?.type === 'ADVISORY') {
+                      } else if (advisoryState.type === 'ADVISORY') {
                         setSaving(true)
                         onUpdateAdvisory(
                           {

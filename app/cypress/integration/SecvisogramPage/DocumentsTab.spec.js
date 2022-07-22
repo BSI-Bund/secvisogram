@@ -2,7 +2,6 @@ import { getLoginEnabledConfig } from '../../fixtures/appConfigData.js'
 import {
   canDeleteDocument,
   getAdvisories,
-  getAdvisory,
   getGetAdvisoriesResponse,
   getGetAdvisoryDetailResponse,
   getUserInfo,
@@ -58,7 +57,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
             getGetAdvisoriesResponse(user.user)
           ).as('apiGetAdvisories')
           const advisoryDetail = getGetAdvisoryDetailResponse({
-            advisory: getAdvisory({ advisoryId: advisory.advisoryId }),
+            advisoryId: advisory.advisoryId,
           })
           cy.intercept(
             {
@@ -118,7 +117,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
             getUserInfo(user)
           ).as('apiGetUserInfo')
           const advisoryDetail = getGetAdvisoryDetailResponse({
-            advisory: getAdvisory({ advisoryId: advisory.advisoryId }),
+            advisoryId: advisory.advisoryId,
           })
           cy.intercept(
             `/api/2.0/advisories/${advisory.advisoryId}/`,
@@ -161,7 +160,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
             cy.intercept(
               `/api/2.0/advisories/${advisory.advisoryId}/`,
               getGetAdvisoryDetailResponse({
-                advisory,
+                advisoryId: advisory.advisoryId,
               })
             ).as('apiGetAdvisoryDetail')
 

@@ -88,6 +88,7 @@ export const tests = [
           type: 'ADVISORY',
           advisory: {
             csaf: {},
+            changeable: true,
             advisoryId: 'my-advisory',
             revision: 'my-revision',
             documentTrackingId: 'My_document',
@@ -106,6 +107,7 @@ export const tests = [
           type: 'ADVISORY',
           advisory: {
             csaf: {},
+            changeable: true,
             advisoryId: 'my-advisory',
             revision: 'my-revision',
             documentTrackingId: '',

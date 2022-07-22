@@ -7,7 +7,6 @@ import docMin from '../../lib/app/shared/Core/doc-min.json'
 import { canCreateDocuments } from '../../lib/app/shared/permissions.js'
 import { getLoginEnabledConfig } from '../fixtures/appConfigData.js'
 import {
-  getAdvisory,
   getCreateAdvisoryResponse,
   getGetAdvisoriesResponse,
   getGetAdvisoryDetailResponse,
@@ -39,7 +38,7 @@ describe('SecvisogramPage', () => {
             'apiGetAdvisories'
           )
           const advisoryDetail = getGetAdvisoryDetailResponse({
-            advisory: getAdvisory({ advisoryId }),
+            advisoryId,
           })
           cy.intercept(
             `/api/2.0/advisories/${advisory.advisoryId}/`,
@@ -175,9 +174,7 @@ describe('SecvisogramPage', () => {
           'GET',
           `/api/2.0/advisories/${createAdvisoryResponse.id}/`,
           getGetAdvisoryDetailResponse({
-            advisory: getAdvisory({
-              advisoryId: createAdvisoryResponse.id,
-            }),
+            advisoryId: createAdvisoryResponse.id,
           })
         ).as('apiGetAdvisoryDetail')
         cy.get('[data-testid="save_button"]').click()
@@ -300,9 +297,7 @@ describe('SecvisogramPage', () => {
               'GET',
               `/api/2.0/advisories/${createAdvisoryResponse.id}/`,
               getGetAdvisoryDetailResponse({
-                advisory: getAdvisory({
-                  advisoryId: createAdvisoryResponse.id,
-                }),
+                advisoryId: createAdvisoryResponse.id,
               })
             ).as('apiGetAdvisoryDetail')
             cy.get('[data-testid="save_button"]').click()
