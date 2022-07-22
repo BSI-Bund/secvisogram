@@ -2,6 +2,7 @@ import { canCreateDocuments } from '../../../lib/app/shared/permissions.js'
 import { getLoginEnabledConfig } from '../../fixtures/appConfigData.js'
 import {
   canChangeDocument,
+  getAdvisories,
   getCreateAdvisoryResponse,
   getGetAdvisoriesResponse,
   getGetAdvisoryDetailResponse,
@@ -12,7 +13,7 @@ import {
 describe('SecvisogramPage / EditorTab', function () {
   describe('can save new documents', function () {
     for (const user of getUsers()) {
-      for (const advisory of getGetAdvisoriesResponse(user.user)) {
+      for (const advisory of getAdvisories()) {
         it(`user: ${user.preferredUsername}, advisoryId: ${advisory.advisoryId}`, function () {
           cy.intercept(
             '/.well-known/appspecific/de.bsi.secvisogram.json',
@@ -73,7 +74,7 @@ describe('SecvisogramPage / EditorTab', function () {
 
   describe('can save documents', function () {
     for (const user of getUsers()) {
-      for (const advisory of getGetAdvisoriesResponse(user.user)) {
+      for (const advisory of getAdvisories()) {
         it(`user: ${user.preferredUsername}, advisoryId: ${
           advisory.advisoryId
         }, canChangeDocument: ${canChangeDocument(user.user)}`, function () {

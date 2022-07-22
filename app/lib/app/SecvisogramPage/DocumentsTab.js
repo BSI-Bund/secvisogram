@@ -1,11 +1,11 @@
 import React from 'react'
 import { useErrorHandler } from 'react-error-boundary'
-import { createNewVersion, getAdvisoryDetail } from '../shared/api/backend.js'
 import {
   changeWorkflowState,
-  deleteAdvisory,
-  getData,
-} from './DocumentsTab/service.js'
+  createNewVersion,
+  getAdvisoryDetail,
+} from '../shared/api/backend.js'
+import { deleteAdvisory, getData } from './DocumentsTab/service.js'
 import DocumentsTabView from './DocumentsTab/View.js'
 
 /** @typedef {React.ComponentProps<typeof DocumentsTabView>} ViewProps */
@@ -32,8 +32,30 @@ export default function DocumentsTab(props) {
       onDeleteAdvisory={(params, callback) => {
         deleteAdvisory(params).then(callback).catch(handleError)
       }}
-      onChangeWorkflowState={(params, callback) => {
-        changeWorkflowState(params).then(callback).catch(handleError)
+      onChangeWorkflowState={(
+        { advisoryId, workflowState, documentTrackingStatus, proposedTime },
+        callback
+      ) => {
+        getAdvisoryDetail({ advisoryId })
+          .then(({ revision }) =>
+            changeWorkflowState({
+              advisoryId,
+              revision,
+              workflowState,
+              documentTrackingStatus,
+              proposedTime,
+            })
+          )
+          .then(
+            () => ({ statusCode: 200 }),
+            (err) => {
+              if (err.status === 422) {
+                return { statusCode: 422 }
+              }
+              throw err
+            }
+          )
+          .then(callback, handleError)
       }}
       onCreateNewVersion={({ advisoryId }, callback) => {
         getAdvisoryDetail({

@@ -12,6 +12,7 @@ interface Data {
 
 export interface Props {
   defaultData?: Data | null
+  defaultError?: { title: string; message: string } | null
   onGetData(callback: (data: Data) => void): void
   onDeleteAdvisory(params: { advisoryId: string }, callback: () => void): void
   onOpenAdvisory(params: { advisoryId: string }, callback: () => void): void
@@ -22,7 +23,7 @@ export interface Props {
       documentTrackingStatus: string | null
       proposedTime: Date | null
     },
-    callback: () => void
+    callback: (result: { statusCode: number }) => void
   ): void
   onCreateNewVersion(params: { advisoryId: string }, callback: () => void): void
 }
