@@ -1,5 +1,6 @@
 import { getLoginEnabledConfig } from '../../fixtures/appConfigData.js'
 import {
+  canCreateVersion,
   canDeleteDocument,
   getAdvisories,
   getGetAdvisoriesResponse,
@@ -234,6 +235,59 @@ describe('SecvisogramPage / DocumentsTab', function () {
             cy.wait('@apiGetAdvisories')
           })
         }
+      }
+    }
+  })
+
+  describe('can create a new version', function () {
+    for (const user of getUsers()) {
+      for (const advisory of getAdvisories().filter((a) =>
+        canCreateVersion({
+          userName: user.user,
+          workflowState: a.workflowState,
+        })
+      )) {
+        it(`user: ${user.preferredUsername}, advisoryId: ${advisory.advisoryId}`, function () {
+          cy.intercept(
+            getLoginEnabledConfig().userInfoUrl,
+            getUserInfo(user)
+          ).as('apiGetUserInfo')
+          cy.intercept(
+            '/api/2.0/advisories/',
+            getGetAdvisoriesResponse(user.user)
+          ).as('apiGetAdvisories')
+          cy.intercept(
+            `/api/2.0/advisories/${advisory.advisoryId}/`,
+            getGetAdvisoryDetailResponse({
+              advisoryId: advisory.advisoryId,
+            })
+          ).as('apiGetAdvisoryDetail')
+
+          cy.visit('?tab=DOCUMENTS')
+          cy.wait('@wellKnownAppConfig')
+          cy.wait('@apiGetUserInfo')
+          cy.wait('@apiGetAdvisories')
+          cy.get('[data-testid="user_info"]').should('exist')
+
+          cy.get(
+            `[data-testid="advisory-${advisory.advisoryId}-list_entry-edit_workflow_state_button"]`
+          ).should('not.exist')
+
+          const createNewVersionURL = new URL(
+            `/api/2.0/advisories/${advisory.advisoryId}/createNewVersion`,
+            Cypress.config().baseUrl ?? undefined
+          )
+          createNewVersionURL.searchParams.set('revision', advisory.revision)
+          cy.intercept('PATCH', createNewVersionURL.href, { body: '' }).as(
+            'apiCreateVersion'
+          )
+          cy.get(
+            `[data-testid="advisory-${advisory.advisoryId}-list_entry-create_new_version_button"]`
+          ).click()
+          cy.wait('@apiGetAdvisoryDetail')
+          cy.wait('@apiCreateVersion')
+          cy.wait('@apiGetAdvisories')
+        })
       }
     }
   })

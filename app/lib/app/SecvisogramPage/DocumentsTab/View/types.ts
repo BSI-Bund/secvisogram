@@ -6,6 +6,7 @@ interface Data {
     workflowState: string
     allowedStateChanges: string[]
     deletable: boolean
+    canCreateVersion: boolean
   }>
 }
 
@@ -23,4 +24,5 @@ export interface Props {
     },
     callback: () => void
   ): void
+  onCreateNewVersion(params: { advisoryId: string }, callback: () => void): void
 }
