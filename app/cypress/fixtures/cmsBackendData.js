@@ -25,6 +25,16 @@ export function canChangeDocument(userName) {
 }
 
 /**
+ * @param {object} params
+ * @param {string} params.userName
+ * @param {string} params.workflowState
+ */
+export function canCreateVersion({ userName, workflowState }) {
+  const user = users.find((u) => u.user === userName)
+  return user?.groups.includes('editor') && workflowState === 'Published'
+}
+
+/**
  * @param {string} userName
  * @returns
  */
@@ -47,6 +57,10 @@ export function getGetAdvisoriesResponse(userName) {
       typeof userName === 'string' ? canChangeDocument(userName) : true,
     deletable:
       typeof userName === 'string' ? canDeleteDocument(userName) : true,
+    canCreateVersion:
+      typeof userName === 'string'
+        ? canCreateVersion({ userName, workflowState: advisory.workflowState })
+        : false,
     allowedStateChanges: advisory.allowedStateChanges,
   }))
 }

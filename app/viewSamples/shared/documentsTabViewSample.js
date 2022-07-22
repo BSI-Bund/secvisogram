@@ -8,6 +8,7 @@ const props = {
         workflowState: 'Approved',
         deletable: true,
         allowedStateChanges: ['Review', 'Draft'],
+        canCreateVersion: false,
       },
     ],
   },
@@ -15,6 +16,7 @@ const props = {
   onDeleteAdvisory() {},
   onLoadAdvisory() {},
   onChangeWorkflowState() {},
+  onCreateNewVersion() {},
 }
 
 export default {

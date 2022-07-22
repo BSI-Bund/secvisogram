@@ -1,5 +1,6 @@
 import React from 'react'
 import { useErrorHandler } from 'react-error-boundary'
+import { createNewVersion, getAdvisoryDetail } from '../shared/api/backend.js'
 import {
   changeWorkflowState,
   deleteAdvisory,
@@ -33,6 +34,15 @@ export default function DocumentsTab(props) {
       }}
       onChangeWorkflowState={(params, callback) => {
         changeWorkflowState(params).then(callback).catch(handleError)
+      }}
+      onCreateNewVersion={({ advisoryId }, callback) => {
+        getAdvisoryDetail({
+          advisoryId: advisoryId,
+        })
+          .then((advisoryDetail) =>
+            createNewVersion({ advisoryId, revision: advisoryDetail.revision })
+          )
+          .then(callback, handleError)
       }}
     />
   )

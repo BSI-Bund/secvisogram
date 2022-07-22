@@ -15,6 +15,7 @@ export default function DocumentsTabView({
   onGetData,
   onDeleteAdvisory,
   onChangeWorkflowState,
+  onCreateNewVersion,
 }) {
   const history = React.useContext(HistoryContext)
 
@@ -111,43 +112,65 @@ export default function DocumentsTabView({
                         </span>
                       </td>
                       <td className="p-2">
-                        <button
-                          className="underline"
-                          type="button"
-                          data-testid={`advisory-${advisory.advisoryId}-list_entry-edit_workflow_state_button`}
-                          onClick={() => {
-                            setEditWorkflowStateDialogProps({
-                              data: {
-                                advisoryId: advisory.advisoryId,
-                                allowedStateChanges:
-                                  advisory.allowedStateChanges,
-                              },
-                              onSubmit({
-                                workflowState,
-                                documentTrackingStatus,
-                                proposedTime,
-                              }) {
-                                setLoading(true)
-                                onChangeWorkflowState(
-                                  {
-                                    advisoryId: advisory.advisoryId,
-                                    workflowState,
-                                    documentTrackingStatus,
-                                    proposedTime,
-                                  },
-                                  () => {
-                                    onGetData((data) => {
-                                      setData(data)
-                                      setLoading(false)
-                                    })
-                                  }
-                                )
-                              },
-                            })
-                          }}
-                        >
-                          Edit
-                        </button>
+                        {advisory.canCreateVersion ? (
+                          <button
+                            className="underline"
+                            type="button"
+                            data-testid={`advisory-${advisory.advisoryId}-list_entry-create_new_version_button`}
+                            onClick={() => {
+                              setLoading(true)
+                              onCreateNewVersion(
+                                { advisoryId: advisory.advisoryId },
+                                () => {
+                                  onGetData((data) => {
+                                    setData(data)
+                                    setLoading(false)
+                                  })
+                                }
+                              )
+                            }}
+                          >
+                            Create new version
+                          </button>
+                        ) : advisory.allowedStateChanges.length ? (
+                          <button
+                            className="underline"
+                            type="button"
+                            data-testid={`advisory-${advisory.advisoryId}-list_entry-edit_workflow_state_button`}
+                            onClick={() => {
+                              setEditWorkflowStateDialogProps({
+                                data: {
+                                  advisoryId: advisory.advisoryId,
+                                  allowedStateChanges:
+                                    advisory.allowedStateChanges,
+                                },
+                                onSubmit({
+                                  workflowState,
+                                  documentTrackingStatus,
+                                  proposedTime,
+                                }) {
+                                  setLoading(true)
+                                  onChangeWorkflowState(
+                                    {
+                                      advisoryId: advisory.advisoryId,
+                                      workflowState,
+                                      documentTrackingStatus,
+                                      proposedTime,
+                                    },
+                                    () => {
+                                      onGetData((data) => {
+                                        setData(data)
+                                        setLoading(false)
+                                      })
+                                    }
+                                  )
+                                },
+                              })
+                            }}
+                          >
+                            Edit
+                          </button>
+                        ) : null}
                       </td>
                       <td className="p-2">
                         <div className="flex items-center justify-end gap-1">

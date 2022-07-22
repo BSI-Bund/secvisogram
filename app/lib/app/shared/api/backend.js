@@ -51,3 +51,21 @@ export async function changeWorkflowState({
     })
   ).send()
 }
+
+/**
+ * @param {object} params
+ * @param {string} params.advisoryId
+ * @param {string} params.revision
+ */
+export async function createNewVersion({ advisoryId, revision }) {
+  const createNewVersionAPIURL = new URL(
+    `/api/2.0/advisories/${advisoryId}/createNewVersion`,
+    window.location.href
+  )
+  createNewVersionAPIURL.searchParams.set('revision', revision)
+  await new APIRequest(
+    new Request(createNewVersionAPIURL.href, {
+      method: 'PATCH',
+    })
+  ).send()
+}
