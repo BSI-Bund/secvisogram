@@ -300,4 +300,23 @@ export const tests = [
       />
     ),
   },
+  {
+    title: 'DOCUMENTS tab with error',
+    render: () => (
+      <View
+        {...secvisogramPageViewSample.documentsTab.props}
+        DocumentsTab={(props) => (
+          <DocumentsTabView
+            {...documentsTabViewSample.basic.props}
+            {...props}
+            defaultError={{
+              title: 'Error',
+              message:
+                'The document is not valid and can therefore not be published.',
+            }}
+          />
+        )}
+      />
+    ),
+  },
 ]

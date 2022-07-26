@@ -31,7 +31,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
 
         cy.wait('@wellKnownAppConfig')
         cy.wait('@apiGetUserInfo')
-        for (const advisory of getGetAdvisoriesResponse()) {
+        for (const advisory of getAdvisories()) {
           cy.get(
             `[data-testid="advisory-${advisory.advisoryId}-list_entry"]`
           ).should('exist')
@@ -45,7 +45,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
 
   describe('can delete documents', function () {
     for (const user of getUsers()) {
-      for (const advisory of getGetAdvisoriesResponse()) {
+      for (const advisory of getAdvisories()) {
         it(`user: ${user.preferredUsername}, advisoryId: ${
           advisory.advisoryId
         }, canDelete: ${canDeleteDocument(user.user)}`, function () {
@@ -111,7 +111,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
 
   describe('can open documents', function () {
     for (const user of getUsers()) {
-      for (const advisory of getGetAdvisoriesResponse()) {
+      for (const advisory of getAdvisories()) {
         it(`user: ${user.preferredUsername}, advisoryId: ${advisory.advisoryId}`, function () {
           cy.intercept(
             getLoginEnabledConfig().userInfoUrl,
@@ -151,7 +151,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
 
   describe('can move a document into a new workflow state', function () {
     for (const user of getUsers()) {
-      for (const advisory of getAdvisories()) {
+      for (const advisory of getAdvisories().filter((a) => !a.isValid)) {
         for (const workflowState of advisory.allowedStateChanges) {
           it(`user: ${user.preferredUsername}, advisoryId: ${advisory.advisoryId}, workflowState: ${workflowState}`, function () {
             cy.intercept(
@@ -199,7 +199,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
               'PATCH',
               apiChangeWorkflowStateURL.pathname +
                 apiChangeWorkflowStateURL.search,
-              {}
+              advisory.isValid ? {} : { statusCode: 422 }
             ).as('apiChangeWorkflowState')
 
             cy.get(
@@ -232,7 +232,14 @@ describe('SecvisogramPage / DocumentsTab', function () {
               .closest('form')
               .submit()
             cy.wait('@apiChangeWorkflowState')
-            cy.wait('@apiGetAdvisories')
+            if (!advisory.isValid) {
+              cy.get('[data-testid="error_dialog"]').should((els) => {
+                const el = /** @type {HTMLDialogElement} */ (els[0])
+                expect(el.open).to.be.true
+              })
+            } else {
+              cy.wait('@apiGetAdvisories')
+            }
           })
         }
       }

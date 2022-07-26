@@ -7,6 +7,7 @@ import docMin from '../../lib/app/shared/Core/doc-min.json'
 import { canCreateDocuments } from '../../lib/app/shared/permissions.js'
 import { getLoginEnabledConfig } from '../fixtures/appConfigData.js'
 import {
+  getAdvisories,
   getCreateAdvisoryResponse,
   getGetAdvisoriesResponse,
   getGetAdvisoryDetailResponse,
@@ -22,7 +23,7 @@ import sampleUploadDocument from '../fixtures/sampleUploadDocument.js'
 describe('SecvisogramPage', () => {
   describe('can validate the document against the rest service', function () {
     for (const user of getUsers()) {
-      for (const advisory of getGetAdvisoriesResponse()) {
+      for (const advisory of getAdvisories()) {
         const { advisoryId } = advisory
 
         it(`user: ${user.preferredUsername}, advisoryId: ${advisoryId}`, function () {
