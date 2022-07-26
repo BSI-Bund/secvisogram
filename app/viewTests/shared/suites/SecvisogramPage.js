@@ -1,6 +1,8 @@
 import React from 'react'
 import DocumentsTabView from '../../../lib/app/SecvisogramPage/DocumentsTab/View.js'
 import View from '../../../lib/app/SecvisogramPage/View.js'
+import AppConfigContext from '../../../lib/app/shared/context/AppConfigContext.js'
+import UserInfoContext from '../../../lib/app/shared/context/UserInfoContext.js'
 import seed1 from '../../../seeds/documents/valid-1.json'
 import seed2 from '../../../seeds/documents/valid-2.json'
 import {
@@ -119,6 +121,44 @@ export const tests = [
   {
     title: 'Editor',
     render: () => <View {...props} />,
+  },
+  {
+    title: 'Editor logged in',
+    render: () => (
+      <AppConfigContext.Provider
+        value={{
+          loginAvailable: true,
+          loginUrl: '',
+          logoutUrl: '',
+          userInfoUrl: '',
+          validatorUrl: '',
+        }}
+      >
+        <UserInfoContext.Provider
+          value={{
+            email: 'foo@bar.de',
+            groups: ['editor', 'author'],
+            preferredUsername: 'foo-bar',
+            user: 'foo-bar',
+          }}
+        >
+          <View
+            {...props}
+            data={null}
+            defaultAdvisoryState={{
+              advisory: {
+                advisoryId: '123',
+                changeable: true,
+                csaf: {},
+                documentTrackingId: 'my-doc',
+                revision: '1-1',
+              },
+              type: 'ADVISORY',
+            }}
+          />
+        </UserInfoContext.Provider>
+      </AppConfigContext.Provider>
+    ),
   },
   {
     title: 'Editor with invalid object',
