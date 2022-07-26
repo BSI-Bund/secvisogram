@@ -1,6 +1,6 @@
 # Sku - Specification
 
-Any given stock keeping unit of value type `string` with at least 1 character represents a part, or a full stock keeping unit (SKU) of the component to identify.
+Any given stock keeping unit of value type `string` with at least 1 character represents a full or abbreviated (partial) stock keeping unit (SKU) of the component to identify.
 
 > Sometimes this is also called "item number", "article number" or "product number".
 
