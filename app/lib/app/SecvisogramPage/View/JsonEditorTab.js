@@ -124,12 +124,25 @@ export default function JsonEditorTab({
   }, [errors])
 
   React.useEffect(() => {
-    if (monaco && editor && doc) {
+    if (monaco && editor && debouncedValue) {
+      let result
+      try {
+        result = jsonMap.parse(debouncedValue)
+      } catch (/** @type {any} */ e) {
+        console.log('Catch!')
+        return
+      }
+
       let errorList = []
-      let result = jsonMap.stringify(doc, null, 2)
+      let isDocMatchingErrors = true
+
       for (const e of errors) {
         let path = e.instancePath
         let positionData = result.pointers[path]
+        if (!positionData) {
+          isDocMatchingErrors = false
+          break
+        }
 
         errorList.push({
           startLineNumber: positionData.value.line + 1,
@@ -140,16 +153,23 @@ export default function JsonEditorTab({
           severity: monaco.MarkerSeverity.Error,
         })
       }
+
       const model = editor.getModel()
-      if (model) {
+      if (model && isDocMatchingErrors) {
         monaco.editor.setModelMarkers(model, 'setMarkers', errorList)
       }
     }
-  }, [errors, monaco, editor, doc])
+  }, [errors, monaco, editor, debouncedValue])
 
   const setCursor = (/** @type {string} */ jsonPath) => {
     if (editor) {
-      let result = jsonMap.stringify(doc, null, 2)
+      let result
+      try {
+        result = jsonMap.parse(debouncedValue)
+      } catch (/** @type {any} */ e) {
+        console.log('Catch!')
+        return
+      }
 
       let positionData = result.pointers[jsonPath]
       if (positionData) {
@@ -186,8 +206,6 @@ export default function JsonEditorTab({
     cancelLabel: 'No, resume editing',
     confirm: confirmMax,
   })
-
-  const [code] = React.useState(stringifiedDoc)
 
   const editorDidMount = (
     /** @type {any } */ editor,
@@ -237,7 +255,7 @@ export default function JsonEditorTab({
               language="json"
               theme="vs-white"
               options={options}
-              defaultValue={code}
+              defaultValue={stringifiedDoc}
               onChange={onChangeMonaco}
               editorDidMount={editorDidMount}
               editorWillMount={editorWillMount}
