@@ -357,7 +357,7 @@ function View({
                       <span className="w-full whitespace-nowrap overflow-ellipsis">
                         <span className="text-sm font-bold">Groups:</span>{' '}
                         <span className="text-sm">
-                          {userInfo.groups.join(', ')}
+                          {userInfo?.groups?.join(', ')}
                         </span>
                       </span>
                       <hr className="my-2" />
