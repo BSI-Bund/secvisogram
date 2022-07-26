@@ -8,6 +8,9 @@ If the value is `product_version`, the property `name` must not contain a versio
     * `<=`
     * `>`
     * `>=`
-    * `all versions`
+    * `after`
+    * `all`
+    * `before`
+    * `earlier`
     * `later`
     * `prior`
