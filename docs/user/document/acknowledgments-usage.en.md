@@ -7,3 +7,5 @@ The acknowledgments are an important tool to reward and honor security researche
 In contrast to the Vulnerability Acknowledgments (`/vulnerabilities[]/acknowledgments`) contributions to the whole document can be honored.
 
 Listing coordinating entities is recommended but not required.
+
+Further description of this type can be found under [types](types/acknowledgments-usage.en.md).

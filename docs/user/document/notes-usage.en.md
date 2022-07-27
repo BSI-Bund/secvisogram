@@ -12,3 +12,5 @@ Another element of the category `summary` that summarizes vulnerabilities should
 Adding a legal disclaimer for the document is encouraged.
 
 FAQs, if not vulnerability specific, belong in this section.
+
+Further description of this type can be found under [types](types/notes-usage.en.md).

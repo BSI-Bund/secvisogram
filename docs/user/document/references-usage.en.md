@@ -10,3 +10,5 @@ If other advisories (especially from suppliers) are referenced, they should be l
 It is recommended to include links to the recommended cybersecurity best practices documents of the organization and the website which lists the advisories.
 
 CVE entries should only be linked in the corresponding vulnerability item.
+
+Further description of this type can be found under [types](types/references-usage.en.md).
