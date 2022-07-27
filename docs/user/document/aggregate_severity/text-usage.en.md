@@ -1,6 +1,7 @@
 # Text - Usage
 
-Represents overall assessment and should be a manufacturer-specific enum.
+Represents overall assessment and should be a string from a closed set.
+The set may be vendor-specific or come from an applicable standard.
 
 *Examples:*
 
