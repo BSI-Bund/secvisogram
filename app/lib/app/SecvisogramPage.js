@@ -356,7 +356,7 @@ const SecvisogramPage = () => {
           .catch(handleError)
       }}
       onGetTemplates={(callback) => {
-        new APIRequest(new Request('/api/2.0/advisories/templates'))
+        new APIRequest(new Request('/api/v1/advisories/templates'))
           .produces('application/json')
           .send()
           .then((res) => res.json())
@@ -365,7 +365,7 @@ const SecvisogramPage = () => {
       }}
       onGetTemplateContent={({ templateId }, callback) => {
         new APIRequest(
-          new Request(`/api/2.0/advisories/templates/${templateId}`)
+          new Request(`/api/v1/advisories/templates/${templateId}`)
         )
           .produces('application/json')
           .send()

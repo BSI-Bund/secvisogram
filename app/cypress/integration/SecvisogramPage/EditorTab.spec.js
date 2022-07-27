@@ -25,7 +25,7 @@ describe('SecvisogramPage / EditorTab', function () {
           ).as('apiGetUserInfo')
           cy.intercept(
             'GET',
-            '/api/2.0/advisories/',
+            '/api/v1/advisories/',
             getGetAdvisoriesResponse()
           ).as('apiGetAdvisories')
 
@@ -35,7 +35,7 @@ describe('SecvisogramPage / EditorTab', function () {
           })
           cy.intercept(
             'GET',
-            `/api/2.0/advisories/${advisory.advisoryId}/`,
+            `/api/v1/advisories/${advisory.advisoryId}/`,
             advisoryDetail
           ).as('apiGetAdvisoryDetail')
 
@@ -61,7 +61,7 @@ describe('SecvisogramPage / EditorTab', function () {
           if (canChangeDocument(user.user)) {
             cy.intercept(
               'PATCH',
-              `/api/2.0/advisories/${advisory.advisoryId}/?revision=${advisoryDetail.revision}`,
+              `/api/v1/advisories/${advisory.advisoryId}/?revision=${advisoryDetail.revision}`,
               {}
             ).as('apiUpdateAdvisory')
             cy.get('[data-testid="save_button"]').click()

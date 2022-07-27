@@ -563,7 +563,7 @@ function View({
                             <a
                               data-testid="export_button-markdown"
                               className="block"
-                              href={`/api/2.0/advisories/${advisoryState.advisory.advisoryId}/csaf?format=Markdown`}
+                              href={`/api/v1/advisories/${advisoryState.advisory.advisoryId}/csaf?format=Markdown`}
                               download={
                                 advisoryState.advisory.advisoryId + '.markdown'
                               }
@@ -573,7 +573,7 @@ function View({
                             <a
                               data-testid="export_button-json"
                               className="block"
-                              href={`/api/2.0/advisories/${advisoryState.advisory.advisoryId}/csaf?format=JSON`}
+                              href={`/api/v1/advisories/${advisoryState.advisory.advisoryId}/csaf?format=JSON`}
                               download={
                                 advisoryState.advisory.advisoryId + '.json'
                               }
@@ -583,7 +583,7 @@ function View({
                             <a
                               data-testid="export_button-html"
                               className="block"
-                              href={`/api/2.0/advisories/${advisoryState.advisory.advisoryId}/csaf?format=HTML`}
+                              href={`/api/v1/advisories/${advisoryState.advisory.advisoryId}/csaf?format=HTML`}
                               download={
                                 advisoryState.advisory.advisoryId + '.html'
                               }
@@ -593,7 +593,7 @@ function View({
                             <a
                               data-testid="export_button-pdf"
                               className="block"
-                              href={`/api/2.0/advisories/${advisoryState.advisory.advisoryId}/csaf?format=PDF`}
+                              href={`/api/v1/advisories/${advisoryState.advisory.advisoryId}/csaf?format=PDF`}
                               download={
                                 advisoryState.advisory.advisoryId + '.pdf'
                               }

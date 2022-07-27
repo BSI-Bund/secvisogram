@@ -15,7 +15,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
       '/.well-known/appspecific/de.bsi.secvisogram.json',
       getLoginEnabledConfig()
     ).as('wellKnownAppConfig')
-    cy.intercept('/api/2.0/advisories/', getGetAdvisoriesResponse()).as(
+    cy.intercept('/api/v1/advisories/', getGetAdvisoriesResponse()).as(
       'apiGetAdvisories'
     )
   })
@@ -54,7 +54,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
             getUserInfo(user)
           ).as('apiGetUserInfo')
           cy.intercept(
-            '/api/2.0/advisories/',
+            '/api/v1/advisories/',
             getGetAdvisoriesResponse(user.user)
           ).as('apiGetAdvisories')
           const advisoryDetail = getGetAdvisoryDetailResponse({
@@ -63,12 +63,12 @@ describe('SecvisogramPage / DocumentsTab', function () {
           cy.intercept(
             {
               method: 'DELETE',
-              url: `/api/2.0/advisories/${advisory.advisoryId}/?revision=${advisoryDetail.revision}`,
+              url: `/api/v1/advisories/${advisory.advisoryId}/?revision=${advisoryDetail.revision}`,
             },
             { statusCode: 204 }
           ).as('apiDeleteAdvisory')
           cy.intercept(
-            `/api/2.0/advisories/${advisory.advisoryId}/`,
+            `/api/v1/advisories/${advisory.advisoryId}/`,
             advisoryDetail
           ).as('apiGetAdvisoryDetail')
 
@@ -79,7 +79,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
 
           // Pretend to have the advisory removed
           cy.intercept(
-            '/api/2.0/advisories/',
+            '/api/v1/advisories/',
             getGetAdvisoriesResponse().filter(
               (a) => a.advisoryId !== advisory.advisoryId
             )
@@ -121,7 +121,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
             advisoryId: advisory.advisoryId,
           })
           cy.intercept(
-            `/api/2.0/advisories/${advisory.advisoryId}/`,
+            `/api/v1/advisories/${advisory.advisoryId}/`,
             advisoryDetail
           ).as('apiGetAdvisoryDetail')
 
@@ -159,7 +159,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
               getUserInfo(user)
             ).as('apiGetUserInfo')
             cy.intercept(
-              `/api/2.0/advisories/${advisory.advisoryId}/`,
+              `/api/v1/advisories/${advisory.advisoryId}/`,
               getGetAdvisoryDetailResponse({
                 advisoryId: advisory.advisoryId,
               })
@@ -173,7 +173,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
             const documentTrackingStatus = 'Final'
             const proposedTime = '2017-06-01T08:30'
             const apiChangeWorkflowStateURL = new URL(
-              `/api/2.0/advisories/${advisory.advisoryId}/workflowstate/${workflowState}`,
+              `/api/v1/advisories/${advisory.advisoryId}/workflowstate/${workflowState}`,
               window.location.href
             )
             apiChangeWorkflowStateURL.searchParams.set(
@@ -260,11 +260,11 @@ describe('SecvisogramPage / DocumentsTab', function () {
             getUserInfo(user)
           ).as('apiGetUserInfo')
           cy.intercept(
-            '/api/2.0/advisories/',
+            '/api/v1/advisories/',
             getGetAdvisoriesResponse(user.user)
           ).as('apiGetAdvisories')
           cy.intercept(
-            `/api/2.0/advisories/${advisory.advisoryId}/`,
+            `/api/v1/advisories/${advisory.advisoryId}/`,
             getGetAdvisoryDetailResponse({
               advisoryId: advisory.advisoryId,
             })
@@ -281,7 +281,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
           ).should('not.exist')
 
           const createNewVersionURL = new URL(
-            `/api/2.0/advisories/${advisory.advisoryId}/createNewVersion`,
+            `/api/v1/advisories/${advisory.advisoryId}/createNewVersion`,
             Cypress.config().baseUrl ?? undefined
           )
           createNewVersionURL.searchParams.set('revision', advisory.revision)
