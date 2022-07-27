@@ -2,13 +2,9 @@ import { get } from 'lodash'
 import React from 'react'
 import { useErrorHandler } from 'react-error-boundary'
 import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
-import {
-  createAdvisory,
-  loadAdvisory,
-  updateAdvisory,
-} from './SecvisogramPage/service.js'
+import { loadAdvisory } from './SecvisogramPage/service.js'
 import View from './SecvisogramPage/View.js'
-import { validateCSAF } from './shared/api/validationService.js'
+import { backend, validationService } from './shared/api.js'
 import APIRequest from './shared/APIRequest.js'
 import HistoryContext from './shared/context/HistoryContext.js'
 import createCore from './shared/Core.js'
@@ -112,8 +108,17 @@ const SecvisogramPage = () => {
       onLoadAdvisory={(params, callback) => {
         loadAdvisory(params).then(callback).catch(handleError)
       }}
-      onUpdateAdvisory={(params, callback) => {
-        updateAdvisory(params).then(callback).catch(handleError)
+      onUpdateAdvisory={({ advisoryId, csaf, revision }, callback) => {
+        backend
+          .updateAdvisory({
+            advisoryId,
+            csaf,
+            revision,
+            summary: '',
+            legacyVersion: '',
+          })
+          .then(callback)
+          .catch(handleError)
       }}
       onLockTab={React.useCallback(() => {
         setState((state) => ({ ...state, isTabLocked: true }))
@@ -240,8 +245,11 @@ const SecvisogramPage = () => {
           })
           .catch(handleError)
       }}
-      onCreateAdvisory={(params, callback) => {
-        createAdvisory(params).then(callback).catch(handleError)
+      onCreateAdvisory={({ csaf }, callback) => {
+        backend
+          .createAdvisory({ csaf, summary: '', legacyVersion: '' })
+          .then(callback)
+          .catch(handleError)
       }}
       onStrip={React.useCallback(
         (document) => {
@@ -342,7 +350,10 @@ const SecvisogramPage = () => {
         [strict]
       )}
       onServiceValidate={({ validatorUrl, csaf }, callback) => {
-        validateCSAF(validatorUrl, { csaf }).then(callback).catch(handleError)
+        validationService
+          .validateCSAF(validatorUrl, { csaf })
+          .then(callback)
+          .catch(handleError)
       }}
       onGetTemplates={(callback) => {
         new APIRequest(new Request('/api/2.0/advisories/templates'))
