@@ -4,6 +4,6 @@ Acknowledgments of people and organizations that were involved in discovery, pub
 
 The acknowledgments are an important tool to reward and honor security researchers and contribute to the reputation of an organization.
 
-In contrast to the Vulnerability Acknowledgments (`vulnerabilities[]/acknowledgments`) contributions to the whole document can be honored.
+In contrast to the Vulnerability Acknowledgments (`/vulnerabilities[]/acknowledgments`) contributions to the whole document can be honored.
 
 Listing coordinating entities is recommended but not required.

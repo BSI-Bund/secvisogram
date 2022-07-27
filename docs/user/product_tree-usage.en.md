@@ -12,7 +12,7 @@ The structure depends strongly on the structure of the products and how they are
 
 In principle software and hardware components are to be represented separately, since hardware remains the same, even if software is updated.
 This also allows separation of software that may run on multiple hardware installations.
-The connections of hardware and software are to be represented over `product_tree/relationships`.
+The connections of hardware and software are to be represented over `/product_tree/relationships`.
 
 With the `product_identification_helper`s the matching between advisory and the asset database is facilitated.
 

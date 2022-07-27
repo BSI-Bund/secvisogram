@@ -2,7 +2,7 @@
 
 The unique name of the document within the publishing entity.
 
-In combination with the publisher namespace (`document/publisher/namespace`) the CSAF document is globally identifiable.
+In combination with the publisher namespace (`/document/publisher/namespace`) the CSAF document is globally identifiable.
 An additional version allows a version unique identification.
 
 The tracking ID remains constant when a new version of the document is released.
