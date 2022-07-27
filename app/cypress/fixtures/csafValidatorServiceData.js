@@ -16,8 +16,18 @@ export function getValidationResponse({ document: { document } }) {
               message: "Must have property 'category'",
             },
           ],
-          infos: [],
-          warnings: [],
+          infos: [
+            {
+              instancePath: '/document',
+              message: 'Some info',
+            },
+          ],
+          warnings: [
+            {
+              instancePath: '/document',
+              message: 'Some warning',
+            },
+          ],
           isValid: false,
           name: 'csaf_2_0_strict',
         },

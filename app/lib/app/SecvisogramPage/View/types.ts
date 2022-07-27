@@ -76,7 +76,11 @@ export interface Props {
   onServiceValidate(
     params: { validatorUrl: string; csaf: {} },
     callback: (result: {
-      tests: Array<{ errors: Array<{ instancePath: string; message: string }> }>
+      tests: Array<{
+        errors: Array<{ instancePath: string; message: string }>
+        warnings: Array<{ instancePath: string; message: string }>
+        infos: Array<{ instancePath: string; message: string }>
+      }>
     }) => void
   ): void
   onGetDocMin(callback: (csaf: {}) => void): void

@@ -6,9 +6,9 @@ import {
   createAdvisory,
   loadAdvisory,
   updateAdvisory,
-  validate,
 } from './SecvisogramPage/service.js'
 import View from './SecvisogramPage/View.js'
+import { validateCSAF } from './shared/api/validationService.js'
 import APIRequest from './shared/APIRequest.js'
 import HistoryContext from './shared/context/HistoryContext.js'
 import createCore from './shared/Core.js'
@@ -341,8 +341,8 @@ const SecvisogramPage = () => {
         },
         [strict]
       )}
-      onServiceValidate={(params, callback) => {
-        validate(params).then(callback).catch(handleError)
+      onServiceValidate={({ validatorUrl, csaf }, callback) => {
+        validateCSAF(validatorUrl, { csaf }).then(callback).catch(handleError)
       }}
       onGetTemplates={(callback) => {
         new APIRequest(new Request('/api/2.0/advisories/templates'))
