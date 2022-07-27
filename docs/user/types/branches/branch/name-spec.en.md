@@ -50,7 +50,7 @@ The value of MUST obey to exactly one of the following options:
 1. Version Range Specifier (vers)
 
    > vers is an ongoing community effort to address the problem of version ranges. Its draft specification is available
-   > at [VERS].
+   > at [[VERS]](#vers).
 
    vers MUST be used in its canonical form. To convey the term "all versions" the special string `vers:all/*` MUST be used.
 
@@ -78,3 +78,10 @@ The value of MUST obey to exactly one of the following options:
    * `<4.2`
    * `<V3.0.29`
    * `>=8.1.5`
+
+___
+
+<a name="vers"/>**[VERS]**
+
+_vers: a mostly universal version range specifier_, Part of the PURL GitHub Project,
+[https://github.com/package-url/purl-spec/blob/version-range-spec/VERSION-RANGE-SPEC.rst](https://github.com/package-url/purl-spec/blob/version-range-spec/VERSION-RANGE-SPEC.rst).
