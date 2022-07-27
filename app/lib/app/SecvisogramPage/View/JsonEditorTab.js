@@ -48,50 +48,6 @@ export default function JsonEditorTab({
     /** @type {React.MutableRefObject<import('../../../../vendor/ace-builds/ace').Ace.Editor | undefined>} */ (
       React.useRef()
     )
-
-  /**
-   * The initial value of the state used to prevent a re-render of the ace editor
-   * when the document changes from outside.
-   */
-  const initialValue = React.useMemo(
-    () => JSON.stringify(originalValues.doc, null, 2),
-    [originalValues.doc]
-  )
-
-  /**
-   * Holds the value and potential parse errors of the ace editor input.
-   */
-  const [{ value, parseError }, setState] = React.useState(() => ({
-    value: JSON.stringify(doc, null, 2),
-    parseError: null,
-  }))
-  const [showExpertSettings, setShowExpertSettings] = React.useState(!strict)
-  const [showErrors, setShowErrors] = React.useState(false)
-  const debouncedValue = useDebounce(value)
-
-  /**
-   * Toggles between strict and lenient validation.
-   */
-  const toggleStrict = () => {
-    onSetStrict(!strict)
-  }
-
-  const toggleExpertSettings = () => {
-    setShowExpertSettings(!showExpertSettings)
-  }
-
-  const toggleShowErrors = () => {
-    setShowErrors(!showErrors)
-  }
-
-  /**
-   * Locks the tab navigation if there are any parse errors.
-   */
-  React.useEffect(() => {
-    if (parseError) onLockTab()
-    else onUnlockTab()
-  }, [parseError, onLockTab, onUnlockTab])
-
   /**
    * Initializes the ace editor.
    */
@@ -125,12 +81,65 @@ export default function JsonEditorTab({
     }
   }, [])
 
+  const initialMountRef = React.useRef(true)
+
+  /**
+   * The initial value of the state used to prevent a re-render of the ace editor
+   * when the document changes from outside.
+   */
+  const initialValue = React.useMemo(
+    () => JSON.stringify(originalValues.doc, null, 2),
+    [originalValues.doc]
+  )
   /**
    * Updates the editor value if the document was changed outside (e.g. created from template)
    */
   React.useEffect(() => {
-    editorRef.current?.setValue(initialValue)
+    if (!initialMountRef.current && editorRef.current) {
+      editorRef.current?.setValue(initialValue)
+    }
   }, [initialValue])
+
+  /**
+   * Holds the value and potential parse errors of the ace editor input.
+   */
+  const [{ value, parseError }, setState] = React.useState(() => ({
+    value: JSON.stringify(doc, null, 2),
+    parseError: null,
+  }))
+  React.useEffect(() => {
+    if (initialMountRef.current && editorRef.current) {
+      initialMountRef.current = false
+      editorRef.current.setValue(value)
+    }
+  }, [value])
+
+  const [showExpertSettings, setShowExpertSettings] = React.useState(!strict)
+  const [showErrors, setShowErrors] = React.useState(false)
+  const debouncedValue = useDebounce(value)
+
+  /**
+   * Toggles between strict and lenient validation.
+   */
+  const toggleStrict = () => {
+    onSetStrict(!strict)
+  }
+
+  const toggleExpertSettings = () => {
+    setShowExpertSettings(!showExpertSettings)
+  }
+
+  const toggleShowErrors = () => {
+    setShowErrors(!showErrors)
+  }
+
+  /**
+   * Locks the tab navigation if there are any parse errors.
+   */
+  React.useEffect(() => {
+    if (parseError) onLockTab()
+    else onUnlockTab()
+  }, [parseError, onLockTab, onUnlockTab])
 
   /**
    * Parses the ace editor input and replaces the document.
