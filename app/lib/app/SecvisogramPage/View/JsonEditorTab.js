@@ -15,7 +15,7 @@ import useDebounce from './shared/useDebounce.js'
  * @param {{
  *  originalValues: import('../shared/types').FormValues
  *  formValues: import('../shared/types').FormValues
- *  validationErrors: import('../shared/types').ValidationError[]
+ *  validationErrors: import('../shared/types').TypedValidationError[]
  *  strict: boolean
  *  onSetStrict(strict: boolean): void
  *  onChange(doc: {} | null): void
@@ -179,7 +179,23 @@ export default function JsonEditorTab({
               <div className="mx-2 flex-grow overflow-auto h-full">
                 {errors.map((error, i) => (
                   <div key={i}>
-                    <b>{error.instancePath}</b>: {error.message}
+                    <a
+                      href={'#' + error.instancePath}
+                      className={`validation_error${
+                        error.type === 'warning'
+                          ? ' validation_error-warning text-yellow-600'
+                          : error.type === 'error'
+                          ? ' validation_error-error'
+                          : error.type === 'info'
+                          ? ' validation_error-info text-blue-500'
+                          : ''
+                      } underline`}
+                    >
+                      <b>{error.instancePath}</b>:{' '}
+                      <span className="validation_error-message">
+                        {error.message}
+                      </span>
+                    </a>
                   </div>
                 ))}
               </div>

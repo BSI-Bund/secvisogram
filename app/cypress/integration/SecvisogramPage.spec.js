@@ -26,66 +26,94 @@ describe('SecvisogramPage', () => {
       for (const advisory of getAdvisories()) {
         const { advisoryId } = advisory
 
-        it(`user: ${user.preferredUsername}, advisoryId: ${advisoryId}`, function () {
-          cy.intercept(
-            '/.well-known/appspecific/de.bsi.secvisogram.json',
-            getLoginEnabledConfig()
-          ).as('wellKnownAppConfig')
-          cy.intercept(
-            getLoginEnabledConfig().userInfoUrl,
-            getUserInfo(user)
-          ).as('apiGetUserInfo')
-          cy.intercept('/api/2.0/advisories/', getGetAdvisoriesResponse()).as(
-            'apiGetAdvisories'
-          )
-          const advisoryDetail = getGetAdvisoryDetailResponse({
-            advisoryId,
-          })
-          cy.intercept(
-            `/api/2.0/advisories/${advisory.advisoryId}/`,
-            advisoryDetail
-          ).as('apiGetAdvisoryDetail')
-          const validationResponse = getValidationResponse({
-            document: advisoryDetail.csaf,
-          })
-          cy.intercept('POST', '/api/v1/validate', validationResponse).as(
-            'apiValidate'
-          )
-
-          cy.visit('?tab=DOCUMENTS')
-          cy.wait('@wellKnownAppConfig')
-          cy.wait('@apiGetUserInfo')
-          cy.wait('@apiGetAdvisories')
-
-          cy.get(
-            `[data-testid="advisory-${advisory.advisoryId}-list_entry-open_button"]`
-          ).click()
-          cy.wait('@apiGetAdvisoryDetail')
-          cy.get('[data-testid="loading_indicator"]').should('not.exist')
-          cy.location('search').should('equal', '?tab=EDITOR')
-          cy.wait(500)
-          cy.get('[data-testid="validate_button"]').click()
-          cy.wait('@apiValidate')
-            .its('request.body')
-            .should('deep.equal', {
-              tests: [
-                { type: 'test', name: 'csaf_2_0_strict' },
-                { type: 'preset', name: 'mandatory' },
-                { type: 'preset', name: 'optional' },
-                { type: 'preset', name: 'informative' },
-              ],
+        for (const tab of ['EDITOR', 'SOURCE']) {
+          it(`user: ${user.preferredUsername}, advisoryId: ${advisoryId}, tab: ${tab}`, function () {
+            cy.intercept(
+              '/.well-known/appspecific/de.bsi.secvisogram.json',
+              getLoginEnabledConfig()
+            ).as('wellKnownAppConfig')
+            cy.intercept(
+              getLoginEnabledConfig().userInfoUrl,
+              getUserInfo(user)
+            ).as('apiGetUserInfo')
+            cy.intercept('/api/2.0/advisories/', getGetAdvisoriesResponse()).as(
+              'apiGetAdvisories'
+            )
+            const advisoryDetail = getGetAdvisoryDetailResponse({
+              advisoryId,
+            })
+            cy.intercept(
+              `/api/2.0/advisories/${advisory.advisoryId}/`,
+              advisoryDetail
+            ).as('apiGetAdvisoryDetail')
+            const validationResponse = getValidationResponse({
               document: advisoryDetail.csaf,
             })
-          cy.get('[data-testid="number_of_validation_errors"]').should(
-            'have.text',
-            String(validationResponse.tests.flatMap((t) => t.errors).length)
-          )
-          for (const error of validationResponse.tests.flatMap(
-            (t) => t.errors
-          )) {
-            cy.get(`[data-testid="attribute_error-${error.instancePath}"]`)
-          }
-        })
+            cy.intercept('POST', '/api/v1/validate', validationResponse).as(
+              'apiValidate'
+            )
+
+            cy.visit('?tab=DOCUMENTS')
+            cy.wait('@wellKnownAppConfig')
+            cy.wait('@apiGetUserInfo')
+            cy.wait('@apiGetAdvisories')
+
+            cy.get(
+              `[data-testid="advisory-${advisory.advisoryId}-list_entry-open_button"]`
+            ).click()
+            cy.wait('@apiGetAdvisoryDetail')
+            cy.get('[data-testid="loading_indicator"]').should('not.exist')
+            cy.location('search').should('equal', '?tab=EDITOR')
+            if (tab === 'SOURCE') {
+              cy.get('[data-testid="tab_button-SOURCE"]').click()
+            }
+            cy.wait(500)
+            cy.get('[data-testid="validate_button"]').click()
+            cy.wait('@apiValidate')
+              .its('request.body')
+              .should('deep.equal', {
+                tests: [
+                  { type: 'test', name: 'csaf_2_0_strict' },
+                  { type: 'preset', name: 'mandatory' },
+                  { type: 'preset', name: 'optional' },
+                  { type: 'preset', name: 'informative' },
+                ],
+                document: advisoryDetail.csaf,
+              })
+            cy.get('[data-testid="number_of_validation_errors"]').should(
+              'have.text',
+              String(
+                validationResponse.tests.flatMap((t) =>
+                  t.errors.concat(t.warnings).concat(t.infos)
+                ).length
+              )
+            )
+            for (const error of validationResponse.tests.flatMap(
+              (t) => t.errors
+            )) {
+              if (tab === 'EDITOR') {
+                cy.get(`[data-testid="attribute_error-${error.instancePath}"]`)
+              }
+              cy.get(
+                `.validation_error.validation_error-error .validation_error-message`
+              ).should('have.text', error.message)
+            }
+            for (const error of validationResponse.tests.flatMap(
+              (t) => t.warnings
+            )) {
+              cy.get(
+                `.validation_error.validation_error-warning .validation_error-message`
+              ).should('have.text', error.message)
+            }
+            for (const error of validationResponse.tests.flatMap(
+              (t) => t.infos
+            )) {
+              cy.get(
+                `.validation_error.validation_error-info .validation_error-message`
+              ).should('have.text', error.message)
+            }
+          })
+        }
       }
     }
   })

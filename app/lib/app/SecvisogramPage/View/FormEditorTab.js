@@ -17,7 +17,7 @@ import Vulnerabilities from './FormEditorTab/Vulnerabilities.js'
  *
  * @param {{
  *  formValues: import('../shared/types').FormValues
- *  validationErrors: import('../shared/types').ValidationError[]
+ *  validationErrors: import('../shared/types').TypedValidationError[]
  *  onUpdate: ((update: {}) => void) & ((instancePath: string, update: {}) => void)
  *  onDownload(doc: {}): void
  *  onCollectProductIds(): Promise<void | {id: string, name: string}[]>
@@ -59,6 +59,8 @@ export default function FormEditorTab({
     }
   }, [errors])
 
+  const criticalErrors = errors.filter((e) => e.type === 'error')
+
   const { doc } = formValues
 
   return (
@@ -69,7 +71,7 @@ export default function FormEditorTab({
             <Doc
               instancePath=""
               value={doc}
-              validationErrors={errors}
+              validationErrors={criticalErrors}
               onUpdate={onUpdate}
               onCollectProductIds={onCollectProductIds}
               onCollectGroupIds={onCollectGroupIds}
@@ -90,8 +92,22 @@ export default function FormEditorTab({
               <div className="mx-2 flex-grow overflow-auto h-full">
                 {errors.map((error, i) => (
                   <div key={i}>
-                    <a href={'#' + error.instancePath} className="underline">
-                      <b>{error.instancePath}</b>: {error.message}
+                    <a
+                      href={'#' + error.instancePath}
+                      className={`validation_error${
+                        error.type === 'warning'
+                          ? ' validation_error-warning text-yellow-600'
+                          : error.type === 'error'
+                          ? ' validation_error-error'
+                          : error.type === 'info'
+                          ? ' validation_error-info text-blue-500'
+                          : ''
+                      } underline`}
+                    >
+                      <b>{error.instancePath}</b>:{' '}
+                      <span className="validation_error-message">
+                        {error.message}
+                      </span>
                     </a>
                   </div>
                 ))}
@@ -131,7 +147,7 @@ export default function FormEditorTab({
           </div>
           <div>
             <h2 className="mb-4 text-xl font-bold">Validation Status</h2>
-            {errors.length === 0 ? (
+            {criticalErrors.length === 0 ? (
               <>
                 <div className="mb-4 flex justify-end">
                   <FontAwesomeIcon
@@ -145,7 +161,7 @@ export default function FormEditorTab({
               <div>
                 <div className="mb-4 flex justify-between">
                   <span className="text-6xl text-red-500 font-bold">
-                    {errors.length}
+                    {criticalErrors.length}
                   </span>
                   <FontAwesomeIcon
                     className="text-6xl text-red-500"

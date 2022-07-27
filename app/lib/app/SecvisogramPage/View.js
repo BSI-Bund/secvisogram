@@ -101,9 +101,13 @@ function View({
 
   const [isSaving, setSaving] = React.useState(false)
 
-  const [errors, setErrors] = React.useState(props.errors)
+  const [errors, setErrors] = React.useState(
+    /** @type {Array<import('./shared/types').TypedValidationError>} */ (
+      props.errors.map((e) => ({ ...e, type: 'error' }))
+    )
+  )
   React.useEffect(() => {
-    setErrors(props.errors)
+    setErrors(props.errors.map((e) => ({ ...e, type: 'error' })))
   }, [props.errors])
 
   const [alert, setAlert] = React.useState(
@@ -270,6 +274,7 @@ function View({
       return {
         type: /** @type {'button'} */ ('button'),
         disabled: Boolean(activeTab !== tab && isTabLocked),
+        'data-testid': `tab_button-${tab}`,
         className:
           'text-sm font-bold p-4 h-auto ' +
           (activeTab === tab
@@ -613,7 +618,22 @@ function View({
                           csaf: formValues.doc,
                         },
                         (json) => {
-                          const errors = json.tests.flatMap((t) => t.errors)
+                          const errors =
+                            /** @type {Array<import('./shared/types').TypedValidationError>} */ (
+                              json.tests.flatMap((t) =>
+                                t.errors
+                                  .map((e) => ({ ...e, type: 'error' }))
+                                  .concat(
+                                    t.warnings.map((w) => ({
+                                      ...w,
+                                      type: 'warning',
+                                    }))
+                                  )
+                                  .concat(
+                                    t.infos.map((i) => ({ ...i, type: 'info' }))
+                                  )
+                              )
+                            )
                           setErrors(errors)
                           setLoading(false)
                         }
