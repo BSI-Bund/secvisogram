@@ -75,7 +75,7 @@
     "NotesItemsAudienceTitle": "Zielgruppe der Anmerkung",
     "NotesItemsAudienceDescription": "Gibt an, wer die Anmerkung lesen soll.",
     "NotesItemsCategoryTitle": "Kategorie der Anmerkung",
-    "NotesItemsCategoryDescription": "Enthält die Information welche Art von Anmerkung dies ist.",
+    "NotesItemsCategoryDescription": "Enthält die Information, um welche Art von Anmerkung es sich handelt.",
     "NotesItemsTextTitle": "Inhalt der Anmerkung",
     "NotesItemsTextDescription": "Enthält den Inhalt der Anmerkung. Der Inhalt variiert je nach Typ.",
     "NotesItemsTitleTitle": "Titel der Anmerkung",
