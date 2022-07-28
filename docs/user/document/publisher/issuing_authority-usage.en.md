@@ -6,7 +6,6 @@ It is mostly used for sectoral, geographical or organizational specialization.
 
 *Example:*
 
-
 * ICS-CERT may state that "[they] coordinate any ICS related vulnerabilities".
   This means that ICS-CERT is not the right team to talk with in regards to IT products (e.g. Microsoft Exchange).
 
