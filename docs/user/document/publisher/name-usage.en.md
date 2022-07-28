@@ -5,5 +5,5 @@ The name of the publishing entity. Typically, the company name or the name of th
 *Examples:*
 
 * `Example Company PSIRT` (Product Security Incident Response Team)
-* `ProductCERT` (Computer Emergency Response Team)
+* `ProductCERT` (Product Computer Emergency Response Team)
 * `Example Company`

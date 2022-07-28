@@ -9,7 +9,7 @@ The tracking ID remains constant when a new version of the document is released.
 
 The filename of the document is derived from this ID (see section 5.1 of the specification).
 
-The ID is typically a combination of a short identifier of the publishing entity, year and a sequential number.
+The ID is typically a combination of a short identifier of the publishing entity, year and a sequential number. The recommended format is "CompanyAbbreviation-YYYY-#####"
 
 *Examples:*
 

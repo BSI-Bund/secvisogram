@@ -6,4 +6,4 @@ Often times a URL of the company or publishing party is used which is recommende
 Can also be a URL pointing to a page on which advisories are published.
 
 In combination with the tracking ID (`/document/tracking/id`) the CSAF document is uniquely identifiable.
-An additional version allows a version unique identification.
+If the document version is added to that combination, a single document is globally uniquely identified.
