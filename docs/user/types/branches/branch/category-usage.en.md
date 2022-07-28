@@ -14,4 +14,4 @@ If the value is `product_version`, the property `name` must not contain a versio
     * `earlier`
     * `later`
     * `prior`
-    * `version`
+    * `versions`

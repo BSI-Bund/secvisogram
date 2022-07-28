@@ -12,8 +12,8 @@ If the document status is `draft` any pre-release part is also ignored.
 
 The revision items sorted by date must not omit a version `number`.
 In case of semantic versioning, this applies only to the major version.
-This sorted list of version numbers must start with (Major) version 0 or 1.
+This sorted list of version numbers must start with (major) version 0 for documents in draft status or 1 in final status.
 
 The same version `number` must not be repeated for multiple revision items.
 
-The oldest revision item must not have an earlier `date` than the Initial Release Date `/document/tracking/initial_release_date`.
+The oldest revision item should not have an earlier `date` than the Initial Release Date `/document/tracking/initial_release_date`.

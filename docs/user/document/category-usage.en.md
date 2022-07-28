@@ -1,6 +1,7 @@
 # Category - Usage
 
-This value sets and should always be the profile name for the CSAF document.
+This value determines the profile name for the CSAF document.
+It should always be the value of the profile defined in the [specification](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html#4-profiles).
 
 The selected profile has an impact on how the document is validated.
 It is highly encouraged to use the defined CSAF profiles.

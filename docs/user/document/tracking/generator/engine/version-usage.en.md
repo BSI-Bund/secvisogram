@@ -9,3 +9,9 @@ Based on this value, different paths may need to be used for matching.
   This would require an adjustment of matching.
 
 A change in versioning (e.g. switching from integer versioning to semantic versioning) requires a change in matching.
+
+*Examples:*
+
+* `0.6.0`
+* `1.0.0-beta+exp.sha.a1c44f85`
+* `2`
