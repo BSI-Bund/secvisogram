@@ -38,6 +38,14 @@ MD_HEADER_REGEX = (
     r"$"            # end of line
 )
 
+MD_BOLD_REGEX = (
+  r"^"            # start of line
+  r"(\*{2})"      # Group 1: **
+  r"(.*)"         # Group 2: text
+  r"(\*{2})"      # Group 3: **
+  r"$"            # end of line
+)
+
 MD_IMAGE_REGEX = (
     r"^"            # start of line
     r"(.*)"         # Group 1: optional preceding text
@@ -70,9 +78,17 @@ class HeaderLine:
     text: str
 
     def to_text(self, new_depth: Optional[int] = None):
-        hashes = "#" * new_depth if new_depth is not None else "#" * self.depth
+        num_hashes = new_depth or self.depth
+        hashes = "#" * num_hashes
         return f"{hashes} {self.text}"
 
+
+@dataclass
+class BoldHeaderLine:
+    text: str
+
+    def to_text(self):
+        return f"**{self.text}**"
 
 @dataclass
 class LinkLine:
@@ -109,10 +125,10 @@ class TextLinkLine(LinkLine):
         return self.link.startswith("#")
 
 
-def parse_line(line: str) -> Union[HeaderLine, ImageLine, TextLinkLine, str]:
+def parse_line(line: str) -> Union[HeaderLine, BoldHeaderLine, ImageLine, TextLinkLine, str]:
     """
     parses a given line from a markdown file into an object with more information. Could be one of `HeaderLine`,
-     `ImageLine` oder `TextLinkLine`. In case no such line is found, the initial string is returned
+   `BoldHeaderLine`, `ImageLine` or `TextLinkLine`. In case no such line is found, the initial string is returned
 
     :param line: the line to parse
     :return: an object the line has been parsed into, or the initial line as string if no parsing succeeded
@@ -120,6 +136,9 @@ def parse_line(line: str) -> Union[HeaderLine, ImageLine, TextLinkLine, str]:
     header_search = re.search(MD_HEADER_REGEX, line, re.IGNORECASE)
     if header_search:
         return HeaderLine(depth=len(header_search.group(2)), text=header_search.group(4))
+    bold_search = re.search(MD_BOLD_REGEX, line, re.IGNORECASE)
+    if bold_search:
+        return BoldHeaderLine(text=bold_search.group(2))
     image_search = re.search(MD_IMAGE_REGEX, line, re.IGNORECASE)
     if image_search:
         return ImageLine(
@@ -170,20 +189,21 @@ def get_dir_content(dir_path: Path, language: str = "en", files_only=False) -> L
     if files_only:
         return sorted(files)
 
-    result = []
+    object_files = []
+    field_files = []
     for d in sorted(dirs):
         for f in sorted(files):
             if f.startswith(d):
-                result.append(f)
-        result.append(d)
+                object_files.append(f)
+        object_files.append(d)
     for f in sorted(files):
-        if f not in result:
-            result.append(f)
+        if f not in object_files:
+            field_files.append(f)
 
+    result = field_files + object_files
     return result
 
-
-LANGUAGE_MD_FILE_NAME_PATTERN = "(.+)[.](.{2,3})[.]md"
+LANGUAGE_MD_FILE_NAME_PATTERN = "(.+usage.*)[.](.{2,3})[.]md"
 
 
 def get_md_language_files(dir_path: Path, language: str = "en") -> List[str]:
@@ -287,6 +307,8 @@ def main(args):
 
     output_file_path = Path(args.output) / args.name
 
+    prev_head_line_text = ""
+
     with open(output_file_path, "w+", encoding="UTF-8") as output_file:
 
         for file_path, (depth, content) in _STATE[PATH_TO_DEPTH_AND_CONTENT].items():
@@ -295,17 +317,33 @@ def main(args):
                     raise ValueError(f"Linked file '{str(linked_path)}' does not exist! (link in '{str(file_path)}')")
                 if file_path.samefile(linked_path):
                     for link_name in link_names:
-                        link_anchor = f'<a name="{link_name}"></a>'
-                        output_file.write(link_anchor + "\n")
+                        link_anchor = f'<span id="{link_name}"></span>'
+                        output_file.write(link_anchor + "\n\n")
 
-            for line in content:
+            first_line = content[0]
+            #  assert isinstance(first_line, (HeaderLine, BoldHeaderLine)), "files must start with a header or bold line!"
+
+            if isinstance(first_line, HeaderLine):
+                head_line_text = first_line.to_text(new_depth=depth).replace(" - Usage", "")
+
+                if head_line_text != prev_head_line_text:
+                    output_file.write(head_line_text + "\n")
+                    prev_head_line_text = head_line_text
+            elif isinstance(first_line, BoldHeaderLine):
+                bold_text = first_line.to_text().replace(" - Usage", "")
+
+                if bold_text != prev_head_line_text:
+                    output_file.write(bold_text + "\n")
+                    prev_head_line_text = bold_text
+            else:
+                output_file.write(first_line + "\n")
+
+            for line in content[1:]:
                 text = line
-                if isinstance(line, HeaderLine):
-                    text = line.to_text(new_depth=depth)
                 if isinstance(line, LinkLine):
                     text = line.to_text()
                 output_file.write(text + "\n")
-            output_file.write("\n")
+                output_file.write("\n")
 
 
 def parse_args():
