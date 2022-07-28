@@ -36,14 +36,14 @@ describe('SecvisogramPage', () => {
               getLoginEnabledConfig().userInfoUrl,
               getUserInfo(user)
             ).as('apiGetUserInfo')
-            cy.intercept('/api/2.0/advisories/', getGetAdvisoriesResponse()).as(
+            cy.intercept('/api/v1/advisories/', getGetAdvisoriesResponse()).as(
               'apiGetAdvisories'
             )
             const advisoryDetail = getGetAdvisoryDetailResponse({
               advisoryId,
             })
             cy.intercept(
-              `/api/2.0/advisories/${advisory.advisoryId}/`,
+              `/api/v1/advisories/${advisory.advisoryId}/`,
               advisoryDetail
             ).as('apiGetAdvisoryDetail')
             const validationResponse = getValidationResponse({
@@ -164,7 +164,7 @@ describe('SecvisogramPage', () => {
           'apiGetUserInfo'
         )
         cy.intercept(
-          '/api/2.0/advisories/templates',
+          '/api/v1/advisories/templates',
           getGetTemplatesResponse()
         ).as('apiGetTemplates')
 
@@ -196,19 +196,21 @@ describe('SecvisogramPage', () => {
         )
 
         const createAdvisoryResponse = getCreateAdvisoryResponse()
-        cy.intercept('POST', '/api/2.0/advisories', createAdvisoryResponse).as(
+        cy.intercept('POST', '/api/v1/advisories', createAdvisoryResponse).as(
           'apiCreateAdvisory'
         )
         cy.intercept(
           'GET',
-          `/api/2.0/advisories/${createAdvisoryResponse.id}/`,
+          `/api/v1/advisories/${createAdvisoryResponse.id}/`,
           getGetAdvisoryDetailResponse({
             advisoryId: createAdvisoryResponse.id,
           })
         ).as('apiGetAdvisoryDetail')
         cy.get('[data-testid="save_button"]').click()
         cy.wait('@apiCreateAdvisory').then((xhr) => {
-          expect(xhr.request.body).deep.equal(sampleUploadDocument)
+          expect(xhr.request.body.csaf).deep.equal(sampleUploadDocument)
+          expect(xhr.request.body.summary).to.equal('')
+          expect(xhr.request.body.legacyVersion).to.equal('')
         })
         cy.wait('@apiGetAdvisoryDetail')
       })
@@ -281,7 +283,7 @@ describe('SecvisogramPage', () => {
             getUserInfo(user)
           ).as('apiGetUserInfo')
           cy.intercept(
-            '/api/2.0/advisories/templates',
+            '/api/v1/advisories/templates',
             getGetTemplatesResponse()
           ).as('apiGetTemplates')
 
@@ -306,7 +308,7 @@ describe('SecvisogramPage', () => {
             ).select(template.templateId)
 
             cy.intercept(
-              `/api/2.0/advisories/templates/${template.templateId}`,
+              `/api/v1/advisories/templates/${template.templateId}`,
               getGetTemplateContentResponse({ template })
             ).as('apiGetTemplateContent')
             cy.get(
@@ -319,19 +321,21 @@ describe('SecvisogramPage', () => {
             const createAdvisoryResponse = getCreateAdvisoryResponse()
             cy.intercept(
               'POST',
-              '/api/2.0/advisories',
+              '/api/v1/advisories',
               createAdvisoryResponse
             ).as('apiCreateAdvisory')
             cy.intercept(
               'GET',
-              `/api/2.0/advisories/${createAdvisoryResponse.id}/`,
+              `/api/v1/advisories/${createAdvisoryResponse.id}/`,
               getGetAdvisoryDetailResponse({
                 advisoryId: createAdvisoryResponse.id,
               })
             ).as('apiGetAdvisoryDetail')
             cy.get('[data-testid="save_button"]').click()
             cy.wait('@apiCreateAdvisory').then((xhr) => {
-              expect(xhr.request.body).deep.equal(template.templateContent)
+              expect(xhr.request.body.csaf).deep.equal(template.templateContent)
+              expect(xhr.request.body.summary).to.equal('')
+              expect(xhr.request.body.legacyVersion).to.equal('')
             })
             cy.wait('@apiGetAdvisoryDetail')
           }
@@ -352,7 +356,7 @@ describe('SecvisogramPage', () => {
             getLoginEnabledConfig().userInfoUrl,
             getUserInfo(user)
           ).as('apiGetUserInfo')
-          cy.intercept('/api/2.0/advisories/', getGetAdvisoriesResponse()).as(
+          cy.intercept('/api/v1/advisories/', getGetAdvisoriesResponse()).as(
             'apiGetAdvisories'
           )
 
@@ -360,7 +364,7 @@ describe('SecvisogramPage', () => {
             advisoryId: advisory.advisoryId,
           })
           cy.intercept(
-            `/api/2.0/advisories/${advisory.advisoryId}/`,
+            `/api/v1/advisories/${advisory.advisoryId}/`,
             advisoryDetail
           ).as('apiGetAdvisoryDetail')
 
@@ -385,7 +389,7 @@ describe('SecvisogramPage', () => {
           ])) {
             const fileContent = '{"my": "doc"}'
             cy.intercept(
-              `/api/2.0/advisories/${advisory.advisoryId}/csaf?format=${type}`,
+              `/api/v1/advisories/${advisory.advisoryId}/csaf?format=${type}`,
               {
                 body: fileContent,
                 headers: {

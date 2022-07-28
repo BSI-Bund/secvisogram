@@ -2,12 +2,59 @@ import APIRequest from '../APIRequest.js'
 
 /**
  * @param {object} params
+ * @param {{}} params.csaf
+ * @param {string} params.summary
+ * @param {string} params.legacyVersion
+ */
+export async function createAdvisory({ csaf, summary, legacyVersion }) {
+  const res = await new APIRequest(
+    new Request('/api/v1/advisories', { method: 'POST' })
+  )
+    .jsonRequestBody({ csaf, summary, legacyVersion })
+    .send()
+
+  /** @type {{ id: string; revision: string }} */
+  const advisoryData = await res.json()
+  return advisoryData
+}
+
+/**
+ * @param {object} params
+ * @param {string} params.advisoryId
+ * @param {string} params.revision
+ * @param {{}} params.csaf
+ * @param {string} params.summary
+ * @param {string} params.legacyVersion
+ */
+export async function updateAdvisory({
+  advisoryId,
+  revision,
+  csaf,
+  summary,
+  legacyVersion,
+}) {
+  const apiURL = new URL(
+    `/api/v1/advisories/${advisoryId}/`,
+    window.location.href
+  )
+  apiURL.searchParams.set('revision', revision)
+  await new APIRequest(
+    new Request(apiURL.toString(), {
+      method: 'PATCH',
+    })
+  )
+    .jsonRequestBody({ csaf, summary, legacyVersion })
+    .send()
+}
+
+/**
+ * @param {object} params
  * @param {string} params.advisoryId
  */
 export async function getAdvisoryDetail({ advisoryId }) {
   return (
     await new APIRequest(
-      new Request(`/api/2.0/advisories/${advisoryId}/`)
+      new Request(`/api/v1/advisories/${advisoryId}/`)
     ).send()
   ).json()
 }
@@ -29,7 +76,7 @@ export async function changeWorkflowState({
 }) {
   const newWorkflowState = workflowState
   const changeWorkflowStateURL = new URL(
-    `/api/2.0/advisories/${advisoryId}/workflowstate/${newWorkflowState}`,
+    `/api/v1/advisories/${advisoryId}/workflowstate/${newWorkflowState}`,
     window.location.href
   )
   changeWorkflowStateURL.searchParams.set('revision', revision)
@@ -59,7 +106,7 @@ export async function changeWorkflowState({
  */
 export async function createNewVersion({ advisoryId, revision }) {
   const createNewVersionAPIURL = new URL(
-    `/api/2.0/advisories/${advisoryId}/createNewVersion`,
+    `/api/v1/advisories/${advisoryId}/createNewVersion`,
     window.location.href
   )
   createNewVersionAPIURL.searchParams.set('revision', revision)

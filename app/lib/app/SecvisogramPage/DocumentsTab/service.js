@@ -2,7 +2,7 @@ import { backend } from '../../shared/api.js'
 import APIRequest from '../../shared/APIRequest.js'
 
 export async function getData() {
-  const res = await new APIRequest(new Request('/api/2.0/advisories/'))
+  const res = await new APIRequest(new Request('/api/v1/advisories/'))
     .produces('application/json')
     .send()
   const advisories = await res.json()
@@ -16,7 +16,7 @@ export async function getData() {
 export async function deleteAdvisory({ advisoryId }) {
   const advisoryDetail = await backend.getAdvisoryDetail({ advisoryId })
   const deleteURL = new URL(
-    `/api/2.0/advisories/${advisoryId}/`,
+    `/api/v1/advisories/${advisoryId}/`,
     window.location.href
   )
   deleteURL.searchParams.set('revision', advisoryDetail.revision)
