@@ -1,15 +1,16 @@
 # Id - Usage
 
-The unique name of the document within the publishing entity.
+The unique name of the document within the issuing party.
 
 In combination with the publisher namespace (`/document/publisher/namespace`) the CSAF document is globally identifiable.
-An additional version allows a version unique identification.
+If the document version is added to that combination, a single document is globally uniquely identified.
 
 The tracking ID remains constant when a new version of the document is released.
 
-The filename of the document is derived from this ID (see section 5.1 of the specification).
+The filename of the document is derived from this ID as described in the [specification](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html#51-filename).
 
-The ID is typically a combination of a short identifier of the publishing entity, year and a sequential number. The recommended format is "CompanyAbbreviation-YYYY-#####"
+The ID is typically a combination of a short identifier of the issuing party, year and a sequential number.
+The recommended format is "CompanyAbbreviation-YYYY-#####"
 
 *Examples:*
 

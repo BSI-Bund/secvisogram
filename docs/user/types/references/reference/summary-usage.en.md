@@ -7,6 +7,9 @@ For other documents it's the document's title.
 
 For different versions of Advisories it has the following format:
 
-  `ID: - TITLE - FORMAT VERSION`
+  `ID: TITLE - FORMAT `
 
-where `ID` is the value of `/document/tracking/id`, `TITLE` is optional and the value of `document/title`, `FORMAT` is one of `PDF`, `TXT`, `CSAF` or `HTML` and `VERSION` is the document's version.
+where `ID` is the value of `/document/tracking/id`, `TITLE` is optional and the value of `/document/title` and `FORMAT` is one of `PDF`, `TXT`, `CSAF` or `HTML`.
+
+If different versions of the document reside under different URLs, the value of `/document/tracking/version` should be appended as ` - version VERSION` after `FORMAT`.
+If the latest version is always at the same URL, the `VERSION` part can be identified as `- latest version`

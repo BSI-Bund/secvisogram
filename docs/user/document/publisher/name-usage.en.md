@@ -1,6 +1,6 @@
 # Name - Usage
 
-The name of the publishing entity. Typically, the company name or the name of the Product Security Team.
+The name of the issuing party. Typically, the company name or the name of the Product Security Team.
 
 *Examples:*
 

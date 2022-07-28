@@ -1,6 +1,6 @@
 # Label - Usage
 
-The label should be set and be valid. There are four traffic light values:
+The label should be set and must be valid. There are four traffic light values:
 
 * `RED` - *Not for disclosure, restricted to participants only*:
 

@@ -3,7 +3,7 @@
 The version of the present document.
 
 The version may still contain pre-release information (e.g. 1.0.0-17) or build metadata for documents in `draft` status.
-For documents in `interim` or `final` status no pre-release information may be included.
+For documents in `interim` or `final` status no pre-release information must be included.
 
 The set value must be the same as the `number` of the revision item with the most recent `date` value.
 For this comparison build metadata is ignored.
