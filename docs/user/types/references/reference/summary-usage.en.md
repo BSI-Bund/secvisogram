@@ -5,7 +5,7 @@ A meaningful title or short summary of the reference.
 For web pages it's often the page title from the HTML metadata.
 For other documents it's the document's title.
 
-For different versions of Advisories it has the following format:
+For different formats of advisories the title or summary has the following format:
 
   `ID: TITLE - FORMAT`
 

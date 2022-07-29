@@ -1,9 +1,9 @@
-# Id - Usage
+# ID - Usage
 
 The unique name of the document within the issuing party.
 
 In combination with the publisher namespace (`/document/publisher/namespace`) the CSAF document is globally identifiable.
-If the document version is added to that combination, a single document is globally uniquely identified.
+If the document version is added to that combination, a single version of the document is globally uniquely identified.
 
 The tracking ID remains constant when a new version of the document is released.
 

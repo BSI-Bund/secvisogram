@@ -1,1 +1,1 @@
-# X Generic Uri - Usage
+# Generic URI - Usage

@@ -20,4 +20,4 @@ The value should be a full text description.
 
 *Example:*
 
-* "Example PSIRT is responsible for any vulnerabilities related to Example products or services."
+* "Example Company PSIRT is responsible for any vulnerabilities related to Example Company's products or services."

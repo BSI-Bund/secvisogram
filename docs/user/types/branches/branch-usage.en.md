@@ -6,7 +6,10 @@ Branches are preferred over `full_product_names`.
 
 Products should be listed according to their version.
 Specifying exact product versions is preferred over specifying version ranges.
+Enumerating the products is usually easier to match on the recipients side.
+Additionally, not all version ranges are deterministic.
 
+Since not all required data may yet be available, version ranges are still supported.
 If version ranges are used, the Version Range Specifier (VERS) should be preferred.
 If this is not possible, the rules of the Version Range Like Specifier (VLS) apply.
 

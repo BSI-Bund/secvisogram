@@ -20,3 +20,5 @@ The label should be set and must be valid. There are four traffic light values:
 * `WHITE` - *Disclosure is not limited*:
 
   Subject to standard copyright rules, `TLP:WHITE` information may be distributed freely, without restriction.
+
+For more information about the TLP, refer to [the TLP website from FIRST](https://first.org/tlp/).

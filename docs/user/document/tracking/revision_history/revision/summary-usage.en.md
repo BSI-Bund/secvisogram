@@ -1,6 +1,6 @@
 # Summary - Usage
 
-The summary helps the reader with the initial assessment during inspection.
+The summary aids the reader in initial assessment during inspection.
 
 For the initial version a short notice indicating that this refers to this first version is sufficient,
 e.g. "Initial version" or "Initial publication".

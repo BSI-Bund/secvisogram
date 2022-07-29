@@ -1,4 +1,4 @@
-# Sku - Specification
+# SKU - Specification
 
 Any given stock keeping unit of value type `string` with at least 1 character represents a full or abbreviated (partial) stock keeping unit (SKU) of the component to identify.
 

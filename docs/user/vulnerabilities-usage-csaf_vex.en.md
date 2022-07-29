@@ -1,3 +1,4 @@
 # Vulnerabilities - Usage
 
-For the `csaf_vex` profile vulnerabilities must exist.
+The `csaf_vex` profile deals with vulnerabilities.
+Therefore, it must have the `/vulnerabilities` element.

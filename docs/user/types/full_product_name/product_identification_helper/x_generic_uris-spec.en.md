@@ -1,4 +1,4 @@
-# X Generic Uris - Specification
+# Generic URIs - Specification
 
 List of generic URIs (`x_generic_uris`) of value type `array` with at least 1 item contains a list of identifiers which are either vendor-specific or derived from a standard not yet supported.
 

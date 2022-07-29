@@ -1,5 +1,8 @@
 # Product Tree - Usage
 
+The product tree holds all definitions of products referenced later on in the CSAF document.
+This is independent of the products' status.
+
 It is recommended to model a hierarchical structure by means of branches in the `product_tree`.
 The branch structure typically consists of vendor, product name and product version.
 A product family can also be listed between the vendor and product name. This simplifies grouping and display in a human-readable advisory.
@@ -14,9 +17,9 @@ In principle software and hardware components are to be represented separately, 
 This also allows separation of software that may run on multiple hardware installations.
 The connections of hardware and software are to be represented over `/product_tree/relationships`.
 
-With the `product_identification_helper`s the matching between advisory and the asset database is facilitated.
+The `product_identification_helper ` facilitates the matching between the advisory and the asset or SBOM database.
 
 *Example:*
 
 * If the name of a company changes due to an acquisition, the name would in principle be changed from a certain version of the product.
-  In fact, however, other more far-reaching name changes may occur, which should be modelled here
+  In fact, however, other more far-reaching name changes may occur, which should be modelled here.

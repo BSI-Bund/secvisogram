@@ -1,3 +1,3 @@
 # Name - Usage
 
-Thname of the acknowledged person or entity.
+The name of the acknowledged person or entity.

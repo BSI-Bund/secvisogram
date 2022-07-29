@@ -9,5 +9,5 @@ The category of a reference should always be specified to be explicit.
 For vulnerabilities, usually the category refers to an `external` reference.
 For the document references with category `self` are more common.
 
-In the document's references the canonical URL and reference of human-readable advisory must have category `self`.
+In the document references the canonical URL and reference of human-readable advisory must have category `self`.
 All other references usually are `external`.

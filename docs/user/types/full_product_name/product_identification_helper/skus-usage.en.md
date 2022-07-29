@@ -1,4 +1,4 @@
-# Skus - Usage
+# SKUs - Usage
 
 SKUs are particularly well suited for products in direct sales.
 

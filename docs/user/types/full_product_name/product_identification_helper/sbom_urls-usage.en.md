@@ -1,1 +1,1 @@
-# Sbom Urls - Usage
+# SBOM Urls - Usage
