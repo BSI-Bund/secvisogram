@@ -17,7 +17,7 @@ In principle software and hardware components are to be represented separately, 
 This also allows separation of software that may run on multiple hardware installations.
 The connections of hardware and software are to be represented over `/product_tree/relationships`.
 
-The `product_identification_helper ` facilitates the matching between the advisory and the asset or SBOM database.
+The `product_identification_helper` facilitates the matching between the advisory and the asset or SBOM database.
 
 *Example:*
 
