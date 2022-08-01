@@ -13,6 +13,7 @@ export default {
       },
     ],
     references: [
+      ...minimalDoc.document.references,
       {
         category: 'external',
         summary: 'The canonical URL.',

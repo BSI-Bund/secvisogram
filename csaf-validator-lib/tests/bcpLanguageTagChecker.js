@@ -1,5 +1,7 @@
 import chai from 'chai'
-import bcpLanguageTagChecker from '../lib/shared/bcpLanguageTagChecker.js'
+import bcpLanguageTagChecker, {
+  isPrivateLanguage,
+} from '../lib/shared/bcpLanguageTagChecker.js'
 
 const { expect } = chai
 
@@ -48,6 +50,16 @@ describe('bcpLanguageTagChecker', function () {
   incorrectLanguageTags.forEach((incorrectLanguageTag) => {
     it(`"${incorrectLanguageTag}" is not a valid language tag`, function () {
       expect(bcpLanguageTagChecker(incorrectLanguageTag)).to.be.false
+    })
+  })
+
+  describe('isPrivateLanguage()', function () {
+    const privateUseLanguages = ['qaa', 'qtx', 'qtz']
+
+    privateUseLanguages.forEach((privateUseLanguages) => {
+      it(`"${privateUseLanguages}" is a private language`, function () {
+        expect(isPrivateLanguage(privateUseLanguages)).to.be.true
+      })
     })
   })
 })
