@@ -18,7 +18,7 @@ export default {
       {
         category: 'self',
         summary: 'A non-canonical URL.',
-        url: 'https://example.com/security/data/csaf/2021/my_thing__10.json',
+        url: 'https://example.com/security/data/csaf/2021/my-thing-_10.json',
       },
     ],
     tracking: {

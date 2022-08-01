@@ -20,9 +20,9 @@ declare module 'bcp47' {
 
 declare module 'cvss2js' {
   const cvss2js: {
-    getBaseScore: (input: string) => number
-    getTemporalScore: (input: string) => number
-    getEnvironmentalScore: (input: string) => number
+    getBaseScore: (input: string | {}) => number
+    getTemporalScore: (input: string | {}) => number
+    getEnvironmentalScore: (input: string | {}) => number
   }
 
   export = cvss2js
