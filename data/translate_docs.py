@@ -28,8 +28,11 @@ def main(args):
       input_lines = input_text.splitlines()
       header = input_lines[0]
       source_text = "\n".join(input_lines[1:])
-      translation = translator.translate_text(source_text, target_lang=args.target_lang.upper())
-      target_text = translation.text.replace(link_replace_source, link_replace_target)
+      if source_text.strip():
+        translation = translator.translate_text(source_text, target_lang=args.target_lang.upper())
+        target_text = translation.text.replace(link_replace_source, link_replace_target)
+      else:
+        target_text = ""
       full_target_text = header + "\n" + target_text
       output_path.write_text(full_target_text)
     else:
