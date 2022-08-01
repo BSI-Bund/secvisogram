@@ -1,4 +1,4 @@
-# Name - Usage
+**Name - Usage**
 
 The value is further defined by the branch's category.
 

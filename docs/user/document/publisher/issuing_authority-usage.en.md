@@ -1,4 +1,4 @@
-# Issuing Authority - Usage
+**Issuing Authority - Usage**
 
 Used to define responsibilities.
 Can also be used to establish geographical responsibility, e.g. Cert only for national security researchers and/or vendors.

@@ -1,3 +1,3 @@
-# Alias - Usage
+**Alias - Usage**
 
 An alias name.

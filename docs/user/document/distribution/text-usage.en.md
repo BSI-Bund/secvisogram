@@ -1,4 +1,4 @@
-# Text - Usage
+**Text - Usage**
 
 A textual description of how the document may be distributed.
 

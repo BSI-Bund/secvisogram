@@ -1,1 +1,3 @@
-# SKU - Usage
+**SKU - Usage**
+
+There is no usage documentation yet.

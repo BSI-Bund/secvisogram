@@ -123,31 +123,6 @@
                     "title": "Specific User Documentation",
                     "description": "A link to a markdown file with the usage documentation of this field that applies only in a specific context.",
                     "$ref": "#/$defs/documentation_file_path_t"
-                  },
-                  "csaf_base": {
-                    "title": "CSAF Base User Documentation",
-                    "description": "A link to a markdown file with the usage documentation of this field that applies only for the CSAF Base profile.",
-                    "$ref": "#/$defs/documentation_file_path_t"
-                  },
-                  "csaf_informational_advisory": {
-                    "title": "CSAF Informational Advisory User Documentation",
-                    "description": "A link to a markdown file with the usage documentation of this field that applies only for the CSAF Informational Advisory profile.",
-                    "$ref": "#/$defs/documentation_file_path_t"
-                  },
-                  "csaf_security_advisory": {
-                    "title": "CSAF Security Advisory User Documentation",
-                    "description": "A link to a markdown file with the usage documentation of this field that applies only for the CSAF Security Advisory profile.",
-                    "$ref": "#/$defs/documentation_file_path_t"
-                  },
-                  "csaf_security_incident_response": {
-                    "title": "CSAF Security Incident User Documentation",
-                    "description": "A link to a markdown file with the usage documentation of this field that applies only for the CSAF Security Incident profile.",
-                    "$ref": "#/$defs/documentation_file_path_t"
-                  },
-                  "csaf_vex": {
-                    "title": "CSAF VEX User Documentation",
-                    "description": "A link to a markdown file with the usage documentation of this field that applies only for the CSAF VEX profile.",
-                    "$ref": "#/$defs/documentation_file_path_t"
                   }
                 },
                 "additionalProperties": false

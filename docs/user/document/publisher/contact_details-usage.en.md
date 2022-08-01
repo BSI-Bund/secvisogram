@@ -1,4 +1,4 @@
-# Contact Details - Usage
+**Contact Details - Usage**
 
 Lists options of contacting the publisher of the advisories.
 

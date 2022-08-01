@@ -1,4 +1,4 @@
-# Category - Usage
+**Category - Usage**
 
 The publisher's category is useful for the reader to understand the perspective of the publisher.
 This information enables the consumer to estimate the trustworthiness of the advisory.

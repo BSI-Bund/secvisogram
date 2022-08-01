@@ -1,3 +1,3 @@
-# Name - Usage
+**Name - Usage**
 
 The name of the acknowledged person or entity.

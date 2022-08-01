@@ -1,4 +1,4 @@
-# Name - Usage
+**Name - Usage**
 
 The name of the issuing party. Typically, the company name or the name of the Product Security Team.
 

@@ -10,3 +10,16 @@ If other advisories (especially from suppliers) are referenced, they should be l
 It is recommended to include links to the recommended cybersecurity best practices documents of the organization and the website which lists the advisories.
 
 CVE entries should only be linked in the corresponding vulnerability item.
+
+Further description of this type can be found under [types](types/references-usage.en.md).
+
+_Additional details for profile CSAF Informational Advisory_
+
+For the `csaf_informational_advisory` profile at least one reference must exist which has links to an `external` source.
+The sources linked in such external references may be documents or websites providing more details about the issue or its remediation (if possible).
+This could be a hardening guide, a manual, best practices or any other helpful information.
+
+_Additional details for profile CSAF Security Incident Response_
+
+For the `csaf_security_incident_response` profile at least one reference must exist which has links to an `external` source.
+The sources linked in such external references may be documents or websites providing more details about the incident.

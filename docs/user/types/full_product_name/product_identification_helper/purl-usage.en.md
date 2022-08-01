@@ -1,4 +1,4 @@
-# Purl - Usage
+**Purl - Usage**
 
 A purl is a URL composed of seven components which are separated by a specific character for unambiguous parsing:
 

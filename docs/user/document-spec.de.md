@@ -1,30 +1,29 @@
-# Document - Spezifikation
+# Document - Specification
 
-Metadaten des Dokuments (`document`) des Typs `object` mit den 5 verpflichtenden Eigenschaften
+Metadaten auf Dokumentebene (`Dokument`) vom Werttyp `Objekt` mit den 5 obligatorischen Eigenschaften
 
-* [Kategorie](document/category-spec.de.md) (`category`)
+* Kategorie](document/category-spec.de.md) (`Kategorie`)
 * [CSAF Version](document/csaf_version-spec.de.md) (`csaf_version`)
-* [Herausgeber](document/publisher-spec.de.md) (`publisher`)
+* [Herausgeber](document/publisher-spec.de.md) (`Herausgeber`)
 * [Titel](document/title-spec.de.md) (`title`)
-* [Versionsverfolgung](document/tracking-spec.de.md) (`tracking`)
+* Tracking](document/tracking-spec.de.md) (`tracking`)
 
-umfasst die Metadaten des Dokuments das eine bestimmte Menge von Security Advisories. Zusätzlich können die 7 optionalen Eigenschaften
+erfasst die Metadaten zu diesem Dokument, das einen bestimmten Satz von Sicherheitshinweisen beschreibt.
+Zusätzlich kann das `document`-Objekt die folgenden 7 optionalen Eigenschaften aufweisen
 
 * [Danksagungen](document/acknowledgments-spec.de.md) (`acknowledgments`)
-* [Aggregierter Schweregrad](document/aggregate_severity-spec.de.md) (`aggregate_severity`)
-* [Verbreitung](document/distribution-spec.de.md) (`distribution`)
+* [Aggregate Severity](document/aggregate_severity-spec.de.md) (`aggregate_severity`)
+* [Verteilung](document/distribution-spec.de.md) (`distribution`)
 * [Sprache](document/lang-spec.de.md) (`lang`)
-* [Anmerkungen](document/notes-spec.de.md) (`notes`)
+* [Anmerkungen](document/notes-spec.de.md) (`Anmerkungen`)
 * [Referenzen](document/references-spec.de.md) (`references`)
-* [Ausgangssprache](document/source_lang-spec.de.md) (`source_lang`)
-
-angegeben werden.
+* [Quellsprache](document/source_lang-spec.de.md) (`source_lang`)
 
 ```javascript
 "document": {
   // ...
   "properties": {
-    "acknowledgments": {
+    "Bestätigungen": {
       // ...
     },
     "aggregate_severity" : {
@@ -48,7 +47,7 @@ angegeben werden.
     "publisher": {
       // ...
     },
-    "references": {
+    "Referenzen": {
       // ...
     },
     "source_lang": {

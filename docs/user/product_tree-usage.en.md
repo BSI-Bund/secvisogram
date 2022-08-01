@@ -23,3 +23,7 @@ The `product_identification_helper` facilitates the matching between the advisor
 
 * If the name of a company changes due to an acquisition, the name would in principle be changed from a certain version of the product.
   In fact, however, other more far-reaching name changes may occur, which should be modelled here.
+
+_Additional for profile CSAF Informational Advisory_
+
+If a `product_tree` is listed in an advisory with profile `CSAF Informational Advisory`, then the listed products are all products to which the advisory applies.

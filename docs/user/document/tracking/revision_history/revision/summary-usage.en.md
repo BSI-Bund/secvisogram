@@ -1,4 +1,4 @@
-# Summary - Usage
+**Summary - Usage**
 
 The summary aids the reader in initial assessment during inspection.
 

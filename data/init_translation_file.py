@@ -1,3 +1,7 @@
+# This script is used to initialize the translation files mapping keys to translation strings in different languages.
+# It parses the CSAF JSON schema for "title" and "description" fields, generates camel case keys for those and maps
+# them to the English source text.
+
 import json
 
 
