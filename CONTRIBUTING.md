@@ -1,18 +1,28 @@
 # Contributing
 
-When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
-Please note we have a code of conduct, please follow it in all your interactions with the project.
+When contributing our repositories, please first discuss the change you wish to
+make via issue, email, or any other method with the owners of this repository
+before making a change. Please note we have a code of conduct, please follow it
+in all your interactions with the project.
 
-The active development takes place at [Secvisogram/Secvisogram](https://github.com/secvisogram/secvisogram). Please sumbit all contributions and issues there. 
+The active development takes place in the [Secvisogram Group](https://github.com/secvisogram/).
+Please submit all contributions and issues to the specific repositories:
+
+- [Secvisogram Frontend](https://github.com/secvisogram/secvisogram/)
+- [CSAF CMS Server](https://github.com/secvisogram/csaf-cms-backend)
+- [CSAF Validator Server](https://github.com/secvisogram/csaf-validator-service)
+  for everything related to the service that wraps the validator library.
+- [CSAF Validator Lib](https://github.com/secvisogram/csaf-validator-lib)
+  for everything related to CSAF validation and other shared logic.
 
 ## Pull Request Process
 
-The process described here has several goals: 
+The process described here has several goals:
 
-    Maintain Secvisogram's quality 
-    Fix problems that are important to users 
+    Maintain Secvisogram's quality
+    Fix problems that are important to users
     Engage the community in working toward the best possible Secvisogram
-    Enable a sustainable system for Secvisogram's maintainers to review contributions 
+    Enable a sustainable system for Secvisogram's maintainers to review contributions
 
 The following rules apply:
 
