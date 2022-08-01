@@ -10,7 +10,7 @@ Of the given eight properties
 * [SBOM URLs](types/full_product_name/product_identification_helper/sbom_urls-spec.en.md) (`sbom_urls`)
 * [Serial Numbers](types/full_product_name/product_identification_helper/serial_numbers-spec.en.md) (`serial_numbers`)
 * [SKUs](types/full_product_name/product_identification_helper/skus-spec.en.md) (`skus`)
-* [X Generic URIs](types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md) (`x_generic_uris`)
+* [Generic URIs](types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md) (`x_generic_uris`)
 
 one is mandatory.
 

@@ -1,7 +1,5 @@
 # Lang - Usage
 
-* The given language code must exist and be valid.
+The used value should be a valid language code and should not contain subtags reserved for private use.
 
-* Subtypes that are reserved for private use (e.g. `qtx`) should not be used.
-
-* The language code should not be `i-default`.
+Subtypes that are reserved for private use (e.g. `qtx`) and `i-default` should not be used.

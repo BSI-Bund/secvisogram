@@ -9,3 +9,5 @@ The property SHALL NOT be present if the document was not translated.
 > SHOULD be deemed the "original", the other ones SHOULD be considered translations from the "original". The issuing
 > party can retain its original publisher information including the `category`. However, other rules defined in the
 > conformance clause "CSAF translator" SHOULD be applied.
+
+[Specification of Language Type](types/lang-spec.en.md)

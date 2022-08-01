@@ -1,3 +1,3 @@
 # Hashes - Usage
 
-* The same hash algorithm must not be used in multiple items in one item of hashes.
+Hashes are particularly well suited for the identification of software.

@@ -2016,7 +2016,6 @@
         "specification": "docs/user/types/product_id-spec.en.md",
         "usage": {
           "generic": "docs/user/types/product_id-usage.en.md",
-          "specific": "docs/user/product_tree/product_groups/product_group/product_ids/product_id-usage.en.md",
           "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
@@ -3737,8 +3736,7 @@
       "user_documentation": {
         "specification": "docs/user/types/product_group_id-spec.en.md",
         "usage": {
-          "generic": "docs/user/types/product_group_id-usage.en.md",
-          "specific": "docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids/group_id-usage.en.md"
+          "generic": "docs/user/types/product_group_id-usage.en.md"
         }
       },
       "field_title": "ProductGroupIdTitle",
@@ -3768,7 +3766,6 @@
         "specification": "docs/user/types/product_id-spec.en.md",
         "usage": {
           "generic": "docs/user/types/product_id-usage.en.md",
-          "specific": "docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids/product_id-usage.en.md",
           "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
@@ -4799,7 +4796,6 @@
         "specification": "docs/user/types/product_id-spec.en.md",
         "usage": {
           "generic": "docs/user/types/product_id-usage.en.md",
-          "specific": "docs/user/vulnerabilities/vulnerability/scores/score/products/product-usage.en.md",
           "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },
@@ -4918,8 +4914,7 @@
       "user_documentation": {
         "specification": "docs/user/types/product_group_id-spec.en.md",
         "usage": {
-          "generic": "docs/user/types/product_group_id-spec.en.md",
-          "specific": "docs/user/vulnerabilities/vulnerability/threats/threat/group_ids/group_id-usage.en.md"
+          "generic": "docs/user/types/product_group_id-spec.en.md"
         }
       },
       "field_title": "ProductGroupIdTitle",
@@ -4952,7 +4947,6 @@
         "specification": "docs/user/types/product_id-spec.en.md",
         "usage": {
           "generic": "docs/user/types/product_id-usage.en.md",
-          "specific": "docs/user/vulnerabilities/vulnerability/threats/threat/product_ids/product_id-usage.en.md",
           "csaf_informational_advisory": "docs/user/types/product_id-usage-csaf_informational_advisory.en.md"
         }
       },

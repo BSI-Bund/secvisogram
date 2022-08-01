@@ -1,3 +1,3 @@
 # Vulnerabilities - Usage
 
-* The same `cve` must not be repeated for multiple vulnerability items.
+The list of vulnerabilities contains all the information that helps to describe vulnerabilities and their impact and remediations.

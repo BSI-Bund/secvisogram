@@ -1,5 +1,6 @@
 # Source Lang - Usage
 
-* This field must be present and set if the value `translator` is used in `/document/publisher/categoy`.
+This field must be present and set if the value `translator` is used in `/document/publisher/categoy` to indicate the language of the original document.
+If the document was not translated, this field should not be set.
 
-* Must not be the same as `/document/lang`.
+The source language must not be the same as the document language in `/document/lang`.

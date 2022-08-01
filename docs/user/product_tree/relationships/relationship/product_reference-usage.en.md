@@ -1,3 +1,5 @@
 # Product Reference - Usage
 
-* A corresponding Full Product Name element with matching `product_id` must be defined.
+The ID of the product that is stated before the relationship's category.
+
+There must be a corresponding `full_product_name` element with matching `product_id` in the product tree.

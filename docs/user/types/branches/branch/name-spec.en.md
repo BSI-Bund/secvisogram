@@ -50,7 +50,7 @@ The value of MUST obey to exactly one of the following options:
 1. Version Range Specifier (vers)
 
    > vers is an ongoing community effort to address the problem of version ranges. Its draft specification is available
-   > at [VERS].
+   > at [[VERS]](#vers).
 
    vers MUST be used in its canonical form. To convey the term "all versions" the special string `vers:all/*` MUST be used.
 
@@ -65,7 +65,7 @@ The value of MUST obey to exactly one of the following options:
 
 2. Vers-like Specifier (vls)
 
-   This option uses only the `<version-constraint>` part from the vers specification. It MUST not have an URI nor the
+   This option uses only the `<version-constraint>` part from the vers specification. It MUST NOT have an URI nor the
    `<versioning-scheme>` part. It is a fallback option and SHOULD NOT be used unless really necessary.
    > The reason for that is, that it is nearly impossible for tools to reliable determine whether a given version is in
    > the range or not.
@@ -78,3 +78,10 @@ The value of MUST obey to exactly one of the following options:
    * `<4.2`
    * `<V3.0.29`
    * `>=8.1.5`
+
+___
+
+<a name="vers"/>**[VERS]**
+
+_vers: a mostly universal version range specifier_, Part of the PURL GitHub Project,
+[https://github.com/package-url/purl-spec/blob/version-range-spec/VERSION-RANGE-SPEC.rst](https://github.com/package-url/purl-spec/blob/version-range-spec/VERSION-RANGE-SPEC.rst).

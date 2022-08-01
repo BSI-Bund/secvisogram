@@ -1,6 +1,6 @@
 # Model Number - Specification
 
-Any given model number of value type `string` with at least 1 character represents a part, or a full model number of the component to identify.
+Any given model number of value type `string` with at least 1 character represents a full or abbreviated (partial) model number of the component to identify.
 
 > The terms "model", "model number" and "model variant" are mostly used synonymously. Often it is abbreviated as "MN",
 > M/N" or "model no.".

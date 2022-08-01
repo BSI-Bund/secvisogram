@@ -1,6 +1,6 @@
 # Category - Specification
 
-Note category (`category`) of value type `string` and `enum` indicates the choice of what kind of note this is. Valid `enum` values are:
+Note category (`category`) of value type `string` and `enum` contains the information of what kind of note this is.
 
 * `description`
 * `details`

@@ -1,3 +1,4 @@
 # Vulnerabilities - Usage
 
-* For the `csaf_security_advisory` profile vulnerabilities must exist.
+The `csaf_security_advisory` profile deals with vulnerabilities.
+Therefore, it must have the `/vulnerabilities` element.
