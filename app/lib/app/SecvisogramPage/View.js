@@ -401,12 +401,16 @@ function View({
                 {(appConfig.loginAvailable &&
                   userInfo &&
                   canCreateDocuments(userInfo.groups)) ||
+                (appConfig.loginAvailable && !userInfo) ||
                 !appConfig.loginAvailable ? (
                   <button
                     data-testid="new_document_button"
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                     onClick={() => {
-                      if (!appConfig.loginAvailable) {
+                      if (
+                        !appConfig.loginAvailable ||
+                        (appConfig.loginAvailable && !userInfo)
+                      ) {
                         onGetDocMin((minimalTemplate) => {
                           onGetDocMax((allFieldsTemplate) => {
                             const templates = new Map([
