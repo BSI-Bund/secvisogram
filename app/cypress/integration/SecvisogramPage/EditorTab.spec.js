@@ -71,7 +71,7 @@ describe('SecvisogramPage / EditorTab', function () {
                 documentTitle
               )
               expect(xhr.request.body.summary).to.equal('-')
-              expect(xhr.request.body.legacyVersion).to.equal('-')
+              expect(xhr.request.body.legacyVersion).to.equal('')
             })
             cy.wait('@apiGetAdvisoryDetail')
           } else {
