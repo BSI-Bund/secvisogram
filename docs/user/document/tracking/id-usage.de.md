@@ -7,7 +7,7 @@ Wenn die Dokumentversion zu dieser Kombination hinzugefügt wird, wird eine einz
 
 Die Tracking-ID bleibt konstant, wenn eine neue Version des Dokuments veröffentlicht wird.
 
-Der Dateiname des Dokuments wird von dieser ID abgeleitet, wie in der [Spezifikation] (https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html#51-filename) beschrieben.
+Der Dateiname des Dokuments wird von dieser ID abgeleitet, wie in der [Spezifikation](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html#51-filename) beschrieben.
 
 Die ID ist in der Regel eine Kombination aus einem kurzen Identifikator der herausgebenden Partei, dem Jahr und einer fortlaufenden Nummer.
 Das empfohlene Format ist "CompanyAbbreviation-YYYY-#####".

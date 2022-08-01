@@ -11,6 +11,6 @@ Bei der semantischen Versionierung hat die Versionsnummer die Form `MAJOR.MINOR.
 Immer wenn der Anwender einen neuen Abgleichslauf in seiner Asset-Datenbank durchführen muss (Abgleich der Produkte aus dem CSAF-Produktbaum mit den eingesetzten Produkten), wird die Version `MAJOR` inkrementiert.
 Bei kleinen Änderungen, wie der Korrektur von Tippfehlern, wird die Version "PATCH" inkrementiert.
 Alle dazwischen liegenden Änderungen führen zu einer Erhöhung der `MINOR`-Version.
-Die genauen Regeln des Versionsschemas sind in [Abschnitt 3.1.11 der Spezifikation] (https://docs.oasis-open.org/csaf/csaf/v2.0/cs02/csaf-v2.0-cs02.html#3111-version-type) definiert.
+Die genauen Regeln des Versionsschemas sind in [Abschnitt 3.1.11 der Spezifikation](https://docs.oasis-open.org/csaf/csaf/v2.0/cs02/csaf-v2.0-cs02.html#3111-version-type) definiert.
 
 Eine weitere Beschreibung dieses Typs findet sich unter [types](types/version-usage.de.md).

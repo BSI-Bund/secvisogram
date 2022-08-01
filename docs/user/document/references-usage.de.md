@@ -1,7 +1,7 @@
 # References - Usage
 
 Es sollte ein Verweiselement geben, das eine kanonische URL für dieses Dokument bereitstellt:
-Es hat die Kategorie `self`, die `url` beginnt mit `https://` und endet mit einem gültigen Dateinamen für das CSAF-Dokument gemäß den Regeln in [Abschnitt 5.1. der Spezifikation] (https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html#51-filename).
+Es hat die Kategorie `self`, die `url` beginnt mit `https://` und endet mit einem gültigen Dateinamen für das CSAF-Dokument gemäß den Regeln in [Abschnitt 5.1. der Spezifikation](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html#51-filename).
 
 Alle Links, die für den Gesamtzusammenhang des Dokuments von Bedeutung sind, sollten hier aufgeführt werden.
 Dies kann ursprüngliche Hinweise, Hinweise des Herstellers oder Hinweise des Koordinators umfassen.

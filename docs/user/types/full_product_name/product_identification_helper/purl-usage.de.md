@@ -2,7 +2,7 @@
 
 Ein Purl ist eine URL, die aus sieben Komponenten besteht, die durch ein bestimmtes Zeichen getrennt sind, um eine eindeutige Analyse zu ermöglichen:
 
-``Text
+```text
 scheme:type/namespace/name@version?qualifiers#subpath
 ```
 
