@@ -114,8 +114,8 @@ const SecvisogramPage = () => {
             advisoryId,
             csaf,
             revision,
-            summary: '',
-            legacyVersion: '',
+            summary: '-',
+            legacyVersion: '-',
           })
           .then(callback)
           .catch(handleError)
@@ -247,7 +247,7 @@ const SecvisogramPage = () => {
       }}
       onCreateAdvisory={({ csaf }, callback) => {
         backend
-          .createAdvisory({ csaf, summary: '', legacyVersion: '' })
+          .createAdvisory({ csaf, summary: '-', legacyVersion: '-' })
           .then(callback)
           .catch(handleError)
       }}

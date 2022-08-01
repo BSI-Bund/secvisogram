@@ -70,8 +70,8 @@ describe('SecvisogramPage / EditorTab', function () {
               expect(xhr.request.body.csaf.document.title).to.equal(
                 documentTitle
               )
-              expect(xhr.request.body.summary).to.equal('')
-              expect(xhr.request.body.legacyVersion).to.equal('')
+              expect(xhr.request.body.summary).to.equal('-')
+              expect(xhr.request.body.legacyVersion).to.equal('-')
             })
             cy.wait('@apiGetAdvisoryDetail')
           } else {

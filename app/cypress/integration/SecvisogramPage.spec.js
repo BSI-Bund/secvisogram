@@ -209,8 +209,8 @@ describe('SecvisogramPage', () => {
         cy.get('[data-testid="save_button"]').click()
         cy.wait('@apiCreateAdvisory').then((xhr) => {
           expect(xhr.request.body.csaf).deep.equal(sampleUploadDocument)
-          expect(xhr.request.body.summary).to.equal('')
-          expect(xhr.request.body.legacyVersion).to.equal('')
+          expect(xhr.request.body.summary).to.equal('-')
+          expect(xhr.request.body.legacyVersion).to.equal('-')
         })
         cy.wait('@apiGetAdvisoryDetail')
       })
@@ -334,8 +334,8 @@ describe('SecvisogramPage', () => {
             cy.get('[data-testid="save_button"]').click()
             cy.wait('@apiCreateAdvisory').then((xhr) => {
               expect(xhr.request.body.csaf).deep.equal(template.templateContent)
-              expect(xhr.request.body.summary).to.equal('')
-              expect(xhr.request.body.legacyVersion).to.equal('')
+              expect(xhr.request.body.summary).to.equal('-')
+              expect(xhr.request.body.legacyVersion).to.equal('-')
             })
             cy.wait('@apiGetAdvisoryDetail')
           }
