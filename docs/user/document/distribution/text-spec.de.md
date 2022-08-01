@@ -6,3 +6,4 @@ Die textuelle Beschreibung (`text`) des Wertetyps `string` mit 1 oder mehr Zeich
 
 * `Copyright 2021, Example Company, Alle Rechte vorbehalten.`
 * `Distribute freely.`
+

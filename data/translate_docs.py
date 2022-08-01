@@ -33,7 +33,7 @@ def main(args):
         target_text = translation.text.replace(link_replace_source, link_replace_target)
       else:
         target_text = ""
-      full_target_text = header + "\n" + target_text
+      full_target_text = header + "\n" + target_text + "\n"
       output_path.write_text(full_target_text)
     else:
       print(f"target file already exists - skipping!")
