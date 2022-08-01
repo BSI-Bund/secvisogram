@@ -5,7 +5,7 @@ import React from 'react'
  * @property {string} user
  * @property {string} email
  * @property {string} preferredUsername
- * @property {string[]} groups
+ * @property {string[] | null} groups
  */
 
 export default React.createContext(/** @type {UserInfoContext | null} */ (null))

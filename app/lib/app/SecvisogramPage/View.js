@@ -362,7 +362,7 @@ function View({
                       <span className="w-full whitespace-nowrap overflow-ellipsis">
                         <span className="text-sm font-bold">Groups:</span>{' '}
                         <span className="text-sm">
-                          {userInfo.groups.join(', ')}
+                          {userInfo.groups?.join(', ')}
                         </span>
                       </span>
                       <hr className="my-2" />
@@ -399,7 +399,7 @@ function View({
             <div className="bg-gray-400 flex items-center justify-between">
               <div className="pl-5">
                 {(appConfig.loginAvailable &&
-                  userInfo &&
+                  userInfo?.groups &&
                   canCreateDocuments(userInfo.groups)) ||
                 (appConfig.loginAvailable && !userInfo) ||
                 !appConfig.loginAvailable ? (
@@ -495,6 +495,7 @@ function View({
                 ((advisoryState?.type === 'ADVISORY' &&
                   advisoryState.advisory.changeable) ||
                   (advisoryState?.type === 'NEW_ADVISORY' &&
+                    userInfo.groups &&
                     canCreateDocuments(userInfo.groups))) ? (
                   <button
                     data-testid="save_button"
