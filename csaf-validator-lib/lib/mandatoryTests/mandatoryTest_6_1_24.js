@@ -8,10 +8,9 @@ export default function mandatoryTest_6_1_24(doc) {
 
   // 6.1.24 Definition in Involvements
   if (preconditionFor_6_1_24_Matches(doc)) {
-    /** @type {Map<string, Set<string>>} */
-    const involvementMap = new Map()
-
     doc.vulnerabilities.forEach((vulnerability, vulnerabilityIndex) => {
+      /** @type {Map<string, Set<string>>} */
+      const involvementMap = new Map()
       vulnerability.involvements.forEach((involvement, involvementIndex) => {
         if (
           typeof involvement.date === 'string' &&

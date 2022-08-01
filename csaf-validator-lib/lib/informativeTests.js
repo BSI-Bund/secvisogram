@@ -5,3 +5,7 @@ export { default as informativeTest_6_3_4 } from './informativeTests/informative
 export { default as informativeTest_6_3_5 } from './informativeTests/informativeTest_6_3_5.js'
 export { default as informativeTest_6_3_6 } from './informativeTests/informativeTest_6_3_6.js'
 export { default as informativeTest_6_3_7 } from './informativeTests/informativeTest_6_3_7.js'
+export { default as informativeTest_6_3_8 } from './informativeTests/informativeTest_6_3_8.js'
+export { default as informativeTest_6_3_9 } from './informativeTests/informativeTest_6_3_9.js'
+export { default as informativeTest_6_3_10 } from './informativeTests/informativeTest_6_3_10.js'
+export { default as informativeTest_6_3_11 } from './informativeTests/informativeTest_6_3_11.js'

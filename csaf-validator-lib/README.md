@@ -1,94 +1,68 @@
-<div id="top"></div>
+# BSI CSAF Validator Lib
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-<h3 align="center">csaf-validator-lib</h3>
-</div>
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#usage">Usage</a>
-      <ul>
-        <li>
-          <a href="#api">API</a>
-          <ul>
-            <li><a href="#interfaces">Interfaces</a></li>
-            <li><a href="#module-schematestsjs">Module schemaTests.js</a></li>
-            <li><a href="#module-mandatorytestsjs">Module mandatoryTests.js</a></li>
-            <li><a href="#module-optionaltestsjs">Module optionalTests.js</a></li>
-            <li><a href="#module-informativetestsjs">Module informativeTests.js</a></li>
-            <li><a href="#module-validatejs">Module validate.js</a></li>
-            <li><a href="#module-stripjs">Module strip.js</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#testing">Testing</a></li>
-  </ol>
-</details>
-
-<!-- ABOUT THE PROJECT -->
+- [About The Project](#about-the-project)
+- [Getting started](#getting-started)
+- [How to use](#how-to-use)
+  - [Api](#api)
+    - [Interfaces](#interfaces)
+    - [Module schemaTests.js](#module-schematestsjs)
+    - [Module mandatoryTests.js](#module-mandatorytestsjs)
+    - [Module optionalTests.js](#module-optionaltestsjs)
+    - [Module informativeTests.js](#module-informativetestsjs)
+    - [Module validate.js](#module-validatejs)
+    - [Module strip.js](#module-stripjs)
+    - [Module cwe.js](#module-cwejs)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [Dependencies](#dependencies)
 
 ## About The Project
 
 This JavaScript library is intended to include logic that can be shared across application working with CSAF.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
+[(back to top)](#bsi-csaf-validator-lib)
 
 ## Getting Started
 
-Include this repository as a git subtree and install the dependencies. After that you can reference the modules from within your JavaScript application.
+Currently, there is no npm package. You can include this library as a 
+subtree in your repository. After that you can reference the modules from within your JavaScript application.
 
-### Prerequisites
-
-Include this as a subtree in your repository.
-
-- git subtree
+- include as git subtree
   ```sh
   git subtree add --prefix csaf-validator-lib https://github.com/secvisogram/csaf-validator-lib.git main --squash
   ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-### Installation
-
-- Install dependencies
+- install dependencies
   ```sh
   cd csaf-validator-lib && npm ci --prod
   ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+[(back to top)](#bsi-csaf-validator-lib)
 
-<!-- USAGE EXAMPLES -->
+## How to use
 
-## Usage
-
-- Import the modules in your source
+- example usage
   ```js
-  import * as optionalTests from './csaf-validator-lib/optionalTests.js'
+  import validate from '../csaf-validator-lib/validate.js'
+  
+  const document = '{}'
+  const tests = [
+    {
+      type: 'preset',
+      name: 'mandatory'
+    },
+    {
+      type: 'test',
+      name: 'optionalTest_6_2_1'
+    }
+  ]
+  
+  const result = await validate(tests, document)
   ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+[(back to top)](#bsi-csaf-validator-lib)
 
 ### API
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 #### Interfaces
 
@@ -118,7 +92,7 @@ interface TestResult {
 type DocumentTest = (doc: any) => TestResult | Promise<TestResult>
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+[(back to top)](#bsi-csaf-validator-lib)
 
 #### Module `schemaTests.js`
 
@@ -127,7 +101,7 @@ export const csaf_2_0_strict: DocumentTest
 export const csaf_2_0: DocumentTest
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+[(back to top)](#bsi-csaf-validator-lib)
 
 #### Module `mandatoryTests.js`
 
@@ -176,7 +150,7 @@ export const mandatoryTest_6_1_32: DocumentTest
 export const mandatoryTest_6_1_33: DocumentTest
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+[(back to top)](#bsi-csaf-validator-lib)
 
 #### Module `optionalTests.js`
 
@@ -196,7 +170,7 @@ export const optionalTest_6_2_12: DocumentTest
 export const optionalTest_6_2_13: DocumentTest
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+[(back to top)](#bsi-csaf-validator-lib)
 
 #### Module `informativeTests.js`
 
@@ -210,7 +184,7 @@ export const informativeTest_6_3_6: DocumentTest
 export const informativeTest_6_3_7: DocumentTest
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+[(back to top)](#bsi-csaf-validator-lib)
 
 #### Module `validate.js`
 
@@ -226,7 +200,7 @@ type ValidateFn = (
 export default ValidateFn
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+[(back to top)](#bsi-csaf-validator-lib)
 
 #### Module `strip.js`
 
@@ -246,9 +220,15 @@ type StripFn = (
 export default StripFn
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+[(back to top)](#bsi-csaf-validator-lib)
 
-<!-- TESTING -->
+#### Module `cwe.js`
+
+```typescript
+export const weaknesses: Array<{ id: string; name: string }>
+```
+
+[(back to top)](#bsi-csaf-validator-lib)
 
 ## Testing
 
@@ -258,4 +238,23 @@ Tests are implemented using [mocha](https://mochajs.org/). They can be run using
 npm test
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+[(back to top)](#bsi-csaf-validator-lib)
+
+## Contributing
+
+You can find our guidelines here [CONTRIBUTING.md](https://github.com/secvisogram/secvisogram/blob/main/CONTRIBUTING.md)
+
+[(back to top)](#bsi-csaf-validator-lib)
+
+## Dependencies
+
+For the complete list of dependencies please take a look at [package.json](https://github.com/secvisogram/csaf-validator-lib/blob/main/package.json)
+
+- [Ajv JSON schema validator](https://github.com/ajv-validator/ajv)
+- [JSON Schema formats for Ajv](https://github.com/ajv-validator/ajv-formats)
+- [bcp47](https://github.com/gagle/node-bcp47)
+- [cvss2js](https://github.com/sparticvs/cvss2js)
+- [json-pointer](https://github.com/manuelstofer/json-pointer)
+- [lodash](https://lodash.com/)
+
+[(back to top)](#bsi-csaf-validator-lib)

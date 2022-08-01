@@ -1,7 +1,7 @@
-import ajv from './shared/ajv.js'
+import csafAjv from '../shared/csafAjv.js'
 import schema from './csaf_2_0/schema.js'
 
-const validate = ajv.compile(schema)
+const validate = csafAjv.compile(schema)
 
 /**
  * @param {any} doc
