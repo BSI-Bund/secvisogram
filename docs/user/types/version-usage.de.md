@@ -1,4 +1,4 @@
-**Version usage**
+**Version - Verwendung**
 
 Die Version muss entweder der
 [ganzzahlige Versionierung](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html#31112-version-type---semantic-versioning) oder
