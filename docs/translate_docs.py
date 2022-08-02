@@ -117,7 +117,6 @@ def main(args):
         input_text_xml,
         source_lang=args.source_lang.upper(),
         target_lang=args.target_lang.upper(),
-       # split_sentences=SplitSentences.NO_NEWLINES,
         tag_handling="xml",
         ignore_tags=[str(t) for t in [HeadingKeepTag, LinkTag, VerboseTag, CodeBlockTag]]
       )
