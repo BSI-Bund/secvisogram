@@ -1,7 +1,12 @@
-# This script will bootstrap translations of markdown documentation files in /docs/user from using the DeepL API.
-# For using the API a authentication key is required, see https://www.deepl.com/docs-api/accessing-the-api/authentication/.
-# Internal links to other markdown files will be changed to point to the same file with language code changed to the target one.
-# It is highly recommended checking the resulting files manually.
+"""
+This script will bootstrap translations of markdown documentation files in /docs/user from using the DeepL API.
+For using the API an authentication key is required, see https://www.deepl.com/docs-api/accessing-the-api/authentication/.
+Internal links to other markdown files will be changed to point to the same file with language code changed to the target one.
+Some care is taken to keep the original formatting and not translate text that should not be translated but it is highly
+recommended checking the resulting files manually.
+
+This script was developed and expects to be run with Python 3.9+.
+"""
 
 
 import argparse
