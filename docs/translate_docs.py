@@ -53,7 +53,7 @@ CodeBlockTag = XmlTag("code_block", start_replace="```", end_replace="```")
 
 HEADING_REGEX = r"^#+\s+(.+ - )(.+)$"
 BOLD_HEADING_REGEX = r"^\*\*(.+ - )(.+)\*\*$"
-LINK_REGEX = r"\[(.*?)\](\(.*?\))"
+LINK_REGEX = r"\[(.*?)\]\((.*?)\)"
 VERBOSE_REGEX = r"`(.+?)`"
 
 
