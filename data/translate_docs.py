@@ -100,7 +100,7 @@ def main(args):
     input_path = Path(input_file)
     output_path = Path(input_file.replace(".en.", f".{args.target_lang}."))
 
-    if output_path.exists():
+    if output_path.exists() and not args.overwrite:
       print(f"{output_path} exists - skipping!")
     else:
 
@@ -150,6 +150,7 @@ def parse_args():
     type=str,
     help="The source language, used for matching documentation file names, defaults to 'en'",
   )
+  parser.add_argument('--overwrite', action=argparse.BooleanOptionalAction, default=False)
   return parser.parse_args()
 
 
