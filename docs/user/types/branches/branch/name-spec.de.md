@@ -84,4 +84,4 @@ ___
 <a name="vers"/>**[VERS]**
 
 _vers: a mostly universal version range specifier_, Teil des PURL GitHub Projekts,
-https://github.com/package-url/purl-spec/blob/version-range-spec/VERSION-RANGE-SPEC.rst(https://github.com/package-url/purl-spec/blob/version-range-spec/VERSION-RANGE-SPEC.rst).
+[https://github.com/package-url/purl-spec/blob/version-range-spec/VERSION-RANGE-SPEC.rst](https://github.com/package-url/purl-spec/blob/version-range-spec/VERSION-RANGE-SPEC.rst).

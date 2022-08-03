@@ -61,9 +61,9 @@ Die Eigenschaften sind:
 
 Das obige Beispiel SOLLTE zu folgendem Ergebnis in einem für Menschen lesbaren Gutachten führen:
 
-&gt; Wir danken den folgenden Parteien für ihre Bemühungen:
-&gt;
-&gt; * Johann Sebastian Bach, Georg Philipp Telemann, Georg Friedrich Händel von den Barockkomponisten für die wunderbare Musik
-&gt; * CISA für die Koordinierungsbemühungen (siehe: [https://cisa.gov](https://cisa.gov))
-&gt; * BSI für die Unterstützung bei der Koordination
-&gt; Antonio Vivaldi für die Beeinflussung anderer Komponisten
+> Wir danken den folgenden Parteien für ihre Bemühungen:
+>
+> * Johann Sebastian Bach, Georg Philipp Telemann, Georg Friedrich Händel von den Barockkomponisten für die wunderbare Musik
+> * CISA für die Koordinierungsbemühungen (siehe: [https://cisa.gov](https://cisa.gov))
+> * BSI für die Unterstützung bei der Koordination
+> * Antonio Vivaldi für die Beeinflussung anderer Komponisten

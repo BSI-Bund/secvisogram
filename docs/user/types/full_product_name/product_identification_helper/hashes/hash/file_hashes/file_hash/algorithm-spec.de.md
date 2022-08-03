@@ -14,20 +14,20 @@ Der Standardwert für `algorithm` ist `sha256`.
 Diese Werte sind von den derzeit unterstützten Digests abgeleitet OpenSSL [[OPENSSL]](#openssl).
 Führende Bindestriche wurden entfernt.
 
-&gt; Der Befehl `openssl dgst -list` (Version 1.1.1f vom 2020-03-31) gibt folgendes aus:
-&gt;
-&gt; ```text
-&gt; Unterstützte Digests:
-&gt; -blake2b512 -blake2s256 -md4
-&gt; -md5 -md5-sha1 -ripemd
-&gt; -ripemd160 -rmd160 -sha1
-&gt; -sha224 -sha256 -sha3-224
-&gt; -sha3-256 -sha3-384 -sha3-512
-&gt; -sha384 -sha512 -sha512-224
-&gt; -sha512-256 -shake128 -shake256
-&gt; -sm3 -ssl3-md5 -ssl3-sha1
-&gt; -whirlpool
-&gt; ```
+> Der Befehl `openssl dgst -list` (Version 1.1.1f vom 2020-03-31) gibt folgendes aus:
+>
+>  ```text
+>  Unterstützte Digests:
+>  -blake2b512                -blake2s256                -md4
+>  -md5                       -md5-sha1                  -ripemd
+>  -ripemd160                 -rmd160                    -sha1
+>  -sha224                    -sha256                    -sha3-224
+>  -sha3-256                  -sha3-384                  -sha3-512
+>  -sha384                    -sha512                    -sha512-224
+>  -sha512-256                -shake128                  -shake256
+>  -sm3                       -ssl3-md5                  -ssl3-sha1
+>  -whirlpool
+>  ```
 
 ___
 

@@ -14,4 +14,4 @@ ___
 <a name="cpe23-n"/>**[CPE23-N]**
 
 _Common Platform Enumeration: Naming Specification Version 2.3_, B. Cheikes, D. Waltermire, K. Scarfone, Editors, NIST Interagency Report 7695, August 2011,
-https://dx.doi.org/10.6028/NIST.IR.7695(https://dx.doi.org/10.6028/NIST.IR.7695).
+[https://dx.doi.org/10.6028/NIST.IR.7695](https://dx.doi.org/10.6028/NIST.IR.7695).
