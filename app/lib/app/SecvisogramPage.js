@@ -5,7 +5,6 @@ import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
 import { loadAdvisory } from './SecvisogramPage/service.js'
 import View from './SecvisogramPage/View.js'
 import { backend, validationService } from './shared/api.js'
-import APIRequest from './shared/APIRequest.js'
 import HistoryContext from './shared/context/HistoryContext.js'
 import createCore from './shared/Core.js'
 import sitemap from './shared/sitemap.js'
@@ -356,20 +355,11 @@ const SecvisogramPage = () => {
           .catch(handleError)
       }}
       onGetTemplates={(callback) => {
-        new APIRequest(new Request('/api/v1/advisories/templates'))
-          .produces('application/json')
-          .send()
-          .then((res) => res.json())
-          .then(callback)
-          .catch(handleError)
+        backend.getTemplates().then(callback).catch(handleError)
       }}
       onGetTemplateContent={({ templateId }, callback) => {
-        new APIRequest(
-          new Request(`/api/v1/advisories/templates/${templateId}`)
-        )
-          .produces('application/json')
-          .send()
-          .then((templateContentRes) => templateContentRes.json())
+        backend
+          .getTemplateContent({ templateId })
           .then(callback)
           .catch(handleError)
       }}

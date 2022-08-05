@@ -116,3 +116,48 @@ export async function createNewVersion({ advisoryId, revision }) {
     })
   ).send()
 }
+
+export async function getTemplates() {
+  return new APIRequest(new Request('/api/v1/advisories/templates'))
+    .produces('application/json')
+    .send()
+    .then((res) => res.json())
+}
+
+/**
+ * @param {object} params
+ * @param {string} params.templateId
+ * @returns
+ */
+export async function getTemplateContent({ templateId }) {
+  return new APIRequest(
+    new Request(`/api/v1/advisories/templates/${templateId}`)
+  )
+    .produces('application/json')
+    .send()
+    .then((templateContentRes) => templateContentRes.json())
+}
+
+/**
+ * @param {object} params
+ * @param {string} params.advisoryId
+ * @param {string} params.revision
+ */
+export async function deleteAdvisory({ advisoryId, revision }) {
+  const deleteURL = new URL(
+    `/api/v1/advisories/${advisoryId}/`,
+    window.location.href
+  )
+  deleteURL.searchParams.set('revision', revision)
+  await new APIRequest(
+    new Request(deleteURL.toString(), { method: 'DELETE' })
+  ).send()
+}
+
+export async function getAdvisories() {
+  const res = await new APIRequest(new Request('/api/v1/advisories/'))
+    .produces('application/json')
+    .send()
+  const advisories = await res.json()
+  return advisories
+}
