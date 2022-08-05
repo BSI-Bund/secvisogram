@@ -2,6 +2,7 @@ import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import AppConfigContext from '../shared/context/AppConfigContext.js'
+import AppErrorContext from '../shared/context/AppErrorContext.js'
 import UserInfoContext from '../shared/context/UserInfoContext.js'
 import { canCreateDocuments } from '../shared/permissions.js'
 import CsafTab from './View/CsafTab.js'
@@ -60,6 +61,7 @@ function View({
   ...props
 }) {
   const appConfig = React.useContext(AppConfigContext)
+  const { applicationError } = React.useContext(AppErrorContext)
   const userInfo = React.useContext(UserInfoContext)
 
   const [newDocumentDialog, setNewDocumentDialog] = React.useState(
@@ -163,6 +165,25 @@ function View({
    * Enables debounced validation.
    */
   const debouncedChangedDoc = useDebounce(formValues.doc, 300)
+
+  const [errorToast, setErrorToast] = React.useState(applicationError)
+  React.useEffect(() => {
+    setErrorToast(applicationError)
+  }, [applicationError])
+  React.useEffect(() => {
+    /** @type {ReturnType<typeof setTimeout> | null} */
+    let timeout = null
+    if (errorToast) {
+      timeout = setTimeout(() => {
+        setErrorToast(null)
+      }, 5000)
+    }
+    return () => {
+      if (timeout !== null) {
+        clearTimeout(timeout)
+      }
+    }
+  }, [errorToast])
 
   /**
    * Callback to update the document. Dispatches an update-action to the
@@ -796,6 +817,39 @@ function View({
           </>
         </div>
       </div>
+      {errorToast ? (
+        <div className="fixed right-0 top-0 p-2 w-full max-w-md">
+          <div
+            role="status"
+            className={
+              'p-4 bg-red-500 text-white rounded shadow flex items-center gap-2'
+            }
+          >
+            <div className="flex-grow">{errorToast.message}</div>
+            <button
+              className="w-6"
+              type="button"
+              onClick={() => {
+                setErrorToast(null)
+              }}
+            >
+              <svg
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      ) : null}
       {isLoading ? (
         <LoadingIndicator label="Loading data ..." />
       ) : isSaving ? (

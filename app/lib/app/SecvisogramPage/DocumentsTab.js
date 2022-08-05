@@ -1,10 +1,10 @@
 import React from 'react'
-import { useErrorHandler } from 'react-error-boundary'
 import {
   changeWorkflowState,
   createNewVersion,
   getAdvisoryDetail,
 } from '../shared/api/backend.js'
+import AppErrorContext from '../shared/context/AppErrorContext.js'
 import { deleteAdvisory, getData } from './DocumentsTab/service.js'
 import DocumentsTabView from './DocumentsTab/View.js'
 
@@ -15,7 +15,7 @@ import DocumentsTabView from './DocumentsTab/View.js'
  * @returns
  */
 export default function DocumentsTab(props) {
-  const handleError = useErrorHandler()
+  const { handleError } = React.useContext(AppErrorContext)
 
   /** @type {ViewProps['onGetData']} */
   const onGetData = React.useCallback(

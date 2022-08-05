@@ -1,11 +1,11 @@
 import { get } from 'lodash'
 import React from 'react'
-import { useErrorHandler } from 'react-error-boundary'
 import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
 import { loadAdvisory } from './SecvisogramPage/service.js'
 import View from './SecvisogramPage/View.js'
 import { backend, validationService } from './shared/api.js'
 import APIRequest from './shared/APIRequest.js'
+import AppErrorContext from './shared/context/AppErrorContext.js'
 import HistoryContext from './shared/context/HistoryContext.js'
 import createCore from './shared/Core.js'
 import sitemap from './shared/sitemap.js'
@@ -78,7 +78,7 @@ const SecvisogramPage = () => {
     ),
     isTabLocked: false,
   })
-  const handleError = useErrorHandler()
+  const { handleError } = React.useContext(AppErrorContext)
 
   return (
     <View
@@ -220,7 +220,7 @@ const SecvisogramPage = () => {
           try {
             const ids = await core.document.collectProductIds({ document })
             return ids
-          } catch (error) {
+          } catch (/** @type {any} */ error) {
             return handleError(error)
           }
         },
@@ -231,7 +231,7 @@ const SecvisogramPage = () => {
           try {
             const ids = await core.document.collectGroupIds({ document })
             return ids
-          } catch (error) {
+          } catch (/** @type {any} */ error) {
             return handleError(error)
           }
         },
