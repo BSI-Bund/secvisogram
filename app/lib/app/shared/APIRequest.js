@@ -3,6 +3,7 @@ export default class APIRequest {
    * @param {Request} request
    */
   constructor(request) {
+    /** @protected */
     this.request = request
   }
 
