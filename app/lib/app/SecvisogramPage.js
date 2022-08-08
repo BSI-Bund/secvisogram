@@ -83,7 +83,9 @@ const SecvisogramPage = () => {
   return (
     <View
       activeTab={
-        searchParams.get('tab') === 'DOCUMENTS'
+        searchParams.get('tab') === 'WIZZARD'
+          ? 'WIZZARD'
+          : searchParams.get('tab') === 'DOCUMENTS'
           ? 'DOCUMENTS'
           : searchParams.get('tab') === 'EDITOR'
           ? 'EDITOR'
