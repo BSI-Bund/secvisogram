@@ -22,6 +22,7 @@ import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
+import WizzardEditorTab from './View/WizzardEditorTab.js'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 
@@ -378,6 +379,7 @@ function View({
         <div>
           <div className="flex justify-between bg-gray-700">
             <div className="flex pl-5">
+              <button {...tabButtonProps('WIZZARD')}>Wizard</button>
               <button {...tabButtonProps('EDITOR')}>Form Editor</button>
               <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
               <button {...tabButtonProps('PREVIEW')}>Preview</button>
@@ -771,7 +773,12 @@ function View({
           key={activeTab}
         >
           <>
-            {activeTab === 'EDITOR' ? (
+            {activeTab === 'WIZZARD' ? (
+              <WizzardEditorTab
+                formValues={formValues}
+                validationErrors={errors}
+              />
+            ) : activeTab === 'EDITOR' ? (
               <FormEditorTab
                 formValues={formValues}
                 validationErrors={errors}
