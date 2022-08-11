@@ -20,6 +20,7 @@ import PreviewTab from './View/PreviewTab.js'
 import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
+import ExportDocumentDialog from './View/ExportDocumentDialog.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
@@ -70,12 +71,26 @@ function View({
   const newDocumentDialogRef = React.useRef(
     /** @type {HTMLDialogElement | null} */ (null)
   )
+
   React.useEffect(() => {
     if (newDocumentDialog) {
       const modal = /** @type {any} */ (newDocumentDialogRef.current)
       modal?.showModal()
     }
   }, [newDocumentDialog])
+
+  const newExportDocumentDialogRef = React.useRef(
+    /** @type {HTMLDialogElement | null} */ (null)
+  )
+  const [newExportDocumentDialog, setNewExportDocumentDialog] = React.useState(
+    /** @type {JSX.Element | null} */ (null)
+  )
+  React.useEffect(() => {
+    if (newExportDocumentDialog) {
+      const modal = /** @type {any} */ (newExportDocumentDialogRef.current)
+      modal?.showModal()
+    }
+  }, [newExportDocumentDialog])
 
   const [versionSummaryDialog, setVersionSummaryDialog] = React.useState(
     /** @type {JSX.Element | null} */ (null)
@@ -360,6 +375,7 @@ function View({
     <>
       {alert}
       {newDocumentDialog}
+      {newExportDocumentDialog}
       {versionSummaryDialog}
       <div className="mx-auto w-full h-screen flex flex-col">
         <div>
@@ -722,6 +738,103 @@ function View({
                       </div>
                     </>
                   )}
+                <button
+                  data-testid="new_export_document_button"
+                  className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                  onClick={() => {
+                    let exportText
+                    let selectorVisible = false
+                    let selectorPresetLocal = false
+                    if (
+                      appConfig.loginAvailable &&
+                      userInfo &&
+                      advisoryState?.type === 'ADVISORY' &&
+                      formValues !== originalValues
+                    ) {
+                      exportText =
+                        'There are unsaved changes. Please select if you want to\n' +
+                        'export your current local state of the saved version on the\n' +
+                        'server.'
+                      selectorVisible = true
+                    } else if (
+                      appConfig.loginAvailable &&
+                      userInfo &&
+                      advisoryState?.type === 'ADVISORY' &&
+                      formValues === originalValues
+                    ) {
+                      selectorPresetLocal = true
+                    } else if (
+                      appConfig.loginAvailable &&
+                      userInfo &&
+                      advisoryState?.type !== 'ADVISORY' &&
+                      formValues === originalValues
+                    ) {
+                      exportText =
+                        'This is a unsaved file. You will only export from local.'
+                      selectorVisible = false
+                    } else if (
+                      appConfig.loginAvailable &&
+                      userInfo &&
+                      formValues !== originalValues &&
+                      advisoryState?.type !== 'ADVISORY'
+                    ) {
+                      exportText =
+                        'This is a unsaved file. You will only export from local.'
+                      selectorVisible = false
+                    } else {
+                      null
+                    }
+
+                    setNewExportDocumentDialog(
+                      <ExportDocumentDialog
+                        ref={newExportDocumentDialogRef}
+                        data={{
+                          isExportText: exportText,
+                          isSelectorVisible: selectorVisible,
+                          isSelectorPresetLocal: selectorPresetLocal,
+                        }}
+                        onSubmit={(params) => {
+                          switch (params.source) {
+                            case 'CSAFJSON':
+                              // return onDownload(formValues.doc)
+                              if (params.isLocal && !selectorPresetLocal) {
+                                console.log('CSAFJSON Local')
+                              } else {
+                                console.log('CSAFJSON Server')
+                              }
+                              break
+                            case 'CSAFJSONSTRIPPED':
+                              if (params.isLocal && !selectorPresetLocal) {
+                                console.log('CSAFJSON Local')
+                              } else {
+                                console.log('CSAFJSON Server')
+                              }
+                              break
+                            case 'HTMLDOCUMENT':
+                              if (params.isLocal && !selectorPresetLocal) {
+                                console.log('CSAFJSON Local')
+                              } else {
+                                console.log('CSAFJSON Server')
+                              }
+                              break
+                            case 'PDFDOCUMENT':
+                              if (params.isLocal && !selectorPresetLocal) {
+                                console.log('CSAFJSON Local')
+                              } else {
+                                console.log('CSAFJSON Server')
+                              }
+                              break
+                            case 'MARKDOWN':
+                              return console.log('MARKDOWN')
+                          }
+                        }}
+                      />
+                    )
+                  }}
+                >
+                  Test-Export-Button
+                </button>
+
                 {appConfig.loginAvailable && userInfo && (
                   <button
                     data-testid="validate_button"
