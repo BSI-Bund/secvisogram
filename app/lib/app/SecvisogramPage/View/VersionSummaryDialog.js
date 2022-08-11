@@ -11,7 +11,7 @@ const VersionSummaryDialog = React.forwardRef(
   ({ onSubmit, latestRevision }, ref) =>
   {
     return (
-    <dialog ref={ref} className="rounded p-0 w-full max-w-3xl shadow">
+    <dialog ref={ref} className="rounded p-0 w-full max-w-4xl shadow">
       <form method="dialog" id={`submit_version-close_form`} />
       <header className="w-full flex items-center justify-end border-b p-2">
         <button type="submit" name="cancel" form={`submit_version-close_form`}>
@@ -59,7 +59,7 @@ const VersionSummaryDialog = React.forwardRef(
             id="submit_version-summary-textarea"
             name="summary"
             required
-            rows={5}
+            rows={8}
             defaultValue={latestRevision.summary}
           ></textarea>
           <label
