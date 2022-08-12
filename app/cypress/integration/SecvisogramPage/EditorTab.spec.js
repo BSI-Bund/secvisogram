@@ -92,6 +92,7 @@ describe('SecvisogramPage / EditorTab', function () {
             cy.get('@prefilledSummary').clear().type(summary)
             cy.get('@prefilledLegacyVersion').clear().type(legacyVersion)
             cy.get('[data-testid="submit_version-submit"]').click()
+            cy.get('[data-testid="submit_version"]').should('not.exist')
 
             cy.wait('@apiUpdateAdvisory').then((xhr) => {
               expect(xhr.request.body.csaf.document.title).to.equal(

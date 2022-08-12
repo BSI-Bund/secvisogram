@@ -7,7 +7,12 @@ const VersionSummaryDialog = React.forwardRef(
   ({ prefilledData, onSubmit, onClose }, ref) =>
   {
     return (
-    <dialog ref={ref} className="rounded p-0 w-full max-w-4xl shadow" onClose={onClose}>
+    <dialog
+      className="rounded p-0 w-full max-w-4xl shadow"
+      ref={ref}
+      data-testid="submit_version"
+      onClose={onClose}
+    >
       <form method="dialog" id={`submit_version-close_form`} />
       <header className="w-full flex items-center justify-end border-b p-2">
         <button type="submit" name="cancel" form={`submit_version-close_form`}>
