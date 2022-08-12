@@ -141,9 +141,7 @@ describe('SecvisogramPage', () => {
       })
 
       cy.get(`[data-testid="new_document-create_document_button"]`).click()
-      cy.get('[data-testid="new_document_dialog"]').then((el) => {
-        expect(/** @type {any} */ (el[0]).open).to.be.false
-      })
+      cy.get('[data-testid="new_document_dialog"]').should('not.exist')
       cy.get('[data-testid="attribute-/document/title"] input').should(
         'have.value',
         sampleUploadDocument.document.title
@@ -172,9 +170,7 @@ describe('SecvisogramPage', () => {
         )
 
         cy.get(`[data-testid="new_document-create_document_button"]`).click()
-        cy.get('[data-testid="new_document_dialog"]').then((el) => {
-          expect(/** @type {any} */ (el[0]).open).to.be.false
-        })
+        cy.get('[data-testid="new_document_dialog"]').should('not.exist')
 
         cy.get('[data-testid="download_button"]').click()
         cy.get('[data-testid="alert-confirm_button"]').click()
@@ -251,9 +247,7 @@ describe('SecvisogramPage', () => {
               cy.get(
                 `[data-testid="new_document-create_document_button"]`
               ).click()
-              cy.get('[data-testid="new_document_dialog"]').then((el) => {
-                expect(/** @type {any} */ (el[0]).open).to.be.false
-              })
+              cy.get('[data-testid="new_document_dialog"]').should('not.exist')
             } else {
               cy.get(
                 `[data-testid="new_document-file_selector_button"]`
@@ -270,9 +264,7 @@ describe('SecvisogramPage', () => {
               cy.get(
                 `[data-testid="new_document-create_document_button"]`
               ).click()
-              cy.get('[data-testid="new_document_dialog"]').then((el) => {
-                expect(/** @type {any} */ (el[0]).open).to.be.false
-              })
+              cy.get('[data-testid="new_document_dialog"]').should('not.exist')
               cy.get('[data-testid="attribute-/document/title"] input').should(
                 'have.value',
                 sampleUploadDocument.document.title
