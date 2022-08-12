@@ -4,15 +4,11 @@ import VersionSummaryDialog from '../../../../lib/app/SecvisogramPage/View/Versi
 export const title = 'SecvisogramPage-VersionSummaryDialog'
 
 const props = {
-  onSubmit() {},
-  latestRevision: {
+  prefilledData: {
     summary: 'a revision summary',
-    legacy_version: 'a legacy version'
+    legacyVersion: 'a legacy version'
   },
-  data: {
-    advisoryId: 'my-advisory',
-    allowedStateChanges: ['Draft', 'Published'],
-  },
+  onSubmit() {},
   onClose() {},
 }
 

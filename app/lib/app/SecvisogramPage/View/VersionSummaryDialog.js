@@ -2,14 +2,9 @@ import React from 'react'
 
 const VersionSummaryDialog = React.forwardRef(
   /**
-   *
-   * @param {object} props
-   * @param {(params: { summary: string; legacyVersion: string }) => void} props.onSubmit
-   * @param {{summary: string, legacy_version: string}} props.latestRevision
-   * @param { () => void } props.onClose
-   * @returns
+   * @param {import('./VersionSummaryDialog/types.js').Props} props
    */
-  ({ onSubmit, latestRevision, onClose }, ref) =>
+  ({ prefilledData, onSubmit, onClose }, ref) =>
   {
     return (
     <dialog ref={ref} className="rounded p-0 w-full max-w-4xl shadow" onClose={onClose}>
@@ -61,7 +56,7 @@ const VersionSummaryDialog = React.forwardRef(
             name="summary"
             required
             rows={8}
-            defaultValue={latestRevision.summary}
+            defaultValue={prefilledData.summary}
           ></textarea>
           <label
             className="block"
@@ -74,7 +69,7 @@ const VersionSummaryDialog = React.forwardRef(
             data-testid="submit_version-legacy_version-input"
             id="submit_version-legacy_version-input"
             name="legacy_version"
-            defaultValue={latestRevision.legacy_version}
+            defaultValue={prefilledData.legacyVersion}
           ></input>
         </div>
       </form>

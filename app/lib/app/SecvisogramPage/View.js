@@ -304,15 +304,19 @@ function View({
 
   const getSummaryAndLegacyVersion = () => {
     const tracking = formValues.doc.document.tracking
-    if (tracking) {
+    let prefilledSummary = ''
+    let prefilledLegacyVersion = ''
+    if (tracking && tracking.version && tracking.revision_history && tracking.revision_history.length) {
       const majorVersion = (typeof tracking.version === 'string') ? parseInt(tracking.version.split(".")[0]) : tracking.version
       if (majorVersion >= 1) {
-        return tracking?.revision_history.sort(
+        const latestRevisionHistoryItem = tracking?.revision_history.sort(
           (/** @type {{date: string}} */ a, /** @type {{date: string}} */ z) => new Date(z.date).getTime() - new Date(a.date).getTime()
         )[0]
+        prefilledSummary = latestRevisionHistoryItem.summary
+        prefilledLegacyVersion = latestRevisionHistoryItem.legacy_version
       }
     }
-    return {summary: "", legacy_version: ""}
+    return {summary: prefilledSummary, legacyVersion: prefilledLegacyVersion}
   }
 
   return (
@@ -558,7 +562,7 @@ function View({
                                 }
                               )
                             }}
-                            latestRevision={{summary: "", legacy_version: ""}}
+                            prefilledData={{summary: "", legacyVersion: ""}}
                             onClose={() => setVersionSummaryDialog(null)}
                           />
                         )
@@ -593,7 +597,7 @@ function View({
                                 }
                               )
                             }}
-                            latestRevision={getSummaryAndLegacyVersion()}
+                            prefilledData={getSummaryAndLegacyVersion()}
                             onClose={() => setVersionSummaryDialog(null)}
                           />
                         )
