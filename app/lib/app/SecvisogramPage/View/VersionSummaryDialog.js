@@ -6,12 +6,13 @@ const VersionSummaryDialog = React.forwardRef(
    * @param {object} props
    * @param {(params: { summary: string; legacyVersion: string }) => void} props.onSubmit
    * @param {{summary: string, legacy_version: string}} props.latestRevision
+   * @param { () => void } props.onClose
    * @returns
    */
-  ({ onSubmit, latestRevision }, ref) =>
+  ({ onSubmit, latestRevision, onClose }, ref) =>
   {
     return (
-    <dialog ref={ref} className="rounded p-0 w-full max-w-4xl shadow">
+    <dialog ref={ref} className="rounded p-0 w-full max-w-4xl shadow" onClose={onClose}>
       <form method="dialog" id={`submit_version-close_form`} />
       <header className="w-full flex items-center justify-end border-b p-2">
         <button type="submit" name="cancel" form={`submit_version-close_form`}>

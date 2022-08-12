@@ -4,7 +4,7 @@ export default React.forwardRef(
   /**
    * @param {import('./EditWorkflowStateDialog/types.js').Props} props
    */
-  ({ data, onSubmit }, ref) => {
+  ({ data, onSubmit, onClose }, ref) => {
     const [newWorkflowState, setNewWorkflowState] = React.useState('')
 
     return (
@@ -12,6 +12,7 @@ export default React.forwardRef(
         className="rounded p-0 w-full max-w-lg shadow"
         ref={ref}
         data-testid="edit_workflow_state_dialog"
+        onClose={onClose}
       >
         {data ? (
           <>

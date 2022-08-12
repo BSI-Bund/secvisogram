@@ -13,6 +13,7 @@ const props = {
     advisoryId: 'my-advisory',
     allowedStateChanges: ['Draft', 'Published'],
   },
+  onClose() {},
 }
 
 export const tests = [

@@ -479,6 +479,7 @@ function View({
                                     }
                                   })
                                 }}
+                                onClose={() => setNewDocumentDialog(null)}
                               />
                             )
                           })
@@ -510,6 +511,7 @@ function View({
                                   }
                                 })
                               }}
+                              onClose={() => setNewDocumentDialog(null)}
                             />
                           )
                         })
@@ -557,6 +559,7 @@ function View({
                               )
                             }}
                             latestRevision={{summary: "", legacy_version: ""}}
+                            onClose={() => setVersionSummaryDialog(null)}
                           />
                         )
                       } else if (advisoryState.type === 'ADVISORY') {
@@ -591,6 +594,7 @@ function View({
                               )
                             }}
                             latestRevision={getSummaryAndLegacyVersion()}
+                            onClose={() => setVersionSummaryDialog(null)}
                           />
                         )
                       }
