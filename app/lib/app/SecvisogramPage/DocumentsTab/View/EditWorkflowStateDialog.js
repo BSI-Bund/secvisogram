@@ -20,7 +20,8 @@ export default React.forwardRef(
               method="dialog"
               id={`advisory-${data.advisoryId}-edit_workflow_state_dialog-close_form`}
             />
-            <header className="w-full flex items-center justify-end border-b p-2">
+            <header className="w-full flex items-center justify-between border-b p-2">
+              <h2 className="text-lg">Change workflow state</h2>
               <button
                 type="submit"
                 name="cancel"
