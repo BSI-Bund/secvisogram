@@ -62,6 +62,8 @@ export interface Props {
       advisoryId: string
       revision: string
       csaf: {}
+      summary: string
+      legacyVersion: string
     },
     callback: () => void
   ): void
@@ -86,7 +88,7 @@ export interface Props {
   onGetDocMin(callback: (csaf: {}) => void): void
   onGetDocMax(callback: (csaf: {}) => void): void
   onCreateAdvisory(
-    params: { csaf: {} },
+    params: { csaf: {}; summary: string; legacyVersion: string },
     callback: (advisoryData: { id: string; revision: string }) => void
   ): void
   onStrip(document: {}): void

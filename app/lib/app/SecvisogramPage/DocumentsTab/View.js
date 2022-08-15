@@ -185,6 +185,7 @@ export default function DocumentsTabView({
                                     }
                                   )
                                 },
+                                onClose: () => setEditWorkflowStateDialogProps(null)
                               })
                             }}
                           >
