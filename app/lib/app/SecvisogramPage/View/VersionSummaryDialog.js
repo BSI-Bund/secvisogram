@@ -14,7 +14,8 @@ const VersionSummaryDialog = React.forwardRef(
       onClose={onClose}
     >
       <form method="dialog" id={`submit_version-close_form`} />
-      <header className="w-full flex items-center justify-end border-b p-2">
+      <header className="w-full flex items-center justify-between border-b p-2">
+        <h2 className="text-lg">Save Document on Server</h2>
         <button type="submit" name="cancel" form={`submit_version-close_form`}>
           <svg
             className="w-6 h-6"
