@@ -185,6 +185,12 @@ export default function DocumentsTabView({
                                           message:
                                             'The document is not valid and can therefore not be published.',
                                         })
+                                      } else if (statusCode === 503) {
+                                        setLoading(false)
+                                        setError({
+                                          title: 'Error',
+                                          message: 'There was an error reaching the validation service. Please try again later.'
+                                        })
                                       } else {
                                         setData(await onGetData())
                                       }

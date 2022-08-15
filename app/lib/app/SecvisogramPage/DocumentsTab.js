@@ -41,6 +41,9 @@ export default function DocumentsTab(props) {
               if (err.status === 422) {
                 return { statusCode: 422 }
               }
+              if (err.status === 503) {
+                return { statusCode: 503 }
+              }
               throw err
             }
           )
