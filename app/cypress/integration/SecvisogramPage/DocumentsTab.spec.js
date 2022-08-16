@@ -235,10 +235,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
               .submit()
             cy.wait('@apiChangeWorkflowState')
             if (!advisory.isValid) {
-              cy.get('[data-testid="error_dialog"]').should((els) => {
-                const el = /** @type {HTMLDialogElement} */ (els[0])
-                expect(el.open).to.be.true
-              })
+              cy.get('[data-testid="error_toast_message"]').should('contain', 'document is not valid')
             } else {
               cy.wait('@apiGetAdvisories')
             }

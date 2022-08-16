@@ -12,7 +12,6 @@ import EditWorkflowStateDialog from './View/EditWorkflowStateDialog.js'
  */
 export default function DocumentsTabView({
   defaultData = null,
-  defaultError = null,
   onOpenAdvisory,
   onGetData,
   onDeleteAdvisory,
@@ -21,16 +20,6 @@ export default function DocumentsTabView({
 }) {
   const history = React.useContext(HistoryContext)
   const { handleError } = React.useContext(AppErrorContext)
-
-  const [error, setError] = React.useState(defaultError)
-  const errorDialogRef = React.useRef(
-    /** @type {HTMLDialogElement | null} */ (null)
-  )
-  React.useEffect(() => {
-    if (error) {
-      errorDialogRef.current?.showModal()
-    }
-  }, [error])
 
   const [alert, setAlert] = React.useState(
     /** @type {React.ComponentProps<typeof Alert> | null} */ (null)
@@ -178,29 +167,16 @@ export default function DocumentsTabView({
                                     documentTrackingStatus,
                                     proposedTime,
                                   })
-                                    .then(async ({ statusCode }) => {
-                                      if (statusCode === 422) {
-                                        setError({
-                                          title: 'Error',
-                                          message:
-                                            'The document is not valid and can therefore not be published.',
-                                        })
-                                      } else if (statusCode === 503) {
-                                        setLoading(false)
-                                        setError({
-                                          title: 'Error',
-                                          message: 'There was an error reaching the validation service. Please try again later.'
-                                        })
-                                      } else {
-                                        setData(await onGetData())
-                                      }
+                                    .then(async () => {
+                                      setData(await onGetData())
                                     })
                                     .catch(handleError)
                                     .finally(() => {
                                       setLoading(false)
                                     })
                                 },
-                                onClose: () => setEditWorkflowStateDialogProps(null)
+                                onClose: () =>
+                                  setEditWorkflowStateDialogProps(null),
                               })
                             }}
                           >
@@ -289,47 +265,6 @@ export default function DocumentsTabView({
           </>
         )}
         {alert && <Alert {...alert} />}
-        <dialog
-          className="rounded p-0 w-full max-w-lg shadow"
-          ref={errorDialogRef}
-          data-testid="error_dialog"
-        >
-          <form method="dialog" id={`error_dialog-close_form`} />
-          <header className="w-full flex items-center justify-between border-b p-2">
-            <h2 className="text-lg">{error?.title}</h2>
-            <button
-              type="submit"
-              name="cancel"
-              form={`error_dialog-close_form`}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </header>
-          <div className="p-4">{error?.message}</div>
-          <footer className="p-2 border-t flex justify-between items-center">
-            <div />
-            <button
-              className="py-1 px-3 rounded shadow border border-blue-400 bg-blue-400 text-white hover:text-blue-400 hover:bg-white"
-              type="submit"
-              form={`error_dialog-close_form`}
-            >
-              Close
-            </button>
-          </footer>
-        </dialog>
       </div>
     </>
   )

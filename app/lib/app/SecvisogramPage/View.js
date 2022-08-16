@@ -850,7 +850,7 @@ function View({
               'p-4 bg-red-500 text-white rounded shadow flex items-center gap-2'
             }
           >
-            <div className="flex-grow">{errorToast.message}</div>
+            <div className="flex-grow" data-testid="error_toast_message">{errorToast.message}</div>
             <button
               className="w-6"
               type="button"
