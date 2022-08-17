@@ -737,7 +737,10 @@ function View({
                       })
                         .then((json) => {
                           if (json.isValid) {
-                            setErrorToast({ message: 'the advisory is valid!' })
+                            setErrorToast({
+                              message: 'the document is valid!',
+                              color: 'green',
+                            })
                           } else {
                             setErrorToast({
                               message: 'The document is not valid!',
@@ -857,7 +860,8 @@ function View({
           <div
             role="status"
             className={
-              'p-4 bg-red-500 text-white rounded shadow flex items-center gap-2'
+              (errorToast.color === 'green' ? 'bg-green-500' : 'bg-red-500') +
+              ' p-4  text-white rounded shadow flex items-center gap-2'
             }
           >
             <div className="flex-grow" data-testid="error_toast_message">
