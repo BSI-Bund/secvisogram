@@ -70,6 +70,7 @@ export interface Props {
   ): void
   onValidate(document: {}): void
   onServiceValidate(params: { validatorUrl: string; csaf: {} }): Promise<{
+    isValid: boolean
     tests: Array<{
       errors: Array<{ instancePath: string; message: string }>
       warnings: Array<{ instancePath: string; message: string }>

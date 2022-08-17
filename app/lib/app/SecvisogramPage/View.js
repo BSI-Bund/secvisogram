@@ -736,23 +736,33 @@ function View({
                         csaf: formValues.doc,
                       })
                         .then((json) => {
-                          const errors =
-                            /** @type {Array<import('./shared/types').TypedValidationError>} */ (
-                              json.tests.flatMap((t) =>
-                                t.errors
-                                  .map((e) => ({ ...e, type: 'error' }))
-                                  .concat(
-                                    t.warnings.map((w) => ({
-                                      ...w,
-                                      type: 'warning',
-                                    }))
-                                  )
-                                  .concat(
-                                    t.infos.map((i) => ({ ...i, type: 'info' }))
-                                  )
+                          if (json.isValid) {
+                            setErrorToast({ message: 'the advisory is valid!' })
+                          } else {
+                            setErrorToast({
+                              message: 'The document is not valid!',
+                            })
+                            const errors =
+                              /** @type {Array<import('./shared/types').TypedValidationError>} */ (
+                                json.tests.flatMap((t) =>
+                                  t.errors
+                                    .map((e) => ({ ...e, type: 'error' }))
+                                    .concat(
+                                      t.warnings.map((w) => ({
+                                        ...w,
+                                        type: 'warning',
+                                      }))
+                                    )
+                                    .concat(
+                                      t.infos.map((i) => ({
+                                        ...i,
+                                        type: 'info',
+                                      }))
+                                    )
+                                )
                               )
-                            )
-                          setErrors(errors)
+                            setErrors(errors)
+                          }
                         })
                         .catch(handleError)
                         .finally(() => {
@@ -850,7 +860,9 @@ function View({
               'p-4 bg-red-500 text-white rounded shadow flex items-center gap-2'
             }
           >
-            <div className="flex-grow" data-testid="error_toast_message">{errorToast.message}</div>
+            <div className="flex-grow" data-testid="error_toast_message">
+              {errorToast.message}
+            </div>
             <button
               className="w-6"
               type="button"
