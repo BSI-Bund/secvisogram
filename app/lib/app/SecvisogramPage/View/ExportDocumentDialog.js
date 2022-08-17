@@ -10,9 +10,12 @@ export default React.forwardRef(
     | 'CSAFJSONSTRIPPED'
     | 'HTMLDOCUMENT'
     | 'PDFDOCUMENT'
-    | 'MARKDOWN'} */ defaultSource
+    | 'MARKDOWN'} */
+      defaultSource
     )
-    const [isLocal, setIsLocal] = React.useState(/** @type {boolean} */ true)
+    const [isLocal, setIsLocal] = React.useState(
+      /** @type {boolean} */ data.isSelectorPresetLocal
+    )
 
     return (
       <dialog
@@ -81,7 +84,6 @@ export default React.forwardRef(
               </div>
             ) : null}
             <div className="p-4 flex flex-col gap-2">
-              {/*Export as CSAF json*/}
               <div>
                 <label
                   className={`block p-4 border cursor-pointer${
@@ -97,7 +99,7 @@ export default React.forwardRef(
                     type="radio"
                     name="exportDialogRadio"
                     value="CSAFJSON"
-                    required={source === 'CSAFJSON'}
+                    required
                     checked={source === 'CSAFJSON'}
                     onChange={() => setSource('CSAFJSON')}
                   />
@@ -105,7 +107,6 @@ export default React.forwardRef(
                   <span className="inline-block ml-3">CSAF json</span>
                 </label>
               </div>
-              {/*Export as CSAF json (stripped)*/}
               <div>
                 <label
                   className={`block p-4 border cursor-pointer${
@@ -121,6 +122,7 @@ export default React.forwardRef(
                     type="radio"
                     name="exportDialogRadio"
                     value="CSAFJSONSTRIPPED"
+                    required
                     checked={source === 'CSAFJSONSTRIPPED'}
                     onChange={() => setSource('CSAFJSONSTRIPPED')}
                   />
@@ -129,7 +131,6 @@ export default React.forwardRef(
                   </span>
                 </label>
               </div>
-              {/*Export as HTML*/}
               <div>
                 <label
                   className={`block p-4 border cursor-pointer${
@@ -145,13 +146,13 @@ export default React.forwardRef(
                     type="radio"
                     name="exportDialogRadio"
                     value="HTMLDOCUMENT"
+                    required
                     checked={source === 'HTMLDOCUMENT'}
                     onChange={() => setSource('HTMLDOCUMENT')}
                   />
                   <span className="inline-block ml-3">HTML</span>
                 </label>
               </div>
-              {/*Export as PDF*/}
               <div>
                 <label
                   className={`block p-4 border cursor-pointer${
@@ -167,14 +168,14 @@ export default React.forwardRef(
                     type="radio"
                     name="exportDialogRadio"
                     value="PDFDOCUMENT"
+                    required
                     checked={source === 'PDFDOCUMENT'}
                     onChange={() => setSource('PDFDOCUMENT')}
                   />
                   <span className="inline-block ml-3">PDF</span>
                 </label>
               </div>
-              {/*Export from Markdown*/}
-              {!isLocal || data.isSelectorPresetLocal ? (
+              {!isLocal ? (
                 <div>
                   <label
                     className={`block p-4 border cursor-pointer${
@@ -190,6 +191,7 @@ export default React.forwardRef(
                       type="radio"
                       name="exportDialogRadio"
                       value="MARKDOWN"
+                      required
                       checked={source === 'MARKDOWN'}
                       onChange={() => setSource('MARKDOWN')}
                     />

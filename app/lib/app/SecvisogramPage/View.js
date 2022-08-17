@@ -2,12 +2,15 @@ import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import * as semver from 'semver'
+import * as api from '../shared/api.js'
 import BackendUnavailableError from '../shared/BackendUnavailableError.js'
 import AppConfigContext from '../shared/context/AppConfigContext.js'
 import AppErrorContext from '../shared/context/AppErrorContext.js'
 import UserInfoContext from '../shared/context/UserInfoContext.js'
+import downloadFile from '../shared/download.js'
 import { canCreateDocuments } from '../shared/permissions.js'
 import CsafTab from './View/CsafTab.js'
+import ExportDocumentDialog from './View/ExportDocumentDialog.js'
 import FormEditorTab from './View/FormEditorTab.js'
 import {
   uniqueGroupId,
@@ -19,8 +22,8 @@ import NewDocumentDialog from './View/NewDocumentDialog.js'
 import PreviewTab from './View/PreviewTab.js'
 import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
+import HTMLTemplate from './View/shared/HTMLTemplate.js'
 import useDebounce from './View/shared/useDebounce.js'
-import ExportDocumentDialog from './View/ExportDocumentDialog.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
@@ -64,6 +67,10 @@ function View({
   const appConfig = React.useContext(AppConfigContext)
   const { applicationError, handleError } = React.useContext(AppErrorContext)
   const userInfo = React.useContext(UserInfoContext)
+
+  const html = React.useMemo(() => {
+    return HTMLTemplate({ document: previewResult?.doc ?? {} })
+  }, [previewResult?.doc])
 
   const [newDocumentDialog, setNewDocumentDialog] = React.useState(
     /** @type {JSX.Element | null} */ (null)
@@ -369,6 +376,17 @@ function View({
     }
 
     return { summary: prefilledSummary, legacyVersion: prefilledLegacyVersion }
+  }
+
+  const exportDownload = (
+    /** @type {String} */ format,
+    /** @type {String} */ fileEnding
+  ) => {
+    api.exportService
+      .getExport(advisoryState.advisory.advisoryId, format)
+      .then((response) => {
+        downloadFile(response, advisoryState.advisory.advisoryId + fileEnding)
+      })
   }
 
   return (
@@ -744,7 +762,8 @@ function View({
                   onClick={() => {
                     let exportText
                     let selectorVisible = false
-                    let selectorPresetLocal = false
+                    let selectorPresetLocal = true
+
                     if (
                       appConfig.loginAvailable &&
                       userInfo &&
@@ -762,21 +781,11 @@ function View({
                       advisoryState?.type === 'ADVISORY' &&
                       formValues === originalValues
                     ) {
-                      selectorPresetLocal = true
+                      selectorPresetLocal = false
                     } else if (
                       appConfig.loginAvailable &&
                       userInfo &&
-                      advisoryState?.type !== 'ADVISORY' &&
-                      formValues === originalValues
-                    ) {
-                      exportText =
-                        'This is a unsaved file. You will only export from local.'
-                      selectorVisible = false
-                    } else if (
-                      appConfig.loginAvailable &&
-                      userInfo &&
-                      formValues !== originalValues &&
-                      advisoryState?.type !== 'ADVISORY'
+                      advisoryState?.type === 'NEW_ADVISORY'
                     ) {
                       exportText =
                         'This is a unsaved file. You will only export from local.'
@@ -796,36 +805,39 @@ function View({
                         onSubmit={(params) => {
                           switch (params.source) {
                             case 'CSAFJSON':
-                              // return onDownload(formValues.doc)
-                              if (params.isLocal && !selectorPresetLocal) {
-                                console.log('CSAFJSON Local')
+                              if (params.isLocal) {
+                                onDownload(formValues)
                               } else {
-                                console.log('CSAFJSON Server')
+                                exportDownload('JSON', '.json')
                               }
                               break
                             case 'CSAFJSONSTRIPPED':
-                              if (params.isLocal && !selectorPresetLocal) {
-                                console.log('CSAFJSON Local')
+                              if (params.isLocal) {
+                                onExportCSAFCallback()
                               } else {
-                                console.log('CSAFJSON Server')
+                                console.log('CSAFJSONSTRIPPED Server')
+                                downloadFile(
+                                  JSON.stringify(formValues, null, 2),
+                                  advisoryState.advisory.advisoryId
+                                )
                               }
                               break
                             case 'HTMLDOCUMENT':
-                              if (params.isLocal && !selectorPresetLocal) {
-                                console.log('CSAFJSON Local')
+                              if (params.isLocal) {
+                                onExportHTML(html, formValues.doc)
                               } else {
-                                console.log('CSAFJSON Server')
+                                exportDownload('HTML', '.html')
                               }
                               break
                             case 'PDFDOCUMENT':
-                              if (params.isLocal && !selectorPresetLocal) {
-                                console.log('CSAFJSON Local')
+                              if (params.isLocal) {
+                                console.log('PDFDOCUMENT Local')
                               } else {
-                                console.log('CSAFJSON Server')
+                                exportDownload('PDF', '.pdf')
                               }
                               break
                             case 'MARKDOWN':
-                              return console.log('MARKDOWN')
+                              exportDownload('MARKDOWN', '.md')
                           }
                         }}
                       />

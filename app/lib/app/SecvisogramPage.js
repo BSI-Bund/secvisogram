@@ -9,6 +9,7 @@ import AppErrorContext from './shared/context/AppErrorContext.js'
 import HistoryContext from './shared/context/HistoryContext.js'
 import createCore from './shared/Core.js'
 import sitemap from './shared/sitemap.js'
+import downloadFile from './shared/download.js'
 
 /**
  * @typedef {import('./SecvisogramPage/shared/types').ValidationError} ValidationError
@@ -350,24 +351,6 @@ const SecvisogramPage = () => {
 }
 
 export default SecvisogramPage
-
-/**
- * @param {string} content
- * @param {string} fileName
- * @param {string} type
- */
-function downloadFile(content, fileName, type = 'application/json') {
-  try {
-    const string = btoa(unescape(encodeURIComponent(content)))
-    const dataURI = `data:${type};base64,${string}`
-    const element = window.document.createElement('a')
-    element.download = fileName
-    element.href = dataURI
-    element.click()
-  } catch (/** @type {any} */ e) {
-    alert('An error occurred while serializing the download:\n\n' + e.message)
-  }
-}
 
 /**
  * @param {{}} doc
