@@ -318,7 +318,8 @@ def main(args):
                 if file_path.samefile(linked_path):
                     for link_name in link_names:
                         link_anchor = f'<span id="{link_name}"></span>'
-                        output_file.write(link_anchor + "\n\n")
+                        output_file.write(link_anchor + "\n")
+                    output_file.write("\n")
 
             first_line = content[0]
             #  assert isinstance(first_line, (HeaderLine, BoldHeaderLine)), "files must start with a header or bold line!"
@@ -343,7 +344,7 @@ def main(args):
                 if isinstance(line, LinkLine):
                     text = line.to_text()
                 output_file.write(text + "\n")
-                output_file.write("\n")
+            output_file.write("\n")
 
 
 def parse_args():
