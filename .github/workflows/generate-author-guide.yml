@@ -1,0 +1,67 @@
+name: generate-author-guide
+
+on: push
+
+#on:                          # TODO: uncomment to only run when the main branch is modified
+#  push:
+#    branches:
+#      - feat/minimal-web-ui  # TODO: change to main, once merged - also below
+
+jobs:
+  sync-docu-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: author-guide
+          fetch-depth: 0
+      - name: Sync author-guide branch with feat/minimal-web-ui branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git merge origin/feat/minimal-web-ui
+          git push
+  generate-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v4.2.0
+        with:
+          python-version: '3.10'
+      - name: merge usage documentation files into one
+        run: python docs/md_merge.py --input docs/user --lang en --output docs --name author_guide.md
+      - name: convert markdown to docx
+        uses: docker://pandoc/latex:2.19
+        with:
+          args: >-
+            docs/author_guide.md
+            -f markdown
+            -t docx
+            --standalone
+            -o docs/author_guide.docx
+            -V block-headings
+            --table-of-contents
+            --lua-filter=docs/filters.lua
+            --defaults=docs/defaults.yaml
+      - name: convert docx to PDF/UA
+        uses: jmservera/libreoffice-action@v0.2
+        with:
+          command:
+            libreoffice --headless --terminate_after_init
+            && cp docs/customModule.xba ${HOME}/.config/libreoffice/4/user/basic/Standard/
+            && sed -i '4i\ <library:element library:name="customModule"/>' ${HOME}/.config/libreoffice/4/user/basic/Standard/script.xlb
+            && sed -i '3i<item oor:path="/org.openoffice.Office.Common/Save/Document"><prop oor:name="WarnAlienFormat" oor:op="fuse"><value>false</value></prop></item>' ${HOME}/.config/libreoffice/4/user/registrymodifications.xcu
+            && libreoffice --headless --invisible "macro:///Standard.customModule.UpdateIndexes(${GITHUB_WORKSPACE}/docs/author_guide.docx)"
+            && sed -i '3i<item oor:path="/org.openoffice.Office.Common/Filter/PDF/Export"><prop oor:name="PDFUACompliance" oor:op="fuse"><value>true</value></prop></item>' ${HOME}/.config/libreoffice/4/user/registrymodifications.xcu
+            && libreoffice --headless --convert-to pdf:writer_pdf_Export --outdir docs docs/author_guide.docx
+      - name: commit the author guide (if it changed)
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [[ `git diff --exit-code docs/author_guide.pdf` ]]; then
+            git add docs/author_guide.pdf
+            git commit -m "Update Author Guide"
+            git push
+          fi
