@@ -61,7 +61,7 @@ function View({
   ...props
 }) {
   const appConfig = React.useContext(AppConfigContext)
-  const { applicationError } = React.useContext(AppErrorContext)
+  const { applicationError, handleError } = React.useContext(AppErrorContext)
   const userInfo = React.useContext(UserInfoContext)
 
   const [newDocumentDialog, setNewDocumentDialog] = React.useState(
@@ -327,17 +327,26 @@ function View({
     const tracking = formValues.doc.document.tracking
     let prefilledSummary = ''
     let prefilledLegacyVersion = ''
-    if (tracking && tracking.version && tracking.revision_history && tracking.revision_history.length) {
-      const majorVersion = (typeof tracking.version === 'string') ? parseInt(tracking.version.split(".")[0]) : tracking.version
+    if (
+      tracking &&
+      tracking.version &&
+      tracking.revision_history &&
+      tracking.revision_history.length
+    ) {
+      const majorVersion =
+        typeof tracking.version === 'string'
+          ? parseInt(tracking.version.split('.')[0])
+          : tracking.version
       if (majorVersion >= 1) {
         const latestRevisionHistoryItem = tracking?.revision_history.sort(
-          (/** @type {{date: string}} */ a, /** @type {{date: string}} */ z) => new Date(z.date).getTime() - new Date(a.date).getTime()
+          (/** @type {{date: string}} */ a, /** @type {{date: string}} */ z) =>
+            new Date(z.date).getTime() - new Date(a.date).getTime()
         )[0]
         prefilledSummary = latestRevisionHistoryItem.summary
         prefilledLegacyVersion = latestRevisionHistoryItem.legacy_version
       }
     }
-    return {summary: prefilledSummary, legacyVersion: prefilledLegacyVersion}
+    return { summary: prefilledSummary, legacyVersion: prefilledLegacyVersion }
   }
 
   return (
@@ -464,8 +473,8 @@ function View({
                         !appConfig.loginAvailable ||
                         (appConfig.loginAvailable && !userInfo)
                       ) {
-                        onGetDocMin((minimalTemplate) => {
-                          onGetDocMax((allFieldsTemplate) => {
+                        onGetDocMin().then((minimalTemplate) =>
+                          onGetDocMax().then((allFieldsTemplate) => {
                             const templates = new Map([
                               [
                                 'MINIMAL',
@@ -508,38 +517,45 @@ function View({
                               />
                             )
                           })
-                        })
+                        )
                       } else {
                         setLoading(true)
-                        onGetTemplates((templates) => {
-                          setLoading(false)
-                          setNewDocumentDialog(
-                            <NewDocumentDialog
-                              ref={newDocumentDialogRef}
-                              data={{ templates }}
-                              onSubmit={(params) => {
-                                confirmDocumentReplacement(() => {
-                                  if (params.source === 'TEMPLATE') {
-                                    setLoading(true)
-                                    onGetTemplateContent(
-                                      { templateId: params.templateId },
-                                      (templateContent) => {
-                                        setAdvisoryState({
-                                          type: 'NEW_ADVISORY',
-                                          csaf: templateContent,
+                        onGetTemplates()
+                          .then((templates) => {
+                            setNewDocumentDialog(
+                              <NewDocumentDialog
+                                ref={newDocumentDialogRef}
+                                data={{ templates }}
+                                onSubmit={(params) => {
+                                  confirmDocumentReplacement(() => {
+                                    if (params.source === 'TEMPLATE') {
+                                      setLoading(true)
+                                      onGetTemplateContent({
+                                        templateId: params.templateId,
+                                      })
+                                        .then((templateContent) => {
+                                          setAdvisoryState({
+                                            type: 'NEW_ADVISORY',
+                                            csaf: templateContent,
+                                          })
                                         })
-                                        setLoading(false)
-                                      }
-                                    )
-                                  } else {
-                                    onOpen(params.file)
-                                  }
-                                })
-                              }}
-                              onClose={() => setNewDocumentDialog(null)}
-                            />
-                          )
-                        })
+                                        .catch(handleError)
+                                        .finally(() => {
+                                          setLoading(false)
+                                        })
+                                    } else {
+                                      onOpen(params.file)
+                                    }
+                                  })
+                                }}
+                                onClose={() => setNewDocumentDialog(null)}
+                              />
+                            )
+                          })
+                          .catch(handleError)
+                          .finally(() => {
+                            setLoading(false)
+                          })
                       }
                     }}
                   >
@@ -563,27 +579,27 @@ function View({
                             ref={versionSummaryDialogRef}
                             onSubmit={({ summary, legacyVersion }) => {
                               setSaving(true)
-                              onCreateAdvisory(
-                                {
-                                  csaf: formValues.doc,
-                                  summary,
-                                  legacyVersion,
-                                },
-                                ({ id }) => {
-                                  onLoadAdvisory(
-                                    { advisoryId: id },
+                              onCreateAdvisory({
+                                csaf: formValues.doc,
+                                summary,
+                                legacyVersion,
+                              })
+                                .then(({ id }) =>
+                                  onLoadAdvisory({ advisoryId: id }).then(
                                     (advisory) => {
                                       setAdvisoryState({
                                         type: 'ADVISORY',
                                         advisory,
                                       })
-                                      setSaving(false)
                                     }
                                   )
-                                }
-                              )
+                                )
+                                .catch(handleError)
+                                .finally(() => {
+                                  setSaving(false)
+                                })
                             }}
-                            prefilledData={{summary: "", legacyVersion: ""}}
+                            prefilledData={{ summary: '', legacyVersion: '' }}
                             onClose={() => setVersionSummaryDialog(null)}
                           />
                         )
@@ -593,30 +609,28 @@ function View({
                             ref={versionSummaryDialogRef}
                             onSubmit={({ summary, legacyVersion }) => {
                               setSaving(true)
-                              onUpdateAdvisory(
-                                {
-                                  advisoryId: advisoryState.advisory.advisoryId,
-                                  revision: advisoryState.advisory.revision,
-                                  csaf: formValues.doc,
-                                  summary,
-                                  legacyVersion,
-                                },
-                                () => {
-                                  onLoadAdvisory(
-                                    {
-                                      advisoryId:
-                                        advisoryState.advisory.advisoryId,
-                                    },
-                                    (advisory) => {
-                                      setAdvisoryState({
-                                        type: 'ADVISORY',
-                                        advisory,
-                                      })
-                                      setSaving(false)
-                                    }
-                                  )
-                                }
-                              )
+                              onUpdateAdvisory({
+                                advisoryId: advisoryState.advisory.advisoryId,
+                                revision: advisoryState.advisory.revision,
+                                csaf: formValues.doc,
+                                summary,
+                                legacyVersion,
+                              })
+                                .then(() =>
+                                  onLoadAdvisory({
+                                    advisoryId:
+                                      advisoryState.advisory.advisoryId,
+                                  }).then((advisory) => {
+                                    setAdvisoryState({
+                                      type: 'ADVISORY',
+                                      advisory,
+                                    })
+                                  })
+                                )
+                                .catch(handleError)
+                                .finally(() => {
+                                  setSaving(false)
+                                })
                             }}
                             prefilledData={getSummaryAndLegacyVersion()}
                             onClose={() => setVersionSummaryDialog(null)}
@@ -711,12 +725,11 @@ function View({
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                     onClick={async () => {
                       setLoading(true)
-                      onServiceValidate(
-                        {
-                          validatorUrl: appConfig.validatorUrl,
-                          csaf: formValues.doc,
-                        },
-                        (json) => {
+                      onServiceValidate({
+                        validatorUrl: appConfig.validatorUrl,
+                        csaf: formValues.doc,
+                      })
+                        .then((json) => {
                           const errors =
                             /** @type {Array<import('./shared/types').TypedValidationError>} */ (
                               json.tests.flatMap((t) =>
@@ -734,9 +747,11 @@ function View({
                               )
                             )
                           setErrors(errors)
+                        })
+                        .catch(handleError)
+                        .finally(() => {
                           setLoading(false)
-                        }
-                      )
+                        })
                     }}
                   >
                     Validate
@@ -806,11 +821,15 @@ function View({
               <DocumentsTab
                 onOpenAdvisory={({ advisoryId }, callback) => {
                   setLoading(true)
-                  onLoadAdvisory({ advisoryId }, (advisory) => {
-                    setAdvisoryState({ type: 'ADVISORY', advisory })
-                    callback()
-                    setLoading(false)
-                  })
+                  return onLoadAdvisory({ advisoryId })
+                    .then((advisory) => {
+                      setAdvisoryState({ type: 'ADVISORY', advisory })
+                      callback()
+                    })
+                    .catch(handleError)
+                    .finally(() => {
+                      setLoading(false)
+                    })
                 }}
               />
             ) : null}

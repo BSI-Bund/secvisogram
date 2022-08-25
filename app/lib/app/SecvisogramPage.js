@@ -105,23 +105,21 @@ const SecvisogramPage = () => {
       alert={alert}
       strict={strict}
       DocumentsTab={DocumentsTab}
-      onLoadAdvisory={(params, callback) => {
-        loadAdvisory(params).then(callback).catch(handleError)
-      }}
-      onUpdateAdvisory={(
-        { advisoryId, csaf, revision, summary, legacyVersion },
-        callback
-      ) => {
-        backend
-          .updateAdvisory({
-            advisoryId,
-            csaf,
-            revision,
-            summary,
-            legacyVersion,
-          })
-          .then(callback)
-          .catch(handleError)
+      onLoadAdvisory={loadAdvisory}
+      onUpdateAdvisory={({
+        advisoryId,
+        csaf,
+        revision,
+        summary,
+        legacyVersion,
+      }) => {
+        return backend.updateAdvisory({
+          advisoryId,
+          csaf,
+          revision,
+          summary,
+          legacyVersion,
+        })
       }}
       onLockTab={React.useCallback(() => {
         setState((state) => ({ ...state, isTabLocked: true }))
@@ -237,22 +235,14 @@ const SecvisogramPage = () => {
         },
         [handleError]
       )}
-      onGetDocMin={(callback) => {
-        callback(core.document.newDocMin())
+      onGetDocMin={async () => {
+        return core.document.newDocMin()
       }}
-      onGetDocMax={(callback) => {
-        core.document
-          .newDocMax()
-          .then((doc) => {
-            callback(doc)
-          })
-          .catch(handleError)
+      onGetDocMax={async () => {
+        return core.document.newDocMax()
       }}
-      onCreateAdvisory={({ csaf, summary, legacyVersion }, callback) => {
-        backend
-          .createAdvisory({ csaf, summary, legacyVersion })
-          .then(callback)
-          .catch(handleError)
+      onCreateAdvisory={({ csaf, summary, legacyVersion }) => {
+        return backend.createAdvisory({ csaf, summary, legacyVersion })
       }}
       onStrip={React.useCallback(
         (document) => {
@@ -352,29 +342,22 @@ const SecvisogramPage = () => {
         },
         [strict]
       )}
-      onServiceValidate={({ validatorUrl, csaf }, callback) => {
-        validationService
-          .validateCSAF(validatorUrl, { csaf })
-          .then(callback)
-          .catch(handleError)
+      onServiceValidate={({ validatorUrl, csaf }) => {
+        return validationService.validateCSAF(validatorUrl, { csaf })
       }}
-      onGetTemplates={(callback) => {
-        new APIRequest(new Request('/api/v1/advisories/templates'))
+      onGetTemplates={() => {
+        return new APIRequest(new Request('/api/v1/advisories/templates'))
           .produces('application/json')
           .send()
           .then((res) => res.json())
-          .then(callback)
-          .catch(handleError)
       }}
-      onGetTemplateContent={({ templateId }, callback) => {
-        new APIRequest(
+      onGetTemplateContent={({ templateId }) => {
+        return new APIRequest(
           new Request(`/api/v1/advisories/templates/${templateId}`)
         )
           .produces('application/json')
           .send()
           .then((templateContentRes) => templateContentRes.json())
-          .then(callback)
-          .catch(handleError)
       }}
     />
   )

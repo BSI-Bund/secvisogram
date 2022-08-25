@@ -335,6 +335,7 @@ export const tests = [
           <DocumentsTabView
             {...documentsTabViewSample.withoutData.props}
             {...props}
+            onGetData={() => new Promise(() => {})}
           />
         )}
       />

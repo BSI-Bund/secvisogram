@@ -1,4 +1,5 @@
 import React from 'react'
+import AppErrorContext from '../../shared/context/AppErrorContext.js'
 import HistoryContext from '../../shared/context/HistoryContext.js'
 import sitemap from '../../shared/sitemap.js'
 import LoadingIndicator from '../View/LoadingIndicator.js'
@@ -19,6 +20,7 @@ export default function DocumentsTabView({
   onCreateNewVersion,
 }) {
   const history = React.useContext(HistoryContext)
+  const { handleError } = React.useContext(AppErrorContext)
 
   const [error, setError] = React.useState(defaultError)
   const errorDialogRef = React.useRef(
@@ -33,8 +35,8 @@ export default function DocumentsTabView({
   const [alert, setAlert] = React.useState(
     /** @type {React.ComponentProps<typeof Alert> | null} */ (null)
   )
-  const [isLoading, setLoading] = React.useState(false)
   const [data, setData] = React.useState(defaultData)
+  const [isLoading, setLoading] = React.useState(!defaultData)
 
   const [editWorkflowStateDialogProps, setEditWorkflowStateDialogProps] =
     React.useState(
@@ -53,15 +55,23 @@ export default function DocumentsTabView({
   React.useEffect(() => {
     let active = true
 
-    onGetData((data) => {
-      if (!active) return
-      setData(data)
-    })
+    setLoading(true)
+    onGetData()
+      .then((data) => {
+        if (!active) return
+        setData(data)
+      })
+      .catch(handleError)
+      .finally(() => {
+        if (active) {
+          setLoading(false)
+        }
+      })
 
     return () => {
       active = false
     }
-  }, [onGetData])
+  }, [onGetData, handleError])
 
   /**
    * @param {object} params
@@ -82,7 +92,7 @@ export default function DocumentsTabView({
         />
       )}
       <div className="bg-white h-full">
-        {!data ? (
+        {isLoading ? (
           <LoadingIndicator label="Loading ..." />
         ) : (
           <>
@@ -130,15 +140,16 @@ export default function DocumentsTabView({
                             data-testid={`advisory-${advisory.advisoryId}-list_entry-create_new_version_button`}
                             onClick={() => {
                               setLoading(true)
-                              onCreateNewVersion(
-                                { advisoryId: advisory.advisoryId },
-                                () => {
-                                  onGetData((data) => {
-                                    setData(data)
-                                    setLoading(false)
-                                  })
-                                }
-                              )
+                              onCreateNewVersion({
+                                advisoryId: advisory.advisoryId,
+                              })
+                                .then(async () => {
+                                  setData(await onGetData())
+                                })
+                                .catch(handleError)
+                                .finally(() => {
+                                  setLoading(false)
+                                })
                             }}
                           >
                             Create new version
@@ -161,29 +172,27 @@ export default function DocumentsTabView({
                                   proposedTime,
                                 }) {
                                   setLoading(true)
-                                  onChangeWorkflowState(
-                                    {
-                                      advisoryId: advisory.advisoryId,
-                                      workflowState,
-                                      documentTrackingStatus,
-                                      proposedTime,
-                                    },
-                                    ({ statusCode }) => {
+                                  onChangeWorkflowState({
+                                    advisoryId: advisory.advisoryId,
+                                    workflowState,
+                                    documentTrackingStatus,
+                                    proposedTime,
+                                  })
+                                    .then(async ({ statusCode }) => {
                                       if (statusCode === 422) {
-                                        setLoading(false)
                                         setError({
                                           title: 'Error',
                                           message:
                                             'The document is not valid and can therefore not be published.',
                                         })
                                       } else {
-                                        onGetData((data) => {
-                                          setData(data)
-                                          setLoading(false)
-                                        })
+                                        setData(await onGetData())
                                       }
-                                    }
-                                  )
+                                    })
+                                    .catch(handleError)
+                                    .finally(() => {
+                                      setLoading(false)
+                                    })
                                 },
                                 onClose: () => setEditWorkflowStateDialogProps(null)
                               })
@@ -233,15 +242,16 @@ export default function DocumentsTabView({
                                   onConfirm() {
                                     setAlert(null)
                                     setLoading(true)
-                                    onDeleteAdvisory(
-                                      { advisoryId: advisory.advisoryId },
-                                      () => {
-                                        onGetData((data) => {
-                                          setData(data)
-                                          setLoading(false)
-                                        })
-                                      }
-                                    )
+                                    onDeleteAdvisory({
+                                      advisoryId: advisory.advisoryId,
+                                    })
+                                      .then(async () => {
+                                        setData(await onGetData())
+                                      })
+                                      .catch(handleError)
+                                      .finally(() => {
+                                        setLoading(false)
+                                      })
                                   },
                                 })
                               }}
