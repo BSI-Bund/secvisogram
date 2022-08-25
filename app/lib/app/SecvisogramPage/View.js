@@ -382,11 +382,13 @@ function View({
     /** @type {String} */ format,
     /** @type {String} */ fileEnding
   ) => {
-    api.exportService
-      .getExport(advisoryState.advisory.advisoryId, format)
-      .then((response) => {
-        downloadFile(response, advisoryState.advisory.advisoryId + fileEnding)
-      })
+    if (advisoryState?.type === 'ADVISORY') {
+      api.exportService
+        .getExport(advisoryState.advisory.advisoryId, format)
+        .then((response) => {
+          downloadFile(response, advisoryState.advisory.advisoryId + fileEnding)
+        })
+    }
   }
 
   return (
@@ -689,78 +691,11 @@ function View({
                 >
                   Download
                 </button>
-                {appConfig.loginAvailable &&
-                  userInfo &&
-                  advisoryState?.type === 'ADVISORY' && (
-                    <>
-                      <div className="inline-block relative">
-                        <label
-                          htmlFor="export_button"
-                          data-testid="export_button"
-                          className="cursor-pointer block text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                        >
-                          Export
-                        </label>
-                        <input
-                          id="export_button"
-                          type="checkbox"
-                          className="dropdown hidden"
-                        />
-                        <div
-                          className="dropdown-content absolute z-10 left-0 bottom-0 shadow p-2 pr-4 bg-white"
-                          style={{ height: 125, marginBottom: -125 }}
-                        >
-                          <div className="flex flex-col gap-1">
-                            <a
-                              data-testid="export_button-markdown"
-                              className="block"
-                              href={`/api/v1/advisories/${advisoryState.advisory.advisoryId}/csaf?format=Markdown`}
-                              download={
-                                advisoryState.advisory.advisoryId + '.markdown'
-                              }
-                            >
-                              Markdown
-                            </a>
-                            <a
-                              data-testid="export_button-json"
-                              className="block"
-                              href={`/api/v1/advisories/${advisoryState.advisory.advisoryId}/csaf?format=JSON`}
-                              download={
-                                advisoryState.advisory.advisoryId + '.json'
-                              }
-                            >
-                              JSON
-                            </a>
-                            <a
-                              data-testid="export_button-html"
-                              className="block"
-                              href={`/api/v1/advisories/${advisoryState.advisory.advisoryId}/csaf?format=HTML`}
-                              download={
-                                advisoryState.advisory.advisoryId + '.html'
-                              }
-                            >
-                              HTML
-                            </a>
-                            <a
-                              data-testid="export_button-pdf"
-                              className="block"
-                              href={`/api/v1/advisories/${advisoryState.advisory.advisoryId}/csaf?format=PDF`}
-                              download={
-                                advisoryState.advisory.advisoryId + '.pdf'
-                              }
-                            >
-                              PDF
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </>
-                  )}
                 <button
                   data-testid="new_export_document_button"
                   className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                   onClick={() => {
-                    let exportText
+                    let exportText = ''
                     let selectorVisible = false
                     let selectorPresetLocal = true
 
@@ -806,7 +741,7 @@ function View({
                           switch (params.source) {
                             case 'CSAFJSON':
                               if (params.isLocal) {
-                                onDownload(formValues)
+                                onDownload(formValues.doc)
                               } else {
                                 exportDownload('JSON', '.json')
                               }
@@ -815,11 +750,16 @@ function View({
                               if (params.isLocal) {
                                 onExportCSAFCallback()
                               } else {
-                                console.log('CSAFJSONSTRIPPED Server')
-                                downloadFile(
-                                  JSON.stringify(formValues, null, 2),
-                                  advisoryState.advisory.advisoryId
-                                )
+                                if (advisoryState?.type === 'ADVISORY') {
+                                  api.exportService
+                                    .getExport(
+                                      advisoryState.advisory.advisoryId,
+                                      'JSON'
+                                    )
+                                    .then((response) => {
+                                      onExportCSAF(response)
+                                    })
+                                }
                               }
                               break
                             case 'HTMLDOCUMENT':
@@ -840,11 +780,12 @@ function View({
                               exportDownload('MARKDOWN', '.md')
                           }
                         }}
+                        onClose={() => setNewExportDocumentDialog(null)}
                       />
                     )
                   }}
                 >
-                  Test-Export-Button
+                  Export
                 </button>
 
                 {appConfig.loginAvailable && userInfo && (

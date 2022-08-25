@@ -3,7 +3,7 @@ export interface Props {
     isExportText: string
     isSelectorVisible: boolean
     isSelectorPresetLocal: boolean
-  } | null
+  }
   defaultSource?:
     | 'CSAFJSON'
     | 'CSAFJSONSTRIPPED'
@@ -18,4 +18,5 @@ export interface Props {
       | { source: 'PDFDOCUMENT'; isLocal: boolean }
       | { source: 'MARKDOWN'; isLocal: boolean }
   ): void
+  onClose(): void
 }

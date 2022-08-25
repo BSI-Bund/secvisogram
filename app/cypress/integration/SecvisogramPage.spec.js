@@ -292,9 +292,9 @@ describe('SecvisogramPage', () => {
             cy.get('[data-testid="submit_version-summary-textarea"]').type(
               summary
             )
-            cy.get(
-              '[data-testid="submit_version-legacy_version-input"]'
-            ).type(legacyVersion)
+            cy.get('[data-testid="submit_version-legacy_version-input"]').type(
+              legacyVersion
+            )
             cy.get('[data-testid="submit_version-submit"]').click()
             cy.wait('@apiCreateAdvisory').then((xhr) => {
               if (mode === 'TEMPLATE') {
@@ -350,44 +350,137 @@ describe('SecvisogramPage', () => {
           cy.get('[data-testid="loading_indicator"]').should('not.exist')
           cy.location('search').should('equal', '?tab=EDITOR')
 
-          cy.get('[data-testid="export_button"]').click()
-          for (const type of /** @type {const} */ ([
-            'Markdown',
-            'HTML',
-            'JSON',
-            'PDF',
-          ])) {
-            const fileContent = '{"my": "doc"}'
-            cy.intercept(
-              `/api/v1/advisories/${advisory.advisoryId}/csaf?format=${type}`,
-              {
-                body: fileContent,
-                headers: {
-                  'Content-Type':
-                    type === 'Markdown'
-                      ? 'text/plain'
-                      : type === 'HTML'
-                      ? 'text/html'
-                      : type === 'JSON'
-                      ? 'application/json'
-                      : 'application/pdf',
-                },
-              }
-            ).as('apiExportAdvisory')
+          for (const select of /** @select  {const}*/ [
+            'csaf-json',
+            'csaf-json-stripped',
+            'html',
+            'pdf',
+            'markdown',
+          ]) {
+            cy.get('[data-testid="new_export_document_button"]').click()
             cy.get(
-              `[data-testid="export_button-${type.toLowerCase()}"]`
+              `[data-testid="export_document-${select}_selector_button"]`
             ).click()
-            cy.wait('@apiExportAdvisory')
-            cy.readFile(
-              `cypress/downloads/${advisory.advisoryId}.${type.toLowerCase()}`,
-              'utf-8'
-            ).then((c) => {
-              if (type === 'JSON') {
-                expect(c).to.deep.equal(JSON.parse(fileContent))
-              } else {
-                expect(c).to.equal(fileContent)
-              }
-            })
+
+            const fileContent = '{"my": "doc"}'
+            switch (select) {
+              case 'csaf-json':
+                cy.intercept(
+                  `/api/v1/advisories/${advisory.advisoryId}/csaf?format=JSON`,
+                  {
+                    body: fileContent,
+                    headers: { 'Content-Type': 'application/json' },
+                  }
+                ).as('apiExportAdvisory')
+
+                cy.get(
+                  `[data-testid="export_document-export_document_button"]`
+                ).click()
+
+                cy.wait('@apiExportAdvisory')
+
+                cy.readFile(
+                  `cypress/downloads/${advisory.advisoryId}.json`,
+                  'utf-8'
+                ).then((c) => {
+                  expect(c).to.deep.equal(JSON.parse(fileContent))
+                })
+
+                break
+              case 'csaf-json-stripped':
+                cy.intercept(
+                  `/api/v1/advisories/${advisory.advisoryId}/csaf?format=JSON`,
+                  {
+                    body: fileContent,
+                    headers: { 'Content-Type': 'application/json' },
+                  }
+                ).as('apiExportAdvisory')
+
+                cy.get(
+                  `[data-testid="export_document-export_document_button"]`
+                ).click()
+                cy.get(`[data-testid="alert-confirm_button"]`).click()
+
+                cy.wait('@apiExportAdvisory')
+
+                cy.readFile(
+                  `cypress/downloads/${advisory.advisoryId}.json`,
+                  'utf-8'
+                ).then((c) => {
+                  expect(c).to.deep.equal(JSON.parse(fileContent))
+                })
+
+                cy.readFile(
+                  `cypress/downloads/${advisory.advisoryId}.json`,
+                  'utf-8'
+                )
+                break
+              case 'html':
+                cy.intercept(
+                  `/api/v1/advisories/${advisory.advisoryId}/csaf?format=HTML`,
+                  {
+                    body: fileContent,
+                    headers: { 'Content-Type': 'text/html' },
+                  }
+                ).as('apiExportAdvisory')
+
+                cy.get(
+                  `[data-testid="export_document-export_document_button"]`
+                ).click()
+
+                cy.wait('@apiExportAdvisory')
+
+                cy.readFile(
+                  `cypress/downloads/${advisory.advisoryId}.html`,
+                  'utf-8'
+                ).then((c) => {
+                  expect(c).to.deep.equal(fileContent)
+                })
+                break
+              case 'pdf':
+                cy.intercept(
+                  `/api/v1/advisories/${advisory.advisoryId}/csaf?format=PDF`,
+                  {
+                    body: fileContent,
+                    headers: { 'Content-Type': 'application/pdf' },
+                  }
+                ).as('apiExportAdvisory')
+
+                cy.get(
+                  `[data-testid="export_document-export_document_button"]`
+                ).click()
+
+                cy.wait('@apiExportAdvisory')
+
+                cy.readFile(
+                  `cypress/downloads/${advisory.advisoryId}.pdf`,
+                  'utf-8'
+                ).then((c) => {
+                  expect(c).to.deep.equal(fileContent)
+                })
+                break
+              case 'markdown':
+                cy.intercept(
+                  `/api/v1/advisories/${advisory.advisoryId}/csaf?format=MARKDOWN`,
+                  {
+                    body: fileContent,
+                    headers: { 'Content-Type': 'text/plain' },
+                  }
+                ).as('apiExportAdvisory')
+
+                cy.get(
+                  `[data-testid="export_document-export_document_button"]`
+                ).click()
+
+                cy.wait('@apiExportAdvisory')
+
+                cy.readFile(
+                  `cypress/downloads/${advisory.advisoryId}.md`,
+                  'utf-8'
+                ).then((c) => {
+                  expect(c).to.equal(fileContent)
+                })
+            }
           }
         })
       }

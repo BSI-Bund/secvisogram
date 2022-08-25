@@ -4,7 +4,7 @@ export default React.forwardRef(
   /**
    * @param {import('./ExportDocumentDialog/types.js').Props} props
    */
-  ({ defaultSource = 'CSAFJSON', data, onSubmit }, ref) => {
+  ({ defaultSource = 'CSAFJSON', data, onSubmit, onClose }, ref) => {
     const [source, setSource] = React.useState(
       /** @type {'CSAFJSON'
     | 'CSAFJSONSTRIPPED'
@@ -22,6 +22,7 @@ export default React.forwardRef(
         className="rounded p-0 w-full max-w-lg shadow"
         ref={ref}
         data-testid="export_document_dialog"
+        onClose={onClose}
       >
         <>
           <form method="dialog" id={`export_document-close_form`} />
@@ -56,29 +57,29 @@ export default React.forwardRef(
             }}
           >
             {data.isSelectorVisible || data.isExportText ? (
-              <div className="border border-t-0  px-4 pb-4">
-                <div className="content-center">
-                  <p className="block p-4 text-red-400 text-center">
-                    {data.isExportText}
-                  </p>
-                </div>
+              <div className="border border-t-0 px-4 pb-4 pt-2">
+                {data.isExportText ? (
+                  <div className="content-center pt-2">
+                    <p className="block text-red-400 text-center">
+                      {data.isExportText}
+                    </p>
+                  </div>
+                ) : null}
                 {data.isSelectorVisible ? (
-                  <div className="p-4 flex flex-col gap-2">
-                    <div className="p-4 flex flex-col gap-2 block p-2 border">
-                      <select
-                        className="inline-block ml-3"
-                        onChange={(e) => {
-                          if (e.target.value === 'server') {
-                            setIsLocal(false)
-                          } else {
-                            setIsLocal(true)
-                          }
-                        }}
-                      >
-                        <option value={'local'}>local</option>
-                        <option value={'server'}>server</option>
-                      </select>
-                    </div>
+                  <div className="flex flex-col gap-2 pt-2">
+                    <select
+                      className="block border border-gray-400 py-1 px-2 w-full shadow-inner rounded"
+                      onChange={(e) => {
+                        if (e.target.value === 'server') {
+                          setIsLocal(false)
+                        } else {
+                          setIsLocal(true)
+                        }
+                      }}
+                    >
+                      <option value={'local'}>local</option>
+                      <option value={'server'}>server</option>
+                    </select>
                   </div>
                 ) : null}
               </div>
@@ -163,7 +164,7 @@ export default React.forwardRef(
                   htmlFor="PDFDOCUMENT"
                 >
                   <input
-                    data-testid="new_document-pdf_selector_button"
+                    data-testid="export_document-pdf_selector_button"
                     id="PDFDOCUMENT"
                     type="radio"
                     name="exportDialogRadio"
@@ -186,7 +187,7 @@ export default React.forwardRef(
                     htmlFor="MARKDOWN"
                   >
                     <input
-                      data-testid="new_document-markdown_selector_button"
+                      data-testid="export_document-markdown_selector_button"
                       id="MARKDOWN"
                       type="radio"
                       name="exportDialogRadio"
