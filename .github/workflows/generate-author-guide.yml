@@ -1,11 +1,9 @@
 name: generate-author-guide
 
-on: push
-
-#on:                          # TODO: uncomment to only run when the main branch is modified
-#  push:
-#    branches:
-#      - feat/minimal-web-ui  # TODO: change to main, once merged - also below
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   sync-docu-branch:
@@ -20,12 +18,15 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git merge origin/feat/minimal-web-ui
+          git merge origin/main
           git push
   generate-docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code from branch author-guide
+        uses: actions/checkout@v3
+        with:
+          ref: author-guide
       - name: Setup Python 3.10
         uses: actions/setup-python@v4.2.0
         with:
