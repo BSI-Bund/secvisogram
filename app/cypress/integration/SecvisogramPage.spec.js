@@ -486,7 +486,7 @@ describe('SecvisogramPage', () => {
       }
     }
   })
-  describe.only('Can download from local', () => {
+  describe('Can download from local', () => {
     it('Can export document from local', () => {
       cy.visit('?tab=EDITOR')
       for (const select of /** @select  {const}*/ [

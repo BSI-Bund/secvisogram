@@ -683,15 +683,6 @@ function View({
                   </button>
                 ) : null}
                 <button
-                  data-testid="download_button"
-                  className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                  onClick={() => {
-                    onDownload(formValues.doc)
-                  }}
-                >
-                  Download
-                </button>
-                <button
                   data-testid="new_export_document_button"
                   className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                   onClick={() => {
