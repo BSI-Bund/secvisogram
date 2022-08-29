@@ -486,6 +486,71 @@ describe('SecvisogramPage', () => {
       }
     }
   })
+  describe.only('Can download from local', () => {
+    it('Can export document from local', () => {
+      cy.visit('?tab=EDITOR')
+      for (const select of /** @select  {const}*/ [
+        'csaf-json',
+        'csaf-json-stripped',
+        'html',
+        'pdf',
+      ]) {
+        cy.get('[data-testid="new_export_document_button"]').click()
+        cy.get(
+          `[data-testid="export_document-${select}_selector_button"]`
+        ).click()
+
+        switch (select) {
+          case 'csaf-json':
+            cy.wait(3000)
+            cy.get(
+              `[data-testid="export_document-export_document_button"]`
+            ).click()
+            cy.get(`[data-testid="alert-confirm_button"]`).click()
+
+            cy.readFile(
+              `cypress/downloads/csaf_2_0_invalid.json`,
+              'utf-8'
+            ).then((c) => {
+              expect(c).to.have.property('document')
+            })
+            break
+          case 'csaf-json-stripped':
+            cy.wait(3000)
+            cy.get(
+              `[data-testid="export_document-export_document_button"]`
+            ).click()
+            cy.get(`[data-testid="alert-confirm_button"]`).click()
+
+            cy.readFile(
+              `cypress/downloads/csaf_2_0_invalid.json`,
+              'utf-8'
+            ).then((c) => {
+              expect(c).to.deep.equal({})
+            })
+            break
+          case 'html':
+            cy.wait(3000)
+            cy.get(
+              `[data-testid="export_document-export_document_button"]`
+            ).click()
+            cy.get(`[data-testid="alert-confirm_button"]`).click()
+
+            cy.readFile(`cypress/downloads/csaf_2_0_invalid.html`, 'utf-8')
+            cy.document().then((doc) => {
+              expect(doc.doctype !== undefined).to.eq(true)
+              expect(doc.doctype?.name).to.eq('html')
+            })
+            break
+          case 'pdf':
+            cy.wait(3000)
+            cy.get(
+              `[data-testid="export_document-export_document_button"]`
+            ).click()
+        }
+      }
+    })
+  })
 
   describe('View', () => {
     describe('Reducer', () => {
