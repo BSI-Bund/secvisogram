@@ -54,6 +54,31 @@ export default function JsonEditorTab({
     value: stringifiedDoc,
     parseError: null,
   })
+
+  /**
+   * The following block ensures that the editor content is reset only if a new document is opened.
+   */
+  const originalDidChange = React.useRef(false)
+  const pageDidLoad = React.useRef(false)
+
+  const stringifiedOriginalValues = React.useMemo(() => {
+    originalDidChange.current = true
+    return JSON.stringify(originalValues.doc, null, 2)
+  }, [originalValues.doc])
+
+  React.useMemo(() => {
+    if (pageDidLoad.current && originalDidChange.current && editor) {
+      editor.getModel()?.setValue(stringifiedOriginalValues)
+      originalDidChange.current = false
+    } else {
+      pageDidLoad.current = true
+      originalDidChange.current = false
+    }
+  }, [stringifiedOriginalValues, editor])
+  /**
+   * -----------
+   */
+
   const [showExpertSettings, setShowExpertSettings] = React.useState(!strict)
   const [showErrors, setShowErrors] = React.useState(false)
   const debouncedValue = useDebounce(value)
@@ -71,26 +96,6 @@ export default function JsonEditorTab({
 
   const toggleShowErrors = () => {
     setShowErrors(!showErrors)
-  }
-
-  const confirmMin = () => {
-    onNewDocMin().then((newDoc) => {
-      editor?.getModel()?.setValue(JSON.stringify(newDoc, null, 2))
-    })
-    hideMin()
-  }
-
-  const confirmMax = () => {
-    onNewDocMax().then((newDoc) => {
-      editor?.getModel()?.setValue(JSON.stringify(newDoc, null, 2))
-    })
-    hideMax()
-  }
-
-  const handleOpen = (/** @type {File} */ file) => {
-    onOpen(file).then((openedDoc) => {
-      editor?.getModel()?.setValue(JSON.stringify(openedDoc, null, 2))
-    })
   }
 
   /**
@@ -129,7 +134,6 @@ export default function JsonEditorTab({
       try {
         result = jsonMap.parse(debouncedValue)
       } catch (/** @type {any} */ e) {
-        console.log('Catch!')
         return
       }
 
@@ -167,7 +171,6 @@ export default function JsonEditorTab({
       try {
         result = jsonMap.parse(debouncedValue)
       } catch (/** @type {any} */ e) {
-        console.log('Catch!')
         return
       }
 
@@ -183,35 +186,10 @@ export default function JsonEditorTab({
     }
   }
 
-  const {
-    show: showMin,
-    hide: hideMin,
-    Alert: MinAlert,
-  } = useAlert({
-    description:
-      'This will create a new CSAF document. All current content will be lost. Are you sure?',
-    confirmLabel: 'Yes, create new document',
-    cancelLabel: 'No, resume editing',
-    confirm: confirmMin,
-  })
-
-  const {
-    show: showMax,
-    hide: hideMax,
-    Alert: MaxAlert,
-  } = useAlert({
-    description:
-      'This will create a new CSAF document. All current content will be lost. Are you sure?',
-    confirmLabel: 'Yes, create new document',
-    cancelLabel: 'No, resume editing',
-    confirm: confirmMax,
-  })
-
   const editorDidMount = (
     /** @type {any } */ editor,
     /** @type {any} */ monaco
   ) => {
-    console.log('editorDidMount', editor)
     setEditor(editor)
     setMonaco(monaco)
 
@@ -228,8 +206,6 @@ export default function JsonEditorTab({
     })
   }
 
-  const editorWillMount = () => {}
-
   const onChangeMonaco = (/** @type {any} */ newValue) => {
     setState((state) => ({
       ...state,
@@ -243,9 +219,6 @@ export default function JsonEditorTab({
   }
   return (
     <>
-      <MinAlert />
-      <MaxAlert />
-
       <div className="json-editor flex h-full mr-3 bg-white">
         <div className=" w-full">
           <div className={'relative ' + (showErrors ? 'h-4/5' : 'h-full')}>
@@ -258,7 +231,6 @@ export default function JsonEditorTab({
               defaultValue={stringifiedDoc}
               onChange={onChangeMonaco}
               editorDidMount={editorDidMount}
-              editorWillMount={editorWillMount}
             />
           </div>
           <div
@@ -310,7 +282,7 @@ export default function JsonEditorTab({
           </div>
         </div>
         <div className="pl-3 pr-6 py-6 w-72 flex flex-col justify-between">
-          <div className="flex flex-col"></div>
+          <div className="flex flex-col" />
           <div>
             {showExpertSettings ? (
               <div className="mb-6">
