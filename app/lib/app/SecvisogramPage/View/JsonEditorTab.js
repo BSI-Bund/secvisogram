@@ -19,7 +19,6 @@ import * as jsonMap from 'json-source-map'
  *  strict: boolean
  *  onSetStrict(strict: boolean): void
  *  onChange(doc: {} | null): void
- *  onDownload(doc: {}): void
  *  onLockTab(): void
  *  onUnlockTab(): void
  * }} props
