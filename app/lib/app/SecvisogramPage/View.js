@@ -676,7 +676,7 @@ function View({
               <WizzardEditorTab
                 formValues={formValues}
                 validationErrors={errors}
-                onUpdate={onUpdate}
+                onReplaceDoc={onReplaceDoc}
               />
             ) : activeTab === 'EDITOR' ? (
               <FormEditorTab

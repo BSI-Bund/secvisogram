@@ -1,34 +1,40 @@
+import { set } from 'lodash/fp.js'
 import React from 'react'
-import convertedSchema from '../../../../../data/convertedSchema.json'
-import ObjectMenuView from './WizzardEditorTab/ObjectMenuView.js'
+import DocumentEditorContext from './shared/DocumentEditorContext.js'
+import WizardPanel from './WizzardEditorTab/WizardPanel.js'
 
 /**
  * Defines the layout of the wizzard editor.
  *
- * @param {{
- *  formValues: import('../shared/types').FormValues
- *  validationErrors: import('../shared/types').TypedValidationError[]
- *  onUpdate(instancePath: string, update: {}): void
- * }} props
+ * @param {object} props
+ * @param {import('../shared/types').FormValues} props.formValues
+ * @param {import('../shared/types').TypedValidationError[]} props.validationErrors
+ * @param {(doc: {}) => void} props.onReplaceDoc
  */
 export default function WizzardEditorTab({
   formValues,
   validationErrors: errors,
-  onUpdate,
+  onReplaceDoc,
 }) {
+  const documentEditor = React.useMemo(
+    /**
+     * @returns {React.ContextType<typeof DocumentEditorContext>}
+     */
+    () => ({
+      doc: formValues.doc,
+      updateDoc(instancePath, value) {
+        onReplaceDoc(set(instancePath, value, formValues.doc))
+      },
+      errors,
+    }),
+    [formValues.doc, errors, onReplaceDoc]
+  )
+
   return (
     <div className="flex h-full w-full grow">
-      <ObjectMenuView
-        formValues={formValues}
-        validationErrors={errors}
-        onUpdate={onUpdate}
-        traversedJsonPath={[]}
-        schema={
-          /** @type import('./WizzardEditorTab/shared/types.js').MetaProperty */ (
-            convertedSchema
-          )
-        }
-      />
+      <DocumentEditorContext.Provider value={documentEditor}>
+        <WizardPanel />
+      </DocumentEditorContext.Provider>
     </div>
   )
 }
