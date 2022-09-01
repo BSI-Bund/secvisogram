@@ -4,12 +4,6 @@ toc-depth: 4
 number-sections: true
 standalone: true
 metadata:
-  title: 'Secvisogram Author Guide'
+  title: 'CSAF Author Guide'
   author:
-    - 'BSI'
-  fontfamily: charter
-  fontsize: 12pt
-  geometry: margin=1in
-  header-includes:
-    - \setlength\parindent{24pt}
-  papersize: a4
+    - 'Secvisogram'

@@ -23,6 +23,8 @@ To generate this document the following steps are necessary:
 * convert the resulting markdown file into docx format with pandoc
 * convert the docx file to PDF with libreoffice
 
+The title and author of the resulting document can be changed in `defaults.yaml`.
+
 A direct conversion from markdown to PDF with pandoc is not suitable as Universal Access can not be guaranteed.
 
 A GitHub action is used to automate these steps and publish the English author guide in the `author-guide` branch.
