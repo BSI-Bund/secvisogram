@@ -358,9 +358,6 @@ function View({
         <div>
           <div className="flex justify-between bg-gray-700">
             <div className="flex pl-5">
-              <button className="text-sm font-bold p-4 h-auto hover:bg-gray-800 hover:text-white text-gray-300">
-                Wizard
-              </button>
               <button {...tabButtonProps('EDITOR')}>Form Editor</button>
               <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
               <button {...tabButtonProps('PREVIEW')}>Preview</button>
