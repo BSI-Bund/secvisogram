@@ -13,17 +13,14 @@ interface Data {
 export interface Props {
   defaultData?: Data | null
   defaultError?: { title: string; message: string } | null
-  onGetData(callback: (data: Data) => void): void
-  onDeleteAdvisory(params: { advisoryId: string }, callback: () => void): void
+  onGetData(): Promise<Data>
+  onDeleteAdvisory(params: { advisoryId: string }): Promise<void>
   onOpenAdvisory(params: { advisoryId: string }, callback: () => void): void
-  onChangeWorkflowState(
-    params: {
-      advisoryId: string
-      workflowState: string
-      documentTrackingStatus: string | null
-      proposedTime: Date | null
-    },
-    callback: (result: { statusCode: number }) => void
-  ): void
-  onCreateNewVersion(params: { advisoryId: string }, callback: () => void): void
+  onChangeWorkflowState(params: {
+    advisoryId: string
+    workflowState: string
+    documentTrackingStatus: string | null
+    proposedTime: Date | null
+  }): Promise<{ statusCode: number }>
+  onCreateNewVersion(params: { advisoryId: string }): Promise<void>
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import { useErrorHandler } from 'react-error-boundary'
 import {
   changeWorkflowState,
   createNewVersion,
@@ -15,28 +14,18 @@ import DocumentsTabView from './DocumentsTab/View.js'
  * @returns
  */
 export default function DocumentsTab(props) {
-  const handleError = useErrorHandler()
-
-  /** @type {ViewProps['onGetData']} */
-  const onGetData = React.useCallback(
-    (callback) => {
-      getData().then(callback).catch(handleError)
-    },
-    [handleError]
-  )
-
   return (
     <DocumentsTabView
       {...props}
-      onGetData={onGetData}
-      onDeleteAdvisory={(params, callback) => {
-        deleteAdvisory(params).then(callback).catch(handleError)
-      }}
-      onChangeWorkflowState={(
-        { advisoryId, workflowState, documentTrackingStatus, proposedTime },
-        callback
-      ) => {
-        getAdvisoryDetail({ advisoryId })
+      onGetData={getData}
+      onDeleteAdvisory={deleteAdvisory}
+      onChangeWorkflowState={({
+        advisoryId,
+        workflowState,
+        documentTrackingStatus,
+        proposedTime,
+      }) => {
+        return getAdvisoryDetail({ advisoryId })
           .then(({ revision }) =>
             changeWorkflowState({
               advisoryId,
@@ -55,16 +44,15 @@ export default function DocumentsTab(props) {
               throw err
             }
           )
-          .then(callback, handleError)
       }}
-      onCreateNewVersion={({ advisoryId }, callback) => {
-        getAdvisoryDetail({
+      onCreateNewVersion={async ({ advisoryId }) => {
+        const advisoryDetail = await getAdvisoryDetail({
           advisoryId: advisoryId,
         })
-          .then((advisoryDetail) =>
-            createNewVersion({ advisoryId, revision: advisoryDetail.revision })
-          )
-          .then(callback, handleError)
+        await createNewVersion({
+          advisoryId,
+          revision: advisoryDetail.revision,
+        })
       }}
     />
   )
