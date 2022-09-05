@@ -136,6 +136,15 @@ You can use this view and the embedded _Export CSAF_ button to always quickly ex
 
 [(back to top)](#bsi-secvisogram-csaf-20-web-editor)
 
+## Documentation
+
+The documentation on CSAF documents lives in the [secvisogram-documentation](https://github.com/secvisogram/secvisogram-documentation/)
+repository and is integrated with git-subtree. To update the documentation you can use the following command:
+
+    git subtree pull --prefix docs https://github.com/secvisogram/secvisogram-documentation.git main --squash
+
+[(back to top)](#bsi-secvisogram-csaf-20-web-editor)
+
 ## Contributing
 
 Please refer to [`CONTRIBUTING.md`](CONTRIBUTING.md) for details about how to contribute to the development of [Secvisogram](https://github.com/secvisogram/secvisogram).
