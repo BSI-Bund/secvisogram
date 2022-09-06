@@ -162,6 +162,14 @@ export async function getAdvisories() {
   return advisories
 }
 
+export async function getAboutInfo() {
+  const response = await new APIRequest(new Request('/api/v1/about'))
+    .produces('text/html')
+    .send()
+
+  return await response.json()
+}
+
 class CSRFAPIRequest extends APIRequest {
   /**
    * @param {Request} request
