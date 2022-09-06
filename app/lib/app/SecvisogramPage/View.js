@@ -796,7 +796,6 @@ function View({
                 strict={strict}
                 onSetStrict={onSetStrict}
                 onChange={onReplaceDoc}
-                onDownload={onDownload}
                 onLockTab={onLockTab}
                 onUnlockTab={onUnlockTab}
               />

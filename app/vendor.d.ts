@@ -76,3 +76,5 @@ declare global {
     calculateCVSSFromVector(vectorString): CVSSObject
   }
 }
+
+export {}
