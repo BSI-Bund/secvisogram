@@ -2,6 +2,7 @@ import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import AppConfigContext from '../shared/context/AppConfigContext.js'
+import AppErrorContext from '../shared/context/AppErrorContext.js'
 import UserInfoContext from '../shared/context/UserInfoContext.js'
 import { canCreateDocuments } from '../shared/permissions.js'
 import CsafTab from './View/CsafTab.js'
@@ -17,6 +18,7 @@ import PreviewTab from './View/PreviewTab.js'
 import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
+import VersionSummaryDialog from './View/VersionSummaryDialog.js'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 
@@ -59,6 +61,7 @@ function View({
   ...props
 }) {
   const appConfig = React.useContext(AppConfigContext)
+  const { applicationError, handleError } = React.useContext(AppErrorContext)
   const userInfo = React.useContext(UserInfoContext)
 
   const [newDocumentDialog, setNewDocumentDialog] = React.useState(
@@ -73,6 +76,19 @@ function View({
       modal?.showModal()
     }
   }, [newDocumentDialog])
+
+  const [versionSummaryDialog, setVersionSummaryDialog] = React.useState(
+    /** @type {JSX.Element | null} */ (null)
+  )
+  const versionSummaryDialogRef = React.useRef(
+    /** @type {HTMLDialogElement | null} */ (null)
+  )
+  React.useEffect(() => {
+    if (versionSummaryDialog) {
+      const modal = /** @type {any} */ (versionSummaryDialogRef.current)
+      modal?.showModal()
+    }
+  }, [versionSummaryDialog])
 
   const [advisoryState, setAdvisoryState] = React.useState(
     /** @type {import('./View/types.js').AdvisoryState | null} */ (
@@ -149,6 +165,25 @@ function View({
    * Enables debounced validation.
    */
   const debouncedChangedDoc = useDebounce(formValues.doc, 300)
+
+  const [errorToast, setErrorToast] = React.useState(applicationError)
+  React.useEffect(() => {
+    setErrorToast(applicationError)
+  }, [applicationError])
+  React.useEffect(() => {
+    /** @type {ReturnType<typeof setTimeout> | null} */
+    let timeout = null
+    if (errorToast) {
+      timeout = setTimeout(() => {
+        setErrorToast(null)
+      }, 5000)
+    }
+    return () => {
+      if (timeout !== null) {
+        clearTimeout(timeout)
+      }
+    }
+  }, [errorToast])
 
   /**
    * Callback to update the document. Dispatches an update-action to the
@@ -288,17 +323,41 @@ function View({
     [activeTab, onChangeTab, formValues.doc, isTabLocked]
   )
 
+  const getSummaryAndLegacyVersion = () => {
+    const tracking = formValues.doc.document.tracking
+    let prefilledSummary = ''
+    let prefilledLegacyVersion = ''
+    if (
+      tracking &&
+      tracking.version &&
+      tracking.revision_history &&
+      tracking.revision_history.length
+    ) {
+      const majorVersion =
+        typeof tracking.version === 'string'
+          ? parseInt(tracking.version.split('.')[0])
+          : tracking.version
+      if (majorVersion >= 1) {
+        const latestRevisionHistoryItem = tracking?.revision_history.sort(
+          (/** @type {{date: string}} */ a, /** @type {{date: string}} */ z) =>
+            new Date(z.date).getTime() - new Date(a.date).getTime()
+        )[0]
+        prefilledSummary = latestRevisionHistoryItem.summary
+        prefilledLegacyVersion = latestRevisionHistoryItem.legacy_version
+      }
+    }
+    return { summary: prefilledSummary, legacyVersion: prefilledLegacyVersion }
+  }
+
   return (
     <>
       {alert}
       {newDocumentDialog}
+      {versionSummaryDialog}
       <div className="mx-auto w-full h-screen flex flex-col">
         <div>
           <div className="flex justify-between bg-gray-700">
             <div className="flex pl-5">
-              <button className="text-sm font-bold p-4 h-auto hover:bg-gray-800 hover:text-white text-gray-300">
-                Wizard
-              </button>
               <button {...tabButtonProps('EDITOR')}>Form Editor</button>
               <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
               <button {...tabButtonProps('PREVIEW')}>Preview</button>
@@ -411,8 +470,8 @@ function View({
                         !appConfig.loginAvailable ||
                         (appConfig.loginAvailable && !userInfo)
                       ) {
-                        onGetDocMin((minimalTemplate) => {
-                          onGetDocMax((allFieldsTemplate) => {
+                        onGetDocMin().then((minimalTemplate) =>
+                          onGetDocMax().then((allFieldsTemplate) => {
                             const templates = new Map([
                               [
                                 'MINIMAL',
@@ -451,40 +510,49 @@ function View({
                                     }
                                   })
                                 }}
+                                onClose={() => setNewDocumentDialog(null)}
                               />
                             )
                           })
-                        })
+                        )
                       } else {
                         setLoading(true)
-                        onGetTemplates((templates) => {
-                          setLoading(false)
-                          setNewDocumentDialog(
-                            <NewDocumentDialog
-                              ref={newDocumentDialogRef}
-                              data={{ templates }}
-                              onSubmit={(params) => {
-                                confirmDocumentReplacement(() => {
-                                  if (params.source === 'TEMPLATE') {
-                                    setLoading(true)
-                                    onGetTemplateContent(
-                                      { templateId: params.templateId },
-                                      (templateContent) => {
-                                        setAdvisoryState({
-                                          type: 'NEW_ADVISORY',
-                                          csaf: templateContent,
+                        onGetTemplates()
+                          .then((templates) => {
+                            setNewDocumentDialog(
+                              <NewDocumentDialog
+                                ref={newDocumentDialogRef}
+                                data={{ templates }}
+                                onSubmit={(params) => {
+                                  confirmDocumentReplacement(() => {
+                                    if (params.source === 'TEMPLATE') {
+                                      setLoading(true)
+                                      onGetTemplateContent({
+                                        templateId: params.templateId,
+                                      })
+                                        .then((templateContent) => {
+                                          setAdvisoryState({
+                                            type: 'NEW_ADVISORY',
+                                            csaf: templateContent,
+                                          })
                                         })
-                                        setLoading(false)
-                                      }
-                                    )
-                                  } else {
-                                    onOpen(params.file)
-                                  }
-                                })
-                              }}
-                            />
-                          )
-                        })
+                                        .catch(handleError)
+                                        .finally(() => {
+                                          setLoading(false)
+                                        })
+                                    } else {
+                                      onOpen(params.file)
+                                    }
+                                  })
+                                }}
+                                onClose={() => setNewDocumentDialog(null)}
+                              />
+                            )
+                          })
+                          .catch(handleError)
+                          .finally(() => {
+                            setLoading(false)
+                          })
                       }
                     }}
                   >
@@ -503,30 +571,67 @@ function View({
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                     onClick={() => {
                       if (advisoryState.type === 'NEW_ADVISORY') {
-                        setSaving(true)
-                        onCreateAdvisory({ csaf: formValues.doc }, ({ id }) => {
-                          onLoadAdvisory({ advisoryId: id }, (advisory) => {
-                            setAdvisoryState({ type: 'ADVISORY', advisory })
-                            setSaving(false)
-                          })
-                        })
+                        setVersionSummaryDialog(
+                          <VersionSummaryDialog
+                            ref={versionSummaryDialogRef}
+                            onSubmit={({ summary, legacyVersion }) => {
+                              setSaving(true)
+                              onCreateAdvisory({
+                                csaf: formValues.doc,
+                                summary,
+                                legacyVersion,
+                              })
+                                .then(({ id }) =>
+                                  onLoadAdvisory({ advisoryId: id }).then(
+                                    (advisory) => {
+                                      setAdvisoryState({
+                                        type: 'ADVISORY',
+                                        advisory,
+                                      })
+                                    }
+                                  )
+                                )
+                                .catch(handleError)
+                                .finally(() => {
+                                  setSaving(false)
+                                })
+                            }}
+                            prefilledData={{ summary: '', legacyVersion: '' }}
+                            onClose={() => setVersionSummaryDialog(null)}
+                          />
+                        )
                       } else if (advisoryState.type === 'ADVISORY') {
-                        setSaving(true)
-                        onUpdateAdvisory(
-                          {
-                            advisoryId: advisoryState.advisory.advisoryId,
-                            revision: advisoryState.advisory.revision,
-                            csaf: formValues.doc,
-                          },
-                          () => {
-                            onLoadAdvisory(
-                              { advisoryId: advisoryState.advisory.advisoryId },
-                              (advisory) => {
-                                setAdvisoryState({ type: 'ADVISORY', advisory })
-                                setSaving(false)
-                              }
-                            )
-                          }
+                        setVersionSummaryDialog(
+                          <VersionSummaryDialog
+                            ref={versionSummaryDialogRef}
+                            onSubmit={({ summary, legacyVersion }) => {
+                              setSaving(true)
+                              onUpdateAdvisory({
+                                advisoryId: advisoryState.advisory.advisoryId,
+                                revision: advisoryState.advisory.revision,
+                                csaf: formValues.doc,
+                                summary,
+                                legacyVersion,
+                              })
+                                .then(() =>
+                                  onLoadAdvisory({
+                                    advisoryId:
+                                      advisoryState.advisory.advisoryId,
+                                  }).then((advisory) => {
+                                    setAdvisoryState({
+                                      type: 'ADVISORY',
+                                      advisory,
+                                    })
+                                  })
+                                )
+                                .catch(handleError)
+                                .finally(() => {
+                                  setSaving(false)
+                                })
+                            }}
+                            prefilledData={getSummaryAndLegacyVersion()}
+                            onClose={() => setVersionSummaryDialog(null)}
+                          />
                         )
                       }
                     }}
@@ -617,12 +722,11 @@ function View({
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                     onClick={async () => {
                       setLoading(true)
-                      onServiceValidate(
-                        {
-                          validatorUrl: appConfig.validatorUrl,
-                          csaf: formValues.doc,
-                        },
-                        (json) => {
+                      onServiceValidate({
+                        validatorUrl: appConfig.validatorUrl,
+                        csaf: formValues.doc,
+                      })
+                        .then((json) => {
                           const errors =
                             /** @type {Array<import('./shared/types').TypedValidationError>} */ (
                               json.tests.flatMap((t) =>
@@ -640,9 +744,11 @@ function View({
                               )
                             )
                           setErrors(errors)
+                        })
+                        .catch(handleError)
+                        .finally(() => {
                           setLoading(false)
-                        }
-                      )
+                        })
                     }}
                   >
                     Validate
@@ -712,17 +818,54 @@ function View({
               <DocumentsTab
                 onOpenAdvisory={({ advisoryId }, callback) => {
                   setLoading(true)
-                  onLoadAdvisory({ advisoryId }, (advisory) => {
-                    setAdvisoryState({ type: 'ADVISORY', advisory })
-                    callback()
-                    setLoading(false)
-                  })
+                  return onLoadAdvisory({ advisoryId })
+                    .then((advisory) => {
+                      setAdvisoryState({ type: 'ADVISORY', advisory })
+                      callback()
+                    })
+                    .catch(handleError)
+                    .finally(() => {
+                      setLoading(false)
+                    })
                 }}
               />
             ) : null}
           </>
         </div>
       </div>
+      {errorToast ? (
+        <div className="fixed right-0 top-0 p-2 w-full max-w-md">
+          <div
+            role="status"
+            className={
+              'p-4 bg-red-500 text-white rounded shadow flex items-center gap-2'
+            }
+          >
+            <div className="flex-grow">{errorToast.message}</div>
+            <button
+              className="w-6"
+              type="button"
+              onClick={() => {
+                setErrorToast(null)
+              }}
+            >
+              <svg
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      ) : null}
       {isLoading ? (
         <LoadingIndicator label="Loading data ..." />
       ) : isSaving ? (

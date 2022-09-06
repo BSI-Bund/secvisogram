@@ -53,18 +53,14 @@ export interface Props {
       callback: () => void
     ): void
   }>
-  onLoadAdvisory(
-    params: { advisoryId: string },
-    callback: (advisory: Advisory) => void
-  ): void
-  onUpdateAdvisory(
-    params: {
-      advisoryId: string
-      revision: string
-      csaf: {}
-    },
-    callback: () => void
-  ): void
+  onLoadAdvisory(params: { advisoryId: string }): Promise<Advisory>
+  onUpdateAdvisory(params: {
+    advisoryId: string
+    revision: string
+    csaf: {}
+    summary: string
+    legacyVersion: string
+  }): Promise<void>
   onSetStrict(strict: boolean): void
   onDownload(doc: {}): void
   onOpen(file: File): Promise<void | {}>
@@ -73,22 +69,20 @@ export interface Props {
     document: {}
   ): void
   onValidate(document: {}): void
-  onServiceValidate(
-    params: { validatorUrl: string; csaf: {} },
-    callback: (result: {
-      tests: Array<{
-        errors: Array<{ instancePath: string; message: string }>
-        warnings: Array<{ instancePath: string; message: string }>
-        infos: Array<{ instancePath: string; message: string }>
-      }>
-    }) => void
-  ): void
-  onGetDocMin(callback: (csaf: {}) => void): void
-  onGetDocMax(callback: (csaf: {}) => void): void
-  onCreateAdvisory(
-    params: { csaf: {} },
-    callback: (advisoryData: { id: string; revision: string }) => void
-  ): void
+  onServiceValidate(params: { validatorUrl: string; csaf: {} }): Promise<{
+    tests: Array<{
+      errors: Array<{ instancePath: string; message: string }>
+      warnings: Array<{ instancePath: string; message: string }>
+      infos: Array<{ instancePath: string; message: string }>
+    }>
+  }>
+  onGetDocMin(): Promise<{}>
+  onGetDocMax(): Promise<{}>
+  onCreateAdvisory(params: {
+    csaf: {}
+    summary: string
+    legacyVersion: string
+  }): Promise<{ id: string; revision: string }>
   onStrip(document: {}): void
   onPreview(document: {}): void
   onExportCSAF(doc: {}): void
@@ -101,13 +95,8 @@ export interface Props {
   onCollectGroupIds(document: {}): Promise<
     void | { id: string; name: string }[]
   >
-  onGetTemplates(
-    callback: (
-      templates: Array<{ templateId: string; templateDescription: string }>
-    ) => void
-  ): void
-  onGetTemplateContent(
-    params: { templateId: string },
-    callback: (templateContent: {}) => void
-  ): void
+  onGetTemplates(): Promise<
+    Array<{ templateId: string; templateDescription: string }>
+  >
+  onGetTemplateContent(params: { templateId: string }): Promise<{}>
 }

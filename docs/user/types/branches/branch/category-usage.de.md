@@ -1,17 +1,17 @@
-**Category - Usage**
+**Category - Verwendung**
 
 Gibt an, wie der Wert im benachbarten Namensfeld zu verstehen ist.
 
-Wenn der Wert "product_version" ist, darf die Eigenschaft "name" keinen Versionsbereich enthalten. Die folgenden Muster werden als Hinweis auf einen Versionsbereich betrachtet:
+Wenn der Wert `product_version` ist, darf die Eigenschaft `name` keinen Versionsbereich enthalten. Die folgenden Muster werden als Hinweis auf einen Versionsbereich betrachtet:
 
     * `<`
     * `<=`
     * `>`
     * `>=`
-    * "nach
+    * `after`
     * `all`
-    * `Vor`
-    * `früher`
-    * `später`
+    * `before`
+    * `earlier`
+    * `later`
     * `prior`
-    * `Versionen`
+    * `versions`
