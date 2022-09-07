@@ -1,4 +1,4 @@
-import APIRequest from '../APIRequest.js'
+import ApiRequest from '../ApiRequest.js'
 
 /**
  * @param {object} params
@@ -10,7 +10,7 @@ export async function createAdvisory({ csaf, summary, legacyVersion }) {
   const res = await new CSRFAPIRequest(
     new Request('/api/v1/advisories', { method: 'POST' })
   )
-    .jsonRequestBody({ csaf, summary, legacyVersion })
+    .setJsonRequestBody({ csaf, summary, legacyVersion })
     .send()
 
   /** @type {{ id: string; revision: string }} */
@@ -43,7 +43,7 @@ export async function updateAdvisory({
       method: 'PATCH',
     })
   )
-    .jsonRequestBody({ csaf, summary, legacyVersion })
+    .setJsonRequestBody({ csaf, summary, legacyVersion })
     .send()
 }
 
@@ -119,7 +119,7 @@ export async function createNewVersion({ advisoryId, revision }) {
 
 export async function getTemplates() {
   return new CSRFAPIRequest(new Request('/api/v1/advisories/templates'))
-    .produces('application/json')
+    .setContentType('application/json')
     .send()
     .then((res) => res.json())
 }
@@ -133,7 +133,7 @@ export async function getTemplateContent({ templateId }) {
   return new CSRFAPIRequest(
     new Request(`/api/v1/advisories/templates/${templateId}`)
   )
-    .produces('application/json')
+    .setContentType('application/json')
     .send()
     .then((templateContentRes) => templateContentRes.json())
 }
@@ -156,15 +156,15 @@ export async function deleteAdvisory({ advisoryId, revision }) {
 
 export async function getAdvisories() {
   const res = await new CSRFAPIRequest(new Request('/api/v1/advisories/'))
-    .produces('application/json')
+    .setContentType('application/json')
     .send()
   const advisories = await res.json()
   return advisories
 }
 
 export async function getAboutInfo() {
-  const response = await new APIRequest(new Request('/api/v1/about'))
-    .produces('text/html')
+  const response = await new ApiRequest(new Request('/api/v1/about'))
+    .setContentType('text/html')
     .send()
 
   return await response.json()
