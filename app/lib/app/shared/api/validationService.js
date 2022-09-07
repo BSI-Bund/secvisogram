@@ -25,6 +25,5 @@ export async function validateCSAF(validatorUrl, { csaf }) {
   /**
    * @type {{ tests: Array<{ errors: Array<{ instancePath: string; message: string }>; warnings: Array<{ instancePath: string; message: string }>; infos: Array<{ instancePath: string; message: string }> }> }}
    */
-  const json = await validateResponse.json()
-  return json
+  return await validateResponse.json()
 }

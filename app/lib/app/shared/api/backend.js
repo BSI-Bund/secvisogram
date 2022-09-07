@@ -1,4 +1,5 @@
 import ApiRequest from '../ApiRequest.js'
+import CsrfApiRequest from "../CsrfApiRequest.js"
 
 /**
  * @param {object} params
@@ -7,15 +8,13 @@ import ApiRequest from '../ApiRequest.js'
  * @param {string} params.legacyVersion
  */
 export async function createAdvisory({ csaf, summary, legacyVersion }) {
-  const res = await new CSRFAPIRequest(
+  const res = await new CsrfApiRequest(
     new Request('/api/v1/advisories', { method: 'POST' })
   )
     .setJsonRequestBody({ csaf, summary, legacyVersion })
     .send()
 
-  /** @type {{ id: string; revision: string }} */
-  const advisoryData = await res.json()
-  return advisoryData
+  return await res.json()
 }
 
 /**
@@ -38,7 +37,7 @@ export async function updateAdvisory({
     window.location.href
   )
   apiURL.searchParams.set('revision', revision)
-  await new CSRFAPIRequest(
+  await new CsrfApiRequest(
     new Request(apiURL.toString(), {
       method: 'PATCH',
     })
@@ -53,7 +52,7 @@ export async function updateAdvisory({
  */
 export async function getAdvisoryDetail({ advisoryId }) {
   return (
-    await new CSRFAPIRequest(
+    await new CsrfApiRequest(
       new Request(`/api/v1/advisories/${advisoryId}/`)
     ).send()
   ).json()
@@ -92,7 +91,7 @@ export async function changeWorkflowState({
       proposedTime.toISOString()
     )
   }
-  return new CSRFAPIRequest(
+  return new CsrfApiRequest(
     new Request(changeWorkflowStateURL.toString(), {
       method: 'PATCH',
     })
@@ -110,7 +109,7 @@ export async function createNewVersion({ advisoryId, revision }) {
     window.location.href
   )
   createNewVersionAPIURL.searchParams.set('revision', revision)
-  await new CSRFAPIRequest(
+  await new CsrfApiRequest(
     new Request(createNewVersionAPIURL.href, {
       method: 'PATCH',
     })
@@ -118,7 +117,7 @@ export async function createNewVersion({ advisoryId, revision }) {
 }
 
 export async function getTemplates() {
-  return new CSRFAPIRequest(new Request('/api/v1/advisories/templates'))
+  return new CsrfApiRequest(new Request('/api/v1/advisories/templates'))
     .setContentType('application/json')
     .send()
     .then((res) => res.json())
@@ -130,7 +129,7 @@ export async function getTemplates() {
  * @returns
  */
 export async function getTemplateContent({ templateId }) {
-  return new CSRFAPIRequest(
+  return new CsrfApiRequest(
     new Request(`/api/v1/advisories/templates/${templateId}`)
   )
     .setContentType('application/json')
@@ -149,17 +148,16 @@ export async function deleteAdvisory({ advisoryId, revision }) {
     window.location.href
   )
   deleteURL.searchParams.set('revision', revision)
-  await new CSRFAPIRequest(
+  await new CsrfApiRequest(
     new Request(deleteURL.toString(), { method: 'DELETE' })
   ).send()
 }
 
 export async function getAdvisories() {
-  const res = await new CSRFAPIRequest(new Request('/api/v1/advisories/'))
+  const res = await new CsrfApiRequest(new Request('/api/v1/advisories/'))
     .setContentType('application/json')
     .send()
-  const advisories = await res.json()
-  return advisories
+  return await res.json()
 }
 
 export async function getAboutInfo() {
@@ -168,32 +166,4 @@ export async function getAboutInfo() {
     .send()
 
   return await response.json()
-}
-
-class CSRFAPIRequest extends APIRequest {
-  /**
-   * @param {Request} request
-   */
-  constructor(request) {
-    super(request)
-    if (!['GET', 'HEAD'].includes(request.method)) {
-      const headers = new Headers(request.headers)
-      const regex = /^([^=]+)=(.+)$/
-      const xsrfCookie = document.cookie
-        .split('; ')
-        .filter((c) => c)
-        .map((s) => {
-          const m = s.match(regex)
-          if (!m) throw new Error('Failed to parse cookies')
-          return /** @type {const} */ ([m[1], m[2]])
-        })
-        .find(([name]) => name === 'XSRF-TOKEN')
-      if (xsrfCookie) {
-        headers.set('X-XSRF-TOKEN', xsrfCookie[1])
-      }
-      this.request = new Request(request, {
-        headers,
-      })
-    }
-  }
 }

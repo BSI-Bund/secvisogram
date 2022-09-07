@@ -19,6 +19,7 @@ import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
+import BackendUnavailableError from "../shared/BackendUnavailableError.js";
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 
@@ -168,7 +169,11 @@ function View({
 
   const [errorToast, setErrorToast] = React.useState(applicationError)
   React.useEffect(() => {
-    setErrorToast(applicationError)
+    if (applicationError instanceof BackendUnavailableError) {
+      setErrorToast({message: 'Backend not available, please try again later'})
+    } else {
+      setErrorToast(applicationError)
+    }
   }, [applicationError])
   React.useEffect(() => {
     /** @type {ReturnType<typeof setTimeout> | null} */

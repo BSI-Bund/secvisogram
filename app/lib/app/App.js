@@ -42,8 +42,6 @@ export default function App({ secvisogramPage }) {
         .then(
           (result) => {
             setUserInfo(result)
-            // make sure the first call is a GET so that the CSRF cookie is set
-            api.backend.getAboutInfo().then(() => {})
           },
           (error) => {
             if (401 !== error.status) throw error
