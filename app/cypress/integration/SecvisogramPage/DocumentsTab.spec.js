@@ -60,6 +60,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
           const advisoryDetail = getGetAdvisoryDetailResponse({
             advisoryId: advisory.advisoryId,
           })
+          cy.setCookie("XSRF-TOKEN", "test-Value-123")
           cy.intercept(
             {
               method: 'DELETE',
@@ -195,6 +196,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
                 new Date(proposedTime).toISOString()
               )
             }
+            cy.setCookie("XSRF-TOKEN", "test-Value-123")
             cy.intercept(
               'PATCH',
               apiChangeWorkflowStateURL.pathname +
@@ -285,6 +287,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
             Cypress.config().baseUrl ?? undefined
           )
           createNewVersionURL.searchParams.set('revision', advisory.revision)
+          cy.setCookie("XSRF-TOKEN", "test-Value-123")
           cy.intercept('PATCH', createNewVersionURL.href, { body: '' }).as(
             'apiCreateVersion'
           )
