@@ -5,11 +5,11 @@ import {
   faWindowClose,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import * as jsonMap from 'json-source-map'
 import React from 'react'
-import useDebounce from './shared/useDebounce.js'
 import MonacoEditor from 'react-monaco-editor'
 import myJson from './JsonEditorTab/Monaco_editor_schema.json'
-import * as jsonMap from 'json-source-map'
+import useDebounce from './shared/useDebounce.js'
 
 /**
  * @param {{
@@ -49,34 +49,35 @@ export default function JsonEditorTab({
     [doc]
   )
 
-  const [{ value, parseError }, setState] = React.useState({
-    value: stringifiedDoc,
-    parseError: null,
-  })
+  const initialMountRef = React.useRef(true)
 
   /**
-   * The following block ensures that the editor content is reset only if a new document is opened.
+   * The initial value of the state used to prevent a re-render of the ace editor
+   * when the document changes from outside.
    */
-  const originalDidChange = React.useRef(false)
-  const pageDidLoad = React.useRef(false)
-
-  const stringifiedOriginalValues = React.useMemo(() => {
-    originalDidChange.current = true
-    return JSON.stringify(originalValues.doc, null, 2)
-  }, [originalValues.doc])
-
-  React.useMemo(() => {
-    if (pageDidLoad.current && originalDidChange.current && editor) {
-      editor.getModel()?.setValue(stringifiedOriginalValues)
-      originalDidChange.current = false
-    } else {
-      pageDidLoad.current = true
-      originalDidChange.current = false
+  const initialValue = React.useMemo(
+    () => JSON.stringify(originalValues.doc, null, 2),
+    [originalValues.doc]
+  )
+  /**
+   * Updates the editor value if the document was changed outside (e.g. created from template)
+   */
+  React.useEffect(() => {
+    if (!initialMountRef.current && editor) {
+      editor.getModel()?.setValue(initialValue)
     }
-  }, [stringifiedOriginalValues, editor])
-  /**
-   * -----------
-   */
+  }, [initialValue, editor])
+
+  const [{ value, parseError }, setState] = React.useState(() => ({
+    value: JSON.stringify(doc, null, 2),
+    parseError: null,
+  }))
+  React.useEffect(() => {
+    if (initialMountRef.current && editor) {
+      initialMountRef.current = false
+      editor.getModel()?.setValue(value)
+    }
+  }, [value, editor])
 
   const [showExpertSettings, setShowExpertSettings] = React.useState(!strict)
   const [showErrors, setShowErrors] = React.useState(false)
