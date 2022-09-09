@@ -190,6 +190,11 @@ export default function JsonEditorTab({
     /** @type {any } */ editor,
     /** @type {any} */ monaco
   ) => {
+    /** @type {any} */
+    const win = window
+    if (win.Cypress) {
+      win.MONACO_EDITOR = editor
+    }
     setEditor(editor)
     setMonaco(monaco)
 

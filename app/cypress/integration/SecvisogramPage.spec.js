@@ -119,7 +119,7 @@ describe('SecvisogramPage', () => {
   })
 
   describe('can open a minimal new document from filesystem in standalone mode', function () {
-    it(`sampleUploadDocument`, function () {
+    it(`in form editor`, function () {
       cy.intercept('/.well-known/appspecific/de.bsi.secvisogram.json', {
         statusCode: 404,
         body: {},
@@ -146,6 +146,35 @@ describe('SecvisogramPage', () => {
         'have.value',
         sampleUploadDocument.document.title
       )
+    })
+
+    it(`in source editor`, function () {
+      cy.intercept('/.well-known/appspecific/de.bsi.secvisogram.json', {
+        statusCode: 404,
+        body: {},
+      }).as('wellKnownAppConfig')
+
+      cy.visit('?tab=SOURCE')
+      cy.wait('@wellKnownAppConfig')
+
+      cy.get('[data-testid="new_document_button"]').click()
+
+      cy.get(`[data-testid="new_document-file_selector_button"]`).click()
+      cy.get(`[data-testid="new_document-file_input"]`).selectFile({
+        contents: /** @type {any} */ (Cypress.Buffer).from(
+          JSON.stringify(sampleUploadDocument)
+        ),
+        fileName: 'some_file.json',
+        mimeType: 'application/json',
+        lastModified: Date.now(),
+      })
+
+      cy.get(`[data-testid="new_document-create_document_button"]`).click()
+      cy.get('[data-testid="new_document_dialog"]').should('not.exist')
+      cy.window().should((/** @type {any} */ win) => {
+        const doc = JSON.parse(win.MONACO_EDITOR.getModel().getValue())
+        expect(doc.document.title).to.equal(sampleUploadDocument.document.title)
+      })
     })
   })
 
@@ -291,9 +320,9 @@ describe('SecvisogramPage', () => {
             cy.get('[data-testid="submit_version-summary-textarea"]').type(
               summary
             )
-            cy.get(
-              '[data-testid="submit_version-legacy_version-input"]'
-            ).type(legacyVersion)
+            cy.get('[data-testid="submit_version-legacy_version-input"]').type(
+              legacyVersion
+            )
             cy.get('[data-testid="submit_version-submit"]').click()
             cy.wait('@apiCreateAdvisory').then((xhr) => {
               if (mode === 'TEMPLATE') {
