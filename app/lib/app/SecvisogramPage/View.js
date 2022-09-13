@@ -328,17 +328,15 @@ function View({
     let prefilledSummary = ''
     let prefilledLegacyVersion = ''
     if (
-      tracking &&
-      tracking.version &&
-      tracking.revision_history &&
-      tracking.revision_history.length
+      tracking?.revision_history?.length
     ) {
       const majorVersion =
         typeof tracking.version === 'string'
           ? parseInt(tracking.version.split('.')[0])
           : tracking.version
       if (majorVersion >= 1) {
-        const latestRevisionHistoryItem = tracking?.revision_history.sort(
+        const revisionHistoryCopy = [...tracking.revision_history]
+        const latestRevisionHistoryItem = revisionHistoryCopy.sort(
           (/** @type {{date: string}} */ a, /** @type {{date: string}} */ z) =>
             new Date(z.date).getTime() - new Date(a.date).getTime()
         )[0]
