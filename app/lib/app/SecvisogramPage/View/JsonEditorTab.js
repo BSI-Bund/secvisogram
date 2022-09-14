@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as jsonMap from 'json-source-map'
 import React from 'react'
 import MonacoEditor from 'react-monaco-editor'
+import sortObjectKeys from '../../shared/sortObjectKeys.js'
 import editorSchema from './JsonEditorTab/editorSchema.js'
 import useDebounce from './shared/useDebounce.js'
 
@@ -17,6 +18,7 @@ import useDebounce from './shared/useDebounce.js'
  *  formValues: import('../shared/types').FormValues
  *  validationErrors: import('../shared/types').TypedValidationError[]
  *  strict: boolean
+ *  sortButtonRef: React.MutableRefObject<HTMLButtonElement | null>
  *  onSetStrict(strict: boolean): void
  *  onChange(doc: {} | null): void
  *  onLockTab(): void
@@ -28,6 +30,7 @@ export default function JsonEditorTab({
   formValues,
   validationErrors: errors,
   strict,
+  sortButtonRef,
   onSetStrict,
   onChange,
   onLockTab,
@@ -50,6 +53,32 @@ export default function JsonEditorTab({
   )
 
   const initialMountRef = React.useRef(true)
+
+  React.useEffect(() => {
+    const saveButton = sortButtonRef.current
+    if (!saveButton) return
+
+    saveButton.addEventListener('click', clickHandler)
+
+    function clickHandler() {
+      editor
+        ?.getModel()
+        ?.setValue(
+          JSON.stringify(
+            sortObjectKeys(
+              new Intl.Collator(),
+              JSON.parse(editor.getModel()?.getValue() ?? '{}')
+            ),
+            null,
+            2
+          )
+        )
+    }
+
+    return () => {
+      saveButton.removeEventListener('click', clickHandler)
+    }
+  }, [sortButtonRef, editor])
 
   /**
    * The initial value of the state used to prevent a re-render of the ace editor

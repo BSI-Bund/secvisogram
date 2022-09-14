@@ -63,6 +63,8 @@ function View({
   const appConfig = React.useContext(AppConfigContext)
   const { applicationError, handleError } = React.useContext(AppErrorContext)
   const userInfo = React.useContext(UserInfoContext)
+  /** @type {React.MutableRefObject<HTMLButtonElement | null>} */
+  const sortButtonRef = React.useRef(null)
 
   const [newDocumentDialog, setNewDocumentDialog] = React.useState(
     /** @type {JSX.Element | null} */ (null)
@@ -715,6 +717,16 @@ function View({
                       </div>
                     </>
                   )}
+                {activeTab === 'SOURCE' && (
+                  <button
+                    ref={sortButtonRef}
+                    data-testid="sort_document_button"
+                    type="button"
+                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                  >
+                    Sort document
+                  </button>
+                )}
                 {appConfig.loginAvailable && userInfo && (
                   <button
                     data-testid="validate_button"
@@ -794,6 +806,7 @@ function View({
                 formValues={formValues}
                 validationErrors={errors}
                 strict={strict}
+                sortButtonRef={sortButtonRef}
                 onSetStrict={onSetStrict}
                 onChange={onReplaceDoc}
                 onLockTab={onLockTab}

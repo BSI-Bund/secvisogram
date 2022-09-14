@@ -1,3 +1,5 @@
+import sortObjectKeys from '../../../lib/app/shared/sortObjectKeys.js'
+
 describe('SecvisogramPage / JsonEditorTab', function () {
   it('can change a document and load changes', function () {
     cy.intercept('/.well-known/appspecific/de.bsi.secvisogram.json', {
@@ -38,6 +40,39 @@ describe('SecvisogramPage / JsonEditorTab', function () {
       expect(Boolean(win.MONACO_EDITOR)).to.be.true
       const doc = JSON.parse(win.MONACO_EDITOR.getModel().getValue())
       expect(doc.document.title).to.equal(newDocumentTitle + ' (FORM EDITOR)')
+    })
+  })
+
+  it('can sort a document', function () {
+    cy.intercept('/.well-known/appspecific/de.bsi.secvisogram.json', {
+      statusCode: 404,
+    }).as('wellKnownAppConfig')
+
+    cy.visit('?tab=SOURCE')
+    cy.wait('@wellKnownAppConfig')
+
+    cy.window().should((/** @type {any} */ win) => {
+      expect(Boolean(win.MONACO_EDITOR)).to.be.true
+      const doc = JSON.parse(win.MONACO_EDITOR.getModel().getValue())
+      expect(typeof doc.document.title).to.equal('string')
+    })
+
+    cy.window().should((/** @type {any} */ win) => {
+      const editor = win.MONACO_EDITOR
+      expect(Boolean(editor)).to.be.true
+      this.sortedEditorValue = sortObjectKeys(
+        new Intl.Collator(),
+        JSON.parse(editor.getModel().getValue())
+      )
+    })
+
+    cy.get('[data-testid="sort_document_button"]').click()
+
+    cy.window().should((/** @type {any} */ win) => {
+      const editor = win.MONACO_EDITOR
+      expect(editor.getModel().getValue()).to.equal(
+        JSON.stringify(this.sortedEditorValue, null, 2)
+      )
     })
   })
 })
