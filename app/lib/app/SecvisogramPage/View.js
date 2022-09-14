@@ -327,9 +327,7 @@ function View({
     const tracking = formValues.doc.document.tracking
     let prefilledSummary = ''
     let prefilledLegacyVersion = ''
-    if (
-      tracking?.revision_history?.length
-    ) {
+    if (tracking?.version && tracking.revision_history?.length) {
       const majorVersion =
         typeof tracking.version === 'string'
           ? parseInt(tracking.version.split('.')[0])
