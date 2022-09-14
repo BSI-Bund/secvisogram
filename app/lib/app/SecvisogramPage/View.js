@@ -19,7 +19,8 @@ import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
-import BackendUnavailableError from "../shared/BackendUnavailableError.js";
+import BackendUnavailableError from '../shared/BackendUnavailableError.js'
+import * as semver from 'semver'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 
@@ -170,7 +171,9 @@ function View({
   const [errorToast, setErrorToast] = React.useState(applicationError)
   React.useEffect(() => {
     if (applicationError instanceof BackendUnavailableError) {
-      setErrorToast({message: 'Backend not available, please try again later'})
+      setErrorToast({
+        message: 'Backend not available, please try again later',
+      })
     } else {
       setErrorToast(applicationError)
     }
@@ -332,12 +335,18 @@ function View({
     const tracking = formValues.doc.document.tracking
     let prefilledSummary = ''
     let prefilledLegacyVersion = ''
+
     if (tracking?.version && tracking.revision_history?.length) {
-      const majorVersion =
-        typeof tracking.version === 'string'
-          ? parseInt(tracking.version.split('.')[0])
-          : tracking.version
-      if (majorVersion >= 1) {
+      const semverVersion = semver.valid(tracking.version)
+      const initialPublicationVersion = semver.parse('1.0.0')
+
+      // prefill only if Integer versioning OR Semantic version is greater than 1.0.0 (after initial Publication)
+      if (
+        !semverVersion ||
+        (semverVersion &&
+          initialPublicationVersion &&
+          semver.gt(semverVersion, initialPublicationVersion))
+      ) {
         const revisionHistoryCopy = [...tracking.revision_history]
         const latestRevisionHistoryItem = revisionHistoryCopy.sort(
           (/** @type {{date: string}} */ a, /** @type {{date: string}} */ z) =>
@@ -347,6 +356,7 @@ function View({
         prefilledLegacyVersion = latestRevisionHistoryItem.legacy_version
       }
     }
+
     return { summary: prefilledSummary, legacyVersion: prefilledLegacyVersion }
   }
 
