@@ -4,7 +4,7 @@ import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
 import { loadAdvisory } from './SecvisogramPage/service.js'
 import View from './SecvisogramPage/View.js'
 import { backend, validationService } from './shared/api.js'
-import APIRequest from './shared/APIRequest.js'
+import ApiRequest from './shared/ApiRequest.js'
 import AppErrorContext from './shared/context/AppErrorContext.js'
 import HistoryContext from './shared/context/HistoryContext.js'
 import createCore from './shared/Core.js'
@@ -346,16 +346,16 @@ const SecvisogramPage = () => {
         return validationService.validateCSAF(validatorUrl, { csaf })
       }}
       onGetTemplates={() => {
-        return new APIRequest(new Request('/api/v1/advisories/templates'))
-          .produces('application/json')
+        return new ApiRequest(new Request('/api/v1/advisories/templates'))
+          .setContentType('application/json')
           .send()
           .then((res) => res.json())
       }}
       onGetTemplateContent={({ templateId }) => {
-        return new APIRequest(
+        return new ApiRequest(
           new Request(`/api/v1/advisories/templates/${templateId}`)
         )
-          .produces('application/json')
+          .setContentType('application/json')
           .send()
           .then((templateContentRes) => templateContentRes.json())
       }}

@@ -272,6 +272,7 @@ describe('SecvisogramPage', () => {
             }
 
             const createAdvisoryResponse = getCreateAdvisoryResponse()
+            cy.setCookie("XSRF-TOKEN", "test-Value-123")
             cy.intercept(
               'POST',
               '/api/v1/advisories',
