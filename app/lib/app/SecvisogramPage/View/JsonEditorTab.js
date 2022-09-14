@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as jsonMap from 'json-source-map'
 import React from 'react'
 import MonacoEditor from 'react-monaco-editor'
-import myJson from './JsonEditorTab/Monaco_editor_schema.json'
+import editorSchema from './JsonEditorTab/editorSchema.js'
 import useDebounce from './shared/useDebounce.js'
 
 /**
@@ -205,7 +205,7 @@ export default function JsonEditorTab({
         {
           uri: '',
           fileMatch: ['*'],
-          schema: myJson,
+          schema: editorSchema,
         },
       ],
     })
