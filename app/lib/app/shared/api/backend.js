@@ -160,10 +160,8 @@ export async function getAdvisories() {
   return await res.json()
 }
 
-export async function getAboutInfo() {
-  const response = await new ApiRequest(new Request('/api/v1/about'))
+export async function callAboutInfo() {
+  return await new ApiRequest(new Request('/api/v1/about'))
     .setContentType('text/html')
     .send()
-
-  return await response.json()
 }
