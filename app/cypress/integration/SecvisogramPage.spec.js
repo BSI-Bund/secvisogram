@@ -172,7 +172,8 @@ describe('SecvisogramPage', () => {
         cy.get(`[data-testid="new_document-create_document_button"]`).click()
         cy.get('[data-testid="new_document_dialog"]').should('not.exist')
 
-        cy.get('[data-testid="download_button"]').click()
+        cy.get('[data-testid="new_export_document_button"]').click()
+        cy.get('[data-testid="export_document-export_document_button"]').click()
         cy.get('[data-testid="alert-confirm_button"]').click()
         cy.readFile('cypress/downloads/csaf_2_0_invalid.json').then((body) => {
           /**
@@ -272,7 +273,7 @@ describe('SecvisogramPage', () => {
             }
 
             const createAdvisoryResponse = getCreateAdvisoryResponse()
-            cy.setCookie("XSRF-TOKEN", "test-Value-123")
+            cy.setCookie('XSRF-TOKEN', 'test-Value-123')
             cy.intercept(
               'POST',
               '/api/v1/advisories',
