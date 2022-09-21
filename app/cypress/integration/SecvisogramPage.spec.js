@@ -502,7 +502,6 @@ describe('SecvisogramPage', () => {
 
         switch (select) {
           case 'csaf-json':
-            cy.wait(3000)
             cy.get(
               `[data-testid="export_document-export_document_button"]`
             ).click()
@@ -516,7 +515,6 @@ describe('SecvisogramPage', () => {
             })
             break
           case 'csaf-json-stripped':
-            cy.wait(3000)
             cy.get(
               `[data-testid="export_document-export_document_button"]`
             ).click()
@@ -530,7 +528,6 @@ describe('SecvisogramPage', () => {
             })
             break
           case 'html':
-            cy.wait(3000)
             cy.get(
               `[data-testid="export_document-export_document_button"]`
             ).click()
@@ -543,7 +540,6 @@ describe('SecvisogramPage', () => {
             })
             break
           case 'pdf':
-            cy.wait(3000)
             cy.get(
               `[data-testid="export_document-export_document_button"]`
             ).click()
