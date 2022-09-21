@@ -57,14 +57,6 @@ export default function PreviewTab({
     setShowRendered(!showRendered)
   }
 
-  const printIframe = () => {
-    if (!iframeRef.current?.contentWindow) return
-    const iframeWindow = iframeRef.current.contentWindow
-
-    iframeRef.current.focus()
-    iframeWindow.print()
-  }
-
   return (
     <div className="preview-html flex h-full mr-3 bg-white">
       <div className="p-3 w-full">
