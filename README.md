@@ -116,7 +116,7 @@ Use the `Show errors`-link in the Form Editor view to reveal a linked list of va
 
 ### JSON Editor
 
-The _JSON Editor_ view uses the ACE editor to edit the JSON representation of the current CSAF document. Please note that only valid JSON content is accepted for further processing.
+The _JSON Editor_ view uses the Monaco editor to edit the JSON representation of the current CSAF document. Please note that only valid JSON content is accepted for further processing.
 
 [(back to top)](#bsi-secvisogram-csaf-20-web-editor)
 
