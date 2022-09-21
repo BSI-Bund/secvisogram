@@ -1,22 +1,18 @@
+import { AdvisoryState } from '../../shared/types'
+
 export interface Props {
-  data: {
-    isExportText: string
-    isSelectorVisible: boolean
-    isSelectorPresetLocal: boolean
-  }
+  formValues: { doc: {} }
+  originalValues: { doc: {} }
+  advisoryState: AdvisoryState | null
   defaultSource?:
     | 'CSAFJSON'
     | 'CSAFJSONSTRIPPED'
     | 'HTMLDOCUMENT'
     | 'PDFDOCUMENT'
     | 'MARKDOWN'
-  onSubmit(
-    params:
-      | { source: 'CSAFJSON'; isLocal: boolean }
-      | { source: 'CSAFJSONSTRIPPED'; isLocal: boolean }
-      | { source: 'HTMLDOCUMENT'; isLocal: boolean }
-      | { source: 'PDFDOCUMENT'; isLocal: boolean }
-      | { source: 'MARKDOWN'; isLocal: boolean }
-  ): void
+  html: string
+  onDownload(doc: {}): void
+  onExportCSAF(doc: {}): void
+  onExportHTML(html: string, doc: {}): void
   onClose(): void
 }

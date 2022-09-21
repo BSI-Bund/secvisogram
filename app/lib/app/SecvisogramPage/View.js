@@ -2,12 +2,10 @@ import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import * as semver from 'semver'
-import * as api from '../shared/api.js'
 import BackendUnavailableError from '../shared/BackendUnavailableError.js'
 import AppConfigContext from '../shared/context/AppConfigContext.js'
 import AppErrorContext from '../shared/context/AppErrorContext.js'
 import UserInfoContext from '../shared/context/UserInfoContext.js'
-import downloadFile from '../shared/download.js'
 import { canCreateDocuments } from '../shared/permissions.js'
 import CsafTab from './View/CsafTab.js'
 import ExportDocumentDialog from './View/ExportDocumentDialog.js'
@@ -86,18 +84,9 @@ function View({
     }
   }, [newDocumentDialog])
 
-  const newExportDocumentDialogRef = React.useRef(
-    /** @type {HTMLDialogElement | null} */ (null)
-  )
   const [newExportDocumentDialog, setNewExportDocumentDialog] = React.useState(
     /** @type {JSX.Element | null} */ (null)
   )
-  React.useEffect(() => {
-    if (newExportDocumentDialog) {
-      const modal = /** @type {any} */ (newExportDocumentDialogRef.current)
-      modal?.showModal()
-    }
-  }, [newExportDocumentDialog])
 
   const [versionSummaryDialog, setVersionSummaryDialog] = React.useState(
     /** @type {JSX.Element | null} */ (null)
@@ -113,7 +102,7 @@ function View({
   }, [versionSummaryDialog])
 
   const [advisoryState, setAdvisoryState] = React.useState(
-    /** @type {import('./View/types.js').AdvisoryState | null} */ (
+    /** @type {import('./shared/types.js').AdvisoryState | null} */ (
       defaultAdvisoryState ?? {
         type: 'NEW_ADVISORY',
         csaf: /** @type {{}} */ (data?.doc),
@@ -376,19 +365,6 @@ function View({
     }
 
     return { summary: prefilledSummary, legacyVersion: prefilledLegacyVersion }
-  }
-
-  const exportDownload = (
-    /** @type {String} */ format,
-    /** @type {String} */ fileEnding
-  ) => {
-    if (advisoryState?.type === 'ADVISORY') {
-      api.exportService
-        .getExport(advisoryState.advisory.advisoryId, format)
-        .then((response) => {
-          downloadFile(response, advisoryState.advisory.advisoryId + fileEnding)
-        })
-    }
   }
 
   return (
@@ -686,92 +662,18 @@ function View({
                   data-testid="new_export_document_button"
                   className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                   onClick={() => {
-                    let exportText = ''
-                    let selectorVisible = false
-                    let selectorPresetLocal = true
-
-                    if (
-                      appConfig.loginAvailable &&
-                      userInfo &&
-                      advisoryState?.type === 'ADVISORY' &&
-                      formValues !== originalValues
-                    ) {
-                      exportText =
-                        'There are unsaved changes. Please select if you want to\n' +
-                        'export your current local state of the saved version on the\n' +
-                        'server.'
-                      selectorVisible = true
-                    } else if (
-                      appConfig.loginAvailable &&
-                      userInfo &&
-                      advisoryState?.type === 'ADVISORY' &&
-                      formValues === originalValues
-                    ) {
-                      selectorPresetLocal = false
-                    } else if (
-                      appConfig.loginAvailable &&
-                      userInfo &&
-                      advisoryState?.type === 'NEW_ADVISORY'
-                    ) {
-                      exportText =
-                        'This is a unsaved file. You will only export from local.'
-                      selectorVisible = false
-                    } else {
-                      null
-                    }
-
                     setNewExportDocumentDialog(
                       <ExportDocumentDialog
-                        ref={newExportDocumentDialogRef}
-                        data={{
-                          isExportText: exportText,
-                          isSelectorVisible: selectorVisible,
-                          isSelectorPresetLocal: selectorPresetLocal,
+                        originalValues={originalValues}
+                        advisoryState={advisoryState}
+                        formValues={formValues}
+                        html={html}
+                        onDownload={onDownload}
+                        onExportCSAF={onExportCSAF}
+                        onExportHTML={onExportHTML}
+                        onClose={() => {
+                          setNewExportDocumentDialog(null)
                         }}
-                        onSubmit={(params) => {
-                          switch (params.source) {
-                            case 'CSAFJSON':
-                              if (params.isLocal) {
-                                onDownload(formValues.doc)
-                              } else {
-                                exportDownload('JSON', '.json')
-                              }
-                              break
-                            case 'CSAFJSONSTRIPPED':
-                              if (params.isLocal) {
-                                onExportCSAFCallback()
-                              } else {
-                                if (advisoryState?.type === 'ADVISORY') {
-                                  api.exportService
-                                    .getExport(
-                                      advisoryState.advisory.advisoryId,
-                                      'JSON'
-                                    )
-                                    .then((response) => {
-                                      onExportCSAF(response)
-                                    })
-                                }
-                              }
-                              break
-                            case 'HTMLDOCUMENT':
-                              if (params.isLocal) {
-                                onExportHTML(html, formValues.doc)
-                              } else {
-                                exportDownload('HTML', '.html')
-                              }
-                              break
-                            case 'PDFDOCUMENT':
-                              if (params.isLocal) {
-                                console.log('PDFDOCUMENT Local')
-                              } else {
-                                exportDownload('PDF', '.pdf')
-                              }
-                              break
-                            case 'MARKDOWN':
-                              exportDownload('MARKDOWN', '.md')
-                          }
-                        }}
-                        onClose={() => setNewExportDocumentDialog(null)}
                       />
                     )
                   }}
