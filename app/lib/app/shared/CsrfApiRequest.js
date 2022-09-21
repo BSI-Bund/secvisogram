@@ -1,5 +1,5 @@
 import ApiRequest from './ApiRequest.js'
-import { getAboutInfo } from './api/backend.js'
+import { callAboutInfo } from './api/backend.js'
 import BackendUnavailableError from "./BackendUnavailableError.js";
 
 export default class CsrfApiRequest extends ApiRequest {
@@ -20,7 +20,7 @@ export default class CsrfApiRequest extends ApiRequest {
       return super.send()
     } else {
       // GET call to obtain the CSRF cookie
-      await getAboutInfo().catch(() => {
+      await callAboutInfo().catch(() => {
         throw new BackendUnavailableError()
       })
 
@@ -48,11 +48,11 @@ export default class CsrfApiRequest extends ApiRequest {
     if (xsrfCookie) {
       headers.set('X-XSRF-TOKEN', xsrfCookie[1])
       this.isCsrfHeaderSet = true
+      this.request = new Request(this.request, {
+        headers,
+      })
     } else {
       this.isCsrfHeaderSet = false
     }
-    this.request = new Request(this.request, {
-      headers,
-    })
   }
 }
