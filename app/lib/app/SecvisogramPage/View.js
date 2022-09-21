@@ -338,14 +338,12 @@ function View({
 
     if (tracking?.version && tracking.revision_history?.length) {
       const semverVersion = semver.valid(tracking.version)
-      const initialPublicationVersion = semver.parse('1.0.0')
+      const initialPublicationVersion = new semver.SemVer('1.0.0')
 
       // prefill only if Integer versioning OR Semantic version is greater than 1.0.0 (after initial Publication)
       if (
         !semverVersion ||
-        (semverVersion &&
-          initialPublicationVersion &&
-          semver.gt(semverVersion, initialPublicationVersion))
+        (semverVersion && semver.gt(semverVersion, initialPublicationVersion))
       ) {
         const revisionHistoryCopy = [...tracking.revision_history]
         const latestRevisionHistoryItem = revisionHistoryCopy.sort(
