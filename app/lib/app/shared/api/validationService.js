@@ -12,7 +12,7 @@ export async function validateCSAF(validatorUrl, { csaf }) {
   )
     .setJsonRequestBody({
       tests: [
-        { type: 'test', name: 'csaf_2_0_strict' },
+        { type: 'test', name: 'csaf_2_0' },
         { type: 'preset', name: 'mandatory' },
         { type: 'preset', name: 'optional' },
         { type: 'preset', name: 'informative' },
