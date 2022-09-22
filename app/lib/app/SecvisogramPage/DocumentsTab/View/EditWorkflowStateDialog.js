@@ -131,6 +131,7 @@ export default React.forwardRef(
                       id={`advisory-${data.advisoryId}-edit_workflow_state_dialog-proposed_time_input`}
                       data-testid={`advisory-${data.advisoryId}-edit_workflow_state_dialog-proposed_time_input`}
                       name="proposed_time_input"
+                      defaultValue={formatDate(data.currentReleaseDate)}
                     />
                   </div>
                 )}
@@ -152,3 +153,21 @@ export default React.forwardRef(
     )
   }
 )
+
+/**
+ * @param {string} dateString
+ */
+function formatDate(dateString) {
+  const date = new Date(dateString)
+  return (
+    date.getFullYear().toString().padStart(4, '0') +
+    '-' +
+    (date.getMonth() + 1).toString().padStart(2, '0') +
+    '-' +
+    date.getDate().toString().padStart(2, '0') +
+    'T' +
+    date.getHours() +
+    ':' +
+    date.getMinutes()
+  )
+}

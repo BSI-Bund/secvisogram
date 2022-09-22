@@ -8,6 +8,7 @@ const defaultData = {
       deletable: true,
       allowedStateChanges: ['Review', 'Draft'],
       canCreateVersion: false,
+      currentReleaseDate: "2022-09-22T22:00:00.000Z"
     },
   ],
 }

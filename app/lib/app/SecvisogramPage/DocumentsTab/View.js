@@ -154,6 +154,8 @@ export default function DocumentsTabView({
                                   advisoryId: advisory.advisoryId,
                                   allowedStateChanges:
                                     advisory.allowedStateChanges,
+                                  currentReleaseDate:
+                                    advisory.currentReleaseDate,
                                 },
                                 onSubmit({
                                   workflowState,
