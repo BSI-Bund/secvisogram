@@ -541,9 +541,16 @@ describe('SecvisogramPage', () => {
             })
             break
           case 'pdf':
+            cy.get('[data-testid="pdf_document_iframe"]')
+              .should('exist')
+              .its('0.contentWindow')
+              .then((win) => {
+                cy.stub(win, 'print').as('printStub')
+              })
             cy.get(
               `[data-testid="export_document-export_document_button"]`
             ).click()
+            cy.get('@printStub').should('have.been.called')
         }
       }
     })

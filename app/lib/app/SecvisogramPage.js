@@ -8,8 +8,8 @@ import ApiRequest from './shared/ApiRequest.js'
 import AppErrorContext from './shared/context/AppErrorContext.js'
 import HistoryContext from './shared/context/HistoryContext.js'
 import createCore from './shared/Core.js'
-import sitemap from './shared/sitemap.js'
 import downloadFile from './shared/download.js'
+import sitemap from './shared/sitemap.js'
 
 /**
  * @typedef {import('./SecvisogramPage/shared/types').ValidationError} ValidationError
@@ -260,6 +260,10 @@ const SecvisogramPage = () => {
             .catch(handleError)
         },
         [handleError]
+      )}
+      onPrepareDocumentForTemplate={React.useCallback(
+        (document) => core.document.preview({ document }),
+        []
       )}
       onExportCSAF={React.useCallback(
         (document) => {

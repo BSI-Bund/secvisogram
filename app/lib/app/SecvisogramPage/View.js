@@ -20,7 +20,6 @@ import NewDocumentDialog from './View/NewDocumentDialog.js'
 import PreviewTab from './View/PreviewTab.js'
 import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
-import HTMLTemplate from './View/shared/HTMLTemplate.js'
 import useDebounce from './View/shared/useDebounce.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
 
@@ -40,6 +39,7 @@ function View({
   previewResult,
   generatorEngineData,
   DocumentsTab,
+  onPrepareDocumentForTemplate,
   onLoadAdvisory,
   onUpdateAdvisory,
   onDownload,
@@ -65,10 +65,6 @@ function View({
   const appConfig = React.useContext(AppConfigContext)
   const { applicationError, handleError } = React.useContext(AppErrorContext)
   const userInfo = React.useContext(UserInfoContext)
-
-  const html = React.useMemo(() => {
-    return HTMLTemplate({ document: previewResult?.doc ?? {} })
-  }, [previewResult?.doc])
 
   const [newDocumentDialog, setNewDocumentDialog] = React.useState(
     /** @type {JSX.Element | null} */ (null)
@@ -667,7 +663,9 @@ function View({
                         originalValues={originalValues}
                         advisoryState={advisoryState}
                         formValues={formValues}
-                        html={html}
+                        onPrepareDocumentForTemplate={
+                          onPrepareDocumentForTemplate
+                        }
                         onDownload={onDownload}
                         onExportCSAF={onExportCSAF}
                         onExportHTML={onExportHTML}

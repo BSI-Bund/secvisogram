@@ -66,6 +66,7 @@ export interface Props {
   }): Promise<{ id: string; revision: string }>
   onStrip(document: {}): void
   onPreview(document: {}): void
+  onPrepareDocumentForTemplate(document: {}): Promise<{ document: {} }>
   onExportCSAF(doc: {}): void
   onExportHTML(html: string, doc: {}): void
   onLockTab(): void

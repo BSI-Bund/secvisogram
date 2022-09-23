@@ -1,6 +1,8 @@
 import React from 'react'
 import * as api from '../../shared/api.js'
+import AppErrorContext from '../../shared/context/AppErrorContext.js'
 import downloadFile from '../../shared/download.js'
+import HTMLTemplate from './shared/HTMLTemplate.js'
 
 export default /**
  * @param {import('./ExportDocumentDialog/types.js').Props} props
@@ -10,17 +12,22 @@ export default /**
   advisoryState,
   formValues,
   originalValues,
-  html,
+  onPrepareDocumentForTemplate,
   onExportCSAF,
   onExportHTML,
   onDownload,
   onClose,
 }) => {
+  const { handleError } = React.useContext(AppErrorContext)
+
   /** @type {React.MutableRefObject<HTMLDialogElement | null>} */
   const ref = React.useRef(null)
   React.useEffect(() => {
     ref.current?.showModal()
   }, [])
+
+  /** @type {React.MutableRefObject<HTMLIFrameElement | null>} */
+  const iframeRef = React.useRef(null)
 
   const exportText =
     advisoryState?.type === 'NEW_ADVISORY'
@@ -124,14 +131,36 @@ export default /**
                 break
               case 'HTMLDOCUMENT':
                 if (isLocal) {
-                  onExportHTML(html, formValues.doc)
+                  onPrepareDocumentForTemplate(formValues.doc)
+                    .then(({ document: doc }) => {
+                      const html = HTMLTemplate({ document: doc })
+                      onExportHTML(html, formValues.doc)
+                    })
+                    .catch(handleError)
                 } else {
                   exportDownload('HTML', '.html')
                 }
                 break
               case 'PDFDOCUMENT':
                 if (isLocal) {
-                  console.log('PDFDOCUMENT Local')
+                  onPrepareDocumentForTemplate(formValues.doc)
+                    .then(({ document: doc }) => {
+                      if (
+                        !iframeRef.current?.contentWindow ||
+                        !iframeRef.current.contentDocument
+                      ) {
+                        return
+                      }
+                      const html = HTMLTemplate({ document: doc })
+                      const iframeWindow = iframeRef.current.contentWindow
+                      iframeRef.current.contentDocument.open()
+                      iframeRef.current.contentDocument.write(html)
+                      iframeRef.current.contentDocument.close()
+
+                      iframeRef.current.focus()
+                      iframeWindow.print()
+                    })
+                    .catch(handleError)
                 } else {
                   exportDownload('PDF', '.pdf')
                 }
@@ -282,6 +311,13 @@ export default /**
                 </label>
               </div>
             ) : null}
+            {source === 'PDFDOCUMENT' && isLocal && (
+              <iframe
+                data-testid="pdf_document_iframe"
+                hidden
+                ref={iframeRef}
+              />
+            )}
           </div>
         </form>
         <footer className="p-2 border-t flex justify-between items-center">
