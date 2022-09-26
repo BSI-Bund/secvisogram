@@ -166,7 +166,7 @@ export default /**
                 }
                 break
               case 'MARKDOWN':
-                exportDownload('MARKDOWN', '.md')
+                exportDownload('Markdown', '.md')
             }
           }}
         >
