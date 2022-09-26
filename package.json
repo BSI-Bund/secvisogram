@@ -27,5 +27,8 @@
   "devDependencies": {
     "prettier": "^2.5.1",
     "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "react-hot-keys": "^2.7.2"
   }
 }

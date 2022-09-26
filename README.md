@@ -76,6 +76,24 @@ the same as `"loginAvailable": false`.
 
 Please refer to [`DEVELOPMENT.md`](DEVELOPMENT.md) for a detailed description on how to build and deploy Secvisogram in production.
 
+### Configure keybindings
+
+The hotkeys could be defined in
+
+`.well-known/appspecific/de.bsi.secvisogram.json`
+
+```json
+{
+  "keySave": "ctrl+s",
+  "keyValidate": "ctrl+i",
+  "keyDownload": "ctrl+d",
+  "keyNew": "ctrl+o"
+}
+```
+Possible keynames are defined in:
+
+[react-hotkeys](https://github.com/jaywcjlove/react-hotkeys#keyname)
+
 ## How to use
 
 ### Basic concepts
