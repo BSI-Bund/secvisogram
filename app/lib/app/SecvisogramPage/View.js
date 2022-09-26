@@ -18,6 +18,7 @@ import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
 import WizzardEditorTab from './View/WizzardEditorTab.js'
+import Hotkeys from 'react-hot-keys';
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 
@@ -182,6 +183,157 @@ function View({
       )
     )
 
+  async function doValidate() {
+
+    if (!(appConfig.loginAvailable && userInfo)) {
+      return;
+    }
+    setLoading(true)
+    onServiceValidate(
+      {
+        validatorUrl: appConfig.validatorUrl,
+        csaf: formValues.doc,
+      },
+      (json) => {
+        const errors =
+          /** @type {Array<import('./shared/types').TypedValidationError>} */ (
+          json.tests.flatMap((t) =>
+            t.errors
+              .map((e) => ({ ...e, type: 'error' }))
+              .concat(
+                t.warnings.map((w) => ({
+                  ...w,
+                  type: 'warning',
+                }))
+              )
+              .concat(
+                t.infos.map((i) => ({ ...i, type: 'info' }))
+              )
+          )
+        )
+        setErrors(errors)
+        setLoading(false)
+      }
+    )
+  }
+
+  const onSaveHandler = () => {
+
+    if (!(appConfig.loginAvailable && userInfo)) {
+      return;
+    }
+    if (advisoryState && advisoryState.type === 'NEW_ADVISORY') {
+      setSaving(true)
+      onCreateAdvisory({ csaf: formValues.doc }, ({ id }) => {
+        onLoadAdvisory({ advisoryId: id }, (advisory) => {
+          setAdvisoryState({ type: 'ADVISORY', advisory })
+          setSaving(false)
+        })
+      })
+    } else if (advisoryState && advisoryState.type === 'ADVISORY') {
+      setSaving(true)
+      onUpdateAdvisory(
+        {
+          advisoryId: advisoryState.advisory.advisoryId,
+          revision: advisoryState.advisory.revision,
+          csaf: formValues.doc,
+        },
+        () => {
+          onLoadAdvisory(
+            { advisoryId: advisoryState.advisory.advisoryId },
+            (advisory) => {
+              setAdvisoryState({ type: 'ADVISORY', advisory })
+              setSaving(false)
+            }
+          )
+        }
+      )
+    }
+  }
+
+  const onNewHandler = () => {
+    if (
+      !appConfig.loginAvailable ||
+      (appConfig.loginAvailable && !userInfo)
+    ) {
+      onGetDocMin((minimalTemplate) => {
+        onGetDocMax((allFieldsTemplate) => {
+          const templates = new Map([
+            [
+              'MINIMAL',
+              {
+                templateContent: minimalTemplate,
+                templateDescription: 'Minimal',
+              },
+            ],
+            [
+              'ALL_FIELDS',
+              {
+                templateContent: allFieldsTemplate,
+                templateDescription: 'All Fields',
+              },
+            ],
+          ])
+          setNewDocumentDialog(
+            <NewDocumentDialog
+              ref={newDocumentDialogRef}
+              data={{
+                templates: Array.from(
+                  templates.entries()
+                ).map((e) => ({ ...e[1], templateId: e[0] })),
+              }}
+              onSubmit={(params) => {
+                confirmDocumentReplacement(() => {
+                  if (params.source === 'TEMPLATE') {
+                    setAdvisoryState({
+                      type: 'NEW_ADVISORY',
+                      csaf:
+                        templates.get(params.templateId)
+                          ?.templateContent ?? {},
+                    })
+                  } else {
+                    onOpen(params.file)
+                  }
+                })
+              }}
+            />
+          )
+        })
+      })
+    } else {
+      setLoading(true)
+      onGetTemplates((templates) => {
+        setLoading(false)
+        setNewDocumentDialog(
+          <NewDocumentDialog
+            ref={newDocumentDialogRef}
+            data={{ templates }}
+            onSubmit={(params) => {
+              confirmDocumentReplacement(() => {
+                if (params.source === 'TEMPLATE') {
+                  setLoading(true)
+                  onGetTemplateContent(
+                    { templateId: params.templateId },
+                    (templateContent) => {
+                      setAdvisoryState({
+                        type: 'NEW_ADVISORY',
+                        csaf: templateContent,
+                      })
+                      setLoading(false)
+                    }
+                  )
+                } else {
+                  onOpen(params.file)
+                }
+              })
+            }}
+          />
+        )
+      })
+    }
+  }
+
+
   /**
    * Is used to replace the complete document in the json editor.
    *
@@ -289,11 +441,47 @@ function View({
     [activeTab, onChangeTab, formValues.doc, isTabLocked]
   )
 
+  /**
+   * handles the key down event
+   */
+  const keyDownHandler = (keyName, event) => {
+
+    console.log(keyName);
+    console.log("key binding" + appConfig.keySave);
+    if (keyName === appConfig.keySave) {
+      event.preventDefault();
+      onSaveHandler();
+    } else if(keyName === appConfig.keyValidate) {
+      event.preventDefault();
+      doValidate();
+    } else if(keyName === appConfig.keyDownload) {
+      event.preventDefault();
+      onDownload(formValues.doc);
+    } else if(keyName === appConfig.keyNew) {
+      // ctrl+N could not be overwritten
+      //https://stackoverflow.com/questions/38838302/any-way-to-override-ctrln-to-open-a-new-window-in-chrome
+      event.preventDefault();
+      onNewHandler();
+    }
+  }
+
+  /**
+   * Get all possilbe key bindings concatenated with ','
+   */
+  function allKeybindings() {
+
+    const keys = [appConfig.keySave, appConfig.keyValidate , appConfig.keyDownload, appConfig.keyNew]
+      .filter(word => word.length > 3)
+      .join(',');
+    return keys;
+  }
+
   return (
     <>
       {alert}
       {newDocumentDialog}
-      <div className="mx-auto w-full h-screen flex flex-col">
+      <Hotkeys keyName={allKeybindings()} onKeyDown={keyDownHandler}  filter={() => {return true;}}>
+      <div className="mx-auto w-full h-screen flex flex-col" tabIndex={0} >
         <div>
           <div className="flex justify-between bg-gray-700">
             <div className="flex pl-5">
@@ -405,87 +593,7 @@ function View({
                   <button
                     data-testid="new_document_button"
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                    onClick={() => {
-                      if (
-                        !appConfig.loginAvailable ||
-                        (appConfig.loginAvailable && !userInfo)
-                      ) {
-                        onGetDocMin((minimalTemplate) => {
-                          onGetDocMax((allFieldsTemplate) => {
-                            const templates = new Map([
-                              [
-                                'MINIMAL',
-                                {
-                                  templateContent: minimalTemplate,
-                                  templateDescription: 'Minimal',
-                                },
-                              ],
-                              [
-                                'ALL_FIELDS',
-                                {
-                                  templateContent: allFieldsTemplate,
-                                  templateDescription: 'All Fields',
-                                },
-                              ],
-                            ])
-                            setNewDocumentDialog(
-                              <NewDocumentDialog
-                                ref={newDocumentDialogRef}
-                                data={{
-                                  templates: Array.from(
-                                    templates.entries()
-                                  ).map((e) => ({ ...e[1], templateId: e[0] })),
-                                }}
-                                onSubmit={(params) => {
-                                  confirmDocumentReplacement(() => {
-                                    if (params.source === 'TEMPLATE') {
-                                      setAdvisoryState({
-                                        type: 'NEW_ADVISORY',
-                                        csaf:
-                                          templates.get(params.templateId)
-                                            ?.templateContent ?? {},
-                                      })
-                                    } else {
-                                      onOpen(params.file)
-                                    }
-                                  })
-                                }}
-                              />
-                            )
-                          })
-                        })
-                      } else {
-                        setLoading(true)
-                        onGetTemplates((templates) => {
-                          setLoading(false)
-                          setNewDocumentDialog(
-                            <NewDocumentDialog
-                              ref={newDocumentDialogRef}
-                              data={{ templates }}
-                              onSubmit={(params) => {
-                                confirmDocumentReplacement(() => {
-                                  if (params.source === 'TEMPLATE') {
-                                    setLoading(true)
-                                    onGetTemplateContent(
-                                      { templateId: params.templateId },
-                                      (templateContent) => {
-                                        setAdvisoryState({
-                                          type: 'NEW_ADVISORY',
-                                          csaf: templateContent,
-                                        })
-                                        setLoading(false)
-                                      }
-                                    )
-                                  } else {
-                                    onOpen(params.file)
-                                  }
-                                })
-                              }}
-                            />
-                          )
-                        })
-                      }
-                    }}
+                    onClick={onNewHandler}
                   >
                     New
                   </button>
@@ -500,35 +608,7 @@ function View({
                     data-testid="save_button"
                     type="button"
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                    onClick={() => {
-                      if (advisoryState.type === 'NEW_ADVISORY') {
-                        setSaving(true)
-                        onCreateAdvisory({ csaf: formValues.doc }, ({ id }) => {
-                          onLoadAdvisory({ advisoryId: id }, (advisory) => {
-                            setAdvisoryState({ type: 'ADVISORY', advisory })
-                            setSaving(false)
-                          })
-                        })
-                      } else if (advisoryState.type === 'ADVISORY') {
-                        setSaving(true)
-                        onUpdateAdvisory(
-                          {
-                            advisoryId: advisoryState.advisory.advisoryId,
-                            revision: advisoryState.advisory.revision,
-                            csaf: formValues.doc,
-                          },
-                          () => {
-                            onLoadAdvisory(
-                              { advisoryId: advisoryState.advisory.advisoryId },
-                              (advisory) => {
-                                setAdvisoryState({ type: 'ADVISORY', advisory })
-                                setSaving(false)
-                              }
-                            )
-                          }
-                        )
-                      }
-                    }}
+                    onClick={onSaveHandler}
                   >
                     Save
                   </button>
@@ -615,34 +695,9 @@ function View({
                     type="button"
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                     onClick={async () => {
-                      setLoading(true)
-                      onServiceValidate(
-                        {
-                          validatorUrl: appConfig.validatorUrl,
-                          csaf: formValues.doc,
-                        },
-                        (json) => {
-                          const errors =
-                            /** @type {Array<import('./shared/types').TypedValidationError>} */ (
-                              json.tests.flatMap((t) =>
-                                t.errors
-                                  .map((e) => ({ ...e, type: 'error' }))
-                                  .concat(
-                                    t.warnings.map((w) => ({
-                                      ...w,
-                                      type: 'warning',
-                                    }))
-                                  )
-                                  .concat(
-                                    t.infos.map((i) => ({ ...i, type: 'info' }))
-                                  )
-                              )
-                            )
-                          setErrors(errors)
-                          setLoading(false)
-                        }
-                      )
-                    }}
+                        doValidate();
+                      }
+                    }
                   >
                     Validate
                   </button>
@@ -728,6 +783,7 @@ function View({
           </>
         </div>
       </div>
+      </Hotkeys>
       {isLoading ? (
         <LoadingIndicator label="Loading data ..." />
       ) : isSaving ? (
