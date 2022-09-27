@@ -168,22 +168,22 @@ function View({
    */
   const debouncedChangedDoc = useDebounce(formValues.doc, 300)
 
-  const [errorToast, setErrorToast] = React.useState(applicationError)
+  const [toast, setToast] = React.useState(applicationError)
   React.useEffect(() => {
     if (applicationError instanceof BackendUnavailableError) {
-      setErrorToast({
+      setToast({
         message: 'Backend not available, please try again later',
       })
     } else {
-      setErrorToast(applicationError)
+      setToast(applicationError)
     }
   }, [applicationError])
   React.useEffect(() => {
     /** @type {ReturnType<typeof setTimeout> | null} */
     let timeout = null
-    if (errorToast) {
+    if (toast) {
       timeout = setTimeout(() => {
-        setErrorToast(null)
+        setToast(null)
       }, 5000)
     }
     return () => {
@@ -191,7 +191,7 @@ function View({
         clearTimeout(timeout)
       }
     }
-  }, [errorToast])
+  }, [toast])
 
   /**
    * Callback to update the document. Dispatches an update-action to the
@@ -736,23 +736,36 @@ function View({
                         csaf: formValues.doc,
                       })
                         .then((json) => {
-                          const errors =
-                            /** @type {Array<import('./shared/types').TypedValidationError>} */ (
-                              json.tests.flatMap((t) =>
-                                t.errors
-                                  .map((e) => ({ ...e, type: 'error' }))
-                                  .concat(
-                                    t.warnings.map((w) => ({
-                                      ...w,
-                                      type: 'warning',
-                                    }))
-                                  )
-                                  .concat(
-                                    t.infos.map((i) => ({ ...i, type: 'info' }))
-                                  )
+                          if (json.isValid) {
+                            setToast({
+                              message: 'the document is valid!',
+                              color: 'green',
+                            })
+                          } else {
+                            setToast({
+                              message: 'The document is not valid!',
+                            })
+                            const errors =
+                              /** @type {Array<import('./shared/types').TypedValidationError>} */ (
+                                json.tests.flatMap((t) =>
+                                  t.errors
+                                    .map((e) => ({ ...e, type: 'error' }))
+                                    .concat(
+                                      t.warnings.map((w) => ({
+                                        ...w,
+                                        type: 'warning',
+                                      }))
+                                    )
+                                    .concat(
+                                      t.infos.map((i) => ({
+                                        ...i,
+                                        type: 'info',
+                                      }))
+                                    )
+                                )
                               )
-                            )
-                          setErrors(errors)
+                            setErrors(errors)
+                          }
                         })
                         .catch(handleError)
                         .finally(() => {
@@ -842,20 +855,23 @@ function View({
           </>
         </div>
       </div>
-      {errorToast ? (
+      {toast ? (
         <div className="fixed right-0 top-0 p-2 w-full max-w-md">
           <div
             role="status"
             className={
-              'p-4 bg-red-500 text-white rounded shadow flex items-center gap-2'
+              (toast.color === 'green' ? 'bg-green-500' : 'bg-red-500') +
+              ' p-4  text-white rounded shadow flex items-center gap-2'
             }
           >
-            <div className="flex-grow">{errorToast.message}</div>
+            <div className="flex-grow" data-testid="error_toast_message">
+              {toast.message}
+            </div>
             <button
               className="w-6"
               type="button"
               onClick={() => {
-                setErrorToast(null)
+                setToast(null)
               }}
             >
               <svg

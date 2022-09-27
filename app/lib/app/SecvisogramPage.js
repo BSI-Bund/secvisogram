@@ -343,7 +343,15 @@ const SecvisogramPage = () => {
         [strict]
       )}
       onServiceValidate={({ validatorUrl, csaf }) => {
-        return validationService.validateCSAF(validatorUrl, { csaf })
+        return validationService
+          .validateCSAF(validatorUrl, { csaf })
+          .catch((error) => {
+            throw {
+              message:
+                'There was an error reaching the validation service. Please try again later. Error code: ' +
+                error.status,
+            }
+          })
       }}
       onGetTemplates={() => {
         return new ApiRequest(new Request('/api/v1/advisories/templates'))

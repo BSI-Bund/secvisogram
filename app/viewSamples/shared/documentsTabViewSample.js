@@ -16,7 +16,7 @@ const props = {
   defaultData: defaultData,
   onGetData: async () => defaultData,
   async onDeleteAdvisory() {},
-  onChangeWorkflowState: async () => ({ statusCode: 200 }),
+  onChangeWorkflowState: async () => (new Promise(() => {})),
   async onCreateNewVersion() {},
 }
 
