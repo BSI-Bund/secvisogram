@@ -44,7 +44,6 @@ export interface Props {
   } | null
   stripResult: React.ComponentProps<typeof CsafTab>['stripResult']
   previewResult: React.ComponentProps<typeof PreviewTab>['previewResult']
-  strict: boolean
   DocumentsTab: React.ComponentType<{
     onOpenAdvisory(
       params: {
@@ -61,7 +60,6 @@ export interface Props {
     summary: string
     legacyVersion: string
   }): Promise<void>
-  onSetStrict(strict: boolean): void
   onDownload(doc: {}): void
   onOpen(file: File): Promise<void | {}>
   onChangeTab(
