@@ -34,20 +34,10 @@ const SecvisogramPage = () => {
   const { pushState, location } = React.useContext(HistoryContext)
   const searchParams = new URL(location.href).searchParams
   const [
-    {
-      isLoading,
-      isTabLocked,
-      data,
-      errors,
-      alert,
-      stripResult,
-      previewResult,
-      strict,
-    },
+    { isLoading, isTabLocked, data, errors, alert, stripResult, previewResult },
     setState,
   ] = React.useState({
     isLoading: false,
-    strict: true,
     alert: /**
      * @type {{
      *   confirmLabel: string
@@ -103,7 +93,6 @@ const SecvisogramPage = () => {
       data={data}
       generatorEngineData={core.document.getGeneratorEngineData()}
       alert={alert}
-      strict={strict}
       DocumentsTab={DocumentsTab}
       onLoadAdvisory={loadAdvisory}
       onUpdateAdvisory={({
@@ -127,15 +116,9 @@ const SecvisogramPage = () => {
       onUnlockTab={React.useCallback(() => {
         setState((state) => ({ ...state, isTabLocked: false }))
       }, [])}
-      onSetStrict={(value) => {
-        setState((state) => ({
-          ...state,
-          strict: value,
-        }))
-      }}
       onDownload={(doc) => {
         core.document
-          .validate({ document: doc, strict: strict })
+          .validate({ document: doc })
           .then(({ isValid }) => {
             const fileName = createFileName(doc, isValid, 'json')
             if (!isValid) {
@@ -188,7 +171,7 @@ const SecvisogramPage = () => {
         if (isTabLocked) return
         setState((state) => ({ ...state, isLoading: true }))
         core.document
-          .validate({ document, strict: strict })
+          .validate({ document })
           .then((result) => {
             setState((state) => ({
               ...state,
@@ -202,7 +185,7 @@ const SecvisogramPage = () => {
       onValidate={React.useCallback(
         (doc) => {
           core.document
-            .validate({ document: doc, strict: strict })
+            .validate({ document: doc })
             .then((result) => {
               setState((state) => ({
                 ...state,
@@ -211,7 +194,7 @@ const SecvisogramPage = () => {
             })
             .catch(handleError)
         },
-        [handleError, strict]
+        [handleError]
       )}
       onCollectProductIds={React.useCallback(
         async (document) => {
@@ -247,7 +230,7 @@ const SecvisogramPage = () => {
       onStrip={React.useCallback(
         (document) => {
           core.document
-            .strip({ document, strict: strict })
+            .strip({ document })
             .then(({ document: doc, strippedPaths }) => {
               setState((state) => ({
                 ...state,
@@ -259,12 +242,12 @@ const SecvisogramPage = () => {
             })
             .catch(handleError)
         },
-        [handleError, strict]
+        [handleError]
       )}
       onPreview={React.useCallback(
         (document) => {
           core.document
-            .preview({ document, strict: strict })
+            .preview({ document })
             .then(({ document: doc }) => {
               setState((state) => ({
                 ...state,
@@ -275,12 +258,12 @@ const SecvisogramPage = () => {
             })
             .catch(handleError)
         },
-        [handleError, strict]
+        [handleError]
       )}
       onExportCSAF={React.useCallback(
         (document) => {
           core.document
-            .validate({ document: document, strict: strict })
+            .validate({ document: document })
             .then(({ isValid }) => {
               const fileName = createFileName(document, isValid, 'json')
               if (!isValid) {
@@ -290,7 +273,7 @@ const SecvisogramPage = () => {
                     ...alertSaveInvalid,
                     onConfirm() {
                       core.document
-                        .strip({ document, strict: strict })
+                        .strip({ document })
                         .then(({ document: doc }) => {
                           setState({ ...state, alert: null })
                           downloadFile(JSON.stringify(doc, null, 2), fileName)
@@ -304,7 +287,7 @@ const SecvisogramPage = () => {
                 }))
               } else {
                 core.document
-                  .strip({ document, strict: strict })
+                  .strip({ document })
                   .then(({ document: doc }) => {
                     downloadFile(JSON.stringify(doc, null, 2), fileName)
                   })
@@ -313,35 +296,30 @@ const SecvisogramPage = () => {
             })
             .catch(handleError)
         },
-        [handleError, strict]
+        [handleError]
       )}
-      onExportHTML={React.useCallback(
-        (html, doc) => {
-          core.document
-            .validate({ document: doc, strict: strict })
-            .then(({ isValid }) => {
-              const fileName = createFileName(doc, isValid, 'html')
-              if (!isValid) {
-                setState((state) => ({
-                  ...state,
-                  alert: {
-                    ...alertSaveInvalid,
-                    onConfirm() {
-                      downloadFile(html, fileName, 'text/html')
-                      setState({ ...state, alert: null })
-                    },
-                    onCancel() {
-                      setState({ ...state, alert: null })
-                    },
-                  },
-                }))
-              } else {
-                downloadFile(html, fileName, 'text/html')
-              }
-            })
-        },
-        [strict]
-      )}
+      onExportHTML={React.useCallback((html, doc) => {
+        core.document.validate({ document: doc }).then(({ isValid }) => {
+          const fileName = createFileName(doc, isValid, 'html')
+          if (!isValid) {
+            setState((state) => ({
+              ...state,
+              alert: {
+                ...alertSaveInvalid,
+                onConfirm() {
+                  downloadFile(html, fileName, 'text/html')
+                  setState({ ...state, alert: null })
+                },
+                onCancel() {
+                  setState({ ...state, alert: null })
+                },
+              },
+            }))
+          } else {
+            downloadFile(html, fileName, 'text/html')
+          }
+        })
+      }, [])}
       onServiceValidate={({ validatorUrl, csaf }) => {
         return validationService
           .validateCSAF(validatorUrl, { csaf })

@@ -1,11 +1,19 @@
 import { compose, set } from 'lodash/fp.js'
 import * as mandatoryTests from '../../../../csaf-validator-lib/mandatoryTests.js'
+import { mandatoryTest_6_1_8 } from '../../../../csaf-validator-lib/mandatoryTests.js'
 import * as schemaTests from '../../../../csaf-validator-lib/schemaTests.js'
 import strip from '../../../../csaf-validator-lib/strip.js'
 import validate from '../../../../csaf-validator-lib/validate.js'
 import doc_max from './Core/doc-max.json'
 import doc_min from './Core/doc-min.json'
 import { DocumentEntity } from './Core/entities.js'
+
+const INSTANT_TESTS = [
+  schemaTests.csaf_2_0,
+  ...Object.values(mandatoryTests).filter(
+    (t) => t.name !== mandatoryTest_6_1_8.name
+  ),
+]
 
 const secvisogramName = 'Secvisogram'
 
@@ -36,10 +44,8 @@ export default function createCore() {
       /**
        * Validates the document and returns errors that possibly occur.
        *
-       * @param {{
-       *  document: {}
-       *  strict?: boolean
-       * }} params
+       * @param {object} params
+       * @param {{}} params.document
        * @returns {Promise<{
        *   isValid: boolean;
        *   errors: {
@@ -48,16 +54,8 @@ export default function createCore() {
        *   }[];
        * }>}
        */
-      async validate({ document, strict = true }) {
-        const res = await validate(
-          [
-            ...(strict
-              ? [schemaTests.csaf_2_0_strict]
-              : [schemaTests.csaf_2_0]),
-            ...Object.values(mandatoryTests),
-          ],
-          document
-        )
+      async validate({ document }) {
+        const res = await validate(INSTANT_TESTS, document)
         return {
           isValid: res.isValid,
           errors: res.tests.flatMap((t) => t.errors),
@@ -126,21 +124,11 @@ export default function createCore() {
        * Strips the document according to the CSAF-algorithm and returns a list
        * of removed elements.
        *
-       * @param {{
-       *  document: {}
-       *  strict?: boolean
-       * }} params
+       * @param {object} params
+       * @param {{}} params.document
        */
-      async strip({ document, strict = true }) {
-        const res = await strip(
-          [
-            ...(strict
-              ? [schemaTests.csaf_2_0_strict]
-              : [schemaTests.csaf_2_0]),
-            ...Object.values(mandatoryTests),
-          ],
-          document
-        )
+      async strip({ document }) {
+        const res = await strip(INSTANT_TESTS, document)
 
         return res
       },
