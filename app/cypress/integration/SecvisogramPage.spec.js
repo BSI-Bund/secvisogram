@@ -462,7 +462,7 @@ describe('SecvisogramPage', () => {
                 break
               case 'markdown':
                 cy.intercept(
-                  `/api/v1/advisories/${advisory.advisoryId}/csaf?format=MARKDOWN`,
+                  `/api/v1/advisories/${advisory.advisoryId}/csaf?format=Markdown`,
                   {
                     body: fileContent,
                     headers: { 'Content-Type': 'text/plain' },
