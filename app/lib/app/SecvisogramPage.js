@@ -1,5 +1,5 @@
-import { get } from 'lodash'
 import React from 'react'
+import createFileName from '../shared/createFileName.js'
 import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
 import { loadAdvisory } from './SecvisogramPage/service.js'
 import View from './SecvisogramPage/View.js'
@@ -8,6 +8,7 @@ import ApiRequest from './shared/ApiRequest.js'
 import AppErrorContext from './shared/context/AppErrorContext.js'
 import HistoryContext from './shared/context/HistoryContext.js'
 import createCore from './shared/Core.js'
+import downloadFile from './shared/download.js'
 import sitemap from './shared/sitemap.js'
 
 /**
@@ -260,6 +261,10 @@ const SecvisogramPage = () => {
         },
         [handleError]
       )}
+      onPrepareDocumentForTemplate={React.useCallback(
+        (document) => core.document.preview({ document }),
+        []
+      )}
       onExportCSAF={React.useCallback(
         (document) => {
           core.document
@@ -350,37 +355,3 @@ const SecvisogramPage = () => {
 }
 
 export default SecvisogramPage
-
-/**
- * @param {string} content
- * @param {string} fileName
- * @param {string} type
- */
-function downloadFile(content, fileName, type = 'application/json') {
-  try {
-    const string = btoa(unescape(encodeURIComponent(content)))
-    const dataURI = `data:${type};base64,${string}`
-    const element = window.document.createElement('a')
-    element.download = fileName
-    element.href = dataURI
-    element.click()
-  } catch (/** @type {any} */ e) {
-    alert('An error occurred while serializing the download:\n\n' + e.message)
-  }
-}
-
-/**
- * @param {{}} doc
- * @param {boolean} isValid
- * @param {string} extension
- */
-function createFileName(doc, isValid, extension) {
-  let trackingId = `${get(doc, 'document.tracking.id', '')}`
-  if (trackingId.trim().length === 0) {
-    trackingId = 'csaf_2_0'
-  } else {
-    trackingId = trackingId.toLowerCase().replace(/([^+\-a-z0-9]+)/gi, '_')
-  }
-  const fileName = `${trackingId}${isValid ? '' : '_invalid'}.${extension}`
-  return fileName
-}

@@ -143,6 +143,7 @@ const props = {
     return new Promise(() => {})
   },
   onServiceValidate: async () => ({ tests: [], isValid: true }),
+  onPrepareDocumentForTemplate: async () => ({ document: {} }),
   onGetDocMin: async () => ({}),
   onGetDocMax: async () => ({}),
   onCreateAdvisory: async () => ({ id: 'my-id', revision: '1-123' }),

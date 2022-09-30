@@ -1,25 +1,7 @@
 import React from 'react'
+import { Advisory, AdvisoryState } from '../shared/types.js'
 import CsafTab from './CsafTab.js'
 import PreviewTab from './PreviewTab.js'
-
-type Advisory = {
-  advisoryId: string
-  revision: string
-  changeable: boolean
-  csaf: {
-    document?: {
-      title?: string
-    }
-  }
-  documentTrackingId: string
-}
-
-export type AdvisoryState =
-  | {
-      type: 'ADVISORY'
-      advisory: Advisory
-    }
-  | { type: 'NEW_ADVISORY'; csaf: {} }
 
 export interface Props {
   isLoading: boolean
@@ -84,6 +66,7 @@ export interface Props {
   }): Promise<{ id: string; revision: string }>
   onStrip(document: {}): void
   onPreview(document: {}): void
+  onPrepareDocumentForTemplate(document: {}): Promise<{ document: {} }>
   onExportCSAF(doc: {}): void
   onExportHTML(html: string, doc: {}): void
   onLockTab(): void

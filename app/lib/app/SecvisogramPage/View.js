@@ -8,6 +8,7 @@ import AppErrorContext from '../shared/context/AppErrorContext.js'
 import UserInfoContext from '../shared/context/UserInfoContext.js'
 import { canCreateDocuments } from '../shared/permissions.js'
 import CsafTab from './View/CsafTab.js'
+import ExportDocumentDialog from './View/ExportDocumentDialog.js'
 import FormEditorTab from './View/FormEditorTab.js'
 import {
   uniqueGroupId,
@@ -38,6 +39,7 @@ function View({
   previewResult,
   generatorEngineData,
   DocumentsTab,
+  onPrepareDocumentForTemplate,
   onLoadAdvisory,
   onUpdateAdvisory,
   onDownload,
@@ -70,12 +72,17 @@ function View({
   const newDocumentDialogRef = React.useRef(
     /** @type {HTMLDialogElement | null} */ (null)
   )
+
   React.useEffect(() => {
     if (newDocumentDialog) {
       const modal = /** @type {any} */ (newDocumentDialogRef.current)
       modal?.showModal()
     }
   }, [newDocumentDialog])
+
+  const [newExportDocumentDialog, setNewExportDocumentDialog] = React.useState(
+    /** @type {JSX.Element | null} */ (null)
+  )
 
   const [versionSummaryDialog, setVersionSummaryDialog] = React.useState(
     /** @type {JSX.Element | null} */ (null)
@@ -91,7 +98,7 @@ function View({
   }, [versionSummaryDialog])
 
   const [advisoryState, setAdvisoryState] = React.useState(
-    /** @type {import('./View/types.js').AdvisoryState | null} */ (
+    /** @type {import('./shared/types.js').AdvisoryState | null} */ (
       defaultAdvisoryState ?? {
         type: 'NEW_ADVISORY',
         csaf: /** @type {{}} */ (data?.doc),
@@ -360,6 +367,7 @@ function View({
     <>
       {alert}
       {newDocumentDialog}
+      {newExportDocumentDialog}
       {versionSummaryDialog}
       <div className="mx-auto w-full h-screen flex flex-col">
         <div>
@@ -647,81 +655,31 @@ function View({
                   </button>
                 ) : null}
                 <button
-                  data-testid="download_button"
+                  data-testid="new_export_document_button"
                   className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                   onClick={() => {
-                    onDownload(formValues.doc)
+                    setNewExportDocumentDialog(
+                      <ExportDocumentDialog
+                        originalValues={originalValues}
+                        advisoryState={advisoryState}
+                        formValues={formValues}
+                        documentIsValid={!errors.length}
+                        onPrepareDocumentForTemplate={
+                          onPrepareDocumentForTemplate
+                        }
+                        onDownload={onDownload}
+                        onExportCSAF={onExportCSAF}
+                        onExportHTML={onExportHTML}
+                        onClose={() => {
+                          setNewExportDocumentDialog(null)
+                        }}
+                      />
+                    )
                   }}
                 >
-                  Download
+                  Export
                 </button>
-                {appConfig.loginAvailable &&
-                  userInfo &&
-                  advisoryState?.type === 'ADVISORY' && (
-                    <>
-                      <div className="inline-block relative">
-                        <label
-                          htmlFor="export_button"
-                          data-testid="export_button"
-                          className="cursor-pointer block text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                        >
-                          Export
-                        </label>
-                        <input
-                          id="export_button"
-                          type="checkbox"
-                          className="dropdown hidden"
-                        />
-                        <div
-                          className="dropdown-content absolute z-10 left-0 bottom-0 shadow p-2 pr-4 bg-white"
-                          style={{ height: 125, marginBottom: -125 }}
-                        >
-                          <div className="flex flex-col gap-1">
-                            <a
-                              data-testid="export_button-markdown"
-                              className="block"
-                              href={`/api/v1/advisories/${advisoryState.advisory.advisoryId}/csaf?format=Markdown`}
-                              download={
-                                advisoryState.advisory.advisoryId + '.markdown'
-                              }
-                            >
-                              Markdown
-                            </a>
-                            <a
-                              data-testid="export_button-json"
-                              className="block"
-                              href={`/api/v1/advisories/${advisoryState.advisory.advisoryId}/csaf?format=JSON`}
-                              download={
-                                advisoryState.advisory.advisoryId + '.json'
-                              }
-                            >
-                              JSON
-                            </a>
-                            <a
-                              data-testid="export_button-html"
-                              className="block"
-                              href={`/api/v1/advisories/${advisoryState.advisory.advisoryId}/csaf?format=HTML`}
-                              download={
-                                advisoryState.advisory.advisoryId + '.html'
-                              }
-                            >
-                              HTML
-                            </a>
-                            <a
-                              data-testid="export_button-pdf"
-                              className="block"
-                              href={`/api/v1/advisories/${advisoryState.advisory.advisoryId}/csaf?format=PDF`}
-                              download={
-                                advisoryState.advisory.advisoryId + '.pdf'
-                              }
-                            >
-                              PDF
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </>
-                  )}
+
                 {appConfig.loginAvailable && userInfo && (
                   <button
                     data-testid="validate_button"
