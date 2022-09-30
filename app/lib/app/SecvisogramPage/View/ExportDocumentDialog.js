@@ -1,4 +1,5 @@
 import React from 'react'
+import createFileName from '../../../shared/createFileName.js'
 import * as api from '../../shared/api.js'
 import AppErrorContext from '../../shared/context/AppErrorContext.js'
 import HTMLTemplate from './shared/HTMLTemplate.js'
@@ -9,6 +10,7 @@ export default /**
 ({
   defaultSource = 'CSAFJSON',
   advisoryState,
+  documentIsValid,
   formValues,
   originalValues,
   onPrepareDocumentForTemplate,
@@ -328,16 +330,17 @@ export default /**
                     ? 'Markdown'
                     : 'PDF'
                 )}
-                download={
-                  advisoryState.advisory.advisoryId +
-                  (source === 'CSAFJSON'
-                    ? '.json'
+                download={createFileName(
+                  advisoryState.advisory.csaf,
+                  documentIsValid,
+                  source === 'CSAFJSON'
+                    ? 'json'
                     : source === 'HTMLDOCUMENT'
-                    ? '.html'
+                    ? 'html'
                     : source === 'MARKDOWN'
-                    ? '.md'
-                    : '.pdf')
-                }
+                    ? 'md'
+                    : 'pdf'
+                )}
                 onClick={() => {
                   ref.current?.close()
                 }}

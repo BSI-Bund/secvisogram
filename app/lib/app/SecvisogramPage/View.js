@@ -663,6 +663,7 @@ function View({
                         originalValues={originalValues}
                         advisoryState={advisoryState}
                         formValues={formValues}
+                        documentIsValid={!errors.length}
                         onPrepareDocumentForTemplate={
                           onPrepareDocumentForTemplate
                         }

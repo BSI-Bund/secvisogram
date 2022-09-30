@@ -1,5 +1,5 @@
-import { get } from 'lodash'
 import React from 'react'
+import createFileName from '../shared/createFileName.js'
 import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
 import { loadAdvisory } from './SecvisogramPage/service.js'
 import View from './SecvisogramPage/View.js'
@@ -355,19 +355,3 @@ const SecvisogramPage = () => {
 }
 
 export default SecvisogramPage
-
-/**
- * @param {{}} doc
- * @param {boolean} isValid
- * @param {string} extension
- */
-function createFileName(doc, isValid, extension) {
-  let trackingId = `${get(doc, 'document.tracking.id', '')}`
-  if (trackingId.trim().length === 0) {
-    trackingId = 'csaf_2_0'
-  } else {
-    trackingId = trackingId.toLowerCase().replace(/([^+\-a-z0-9]+)/gi, '_')
-  }
-  const fileName = `${trackingId}${isValid ? '' : '_invalid'}.${extension}`
-  return fileName
-}

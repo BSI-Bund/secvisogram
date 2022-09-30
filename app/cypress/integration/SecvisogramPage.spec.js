@@ -411,10 +411,7 @@ describe('SecvisogramPage', () => {
 
             cy.wait('@apiExportAdvisory')
 
-            const exportFilename =
-              select === 'csaf-json-stripped'
-                ? 'csaf_2_0_invalid.json'
-                : `${advisory.advisoryId}.${extension}`
+            const exportFilename = `csaf_2_0_invalid.${extension}`
             cy.readFile(`cypress/downloads/${exportFilename}`, 'utf-8').then(
               (c) => {
                 let body = /** @type {string | {}} */ (
