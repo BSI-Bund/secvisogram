@@ -130,7 +130,7 @@ export default /**
             <label
               className={`block p-4 border cursor-pointer${
                 source === 'CSAFJSON'
-                  ? ' border-blue-400 rounded-t'
+                  ? ' border-blue-400 rounded'
                   : ' rounded hover:shadow'
               }`}
               htmlFor="CSAFJSON"
@@ -153,7 +153,7 @@ export default /**
             <label
               className={`block p-4 border cursor-pointer${
                 source === 'CSAFJSONSTRIPPED'
-                  ? ' border-blue-400 rounded-t'
+                  ? ' border-blue-400 rounded'
                   : ' rounded hover:shadow'
               }`}
               htmlFor="CSAFJSONSTRIPPED"
@@ -175,7 +175,7 @@ export default /**
             <label
               className={`block p-4 border cursor-pointer${
                 source === 'HTMLDOCUMENT'
-                  ? ' border-blue-400 rounded-t'
+                  ? ' border-blue-400 rounded'
                   : ' rounded hover:shadow'
               }`}
               htmlFor="HTMLDOCUMENT"
@@ -197,7 +197,7 @@ export default /**
             <label
               className={`block p-4 border cursor-pointer${
                 source === 'PDFDOCUMENT'
-                  ? ' border-blue-400 rounded-t'
+                  ? ' border-blue-400 rounded'
                   : ' rounded hover:shadow'
               }`}
               htmlFor="PDFDOCUMENT"
@@ -220,7 +220,7 @@ export default /**
               <label
                 className={`block p-4 border cursor-pointer${
                   source === 'MARKDOWN'
-                    ? ' border-blue-400 rounded-t'
+                    ? ' border-blue-400 rounded'
                     : ' rounded hover:shadow'
                 }`}
                 htmlFor="MARKDOWN"
