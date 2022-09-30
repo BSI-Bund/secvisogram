@@ -259,7 +259,10 @@ export default /**
               {...exportButtonProps}
               type="button"
               onClick={() => {
-                ref.current?.close()
+                if (source !== 'PDFDOCUMENT') {
+                  ref.current?.close()
+                }
+
                 switch (source) {
                   case 'CSAFJSON':
                     onDownload(formValues.doc)
