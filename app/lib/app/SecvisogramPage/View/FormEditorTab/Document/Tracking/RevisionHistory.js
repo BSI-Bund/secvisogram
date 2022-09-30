@@ -4,7 +4,6 @@ import DateAttribute from '../../shared/DateAttribute.js'
 import { Version } from '../../shared/definitions.js'
 import ObjectContainer from '../../shared/ObjectContainer.js'
 import TextAreaAttribute from '../../shared/TextAreaAttribute.js'
-import TextAttribute from '../../shared/TextAttribute.js'
 
 /**
  * @param {{
