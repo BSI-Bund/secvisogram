@@ -161,9 +161,9 @@ function fImpact(value) {
   }
 }
 
-/** @typedef {(typeof cvss2Mapping)[number][1]} CVSSField */
+/** @typedef {(typeof mapping)[number][1]} CVSSField */
 
-const cvss2Mapping = /** @type {const} */ ([
+export const mapping = /** @type {const} */ ([
   // BASE SCORE
   [
     'accessVector',
@@ -326,7 +326,7 @@ const cvss2Mapping = /** @type {const} */ ([
 ])
 
 const cvssScores = new Map(
-  cvss2Mapping.map(([, field, values, category]) => [
+  mapping.map(([, field, values, category]) => [
     field,
     {
       category,
