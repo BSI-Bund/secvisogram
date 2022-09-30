@@ -431,73 +431,62 @@ describe('SecvisogramPage', () => {
       }
     }
   })
-  describe('Can download from local', () => {
-    it('Can export document from local', () => {
-      cy.visit('?tab=EDITOR')
-      for (const select of /** @select  {const}*/ [
-        'csaf-json',
-        'csaf-json-stripped',
-        'html',
-        'pdf',
-      ]) {
+
+  describe('can download from local', () => {
+    for (const [select] of /** @type {const} */ ([
+      ['csaf-json', 'JSON', 'json'],
+      ['csaf-json-stripped', 'JSON', 'json'],
+      ['html', 'HTML', 'html'],
+      ['pdf', 'PDF', 'pdf'],
+    ])) {
+      it(`format: ${select}`, () => {
+        cy.visit('?tab=EDITOR')
         cy.get('[data-testid="new_export_document_button"]').click()
         cy.get(
           `[data-testid="export_document-${select}_selector_button"]`
         ).click()
 
-        switch (select) {
-          case 'csaf-json':
-            cy.get(
-              `[data-testid="export_document-export_document_button"]`
-            ).click()
-            cy.get(`[data-testid="alert-confirm_button"]`).click()
+        if (select === 'pdf') {
+          cy.get('[data-testid="pdf_document_iframe"]')
+            .should('exist')
+            .its('0.contentWindow')
+            .then((win) => {
+              cy.stub(win, 'print').as('printStub')
+            })
+          cy.get(
+            `[data-testid="export_document-export_document_button"]`
+          ).click()
+          cy.get('@printStub').should('have.been.called')
+        } else {
+          cy.get(
+            `[data-testid="export_document-export_document_button"]`
+          ).click()
+          cy.get(`[data-testid="alert-confirm_button"]`).click()
 
+          if (select === 'csaf-json') {
             cy.readFile(
               `cypress/downloads/csaf_2_0_invalid.json`,
               'utf-8'
             ).then((c) => {
               expect(c).to.have.property('document')
             })
-            break
-          case 'csaf-json-stripped':
-            cy.get(
-              `[data-testid="export_document-export_document_button"]`
-            ).click()
-            cy.get(`[data-testid="alert-confirm_button"]`).click()
-
+          } else if (select === 'csaf-json-stripped') {
             cy.readFile(
               `cypress/downloads/csaf_2_0_invalid.json`,
               'utf-8'
             ).then((c) => {
               expect(c).to.deep.equal({})
             })
-            break
-          case 'html':
-            cy.get(
-              `[data-testid="export_document-export_document_button"]`
-            ).click()
-            cy.get(`[data-testid="alert-confirm_button"]`).click()
-
+          } else if (select === 'html') {
             cy.readFile(`cypress/downloads/csaf_2_0_invalid.html`, 'utf-8')
             cy.document().then((doc) => {
               expect(doc.doctype !== undefined).to.eq(true)
               expect(doc.doctype?.name).to.eq('html')
             })
-            break
-          case 'pdf':
-            cy.get('[data-testid="pdf_document_iframe"]')
-              .should('exist')
-              .its('0.contentWindow')
-              .then((win) => {
-                cy.stub(win, 'print').as('printStub')
-              })
-            cy.get(
-              `[data-testid="export_document-export_document_button"]`
-            ).click()
-            cy.get('@printStub').should('have.been.called')
+          }
         }
-      }
-    })
+      })
+    }
   })
 
   describe('View', () => {
