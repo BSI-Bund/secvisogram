@@ -6,7 +6,7 @@
   "author": "eXXcellent solutions GmbH",
   "description": "Secvisogram is a web application tool for creating and editing security advisories in the CSAF 2.0 JSON format.",
   "keywords": [
-    "CASF",
+    "CSAF",
     "Secvisogram",
     "Common Security Advisory Framework"
   ],
