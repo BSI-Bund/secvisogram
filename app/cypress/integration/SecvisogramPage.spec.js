@@ -21,6 +21,10 @@ import { getValidationResponse } from '../fixtures/csafValidatorServiceData.js'
 import sampleUploadDocument from '../fixtures/sampleUploadDocument.js'
 
 describe('SecvisogramPage', () => {
+  beforeEach(function () {
+    cy.task('rm', Cypress.config('downloadsFolder'))
+  })
+
   describe('can validate the document against the rest service', function () {
     for (const user of getUsers()) {
       for (const advisory of getAdvisories()) {
@@ -318,172 +322,112 @@ describe('SecvisogramPage', () => {
   describe('can export a document from server', function () {
     for (const user of getUsers()) {
       for (const advisory of getAdvisories()) {
-        it(`user: ${user.preferredUsername}, advisoryId: ${advisory.advisoryId}`, function () {
-          cy.intercept(
-            '/.well-known/appspecific/de.bsi.secvisogram.json',
-            getLoginEnabledConfig()
-          ).as('wellKnownAppConfig')
-          cy.intercept(
-            getLoginEnabledConfig().userInfoUrl,
-            getUserInfo(user)
-          ).as('apiGetUserInfo')
-          cy.intercept('/api/v1/advisories/', getGetAdvisoriesResponse()).as(
-            'apiGetAdvisories'
-          )
+        for (const [select, format, extension] of /** @type {const} */ ([
+          ['csaf-json', 'JSON', 'json'],
+          ['csaf-json-stripped', 'JSON', 'json'],
+          ['html', 'HTML', 'html'],
+          ['pdf', 'PDF', 'pdf'],
+          ['markdown', 'Markdown', 'md'],
+        ])) {
+          it(`user: ${user.preferredUsername}, advisoryId: ${advisory.advisoryId}, format: ${select}`, function () {
+            cy.intercept(
+              '/.well-known/appspecific/de.bsi.secvisogram.json',
+              getLoginEnabledConfig()
+            ).as('wellKnownAppConfig')
+            cy.intercept(
+              getLoginEnabledConfig().userInfoUrl,
+              getUserInfo(user)
+            ).as('apiGetUserInfo')
+            cy.intercept('/api/v1/advisories/', getGetAdvisoriesResponse()).as(
+              'apiGetAdvisories'
+            )
 
-          const advisoryDetail = getGetAdvisoryDetailResponse({
-            advisoryId: advisory.advisoryId,
-          })
-          cy.intercept(
-            `/api/v1/advisories/${advisory.advisoryId}/`,
-            advisoryDetail
-          ).as('apiGetAdvisoryDetail')
+            const advisoryDetail = getGetAdvisoryDetailResponse({
+              advisoryId: advisory.advisoryId,
+            })
+            cy.intercept(
+              `/api/v1/advisories/${advisory.advisoryId}/`,
+              advisoryDetail
+            ).as('apiGetAdvisoryDetail')
 
-          cy.visit('?tab=DOCUMENTS')
-          cy.wait('@wellKnownAppConfig')
-          cy.wait('@apiGetUserInfo')
-          cy.wait('@apiGetAdvisories')
+            cy.visit('?tab=DOCUMENTS')
+            cy.wait('@wellKnownAppConfig')
+            cy.wait('@apiGetUserInfo')
+            cy.wait('@apiGetAdvisories')
 
-          cy.get(
-            `[data-testid="advisory-${advisory.advisoryId}-list_entry-open_button"]`
-          ).click()
-          cy.wait('@apiGetAdvisoryDetail')
-          cy.get('[data-testid="loading_indicator"]').should('not.exist')
-          cy.location('search').should('equal', '?tab=EDITOR')
+            cy.get(
+              `[data-testid="advisory-${advisory.advisoryId}-list_entry-open_button"]`
+            ).click()
+            cy.wait('@apiGetAdvisoryDetail')
+            cy.get('[data-testid="loading_indicator"]').should('not.exist')
+            cy.location('search').should('equal', '?tab=EDITOR')
 
-          for (const select of /** @select  {const}*/ [
-            'csaf-json',
-            'csaf-json-stripped',
-            'html',
-            'pdf',
-            'markdown',
-          ]) {
             cy.get('[data-testid="new_export_document_button"]').click()
             cy.get(
               `[data-testid="export_document-${select}_selector_button"]`
             ).click()
 
-            const fileContent = '{"my": "doc"}'
-            switch (select) {
-              case 'csaf-json':
-                cy.intercept(
-                  `/api/v1/advisories/${advisory.advisoryId}/csaf?format=JSON`,
-                  {
-                    body: fileContent,
-                    headers: { 'Content-Type': 'application/json' },
-                  }
-                ).as('apiExportAdvisory')
+            const fileContentByFormat = new Map([
+              [
+                'HTML',
+                {
+                  body: '<b>Some html</b>',
+                  headers: { 'content-type': 'text/html' },
+                },
+              ],
+              [
+                'JSON',
+                {
+                  body: { my: 'doc' },
+                },
+              ],
+              [
+                'PDF',
+                {
+                  body: 'some pdf',
+                  headers: { 'content-type': 'application/octet-stream' },
+                },
+              ],
+              [
+                'Markdown',
+                {
+                  body: '# some markdown',
+                  headers: { 'content-type': 'text/plain' },
+                },
+              ],
+            ])
+            cy.intercept(
+              `/api/v1/advisories/${advisory.advisoryId}/csaf?format=${format}`,
+              fileContentByFormat.get(format)
+            ).as('apiExportAdvisory')
 
-                cy.get(
-                  `[data-testid="export_document-export_document_button"]`
-                ).click()
+            cy.get(
+              `[data-testid="export_document-export_document_button"]`
+            ).click()
 
-                cy.wait('@apiExportAdvisory')
-
-                cy.readFile(
-                  `cypress/downloads/${advisory.advisoryId}.json`,
-                  'utf-8'
-                ).then((c) => {
-                  expect(c).to.deep.equal(JSON.parse(fileContent))
-                })
-
-                break
-              case 'csaf-json-stripped':
-                cy.intercept(
-                  `/api/v1/advisories/${advisory.advisoryId}/csaf?format=JSON`,
-                  {
-                    body: fileContent,
-                    headers: { 'Content-Type': 'application/json' },
-                  }
-                ).as('apiExportAdvisory')
-
-                cy.get(
-                  `[data-testid="export_document-export_document_button"]`
-                ).click()
-                cy.get(`[data-testid="alert-confirm_button"]`).click()
-
-                cy.wait('@apiExportAdvisory')
-
-                cy.readFile(
-                  `cypress/downloads/${advisory.advisoryId}.json`,
-                  'utf-8'
-                ).then((c) => {
-                  expect(c).to.deep.equal(JSON.parse(fileContent))
-                })
-
-                cy.readFile(
-                  `cypress/downloads/${advisory.advisoryId}.json`,
-                  'utf-8'
-                )
-                break
-              case 'html':
-                cy.intercept(
-                  `/api/v1/advisories/${advisory.advisoryId}/csaf?format=HTML`,
-                  {
-                    body: fileContent,
-                    headers: { 'Content-Type': 'text/html' },
-                  }
-                ).as('apiExportAdvisory')
-
-                cy.get(
-                  `[data-testid="export_document-export_document_button"]`
-                ).click()
-
-                cy.wait('@apiExportAdvisory')
-
-                cy.readFile(
-                  `cypress/downloads/${advisory.advisoryId}.html`,
-                  'utf-8'
-                ).then((c) => {
-                  expect(c).to.deep.equal(fileContent)
-                })
-                break
-              case 'pdf':
-                cy.intercept(
-                  `/api/v1/advisories/${advisory.advisoryId}/csaf?format=PDF`,
-                  {
-                    body: fileContent,
-                    headers: { 'Content-Type': 'application/pdf' },
-                  }
-                ).as('apiExportAdvisory')
-
-                cy.get(
-                  `[data-testid="export_document-export_document_button"]`
-                ).click()
-
-                cy.wait('@apiExportAdvisory')
-
-                cy.readFile(
-                  `cypress/downloads/${advisory.advisoryId}.pdf`,
-                  'utf-8'
-                ).then((c) => {
-                  expect(c).to.deep.equal(fileContent)
-                })
-                break
-              case 'markdown':
-                cy.intercept(
-                  `/api/v1/advisories/${advisory.advisoryId}/csaf?format=Markdown`,
-                  {
-                    body: fileContent,
-                    headers: { 'Content-Type': 'text/plain' },
-                  }
-                ).as('apiExportAdvisory')
-
-                cy.get(
-                  `[data-testid="export_document-export_document_button"]`
-                ).click()
-
-                cy.wait('@apiExportAdvisory')
-
-                cy.readFile(
-                  `cypress/downloads/${advisory.advisoryId}.md`,
-                  'utf-8'
-                ).then((c) => {
-                  expect(c).to.equal(fileContent)
-                })
+            if (select === 'csaf-json-stripped') {
+              cy.get(`[data-testid="alert-confirm_button"]`).click()
             }
-          }
-        })
+
+            cy.wait('@apiExportAdvisory')
+
+            const exportFilename =
+              select === 'csaf-json-stripped'
+                ? 'csaf_2_0_invalid.json'
+                : `${advisory.advisoryId}.${extension}`
+            cy.readFile(`cypress/downloads/${exportFilename}`, 'utf-8').then(
+              (c) => {
+                let body = /** @type {string | {}} */ (
+                  fileContentByFormat.get(format)?.body
+                )
+                if (select === 'csaf-json-stripped') {
+                  body = {}
+                }
+                expect(c).to.deep.equal(body)
+              }
+            )
+          })
+        }
       }
     }
   })
