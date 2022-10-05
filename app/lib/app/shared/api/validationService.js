@@ -1,4 +1,4 @@
-import APIRequest from '../APIRequest.js'
+import ApiRequest from '../ApiRequest.js'
 
 /**
  * @param {string} validatorUrl
@@ -7,24 +7,23 @@ import APIRequest from '../APIRequest.js'
  * @returns
  */
 export async function validateCSAF(validatorUrl, { csaf }) {
-  const validateResponse = await new APIRequest(
+  const validateResponse = await new ApiRequest(
     new Request(validatorUrl + '/api/v1/validate', { method: 'POST' })
   )
-    .jsonRequestBody({
+    .setJsonRequestBody({
       tests: [
-        { type: 'test', name: 'csaf_2_0_strict' },
+        { type: 'test', name: 'csaf_2_0' },
         { type: 'preset', name: 'mandatory' },
         { type: 'preset', name: 'optional' },
         { type: 'preset', name: 'informative' },
       ],
       document: csaf,
     })
-    .produces('application/json')
+    .setContentType('application/json')
     .send()
 
   /**
-   * @type {{ tests: Array<{ errors: Array<{ instancePath: string; message: string }>; warnings: Array<{ instancePath: string; message: string }>; infos: Array<{ instancePath: string; message: string }> }> }}
+   * @type {{ isValid: boolean, tests: Array<{ errors: Array<{ instancePath: string; message: string }>; warnings: Array<{ instancePath: string; message: string }>; infos: Array<{ instancePath: string; message: string }> }> }}
    */
-  const json = await validateResponse.json()
-  return json
+  return await validateResponse.json()
 }

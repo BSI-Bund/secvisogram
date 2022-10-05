@@ -1,25 +1,7 @@
 import React from 'react'
+import { Advisory, AdvisoryState } from '../shared/types.js'
 import CsafTab from './CsafTab.js'
 import PreviewTab from './PreviewTab.js'
-
-type Advisory = {
-  advisoryId: string
-  revision: string
-  changeable: boolean
-  csaf: {
-    document?: {
-      title?: string
-    }
-  }
-  documentTrackingId: string
-}
-
-export type AdvisoryState =
-  | {
-      type: 'ADVISORY'
-      advisory: Advisory
-    }
-  | { type: 'NEW_ADVISORY'; csaf: {} }
 
 export interface Props {
   isLoading: boolean
@@ -44,7 +26,6 @@ export interface Props {
   } | null
   stripResult: React.ComponentProps<typeof CsafTab>['stripResult']
   previewResult: React.ComponentProps<typeof PreviewTab>['previewResult']
-  strict: boolean
   DocumentsTab: React.ComponentType<{
     onOpenAdvisory(
       params: {
@@ -61,7 +42,6 @@ export interface Props {
     summary: string
     legacyVersion: string
   }): Promise<void>
-  onSetStrict(strict: boolean): void
   onDownload(doc: {}): void
   onOpen(file: File): Promise<void | {}>
   onChangeTab(
@@ -70,6 +50,7 @@ export interface Props {
   ): void
   onValidate(document: {}): void
   onServiceValidate(params: { validatorUrl: string; csaf: {} }): Promise<{
+    isValid: boolean
     tests: Array<{
       errors: Array<{ instancePath: string; message: string }>
       warnings: Array<{ instancePath: string; message: string }>
@@ -85,6 +66,7 @@ export interface Props {
   }): Promise<{ id: string; revision: string }>
   onStrip(document: {}): void
   onPreview(document: {}): void
+  onPrepareDocumentForTemplate(document: {}): Promise<{ document: {} }>
   onExportCSAF(doc: {}): void
   onExportHTML(html: string, doc: {}): void
   onLockTab(): void

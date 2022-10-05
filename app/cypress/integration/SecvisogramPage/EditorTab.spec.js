@@ -64,6 +64,7 @@ describe('SecvisogramPage / EditorTab', function () {
             .type(documentTitle)
 
           if (canChangeDocument(user.user)) {
+            cy.setCookie("XSRF-TOKEN", "test-Value-123")
             cy.intercept(
               'PATCH',
               `/api/v1/advisories/${advisory.advisoryId}/?revision=${advisoryDetail.revision}`,

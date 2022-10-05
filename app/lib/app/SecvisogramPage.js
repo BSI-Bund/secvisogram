@@ -1,13 +1,14 @@
-import { get } from 'lodash'
 import React from 'react'
+import createFileName from '../shared/createFileName.js'
 import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
 import { loadAdvisory } from './SecvisogramPage/service.js'
 import View from './SecvisogramPage/View.js'
 import { backend, validationService } from './shared/api.js'
-import APIRequest from './shared/APIRequest.js'
+import ApiRequest from './shared/ApiRequest.js'
 import AppErrorContext from './shared/context/AppErrorContext.js'
 import HistoryContext from './shared/context/HistoryContext.js'
 import createCore from './shared/Core.js'
+import downloadFile from './shared/download.js'
 import sitemap from './shared/sitemap.js'
 
 /**
@@ -34,20 +35,10 @@ const SecvisogramPage = () => {
   const { pushState, location } = React.useContext(HistoryContext)
   const searchParams = new URL(location.href).searchParams
   const [
-    {
-      isLoading,
-      isTabLocked,
-      data,
-      errors,
-      alert,
-      stripResult,
-      previewResult,
-      strict,
-    },
+    { isLoading, isTabLocked, data, errors, alert, stripResult, previewResult },
     setState,
   ] = React.useState({
     isLoading: false,
-    strict: true,
     alert: /**
      * @type {{
      *   confirmLabel: string
@@ -103,7 +94,6 @@ const SecvisogramPage = () => {
       data={data}
       generatorEngineData={core.document.getGeneratorEngineData()}
       alert={alert}
-      strict={strict}
       DocumentsTab={DocumentsTab}
       onLoadAdvisory={loadAdvisory}
       onUpdateAdvisory={({
@@ -127,15 +117,9 @@ const SecvisogramPage = () => {
       onUnlockTab={React.useCallback(() => {
         setState((state) => ({ ...state, isTabLocked: false }))
       }, [])}
-      onSetStrict={(value) => {
-        setState((state) => ({
-          ...state,
-          strict: value,
-        }))
-      }}
       onDownload={(doc) => {
         core.document
-          .validate({ document: doc, strict: strict })
+          .validate({ document: doc })
           .then(({ isValid }) => {
             const fileName = createFileName(doc, isValid, 'json')
             if (!isValid) {
@@ -188,7 +172,7 @@ const SecvisogramPage = () => {
         if (isTabLocked) return
         setState((state) => ({ ...state, isLoading: true }))
         core.document
-          .validate({ document, strict: strict })
+          .validate({ document })
           .then((result) => {
             setState((state) => ({
               ...state,
@@ -202,7 +186,7 @@ const SecvisogramPage = () => {
       onValidate={React.useCallback(
         (doc) => {
           core.document
-            .validate({ document: doc, strict: strict })
+            .validate({ document: doc })
             .then((result) => {
               setState((state) => ({
                 ...state,
@@ -211,7 +195,7 @@ const SecvisogramPage = () => {
             })
             .catch(handleError)
         },
-        [handleError, strict]
+        [handleError]
       )}
       onCollectProductIds={React.useCallback(
         async (document) => {
@@ -247,7 +231,7 @@ const SecvisogramPage = () => {
       onStrip={React.useCallback(
         (document) => {
           core.document
-            .strip({ document, strict: strict })
+            .strip({ document })
             .then(({ document: doc, strippedPaths }) => {
               setState((state) => ({
                 ...state,
@@ -259,12 +243,12 @@ const SecvisogramPage = () => {
             })
             .catch(handleError)
         },
-        [handleError, strict]
+        [handleError]
       )}
       onPreview={React.useCallback(
         (document) => {
           core.document
-            .preview({ document, strict: strict })
+            .preview({ document })
             .then(({ document: doc }) => {
               setState((state) => ({
                 ...state,
@@ -275,12 +259,16 @@ const SecvisogramPage = () => {
             })
             .catch(handleError)
         },
-        [handleError, strict]
+        [handleError]
+      )}
+      onPrepareDocumentForTemplate={React.useCallback(
+        (document) => core.document.preview({ document }),
+        []
       )}
       onExportCSAF={React.useCallback(
         (document) => {
           core.document
-            .validate({ document: document, strict: strict })
+            .validate({ document: document })
             .then(({ isValid }) => {
               const fileName = createFileName(document, isValid, 'json')
               if (!isValid) {
@@ -290,7 +278,7 @@ const SecvisogramPage = () => {
                     ...alertSaveInvalid,
                     onConfirm() {
                       core.document
-                        .strip({ document, strict: strict })
+                        .strip({ document })
                         .then(({ document: doc }) => {
                           setState({ ...state, alert: null })
                           downloadFile(JSON.stringify(doc, null, 2), fileName)
@@ -304,7 +292,7 @@ const SecvisogramPage = () => {
                 }))
               } else {
                 core.document
-                  .strip({ document, strict: strict })
+                  .strip({ document })
                   .then(({ document: doc }) => {
                     downloadFile(JSON.stringify(doc, null, 2), fileName)
                   })
@@ -313,49 +301,52 @@ const SecvisogramPage = () => {
             })
             .catch(handleError)
         },
-        [handleError, strict]
+        [handleError]
       )}
-      onExportHTML={React.useCallback(
-        (html, doc) => {
-          core.document
-            .validate({ document: doc, strict: strict })
-            .then(({ isValid }) => {
-              const fileName = createFileName(doc, isValid, 'html')
-              if (!isValid) {
-                setState((state) => ({
-                  ...state,
-                  alert: {
-                    ...alertSaveInvalid,
-                    onConfirm() {
-                      downloadFile(html, fileName, 'text/html')
-                      setState({ ...state, alert: null })
-                    },
-                    onCancel() {
-                      setState({ ...state, alert: null })
-                    },
-                  },
-                }))
-              } else {
-                downloadFile(html, fileName, 'text/html')
-              }
-            })
-        },
-        [strict]
-      )}
+      onExportHTML={React.useCallback((html, doc) => {
+        core.document.validate({ document: doc }).then(({ isValid }) => {
+          const fileName = createFileName(doc, isValid, 'html')
+          if (!isValid) {
+            setState((state) => ({
+              ...state,
+              alert: {
+                ...alertSaveInvalid,
+                onConfirm() {
+                  downloadFile(html, fileName, 'text/html')
+                  setState({ ...state, alert: null })
+                },
+                onCancel() {
+                  setState({ ...state, alert: null })
+                },
+              },
+            }))
+          } else {
+            downloadFile(html, fileName, 'text/html')
+          }
+        })
+      }, [])}
       onServiceValidate={({ validatorUrl, csaf }) => {
-        return validationService.validateCSAF(validatorUrl, { csaf })
+        return validationService
+          .validateCSAF(validatorUrl, { csaf })
+          .catch((error) => {
+            throw {
+              message:
+                'There was an error reaching the validation service. Please try again later. Error code: ' +
+                error.status,
+            }
+          })
       }}
       onGetTemplates={() => {
-        return new APIRequest(new Request('/api/v1/advisories/templates'))
-          .produces('application/json')
+        return new ApiRequest(new Request('/api/v1/advisories/templates'))
+          .setContentType('application/json')
           .send()
           .then((res) => res.json())
       }}
       onGetTemplateContent={({ templateId }) => {
-        return new APIRequest(
+        return new ApiRequest(
           new Request(`/api/v1/advisories/templates/${templateId}`)
         )
-          .produces('application/json')
+          .setContentType('application/json')
           .send()
           .then((templateContentRes) => templateContentRes.json())
       }}
@@ -364,37 +355,3 @@ const SecvisogramPage = () => {
 }
 
 export default SecvisogramPage
-
-/**
- * @param {string} content
- * @param {string} fileName
- * @param {string} type
- */
-function downloadFile(content, fileName, type = 'application/json') {
-  try {
-    const string = btoa(unescape(encodeURIComponent(content)))
-    const dataURI = `data:${type};base64,${string}`
-    const element = window.document.createElement('a')
-    element.download = fileName
-    element.href = dataURI
-    element.click()
-  } catch (/** @type {any} */ e) {
-    alert('An error occurred while serializing the download:\n\n' + e.message)
-  }
-}
-
-/**
- * @param {{}} doc
- * @param {boolean} isValid
- * @param {string} extension
- */
-function createFileName(doc, isValid, extension) {
-  let trackingId = `${get(doc, 'document.tracking.id', '')}`
-  if (trackingId.trim().length === 0) {
-    trackingId = 'csaf_2_0'
-  } else {
-    trackingId = trackingId.toLowerCase().replace(/([^+\-a-z0-9]+)/gi, '_')
-  }
-  const fileName = `${trackingId}${isValid ? '' : '_invalid'}.${extension}`
-  return fileName
-}

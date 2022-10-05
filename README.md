@@ -15,7 +15,7 @@
 
 ## About The Project
 
-[Secvisogram](https://secvisogram.github.io) is a tool for creating and editing advisories in [CSAF](https://github.com/oasis-tcs/csaf/blob/master/csaf_2.0/prose/csaf-v2-editor-draft.md) [format](https://github.com/oasis-tcs/csaf/blob/master/csaf_2.0/json_schema/csaf_json_schema.json).
+[Secvisogram](https://secvisogram.github.io) is a tool for creating and editing advisories in [CSAF](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html) [format](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json).
 
 Secvisogram is inspired by the project [Vulnogram](https://vulnogram.github.io/) - "a tool for creating and editing CVE information in CVE JSON format". Both names share the same Greek suffix '-gram' which is used for denoting something written or recorded in a particular way.
 Vulnerability-related information is often not enough - mostly, only the remediation information enables the end user to act efficiently in responding to these concerns. This information is usually conveyed in **Security Advisories**. Therefore, the first part of the name Secvisogram abbreviates the words _Security Advisory_.
@@ -28,12 +28,12 @@ Secvisogram aims to make it easier for vendors and other security advisory issui
 
 ## Getting started
 
-Assure that you have **Node 14 (LTS) and npm 6 or newer** installed.
+Assure that you have **Node 16 (LTS) and npm 8 or newer** installed.
 [Nodesource](https://github.com/nodesource/distributions/blob/master/README.md) provides binary distributions for various Linux distributions.
 
       $ node --version ; npm --version
-      v14.15.4
-      6.14.10
+      v16.14.0
+      8.3.1
 
 Check out the repository and navigate to the working directory.
 
@@ -55,7 +55,7 @@ following path `.well-known/appspecific/de.bsi.secvisogram.json`.
 During development this file has to be in `app/public/.well-known/appspecific`.
 This is only needed when you are using secvisogram in combination with the
 [CSAF CMS Server](https://github.com/secvisogram/csaf-cms-backend). If no
-config is available secvisogram will fall back to the standalone mode which is
+config is available Secvisogram will fall back to the standalone mode which is
 the same as `"loginAvailable": false`.
 
 ```json
@@ -129,6 +129,15 @@ Use the toggle button to switch between the Rendered web view and the HTML sourc
 This view does not include any editing functionality. It **always displays the valid subset of your current CSAF document** by removing any invalid and/or empty CSAF document elements.
 
 You can use this view and the embedded _Export CSAF_ button to always quickly extract the standard-valid subset of your current CSAF document.
+
+[(back to top)](#bsi-secvisogram-csaf-20-web-editor)
+
+## Documentation
+
+The documentation on CSAF documents lives in the [secvisogram-documentation](https://github.com/secvisogram/secvisogram-documentation/)
+repository and is integrated with git-subtree. To update the documentation you can use the following command:
+
+    git subtree pull --prefix docs https://github.com/secvisogram/secvisogram-documentation.git main --squash
 
 [(back to top)](#bsi-secvisogram-csaf-20-web-editor)
 

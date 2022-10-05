@@ -58,6 +58,11 @@ VERBOSE_REGEX = r"`(.+?)`"
 
 
 def text_to_translation_xml(file_text: str) -> str:
+  """
+  introduces XML tags to use DeepL translator XML capabilities
+
+  :param file_text: text content of a file
+  """
   lines = file_text.splitlines()
 
   heading = lines[0]
@@ -93,6 +98,11 @@ def text_to_translation_xml(file_text: str) -> str:
 
 
 def translation_xml_to_text(xml_text: str) -> str:
+  """
+  removes XML tags after translation
+
+  :param xml_text: the text to remove XML tags from
+  """
   for tag_class in [HeadingTag, BoldHeadingTag, HeadingKeepTag, LinkTextTag, LinkTag, VerboseTag, CodeBlockTag]:
     xml_text = replace_tag(tag_class, xml_text)
   return xml_text
@@ -159,5 +169,4 @@ def parse_args():
 
 
 if __name__ == "__main__":
-
   main(parse_args())

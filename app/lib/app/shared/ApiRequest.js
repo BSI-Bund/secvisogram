@@ -1,50 +1,46 @@
-export default class APIRequest {
+export default class ApiRequest {
   /**
    * @param {Request} request
    */
   constructor(request) {
+    /** @protected */
     this.request = request
   }
 
   /**
    * @param {{ username: string; password: string }} credentials
    */
-  basicAuth(credentials) {
+  setBasicAuth(credentials) {
     const headers = new Headers(this.request.headers)
     headers.set(
       'authorization',
       `Basic ${btoa(`${credentials.username}:${credentials.password}`)}`
     )
-    return new APIRequest(new Request(this.request, { headers }))
+    this.request = new Request(this.request, { headers })
+    return this
   }
 
   /**
    * @param {string} contentType
    */
-  produces(contentType) {
-    const { request } = this
-    const headers = new Headers(request.headers)
+  setContentType(contentType) {
+    const headers = new Headers(this.request.headers)
     headers.set('accept', contentType)
-    return new APIRequest(
-      new Request(request, {
-        headers,
-      })
-    )
+    this.request = new Request(this.request, { headers })
+    return this
   }
 
   /**
    * @param {{}} body
    */
-  jsonRequestBody(body) {
-    const { request } = this
-    const headers = new Headers(request.headers)
+  setJsonRequestBody(body) {
+    const headers = new Headers(this.request.headers)
     headers.set('content-type', 'application/json')
-    return new APIRequest(
-      new Request(request, {
-        headers,
-        body: JSON.stringify(body),
-      })
-    )
+    this.request = new Request(this.request, {
+      headers,
+      body: JSON.stringify(body),
+    })
+    return this
   }
 
   async send() {
