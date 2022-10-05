@@ -13,6 +13,7 @@
   - [Developer Guide, Architecture and Technical Design](#developer-guide-architecture-and-technical-design)
   - [Custom Preview Templates](#custom-preview-templates)
   - [Security Considerations](#security-considerations)
+<!-- /TOC -->
 
 ## About The Project
 
