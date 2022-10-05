@@ -1,19 +1,12 @@
 import { compose, set } from 'lodash/fp.js'
-import * as mandatoryTests from '../../../../csaf-validator-lib/mandatoryTests.js'
-import { mandatoryTest_6_1_8 } from '../../../../csaf-validator-lib/mandatoryTests.js'
-import * as schemaTests from '../../../../csaf-validator-lib/schemaTests.js'
+import * as basic from '../../../../csaf-validator-lib/basic.js'
 import strip from '../../../../csaf-validator-lib/strip.js'
 import validate from '../../../../csaf-validator-lib/validate.js'
 import doc_max from './Core/doc-max.json'
 import doc_min from './Core/doc-min.json'
 import { DocumentEntity } from './Core/entities.js'
 
-const INSTANT_TESTS = [
-  schemaTests.csaf_2_0,
-  ...Object.values(mandatoryTests).filter(
-    (t) => t.name !== mandatoryTest_6_1_8.name
-  ),
-]
+const INSTANT_TESTS = Object.values(basic)
 
 const secvisogramName = 'Secvisogram'
 
