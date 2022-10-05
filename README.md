@@ -1,5 +1,6 @@
 # BSI Secvisogram CSAF 2.0 Web Editor
 
+<!-- TOC depthfrom:2 depthto:3 -->
 - [About The Project](#about-the-project)
 - [Getting started](#getting-started)
 - [How to use](#how-to-use)
