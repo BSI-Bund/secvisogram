@@ -323,11 +323,14 @@ function View({
         type: /** @type {'button'} */ ('button'),
         disabled: Boolean(activeTab !== tab && isTabLocked),
         'data-testid': `tab_button-${tab}`,
-        className:
-          'text-sm font-bold p-4 h-auto ' +
-          (activeTab === tab
+        className: [
+          'text-sm font-bold p-4 h-auto',
+          activeTab === tab
             ? 'bg-gray-900 text-white'
-            : 'hover:bg-gray-800 hover:text-white text-gray-300'),
+            : isTabLocked
+            ? 'text-gray-500'
+            : 'hover:bg-gray-800 hover:text-white text-gray-300',
+        ].join(' '),
         onClick() {
           onChangeTab(tab, formValues.doc)
         },
