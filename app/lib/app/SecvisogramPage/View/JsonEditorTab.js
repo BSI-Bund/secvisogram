@@ -159,36 +159,36 @@ export default function JsonEditorTab({
 
   React.useEffect(() => {
     if (monaco && editor && debouncedValue) {
+      /** @type {jsonMap.ParseResult} */
       let result
       try {
         result = jsonMap.parse(debouncedValue)
-      } catch (/** @type {any} */ e) {
+      } catch (e) {
         return
       }
 
-      let errorList = []
-      let isDocMatchingErrors = true
-
-      for (const e of errors) {
-        let path = e.instancePath
-        let positionData = result.pointers[path]
-        if (!positionData) {
-          isDocMatchingErrors = false
-          break
-        }
-
-        errorList.push({
+      const errorList = errors
+        .map((error) => ({
+          error,
+          positionData: result.pointers[error.instancePath],
+        }))
+        .filter((e) => e.positionData)
+        .map(({ error, positionData }) => ({
           startLineNumber: positionData.value.line + 1,
           startColumn: positionData.value.column + 1,
           endLineNumber: positionData.valueEnd.line + 1,
           endColumn: positionData.valueEnd.column + 1,
-          message: e.message,
-          severity: monaco.MarkerSeverity.Error,
-        })
-      }
+          message: error.message,
+          severity:
+            error.type === 'error'
+              ? monaco.MarkerSeverity.Error
+              : error.type === 'warning'
+              ? monaco.MarkerSeverity.Warning
+              : monaco.MarkerSeverity.Info,
+        }))
 
       const model = editor.getModel()
-      if (model && isDocMatchingErrors) {
+      if (model) {
         monaco.editor.setModelMarkers(model, 'setMarkers', errorList)
       }
     }
