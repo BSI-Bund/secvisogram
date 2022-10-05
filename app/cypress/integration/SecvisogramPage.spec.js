@@ -77,7 +77,7 @@ describe('SecvisogramPage', () => {
               .its('request.body')
               .should('deep.equal', {
                 tests: [
-                  { type: 'test', name: 'csaf_2_0' },
+                  { type: 'test', name: 'csaf_2_0_strict' },
                   { type: 'preset', name: 'mandatory' },
                   { type: 'preset', name: 'optional' },
                   { type: 'preset', name: 'informative' },
