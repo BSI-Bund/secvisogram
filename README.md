@@ -59,7 +59,7 @@ following path `.well-known/appspecific/de.bsi.secvisogram.json`.
 During development this file has to be in `app/public/.well-known/appspecific`.
 This is only needed when you are using secvisogram in combination with the
 [CSAF CMS Server](https://github.com/secvisogram/csaf-cms-backend). If no
-config is available secvisogram will fall back to the standalone mode which is
+config is available Secvisogram will fall back to the standalone mode which is
 the same as `"loginAvailable": false`.
 
 ```json
