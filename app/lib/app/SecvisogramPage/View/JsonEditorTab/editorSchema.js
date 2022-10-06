@@ -1,7 +1,3 @@
-import cvssV20 from './editorSchema/cvss-v2.0.js'
-import cvssV30 from './editorSchema/cvss-v3.0.js'
-import cvssV31 from './editorSchema/cvss-v3.1.js'
-
 export default {
   type: 'object',
   $defs: {
@@ -1315,9 +1311,27 @@ export default {
               minProperties: 2,
               required: ['products'],
               properties: {
-                cvss_v2: cvssV20,
+                cvss_v2: {
+                  $ref: new URL(
+                    'vendor/first/cvss-v2.0.json',
+                    window.location.href
+                  ).href,
+                },
                 cvss_v3: {
-                  oneOf: [cvssV30, cvssV31],
+                  oneOf: [
+                    {
+                      $ref: new URL(
+                        'vendor/first/cvss-v3.0.json',
+                        window.location.href
+                      ).href,
+                    },
+                    {
+                      $ref: new URL(
+                        'vendor/first/cvss-v3.1.json',
+                        window.location.href
+                      ).href,
+                    },
+                  ],
                 },
                 products: {
                   $ref: '#/$defs/products_t',
