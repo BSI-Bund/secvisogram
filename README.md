@@ -42,10 +42,6 @@ Check out the repository and navigate to the working directory.
     git clone git@github.com:secvisogram/secvisogram.git
     cd secvisogram
 
-This repository includes git submodules for vendor modules like [Ace](https://ace.c9.io/). Make sure to initialize and update the submodules before you start to work with the repository.
-
-    git submodule update --init --recursive
-
 Afterwards, the npm dependencies need to be installed.
 
     npm ci
@@ -118,7 +114,7 @@ Use the `Show errors`-link in the Form Editor view to reveal a linked list of va
 
 ### JSON Editor
 
-The _JSON Editor_ view uses the ACE editor to edit the JSON representation of the current CSAF document. Please note that only valid JSON content is accepted for further processing.
+The _JSON Editor_ view uses the Monaco editor to edit the JSON representation of the current CSAF document. Please note that only valid JSON content is accepted for further processing.
 
 [(back to top)](#bsi-secvisogram-csaf-20-web-editor)
 
