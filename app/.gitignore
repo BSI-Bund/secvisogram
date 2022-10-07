@@ -1,3 +1,8 @@
 /node_modules/*
 /dist/*
 /build
+
+# local .well-known/appspecific config
+/public/.well-known/appspecific/de.bsi.secvisogram.json
+
+/cypress/downloads

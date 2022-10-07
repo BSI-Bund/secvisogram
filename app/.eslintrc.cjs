@@ -26,6 +26,9 @@ module.exports = {
     ace: true,
     CVSS: true,
     CVSS31: true,
+    cy: true,
+    expect: true,
+    Cypress: true,
   },
   rules: {
     'no-unused-params': 0,

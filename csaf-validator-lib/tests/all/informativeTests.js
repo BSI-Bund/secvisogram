@@ -292,32 +292,50 @@ export default [
         branches: [
           {
             name: 'my branch',
-            category: 'architecture',
-            product: {
-              name: 'Product A',
-              product_id: 'CSAFPID-9080700',
-              product_identification_helper: {
-                hashes: [
+            category: 'vendor',
+            branches: [
+              {
+                name: 'Product Name',
+                category: 'product_name',
+                branches: [
                   {
-                    file_hashes: [
+                    name: 'Product Version',
+                    category: 'product_version',
+                    branches: [
                       {
-                        algorithm: 'sha256',
-                        value:
-                          '6ae24620ea9656230f49234efd0789356ae24620ea9656230f49234efd078935',
+                        name: 'my branch',
+                        category: 'architecture',
+                        product: {
+                          name: 'Product A',
+                          product_id: 'CSAFPID-9080700',
+                          product_identification_helper: {
+                            hashes: [
+                              {
+                                file_hashes: [
+                                  {
+                                    algorithm: 'sha256',
+                                    value:
+                                      '6ae24620ea9656230f49234efd0789356ae24620ea9656230f49234efd078935',
+                                  },
+                                ],
+                                filename: 'product_a.so',
+                              },
+                            ],
+                            sbom_urls: ['https://example.invalid'],
+                            x_generic_uris: [
+                              {
+                                namespace: 'https://example.invalid',
+                                uri: 'https://example.invalid',
+                              },
+                            ],
+                          },
+                        },
                       },
                     ],
-                    filename: 'product_a.so',
-                  },
-                ],
-                sbom_urls: ['https://example.invalid'],
-                x_generic_uris: [
-                  {
-                    namespace: 'https://example.invalid',
-                    uri: 'https://example.invalid',
                   },
                 ],
               },
-            },
+            ],
           },
         ],
         relationships: [
@@ -563,26 +581,44 @@ export default [
       product_tree: {
         branches: [
           {
-            name: 'vers:a0/foo',
-            category: 'product_version_range',
-            product: {
-              name: 'Product A',
-              product_id: 'CSAFPID-9080700',
-              product_identification_helper: {
-                hashes: [
+            name: 'Vendor',
+            category: 'vendor',
+            branches: [
+              {
+                name: 'Product Name',
+                category: 'product_name',
+                branches: [
                   {
-                    file_hashes: [
+                    name: 'Product Version',
+                    category: 'product_version',
+                    branches: [
                       {
-                        algorithm: 'sha256',
-                        value:
-                          '6ae24620ea9656230f49234efd0789356ae24620ea9656230f49234efd078935',
+                        name: 'vers:a0/foo',
+                        category: 'product_version_range',
+                        product: {
+                          name: 'Product A',
+                          product_id: 'CSAFPID-9080700',
+                          product_identification_helper: {
+                            hashes: [
+                              {
+                                file_hashes: [
+                                  {
+                                    algorithm: 'sha256',
+                                    value:
+                                      '6ae24620ea9656230f49234efd0789356ae24620ea9656230f49234efd078935',
+                                  },
+                                ],
+                                filename: 'product_a.so',
+                              },
+                            ],
+                          },
+                        },
                       },
                     ],
-                    filename: 'product_a.so',
                   },
                 ],
               },
-            },
+            ],
           },
         ],
       },
@@ -616,26 +652,44 @@ export default [
       product_tree: {
         branches: [
           {
-            category: 'product_version',
-            name: 'v4.2',
-            product: {
-              name: 'Product A',
-              product_id: 'CSAFPID-9080700',
-              product_identification_helper: {
-                hashes: [
+            name: 'Vendor',
+            category: 'vendor',
+            branches: [
+              {
+                name: 'Product Name',
+                category: 'product_name',
+                branches: [
                   {
-                    file_hashes: [
+                    name: 'Product Version',
+                    category: 'product_version',
+                    branches: [
                       {
-                        algorithm: 'sha256',
-                        value:
-                          '6ae24620ea9656230f49234efd0789356ae24620ea9656230f49234efd078935',
+                        category: 'product_version',
+                        name: 'v4.2',
+                        product: {
+                          name: 'Product A',
+                          product_id: 'CSAFPID-9080700',
+                          product_identification_helper: {
+                            hashes: [
+                              {
+                                file_hashes: [
+                                  {
+                                    algorithm: 'sha256',
+                                    value:
+                                      '6ae24620ea9656230f49234efd0789356ae24620ea9656230f49234efd078935',
+                                  },
+                                ],
+                                filename: 'product_a.so',
+                              },
+                            ],
+                          },
+                        },
                       },
                     ],
-                    filename: 'product_a.so',
                   },
                 ],
               },
-            },
+            ],
           },
         ],
       },

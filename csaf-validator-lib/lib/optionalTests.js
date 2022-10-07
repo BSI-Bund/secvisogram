@@ -17,3 +17,4 @@ export { default as optionalTest_6_2_16 } from './optionalTests/optionalTest_6_2
 export { default as optionalTest_6_2_17 } from './optionalTests/optionalTest_6_2_17.js'
 export { default as optionalTest_6_2_18 } from './optionalTests/optionalTest_6_2_18.js'
 export { default as optionalTest_6_2_19 } from './optionalTests/optionalTest_6_2_19.js'
+export { default as optionalTest_6_2_20 } from './optionalTests/optionalTest_6_2_20.js'

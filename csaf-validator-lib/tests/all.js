@@ -110,7 +110,9 @@ describe('Core', () => {
             csaf_2_0_strict,
             ...Object.values(mandatoryTests),
             ...Object.values(optionalTests),
-            ...Object.values(informativeTests),
+            ...Object.values(informativeTests).filter(
+              (t) => t.name !== 'informativeTest_6_3_8'
+            ),
           ],
           informativeTest.content
         )
@@ -168,7 +170,7 @@ describe('Core', () => {
               return {
                 isValid,
                 errors:
-                  /** @type {{ message?: string | undefined; instancePath: string; }[]} */ (
+                  /** @type {{ message: string; instancePath: string; }[]} */ (
                     schemaValidator.errors ?? []
                   ),
               }
@@ -196,7 +198,7 @@ describe('Core', () => {
               return {
                 isValid,
                 errors:
-                  /** @type {{ message?: string | undefined; instancePath: string; }[]} */ (
+                  /** @type {{ message: string; instancePath: string; }[]} */ (
                     schemaValidator.errors ?? []
                   ),
               }

@@ -1,5 +1,5 @@
 import React from 'react'
-import ErrorScreen from '../../../lib/shared/ErrorScreen.js'
+import ErrorScreen from '../../../lib/app/App/ErrorScreen.js'
 
 export const title = 'ErrorScreen'
 

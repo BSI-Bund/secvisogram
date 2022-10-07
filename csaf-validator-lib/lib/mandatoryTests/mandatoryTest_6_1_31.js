@@ -64,13 +64,14 @@ export default function mandatoryTest_6_1_31(doc) {
           (['<', '<=', '>', '>='].some((str) =>
             branch.name?.toLowerCase().includes(str)
           ) ||
-            ['after', 'all', 'later', 'prior', 'versions'].some((str) =>
-              branch.name
-                ?.toLowerCase()
-                .split(/\s/)
-                .some((word) => {
-                  return str === word
-                })
+            ['after', 'all', 'before', 'earlier', 'later', 'prior', 'versions'].some(
+              (str) =>
+                branch.name
+                  ?.toLowerCase()
+                  .split(/\s/)
+                  .some((word) => {
+                    return str === word
+                  })
             ))
         ) {
           ctx.isValid = false

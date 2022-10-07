@@ -1,140 +1,23 @@
 import React from 'react'
-import View from '../../../lib/SecvisogramPage/View.js'
+import DocumentsTabView from '../../../lib/app/SecvisogramPage/DocumentsTab/View.js'
+import View from '../../../lib/app/SecvisogramPage/View.js'
+import AppConfigContext from '../../../lib/app/shared/context/AppConfigContext.js'
+import UserInfoContext from '../../../lib/app/shared/context/UserInfoContext.js'
 import seed1 from '../../../seeds/documents/valid-1.json'
 import seed2 from '../../../seeds/documents/valid-2.json'
+import {
+  documentsTabViewSample,
+  secvisogramPageViewSample,
+} from '../../../viewSamples.js'
 
 export const title = 'SecvisogramPage'
 
-const props = {
-  isLoading: false,
-  isSaving: false,
-  isTabLocked: false,
-  errors: [],
-  stripResult: null,
-  previewResult: null,
-  strict: true,
-  data: {
-    documentIsValid: null,
-    doc: {
-      document: {
-        csaf_version: '',
-        title: '',
-        publisher: {
-          type: '',
-        },
-        type: '',
-        tracking: {
-          current_release_date: '',
-          id: '',
-          initial_release_date: '',
-          revision_history: [
-            {
-              number: '',
-              date: '',
-              summary: '',
-            },
-          ],
-          status: '',
-          version: '',
-        },
-        acknowledgments: [
-          {
-            names: [],
-            organizations: [],
-            summary: '',
-            urls: [],
-          },
-        ],
-        aggregate_severity: {
-          namespace: '',
-          text: '',
-        },
-        notes: [],
-      },
-      product_tree: {},
-      vulnerabilities: [
-        {
-          notes: [
-            {
-              type: '',
-              text: '',
-            },
-          ],
-          scores: [{ cvss_v3: { vectorString: '', baseScore: 0 } }],
-        },
-      ],
-    },
-  },
-  activeTab: /** @type {'EDITOR'} */ ('EDITOR'),
-  generatorEngineData: { name: 'Secvisogram', version: 'unidentified version' },
-  onSetStrict: console.log.bind(console, 'onSetStrict'),
-  onNew: console.log.bind(console, 'onNew'),
-  onDownload: console.log.bind(console, 'onDownload'),
-  onOpen: () => {
-    console.log('onOpen')
-    return new Promise(() => {})
-  },
-  onSave: console.log.bind(console, 'onSave'),
-  onChangeTab: console.log.bind(console, 'onChangeTab'),
-  onValidate: console.log.bind(console, 'onValidate'),
-  onNewDocMin: () => {
-    console.log('onNewDocMin')
-    return new Promise(() => {})
-  },
-  onNewDocMax: () => {
-    console.log('onNewDocMax')
-    return new Promise(() => {})
-  },
-  onStrip: (/** @type {any[]} */ ...args) => {
-    console.log('onStrip', ...args)
-    return new Promise((resolve) => {
-      setTimeout(
-        () =>
-          resolve({
-            document: seed1,
-            strippedPaths: [
-              {
-                message: 'value is empty',
-                instancePath: '/my/data/path',
-                error: false,
-              },
-              {
-                message: 'value is invalid',
-                instancePath: '/my/data/path',
-                error: true,
-              },
-            ],
-          }),
-        500
-      )
-    })
-  },
-  onPreview: () => {
-    console.log('onPreview')
-    return new Promise(() => {})
-  },
-  onExportCSAF: console.log.bind(console, 'onExportCSAF'),
-  onExportHTML: console.log.bind(console, 'onExportHTML'),
-  onLockTab: console.log.bind(console, 'onLockTab'),
-  onUnlockTab: console.log.bind(console, 'onUnlockTab'),
-  onCollectProductIds: () => {
-    console.log('onCollectProductIds')
-    return new Promise(() => {})
-  },
-  onCollectGroupIds: () => {
-    console.log('onCollectGroupIds')
-    return new Promise(() => {})
-  },
-}
+const props = secvisogramPageViewSample.basic.props
 
 export const tests = [
   {
     title: 'Is loading',
     render: () => <View {...props} data={null} isLoading={true} />,
-  },
-  {
-    title: 'Is saving',
-    render: () => <View {...props} isSaving={true} />,
   },
   {
     title: 'With alert',
@@ -198,8 +81,84 @@ export const tests = [
     ),
   },
   {
+    title: 'With loaded advisory',
+    render: () => (
+      <View
+        {...props}
+        data={null}
+        defaultAdvisoryState={{
+          type: 'ADVISORY',
+          advisory: {
+            csaf: {},
+            changeable: true,
+            advisoryId: 'my-advisory',
+            revision: 'my-revision',
+            documentTrackingId: 'My_document',
+          },
+        }}
+      />
+    ),
+  },
+  {
+    title: 'Empty document tracking id',
+    render: () => (
+      <View
+        {...props}
+        data={null}
+        defaultAdvisoryState={{
+          type: 'ADVISORY',
+          advisory: {
+            csaf: {},
+            changeable: true,
+            advisoryId: 'my-advisory',
+            revision: 'my-revision',
+            documentTrackingId: '',
+          },
+        }}
+      />
+    ),
+  },
+  {
     title: 'Editor',
     render: () => <View {...props} />,
+  },
+  {
+    title: 'Editor logged in',
+    render: () => (
+      <AppConfigContext.Provider
+        value={{
+          loginAvailable: true,
+          loginUrl: '',
+          logoutUrl: '',
+          userInfoUrl: '',
+          validatorUrl: '',
+        }}
+      >
+        <UserInfoContext.Provider
+          value={{
+            email: 'foo@bar.de',
+            groups: ['editor', 'author'],
+            preferredUsername: 'foo-bar',
+            user: 'foo-bar',
+          }}
+        >
+          <View
+            {...props}
+            data={null}
+            defaultAdvisoryState={{
+              advisory: {
+                advisoryId: '123',
+                changeable: true,
+                csaf: {},
+                documentTrackingId: 'my-doc',
+                revision: '1-1',
+              },
+              type: 'ADVISORY',
+            }}
+          />
+        </UserInfoContext.Provider>
+      </AppConfigContext.Provider>
+    ),
   },
   {
     title: 'Editor with invalid object',
@@ -304,26 +263,6 @@ export const tests = [
     render: () => <View {...props} activeTab="SOURCE" isTabLocked={true} />,
   },
   {
-    title: 'Advisory (seed-1)',
-    render: () => (
-      <View
-        {...props}
-        data={{ ...props.data, doc: /** @type {any} */ (seed1) }}
-        activeTab="PREVIEW"
-      />
-    ),
-  },
-  {
-    title: 'Advisory (seed-2)',
-    render: () => (
-      <View
-        {...props}
-        data={{ ...props.data, doc: /** @type {any} */ (seed2) }}
-        activeTab="PREVIEW"
-      />
-    ),
-  },
-  {
     title: 'PREVIEW',
     render: () => <View {...props} activeTab="PREVIEW" />,
   },
@@ -360,6 +299,25 @@ export const tests = [
         onStrip={async () => {
           return { document: seed1, strippedPaths: [] }
         }}
+      />
+    ),
+  },
+  {
+    title: 'DOCUMENTS tab',
+    render: () => <View {...secvisogramPageViewSample.documentsTab.props} />,
+  },
+  {
+    title: 'DOCUMENTS tab (loading)',
+    render: () => (
+      <View
+        {...secvisogramPageViewSample.documentsTab.props}
+        DocumentsTab={(props) => (
+          <DocumentsTabView
+            {...documentsTabViewSample.withoutData.props}
+            {...props}
+            onGetData={() => new Promise(() => {})}
+          />
+        )}
       />
     ),
   },
