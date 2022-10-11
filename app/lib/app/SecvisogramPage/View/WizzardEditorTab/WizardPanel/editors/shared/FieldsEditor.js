@@ -3,7 +3,7 @@ import { GenericEditor } from '../../editors.js'
 
 /**
  * @param {object} props
- * @param {import('../../../types').Property[]} props.fieldProperties
+ * @param {import('../../shared/types').Property[]} props.fieldProperties
  * @param {string[]} props.instancePath
  */
 export default function FieldsEditor({ fieldProperties, instancePath }) {

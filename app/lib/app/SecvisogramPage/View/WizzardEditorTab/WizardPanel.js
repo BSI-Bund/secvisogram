@@ -1,9 +1,6 @@
 import React from 'react'
+import { GenericEditor, ObjectFieldsEditor } from './WizardPanel/editors.js'
 import schema from './WizardPanel/schema.js'
-import {
-  GenericEditor,
-  ObjectFieldsEditor,
-} from './WizardPanel/shared/shared/editors.js'
 
 export default function WizardPanel() {
   const level = 0
@@ -15,32 +12,14 @@ export default function WizardPanel() {
       property?.metaInfo.propertyList?.find((p) => p.key === pathSegment) ??
       null
     )
-  }, /** @type {import('./WizardPanel/shared/types').Property | null} */ (schema))
-  // const [documentEditor, setDocumentEditor] = React.useState(
-  //   /** @type {React.ContextType<typeof DocumentEditorContext>} */ ({
-  //     doc: {
-  //       document: {
-  //         title: 'My document',
-  //         acknowledgments: [{}, {}],
-  //       },
-  //     },
-  //     updateDoc(instancePath, value) {
-  //       setDocumentEditor((documentEditor) => ({
-  //         ...documentEditor,
-  //         doc: set(instancePath, value, documentEditor.doc),
-  //       }))
-  //     },
-  //   })
-  // )
+  }, /** @type {import('./WizardPanel/schema').Property | null} */ (schema))
 
   return (
     <div className="flex">
       <ul>
         {schema.metaInfo.propertyList.map((_property) => {
           const property =
-            /** @type {import('./WizardPanel/shared/types').Property} */ (
-              _property
-            )
+            /** @type {import('./WizardPanel/schema').Property} */ (_property)
           return (
             <React.Fragment key={property.fullName.join('.')}>
               <li>

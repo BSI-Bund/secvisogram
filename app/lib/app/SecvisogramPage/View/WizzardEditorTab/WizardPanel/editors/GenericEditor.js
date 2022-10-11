@@ -1,10 +1,10 @@
 import React from 'react'
-import DocumentEditorContext from '../../../../../shared/DocumentEditorContext.js'
+import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import FieldsEditor from './shared/FieldsEditor.js'
 
 /**
  * @param {object} props
- * @param {import('../../types').Property} props.property
+ * @param {import('../shared/types').Property} props.property
  * @param {string[]} props.instancePath
  */
 export default function Editor({ property, instancePath }) {
@@ -56,7 +56,7 @@ export default function Editor({ property, instancePath }) {
 
 /**
  * @param {object} props
- * @param {import('../../types').Property} props.property
+ * @param {import('../shared/types').Property} props.property
  * @param {string[]} props.instancePath
  */
 function ArrayEditor({ property, instancePath }) {
@@ -123,7 +123,7 @@ function ArrayEditor({ property, instancePath }) {
 
 /**
  * @param {object} props
- * @param {import('../../types').Property} props.property
+ * @param {import('../shared/types').Property} props.property
  * @param {string[]} props.instancePath
  */
 function ComplexObjectEditor({ property, instancePath }) {

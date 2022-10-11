@@ -3,7 +3,7 @@ import FieldsEditor from './shared/FieldsEditor.js'
 
 /**
  * @param {object} props
- * @param {import('../../types').Property} props.property
+ * @param {import('../shared/types').Property} props.property
  * @param {string[]} props.instancePath
  */
 export default function ObjectFieldsEditor({ property, instancePath }) {
