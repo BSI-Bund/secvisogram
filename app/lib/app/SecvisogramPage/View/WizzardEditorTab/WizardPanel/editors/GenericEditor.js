@@ -1,5 +1,6 @@
 import React from 'react'
 import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
+import WizardContext from '../shared/WizardContext.js'
 import FieldsEditor from './shared/FieldsEditor.js'
 
 /**
@@ -61,12 +62,20 @@ export default function Editor({ property, instancePath }) {
  */
 function ArrayEditor({ property, instancePath }) {
   const { doc, updateDoc } = React.useContext(DocumentEditorContext)
+  const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
+  const selectedPathSegment = selectedPath.slice(instancePath.length).at(0)
+  const selectedIndex = selectedPathSegment ? Number(selectedPathSegment) : null
+
+  /**
+   * @param {number} index
+   */
+  const setSelectedIndex = (index) => {
+    setSelectedPath(instancePath.concat([String(index)]))
+  }
+
   const value = instancePath.reduce((value, pathSegment) => {
     return (value ?? {})[pathSegment]
   }, /** @type {Record<string, any> | null} */ (doc))
-  const [selectedIndex, setSelectedIndex] = React.useState(
-    /** @type {number | null} */ (null)
-  )
   const sanitizedValue = Array.isArray(value) ? value : []
   const childProperty =
     /** @type {NonNullable<typeof property.metaInfo.arrayType>} */ (
@@ -127,11 +136,8 @@ function ArrayEditor({ property, instancePath }) {
  * @param {string[]} props.instancePath
  */
 function ComplexObjectEditor({ property, instancePath }) {
-  const [selectedKey, setSelectedKey] = React.useState(
-    /** @type {{ type: 'fields' } | { type: 'key'; name: string } | null} */ (
-      null
-    )
-  )
+  const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
+  const selectedPathSegment = selectedPath.slice(instancePath.length).at(0)
   const fieldProperties = property.metaInfo.propertyList?.filter(
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
   )
@@ -140,15 +146,15 @@ function ComplexObjectEditor({ property, instancePath }) {
   )
 
   const renderComplexEditor = () => {
-    if (selectedKey?.type !== 'key') return null
+    if (!selectedPathSegment) return null
     const childProperty = property.metaInfo.propertyList?.find(
-      (p) => p.key === selectedKey.name
+      (p) => p.key === selectedPathSegment
     )
     if (!childProperty) return null
     return (
       <Editor
-        key={instancePath.concat([selectedKey.name]).join('.')}
-        instancePath={instancePath.concat([selectedKey.name])}
+        key={instancePath.concat([selectedPathSegment]).join('.')}
+        instancePath={instancePath.concat([selectedPathSegment])}
         property={childProperty}
       />
     )
@@ -169,10 +175,10 @@ function ComplexObjectEditor({ property, instancePath }) {
                 <li className="italic">
                   <button
                     className={`italic ${
-                      selectedKey?.type === 'fields' ? 'underline' : ''
+                      !selectedPathSegment ? 'underline' : ''
                     }`}
                     onClick={() => {
-                      setSelectedKey({ type: 'fields' })
+                      setSelectedPath(instancePath)
                     }}
                   >
                     Fields
@@ -183,13 +189,12 @@ function ComplexObjectEditor({ property, instancePath }) {
                 <li key={instancePath.concat([childProperty.key]).join('.')}>
                   <button
                     className={
-                      selectedKey?.type === 'key' &&
-                      selectedKey.name === childProperty.key
+                      selectedPathSegment === childProperty.key
                         ? 'underline'
                         : ''
                     }
                     onClick={() => {
-                      setSelectedKey({ type: 'key', name: childProperty.key })
+                      setSelectedPath(instancePath.concat([childProperty.key]))
                     }}
                   >
                     {childProperty.title}
@@ -198,14 +203,14 @@ function ComplexObjectEditor({ property, instancePath }) {
               ))}
             </ul>
           </div>
-          {selectedKey?.type === 'fields' ? (
+          {selectedPathSegment ? (
+            renderComplexEditor()
+          ) : (
             <FieldsEditor
               fieldProperties={fieldProperties ?? []}
               instancePath={instancePath}
             />
-          ) : selectedKey?.type === 'key' ? (
-            renderComplexEditor()
-          ) : null}
+          )}
         </>
       )}
     </>
