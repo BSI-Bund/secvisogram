@@ -2,14 +2,21 @@ import React from 'react'
 
 /**
  * @typedef {object} AppConfigContext
+ *
  * @property {boolean} loginAvailable
  * @property {string} loginUrl
  * @property {string} logoutUrl
  * @property {string} userInfoUrl
  * @property {string} validatorUrl
+ * @property {KeyBindings} keyBindings
+ */
+
+/**
+ * @typedef {object} KeyBindings
+ *
  * @property {string} keySave
  * @property {string} keyValidate
- * @property {string} keyDownload
+ * @property {string} keyExport
  * @property {string} keyNew
  */
 
@@ -20,10 +27,12 @@ const defaultValue = {
   logoutUrl: '',
   userInfoUrl: '',
   validatorUrl: '',
-  keySave: 'ctrl+s',
-  keyValidate: 'ctrl+i',
-  keyDownload: 'ctrl+d',
-  keyNew: 'ctrl+o'
+  keyBindings: {
+    keySave: 'ctrl+s',
+    keyValidate: 'ctrl+i',
+    keyExport: 'ctrl+e',
+    keyNew: 'ctrl+o'
+  }
 }
 
 export default React.createContext(defaultValue)

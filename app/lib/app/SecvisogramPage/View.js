@@ -22,7 +22,7 @@ import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
-import Hotkeys from 'react-hot-keys';
+import Hotkeys from 'react-hot-keys'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 
@@ -250,23 +250,23 @@ function View({
           })
           const errors =
             /** @type {Array<import('./shared/types').TypedValidationError>} */ (
-            json.tests.flatMap((t) =>
-              t.errors
-                .map((e) => ({ ...e, type: 'error' }))
-                .concat(
-                  t.warnings.map((w) => ({
-                    ...w,
-                    type: 'warning',
-                  }))
-                )
-                .concat(
-                  t.infos.map((i) => ({
-                    ...i,
-                    type: 'info',
-                  }))
-                )
+              json.tests.flatMap((t) =>
+                t.errors
+                  .map((e) => ({ ...e, type: 'error' }))
+                  .concat(
+                    t.warnings.map((w) => ({
+                      ...w,
+                      type: 'warning',
+                    }))
+                  )
+                  .concat(
+                    t.infos.map((i) => ({
+                      ...i,
+                      type: 'info',
+                    }))
+                  )
+              )
             )
-          )
           setErrors(errors)
         }
       })
@@ -277,7 +277,7 @@ function View({
   }
 
   const onSaveHandler = () => {
-    if (advisoryState.type === 'NEW_ADVISORY') {
+    if (advisoryState?.type === 'NEW_ADVISORY') {
       setVersionSummaryDialog(
         <VersionSummaryDialog
           ref={versionSummaryDialogRef}
@@ -289,14 +289,12 @@ function View({
               legacyVersion,
             })
               .then(({ id }) =>
-                onLoadAdvisory({ advisoryId: id }).then(
-                  (advisory) => {
-                    setAdvisoryState({
-                      type: 'ADVISORY',
-                      advisory,
-                    })
-                  }
-                )
+                onLoadAdvisory({ advisoryId: id }).then((advisory) => {
+                  setAdvisoryState({
+                    type: 'ADVISORY',
+                    advisory,
+                  })
+                })
               )
               .catch(handleError)
               .finally(() => {
@@ -307,7 +305,7 @@ function View({
           onClose={() => setVersionSummaryDialog(null)}
         />
       )
-    } else if (advisoryState.type === 'ADVISORY') {
+    } else if (advisoryState?.type === 'ADVISORY') {
       setVersionSummaryDialog(
         <VersionSummaryDialog
           ref={versionSummaryDialogRef}
@@ -322,8 +320,7 @@ function View({
             })
               .then(() =>
                 onLoadAdvisory({
-                  advisoryId:
-                  advisoryState.advisory.advisoryId,
+                  advisoryId: advisoryState.advisory.advisoryId,
                 }).then((advisory) => {
                   setAdvisoryState({
                     type: 'ADVISORY',
@@ -344,10 +341,7 @@ function View({
   }
 
   const onNewHandler = () => {
-    if (
-      !appConfig.loginAvailable ||
-      (appConfig.loginAvailable && !userInfo)
-    ) {
+    if (!appConfig.loginAvailable || (appConfig.loginAvailable && !userInfo)) {
       onGetDocMin().then((minimalTemplate) =>
         onGetDocMax().then((allFieldsTemplate) => {
           const templates = new Map([
@@ -370,9 +364,10 @@ function View({
             <NewDocumentDialog
               ref={newDocumentDialogRef}
               data={{
-                templates: Array.from(
-                  templates.entries()
-                ).map((e) => ({ ...e[1], templateId: e[0] })),
+                templates: Array.from(templates.entries()).map((e) => ({
+                  ...e[1],
+                  templateId: e[0],
+                })),
               }}
               onSubmit={(params) => {
                 confirmDocumentReplacement(() => {
@@ -380,8 +375,7 @@ function View({
                     setAdvisoryState({
                       type: 'NEW_ADVISORY',
                       csaf:
-                        templates.get(params.templateId)
-                          ?.templateContent ?? {},
+                        templates.get(params.templateId)?.templateContent ?? {},
                     })
                   } else {
                     onOpen(params.file)
@@ -434,6 +428,25 @@ function View({
     }
   }
 
+  const onExportHandler = () => {
+    setNewExportDocumentDialog(
+      <ExportDocumentDialog
+        originalValues={originalValues}
+        advisoryState={advisoryState}
+        formValues={formValues}
+        documentIsValid={!errors.length}
+        onPrepareDocumentForTemplate={
+          onPrepareDocumentForTemplate
+        }
+        onDownload={onDownload}
+        onExportCSAF={onExportCSAF}
+        onExportHTML={onExportHTML}
+        onClose={() => {
+          setNewExportDocumentDialog(null)
+        }}
+      />
+    )
+  }
 
   /**
    * Is used to replace the complete document in the json editor.
@@ -574,35 +587,32 @@ function View({
 
   /**
    * handles the key down event
+   *
+   * @param {any} keyName
+   * @param {any} event
    */
   const keyDownHandler = (keyName, event) => {
-    console.log(keyName);
-    console.log("key binding" + appConfig.keySave);
-    if (keyName === appConfig.keySave) {
-      event.preventDefault();
-      onSaveHandler();
-    } else if(keyName === appConfig.keyValidate) {
-      event.preventDefault();
-      doValidate();
-    } else if(keyName === appConfig.keyDownload) {
-      event.preventDefault();
-      onDownload(formValues.doc);
-    } else if(keyName === appConfig.keyNew) {
+    event.preventDefault()
+
+    if (keyName === appConfig.keyBindings.keySave) {
+      onSaveHandler()
+    } else if (keyName === appConfig.keyBindings.keyValidate) {
+      doValidate()
+    } else if (keyName === appConfig.keyBindings.keyExport) {
+      // onDownload(formValues.doc)
+      onExportHandler()
+    } else if (keyName === appConfig.keyBindings.keyNew) {
       // ctrl+N could not be overwritten
       //https://stackoverflow.com/questions/38838302/any-way-to-override-ctrln-to-open-a-new-window-in-chrome
-      event.preventDefault();
-      onNewHandler();
+      onNewHandler()
     }
   }
 
   /**
-   * Get all possilbe key bindings concatenated with ','
+   * Get all possible key bindings concatenated with ','
    */
-  function allKeybindings() {
-    const keys = [appConfig.keySave, appConfig.keyValidate , appConfig.keyDownload, appConfig.keyNew]
-      .filter(word => word.length > 3)
-      .join(',');
-    return keys;
+  function getAllKeybindings() {
+    return appConfig?.keyBindings ? Object.values(appConfig.keyBindings).join(',') : ''
   }
 
   return (
@@ -611,9 +621,14 @@ function View({
       {newDocumentDialog}
       {newExportDocumentDialog}
       {versionSummaryDialog}
-      <Hotkeys keyName={allKeybindings()} onKeyDown={keyDownHandler}  filter={() => {return true;}}>
-        <div className="mx-auto w-full h-screen flex flex-col" tabIndex={0} >
-        <div className="mx-auto w-full h-screen flex flex-col">
+      <Hotkeys
+        keyName={getAllKeybindings()}
+        onKeyDown={keyDownHandler}
+        filter={() => {
+          return true
+        }}
+      >
+        <div className="mx-auto w-full h-screen flex flex-col" tabIndex={0}>
           <div>
             <div className="flex justify-between bg-gray-700">
               <div className="flex pl-5">
@@ -747,25 +762,7 @@ function View({
                   <button
                     data-testid="new_export_document_button"
                     className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                    onClick={() => {
-                      setNewExportDocumentDialog(
-                        <ExportDocumentDialog
-                          originalValues={originalValues}
-                          advisoryState={advisoryState}
-                          formValues={formValues}
-                          documentIsValid={!errors.length}
-                          onPrepareDocumentForTemplate={
-                            onPrepareDocumentForTemplate
-                          }
-                          onDownload={onDownload}
-                          onExportCSAF={onExportCSAF}
-                          onExportHTML={onExportHTML}
-                          onClose={() => {
-                            setNewExportDocumentDialog(null)
-                          }}
-                        />
-                      )
-                    }}
+                    onClick={onExportHandler}
                   >
                     Export
                   </button>
@@ -785,9 +782,8 @@ function View({
                       type="button"
                       className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
                       onClick={async () => {
-                          doValidate();
-                        }
-                      }
+                        doValidate()
+                      }}
                     >
                       Validate
                     </button>
