@@ -78,21 +78,27 @@ Please refer to [`DEVELOPMENT.md`](DEVELOPMENT.md) for a detailed description on
 
 ### Configure keybindings
 
-The hotkeys could be defined in
+The following hotkeys are available by default:
 
-`.well-known/appspecific/de.bsi.secvisogram.json`
+- New / Open: STRG + O
+- Save: STRG + S
+- Export: STRG + E
+- Validate: STRG + I
+
+These can be overwritten if needed by providing an alternative keybinding in
+`.well-known/appspecific/de.bsi.secvisogram.json`.
 
 ```json
 {
-  "keySave": "ctrl+s",
-  "keyValidate": "ctrl+i",
-  "keyDownload": "ctrl+d",
-  "keyNew": "ctrl+o"
+  ...,
+  "keyBindings": {
+    "keyNew": "ctrl+o",
+    "keySave": "ctrl+s"
+  }
 }
 ```
-Possible keynames are defined in:
 
-[react-hotkeys](https://github.com/jaywcjlove/react-hotkeys#keyname)
+Possible keynames are defined in: [react-hotkeys](https://github.com/jaywcjlove/react-hotkeys#keyname)
 
 ## How to use
 
