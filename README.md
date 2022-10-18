@@ -80,10 +80,10 @@ Please refer to [`DEVELOPMENT.md`](DEVELOPMENT.md) for a detailed description on
 
 The following hotkeys are available by default:
 
-- New / Open: STRG + O
-- Save: STRG + S
-- Export: STRG + E
-- Validate: STRG + I
+- New / Open: CTRL + O
+- Save: CTRL + S
+- Export: CTRL + E
+- Validate: CTRL + I
 
 These can be overwritten if needed by providing an alternative keybinding in
 `.well-known/appspecific/de.bsi.secvisogram.json`.
