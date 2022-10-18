@@ -24,7 +24,7 @@ export default function App({ secvisogramPage }) {
       const mergedConfig = {...defaultAppConfig, ...response}
       setAppConfig(mergedConfig)
     })
-  }, [])
+  }, [defaultAppConfig])
 
   const defaultUserInfo = React.useContext(UserInfoContext)
   const [userInfo, setUserInfo] = useState(defaultUserInfo)
