@@ -83,10 +83,11 @@ The following hotkeys are available by default:
 - New / Open: CTRL + O
 - Save: CTRL + S
 - Export: CTRL + E
-- Validate: CTRL + I
+- Validate: CTRL + ALT + V
 
 These can be overwritten if needed by providing an alternative keybinding in
 `.well-known/appspecific/de.bsi.secvisogram.json`.
+Possible keynames are defined in: [react-hotkeys](https://github.com/jaywcjlove/react-hotkeys#keyname)
 
 ```json
 {
@@ -98,7 +99,8 @@ These can be overwritten if needed by providing an alternative keybinding in
 }
 ```
 
-Possible keynames are defined in: [react-hotkeys](https://github.com/jaywcjlove/react-hotkeys#keyname)
+The JSON Editor View has additional keybindings available. To get an
+overview please press F1. Hint: The list is scroll and searchable.
 
 ## How to use
 
