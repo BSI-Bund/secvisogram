@@ -22,6 +22,7 @@ import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
+import Hotkeys from 'react-hot-keys'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 
@@ -231,6 +232,222 @@ function View({
       )
     )
 
+  async function doValidate() {
+    setLoading(true)
+    onServiceValidate({
+      validatorUrl: appConfig.validatorUrl,
+      csaf: formValues.doc,
+    })
+      .then((json) => {
+        if (json.isValid) {
+          setToast({
+            message: 'the document is valid!',
+            color: 'green',
+          })
+        } else {
+          setToast({
+            message: 'The document is not valid!',
+          })
+          const errors =
+            /** @type {Array<import('./shared/types').TypedValidationError>} */ (
+              json.tests.flatMap((t) =>
+                t.errors
+                  .map((e) => ({ ...e, type: 'error' }))
+                  .concat(
+                    t.warnings.map((w) => ({
+                      ...w,
+                      type: 'warning',
+                    }))
+                  )
+                  .concat(
+                    t.infos.map((i) => ({
+                      ...i,
+                      type: 'info',
+                    }))
+                  )
+              )
+            )
+          setErrors(errors)
+        }
+      })
+      .catch(handleError)
+      .finally(() => {
+        setLoading(false)
+      })
+  }
+
+  const onSaveHandler = () => {
+    if (advisoryState?.type === 'NEW_ADVISORY') {
+      setVersionSummaryDialog(
+        <VersionSummaryDialog
+          ref={versionSummaryDialogRef}
+          onSubmit={({ summary, legacyVersion }) => {
+            setSaving(true)
+            onCreateAdvisory({
+              csaf: formValues.doc,
+              summary,
+              legacyVersion,
+            })
+              .then(({ id }) =>
+                onLoadAdvisory({ advisoryId: id }).then((advisory) => {
+                  setAdvisoryState({
+                    type: 'ADVISORY',
+                    advisory,
+                  })
+                })
+              )
+              .catch(handleError)
+              .finally(() => {
+                setSaving(false)
+              })
+          }}
+          prefilledData={{ summary: '', legacyVersion: '' }}
+          onClose={() => setVersionSummaryDialog(null)}
+        />
+      )
+    } else if (advisoryState?.type === 'ADVISORY') {
+      setVersionSummaryDialog(
+        <VersionSummaryDialog
+          ref={versionSummaryDialogRef}
+          onSubmit={({ summary, legacyVersion }) => {
+            setSaving(true)
+            onUpdateAdvisory({
+              advisoryId: advisoryState.advisory.advisoryId,
+              revision: advisoryState.advisory.revision,
+              csaf: formValues.doc,
+              summary,
+              legacyVersion,
+            })
+              .then(() =>
+                onLoadAdvisory({
+                  advisoryId: advisoryState.advisory.advisoryId,
+                }).then((advisory) => {
+                  setAdvisoryState({
+                    type: 'ADVISORY',
+                    advisory,
+                  })
+                })
+              )
+              .catch(handleError)
+              .finally(() => {
+                setSaving(false)
+              })
+          }}
+          prefilledData={getSummaryAndLegacyVersion()}
+          onClose={() => setVersionSummaryDialog(null)}
+        />
+      )
+    }
+  }
+
+  const onNewHandler = () => {
+    if (!appConfig.loginAvailable || (appConfig.loginAvailable && !userInfo)) {
+      onGetDocMin().then((minimalTemplate) =>
+        onGetDocMax().then((allFieldsTemplate) => {
+          const templates = new Map([
+            [
+              'MINIMAL',
+              {
+                templateContent: minimalTemplate,
+                templateDescription: 'Minimal',
+              },
+            ],
+            [
+              'ALL_FIELDS',
+              {
+                templateContent: allFieldsTemplate,
+                templateDescription: 'All Fields',
+              },
+            ],
+          ])
+          setNewDocumentDialog(
+            <NewDocumentDialog
+              ref={newDocumentDialogRef}
+              data={{
+                templates: Array.from(templates.entries()).map((e) => ({
+                  ...e[1],
+                  templateId: e[0],
+                })),
+              }}
+              onSubmit={(params) => {
+                confirmDocumentReplacement(() => {
+                  if (params.source === 'TEMPLATE') {
+                    setAdvisoryState({
+                      type: 'NEW_ADVISORY',
+                      csaf:
+                        templates.get(params.templateId)?.templateContent ?? {},
+                    })
+                  } else {
+                    onOpen(params.file)
+                  }
+                })
+              }}
+              onClose={() => setNewDocumentDialog(null)}
+            />
+          )
+        })
+      )
+    } else {
+      setLoading(true)
+      onGetTemplates()
+        .then((templates) => {
+          setNewDocumentDialog(
+            <NewDocumentDialog
+              ref={newDocumentDialogRef}
+              data={{ templates }}
+              onSubmit={(params) => {
+                confirmDocumentReplacement(() => {
+                  if (params.source === 'TEMPLATE') {
+                    setLoading(true)
+                    onGetTemplateContent({
+                      templateId: params.templateId,
+                    })
+                      .then((templateContent) => {
+                        setAdvisoryState({
+                          type: 'NEW_ADVISORY',
+                          csaf: templateContent,
+                        })
+                      })
+                      .catch(handleError)
+                      .finally(() => {
+                        setLoading(false)
+                      })
+                  } else {
+                    onOpen(params.file)
+                  }
+                })
+              }}
+              onClose={() => setNewDocumentDialog(null)}
+            />
+          )
+        })
+        .catch(handleError)
+        .finally(() => {
+          setLoading(false)
+        })
+    }
+  }
+
+  const onExportHandler = () => {
+    setNewExportDocumentDialog(
+      <ExportDocumentDialog
+        originalValues={originalValues}
+        advisoryState={advisoryState}
+        formValues={formValues}
+        documentIsValid={!errors.length}
+        onPrepareDocumentForTemplate={
+          onPrepareDocumentForTemplate
+        }
+        onDownload={onDownload}
+        onExportCSAF={onExportCSAF}
+        onExportHTML={onExportHTML}
+        onClose={() => {
+          setNewExportDocumentDialog(null)
+        }}
+      />
+    )
+  }
+
   /**
    * Is used to replace the complete document in the json editor.
    *
@@ -368,461 +585,287 @@ function View({
     return { summary: prefilledSummary, legacyVersion: prefilledLegacyVersion }
   }
 
+  /**
+   * handles the key down event
+   *
+   * @param {any} keyName
+   * @param {any} event
+   */
+  const keyDownHandler = (keyName, event) => {
+    event.preventDefault()
+
+    if (keyName === appConfig.keyBindings.keySave) {
+      onSaveHandler()
+    } else if (keyName === appConfig.keyBindings.keyValidate) {
+      doValidate()
+    } else if (keyName === appConfig.keyBindings.keyExport) {
+      // onDownload(formValues.doc)
+      onExportHandler()
+    } else if (keyName === appConfig.keyBindings.keyNew) {
+      // ctrl+N could not be overwritten
+      //https://stackoverflow.com/questions/38838302/any-way-to-override-ctrln-to-open-a-new-window-in-chrome
+      onNewHandler()
+    }
+  }
+
+  /**
+   * Get all possible key bindings concatenated with ','
+   */
+  function getAllKeybindings() {
+    return appConfig?.keyBindings ? Object.values(appConfig.keyBindings).join(',') : ''
+  }
+
   return (
     <>
       {alert}
       {newDocumentDialog}
       {newExportDocumentDialog}
       {versionSummaryDialog}
-      <div className="mx-auto w-full h-screen flex flex-col">
-        <div>
-          <div className="flex justify-between bg-gray-700">
-            <div className="flex pl-5">
-              <button {...tabButtonProps('EDITOR')}>Form Editor</button>
-              <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
-              <button {...tabButtonProps('PREVIEW')}>Preview</button>
-              <button {...tabButtonProps('CSAF-JSON')}>CSAF Document</button>
-            </div>
-            {advisoryState?.type === 'ADVISORY' && (
-              <div className="text-gray-400 p-4">
-                Document:{' '}
-                <span data-testid="document_tracking_id">
-                  {advisoryState.advisory.csaf.document?.title ||
-                    '<document without tracking-id>'}
-                </span>
-                <span data-testid="advisory_id" className="hidden">
-                  {advisoryState.advisory.advisoryId}
-                </span>
-                <span data-testid="advisory_revision" className="hidden">
-                  {advisoryState.advisory.revision}
-                </span>
+      <Hotkeys
+        keyName={getAllKeybindings()}
+        onKeyDown={keyDownHandler}
+        filter={() => {
+          return true
+        }}
+      >
+        <div className="mx-auto w-full h-screen flex flex-col" tabIndex={0}>
+          <div>
+            <div className="flex justify-between bg-gray-700">
+              <div className="flex pl-5">
+                <button {...tabButtonProps('EDITOR')}>Form Editor</button>
+                <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
+                <button {...tabButtonProps('PREVIEW')}>Preview</button>
+                <button {...tabButtonProps('CSAF-JSON')}>CSAF Document</button>
               </div>
-            )}
+              {advisoryState?.type === 'ADVISORY' && (
+                <div className="text-gray-400 p-4">
+                  Document:{' '}
+                  <span data-testid="document_tracking_id">
+                    {advisoryState.advisory.csaf.document?.title ||
+                      '<document without tracking-id>'}
+                  </span>
+                  <span data-testid="advisory_id" className="hidden">
+                    {advisoryState.advisory.advisoryId}
+                  </span>
+                  <span data-testid="advisory_revision" className="hidden">
+                    {advisoryState.advisory.revision}
+                  </span>
+                </div>
+              )}
 
-            {appConfig.loginAvailable &&
-              (userInfo ? (
-                <div className="pr-5 flex text-white">
-                  <button {...tabButtonProps('DOCUMENTS')}>
-                    CSAF Documents
-                  </button>
-                  <div
-                    data-testid="user_info"
-                    className="dropdown relative hover:bg-gray-800 hover:text-white text-gray-300"
-                  >
-                    <div className="text-sm font-bold p-4 h-auto flex items-center">
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                      <div className="ml-4">{userInfo.preferredUsername}</div>
-                    </div>
+              {appConfig.loginAvailable &&
+                (userInfo ? (
+                  <div className="pr-5 flex text-white">
+                    <button {...tabButtonProps('DOCUMENTS')}>
+                      CSAF Documents
+                    </button>
                     <div
-                      className="dropdown-content absolute bottom-0 right-0 z-10 bg-white text-black p-4 rounded-b shadow"
-                      style={{
-                        height: 133,
-                        marginBottom: -133,
-                      }}
+                      data-testid="user_info"
+                      className="dropdown relative hover:bg-gray-800 hover:text-white text-gray-300"
                     >
-                      <span className="w-full whitespace-nowrap overflow-ellipsis">
-                        <span className="text-sm font-bold">E-Mail:</span>{' '}
-                        <span className="text-sm">{userInfo.email}</span>
-                      </span>
-                      <br />
-                      <span className="w-full whitespace-nowrap overflow-ellipsis">
-                        <span className="text-sm font-bold">Groups:</span>{' '}
-                        <span className="text-sm">
-                          {userInfo.groups?.join(', ')}
-                        </span>
-                      </span>
-                      <hr className="my-2" />
-                      <div className="text-right">
-                        <button
-                          className="text-sm font-bold p-2 w-full h-auto bg-blue-400 hover:bg-blue-500 text-white"
-                          onClick={() => {
-                            window.location.href = appConfig.logoutUrl
-                          }}
+                      <div className="text-sm font-bold p-4 h-auto flex items-center">
+                        <svg
+                          className="w-6 h-6"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
                         >
-                          Logout
-                        </button>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <div className="ml-4">{userInfo.preferredUsername}</div>
+                      </div>
+                      <div
+                        className="dropdown-content absolute bottom-0 right-0 z-10 bg-white text-black p-4 rounded-b shadow"
+                        style={{
+                          height: 133,
+                          marginBottom: -133,
+                        }}
+                      >
+                        <span className="w-full whitespace-nowrap overflow-ellipsis">
+                          <span className="text-sm font-bold">E-Mail:</span>{' '}
+                          <span className="text-sm">{userInfo.email}</span>
+                        </span>
+                        <br />
+                        <span className="w-full whitespace-nowrap overflow-ellipsis">
+                          <span className="text-sm font-bold">Groups:</span>{' '}
+                          <span className="text-sm">
+                            {userInfo.groups?.join(', ')}
+                          </span>
+                        </span>
+                        <hr className="my-2" />
+                        <div className="text-right">
+                          <button
+                            className="text-sm font-bold p-2 w-full h-auto bg-blue-400 hover:bg-blue-500 text-white"
+                            onClick={() => {
+                              window.location.href = appConfig.logoutUrl
+                            }}
+                          >
+                            Logout
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ) : (
-                <div className="pr-5 flex items-center text-white">
-                  <button
-                    className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 text-white"
-                    onClick={() => {
-                      window.location.href = appConfig.loginUrl
-                    }}
-                  >
-                    Login
-                  </button>
-                </div>
-              ))}
-          </div>
-          <div data-testid="number_of_validation_errors" className="hidden">
-            {errors.length}
-          </div>
-          {activeTab !== 'DOCUMENTS' && (
-            <div className="bg-gray-400 flex items-center justify-between">
-              <div className="pl-5">
-                {(appConfig.loginAvailable &&
-                  userInfo?.groups &&
-                  canCreateDocuments(userInfo.groups)) ||
-                (appConfig.loginAvailable && !userInfo) ||
-                !appConfig.loginAvailable ? (
-                  <button
-                    data-testid="new_document_button"
-                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                    onClick={() => {
-                      if (
-                        !appConfig.loginAvailable ||
-                        (appConfig.loginAvailable && !userInfo)
-                      ) {
-                        onGetDocMin().then((minimalTemplate) =>
-                          onGetDocMax().then((allFieldsTemplate) => {
-                            const templates = new Map([
-                              [
-                                'MINIMAL',
-                                {
-                                  templateContent: minimalTemplate,
-                                  templateDescription: 'Minimal',
-                                },
-                              ],
-                              [
-                                'ALL_FIELDS',
-                                {
-                                  templateContent: allFieldsTemplate,
-                                  templateDescription: 'All Fields',
-                                },
-                              ],
-                            ])
-                            setNewDocumentDialog(
-                              <NewDocumentDialog
-                                ref={newDocumentDialogRef}
-                                data={{
-                                  templates: Array.from(
-                                    templates.entries()
-                                  ).map((e) => ({ ...e[1], templateId: e[0] })),
-                                }}
-                                onSubmit={(params) => {
-                                  confirmDocumentReplacement(() => {
-                                    if (params.source === 'TEMPLATE') {
-                                      setAdvisoryState({
-                                        type: 'NEW_ADVISORY',
-                                        csaf:
-                                          templates.get(params.templateId)
-                                            ?.templateContent ?? {},
-                                      })
-                                    } else {
-                                      onOpen(params.file)
-                                    }
-                                  })
-                                }}
-                                onClose={() => setNewDocumentDialog(null)}
-                              />
-                            )
-                          })
-                        )
-                      } else {
-                        setLoading(true)
-                        onGetTemplates()
-                          .then((templates) => {
-                            setNewDocumentDialog(
-                              <NewDocumentDialog
-                                ref={newDocumentDialogRef}
-                                data={{ templates }}
-                                onSubmit={(params) => {
-                                  confirmDocumentReplacement(() => {
-                                    if (params.source === 'TEMPLATE') {
-                                      setLoading(true)
-                                      onGetTemplateContent({
-                                        templateId: params.templateId,
-                                      })
-                                        .then((templateContent) => {
-                                          setAdvisoryState({
-                                            type: 'NEW_ADVISORY',
-                                            csaf: templateContent,
-                                          })
-                                        })
-                                        .catch(handleError)
-                                        .finally(() => {
-                                          setLoading(false)
-                                        })
-                                    } else {
-                                      onOpen(params.file)
-                                    }
-                                  })
-                                }}
-                                onClose={() => setNewDocumentDialog(null)}
-                              />
-                            )
-                          })
-                          .catch(handleError)
-                          .finally(() => {
-                            setLoading(false)
-                          })
-                      }
-                    }}
-                  >
-                    New
-                  </button>
-                ) : null}
-                {userInfo &&
-                ((advisoryState?.type === 'ADVISORY' &&
-                  advisoryState.advisory.changeable) ||
-                  (advisoryState?.type === 'NEW_ADVISORY' &&
-                    userInfo.groups &&
-                    canCreateDocuments(userInfo.groups))) ? (
-                  <button
-                    data-testid="save_button"
-                    type="button"
-                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                    onClick={() => {
-                      if (advisoryState.type === 'NEW_ADVISORY') {
-                        setVersionSummaryDialog(
-                          <VersionSummaryDialog
-                            ref={versionSummaryDialogRef}
-                            onSubmit={({ summary, legacyVersion }) => {
-                              setSaving(true)
-                              onCreateAdvisory({
-                                csaf: formValues.doc,
-                                summary,
-                                legacyVersion,
-                              })
-                                .then(({ id }) =>
-                                  onLoadAdvisory({ advisoryId: id }).then(
-                                    (advisory) => {
-                                      setAdvisoryState({
-                                        type: 'ADVISORY',
-                                        advisory,
-                                      })
-                                    }
-                                  )
-                                )
-                                .catch(handleError)
-                                .finally(() => {
-                                  setSaving(false)
-                                })
-                            }}
-                            prefilledData={{ summary: '', legacyVersion: '' }}
-                            onClose={() => setVersionSummaryDialog(null)}
-                          />
-                        )
-                      } else if (advisoryState.type === 'ADVISORY') {
-                        setVersionSummaryDialog(
-                          <VersionSummaryDialog
-                            ref={versionSummaryDialogRef}
-                            onSubmit={({ summary, legacyVersion }) => {
-                              setSaving(true)
-                              onUpdateAdvisory({
-                                advisoryId: advisoryState.advisory.advisoryId,
-                                revision: advisoryState.advisory.revision,
-                                csaf: formValues.doc,
-                                summary,
-                                legacyVersion,
-                              })
-                                .then(() =>
-                                  onLoadAdvisory({
-                                    advisoryId:
-                                      advisoryState.advisory.advisoryId,
-                                  }).then((advisory) => {
-                                    setAdvisoryState({
-                                      type: 'ADVISORY',
-                                      advisory,
-                                    })
-                                  })
-                                )
-                                .catch(handleError)
-                                .finally(() => {
-                                  setSaving(false)
-                                })
-                            }}
-                            prefilledData={getSummaryAndLegacyVersion()}
-                            onClose={() => setVersionSummaryDialog(null)}
-                          />
-                        )
-                      }
-                    }}
-                  >
-                    Save
-                  </button>
-                ) : null}
-                <button
-                  data-testid="new_export_document_button"
-                  className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                  onClick={() => {
-                    setNewExportDocumentDialog(
-                      <ExportDocumentDialog
-                        originalValues={originalValues}
-                        advisoryState={advisoryState}
-                        formValues={formValues}
-                        documentIsValid={!errors.length}
-                        onPrepareDocumentForTemplate={
-                          onPrepareDocumentForTemplate
-                        }
-                        onDownload={onDownload}
-                        onExportCSAF={onExportCSAF}
-                        onExportHTML={onExportHTML}
-                        onClose={() => {
-                          setNewExportDocumentDialog(null)
-                        }}
-                      />
-                    )
-                  }}
-                >
-                  Export
-                </button>
-                {activeTab === 'SOURCE' && (
-                  <button
-                    ref={sortButtonRef}
-                    data-testid="sort_document_button"
-                    type="button"
-                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                  >
-                    Sort document
-                  </button>
-                )}
-                {appConfig.loginAvailable && userInfo && (
-                  <button
-                    data-testid="validate_button"
-                    type="button"
-                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                    onClick={async () => {
-                      setLoading(true)
-                      onServiceValidate({
-                        validatorUrl: appConfig.validatorUrl,
-                        csaf: formValues.doc,
-                      })
-                        .then((json) => {
-                          if (json.isValid) {
-                            setToast({
-                              message: 'the document is valid!',
-                              color: 'green',
-                            })
-                          } else {
-                            setToast({
-                              message: 'The document is not valid!',
-                            })
-                            const errors =
-                              /** @type {Array<import('./shared/types').TypedValidationError>} */ (
-                                json.tests.flatMap((t) =>
-                                  t.errors
-                                    .map((e) => ({ ...e, type: 'error' }))
-                                    .concat(
-                                      t.warnings.map((w) => ({
-                                        ...w,
-                                        type: 'warning',
-                                      }))
-                                    )
-                                    .concat(
-                                      t.infos.map((i) => ({
-                                        ...i,
-                                        type: 'info',
-                                      }))
-                                    )
-                                )
-                              )
-                            setErrors(errors)
-                          }
-                        })
-                        .catch(handleError)
-                        .finally(() => {
-                          setLoading(false)
-                        })
-                    }}
-                  >
-                    Validate
-                  </button>
-                )}
-              </div>
-              <div className="pr-5 text-gray-300">
-                <a
-                  className="text-xs"
-                  href="https://github.com/secvisogram/secvisogram"
-                >
-                  <FontAwesomeIcon className="mx-1" icon={faCodeBranch} />
-                  <span>{secvisogramVersion}</span>
-                </a>
-                ,{' '}
-                <a
-                  className="text-xs"
-                  href="https://github.com/secvisogram/secvisogram/blob/main/LICENSE.md"
-                >
-                  License: MIT
-                </a>
-              </div>
+                ) : (
+                  <div className="pr-5 flex items-center text-white">
+                    <button
+                      className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 text-white"
+                      onClick={() => {
+                        window.location.href = appConfig.loginUrl
+                      }}
+                    >
+                      Login
+                    </button>
+                  </div>
+                ))}
             </div>
-          )}
+            <div data-testid="number_of_validation_errors" className="hidden">
+              {errors.length}
+            </div>
+            {activeTab !== 'DOCUMENTS' && (
+              <div className="bg-gray-400 flex items-center justify-between">
+                <div className="pl-5">
+                  {(appConfig.loginAvailable &&
+                    userInfo?.groups &&
+                    canCreateDocuments(userInfo.groups)) ||
+                  (appConfig.loginAvailable && !userInfo) ||
+                  !appConfig.loginAvailable ? (
+                    <button
+                      data-testid="new_document_button"
+                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                      onClick={onNewHandler}
+                    >
+                      New
+                    </button>
+                  ) : null}
+                  {userInfo &&
+                  ((advisoryState?.type === 'ADVISORY' &&
+                    advisoryState.advisory.changeable) ||
+                    (advisoryState?.type === 'NEW_ADVISORY' &&
+                      userInfo.groups &&
+                      canCreateDocuments(userInfo.groups))) ? (
+                    <button
+                      data-testid="save_button"
+                      type="button"
+                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                      onClick={onSaveHandler}
+                    >
+                      Save
+                    </button>
+                  ) : null}
+                  <button
+                    data-testid="new_export_document_button"
+                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                    onClick={onExportHandler}
+                  >
+                    Export
+                  </button>
+                  {activeTab === 'SOURCE' && (
+                    <button
+                      ref={sortButtonRef}
+                      data-testid="sort_document_button"
+                      type="button"
+                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                    >
+                      Sort document
+                    </button>
+                  )}
+                  {appConfig.loginAvailable && userInfo && (
+                    <button
+                      data-testid="validate_button"
+                      type="button"
+                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                      onClick={async () => {
+                        doValidate()
+                      }}
+                    >
+                      Validate
+                    </button>
+                  )}
+                </div>
+                <div className="pr-5 text-gray-300">
+                  <a
+                    className="text-xs"
+                    href="https://github.com/secvisogram/secvisogram"
+                  >
+                    <FontAwesomeIcon className="mx-1" icon={faCodeBranch} />
+                    <span>{secvisogramVersion}</span>
+                  </a>
+                  ,{' '}
+                  <a
+                    className="text-xs"
+                    href="https://github.com/secvisogram/secvisogram/blob/main/LICENSE.md"
+                  >
+                    License: MIT
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+          <div
+            className="relative overflow-auto h-full bg-gray-500"
+            key={activeTab}
+          >
+            <>
+              {activeTab === 'EDITOR' ? (
+                <FormEditorTab
+                  formValues={formValues}
+                  validationErrors={errors}
+                  onUpdate={onUpdate}
+                  onDownload={onDownload}
+                  onCollectProductIds={onCollectProductIdsCallback}
+                  onCollectGroupIds={onCollectGroupIdsCallback}
+                />
+              ) : activeTab === 'SOURCE' ? (
+                <JsonEditorTab
+                  originalValues={originalValues}
+                  formValues={formValues}
+                  validationErrors={errors}
+                  sortButtonRef={sortButtonRef}
+                  onChange={onReplaceDoc}
+                  onLockTab={onLockTab}
+                  onUnlockTab={onUnlockTab}
+                />
+              ) : activeTab === 'PREVIEW' ? (
+                <PreviewTab
+                  previewResult={previewResult}
+                  onPreview={onPreviewCallback}
+                  formValues={formValues}
+                  validationErrors={errors}
+                  onExport={onExportHTML}
+                />
+              ) : activeTab === 'CSAF-JSON' ? (
+                <CsafTab
+                  stripResult={stripResult}
+                  onStrip={onStripCallback}
+                  onExport={onExportCSAFCallback}
+                />
+              ) : activeTab === 'DOCUMENTS' ? (
+                <DocumentsTab
+                  onOpenAdvisory={({ advisoryId }, callback) => {
+                    setLoading(true)
+                    return onLoadAdvisory({ advisoryId })
+                      .then((advisory) => {
+                        setAdvisoryState({ type: 'ADVISORY', advisory })
+                        callback()
+                      })
+                      .catch(handleError)
+                      .finally(() => {
+                        setLoading(false)
+                      })
+                  }}
+                />
+              ) : null}
+            </>
+          </div>
         </div>
-        <div
-          className="relative overflow-auto h-full bg-gray-500"
-          key={activeTab}
-        >
-          <>
-            {activeTab === 'EDITOR' ? (
-              <FormEditorTab
-                formValues={formValues}
-                validationErrors={errors}
-                onUpdate={onUpdate}
-                onDownload={onDownload}
-                onCollectProductIds={onCollectProductIdsCallback}
-                onCollectGroupIds={onCollectGroupIdsCallback}
-              />
-            ) : activeTab === 'SOURCE' ? (
-              <JsonEditorTab
-                originalValues={originalValues}
-                formValues={formValues}
-                validationErrors={errors}
-                sortButtonRef={sortButtonRef}
-                onChange={onReplaceDoc}
-                onLockTab={onLockTab}
-                onUnlockTab={onUnlockTab}
-              />
-            ) : activeTab === 'PREVIEW' ? (
-              <PreviewTab
-                previewResult={previewResult}
-                onPreview={onPreviewCallback}
-                formValues={formValues}
-                validationErrors={errors}
-                onExport={onExportHTML}
-              />
-            ) : activeTab === 'CSAF-JSON' ? (
-              <CsafTab
-                stripResult={stripResult}
-                onStrip={onStripCallback}
-                onExport={onExportCSAFCallback}
-              />
-            ) : activeTab === 'DOCUMENTS' ? (
-              <DocumentsTab
-                onOpenAdvisory={({ advisoryId }, callback) => {
-                  setLoading(true)
-                  return onLoadAdvisory({ advisoryId })
-                    .then((advisory) => {
-                      setAdvisoryState({ type: 'ADVISORY', advisory })
-                      callback()
-                    })
-                    .catch(handleError)
-                    .finally(() => {
-                      setLoading(false)
-                    })
-                }}
-              />
-            ) : null}
-          </>
-        </div>
-      </div>
+      </Hotkeys>
       {toast ? (
         <div className="fixed right-0 top-0 p-2 w-full max-w-md">
           <div

@@ -76,6 +76,32 @@ the same as `"loginAvailable": false`.
 
 Please refer to [`DEVELOPMENT.md`](DEVELOPMENT.md) for a detailed description on how to build and deploy Secvisogram in production.
 
+### Configure keybindings
+
+The following hotkeys are available by default:
+
+- New / Open: CTRL + O
+- Save: CTRL + S
+- Export: CTRL + E
+- Validate: CTRL + ALT + V
+
+These can be overwritten if needed by providing an alternative keybinding in
+`.well-known/appspecific/de.bsi.secvisogram.json`.
+Possible keynames are defined in: [react-hotkeys](https://github.com/jaywcjlove/react-hotkeys#keyname)
+
+```json
+{
+  ...,
+  "keyBindings": {
+    "keyNew": "ctrl+o",
+    "keySave": "ctrl+s"
+  }
+}
+```
+
+The JSON Editor View has additional keybindings available. To get an
+overview please press F1. Hint: The list is scroll and searchable.
+
 ## How to use
 
 ### Basic concepts

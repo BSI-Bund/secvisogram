@@ -61,13 +61,17 @@ export default function PreviewTab({
     <div className="preview-html flex h-full mr-3 bg-white">
       <div className="p-3 w-full">
         {showRendered ? (
-          <iframe
-            id="preview"
-            className={
-              'advisory w-full border ' + (showErrors ? 'h-4/5' : 'h-full')
-            }
-            ref={iframeRef}
-          />
+          <div className="relative h-full">
+            <iframe
+              id="preview"
+              className={
+                'advisory w-full border ' + (showErrors ? 'h-4/5' : 'h-full')
+              }
+              ref={iframeRef}
+            />
+            <div className="absolute top-0 right-0 bottom-0 left-0">
+            </div>
+          </div>
         ) : (
           <div className={'relative ' + (showErrors ? 'h-4/5' : 'h-full')}>
             <section className="absolute top-0 right-0 bottom-0 left-0 h-full bg-white flex flex-col">
