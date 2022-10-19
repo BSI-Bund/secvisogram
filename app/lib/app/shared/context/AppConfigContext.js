@@ -29,7 +29,7 @@ const defaultValue = {
   validatorUrl: '',
   keyBindings: {
     keySave: 'ctrl+s',
-    keyValidate: 'ctrl+i',
+    keyValidate: 'ctrl+alt+v',
     keyExport: 'ctrl+e',
     keyNew: 'ctrl+o'
   }
