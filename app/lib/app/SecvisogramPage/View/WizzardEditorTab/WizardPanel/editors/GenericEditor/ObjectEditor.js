@@ -1,7 +1,6 @@
 import React from 'react'
 import { GenericEditor } from '../../editors.js'
 import WizardContext from '../../shared/WizardContext.js'
-import FieldsEditor from '../shared/FieldsEditor.js'
 
 /**
  * @param {object} props
@@ -77,13 +76,27 @@ export default function ObjectEditor({
     )
   }
 
+  const renderFieldsEditor = () => {
+    return (
+      <div className="border flex flex-col gap-1 p-2">
+        {fieldProperties?.map((property) => (
+          <GenericEditor
+            key={property.key}
+            property={property}
+            parentProperty={resolveSubProperty(selectedSubPath)}
+            instancePath={instancePath
+              .concat(selectedSubPath)
+              .concat([property.key])}
+          />
+        ))}
+      </div>
+    )
+  }
+
   return (
     <>
       {!complexProperties?.length ? (
-        <FieldsEditor
-          fieldProperties={fieldProperties ?? []}
-          instancePath={instancePath}
-        />
+        renderFieldsEditor()
       ) : (
         <>
           {parentProperty?.addMenuItemsForChildObjects ? null : (
@@ -91,14 +104,9 @@ export default function ObjectEditor({
               <Menu instancePath={instancePath} property={property} />
             </div>
           )}
-          {selectedSubPath.length ? (
-            renderComplexEditor()
-          ) : (
-            <FieldsEditor
-              fieldProperties={fieldProperties ?? []}
-              instancePath={instancePath}
-            />
-          )}
+          {selectedSubPath.length
+            ? renderComplexEditor()
+            : renderFieldsEditor()}
         </>
       )}
     </>
