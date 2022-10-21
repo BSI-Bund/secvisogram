@@ -1,6 +1,7 @@
 import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import Hotkeys from 'react-hot-keys'
 import * as semver from 'semver'
 import BackendUnavailableError from '../shared/BackendUnavailableError.js'
 import AppConfigContext from '../shared/context/AppConfigContext.js'
@@ -22,7 +23,6 @@ import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
-import Hotkeys from 'react-hot-keys'
 import WizzardEditorTab from './View/WizzardEditorTab.js'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
@@ -436,9 +436,7 @@ function View({
         advisoryState={advisoryState}
         formValues={formValues}
         documentIsValid={!errors.length}
-        onPrepareDocumentForTemplate={
-          onPrepareDocumentForTemplate
-        }
+        onPrepareDocumentForTemplate={onPrepareDocumentForTemplate}
         onDownload={onDownload}
         onExportCSAF={onExportCSAF}
         onExportHTML={onExportHTML}
@@ -613,7 +611,9 @@ function View({
    * Get all possible key bindings concatenated with ','
    */
   function getAllKeybindings() {
-    return appConfig?.keyBindings ? Object.values(appConfig.keyBindings).join(',') : ''
+    return appConfig?.keyBindings
+      ? Object.values(appConfig.keyBindings).join(',')
+      : ''
   }
 
   return (
