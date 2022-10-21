@@ -20,6 +20,12 @@ declare module '*.json' {
   export default content
 }
 
+declare module "*.md"
+
+declare module '*/metaData2.json' {
+  const metadata: Object
+  export default metadata
+}
 declare module 'json-source-map' {
   export interface ParseOptions {
     bigint?: boolean
