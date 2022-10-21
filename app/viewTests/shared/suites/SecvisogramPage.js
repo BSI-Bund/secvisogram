@@ -132,6 +132,12 @@ export const tests = [
           logoutUrl: '',
           userInfoUrl: '',
           validatorUrl: '',
+          keyBindings: {
+            keySave: 'ctrl+s',
+            keyValidate: 'ctrl+i',
+            keyExport: 'ctrl+e',
+            keyNew: 'ctrl+o'
+          }
         }}
       >
         <UserInfoContext.Provider
