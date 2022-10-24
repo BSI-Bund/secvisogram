@@ -53,6 +53,10 @@ module.exports = {
           from: 'vendor/first',
           to: 'vendor/first',
         },
+        {
+          from: '../docs/user',
+          to: 'public/docs/user',
+        },
       ],
     }),
     ...(process.env.NODE_ENV === 'production'

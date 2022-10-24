@@ -24,6 +24,7 @@ import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
 import WizzardEditorTab from './View/WizzardEditorTab.js'
+import SideBar from './View/SideBar/SideBar.js'
 
 const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 
@@ -816,11 +817,14 @@ function View({
           >
             <>
               {activeTab === 'WIZZARD' ? (
-                <WizzardEditorTab
-                  formValues={formValues}
-                  validationErrors={errors}
-                  onReplaceDoc={onReplaceDoc}
-                />
+                <div className="flex h-full">
+                  <WizzardEditorTab
+                    formValues={formValues}
+                    validationErrors={errors}
+                    onReplaceDoc={onReplaceDoc}
+                  />
+                  <SideBar/>
+                </div>
               ) : activeTab === 'EDITOR' ? (
                 <FormEditorTab
                   formValues={formValues}
