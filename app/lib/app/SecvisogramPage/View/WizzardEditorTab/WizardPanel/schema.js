@@ -885,6 +885,7 @@ export default {
                   description:
                     'Is a part of the hierarchical structure of the product tree.',
                   mandatory: false,
+                  addMenuItemsForChildObjects: true,
                   metaInfo: {
                     propertyList: [
                       {

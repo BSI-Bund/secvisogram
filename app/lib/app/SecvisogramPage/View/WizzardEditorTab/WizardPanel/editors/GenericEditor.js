@@ -33,7 +33,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
     const sanitizedValue = typeof value === 'string' ? value : ''
 
     return (
-      <div>
+      <div className="bg-white">
         <label className="block">{property.title}</label>
         <input
           className="border px-2 py-1"
@@ -52,7 +52,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
     )
   } else {
     return (
-      <div>
+      <div className="bg-white">
         <div>{property.fullName.join('.')}</div>
         <div>{}</div>
       </div>

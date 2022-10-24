@@ -812,7 +812,7 @@ function View({
             )}
           </div>
           <div
-            className="relative overflow-auto h-full bg-gray-500"
+            className="relative overflow-auto h-full bg-white"
             key={activeTab}
           >
             <>
