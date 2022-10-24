@@ -134,10 +134,10 @@ export const tests = [
           validatorUrl: '',
           keyBindings: {
             keySave: 'ctrl+s',
-            keyValidate: 'ctrl+i',
+            keyValidate: 'ctrl+alt+v',
             keyExport: 'ctrl+e',
-            keyNew: 'ctrl+o'
-          }
+            keyNew: 'ctrl+o',
+          },
         }}
       >
         <UserInfoContext.Provider

@@ -5,7 +5,7 @@
   "userInfoUrl": "/oauth2/userinfo",
   "validatorUrl": "/validate",
   "keySave": "ctrl+s",
-  "keyValidate": "ctrl+i",
+  "keyValidate": "ctrl+alt+v",
   "keyDownload": "ctrl+d",
   "keyNew": "ctrl+o"
 }
