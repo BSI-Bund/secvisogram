@@ -2,6 +2,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+.wizard-menu-shadow {
+  -webkit-box-shadow: 0 0 3px 0 rgba(172,172,172,0.75);
+  box-shadow: 0 0 3px 0 rgba(172,172,172,0.75);
+}
+
 dialog::backdrop {
   @apply bg-black opacity-50;
 }

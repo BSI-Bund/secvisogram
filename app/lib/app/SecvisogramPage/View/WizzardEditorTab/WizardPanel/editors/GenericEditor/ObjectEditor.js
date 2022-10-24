@@ -1,6 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { GenericEditor } from '../../editors.js'
 import WizardContext from '../../shared/WizardContext.js'
+import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 /**
  * @param {object} props
@@ -78,7 +80,7 @@ export default function ObjectEditor({
 
   const renderFieldsEditor = () => {
     return (
-      <div className="border flex flex-col gap-1 p-2">
+      <div className="flex flex-col gap-4 p-4">
         {fieldProperties?.map((property) => (
           <GenericEditor
             key={property.key}
@@ -100,7 +102,7 @@ export default function ObjectEditor({
       ) : (
         <>
           {parentProperty?.addMenuItemsForChildObjects ? null : (
-            <div className="border">
+            <div className="flex bg-gray-50 border-r border-l border-solid border-gray-400 wizard-menu-shadow mr-2">
               <Menu instancePath={instancePath} property={property} />
             </div>
           )}
@@ -129,11 +131,17 @@ function Menu({ level = 0, property, instancePath }) {
   const { addMenuItemsForChildObjects } = property
 
   return (
-    <ul style={{ marginLeft: level * 10 }}>
+    // <div className="flex flex-col border-r border-solid border-gray-400 shadow-test">
+    <ul className="mb-4">
       {property.type === 'OBJECT' && fieldProperties?.length && level === 0 ? (
-        <li className="italic">
+        <li
+          className="bg-gray-200 italic w-full"
+          style={{ marginLeft: level * 10 }}
+        >
           <button
-            className={`italic ${!selectedMenuPath.length ? 'underline' : ''}`}
+            className={`italic ${
+              !selectedMenuPath.length ? 'underline' : ''
+            } px-2 h-9 w-full text-left hover:bg-gray-400 border-b border-solid border-gray-300`}
             onClick={() => {
               setSelectedPath(instancePath)
             }}
@@ -149,18 +157,50 @@ function Menu({ level = 0, property, instancePath }) {
             /** @type {import('../../shared/types').Property} */ (_property)
           return (
             <React.Fragment key={childProperty.key}>
-              <li>
-                <button
-                  type="button"
-                  className={
-                    selectedMenuPath[0] === childProperty.key ? 'underline' : ''
-                  }
-                  onClick={() => {
-                    setSelectedPath([...instancePath, childProperty.key])
-                  }}
+              <li
+                className={`bg-gray-200 ${
+                  level === 0 && property.addMenuItemsForChildObjects
+                    ? 'bg-gray-300'
+                    : ''
+                }`}
+                style={{ marginLeft: level * 10 }}
+              >
+                <div
+                  className={`${
+                    selectedMenuPath[0] === childProperty.key
+                      ? 'border-l-4 border-blue-400 border-b border-gray-300'
+                      : 'border-b border-gray-300'
+                  } min-h-9 h-9 flex flex-row box-border border-solid hover:border-l-4 hover:border-l-blue-400`}
                 >
-                  {childProperty.title}
-                </button>
+                  <div className="grid place-items-center px-2">
+                    <FontAwesomeIcon
+                      icon={faCircle}
+                      color="green"
+                      className="text-xs"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    className="px-2 w-full text-left"
+                    onClick={() => {
+                      setSelectedPath([...instancePath, childProperty.key])
+                    }}
+                  >
+                    {childProperty.title}
+                  </button>
+                  <button
+                    type="button"
+                    className="w-9 flex-none"
+                    onClick={() => {}}
+                  >
+                    <FontAwesomeIcon
+                      icon={faInfoCircle}
+                      className=""
+                      size="xs"
+                    />
+                  </button>
+                </div>
+
                 {addMenuItemsForChildObjects ? (
                   <Menu
                     level={level + 1}
@@ -173,5 +213,6 @@ function Menu({ level = 0, property, instancePath }) {
           )
         })}
     </ul>
+    // </div>
   )
 }
