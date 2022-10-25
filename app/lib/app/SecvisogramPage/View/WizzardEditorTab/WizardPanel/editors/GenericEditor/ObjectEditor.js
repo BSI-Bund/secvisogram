@@ -3,6 +3,8 @@ import React from 'react'
 import { GenericEditor } from '../../editors.js'
 import WizardContext from '../../shared/WizardContext.js'
 import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import SideBarContext from "../../../../../../shared/context/SideBarContext.js";
+import DocumentEditorContext from "../../../../shared/DocumentEditorContext.js";
 
 /**
  * @param {object} props
@@ -122,26 +124,44 @@ export default function ObjectEditor({
  * @param {number} [props.level]
  */
 function Menu({ level = 0, property, instancePath }) {
+  const { errors } = React.useContext(DocumentEditorContext)
   const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
+  const sideBarData = React.useContext(SideBarContext)
   const fieldProperties = property.metaInfo.propertyList?.filter(
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
+  )
+
+
+  const fieldsErrors = errors.filter(
+    (e) => (
+      e.instancePath.startsWith("/" + instancePath.join("/"))
+      && e.instancePath.split("/").length === (instancePath.length+2)
+    )
   )
 
   const selectedMenuPath = selectedPath.slice(instancePath.length)
   const { addMenuItemsForChildObjects } = property
 
   return (
-    // <div className="flex flex-col border-r border-solid border-gray-400 shadow-test">
     <ul className="mb-4">
       {property.type === 'OBJECT' && fieldProperties?.length && level === 0 ? (
         <li
-          className="bg-gray-200 italic w-full"
+          className={`${
+            !selectedMenuPath.length
+              ? 'border-l-4 border-blue-400 border-b border-gray-300'
+              : 'border-b border-gray-300'
+          } flex w-full bg-gray-200 border-b border-solid`}
           style={{ marginLeft: level * 10 }}
         >
+          <div className="grid place-items-center px-2">
+            <FontAwesomeIcon
+              icon={faCircle}
+              color={fieldsErrors.length === 0 ? "green" : "red"}
+              className="text-xs"
+            />
+          </div>
           <button
-            className={`italic ${
-              !selectedMenuPath.length ? 'underline' : ''
-            } px-2 h-9 w-full text-left hover:bg-gray-400 border-b border-solid border-gray-300`}
+            className="italic text-left bg-gray-200 w-full px-2 h-9 hover:bg-gray-300"
             onClick={() => {
               setSelectedPath(instancePath)
             }}
@@ -155,6 +175,9 @@ function Menu({ level = 0, property, instancePath }) {
         .map((_property) => {
           const childProperty =
             /** @type {import('../../shared/types').Property} */ (_property)
+          const childErrors = errors.filter(
+            (e) => e.instancePath.startsWith('/' + [...instancePath, childProperty.key].join('/'))
+          )
           return (
             <React.Fragment key={childProperty.key}>
               <li
@@ -170,18 +193,18 @@ function Menu({ level = 0, property, instancePath }) {
                     selectedMenuPath[0] === childProperty.key
                       ? 'border-l-4 border-blue-400 border-b border-gray-300'
                       : 'border-b border-gray-300'
-                  } min-h-9 h-9 flex flex-row box-border border-solid hover:border-l-4 hover:border-l-blue-400`}
+                  } min-h-9 h-9 flex flex-row box-border border-solid`}
                 >
                   <div className="grid place-items-center px-2">
                     <FontAwesomeIcon
                       icon={faCircle}
-                      color="green"
+                      color={childErrors.length === 0 ? "green" : "red"}
                       className="text-xs"
                     />
                   </div>
                   <button
                     type="button"
-                    className="px-2 w-full text-left"
+                    className="px-2 w-full text-left hover:bg-gray-300"
                     onClick={() => {
                       setSelectedPath([...instancePath, childProperty.key])
                     }}
@@ -190,14 +213,13 @@ function Menu({ level = 0, property, instancePath }) {
                   </button>
                   <button
                     type="button"
-                    className="w-9 flex-none"
-                    onClick={() => {}}
+                    className="w-9 h-9 flex-none hover:bg-gray-300"
+                    onClick={() => {
+                      sideBarData.setSideBarIsOpen(true)
+                      sideBarData.setSideBarSelectedPath([...instancePath, childProperty.key])
+                    }}
                   >
-                    <FontAwesomeIcon
-                      icon={faInfoCircle}
-                      className=""
-                      size="xs"
-                    />
+                    <FontAwesomeIcon icon={faInfoCircle} size="xs" />
                   </button>
                 </div>
 

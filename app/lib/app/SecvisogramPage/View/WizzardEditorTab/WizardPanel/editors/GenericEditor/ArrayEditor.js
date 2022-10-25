@@ -4,6 +4,7 @@ import React from 'react'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import WizardContext from '../../shared/WizardContext.js'
+import SideBarContext from "../../../../../../shared/context/SideBarContext.js";
 
 /**
  * @param {object} props
@@ -11,7 +12,9 @@ import WizardContext from '../../shared/WizardContext.js'
  * @param {string[]} props.instancePath
  */
 export default function ArrayEditor({ property, instancePath }) {
+  const { errors } = React.useContext(DocumentEditorContext)
   const { doc, updateDoc } = React.useContext(DocumentEditorContext)
+  const sideBarData = React.useContext(SideBarContext)
   const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
   const selectedPathSegment = selectedPath.slice(instancePath.length).at(0)
   const selectedIndex = selectedPathSegment ? Number(selectedPathSegment) : null
@@ -36,30 +39,45 @@ export default function ArrayEditor({ property, instancePath }) {
     <>
       <div className="border-l border-r border-solid bg-gray-50 border-gray-400 wizard-menu-shadow mr-2">
         <ul>
-          {sanitizedValue.map((_, i) => (
-            <li key={instancePath.concat([String(i)]).join('.')} className="flex w-full">
-              <div className="grid place-items-center px-2 h-9">
-                <FontAwesomeIcon icon={faCircle} color="green" className="text-xs" />
-              </div>
-              <button
-                type="button"
-                className={(selectedIndex === i ? 'underline' : '') +
-                  ' border-b border-r border-gray-300 border-solid px-2 h-9 w-full text-left hover:bg-gray-300'}
-                onClick={() => {
-                  setSelectedIndex(i)
-                }}
-              >
-                Item {i + 1}
-              </button>
-              <button
-                type="button"
-                className="border-b border-gray-300 border-solid w-9 h-9 flex-none hover:bg-gray-300"
-                onClick={() => {}}
-              >
-                <FontAwesomeIcon icon={faInfoCircle} className="text-xs" />
-              </button>
-            </li>
-          ))}
+          {sanitizedValue.map((_, i) => {
+            const indexErrors = errors.filter(
+              (e) => e.instancePath.startsWith('/' + [...instancePath, i].join('/'))
+            )
+            return (
+              <li key={instancePath.concat([String(i)]).join('.')}
+                  className={`${selectedIndex === i
+                    ? 'border-l-4 border-blue-400 border-b border-gray-300'
+                    : 'border-b border-gray-300'
+                  } flex w-full`}>
+                <div className="grid place-items-center px-2 h-9">
+                  <FontAwesomeIcon
+                    icon={faCircle}
+                    color={indexErrors.length === 0 ? "green" : "red"}
+                    className="text-xs"
+                  />
+                </div>
+                <button
+                  type="button"
+                  className={'px-2 h-9 w-full text-left hover:bg-gray-300'}
+                  onClick={() => {
+                    setSelectedIndex(i)
+                  }}
+                >
+                  Item {i + 1}
+                </button>
+                <button
+                  type="button"
+                  className="w-9 h-9 flex-none hover:bg-gray-300"
+                  onClick={() => {
+                    sideBarData.setSideBarIsOpen(true)
+                    sideBarData.setSideBarSelectedPath(instancePath.concat(i.toString()))
+                  }}
+                >
+                  <FontAwesomeIcon icon={faInfoCircle} size="xs" />
+                </button>
+              </li>
+            )
+          })}
         </ul>
         <button
           type="button"
