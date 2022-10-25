@@ -177,7 +177,7 @@ function Menu({ level = 0, property, instancePath }) {
                     selectedMenuPath[0] === childProperty.key
                       ? 'border-l-4 border-blue-400 border-b border-gray-300'
                       : 'border-b border-gray-300'
-                  } min-h-9 h-9 flex flex-row box-border border-solid hover:border-l-4 hover:border-l-blue-400`}
+                  } min-h-9 h-9 flex flex-row box-border border-solid`}
                 >
                   <div className="grid place-items-center px-2">
                     <FontAwesomeIcon
@@ -188,7 +188,7 @@ function Menu({ level = 0, property, instancePath }) {
                   </div>
                   <button
                     type="button"
-                    className="px-2 w-full text-left"
+                    className="px-2 w-full text-left hover:bg-gray-300"
                     onClick={() => {
                       setSelectedPath([...instancePath, childProperty.key])
                     }}
@@ -197,17 +197,13 @@ function Menu({ level = 0, property, instancePath }) {
                   </button>
                   <button
                     type="button"
-                    className="w-9 flex-none"
+                    className="w-9 h-9 flex-none hover:bg-gray-300"
                     onClick={() => {
                       sideBarData.setSideBarIsOpen(true)
                       sideBarData.setSideBarSelectedPath([...instancePath, childProperty.key])
                     }}
                   >
-                    <FontAwesomeIcon
-                      icon={faInfoCircle}
-                      className=""
-                      size="xs"
-                    />
+                    <FontAwesomeIcon icon={faInfoCircle} size="xs" />
                   </button>
                 </div>
 

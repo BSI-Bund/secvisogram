@@ -13,7 +13,7 @@ import SideBarContext from "../../../../../shared/context/SideBarContext.js";
  * @param {string[]} props.instancePath
  */
 export default function Editor({ parentProperty, property, instancePath }) {
-  const { doc, errors, updateDoc } = React.useContext(DocumentEditorContext)
+  const {doc, errors, updateDoc} = React.useContext(DocumentEditorContext)
   const sideBarData = React.useContext(SideBarContext)
 
   const fieldErrors = errors.filter(
@@ -21,7 +21,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
   )
 
   if (property.type === 'ARRAY') {
-    return <ArrayEditor property={property} instancePath={instancePath} />
+    return <ArrayEditor property={property} instancePath={instancePath}/>
   } else if (property.type === 'OBJECT') {
     return (
       <ObjectEditor
@@ -39,27 +39,18 @@ export default function Editor({ parentProperty, property, instancePath }) {
     return (
       <div className="bg-white">
         <div className="flex m-1">
-          <div className="grid place-items-center px-2">
-            <FontAwesomeIcon
-              icon={faCircle}
-              color={fieldErrors.length === 0 ? "green" : "red"}
-              className="text-xs"
-            />
+          <div className="flex place-items-center">
+            <label className="text-left">{property.title}</label>
           </div>
-          <label className="block">{property.title}</label>
           <button
             type="button"
-            className="w-9 flex-none"
+            className="w-9 h-9 flex-none hover:bg-gray-300 rounded m-1"
             onClick={() => {
               sideBarData.setSideBarIsOpen(true)
               sideBarData.setSideBarSelectedPath(instancePath)
             }}
           >
-            <FontAwesomeIcon
-              icon={faInfoCircle}
-              className=""
-              size="xs"
-            />
+            <FontAwesomeIcon icon={faInfoCircle} size="xs"/>
           </button>
         </div>
         <input
@@ -73,7 +64,16 @@ export default function Editor({ parentProperty, property, instancePath }) {
         <div className="m-1">
           <ul className="block list-disc list-inside">
             {fieldErrors.map((e, i) => (
-              <li key={`${i}-${e.message}`}>{e.message}</li>
+              <li key={`${i}-${e.message}`} className="flex">
+                <div className="grid place-items-center px-2">
+                  <FontAwesomeIcon
+                    icon={faCircle}
+                    color="red"
+                    size="xs"
+                  />
+                </div>
+                {e.message}
+              </li>
             ))}
           </ul>
         </div>
