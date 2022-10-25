@@ -2,6 +2,8 @@ import React from 'react'
 import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import ArrayEditor from './GenericEditor/ArrayEditor.js'
 import ObjectEditor from './GenericEditor/ObjectEditor.js'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 /**
  * @param {object} props
@@ -34,7 +36,27 @@ export default function Editor({ parentProperty, property, instancePath }) {
 
     return (
       <div className="bg-white">
-        <label className="block">{property.title}</label>
+        <div className="flex m-1">
+          <div className="grid place-items-center px-2">
+            <FontAwesomeIcon
+              icon={faCircle}
+              color={fieldErrors.length === 0 ? "green" : "red"}
+              className="text-xs"
+            />
+          </div>
+          <label className="block">{property.title}</label>
+          <button
+            type="button"
+            className="w-9 flex-none"
+            onClick={() => {}}
+          >
+            <FontAwesomeIcon
+              icon={faInfoCircle}
+              className=""
+              size="xs"
+            />
+          </button>
+        </div>
         <input
           className="border px-2 py-1"
           type="text"
@@ -43,11 +65,13 @@ export default function Editor({ parentProperty, property, instancePath }) {
             updateDoc(instancePath, e.target.value)
           }}
         />
-        <ul className="block list-disc list-inside">
-          {fieldErrors.map((e, i) => (
-            <li key={`${i}-${e.message}`}>{e.message}</li>
-          ))}
-        </ul>
+        <div className="m-1">
+          <ul className="block list-disc list-inside">
+            {fieldErrors.map((e, i) => (
+              <li key={`${i}-${e.message}`}>{e.message}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     )
   } else {

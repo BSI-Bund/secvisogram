@@ -3,6 +3,7 @@ import React from 'react'
 import { GenericEditor } from '../../editors.js'
 import WizardContext from '../../shared/WizardContext.js'
 import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import DocumentEditorContext from "../../../../shared/DocumentEditorContext.js";
 
 /**
  * @param {object} props
@@ -122,6 +123,7 @@ export default function ObjectEditor({
  * @param {number} [props.level]
  */
 function Menu({ level = 0, property, instancePath }) {
+  const { errors } = React.useContext(DocumentEditorContext)
   const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
   const fieldProperties = property.metaInfo.propertyList?.filter(
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
@@ -155,6 +157,9 @@ function Menu({ level = 0, property, instancePath }) {
         .map((_property) => {
           const childProperty =
             /** @type {import('../../shared/types').Property} */ (_property)
+          const childErrors = errors.filter(
+            (e) => e.instancePath.startsWith('/' + [...instancePath, childProperty.key].join('/'))
+          )
           return (
             <React.Fragment key={childProperty.key}>
               <li
@@ -175,7 +180,7 @@ function Menu({ level = 0, property, instancePath }) {
                   <div className="grid place-items-center px-2">
                     <FontAwesomeIcon
                       icon={faCircle}
-                      color="green"
+                      color={childErrors.length === 0 ? "green" : "red"}
                       className="text-xs"
                     />
                   </div>
