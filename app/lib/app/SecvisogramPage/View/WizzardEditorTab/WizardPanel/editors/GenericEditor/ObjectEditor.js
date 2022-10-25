@@ -131,21 +131,37 @@ function Menu({ level = 0, property, instancePath }) {
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
   )
 
+
+  const fieldsErrors = errors.filter(
+    (e) => (
+      e.instancePath.startsWith("/" + instancePath.join("/"))
+      && e.instancePath.split("/").length === (instancePath.length+2)
+    )
+  )
+
   const selectedMenuPath = selectedPath.slice(instancePath.length)
   const { addMenuItemsForChildObjects } = property
 
   return (
-    // <div className="flex flex-col border-r border-solid border-gray-400 shadow-test">
     <ul className="mb-4">
       {property.type === 'OBJECT' && fieldProperties?.length && level === 0 ? (
         <li
-          className="bg-gray-200 italic w-full"
+          className={`${
+            !selectedMenuPath.length
+              ? 'border-l-4 border-blue-400 border-b border-gray-300'
+              : 'border-b border-gray-300'
+          } flex w-full bg-gray-200 border-b border-solid`}
           style={{ marginLeft: level * 10 }}
         >
+          <div className="grid place-items-center px-2">
+            <FontAwesomeIcon
+              icon={faCircle}
+              color={fieldsErrors.length === 0 ? "green" : "red"}
+              className="text-xs"
+            />
+          </div>
           <button
-            className={`italic ${
-              !selectedMenuPath.length ? 'underline' : ''
-            } px-2 h-9 w-full text-left hover:bg-gray-400 border-b border-solid border-gray-300`}
+            className="italic text-left bg-gray-200 w-full px-2 h-9 hover:bg-gray-300"
             onClick={() => {
               setSelectedPath(instancePath)
             }}
