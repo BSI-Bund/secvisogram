@@ -9,17 +9,17 @@
   },
   "document": {
     "propertyOrder": [
+      "title",
+      "csaf_version",
       "acknowledgments",
       "aggregate_severity",
       "category",
-      "csaf_version",
       "distribution",
       "lang",
       "notes",
       "publisher",
       "references",
       "source_lang",
-      "title",
       "tracking"
     ]
   },

@@ -4,3 +4,5 @@
 # intellij
 /secvisogram.iml
 /.idea
+/app/scripts/schema/dist/
+/app/scripts/schema/node_modules/

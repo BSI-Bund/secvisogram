@@ -3,6 +3,7 @@ import * as cvss_v3_0_json from './schema_files/cvss-v3.0.json';
 import * as cvss_v3_1_json from './schema_files/cvss-v3.1.json';
 import * as csaf_json_schema from './schema_files/csaf_json_schema.json';
 import * as additional_props from './config/additionalProperties.json';
+import * as meta_data2 from './config/metaData2.json';
 import prettier from 'prettier'
 
 import fs from "fs";
@@ -342,19 +343,71 @@ export function createDefaultAdditionalProperties(rootProperty: MetaProperty) {
   return additionalProperties;
 }
 
+export function sortPropertiesBy( objectMetaInfo: MetaInfoObject, propertyOrder: string[]) {
+
+  if (propertyOrder) {
+
+    const properties = objectMetaInfo.propertyList;
+    const sortedProperties: MetaProperty[] = [];
+
+    // move properties into sortedProperties by propertyOrder
+    propertyOrder
+      .forEach(propertyName => {
+        const index = properties.findIndex((metaProp) => metaProp.key === propertyName)
+        if (index >= 0 ) {
+          sortedProperties.push(properties.splice(index, 1)[0]);
+        }
+      })
+    sortedProperties.push(...properties);
+    objectMetaInfo.propertyList = sortedProperties;
+  }
+}
+
+
 /**
  * Extends every object in the tree with the properties defined on the additional_props JSON
- * @param rootProperty root node of the tree
+ * @param rootProperty root node of the property tree
  */
-export function extendWithAdditionalInfo(rootProperty: MetaProperty) {
+export function extendWithAdditionalInfo(rootProperty: MetaProperty, propsToAdd) {
 
   function extendPropertiesHandler(property: MetaProperty): void {
     if (property.type === MetaDataType.OBJECT) {
+      const object = property.metaInfo as MetaInfoObject;
       const fullPropName = property.fullName.join('.');
-      const add_prop = additional_props[fullPropName];
+      const add_prop = propsToAdd[fullPropName];
       if (add_prop) {
-        Object.assign(property, add_prop);
+        sortPropertiesBy(object, add_prop['propertyOrder']);
+        if (add_prop['addMenuItemsForChildObjects']){
+          property['addMenuItemsForChildObjects'] = add_prop['addMenuItemsForChildObjects'];
+        }
+     }
+    }
+  }
 
+  iterateOverProperties(rootProperty, extendPropertiesHandler);
+}
+
+/**
+ * Extends every object in the tree with the properties 'relevance_levels' and 'string_is_multiline' defined in the propsToAdd JSON
+ * @param rootProperty root node of the property tree
+ * @param propsToAdd  property to merge in tne tree
+ */
+export function extendWithMetaInfo2(rootProperty: MetaProperty, propsToAdd) {
+
+  function extendPropertiesHandler(property: MetaProperty): void {
+
+    if (property.type === MetaDataType.OBJECT || property.type === MetaDataType.STRING ||
+      property.type === MetaDataType.DATETIME) {
+      const object = property.metaInfo as MetaInfoObject;
+      const fullPropName = property.fullName.join('.');
+      const add_prop = propsToAdd[fullPropName];
+      if (add_prop) {
+        if (add_prop['relevance_levels']){
+          property['relevance_levels'] = add_prop['relevance_levels'];
+        }
+        if (add_prop['string_is_multiline']){
+          property['string_is_multiline'] = add_prop['string_is_multiline'];
+        }
       }
     }
   }
@@ -379,7 +432,7 @@ function writeMetadataJson(rootProperty: MetaProperty) {
 }
 
 /**
- * write the list of the default additional properties as JSON file
+ * generate the list of the default additional properties as JSON file
  * @param rootProperty
  */
 function writeDefaultAdditionalProperties(rootProperty: MetaProperty) {
@@ -428,7 +481,8 @@ export function convertCsafSchema() {
   writeMetadataJson(rootProperty);
   writeDefaultAdditionalProperties(rootProperty);
 
-  extendWithAdditionalInfo(rootProperty);
+  extendWithAdditionalInfo(rootProperty, additional_props);
+  extendWithMetaInfo2(rootProperty, meta_data2);
   writeExtendedMetaInfoAsJavascript(rootProperty);
 }
 
