@@ -1,9 +1,8 @@
 import React from 'react'
 import DocumentEditorContext from '../shared/DocumentEditorContext.js'
-import WizardContext from '../WizzardEditorTab/WizardPanel/shared/WizardContext.js'
 
 /**
- * Defines the content of the side bar displaying errors for a selected path
+ * Defines the content of the sideBar displaying errors for a selected path
  *
  * @param {{
  *   selectedPath: string[]
@@ -11,10 +10,9 @@ import WizardContext from '../WizzardEditorTab/WizardPanel/shared/WizardContext.
  */
 export default function ErrorPanel({ selectedPath }) {
   const { errors } = React.useContext(DocumentEditorContext)
-  const { setSelectedPath } = React.useContext(WizardContext)
 
   const errorsUnderPath = errors.filter((error) =>
-    error.instancePath.startsWith(selectedPath.join('/'))
+    error.instancePath.startsWith('/' + selectedPath.join('/'))
   )
 
   return (
@@ -30,12 +28,10 @@ export default function ErrorPanel({ selectedPath }) {
             ? 'yellow'
             : 'blue'
         const colorCls = 'border-' + color + '-600 bg-' + color + '-400'
-        const targetPath = err.instancePath.split('/').slice(1)
         return (
           <div
             key={i}
-            className={'p-2 m-1 rounded border cursor-pointer ' + colorCls}
-            onClick={() => setSelectedPath(targetPath)}
+            className={'p-2 m-1 rounded border ' + colorCls}
           >
             <b>{err.instancePath}</b>: {err.message}
           </div>

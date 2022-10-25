@@ -7,7 +7,6 @@ import AppConfigContext from './shared/context/AppConfigContext.js'
 import AppErrorContext from './shared/context/AppErrorContext.js'
 import HistoryContext from './shared/context/HistoryContext.js'
 import UserInfoContext from './shared/context/UserInfoContext.js'
-import SideBarContext from './shared/context/SideBarContext.js'
 
 /**
  * @param {object} props
@@ -22,7 +21,7 @@ export default function App({ secvisogramPage }) {
 
   useEffect(() => {
     api.appConfig.getAppConfig().then((response) => {
-      const mergedConfig = {...defaultAppConfig, ...response}
+      const mergedConfig = { ...defaultAppConfig, ...response }
       setAppConfig(mergedConfig)
     })
   }, [defaultAppConfig])
@@ -38,22 +37,6 @@ export default function App({ secvisogramPage }) {
       },
     })
   )
-
-  const [sideBarIsOpen, setSideBarIsOpen] = React.useState(
-    /** @type {boolean} */ false
-  )
-  const [sideBarSelectedPath, setSideBarSelectedPath] = React.useState(
-    /** @type {string[]} */ ([])
-  )
-  const [sideBarContent, setSideBarContent] = React.useState('ERRORS')
-  const sideBarData = {
-    sideBarIsOpen,
-    setSideBarIsOpen,
-    sideBarSelectedPath,
-    setSideBarSelectedPath,
-    sideBarContent,
-    setSideBarContent,
-  }
 
   useEffect(() => {
     if (appConfig.loginAvailable) {
@@ -79,18 +62,16 @@ export default function App({ secvisogramPage }) {
   ])
 
   return (
-    <SideBarContext.Provider value={sideBarData}>
-      <AppErrorContext.Provider value={applicationError}>
-        <AppConfigContext.Provider value={appConfig}>
-          <UserInfoContext.Provider value={userInfo}>
-            <HistoryContext.Provider value={history}>
-              <ErrorBoundary FallbackComponent={ErrorScreen}>
-                {secvisogramPage}
-              </ErrorBoundary>
-            </HistoryContext.Provider>
-          </UserInfoContext.Provider>
-        </AppConfigContext.Provider>
-      </AppErrorContext.Provider>
-    </SideBarContext.Provider>
+    <AppErrorContext.Provider value={applicationError}>
+      <AppConfigContext.Provider value={appConfig}>
+        <UserInfoContext.Provider value={userInfo}>
+          <HistoryContext.Provider value={history}>
+            <ErrorBoundary FallbackComponent={ErrorScreen}>
+              {secvisogramPage}
+            </ErrorBoundary>
+          </HistoryContext.Provider>
+        </UserInfoContext.Provider>
+      </AppConfigContext.Provider>
+    </AppErrorContext.Provider>
   )
 }

@@ -1,10 +1,10 @@
 import {faCircle, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React from 'react'
-import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
+import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
-import WizardContext from '../../shared/WizardContext.js'
-import SideBarContext from "../../../../../../shared/context/SideBarContext.js";
+import WizardContext from '../../../shared/context/WizardContext.js'
+import SideBarContext from "../../../shared/context/SideBarContext.js";
 
 /**
  * @param {object} props
@@ -12,8 +12,7 @@ import SideBarContext from "../../../../../../shared/context/SideBarContext.js";
  * @param {string[]} props.instancePath
  */
 export default function ArrayEditor({ property, instancePath }) {
-  const { errors } = React.useContext(DocumentEditorContext)
-  const { doc, updateDoc } = React.useContext(DocumentEditorContext)
+  const { doc, errors, updateDoc } = React.useContext(DocumentEditorContext)
   const sideBarData = React.useContext(SideBarContext)
   const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
   const selectedPathSegment = selectedPath.slice(instancePath.length).at(0)

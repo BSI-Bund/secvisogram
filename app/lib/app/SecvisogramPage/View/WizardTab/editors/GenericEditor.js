@@ -1,10 +1,10 @@
 import React from 'react'
-import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
+import DocumentEditorContext from '../../shared/DocumentEditorContext.js'
 import ArrayEditor from './GenericEditor/ArrayEditor.js'
 import ObjectEditor from './GenericEditor/ObjectEditor.js'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import SideBarContext from "../../../../../shared/context/SideBarContext.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import SideBarContext from '../../shared/context/SideBarContext.js';
 
 /**
  * @param {object} props

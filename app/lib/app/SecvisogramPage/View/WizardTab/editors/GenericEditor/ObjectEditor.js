@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { GenericEditor } from '../../editors.js'
-import WizardContext from '../../shared/WizardContext.js'
+import WizardContext from '../../../shared/context/WizardContext.js'
 import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import SideBarContext from "../../../../../../shared/context/SideBarContext.js";
-import DocumentEditorContext from "../../../../shared/DocumentEditorContext.js";
+import SideBarContext from '../../../shared/context/SideBarContext.js';
+import DocumentEditorContext from '../../../shared/DocumentEditorContext.js';
 
 /**
  * @param {object} props

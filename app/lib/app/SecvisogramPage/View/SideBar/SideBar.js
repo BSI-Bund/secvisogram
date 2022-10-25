@@ -10,7 +10,7 @@ import ErrorPanel from './ErrorPanel.js'
 import InfoPanel from './InfoPanel.js'
 import CommentPanel from './CommentPanel.js'
 import React from 'react'
-import SideBarContext from '../../../shared/context/SideBarContext.js'
+import SideBarContext from '../shared/context/SideBarContext.js'
 
 export default function SideBar() {
   const sideBarData = React.useContext(SideBarContext)
