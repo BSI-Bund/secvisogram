@@ -5,6 +5,7 @@ import WizardContext from '../../../shared/context/WizardContext.js'
 import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import SideBarContext from '../../../shared/context/SideBarContext.js';
 import DocumentEditorContext from '../../../shared/DocumentEditorContext.js';
+import { getCircleColor } from '../GenericEditor.js';
 
 /**
  * @param {object} props
@@ -156,7 +157,7 @@ function Menu({ level = 0, property, instancePath }) {
           <div className="grid place-items-center px-2">
             <FontAwesomeIcon
               icon={faCircle}
-              color={fieldsErrors.length === 0 ? "green" : "red"}
+              color={getCircleColor(fieldsErrors)}
               className="text-xs"
             />
           </div>
@@ -198,7 +199,7 @@ function Menu({ level = 0, property, instancePath }) {
                   <div className="grid place-items-center px-2">
                     <FontAwesomeIcon
                       icon={faCircle}
-                      color={childErrors.length === 0 ? "green" : "red"}
+                      color={getCircleColor(childErrors)}
                       className="text-xs"
                     />
                   </div>

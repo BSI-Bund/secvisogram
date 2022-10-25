@@ -2,9 +2,28 @@ import React from 'react'
 import DocumentEditorContext from '../../shared/DocumentEditorContext.js'
 import ArrayEditor from './GenericEditor/ArrayEditor.js'
 import ObjectEditor from './GenericEditor/ObjectEditor.js'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import SideBarContext from '../../shared/context/SideBarContext.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import SideBarContext from '../../shared/context/SideBarContext.js'
+
+/**
+ * utility function to get the color of circles identifying errors
+ *
+ * @param {Array<{ instancePath: string; message?: string; type?: string}>} errors
+ * @returns {string}
+ */
+export function getCircleColor(errors) {
+  const errorTypes = errors.map((e) => e.type)
+  return errorTypes.includes('error')
+    ? 'red'
+    : errorTypes.includes('warning')
+    ? 'yellow'
+    : errorTypes.includes('info')
+    ? 'blue'
+    : errors.length
+    ? 'red' // fall back to red if there are errors but their type is not known
+    : 'green'
+}
 
 /**
  * @param {object} props
@@ -68,7 +87,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
                 <div className="grid place-items-center px-2">
                   <FontAwesomeIcon
                     icon={faCircle}
-                    color="red"
+                    color={getCircleColor([e])}
                     size="xs"
                   />
                 </div>
