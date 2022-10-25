@@ -4,6 +4,7 @@ import ArrayEditor from './GenericEditor/ArrayEditor.js'
 import ObjectEditor from './GenericEditor/ObjectEditor.js'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import SideBarContext from "../../../../../shared/context/SideBarContext.js";
 
 /**
  * @param {object} props
@@ -13,6 +14,7 @@ import { faCircle, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
  */
 export default function Editor({ parentProperty, property, instancePath }) {
   const { doc, errors, updateDoc } = React.useContext(DocumentEditorContext)
+  const sideBarData = React.useContext(SideBarContext)
 
   const fieldErrors = errors.filter(
     (e) => e.instancePath === '/' + instancePath.join('/')
@@ -48,7 +50,10 @@ export default function Editor({ parentProperty, property, instancePath }) {
           <button
             type="button"
             className="w-9 flex-none"
-            onClick={() => {}}
+            onClick={() => {
+              sideBarData.setSideBarIsOpen(true)
+              sideBarData.setSideBarSelectedPath(instancePath)
+            }}
           >
             <FontAwesomeIcon
               icon={faInfoCircle}

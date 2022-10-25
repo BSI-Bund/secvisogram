@@ -3,6 +3,7 @@ import React from 'react'
 import { GenericEditor } from '../../editors.js'
 import WizardContext from '../../shared/WizardContext.js'
 import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import SideBarContext from "../../../../../../shared/context/SideBarContext.js";
 import DocumentEditorContext from "../../../../shared/DocumentEditorContext.js";
 
 /**
@@ -125,6 +126,7 @@ export default function ObjectEditor({
 function Menu({ level = 0, property, instancePath }) {
   const { errors } = React.useContext(DocumentEditorContext)
   const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
+  const sideBarData = React.useContext(SideBarContext)
   const fieldProperties = property.metaInfo.propertyList?.filter(
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
   )
@@ -196,7 +198,10 @@ function Menu({ level = 0, property, instancePath }) {
                   <button
                     type="button"
                     className="w-9 flex-none"
-                    onClick={() => {}}
+                    onClick={() => {
+                      sideBarData.setSideBarIsOpen(true)
+                      sideBarData.setSideBarSelectedPath([...instancePath, childProperty.key])
+                    }}
                   >
                     <FontAwesomeIcon
                       icon={faInfoCircle}

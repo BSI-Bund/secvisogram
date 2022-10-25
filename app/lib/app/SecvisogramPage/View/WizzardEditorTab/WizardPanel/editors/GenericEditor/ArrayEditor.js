@@ -4,6 +4,7 @@ import React from 'react'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import WizardContext from '../../shared/WizardContext.js'
+import SideBarContext from "../../../../../../shared/context/SideBarContext.js";
 
 /**
  * @param {object} props
@@ -13,6 +14,7 @@ import WizardContext from '../../shared/WizardContext.js'
 export default function ArrayEditor({ property, instancePath }) {
   const { errors } = React.useContext(DocumentEditorContext)
   const { doc, updateDoc } = React.useContext(DocumentEditorContext)
+  const sideBarData = React.useContext(SideBarContext)
   const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
   const selectedPathSegment = selectedPath.slice(instancePath.length).at(0)
   const selectedIndex = selectedPathSegment ? Number(selectedPathSegment) : null
@@ -63,7 +65,10 @@ export default function ArrayEditor({ property, instancePath }) {
                 <button
                   type="button"
                   className="border-b border-gray-300 border-solid w-9 h-9 flex-none hover:bg-gray-300"
-                  onClick={() => {}}
+                  onClick={() => {
+                    sideBarData.setSideBarIsOpen(true)
+                    sideBarData.setSideBarSelectedPath(instancePath.concat(i.toString()))
+                  }}
                 >
                   <FontAwesomeIcon icon={faInfoCircle} className="text-xs" />
                 </button>
