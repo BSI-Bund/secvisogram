@@ -30,7 +30,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
         instancePath={instancePath}
       />
     )
-  } else if (property.type === 'STRING') {
+  } else if (['STRING', 'URI'].includes(property.type)) {
     const value = instancePath.reduce((value, pathSegment) => {
       return (value ?? {})[pathSegment]
     }, /** @type {Record<string, any> | null} */ (doc))
