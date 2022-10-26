@@ -12,7 +12,7 @@ export default function CommentPanel({ selectedPath }) {
 
   return (
     <>
-      <div>comments for {selectedPath.join('/')}</div>
+      comments for {selectedPath.join('/')}
     </>
   )
 }

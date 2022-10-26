@@ -16,7 +16,7 @@ export default function ErrorPanel({ selectedPath }) {
   )
 
   return (
-    <div>
+    <>
       <h1 className="mb-4 text-xl font-bold">
         {errorsUnderPath.length} errors for {selectedPath.join('/')}
       </h1>
@@ -37,6 +37,6 @@ export default function ErrorPanel({ selectedPath }) {
           </div>
         )
       })}
-    </div>
+    </>
   )
 }

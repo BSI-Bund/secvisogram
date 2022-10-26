@@ -1,11 +1,11 @@
-import {faCircle, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import WizardContext from '../../../shared/context/WizardContext.js'
-import SideBarContext from "../../../shared/context/SideBarContext.js";
-import { getCircleColor } from '../GenericEditor.js';
+import SideBarContext from '../../../shared/context/SideBarContext.js'
+import { getCircleColor } from '../GenericEditor.js'
 
 /**
  * @param {object} props
@@ -40,15 +40,17 @@ export default function ArrayEditor({ property, instancePath }) {
       <div className="border-l border-r border-solid bg-gray-50 border-gray-400 wizard-menu-shadow mr-2">
         <ul>
           {sanitizedValue.map((_, i) => {
-            const indexErrors = errors.filter(
-              (e) => e.instancePath.startsWith('/' + [...instancePath, i].join('/'))
+            const indexErrors = errors.filter((e) =>
+              e.instancePath.startsWith('/' + [...instancePath, i].join('/'))
             )
             return (
-              <li key={instancePath.concat([String(i)]).join('.')}
-                  className={`${selectedIndex === i
-                    ? 'border-l-4 border-blue-400 border-b border-gray-300'
-                    : 'border-b border-gray-300'
-                  } flex w-full`}>
+              <li
+                key={instancePath.concat([String(i)]).join('.')}
+                className={
+                  (selectedIndex === i ? 'bg-blue-400' : '') +
+                  ' border-b border-gray-300 flex w-full'
+                }
+              >
                 <div className="grid place-items-center px-2 h-9">
                   <FontAwesomeIcon
                     icon={faCircle}
@@ -58,7 +60,7 @@ export default function ArrayEditor({ property, instancePath }) {
                 </div>
                 <button
                   type="button"
-                  className={'px-2 h-9 w-full text-left hover:bg-gray-300'}
+                  className={'px-2 w-full text-left hover:bg-blue-300'}
                   onClick={() => {
                     setSelectedIndex(i)
                   }}
@@ -67,10 +69,12 @@ export default function ArrayEditor({ property, instancePath }) {
                 </button>
                 <button
                   type="button"
-                  className="w-9 h-9 flex-none hover:bg-gray-300"
+                  className="w-9 h-9 flex-none hover:bg-blue-300"
                   onClick={() => {
                     sideBarData.setSideBarIsOpen(true)
-                    sideBarData.setSideBarSelectedPath(instancePath.concat(i.toString()))
+                    sideBarData.setSideBarSelectedPath(
+                      instancePath.concat(i.toString())
+                    )
                   }}
                 >
                   <FontAwesomeIcon icon={faInfoCircle} size="xs" />
@@ -81,7 +85,7 @@ export default function ArrayEditor({ property, instancePath }) {
         </ul>
         <button
           type="button"
-          className="h-9 px-2 text-center hover:bg-gray-300 border-b border-gray-300 border-solid w-full"
+          className="h-9 px-2 text-center hover:bg-blue-300 border-b border-gray-300 border-solid w-full"
           onClick={() => {
             const value =
               childProperty.type === 'OBJECT'

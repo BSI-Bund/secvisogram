@@ -32,7 +32,7 @@ export function getCircleColor(errors) {
  * @param {string[]} props.instancePath
  */
 export default function Editor({ parentProperty, property, instancePath }) {
-  const {doc, errors, updateDoc} = React.useContext(DocumentEditorContext)
+  const { doc, errors, updateDoc } = React.useContext(DocumentEditorContext)
   const sideBarData = React.useContext(SideBarContext)
 
   const fieldErrors = errors.filter(
@@ -40,7 +40,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
   )
 
   if (property.type === 'ARRAY') {
-    return <ArrayEditor property={property} instancePath={instancePath}/>
+    return <ArrayEditor property={property} instancePath={instancePath} />
   } else if (property.type === 'OBJECT') {
     return (
       <ObjectEditor
@@ -63,13 +63,13 @@ export default function Editor({ parentProperty, property, instancePath }) {
           </div>
           <button
             type="button"
-            className="w-9 h-9 flex-none hover:bg-gray-300 rounded m-1"
+            className="w-9 h-9 flex-none hover:bg-blue-300 m-1"
             onClick={() => {
               sideBarData.setSideBarIsOpen(true)
               sideBarData.setSideBarSelectedPath(instancePath)
             }}
           >
-            <FontAwesomeIcon icon={faInfoCircle} size="xs"/>
+            <FontAwesomeIcon icon={faInfoCircle} size="xs" />
           </button>
         </div>
         <input

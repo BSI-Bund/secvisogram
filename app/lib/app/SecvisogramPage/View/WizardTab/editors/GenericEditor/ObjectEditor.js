@@ -3,9 +3,9 @@ import React from 'react'
 import { GenericEditor } from '../../editors.js'
 import WizardContext from '../../../shared/context/WizardContext.js'
 import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import SideBarContext from '../../../shared/context/SideBarContext.js';
-import DocumentEditorContext from '../../../shared/DocumentEditorContext.js';
-import { getCircleColor } from '../GenericEditor.js';
+import SideBarContext from '../../../shared/context/SideBarContext.js'
+import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
+import { getCircleColor } from '../GenericEditor.js'
 
 /**
  * @param {object} props
@@ -132,12 +132,10 @@ function Menu({ level = 0, property, instancePath }) {
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
   )
 
-
   const fieldsErrors = errors.filter(
-    (e) => (
-      e.instancePath.startsWith("/" + instancePath.join("/"))
-      && e.instancePath.split("/").length === (instancePath.length+2)
-    )
+    (e) =>
+      e.instancePath.startsWith('/' + instancePath.join('/')) &&
+      e.instancePath.split('/').length === instancePath.length + 2
   )
 
   const selectedMenuPath = selectedPath.slice(instancePath.length)
@@ -147,11 +145,10 @@ function Menu({ level = 0, property, instancePath }) {
     <ul className="mb-4">
       {property.type === 'OBJECT' && fieldProperties?.length && level === 0 ? (
         <li
-          className={`${
-            !selectedMenuPath.length
-              ? 'border-l-4 border-blue-400 border-b border-gray-300'
-              : 'border-b border-gray-300'
-          } flex w-full bg-gray-200 border-b border-solid`}
+          className={
+            (!selectedMenuPath.length ? 'bg-blue-400' : '') +
+            ' border-b border-gray-300 flex w-full'
+          }
           style={{ marginLeft: level * 10 }}
         >
           <div className="grid place-items-center px-2">
@@ -162,7 +159,7 @@ function Menu({ level = 0, property, instancePath }) {
             />
           </div>
           <button
-            className="italic text-left bg-gray-200 w-full px-2 h-9 hover:bg-gray-300"
+            className="italic text-left w-full px-2 h-9 hover:bg-blue-300"
             onClick={() => {
               setSelectedPath(instancePath)
             }}
@@ -176,8 +173,10 @@ function Menu({ level = 0, property, instancePath }) {
         .map((_property) => {
           const childProperty =
             /** @type {import('../../shared/types').Property} */ (_property)
-          const childErrors = errors.filter(
-            (e) => e.instancePath.startsWith('/' + [...instancePath, childProperty.key].join('/'))
+          const childErrors = errors.filter((e) =>
+            e.instancePath.startsWith(
+              '/' + [...instancePath, childProperty.key].join('/')
+            )
           )
           return (
             <React.Fragment key={childProperty.key}>
@@ -190,11 +189,11 @@ function Menu({ level = 0, property, instancePath }) {
                 style={{ marginLeft: level * 10 }}
               >
                 <div
-                  className={`${
-                    selectedMenuPath[0] === childProperty.key
-                      ? 'border-l-4 border-blue-400 border-b border-gray-300'
-                      : 'border-b border-gray-300'
-                  } min-h-9 h-9 flex flex-row box-border border-solid`}
+                  className={
+                    (selectedMenuPath[0] === childProperty.key
+                      ? 'bg-blue-400'
+                      : '') + ' border-b border-gray-300 flex w-full'
+                  }
                 >
                   <div className="grid place-items-center px-2">
                     <FontAwesomeIcon
@@ -205,7 +204,7 @@ function Menu({ level = 0, property, instancePath }) {
                   </div>
                   <button
                     type="button"
-                    className="px-2 w-full text-left hover:bg-gray-300"
+                    className="px-2 w-full text-left hover:bg-blue-300"
                     onClick={() => {
                       setSelectedPath([...instancePath, childProperty.key])
                     }}
@@ -214,10 +213,13 @@ function Menu({ level = 0, property, instancePath }) {
                   </button>
                   <button
                     type="button"
-                    className="w-9 h-9 flex-none hover:bg-gray-300"
+                    className="w-9 h-9 flex-none hover:bg-blue-300"
                     onClick={() => {
                       sideBarData.setSideBarIsOpen(true)
-                      sideBarData.setSideBarSelectedPath([...instancePath, childProperty.key])
+                      sideBarData.setSideBarSelectedPath([
+                        ...instancePath,
+                        childProperty.key,
+                      ])
                     }}
                   >
                     <FontAwesomeIcon icon={faInfoCircle} size="xs" />
@@ -236,6 +238,5 @@ function Menu({ level = 0, property, instancePath }) {
           )
         })}
     </ul>
-    // </div>
   )
 }
