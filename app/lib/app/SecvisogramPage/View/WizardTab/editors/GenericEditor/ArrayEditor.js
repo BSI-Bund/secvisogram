@@ -5,7 +5,7 @@ import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import WizardContext from '../../../shared/context/WizardContext.js'
 import SideBarContext from '../../../shared/context/SideBarContext.js'
-import { getCircleColor } from '../GenericEditor.js'
+import { getErrorTextColor } from '../GenericEditor.js'
 
 /**
  * @param {object} props
@@ -54,8 +54,8 @@ export default function ArrayEditor({ property, instancePath }) {
                 <div className="grid place-items-center px-2 h-9">
                   <FontAwesomeIcon
                     icon={faCircle}
-                    color={getCircleColor(indexErrors)}
-                    className="text-xs"
+                    className={getErrorTextColor(indexErrors)}
+                    size="xs"
                   />
                 </div>
                 <button

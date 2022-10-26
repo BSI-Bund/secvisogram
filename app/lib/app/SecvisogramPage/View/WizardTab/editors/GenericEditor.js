@@ -12,17 +12,17 @@ import SideBarContext from '../../shared/context/SideBarContext.js'
  * @param {Array<{ instancePath: string; message?: string; type?: string}>} errors
  * @returns {string}
  */
-export function getCircleColor(errors) {
+export function getErrorTextColor(errors) {
   const errorTypes = errors.map((e) => e.type)
   return errorTypes.includes('error')
-    ? 'red'
+    ? 'text-red-600'
     : errorTypes.includes('warning')
-    ? 'yellow'
+    ? 'text-yellow-600'
     : errorTypes.includes('info')
-    ? 'blue'
+    ? 'text-blue-600'
     : errors.length
-    ? 'red' // fall back to red if there are errors but their type is not known
-    : 'green'
+    ? 'text-red-600' // fall back to red if there are errors but their type is not known
+    : 'text-green-600'
 }
 
 /**
@@ -87,7 +87,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
                 <div className="grid place-items-center px-2">
                   <FontAwesomeIcon
                     icon={faCircle}
-                    color={getCircleColor([e])}
+                    className={getErrorTextColor([e])}
                     size="xs"
                   />
                 </div>

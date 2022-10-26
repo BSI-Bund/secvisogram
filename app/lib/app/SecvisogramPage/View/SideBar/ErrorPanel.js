@@ -17,9 +17,6 @@ export default function ErrorPanel({ selectedPath }) {
 
   return (
     <>
-      <h1 className="mb-4 text-xl font-bold">
-        {errorsUnderPath.length} errors for {selectedPath.join('/')}
-      </h1>
       {errorsUnderPath.map((err, i) => {
         const color =
           err.type === 'error'
@@ -29,10 +26,7 @@ export default function ErrorPanel({ selectedPath }) {
             : 'blue'
         const colorCls = 'border-' + color + '-600 bg-' + color + '-400'
         return (
-          <div
-            key={i}
-            className={'p-2 m-1 rounded border ' + colorCls}
-          >
+          <div key={i} className={'p-2 m-1 rounded border ' + colorCls}>
             <b>{err.instancePath}</b>: {err.message}
           </div>
         )
