@@ -1,4 +1,4 @@
-import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
+import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import Hotkeys from 'react-hot-keys'
@@ -28,8 +28,6 @@ import { set } from 'lodash/fp.js'
 import DocumentEditorContext from './View/shared/DocumentEditorContext.js'
 import SideBarContext from './View/shared/context/SideBarContext.js'
 import WizardTab from './View/WizardTab.js'
-
-const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -831,20 +829,39 @@ function View({
                     )}
                   </div>
                   <div className="pr-5 text-gray-300">
-                    <a
-                      className="text-xs"
-                      href="https://github.com/secvisogram/secvisogram"
-                    >
-                      <FontAwesomeIcon className="mx-1" icon={faCodeBranch} />
-                      <span>{secvisogramVersion}</span>
-                    </a>
-                    ,{' '}
-                    <a
-                      className="text-xs"
-                      href="https://github.com/secvisogram/secvisogram/blob/main/LICENSE.md"
-                    >
-                      License: MIT
-                    </a>
+                    {`Document is ${
+                      errors.filter((e) => e.type === 'error').length === 0
+                        ? 'valid'
+                        : 'invalid: '
+                    }`}
+                    {[
+                      {
+                        type: 'error',
+                        color: 'text-red-600',
+                      },
+                      {
+                        type: 'warning',
+                        color: 'text-yellow-600',
+                      },
+                      {
+                        type: 'info',
+                        color: 'text-blue-600',
+                      },
+                    ].map(({ type, color }) => {
+                      const count = errors.filter((e) => e.type === type).length
+                      if (count) {
+                        return (
+                          <>
+                            <FontAwesomeIcon
+                              icon={faCircle}
+                              className={color}
+                              size="xs"
+                            />
+                            {` ${count} ${type}${count > 1 ? 's' : ''} `}
+                          </>
+                        )
+                      }
+                    })}
                   </div>
                 </div>
               )}
