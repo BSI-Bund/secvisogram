@@ -28,6 +28,7 @@ import { set } from 'lodash/fp.js'
 import DocumentEditorContext from './View/shared/DocumentEditorContext.js'
 import SideBarContext from './View/shared/context/SideBarContext.js'
 import WizardTab from './View/WizardTab.js'
+import AboutDialog from './View/AboutDialog.js'
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -102,6 +103,10 @@ function View({
       modal?.showModal()
     }
   }, [versionSummaryDialog])
+
+  const [aboutDialog, setAboutDialog] = React.useState(
+    /** @type {JSX.Element | null} */ (null)
+  )
 
   const [advisoryState, setAdvisoryState] = React.useState(
     /** @type {import('./shared/types.js').AdvisoryState | null} */ (
@@ -655,6 +660,7 @@ function View({
         {newDocumentDialog}
         {newExportDocumentDialog}
         {versionSummaryDialog}
+        {aboutDialog}
         <Hotkeys
           keyName={getAllKeybindings()}
           onKeyDown={keyDownHandler}
@@ -672,6 +678,20 @@ function View({
                   <button {...tabButtonProps('PREVIEW')}>Preview</button>
                   <button {...tabButtonProps('CSAF-JSON')}>
                     CSAF Document
+                  </button>
+                  <button
+                    className="text-sm font-bold p-4 h-auto text-gray-300 hover:text-white"
+                    onClick={() => {
+                      setAboutDialog(
+                        <AboutDialog
+                          onClose={() => {
+                            setAboutDialog(null)
+                          }}
+                        />
+                      )
+                    }}
+                  >
+                    About
                   </button>
                 </div>
                 {advisoryState?.type === 'ADVISORY' && (
