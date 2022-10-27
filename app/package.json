@@ -32,7 +32,6 @@
     "json-pointer": "^0.6.2",
     "json-source-map": "^0.6.1",
     "lodash": "^4.17.21",
-    "marked": "^4.1.0",
     "match-sorter": "^6.3.1",
     "monaco-editor-webpack-plugin": "^7.0.1",
     "mustache": "^4.2.0",
@@ -41,6 +40,7 @@
     "react-dom": "^17.0.2",
     "react-error-boundary": "^3.1.4",
     "react-hot-keys": "^2.7.2",
+    "react-markdown": "^8.0.3",
     "react-monaco-editor": "^0.48.0",
     "semver": "^7.3.5",
     "shallowequal": "^1.1.0"
@@ -51,6 +51,7 @@
     "@babel/preset-react": "^7.16.7",
     "@babel/register": "^7.16.9",
     "@cypress/webpack-preprocessor": "^5.11.1",
+    "@tailwindcss/typography": "^0.5.7",
     "@types/chai": "^4.3.0",
     "@types/git-revision-webpack-plugin": "^3.0.3",
     "@types/json-pointer": "^1.0.31",
