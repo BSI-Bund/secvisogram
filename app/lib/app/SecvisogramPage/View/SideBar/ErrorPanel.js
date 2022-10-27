@@ -20,13 +20,14 @@ export default function ErrorPanel({ selectedPath }) {
       {errorsUnderPath.map((err, i) => {
         const color =
           err.type === 'error'
-            ? 'red'
+            ? 'border-red-600 bg-red-400'
             : err.type === 'warning'
-            ? 'yellow'
-            : 'blue'
-        const colorCls = 'border-' + color + '-600 bg-' + color + '-400'
+            ? 'border-yellow-600 bg-yellow-400'
+            : err.type === 'info'
+            ? 'border-blue-600 bg-blue-400'
+            : ''
         return (
-          <div key={i} className={'p-2 m-1 rounded border ' + colorCls}>
+          <div key={i} className={'p-2 m-1 rounded border ' + color}>
             <b>{err.instancePath}</b>: {err.message}
           </div>
         )
