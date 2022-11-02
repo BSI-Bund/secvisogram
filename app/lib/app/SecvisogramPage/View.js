@@ -1,4 +1,4 @@
-import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
+import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import Hotkeys from 'react-hot-keys'
@@ -23,10 +23,12 @@ import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
 import useDebounce from './View/shared/useDebounce.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
-import WizzardEditorTab from './View/WizzardEditorTab.js'
 import SideBar from './View/SideBar/SideBar.js'
-
-const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
+import { set } from 'lodash/fp.js'
+import DocumentEditorContext from './View/shared/DocumentEditorContext.js'
+import SideBarContext from './View/shared/context/SideBarContext.js'
+import WizardTab from './View/WizardTab.js'
+import AboutDialog from './View/AboutDialog.js'
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -101,6 +103,10 @@ function View({
       modal?.showModal()
     }
   }, [versionSummaryDialog])
+
+  const [aboutDialog, setAboutDialog] = React.useState(
+    /** @type {JSX.Element | null} */ (null)
+  )
 
   const [advisoryState, setAdvisoryState] = React.useState(
     /** @type {import('./shared/types.js').AdvisoryState | null} */ (
@@ -617,212 +623,276 @@ function View({
       : ''
   }
 
-  return (
-    <>
-      {alert}
-      {newDocumentDialog}
-      {newExportDocumentDialog}
-      {versionSummaryDialog}
-      <Hotkeys
-        keyName={getAllKeybindings()}
-        onKeyDown={keyDownHandler}
-        filter={() => {
-          return true
-        }}
-      >
-        <div className="mx-auto w-full h-screen flex flex-col" tabIndex={0}>
-          <div>
-            <div className="flex justify-between bg-gray-700">
-              <div className="flex pl-5">
-                <button {...tabButtonProps('WIZZARD')}>Wizard</button>
-                <button {...tabButtonProps('EDITOR')}>Form Editor</button>
-                <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
-                <button {...tabButtonProps('PREVIEW')}>Preview</button>
-                <button {...tabButtonProps('CSAF-JSON')}>CSAF Document</button>
-              </div>
-              {advisoryState?.type === 'ADVISORY' && (
-                <div className="text-gray-400 p-4">
-                  Document:{' '}
-                  <span data-testid="document_tracking_id">
-                    {advisoryState.advisory.csaf.document?.title ||
-                      '<document without tracking-id>'}
-                  </span>
-                  <span data-testid="advisory_id" className="hidden">
-                    {advisoryState.advisory.advisoryId}
-                  </span>
-                  <span data-testid="advisory_revision" className="hidden">
-                    {advisoryState.advisory.revision}
-                  </span>
-                </div>
-              )}
+  const documentEditor = React.useMemo(
+    /**
+     * @returns {React.ContextType<typeof DocumentEditorContext>}
+     */
+    () => ({
+      doc: formValues.doc,
+      updateDoc(instancePath, value) {
+        onReplaceDoc(set(instancePath, value, formValues.doc))
+      },
+      errors,
+    }),
+    [formValues.doc, errors, onReplaceDoc]
+  )
 
-              {appConfig.loginAvailable &&
-                (userInfo ? (
-                  <div className="pr-5 flex text-white">
-                    <button {...tabButtonProps('DOCUMENTS')}>
-                      CSAF Documents
-                    </button>
-                    <div
-                      data-testid="user_info"
-                      className="dropdown relative hover:bg-gray-800 hover:text-white text-gray-300"
-                    >
-                      <div className="text-sm font-bold p-4 h-auto flex items-center">
-                        <svg
-                          className="w-6 h-6"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
-                        <div className="ml-4">{userInfo.preferredUsername}</div>
-                      </div>
+  const [sideBarIsOpen, setSideBarIsOpen] = React.useState(
+    /** @type {boolean} */ false
+  )
+  const [sideBarSelectedPath, setSideBarSelectedPath] = React.useState(
+    /** @type {string[]} */ ([])
+  )
+  const [sideBarContent, setSideBarContent] = React.useState('ERRORS')
+  const sideBarData = {
+    sideBarIsOpen,
+    setSideBarIsOpen,
+    sideBarSelectedPath,
+    setSideBarSelectedPath,
+    sideBarContent,
+    setSideBarContent,
+  }
+
+  return (
+    <DocumentEditorContext.Provider value={documentEditor}>
+      <SideBarContext.Provider value={sideBarData}>
+        {alert}
+        {newDocumentDialog}
+        {newExportDocumentDialog}
+        {versionSummaryDialog}
+        {aboutDialog}
+        <Hotkeys
+          keyName={getAllKeybindings()}
+          onKeyDown={keyDownHandler}
+          filter={() => {
+            return true
+          }}
+        >
+          <div className="mx-auto w-full h-screen flex flex-col" tabIndex={0}>
+            <div>
+              <div className="flex justify-between bg-gray-700">
+                <div className="flex pl-5">
+                  <button {...tabButtonProps('WIZZARD')}>Wizard</button>
+                  <button {...tabButtonProps('EDITOR')}>Form Editor</button>
+                  <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
+                  <button {...tabButtonProps('PREVIEW')}>Preview</button>
+                  <button {...tabButtonProps('CSAF-JSON')}>
+                    CSAF Document
+                  </button>
+                  <button
+                    className="text-sm font-bold p-4 h-auto text-gray-300 hover:text-white"
+                    onClick={() => {
+                      setAboutDialog(
+                        <AboutDialog
+                          onClose={() => {
+                            setAboutDialog(null)
+                          }}
+                        />
+                      )
+                    }}
+                  >
+                    About
+                  </button>
+                </div>
+                {advisoryState?.type === 'ADVISORY' && (
+                  <div className="text-gray-400 p-4">
+                    Document:{' '}
+                    <span data-testid="document_tracking_id">
+                      {advisoryState.advisory.csaf.document?.title ||
+                        '<document without tracking-id>'}
+                    </span>
+                    <span data-testid="advisory_id" className="hidden">
+                      {advisoryState.advisory.advisoryId}
+                    </span>
+                    <span data-testid="advisory_revision" className="hidden">
+                      {advisoryState.advisory.revision}
+                    </span>
+                  </div>
+                )}
+
+                {appConfig.loginAvailable &&
+                  (userInfo ? (
+                    <div className="pr-5 flex text-white">
+                      <button {...tabButtonProps('DOCUMENTS')}>
+                        CSAF Documents
+                      </button>
                       <div
-                        className="dropdown-content absolute bottom-0 right-0 z-10 bg-white text-black p-4 rounded-b shadow"
-                        style={{
-                          height: 133,
-                          marginBottom: -133,
-                        }}
+                        data-testid="user_info"
+                        className="dropdown relative hover:bg-gray-800 hover:text-white text-gray-300"
                       >
-                        <span className="w-full whitespace-nowrap text-ellipsis">
-                          <span className="text-sm font-bold">E-Mail:</span>{' '}
-                          <span className="text-sm">{userInfo.email}</span>
-                        </span>
-                        <br />
-                        <span className="w-full whitespace-nowrap text-ellipsis">
-                          <span className="text-sm font-bold">Groups:</span>{' '}
-                          <span className="text-sm">
-                            {userInfo.groups?.join(', ')}
-                          </span>
-                        </span>
-                        <hr className="my-2" />
-                        <div className="text-right">
-                          <button
-                            className="text-sm font-bold p-2 w-full h-auto bg-blue-400 hover:bg-blue-500 text-white"
-                            onClick={() => {
-                              window.location.href = appConfig.logoutUrl
-                            }}
+                        <div className="text-sm font-bold p-4 h-auto flex items-center">
+                          <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
                           >
-                            Logout
-                          </button>
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                          </svg>
+                          <div className="ml-4">
+                            {userInfo.preferredUsername}
+                          </div>
+                        </div>
+                        <div
+                          className="dropdown-content absolute bottom-0 right-0 z-10 bg-white text-black p-4 rounded-b shadow"
+                          style={{
+                            height: 133,
+                            marginBottom: -133,
+                          }}
+                        >
+                          <span className="w-full whitespace-nowrap text-ellipsis">
+                            <span className="text-sm font-bold">E-Mail:</span>{' '}
+                            <span className="text-sm">{userInfo.email}</span>
+                          </span>
+                          <br />
+                          <span className="w-full whitespace-nowrap text-ellipsis">
+                            <span className="text-sm font-bold">Groups:</span>{' '}
+                            <span className="text-sm">
+                              {userInfo.groups?.join(', ')}
+                            </span>
+                          </span>
+                          <hr className="my-2" />
+                          <div className="text-right">
+                            <button
+                              className="text-sm font-bold p-2 w-full h-auto bg-blue-400 hover:bg-blue-500 text-white"
+                              onClick={() => {
+                                window.location.href = appConfig.logoutUrl
+                              }}
+                            >
+                              Logout
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ) : (
-                  <div className="pr-5 flex items-center text-white">
-                    <button
-                      className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 text-white"
-                      onClick={() => {
-                        window.location.href = appConfig.loginUrl
-                      }}
-                    >
-                      Login
-                    </button>
-                  </div>
-                ))}
-            </div>
-            <div data-testid="number_of_validation_errors" className="hidden">
-              {errors.length}
-            </div>
-            {activeTab !== 'DOCUMENTS' && (
-              <div className="bg-gray-400 flex items-center justify-between">
-                <div className="pl-5">
-                  {(appConfig.loginAvailable &&
-                    userInfo?.groups &&
-                    canCreateDocuments(userInfo.groups)) ||
-                  (appConfig.loginAvailable && !userInfo) ||
-                  !appConfig.loginAvailable ? (
-                    <button
-                      data-testid="new_document_button"
-                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                      onClick={onNewHandler}
-                    >
-                      New
-                    </button>
-                  ) : null}
-                  {userInfo &&
-                  ((advisoryState?.type === 'ADVISORY' &&
-                    advisoryState.advisory.changeable) ||
-                    (advisoryState?.type === 'NEW_ADVISORY' &&
-                      userInfo.groups &&
-                      canCreateDocuments(userInfo.groups))) ? (
-                    <button
-                      data-testid="save_button"
-                      type="button"
-                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                      onClick={onSaveHandler}
-                    >
-                      Save
-                    </button>
-                  ) : null}
-                  <button
-                    data-testid="new_export_document_button"
-                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                    onClick={onExportHandler}
-                  >
-                    Export
-                  </button>
-                  {activeTab === 'SOURCE' && (
-                    <button
-                      ref={sortButtonRef}
-                      data-testid="sort_document_button"
-                      type="button"
-                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                    >
-                      Sort document
-                    </button>
-                  )}
-                  {appConfig.loginAvailable && userInfo && (
-                    <button
-                      data-testid="validate_button"
-                      type="button"
-                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                      onClick={async () => {
-                        doValidate()
-                      }}
-                    >
-                      Validate
-                    </button>
-                  )}
-                </div>
-                <div className="pr-5 text-gray-300">
-                  <a
-                    className="text-xs"
-                    href="https://github.com/secvisogram/secvisogram"
-                  >
-                    <FontAwesomeIcon className="mx-1" icon={faCodeBranch} />
-                    <span>{secvisogramVersion}</span>
-                  </a>
-                  ,{' '}
-                  <a
-                    className="text-xs"
-                    href="https://github.com/secvisogram/secvisogram/blob/main/LICENSE.md"
-                  >
-                    License: MIT
-                  </a>
-                </div>
+                  ) : (
+                    <div className="pr-5 flex items-center text-white">
+                      <button
+                        className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 text-white"
+                        onClick={() => {
+                          window.location.href = appConfig.loginUrl
+                        }}
+                      >
+                        Login
+                      </button>
+                    </div>
+                  ))}
               </div>
-            )}
-          </div>
-          <div
-            className="relative overflow-auto h-full bg-white"
-            key={activeTab}
-          >
-            <>
+              <div data-testid="number_of_validation_errors" className="hidden">
+                {errors.length}
+              </div>
+              {activeTab !== 'DOCUMENTS' && (
+                <div className="bg-gray-400 flex items-center justify-between">
+                  <div className="pl-5">
+                    {(appConfig.loginAvailable &&
+                      userInfo?.groups &&
+                      canCreateDocuments(userInfo.groups)) ||
+                    (appConfig.loginAvailable && !userInfo) ||
+                    !appConfig.loginAvailable ? (
+                      <button
+                        data-testid="new_document_button"
+                        className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                        onClick={onNewHandler}
+                      >
+                        New
+                      </button>
+                    ) : null}
+                    {userInfo &&
+                    ((advisoryState?.type === 'ADVISORY' &&
+                      advisoryState.advisory.changeable) ||
+                      (advisoryState?.type === 'NEW_ADVISORY' &&
+                        userInfo.groups &&
+                        canCreateDocuments(userInfo.groups))) ? (
+                      <button
+                        data-testid="save_button"
+                        type="button"
+                        className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                        onClick={onSaveHandler}
+                      >
+                        Save
+                      </button>
+                    ) : null}
+                    <button
+                      data-testid="new_export_document_button"
+                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                      onClick={onExportHandler}
+                    >
+                      Export
+                    </button>
+                    {activeTab === 'SOURCE' && (
+                      <button
+                        ref={sortButtonRef}
+                        data-testid="sort_document_button"
+                        type="button"
+                        className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                      >
+                        Sort document
+                      </button>
+                    )}
+                    {appConfig.loginAvailable && userInfo && (
+                      <button
+                        data-testid="validate_button"
+                        type="button"
+                        className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                        onClick={async () => {
+                          doValidate()
+                        }}
+                      >
+                        Validate
+                      </button>
+                    )}
+                  </div>
+                  <div className="pr-5 text-gray-300">
+                    {`Document is ${
+                      errors.filter((e) => e.type === 'error').length === 0
+                        ? 'valid'
+                        : 'invalid: '
+                    }`}
+                    {[
+                      {
+                        type: 'error',
+                        color: 'text-red-600',
+                      },
+                      {
+                        type: 'warning',
+                        color: 'text-yellow-600',
+                      },
+                      {
+                        type: 'info',
+                        color: 'text-blue-600',
+                      },
+                    ].map(({ type, color }) => {
+                      const count = errors.filter((e) => e.type === type).length
+                      if (count) {
+                        return (
+                          <>
+                            <FontAwesomeIcon
+                              icon={faCircle}
+                              className={color}
+                              size="xs"
+                            />
+                            {` ${count} ${type}${count > 1 ? 's' : ''} `}
+                          </>
+                        )
+                      }
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+            <div
+              className="relative overflow-auto h-full bg-white"
+              key={activeTab}
+            >
               {activeTab === 'WIZZARD' ? (
                 <div className="flex h-full">
-                  <WizzardEditorTab
-                    formValues={formValues}
-                    validationErrors={errors}
-                    onReplaceDoc={onReplaceDoc}
-                  />
+                  <WizardTab />
                   <SideBar />
                 </div>
               ) : activeTab === 'EDITOR' ? (
@@ -874,52 +944,52 @@ function View({
                   }}
                 />
               ) : null}
-            </>
-          </div>
-        </div>
-      </Hotkeys>
-      {toast ? (
-        <div className="fixed right-0 top-0 p-2 w-full max-w-md">
-          <div
-            role="status"
-            className={
-              (toast.color === 'green' ? 'bg-green-500' : 'bg-red-500') +
-              ' p-4  text-white rounded shadow flex items-center gap-2'
-            }
-          >
-            <div className="grow" data-testid="error_toast_message">
-              {toast.message}
             </div>
-            <button
-              className="w-6"
-              type="button"
-              onClick={() => {
-                setToast(null)
-              }}
-            >
-              <svg
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
           </div>
-        </div>
-      ) : null}
-      {isLoading ? (
-        <LoadingIndicator label="Loading data ..." />
-      ) : isSaving ? (
-        <LoadingIndicator label="Saving data ..." />
-      ) : null}
-    </>
+        </Hotkeys>
+        {toast ? (
+          <div className="fixed right-0 top-0 p-2 w-full max-w-md">
+            <div
+              role="status"
+              className={
+                (toast.color === 'green' ? 'bg-green-500' : 'bg-red-500') +
+                ' p-4  text-white rounded shadow flex items-center gap-2'
+              }
+            >
+              <div className="grow" data-testid="error_toast_message">
+                {toast.message}
+              </div>
+              <button
+                className="w-6"
+                type="button"
+                onClick={() => {
+                  setToast(null)
+                }}
+              >
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        ) : null}
+        {isLoading ? (
+          <LoadingIndicator label="Loading data ..." />
+        ) : isSaving ? (
+          <LoadingIndicator label="Saving data ..." />
+        ) : null}
+      </SideBarContext.Provider>
+    </DocumentEditorContext.Provider>
   )
 }
 

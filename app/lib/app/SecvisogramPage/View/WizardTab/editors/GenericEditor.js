@@ -1,10 +1,29 @@
 import React from 'react'
-import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
+import DocumentEditorContext from '../../shared/DocumentEditorContext.js'
 import ArrayEditor from './GenericEditor/ArrayEditor.js'
 import ObjectEditor from './GenericEditor/ObjectEditor.js'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import SideBarContext from "../../../../../shared/context/SideBarContext.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import SideBarContext from '../../shared/context/SideBarContext.js'
+
+/**
+ * utility function to get the color of circles identifying errors
+ *
+ * @param {Array<{ instancePath: string; message?: string; type?: string}>} errors
+ * @returns {string}
+ */
+export function getErrorTextColor(errors) {
+  const errorTypes = errors.map((e) => e.type)
+  return errorTypes.includes('error')
+    ? 'text-red-600'
+    : errorTypes.includes('warning')
+    ? 'text-yellow-600'
+    : errorTypes.includes('info')
+    ? 'text-blue-600'
+    : errors.length
+    ? 'text-red-600' // fall back to red if there are errors but their type is not known
+    : 'text-green-600'
+}
 
 /**
  * @param {object} props
@@ -13,7 +32,7 @@ import SideBarContext from "../../../../../shared/context/SideBarContext.js";
  * @param {string[]} props.instancePath
  */
 export default function Editor({ parentProperty, property, instancePath }) {
-  const {doc, errors, updateDoc} = React.useContext(DocumentEditorContext)
+  const { doc, errors, updateDoc } = React.useContext(DocumentEditorContext)
   const sideBarData = React.useContext(SideBarContext)
 
   const fieldErrors = errors.filter(
@@ -21,7 +40,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
   )
 
   if (property.type === 'ARRAY') {
-    return <ArrayEditor property={property} instancePath={instancePath}/>
+    return <ArrayEditor property={property} instancePath={instancePath} />
   } else if (property.type === 'OBJECT') {
     return (
       <ObjectEditor
@@ -44,13 +63,13 @@ export default function Editor({ parentProperty, property, instancePath }) {
           </div>
           <button
             type="button"
-            className="w-9 h-9 flex-none hover:bg-gray-300 rounded m-1"
+            className="w-9 h-9 flex-none hover:bg-blue-300 m-1"
             onClick={() => {
               sideBarData.setSideBarIsOpen(true)
               sideBarData.setSideBarSelectedPath(instancePath)
             }}
           >
-            <FontAwesomeIcon icon={faInfoCircle} size="xs"/>
+            <FontAwesomeIcon icon={faInfoCircle} size="xs" />
           </button>
         </div>
         <input
@@ -68,7 +87,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
                 <div className="grid place-items-center px-2">
                   <FontAwesomeIcon
                     icon={faCircle}
-                    color="red"
+                    className={getErrorTextColor([e])}
                     size="xs"
                   />
                 </div>
