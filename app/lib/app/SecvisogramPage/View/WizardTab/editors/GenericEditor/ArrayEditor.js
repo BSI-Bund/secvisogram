@@ -15,7 +15,6 @@ import { getErrorTextColor } from '../GenericEditor.js'
 export default function ArrayEditor({ property, instancePath }) {
   const { doc } = React.useContext(DocumentEditorContext)
   const { selectedPath } = React.useContext(WizardContext)
-  const selectedSubPath = selectedPath.slice(instancePath.length)
 
   const value = instancePath.reduce((value, pathSegment) => {
     return (value ?? {})[pathSegment]
@@ -24,6 +23,23 @@ export default function ArrayEditor({ property, instancePath }) {
   const childProperty =
     /** @type {NonNullable<typeof property.metaInfo.arrayType>} */ (
       property.metaInfo.arrayType
+    )
+  const recursionProperty =
+    property.metaInfo.arrayType?.metaInfo.propertyList?.find(
+      (p) => p.type === 'RECURSION'
+    )
+  const menuStructure = getArrayMenuStructure(
+    property,
+    recursionProperty ?? null,
+    sanitizedValue
+  )
+  const selectedSubPath = menuStructure
+    .slice()
+    .sort((a, z) => z.length - a.length)
+    .find((menuPath) =>
+      menuPath.every(
+        (seg, i) => seg === selectedPath.slice(instancePath.length)[i]
+      )
     )
 
   return (
@@ -35,16 +51,47 @@ export default function ArrayEditor({ property, instancePath }) {
           property={property}
         />
       </div>
-      {selectedSubPath.length ? (
+      {selectedSubPath ? (
         <GenericEditor
           key={selectedPath.join('.')}
           parentProperty={property}
           property={childProperty}
-          instancePath={selectedPath}
+          instancePath={[...instancePath, ...selectedSubPath]}
         />
       ) : null}
     </>
   )
+}
+
+/**
+ * @param {import('../../shared/types').Property} property
+ * @param {import('../../shared/types').Property | null} recursionProperty
+ * @param {any[]} value
+ * @param {string[]} instancePath
+ * @returns {string[][]}
+ */
+function getArrayMenuStructure(
+  property,
+  recursionProperty,
+  value,
+  instancePath = []
+) {
+  return Array.isArray(value)
+    ? value.flatMap((item, i) => {
+        const itemInstancePath = [...instancePath, String(i)]
+        return [
+          itemInstancePath,
+          ...(recursionProperty
+            ? getArrayMenuStructure(
+                property,
+                recursionProperty,
+                item[recursionProperty.key],
+                [...itemInstancePath, recursionProperty.key]
+              )
+            : []),
+        ]
+      })
+    : []
 }
 
 /**

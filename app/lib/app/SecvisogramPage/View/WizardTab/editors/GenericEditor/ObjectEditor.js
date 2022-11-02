@@ -1,10 +1,10 @@
+import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { GenericEditor } from '../../editors.js'
-import WizardContext from '../../../shared/context/WizardContext.js'
-import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import SideBarContext from '../../../shared/context/SideBarContext.js'
+import WizardContext from '../../../shared/context/WizardContext.js'
 import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
+import { GenericEditor } from '../../editors.js'
 import { getErrorTextColor } from '../GenericEditor.js'
 
 /**
@@ -25,6 +25,15 @@ export default function ObjectEditor({
   const complexProperties = property.metaInfo.propertyList?.filter((p) =>
     ['OBJECT', 'ARRAY'].includes(p.type)
   )
+  const menuStructure = getObjectMenuStructure(property)
+  const selectedSubPath = menuStructure
+    .slice()
+    .sort((a, z) => z.length - a.length)
+    .find((menuPath) =>
+      menuPath.every(
+        (seg, i) => seg === selectedPath.slice(instancePath.length)[i]
+      )
+    )
 
   /**
    * @param {string[]} path
@@ -38,38 +47,11 @@ export default function ObjectEditor({
       )
     }, /** @type {typeof property | null} */ (property))
 
-  const findSelectedProperty = () => {
-    const menuDepth = property.addMenuItemsForChildObjects ? 2 : 1
-    const selectedSubPath = selectedPath.slice(instancePath.length)
-
-    /** @type {import('../../shared/types').Property | null} */
-    let selectedProperty = null
-    /** @type {string[]} */
-    const sanitizedSelectedSubPath = []
-    for (const [i, pathSegment] of selectedSubPath.entries()) {
-      const nextProperty =
-        i + 1 > menuDepth
-          ? null
-          : resolveSubProperty(selectedSubPath.slice(0, i + 1))
-
-      // As soon as we find a property that is not an object or an array
-      // we reached the limit of the selectable property in this menu
-      if (
-        !nextProperty ||
-        (nextProperty.type !== 'OBJECT' && nextProperty.type !== 'ARRAY')
-      ) {
-        break
-      }
-      sanitizedSelectedSubPath.push(pathSegment)
-      selectedProperty = nextProperty
-    }
-    return { selectedProperty, selectedSubPath: sanitizedSelectedSubPath }
-  }
-
-  const { selectedProperty, selectedSubPath } = findSelectedProperty()
+  const selectedProperty =
+    selectedSubPath && resolveSubProperty(selectedSubPath)
 
   const renderComplexEditor = () => {
-    if (!selectedSubPath.length) return null
+    if (!selectedSubPath) return null
     if (!selectedProperty) return null
     return (
       <GenericEditor
@@ -88,9 +70,9 @@ export default function ObjectEditor({
           <GenericEditor
             key={property.key}
             property={property}
-            parentProperty={resolveSubProperty(selectedSubPath)}
+            parentProperty={resolveSubProperty(selectedSubPath ?? [])}
             instancePath={instancePath
-              .concat(selectedSubPath)
+              .concat(selectedSubPath ?? [])
               .concat([property.key])}
           />
         ))}
@@ -109,13 +91,34 @@ export default function ObjectEditor({
               <Menu instancePath={instancePath} property={property} />
             </div>
           )}
-          {selectedSubPath.length
-            ? renderComplexEditor()
-            : renderFieldsEditor()}
+          {selectedSubPath ? renderComplexEditor() : renderFieldsEditor()}
         </>
       )}
     </>
   )
+}
+
+/**
+ * @param {import('../../shared/types').Property} property
+ * @param {string[]} [instancePath]
+ */
+export function getObjectMenuStructure(property, instancePath = []) {
+  /** @type {string[][]} */
+  const menuStructure =
+    property.metaInfo.propertyList?.flatMap((childProperty) => {
+      return [
+        [...instancePath, childProperty.key],
+        ...(childProperty.type === 'OBJECT' &&
+        property.addMenuItemsForChildObjects
+          ? getObjectMenuStructure(childProperty, [
+              ...instancePath,
+              childProperty.key,
+            ])
+          : []),
+      ]
+    }) ?? []
+
+  return menuStructure
 }
 
 /**
@@ -205,6 +208,10 @@ function Menu({ level = 0, property, instancePath }) {
                   <button
                     type="button"
                     className="px-2 w-full text-left hover:bg-blue-300"
+                    data-testid={`menu_entry-/${[
+                      ...instancePath,
+                      childProperty.key,
+                    ].join('/')}`}
                     onClick={() => {
                       setSelectedPath([...instancePath, childProperty.key])
                     }}
