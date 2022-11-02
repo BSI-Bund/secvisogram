@@ -89,7 +89,7 @@ export default function FormEditorTab({
                   Validation <br /> Errors:
                 </h2>
               </div>
-              <div className="mx-2 flex-grow overflow-auto h-full">
+              <div className="mx-2 grow overflow-auto h-full">
                 {errors.map((error, i) => (
                   <div key={i}>
                     <a

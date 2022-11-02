@@ -690,12 +690,12 @@ function View({
                           marginBottom: -133,
                         }}
                       >
-                        <span className="w-full whitespace-nowrap overflow-ellipsis">
+                        <span className="w-full whitespace-nowrap text-ellipsis">
                           <span className="text-sm font-bold">E-Mail:</span>{' '}
                           <span className="text-sm">{userInfo.email}</span>
                         </span>
                         <br />
-                        <span className="w-full whitespace-nowrap overflow-ellipsis">
+                        <span className="w-full whitespace-nowrap text-ellipsis">
                           <span className="text-sm font-bold">Groups:</span>{' '}
                           <span className="text-sm">
                             {userInfo.groups?.join(', ')}
@@ -823,7 +823,7 @@ function View({
                     validationErrors={errors}
                     onReplaceDoc={onReplaceDoc}
                   />
-                  <SideBar/>
+                  <SideBar />
                 </div>
               ) : activeTab === 'EDITOR' ? (
                 <FormEditorTab
@@ -887,7 +887,7 @@ function View({
               ' p-4  text-white rounded shadow flex items-center gap-2'
             }
           >
-            <div className="flex-grow" data-testid="error_toast_message">
+            <div className="grow" data-testid="error_toast_message">
               {toast.message}
             </div>
             <button
