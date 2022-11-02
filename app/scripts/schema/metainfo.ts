@@ -398,7 +398,6 @@ export function extendWithMetaInfo2(rootProperty: MetaProperty, propsToAdd) {
 
     if (property.type === MetaDataType.OBJECT || property.type === MetaDataType.STRING ||
       property.type === MetaDataType.DATETIME) {
-      const object = property.metaInfo as MetaInfoObject;
       const fullPropName = property.fullName.join('.');
       const add_prop = propsToAdd[fullPropName];
       if (add_prop) {
@@ -408,7 +407,20 @@ export function extendWithMetaInfo2(rootProperty: MetaProperty, propsToAdd) {
         if (add_prop['string_is_multiline']){
           property['string_is_multiline'] = add_prop['string_is_multiline'];
         }
+        if (add_prop['user_documentation']){
+          property['user_documentation'] = add_prop['user_documentation'];
+        }
       }
+    } else if (property.type === MetaDataType.ARRAY) {
+      const fullPropName = property.fullName.join('.')+'[]';
+      const add_prop = propsToAdd[fullPropName];
+      if (add_prop['relevance_levels']){
+        property['relevance_levels'] = add_prop['relevance_levels'];
+      }
+      if (add_prop['user_documentation']){
+        property['user_documentation'] = add_prop['user_documentation'];
+      }
+
     }
   }
 
