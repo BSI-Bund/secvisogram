@@ -69,8 +69,7 @@ export default function PreviewTab({
               }
               ref={iframeRef}
             />
-            <div className="absolute top-0 right-0 bottom-0 left-0">
-            </div>
+            <div className="absolute top-0 right-0 bottom-0 left-0"></div>
           </div>
         ) : (
           <div className={'relative ' + (showErrors ? 'h-4/5' : 'h-full')}>
@@ -95,7 +94,7 @@ export default function PreviewTab({
                 Validation <br /> Errors:
               </h2>
             </div>
-            <div className="mx-2 flex-grow overflow-auto h-full">
+            <div className="mx-2 grow overflow-auto h-full">
               {errors.map((error, i) => (
                 <div key={i}>
                   <b>{error.instancePath}</b>: {error.message}

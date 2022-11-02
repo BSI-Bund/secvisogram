@@ -59,7 +59,7 @@ export default function CsafTab({ stripResult, onStrip }) {
                 Empty or invalid <br /> elements removed:
               </h2>
             </div>
-            <div className="mx-2 flex-grow overflow-auto h-full">
+            <div className="mx-2 grow overflow-auto h-full">
               {stripResult?.strippedPaths.map((strippedPath, i) => (
                 <div key={i}>
                   <b>{strippedPath.instancePath}</b>: {strippedPath.message}
