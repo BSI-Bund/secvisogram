@@ -68,6 +68,7 @@ export default function ArrayEditor({ property, instancePath }) {
                   Item {i + 1}
                 </button>
                 <button
+                  data-testid={[...instancePath, i].join('-') + '-infoButton'}
                   type="button"
                   className="w-9 h-9 flex-none hover:bg-blue-300"
                   onClick={() => {

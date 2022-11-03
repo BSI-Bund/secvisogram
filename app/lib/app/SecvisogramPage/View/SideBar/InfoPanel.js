@@ -33,7 +33,7 @@ export default function InfoPanel({ selectedPath }) {
   useEffect(() => updateMarkdownText(getMarkdownPath()), [selectedPath])
 
   return (
-    <article className="prose">
+    <article className="prose" data-testid="infoPanel-content">
       <ReactMarkdown
         components={{
           h1: 'strong',

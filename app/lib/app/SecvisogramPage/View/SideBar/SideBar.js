@@ -41,6 +41,7 @@ export default function SideBar() {
             ].map(({ targetString, icon }) => (
               <div key={targetString} className="w-full">
                 <button
+                  data-testid={`sideBar-${targetString}-button`}
                   className={
                     'p-3 w-full ' +
                     (sideBarData.sideBarContent === targetString

@@ -212,6 +212,10 @@ function Menu({ level = 0, property, instancePath }) {
                     {childProperty.title}
                   </button>
                   <button
+                    data-testid={
+                      [...instancePath, childProperty.key].join('-') +
+                      '-infoButton'
+                    }
                     type="button"
                     className="w-9 h-9 flex-none hover:bg-blue-300"
                     onClick={() => {
