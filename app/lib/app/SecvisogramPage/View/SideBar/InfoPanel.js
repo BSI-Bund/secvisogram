@@ -14,11 +14,13 @@ export default function InfoPanel({ selectedPath }) {
   const [mdText, setMdText] = React.useState('')
 
   const updateMarkdownText = (/** @type string */ mdPath) => {
-    fetch(mdPath)
-      .then((resp) => resp.text())
-      .then((mdText) => {
-        setMdText(mdText)
-      })
+    if (mdPath) {
+      fetch(mdPath)
+        .then((resp) => resp.text())
+        .then((mdText) => {
+          setMdText(mdText)
+        })
+    }
   }
 
   useEffect(() => {
