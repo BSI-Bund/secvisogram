@@ -10,17 +10,17 @@
   "document": {
     "propertyOrder": [
       "title",
-      "csaf_version",
-      "acknowledgments",
+      "publisher",
+      "tracking",
+      "notes",
+      "references",
       "aggregate_severity",
+      "acknowledgments",
+      "csaf_version",
       "category",
       "distribution",
       "lang",
-      "notes",
-      "publisher",
-      "references",
-      "source_lang",
-      "tracking"
+      "source_lang"
     ]
   },
   "document.acknowledgments": {
@@ -33,8 +33,8 @@
   },
   "document.aggregate_severity": {
     "propertyOrder": [
-      "text",
-      "namespace"
+      "namespace",
+      "text"
     ]
   },
   "document.distribution": {
