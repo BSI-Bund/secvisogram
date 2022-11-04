@@ -44,7 +44,25 @@ test('create default additional properties', () => {
     csafJsonSchema,
     new Map()
   )
-  const additionalProperties = createDefaultAdditionalProperties(rootProperty)
+
+  const metaInfo2Data = {
+    "document.notes": {
+      "user_documentation": {
+        "specification": "docs/user/document/notes-spec.en.md",
+        "usage": { "generic": "docs/user/document/notes-usage.en.md" }
+      },
+      "field_title": "DocumentNotesTitle",
+      "field_description": "DocumentNotesDescription",
+      "relevance_levels": {
+        "csaf_base": "want_to_have",
+        "csaf_security_incident_response": "mandatory",
+        "csaf_informational_advisory": "mandatory",
+        "csaf_security_advisory": "best_practice",
+        "csaf_vex": "want_to_have"
+      }
+    },
+  }
+  const additionalProperties = createDefaultAdditionalProperties(rootProperty, metaInfo2Data)
   expect(additionalProperties['document.notes']['propertyOrder']).toEqual([
     'audience',
     'category',
@@ -59,6 +77,10 @@ test('create default additional properties', () => {
     'text',
     'title',
   ])
+  expect(readAdditionalProperties['document.notes']['user_documentation']).toEqual({
+    "specification": "docs/user/document/notes-spec.en.md",
+    "usage": { "generic": "docs/user/document/notes-usage.en.md"}
+  })
 })
 
 function createMetaPropertyString(

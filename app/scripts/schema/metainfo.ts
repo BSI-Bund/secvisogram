@@ -25,6 +25,14 @@ export enum MetaDataType {
   RECURSION = 'RECURSION',
 }
 
+export enum UiTypeEnum {
+
+  ENUM = 'ENUM',
+  MULTI_LINE = 'MULTI_LINE'
+}
+
+type UiType = MetaDataType | UiTypeEnum;
+
 export interface MetaProperty {
 
   key: string
@@ -301,7 +309,7 @@ export function convertSchemaPropToMeta(
 }
 
 /**
- * Iterate recursive over the property tree and call the handler for every node
+ * Iterate recursive over the schema property tree and call the handler for every node
  * @param root start node
  * @param handler handler
  */
@@ -324,18 +332,67 @@ function iterateOverProperties(root: MetaProperty, handler: MetaPropertyHandler)
  * Create the default additional properties for every object node on the property tree.
  * Create a propertyOrder for every object in the tree with all sub properties of the object
  * @param rootProperty root of the property tree
+ * @param metaInfo2Data the metaData2.json
  */
-export function createDefaultAdditionalProperties(rootProperty: MetaProperty) {
+export function createDefaultAdditionalProperties(rootProperty: MetaProperty, metaInfo2Data) {
 
   const additionalProperties = {};
 
+  function detectUiType (property: MetaProperty, string_is_multiline) {
+
+    let uiType: UiType = property.type;
+    if (property.type === MetaDataType.STRING) {
+      const metaInfo = property.metaInfo as MetaInfoString;
+      if (metaInfo.enumValues && metaInfo.enumValues.length > 0) {
+        uiType = UiTypeEnum.ENUM;
+      } else if (string_is_multiline) {
+        uiType = UiTypeEnum.MULTI_LINE;
+      }
+    }
+    return uiType;
+  }
+
   function createPropertiesHandler(property: MetaProperty): void {
+
+
     if (property.type === MetaDataType.OBJECT) {
       const object = property.metaInfo as MetaInfoObject;
       const properties = object.propertyList
         .map(metaProp => metaProp.key);
       const fullPropName = property.fullName.join('.');
-      additionalProperties[fullPropName] = {propertyOrder: properties};
+      const metaInfo2Prop = metaInfo2Data[fullPropName];
+      const newProperty = {propertyOrder: properties, uiType: property.type};
+      if (metaInfo2Prop && metaInfo2Prop['relevance_levels']){
+        newProperty['relevance_levels'] = metaInfo2Prop['relevance_levels'];
+      }
+      if (metaInfo2Prop && metaInfo2Prop['user_documentation']){
+        newProperty['user_documentation'] = metaInfo2Prop['user_documentation'];
+      }
+      additionalProperties[fullPropName] = newProperty;
+    } else if (property.type === MetaDataType.ARRAY) {
+      const fullPropName = property.fullName.join('.')+'[]';
+      const metaInfo2Prop = metaInfo2Data[fullPropName];
+      const newProperty = { uiType: property.type};
+      if (metaInfo2Prop && metaInfo2Prop['relevance_levels']){
+        newProperty['relevance_levels'] = metaInfo2Prop['relevance_levels'];
+      }
+      if (metaInfo2Prop && metaInfo2Prop['user_documentation']){
+        newProperty['user_documentation'] = metaInfo2Prop['user_documentation'];
+      }
+      additionalProperties[fullPropName] = newProperty;
+    } else if (property.type === MetaDataType.STRING || property.type === MetaDataType.URI
+      || property.type === MetaDataType.DATETIME) {
+      const fullPropName = property.fullName.join('.');
+      const metaInfo2Prop = metaInfo2Data[fullPropName];
+      const stringIsMultiline = metaInfo2Prop ? metaInfo2Prop['string_is_multiline'] : false;
+      const newProperty = {uiType: detectUiType(property, stringIsMultiline)};
+      if (metaInfo2Prop && metaInfo2Prop['relevance_levels']){
+        newProperty['relevance_levels'] = metaInfo2Prop['relevance_levels'];
+      }
+      if (metaInfo2Prop && metaInfo2Prop['user_documentation']){
+        newProperty['user_documentation'] = metaInfo2Prop['user_documentation'];
+      }
+      additionalProperties[fullPropName] = newProperty;
     }
   }
 
@@ -367,6 +424,7 @@ export function sortPropertiesBy( objectMetaInfo: MetaInfoObject, propertyOrder:
 /**
  * Extends every object in the tree with the properties defined on the additional_props JSON
  * @param rootProperty root node of the property tree
+ * @param propsToAdd additional properties to add
  */
 export function extendWithAdditionalInfo(rootProperty: MetaProperty, propsToAdd) {
 
@@ -380,7 +438,37 @@ export function extendWithAdditionalInfo(rootProperty: MetaProperty, propsToAdd)
         if (add_prop['addMenuItemsForChildObjects']){
           property['addMenuItemsForChildObjects'] = add_prop['addMenuItemsForChildObjects'];
         }
+        if (add_prop['relevance_levels']){
+          property['relevance_levels'] = add_prop['relevance_levels'];
+        }
+        if (add_prop['user_documentation']){
+          property['user_documentation'] = add_prop['user_documentation'];
+        }
+        property['uiType'] = (add_prop &&  add_prop['uiType']) ? add_prop['uiType'] : property.type;
      }
+    } else if (property.type === MetaDataType.ARRAY) {
+      const fullPropName = property.fullName.join('.')+'[]';
+      const add_prop = propsToAdd[fullPropName];
+      if (add_prop && add_prop['relevance_levels']){
+        property['relevance_levels'] = add_prop['relevance_levels'];
+      }
+      if (add_prop && add_prop['user_documentation']){
+        property['user_documentation'] = add_prop['user_documentation'];
+      }
+      property['uiType'] = (add_prop &&  add_prop['uiType']) ? add_prop['uiType'] : property.type;
+    } else if (property.type === MetaDataType.STRING ||
+      property.type === MetaDataType.DATETIME || property.type === MetaDataType.URI) {
+      const fullPropName = property.fullName.join('.');
+      const add_prop = propsToAdd[fullPropName];
+      if (add_prop) {
+        if (add_prop['relevance_levels']) {
+          property['relevance_levels'] = add_prop['relevance_levels'];
+        }
+        if (add_prop['user_documentation']) {
+          property['user_documentation'] = add_prop['user_documentation'];
+        }
+      }
+      property['uiType'] = (add_prop &&  add_prop['uiType']) ? add_prop['uiType'] : property.type;
     }
   }
 
@@ -414,13 +502,12 @@ export function extendWithMetaInfo2(rootProperty: MetaProperty, propsToAdd) {
     } else if (property.type === MetaDataType.ARRAY) {
       const fullPropName = property.fullName.join('.')+'[]';
       const add_prop = propsToAdd[fullPropName];
-      if (add_prop['relevance_levels']){
+      if (add_prop && add_prop['relevance_levels']){
         property['relevance_levels'] = add_prop['relevance_levels'];
       }
-      if (add_prop['user_documentation']){
+      if (add_prop && add_prop['user_documentation']){
         property['user_documentation'] = add_prop['user_documentation'];
       }
-
     }
   }
 
@@ -447,9 +534,9 @@ function writeMetadataJson(rootProperty: MetaProperty) {
  * generate the list of the default additional properties as JSON file
  * @param rootProperty
  */
-function writeDefaultAdditionalProperties(rootProperty: MetaProperty) {
+function writeDefaultAdditionalProperties(rootProperty: MetaProperty, propsToAdd) {
 
-  const additionalProperties = createDefaultAdditionalProperties(rootProperty);
+  const additionalProperties = createDefaultAdditionalProperties(rootProperty, propsToAdd);
   const jsonOrderMapping = JSON.stringify(additionalProperties);
   fs.writeFile('./generated/additionalProperties.json', jsonOrderMapping, 'utf8', err => {
     if (err) {
@@ -483,6 +570,7 @@ function writeExtendedMetaInfoAsJavascript(rootProperty: MetaProperty) {
 
 export function convertCsafSchema() {
 
+  // create property tree from schema
   const rootProperty: MetaProperty | null = convertSchemaPropToMeta('', [], csaf_json_schema, true, csaf_json_schema, new Map());
 
   const fs = require('fs')
@@ -490,11 +578,12 @@ export function convertCsafSchema() {
     fs.mkdirSync('./generated');
   }
 
+  // ONLY FOR INITIAL CREATION: create base additionalProperties.json file
   writeMetadataJson(rootProperty);
-  writeDefaultAdditionalProperties(rootProperty);
+  writeDefaultAdditionalProperties(rootProperty, meta_data2);
 
+  // extend property tree with information from additionalProperties.json
   extendWithAdditionalInfo(rootProperty, additional_props);
-  extendWithMetaInfo2(rootProperty, meta_data2);
   writeExtendedMetaInfoAsJavascript(rootProperty);
 }
 
