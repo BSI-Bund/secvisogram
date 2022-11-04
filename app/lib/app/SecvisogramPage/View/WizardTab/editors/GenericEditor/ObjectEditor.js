@@ -18,7 +18,8 @@ export default function ObjectEditor({
   property,
   instancePath,
 }) {
-  const { selectedPath } = React.useContext(WizardContext)
+  const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
+  const { errors } = React.useContext(DocumentEditorContext)
   const fieldProperties = property.metaInfo.propertyList?.filter(
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
   )
@@ -26,14 +27,25 @@ export default function ObjectEditor({
     ['OBJECT', 'ARRAY'].includes(p.type)
   )
   const menuStructure = getObjectMenuStructure(property)
+  const menuDepth = Math.max(...menuStructure.map((p) => p.instancePath.length))
   const selectedSubPath = menuStructure
     .slice()
+    .map((p) => p.instancePath)
     .sort((a, z) => z.length - a.length)
     .find((menuPath) =>
       menuPath.every(
         (seg, i) => seg === selectedPath.slice(instancePath.length)[i]
       )
     )
+  const sideBarData = React.useContext(SideBarContext)
+
+  const fieldsErrors = errors.filter(
+    (e) =>
+      e.instancePath.startsWith('/' + instancePath.join('/')) &&
+      e.instancePath.split('/').length === instancePath.length + 2
+  )
+
+  const selectedMenuPath = selectedPath.slice(instancePath.length)
 
   /**
    * @param {string[]} path
@@ -88,7 +100,106 @@ export default function ObjectEditor({
         <>
           {parentProperty?.addMenuItemsForChildObjects ? null : (
             <div className="flex bg-gray-50 border-r border-l border-solid border-gray-400 wizard-menu-shadow mr-2">
-              <Menu instancePath={instancePath} property={property} />
+              <ul className="mb-4">
+                {fieldProperties?.length ? (
+                  <li
+                    className={
+                      (!selectedMenuPath.length ? 'bg-blue-400' : '') +
+                      ' border-b border-gray-300 flex w-full'
+                    }
+                  >
+                    <div className="grid place-items-center px-2">
+                      <FontAwesomeIcon
+                        icon={faCircle}
+                        className={getErrorTextColor(fieldsErrors)}
+                        size="xs"
+                      />
+                    </div>
+                    <button
+                      className="italic text-left w-full px-2 h-9 hover:bg-blue-300"
+                      onClick={() => {
+                        setSelectedPath(instancePath)
+                      }}
+                    >
+                      Fields
+                    </button>
+                  </li>
+                ) : null}
+                {menuStructure.map((menuItem) => {
+                  const childErrors = errors.filter((e) =>
+                    e.instancePath.startsWith(
+                      '/' + menuItem.instancePath.join('/')
+                    )
+                  )
+
+                  return (
+                    <React.Fragment key={menuItem.instancePath.join('.')}>
+                      <li
+                        className={`bg-gray-200 ${
+                          menuDepth > 1 && menuItem.instancePath.length === 1
+                            ? 'bg-gray-300'
+                            : ''
+                        }`}
+                        style={{
+                          marginLeft: (menuItem.instancePath.length - 1) * 10,
+                        }}
+                      >
+                        <div
+                          className={
+                            (selectedSubPath &&
+                            menuItem.instancePath.every(
+                              (p, i) => selectedSubPath[i] === p
+                            )
+                              ? 'bg-blue-400'
+                              : '') + ' border-b border-gray-300 flex w-full'
+                          }
+                        >
+                          <div className="grid place-items-center px-2">
+                            <FontAwesomeIcon
+                              icon={faCircle}
+                              className={getErrorTextColor(childErrors)}
+                              size="xs"
+                            />
+                          </div>
+                          <button
+                            type="button"
+                            className="px-2 w-full text-left hover:bg-blue-300"
+                            data-testid={`menu_entry-/${instancePath
+                              .concat(menuItem.instancePath)
+                              .join('/')}`}
+                            onClick={() => {
+                              setSelectedPath([
+                                ...instancePath,
+                                ...menuItem.instancePath,
+                              ])
+                            }}
+                          >
+                            {menuItem.title}
+                          </button>
+                          <button
+                            data-testid={
+                              [...instancePath, ...menuItem.instancePath].join(
+                                '-'
+                              ) + '-infoButton'
+                            }
+                            type="button"
+                            className="w-9 h-9 flex-none hover:bg-blue-300"
+                            onClick={() => {
+                              sideBarData.setSideBarIsOpen(true)
+                              sideBarData.setSideBarSelectedPath([
+                                ...instancePath,
+                                ...menuItem.instancePath,
+                              ])
+                            }}
+                          >
+                            <FontAwesomeIcon icon={faInfoCircle} size="xs" />
+                          </button>
+                        </div>
+                      </li>
+                    </React.Fragment>
+                  )
+                })}
+              </ul>
             </div>
           )}
           {selectedSubPath ? renderComplexEditor() : renderFieldsEditor()}
@@ -103,11 +214,18 @@ export default function ObjectEditor({
  * @param {string[]} [instancePath]
  */
 export function getObjectMenuStructure(property, instancePath = []) {
-  /** @type {string[][]} */
+  /** @type {Array<{ instancePath: string[]; title: string }>} */
   const menuStructure =
     property.metaInfo.propertyList?.flatMap((childProperty) => {
       return [
-        [...instancePath, childProperty.key],
+        ...(childProperty.type === 'OBJECT' || childProperty.type === 'ARRAY'
+          ? [
+              {
+                instancePath: [...instancePath, childProperty.key],
+                title: childProperty.title,
+              },
+            ]
+          : []),
         ...(childProperty.type === 'OBJECT' &&
         property.addMenuItemsForChildObjects
           ? getObjectMenuStructure(childProperty, [
@@ -119,135 +237,4 @@ export function getObjectMenuStructure(property, instancePath = []) {
     }) ?? []
 
   return menuStructure
-}
-
-/**
- * @param {object} props
- * @param {import('../../shared/types').Property} props.property
- * @param {string[]} props.instancePath
- * @param {number} [props.level]
- */
-function Menu({ level = 0, property, instancePath }) {
-  const { errors } = React.useContext(DocumentEditorContext)
-  const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
-  const sideBarData = React.useContext(SideBarContext)
-  const fieldProperties = property.metaInfo.propertyList?.filter(
-    (p) => !['OBJECT', 'ARRAY'].includes(p.type)
-  )
-
-  const fieldsErrors = errors.filter(
-    (e) =>
-      e.instancePath.startsWith('/' + instancePath.join('/')) &&
-      e.instancePath.split('/').length === instancePath.length + 2
-  )
-
-  const selectedMenuPath = selectedPath.slice(instancePath.length)
-  const { addMenuItemsForChildObjects } = property
-
-  return (
-    <ul className="mb-4">
-      {property.type === 'OBJECT' && fieldProperties?.length && level === 0 ? (
-        <li
-          className={
-            (!selectedMenuPath.length ? 'bg-blue-400' : '') +
-            ' border-b border-gray-300 flex w-full'
-          }
-          style={{ marginLeft: level * 10 }}
-        >
-          <div className="grid place-items-center px-2">
-            <FontAwesomeIcon
-              icon={faCircle}
-              className={getErrorTextColor(fieldsErrors)}
-              size="xs"
-            />
-          </div>
-          <button
-            className="italic text-left w-full px-2 h-9 hover:bg-blue-300"
-            onClick={() => {
-              setSelectedPath(instancePath)
-            }}
-          >
-            Fields
-          </button>
-        </li>
-      ) : null}
-      {property.metaInfo.propertyList
-        ?.filter((p) => ['OBJECT', 'ARRAY'].includes(p.type))
-        .map((_property) => {
-          const childProperty =
-            /** @type {import('../../shared/types').Property} */ (_property)
-          const childErrors = errors.filter((e) =>
-            e.instancePath.startsWith(
-              '/' + [...instancePath, childProperty.key].join('/')
-            )
-          )
-          return (
-            <React.Fragment key={childProperty.key}>
-              <li
-                className={`bg-gray-200 ${
-                  level === 0 && property.addMenuItemsForChildObjects
-                    ? 'bg-gray-300'
-                    : ''
-                }`}
-                style={{ marginLeft: level * 10 }}
-              >
-                <div
-                  className={
-                    (selectedMenuPath[0] === childProperty.key
-                      ? 'bg-blue-400'
-                      : '') + ' border-b border-gray-300 flex w-full'
-                  }
-                >
-                  <div className="grid place-items-center px-2">
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      className={getErrorTextColor(childErrors)}
-                      size="xs"
-                    />
-                  </div>
-                  <button
-                    type="button"
-                    className="px-2 w-full text-left hover:bg-blue-300"
-                    data-testid={`menu_entry-/${[
-                      ...instancePath,
-                      childProperty.key,
-                    ].join('/')}`}
-                    onClick={() => {
-                      setSelectedPath([...instancePath, childProperty.key])
-                    }}
-                  >
-                    {childProperty.title}
-                  </button>
-                  <button
-                    data-testid={
-                      [...instancePath, childProperty.key].join('-') +
-                      '-infoButton'
-                    }
-                    type="button"
-                    className="w-9 h-9 flex-none hover:bg-blue-300"
-                    onClick={() => {
-                      sideBarData.setSideBarIsOpen(true)
-                      sideBarData.setSideBarSelectedPath([
-                        ...instancePath,
-                        childProperty.key,
-                      ])
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faInfoCircle} size="xs" />
-                  </button>
-                </div>
-
-                {addMenuItemsForChildObjects ? (
-                  <Menu
-                    level={level + 1}
-                    property={childProperty}
-                    instancePath={[...instancePath, childProperty.key]}
-                  />
-                ) : null}
-              </li>
-            </React.Fragment>
-          )
-        })}
-    </ul>
-  )
 }

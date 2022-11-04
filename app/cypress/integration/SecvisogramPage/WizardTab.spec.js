@@ -48,25 +48,62 @@ describe('SecvisogramPage / WizardTab', function () {
           )
         )
       ).to.deep.equal([
-        ['document'],
-        ['document', 'acknowledgments'],
-        ['document', 'aggregate_severity'],
-        ['document', 'category'],
-        ['document', 'csaf_version'],
-        ['document', 'distribution'],
-        ['document', 'lang'],
-        ['document', 'notes'],
-        ['document', 'publisher'],
-        ['document', 'references'],
-        ['document', 'source_lang'],
-        ['document', 'title'],
-        ['document', 'tracking'],
-        ['product_tree'],
-        ['product_tree', 'branches'],
-        ['product_tree', 'full_product_names'],
-        ['product_tree', 'product_groups'],
-        ['product_tree', 'relationships'],
-        ['vulnerabilities'],
+        {
+          instancePath: ['document'],
+          title: 'Document level meta-data',
+        },
+        {
+          instancePath: ['document', 'acknowledgments'],
+          title: 'List of acknowledgments',
+        },
+        {
+          instancePath: ['document', 'aggregate_severity'],
+          title: 'Aggregate severity',
+        },
+        {
+          instancePath: ['document', 'distribution'],
+          title: 'Rules for sharing document',
+        },
+        {
+          instancePath: ['document', 'notes'],
+          title: 'List of notes',
+        },
+        {
+          instancePath: ['document', 'publisher'],
+          title: 'Publisher',
+        },
+        {
+          instancePath: ['document', 'references'],
+          title: 'List of references',
+        },
+        {
+          instancePath: ['document', 'tracking'],
+          title: 'Tracking',
+        },
+        {
+          instancePath: ['product_tree'],
+          title: 'Product tree',
+        },
+        {
+          instancePath: ['product_tree', 'branches'],
+          title: 'List of branches',
+        },
+        {
+          instancePath: ['product_tree', 'full_product_names'],
+          title: 'List of full product names',
+        },
+        {
+          instancePath: ['product_tree', 'product_groups'],
+          title: 'List of product groups',
+        },
+        {
+          instancePath: ['product_tree', 'relationships'],
+          title: 'List of relationships',
+        },
+        {
+          instancePath: ['vulnerabilities'],
+          title: 'Vulnerabilities',
+        },
       ])
     })
   })
