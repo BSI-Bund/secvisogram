@@ -18,6 +18,17 @@ export default function SideBar() {
   return (
     <div className="flex flex-col bg-gray-300 border-l border-black">
       <div className="flex h-full">
+        {sideBarData.sideBarIsOpen ? (
+          <div className="w-72 p-3 bg-gray-200 overflow-auto">
+            {sideBarData.sideBarContent === 'ERRORS' ? (
+              <ErrorPanel selectedPath={sideBarData.sideBarSelectedPath} />
+            ) : sideBarData.sideBarContent === 'COMMENTS' ? (
+              <CommentPanel selectedPath={sideBarData.sideBarSelectedPath} />
+            ) : sideBarData.sideBarContent === 'DOCUMENTATION' ? (
+              <InfoPanel selectedPath={sideBarData.sideBarSelectedPath} />
+            ) : null}
+          </div>
+        ) : null}
         <div className="flex-col">
           {[
             { targetString: 'ERRORS', icon: faExclamationTriangle },
@@ -46,17 +57,6 @@ export default function SideBar() {
             </div>
           ))}
         </div>
-        {sideBarData.sideBarIsOpen ? (
-          <div className="w-72 p-3 bg-gray-200 overflow-auto">
-            {sideBarData.sideBarContent === 'ERRORS' ? (
-              <ErrorPanel selectedPath={sideBarData.sideBarSelectedPath} />
-            ) : sideBarData.sideBarContent === 'COMMENTS' ? (
-              <CommentPanel selectedPath={sideBarData.sideBarSelectedPath} />
-            ) : sideBarData.sideBarContent === 'DOCUMENTATION' ? (
-              <InfoPanel selectedPath={sideBarData.sideBarSelectedPath} />
-            ) : null}
-          </div>
-        ) : null}
       </div>
       <div
         className="mt-auto h-12 w-full"
