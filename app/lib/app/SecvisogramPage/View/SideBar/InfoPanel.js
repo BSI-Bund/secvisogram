@@ -11,15 +11,6 @@ import metadata from '../../../../../../data/metaData2.json'
  * }} props
  */
 export default function InfoPanel({ selectedPath }) {
-  const getMarkdownPath = () => {
-    const jsonPath = `$.${selectedPath.join('.')}`.replaceAll(/\.\d+/g, '[]')
-    if (jsonPath in metadata) {
-      // @ts-ignore
-      const meta = metadata[jsonPath]
-      return meta.user_documentation.usage.generic
-    }
-  }
-
   const [mdText, setMdText] = React.useState('')
 
   const updateMarkdownText = (/** @type string */ mdPath) => {
@@ -30,7 +21,18 @@ export default function InfoPanel({ selectedPath }) {
       })
   }
 
-  useEffect(() => updateMarkdownText(getMarkdownPath()), [selectedPath])
+  useEffect(() => {
+    if (!selectedPath.length) {
+      setMdText('')
+    }
+
+    const jsonPath = `$.${selectedPath.join('.')}`.replaceAll(/\.\d+/g, '[]')
+    if (jsonPath in metadata) {
+      // @ts-ignore
+      const meta = metadata[jsonPath]
+      updateMarkdownText(meta.user_documentation.usage.generic)
+    }
+  }, [selectedPath])
 
   return (
     <article className="prose" data-testid="infoPanel-content">
