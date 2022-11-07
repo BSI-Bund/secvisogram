@@ -16,7 +16,7 @@ export default function SideBar() {
   const sideBarData = React.useContext(SideBarContext)
 
   return (
-    <div className="flex flex-col bg-gray-300 border-l border-black">
+    <div className="flex flex-col bg-gray-300 border-l border-gray-400 wizard-menu-shadow">
       <div className="flex h-full">
         {sideBarData.sideBarIsOpen ? (
           <div className="w-72 p-3 bg-gray-200 overflow-auto">
