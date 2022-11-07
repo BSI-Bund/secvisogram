@@ -1,72 +1,71 @@
-import React, { useEffect, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import { marked } from 'marked'
+import React, { useEffect } from 'react'
 
+import ReactMarkdown from 'react-markdown'
 import metadata from '../../../../../../data/metaData2.json'
 
 /**
- * Defines the content of the side bar displaying documentation of a selected path
+ * Defines the content of the SideBar displaying documentation of a selected path
  *
  * @param {{
  *   selectedPath: string[]
  * }} props
  */
 export default function InfoPanel({ selectedPath }) {
-  const [mdText, setMdText] = useState('')
+  const [mdText, setMdText] = React.useState('')
 
-  const addInernalDocuPrefix = (/** @type string */ htmlString) =>
-    // adds the required prefix to all internal links
-    htmlString.replace(/href="(?!http|#)/g, 'href="/docs/user/')
+  const updateMarkdownText = (/** @type string */ mdPath) => {
+    fetch(mdPath)
+      .then((resp) => resp.text())
+      .then((mdText) => {
+        setMdText(mdText)
+      })
+  }
 
-  const getRenderedMarkdown = () => {
-    const jsonPath = `$.${selectedPath.join('.')}`
+  useEffect(() => {
+    if (!selectedPath.length) {
+      setMdText('')
+    }
+
+    const jsonPath = `$.${selectedPath.join('.')}`.replaceAll(/\.\d+/g, '[]')
     if (jsonPath in metadata) {
       // @ts-ignore
       const meta = metadata[jsonPath]
-      const usage_path = meta.user_documentation.usage.generic
-      fetch(usage_path)
-        .then((resp) => resp.text())
-        .then((mdText) => {
-          const rendered = marked(mdText)
-          setMdText(addInernalDocuPrefix(rendered))
-        })
+      updateMarkdownText(meta.user_documentation.usage.generic)
     }
-  }
-
-  useEffect(getRenderedMarkdown, [selectedPath])
-
-  const getIFrameHistory = () => {
-    const iFrame = /** @type { HTMLIFrameElement } */ (
-      document.getElementById('iframe')
-    )
-    if (isIFrame(iFrame) && iFrame.contentWindow) {
-      return iFrame.contentWindow.history
-    }
-  }
-  const isIFrame = (/** @type HTMLIFrameElement | null */ input) =>
-    input !== null && input.tagName === 'IFRAME'
+  }, [selectedPath])
 
   return (
-    <>
-      <button
-        type="button"
-        onClick={() => {
-          getIFrameHistory()?.back()
+    <article className="prose" data-testid="infoPanel-content">
+      <ReactMarkdown
+        components={{
+          h1: 'strong',
+          h2: 'strong',
+          h3: 'strong',
+          h4: 'strong',
+          h5: 'strong',
+          h6: 'strong',
+          a: ({ href, children }) => {
+            const linkText = children[0]
+            if (href?.startsWith('http')) {
+              return (
+                <a href={href} target="_blank" rel="noreferrer">
+                  {linkText}
+                </a>
+              )
+            }
+            return (
+              <a
+                className="cursor-pointer"
+                onClick={() => updateMarkdownText('/docs/user/' + href)}
+              >
+                {linkText}
+              </a>
+            )
+          },
         }}
       >
-        <FontAwesomeIcon className="fa-1x" icon={faArrowLeft} /> Back
-      </button>
-      ||
-      <button
-        type="button"
-        onClick={() => {
-          getIFrameHistory()?.forward()
-        }}
-      >
-        Forward <FontAwesomeIcon className="fa-1x" icon={faArrowRight} />
-      </button>
-      <iframe id="iframe" className="w-full h-full" srcDoc={mdText} />
-    </>
+        {mdText}
+      </ReactMarkdown>
+    </article>
   )
 }

@@ -62,6 +62,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
             <label className="text-left">{property.title}</label>
           </div>
           <button
+            data-testid={instancePath.join('-') + '-infoButton'}
             type="button"
             className="w-9 h-9 flex-none hover:bg-blue-300 m-1"
             onClick={() => {

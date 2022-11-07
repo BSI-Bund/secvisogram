@@ -55,7 +55,7 @@ module.exports = {
         },
         {
           from: '../docs/user',
-          to: 'public/docs/user',
+          to: 'docs/user',
         },
       ],
     }),

@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faAngleDoubleRight,
   faAngleDoubleLeft,
+  faAngleDoubleRight,
   faComment,
   faExclamationTriangle,
-  faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons'
+import { faFileLines } from '@fortawesome/free-regular-svg-icons'
 import ErrorPanel from './ErrorPanel.js'
 import InfoPanel from './InfoPanel.js'
 import CommentPanel from './CommentPanel.js'
@@ -37,10 +37,11 @@ export default function SideBar() {
             {[
               { targetString: 'ERRORS', icon: faExclamationTriangle },
               { targetString: 'COMMENTS', icon: faComment },
-              { targetString: 'DOCUMENTATION', icon: faInfoCircle },
+              { targetString: 'DOCUMENTATION', icon: faFileLines },
             ].map(({ targetString, icon }) => (
               <div key={targetString} className="w-full">
                 <button
+                  data-testid={`sideBar-${targetString}-button`}
                   className={
                     'p-3 w-full ' +
                     (sideBarData.sideBarContent === targetString
