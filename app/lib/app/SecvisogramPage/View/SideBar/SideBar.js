@@ -1,23 +1,23 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileLines } from '@fortawesome/free-regular-svg-icons'
 import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
   faComment,
   faExclamationTriangle,
 } from '@fortawesome/free-solid-svg-icons'
-import { faFileLines } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import SideBarContext from '../shared/context/SideBarContext.js'
+import CommentPanel from './CommentPanel.js'
 import ErrorPanel from './ErrorPanel.js'
 import InfoPanel from './InfoPanel.js'
-import CommentPanel from './CommentPanel.js'
 
 export default function SideBar() {
   const sideBarData = React.useContext(SideBarContext)
 
   return (
-    <div className="flex flex-col bg-gray-300 border-l border-gray-400 wizard-menu-shadow">
-      <div className="flex h-full">
+    <>
+      <div className="flex h-full bg-gray-300 border-l border-gray-400 wizard-menu-shadow">
         {sideBarData.sideBarIsOpen ? (
           <div className="w-72 p-3 bg-gray-200 overflow-auto">
             {sideBarData.sideBarContent === 'ERRORS' ? (
@@ -59,7 +59,7 @@ export default function SideBar() {
         </div>
       </div>
       <div
-        className="mt-auto h-12 w-full"
+        className="mt-auto h-12 w-full col-start-2 col-end-2 bg-gray-300 border-l border-gray-400 wizard-menu-shadow"
         onClick={() => sideBarData.setSideBarIsOpen(!sideBarData.sideBarIsOpen)}
       >
         <button className="w-full h-full bg-gray-200 hover:bg-gray-100">
@@ -73,6 +73,6 @@ export default function SideBar() {
           )}
         </button>
       </div>
-    </div>
+    </>
   )
 }
