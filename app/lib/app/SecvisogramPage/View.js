@@ -1,5 +1,6 @@
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { set } from 'lodash/fp.js'
 import React from 'react'
 import Hotkeys from 'react-hot-keys'
 import * as semver from 'semver'
@@ -8,6 +9,7 @@ import AppConfigContext from '../shared/context/AppConfigContext.js'
 import AppErrorContext from '../shared/context/AppErrorContext.js'
 import UserInfoContext from '../shared/context/UserInfoContext.js'
 import { canCreateDocuments } from '../shared/permissions.js'
+import AboutDialog from './View/AboutDialog.js'
 import CsafTab from './View/CsafTab.js'
 import ExportDocumentDialog from './View/ExportDocumentDialog.js'
 import FormEditorTab from './View/FormEditorTab.js'
@@ -21,14 +23,12 @@ import NewDocumentDialog from './View/NewDocumentDialog.js'
 import PreviewTab from './View/PreviewTab.js'
 import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
-import useDebounce from './View/shared/useDebounce.js'
-import VersionSummaryDialog from './View/VersionSummaryDialog.js'
-import SideBar from './View/SideBar/SideBar.js'
-import { set } from 'lodash/fp.js'
-import DocumentEditorContext from './View/shared/DocumentEditorContext.js'
 import SideBarContext from './View/shared/context/SideBarContext.js'
+import DocumentEditorContext from './View/shared/DocumentEditorContext.js'
+import useDebounce from './View/shared/useDebounce.js'
+import SideBar from './View/SideBar/SideBar.js'
+import VersionSummaryDialog from './View/VersionSummaryDialog.js'
 import WizardTab from './View/WizardTab.js'
-import AboutDialog from './View/AboutDialog.js'
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -668,233 +668,229 @@ function View({
             return true
           }}
         >
-          <div className="mx-auto w-full h-screen flex flex-col" tabIndex={0}>
-            <div>
-              <div className="flex justify-between bg-gray-700">
-                <div className="flex pl-5">
-                  <button {...tabButtonProps('WIZZARD')}>Wizard</button>
-                  <button {...tabButtonProps('EDITOR')}>Form Editor</button>
-                  <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
-                  <button {...tabButtonProps('PREVIEW')}>Preview</button>
-                  <button {...tabButtonProps('CSAF-JSON')}>
-                    CSAF Document
-                  </button>
-                  <button
-                    className="text-sm font-bold p-4 h-auto text-gray-300 hover:text-white"
-                    onClick={() => {
-                      setAboutDialog(
-                        <AboutDialog
-                          onClose={() => {
-                            setAboutDialog(null)
-                          }}
-                        />
-                      )
-                    }}
-                  >
-                    About
-                  </button>
+          <div
+            className="mx-auto w-full h-screen grid grid-cols-[1fr_auto] grid-rows-[53px_36px_minmax(0,1fr)]"
+            tabIndex={0}
+          >
+            <div className="col-span-2 flex justify-between bg-gray-700">
+              <div className="flex pl-5">
+                <button {...tabButtonProps('WIZZARD')}>Wizard</button>
+                <button {...tabButtonProps('EDITOR')}>Form Editor</button>
+                <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
+                <button {...tabButtonProps('PREVIEW')}>Preview</button>
+                <button {...tabButtonProps('CSAF-JSON')}>CSAF Document</button>
+                <button
+                  className="text-sm font-bold p-4 h-auto text-gray-300 hover:text-white"
+                  onClick={() => {
+                    setAboutDialog(
+                      <AboutDialog
+                        onClose={() => {
+                          setAboutDialog(null)
+                        }}
+                      />
+                    )
+                  }}
+                >
+                  About
+                </button>
+              </div>
+              {advisoryState?.type === 'ADVISORY' && (
+                <div className="text-gray-400 p-4">
+                  Document:{' '}
+                  <span data-testid="document_tracking_id">
+                    {advisoryState.advisory.csaf.document?.title ||
+                      '<document without tracking-id>'}
+                  </span>
+                  <span data-testid="advisory_id" className="hidden">
+                    {advisoryState.advisory.advisoryId}
+                  </span>
+                  <span data-testid="advisory_revision" className="hidden">
+                    {advisoryState.advisory.revision}
+                  </span>
                 </div>
-                {advisoryState?.type === 'ADVISORY' && (
-                  <div className="text-gray-400 p-4">
-                    Document:{' '}
-                    <span data-testid="document_tracking_id">
-                      {advisoryState.advisory.csaf.document?.title ||
-                        '<document without tracking-id>'}
-                    </span>
-                    <span data-testid="advisory_id" className="hidden">
-                      {advisoryState.advisory.advisoryId}
-                    </span>
-                    <span data-testid="advisory_revision" className="hidden">
-                      {advisoryState.advisory.revision}
-                    </span>
-                  </div>
-                )}
+              )}
 
-                {appConfig.loginAvailable &&
-                  (userInfo ? (
-                    <div className="pr-5 flex text-white">
-                      <button {...tabButtonProps('DOCUMENTS')}>
-                        CSAF Documents
-                      </button>
-                      <div
-                        data-testid="user_info"
-                        className="dropdown relative hover:bg-gray-800 hover:text-white text-gray-300"
-                      >
-                        <div className="text-sm font-bold p-4 h-auto flex items-center">
-                          <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                          </svg>
-                          <div className="ml-4">
-                            {userInfo.preferredUsername}
-                          </div>
-                        </div>
-                        <div
-                          className="dropdown-content absolute bottom-0 right-0 z-10 bg-white text-black p-4 rounded-b shadow"
-                          style={{
-                            height: 133,
-                            marginBottom: -133,
-                          }}
+              {appConfig.loginAvailable &&
+                (userInfo ? (
+                  <div className="pr-5 flex text-white">
+                    <button {...tabButtonProps('DOCUMENTS')}>
+                      CSAF Documents
+                    </button>
+                    <div
+                      data-testid="user_info"
+                      className="dropdown relative hover:bg-gray-800 hover:text-white text-gray-300"
+                    >
+                      <div className="text-sm font-bold p-4 h-auto flex items-center">
+                        <svg
+                          className="w-6 h-6"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
                         >
-                          <span className="w-full whitespace-nowrap text-ellipsis">
-                            <span className="text-sm font-bold">E-Mail:</span>{' '}
-                            <span className="text-sm">{userInfo.email}</span>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <div className="ml-4">{userInfo.preferredUsername}</div>
+                      </div>
+                      <div
+                        className="dropdown-content absolute bottom-0 right-0 z-10 bg-white text-black p-4 rounded-b shadow"
+                        style={{
+                          height: 133,
+                          marginBottom: -133,
+                        }}
+                      >
+                        <span className="w-full whitespace-nowrap text-ellipsis">
+                          <span className="text-sm font-bold">E-Mail:</span>{' '}
+                          <span className="text-sm">{userInfo.email}</span>
+                        </span>
+                        <br />
+                        <span className="w-full whitespace-nowrap text-ellipsis">
+                          <span className="text-sm font-bold">Groups:</span>{' '}
+                          <span className="text-sm">
+                            {userInfo.groups?.join(', ')}
                           </span>
-                          <br />
-                          <span className="w-full whitespace-nowrap text-ellipsis">
-                            <span className="text-sm font-bold">Groups:</span>{' '}
-                            <span className="text-sm">
-                              {userInfo.groups?.join(', ')}
-                            </span>
-                          </span>
-                          <hr className="my-2" />
-                          <div className="text-right">
-                            <button
-                              className="text-sm font-bold p-2 w-full h-auto bg-blue-400 hover:bg-blue-500 text-white"
-                              onClick={() => {
-                                window.location.href = appConfig.logoutUrl
-                              }}
-                            >
-                              Logout
-                            </button>
-                          </div>
+                        </span>
+                        <hr className="my-2" />
+                        <div className="text-right">
+                          <button
+                            className="text-sm font-bold p-2 w-full h-auto bg-blue-400 hover:bg-blue-500 text-white"
+                            onClick={() => {
+                              window.location.href = appConfig.logoutUrl
+                            }}
+                          >
+                            Logout
+                          </button>
                         </div>
                       </div>
                     </div>
-                  ) : (
-                    <div className="pr-5 flex items-center text-white">
-                      <button
-                        className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 text-white"
-                        onClick={() => {
-                          window.location.href = appConfig.loginUrl
-                        }}
-                      >
-                        Login
-                      </button>
-                    </div>
-                  ))}
-              </div>
-              <div data-testid="number_of_validation_errors" className="hidden">
-                {errors.length}
-              </div>
-              {activeTab !== 'DOCUMENTS' && (
-                <div className="bg-gray-400 flex items-center justify-between">
-                  <div className="pl-5">
-                    {(appConfig.loginAvailable &&
-                      userInfo?.groups &&
-                      canCreateDocuments(userInfo.groups)) ||
-                    (appConfig.loginAvailable && !userInfo) ||
-                    !appConfig.loginAvailable ? (
-                      <button
-                        data-testid="new_document_button"
-                        className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                        onClick={onNewHandler}
-                      >
-                        New
-                      </button>
-                    ) : null}
-                    {userInfo &&
-                    ((advisoryState?.type === 'ADVISORY' &&
-                      advisoryState.advisory.changeable) ||
-                      (advisoryState?.type === 'NEW_ADVISORY' &&
-                        userInfo.groups &&
-                        canCreateDocuments(userInfo.groups))) ? (
-                      <button
-                        data-testid="save_button"
-                        type="button"
-                        className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                        onClick={onSaveHandler}
-                      >
-                        Save
-                      </button>
-                    ) : null}
+                  </div>
+                ) : (
+                  <div className="pr-5 flex items-center text-white">
                     <button
-                      data-testid="new_export_document_button"
-                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                      onClick={onExportHandler}
+                      className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 text-white"
+                      onClick={() => {
+                        window.location.href = appConfig.loginUrl
+                      }}
                     >
-                      Export
+                      Login
                     </button>
-                    {activeTab === 'SOURCE' && (
-                      <button
-                        ref={sortButtonRef}
-                        data-testid="sort_document_button"
-                        type="button"
-                        className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                      >
-                        Sort document
-                      </button>
-                    )}
-                    {appConfig.loginAvailable && userInfo && (
-                      <button
-                        data-testid="validate_button"
-                        type="button"
-                        className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
-                        onClick={async () => {
-                          doValidate()
-                        }}
-                      >
-                        Validate
-                      </button>
-                    )}
                   </div>
-                  <div className="pr-5 text-gray-300">
-                    {`Document is ${
-                      errors.filter((e) => e.type === 'error').length === 0
-                        ? 'valid'
-                        : 'invalid: '
-                    }`}
-                    {[
-                      {
-                        type: 'error',
-                        color: 'text-red-600',
-                      },
-                      {
-                        type: 'warning',
-                        color: 'text-yellow-600',
-                      },
-                      {
-                        type: 'info',
-                        color: 'text-blue-600',
-                      },
-                    ].map(({ type, color }) => {
-                      const count = errors.filter((e) => e.type === type).length
-                      if (count) {
-                        return (
-                          <>
-                            <FontAwesomeIcon
-                              icon={faCircle}
-                              className={color}
-                              size="xs"
-                            />
-                            {` ${count} ${type}${count > 1 ? 's' : ''} `}
-                          </>
-                        )
-                      }
-                    })}
-                  </div>
-                </div>
-              )}
+                ))}
             </div>
+            <div data-testid="number_of_validation_errors" className="hidden">
+              {errors.length}
+            </div>
+            {activeTab !== 'DOCUMENTS' && (
+              <div className="col-span-2 bg-gray-400 flex items-center justify-between">
+                <div className="pl-5">
+                  {(appConfig.loginAvailable &&
+                    userInfo?.groups &&
+                    canCreateDocuments(userInfo.groups)) ||
+                  (appConfig.loginAvailable && !userInfo) ||
+                  !appConfig.loginAvailable ? (
+                    <button
+                      data-testid="new_document_button"
+                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                      onClick={onNewHandler}
+                    >
+                      New
+                    </button>
+                  ) : null}
+                  {userInfo &&
+                  ((advisoryState?.type === 'ADVISORY' &&
+                    advisoryState.advisory.changeable) ||
+                    (advisoryState?.type === 'NEW_ADVISORY' &&
+                      userInfo.groups &&
+                      canCreateDocuments(userInfo.groups))) ? (
+                    <button
+                      data-testid="save_button"
+                      type="button"
+                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                      onClick={onSaveHandler}
+                    >
+                      Save
+                    </button>
+                  ) : null}
+                  <button
+                    data-testid="new_export_document_button"
+                    className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                    onClick={onExportHandler}
+                  >
+                    Export
+                  </button>
+                  {activeTab === 'SOURCE' && (
+                    <button
+                      ref={sortButtonRef}
+                      data-testid="sort_document_button"
+                      type="button"
+                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                    >
+                      Sort document
+                    </button>
+                  )}
+                  {appConfig.loginAvailable && userInfo && (
+                    <button
+                      data-testid="validate_button"
+                      type="button"
+                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                      onClick={async () => {
+                        doValidate()
+                      }}
+                    >
+                      Validate
+                    </button>
+                  )}
+                </div>
+                <div className="pr-5 text-gray-300">
+                  {`Document is ${
+                    errors.filter((e) => e.type === 'error').length === 0
+                      ? 'valid'
+                      : 'invalid: '
+                  }`}
+                  {[
+                    {
+                      type: 'error',
+                      color: 'text-red-600',
+                    },
+                    {
+                      type: 'warning',
+                      color: 'text-yellow-600',
+                    },
+                    {
+                      type: 'info',
+                      color: 'text-blue-600',
+                    },
+                  ].map(({ type, color }) => {
+                    const count = errors.filter((e) => e.type === type).length
+                    if (count) {
+                      return (
+                        <>
+                          <FontAwesomeIcon
+                            icon={faCircle}
+                            className={color}
+                            size="xs"
+                          />
+                          {` ${count} ${type}${count > 1 ? 's' : ''} `}
+                        </>
+                      )
+                    }
+                  })}
+                </div>
+              </div>
+            )}
             <div
-              className="relative overflow-auto h-full bg-white"
+              className="row-span-2 relative overflow-auto h-full bg-white"
               key={activeTab}
             >
               {activeTab === 'WIZZARD' ? (
-                <div className="flex h-full">
+                <>
                   <WizardTab />
-                  <SideBar />
-                </div>
+                </>
               ) : activeTab === 'EDITOR' ? (
                 <FormEditorTab
                   formValues={formValues}
@@ -945,6 +941,7 @@ function View({
                 />
               ) : null}
             </div>
+            {activeTab === 'WIZZARD' ? <SideBar /> : null}
           </div>
         </Hotkeys>
         {toast ? (
