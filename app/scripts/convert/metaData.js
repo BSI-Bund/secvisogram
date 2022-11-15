@@ -1,4807 +1,5024 @@
 export default {
-  '': {
-    propertyOrder: ['document', 'product_tree', 'vulnerabilities'],
-    uiType: 'OBJECT',
+  $: {
     addMenuItemsForChildObjects: true,
+    propertyOrder: ['document', 'product_tree', 'vulnerabilities'],
   },
-  document: {
-    propertyOrder: [
-      'acknowledgments',
-      'aggregate_severity',
-      'category',
-      'csaf_version',
-      'distribution',
-      'lang',
-      'notes',
-      'publisher',
-      'references',
-      'source_lang',
-      'title',
-      'tracking',
-    ],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document': {
+    userDocumentation: {
       specification: 'docs/user/document-spec.en.md',
-      usage: {
-        generic: 'docs/user/document-usage.en.md',
-      },
+      usage: 'docs/user/document-usage.en.md',
+    },
+    i18n: { title: 'DocumentTitle', description: 'DocumentDescription' },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
     },
   },
-  'document.acknowledgments[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
+  '$.document.acknowledgments': {
+    userDocumentation: {
+      specification: 'docs/user/document/acknowledgments-spec.en.md',
+      usage: 'docs/user/document/acknowledgments-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'optional',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'DocumentAcknowledgmentsTitle',
+      description: 'DocumentAcknowledgmentsDescription',
+    },
+  },
+  '$.document.acknowledgments[]': {
+    userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/acknowledgments/acknowledgment-usage.en.md',
-      },
+      usage: 'docs/user/types/acknowledgments/acknowledgment-usage.en.md',
+    },
+    i18n: {
+      title: 'AcknowledgmentsItemsTitle',
+      description: 'AcknowledgmentsItemsDescription',
     },
   },
-  'document.acknowledgments': {
-    propertyOrder: ['names', 'organization', 'summary', 'urls'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'optional',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
-      specification: 'docs/user/document/acknowledgments-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/acknowledgments-usage.en.md',
-      },
-    },
-  },
-  'document.acknowledgments.names[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification:
-        'docs/user/types/acknowledgments/acknowledgment/names/name-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md',
-      },
-    },
-  },
-  'document.acknowledgments.names': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'want_to_have',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.document.acknowledgments.names': {
+    userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/names-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/acknowledgments/acknowledgment/names-usage.en.md',
-      },
+      usage: 'docs/user/types/acknowledgments/acknowledgment/names-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'want_to_have',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'AcknowledgmentsItemsNamesTitle',
+      description: 'AcknowledgmentsItemsNamesDescription',
     },
   },
-  'document.acknowledgments.organization': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'nice_to_know',
+  '$.document.acknowledgments.names[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/acknowledgments/acknowledgment/names/name-spec.en.md',
+      usage:
+        'docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md',
     },
-    user_documentation: {
+    i18n: {
+      title: 'AcknowledgmentsItemsNamesItemsTitle',
+      description: 'AcknowledgmentsItemsNamesItemsDescription',
+    },
+  },
+  '$.document.acknowledgments.organization': {
+    userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/organization-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md',
-      },
+      usage:
+        'docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'AcknowledgmentsItemsOrganizationTitle',
+      description: 'AcknowledgmentsItemsOrganizationDescription',
     },
   },
-  'document.acknowledgments.summary': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.document.acknowledgments.summary': {
+    userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/summary-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md',
-      },
+      usage:
+        'docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'AcknowledgmentsItemsSummaryTitle',
+      description: 'AcknowledgmentsItemsSummaryDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'document.acknowledgments.urls[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification:
-        'docs/user/types/acknowledgments/acknowledgment/urls/url-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md',
-      },
-    },
-  },
-  'document.acknowledgments.urls': {
-    uiType: 'URI',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.document.acknowledgments.urls': {
+    userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/urls-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md',
-      },
+      usage: 'docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'AcknowledgmentsItemsUrlsTitle',
+      description: 'AcknowledgmentsItemsUrlsDescription',
     },
   },
-  'document.aggregate_severity': {
-    propertyOrder: ['namespace', 'text'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'want_to_have',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'want_to_have',
+  '$.document.acknowledgments.urls[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/acknowledgments/acknowledgment/urls/url-spec.en.md',
+      usage:
+        'docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md',
     },
-    user_documentation: {
+    i18n: {
+      title: 'AcknowledgmentsItemsUrlsItemsTitle',
+      description: 'AcknowledgmentsItemsUrlsItemsDescription',
+    },
+  },
+  '$.document.aggregate_severity': {
+    userDocumentation: {
       specification: 'docs/user/document/aggregate_severity-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/aggregate_severity-usage.en.md',
-      },
+      usage: 'docs/user/document/aggregate_severity-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'want_to_have',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'DocumentAggregateSeverityTitle',
+      description: 'DocumentAggregateSeverityDescription',
     },
   },
-  'document.aggregate_severity.namespace': {
-    uiType: 'URI',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.document.aggregate_severity.namespace': {
+    userDocumentation: {
       specification:
         'docs/user/document/aggregate_severity/namespace-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/aggregate_severity/namespace-usage.en.md',
-      },
+      usage: 'docs/user/document/aggregate_severity/namespace-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'DocumentAggregateSeverityNamespaceTitle',
+      description: 'DocumentAggregateSeverityNamespaceDescription',
     },
   },
-  'document.aggregate_severity.text': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'want_to_have',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.document.aggregate_severity.text': {
+    userDocumentation: {
       specification: 'docs/user/document/aggregate_severity/text-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/aggregate_severity/text-usage.en.md',
-      },
+      usage: 'docs/user/document/aggregate_severity/text-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'want_to_have',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'DocumentAggregateSeverityTextTitle',
+      description: 'DocumentAggregateSeverityTextDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'document.category': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.category': {
+    userDocumentation: {
       specification: 'docs/user/document/category-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/category-usage.en.md',
-      },
+      usage: 'docs/user/document/category-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentCategoryTitle',
+      description: 'DocumentCategoryDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'document.csaf_version': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.csaf_version': {
+    userDocumentation: {
       specification: 'docs/user/document/csaf_version-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/csaf_version-usage.en.md',
-      },
+      usage: 'docs/user/document/csaf_version-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentCsafVersionTitle',
+      description: 'DocumentCsafVersionDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'document.distribution': {
-    propertyOrder: ['text', 'tlp'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'best_practice',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.document.distribution': {
+    userDocumentation: {
       specification: 'docs/user/document/distribution-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/distribution-usage.en.md',
-      },
+      usage: 'docs/user/document/distribution-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'best_practice',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'DocumentDistributionTitle',
+      description: 'DocumentDistributionDescription',
     },
   },
-  'document.distribution.text': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.document.distribution.text': {
+    userDocumentation: {
       specification: 'docs/user/document/distribution/text-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/distribution/text-usage.en.md',
-      },
+      usage: 'docs/user/document/distribution/text-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'DocumentDistributionTextTitle',
+      description: 'DocumentDistributionTextDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'document.distribution.tlp': {
-    propertyOrder: ['label', 'url'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'want_to_have',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.document.distribution.tlp': {
+    userDocumentation: {
       specification: 'docs/user/document/distribution/tlp-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/distribution/tlp-usage.en.md',
-      },
+      usage: 'docs/user/document/distribution/tlp-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'want_to_have',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'DocumentDistributionTlpTitle',
+      description: 'DocumentDistributionTlpDescription',
     },
   },
-  'document.distribution.tlp.label': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.distribution.tlp.label': {
+    userDocumentation: {
       specification: 'docs/user/document/distribution/tlp/label-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/distribution/tlp/label-usage.en.md',
-      },
+      usage: 'docs/user/document/distribution/tlp/label-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentDistributionTlpLabelTitle',
+      description: 'DocumentDistributionTlpLabelDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'document.distribution.tlp.url': {
-    uiType: 'URI',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.document.distribution.tlp.url': {
+    userDocumentation: {
       specification: 'docs/user/document/distribution/tlp/url-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/distribution/tlp/url-usage.en.md',
-      },
+      usage: 'docs/user/document/distribution/tlp/url-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'DocumentDistributionTlpUrlTitle',
+      description: 'DocumentDistributionTlpUrlDescription',
     },
   },
-  'document.lang': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.document.lang': {
+    userDocumentation: {
       specification: 'docs/user/document/lang-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/lang-usage.en.md',
-      },
+      usage: 'docs/user/document/lang-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'DocumentLangTitle',
+      description: 'DocumentLangDescription',
     },
   },
-  'document.notes[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification: 'docs/user/types/notes/note-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/notes/note-usage.en.md',
-      },
-    },
-  },
-  'document.notes': {
-    propertyOrder: ['audience', 'category', 'text', 'title'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.document.notes': {
+    userDocumentation: {
       specification: 'docs/user/document/notes-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/notes-usage.en.md',
-      },
+      usage: 'docs/user/document/notes-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'DocumentNotesTitle',
+      description: 'DocumentNotesDescription',
     },
   },
-  'document.notes.audience': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
+  '$.document.notes[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/notes/note-spec.en.md',
+      usage: 'docs/user/types/notes/note-usage.en.md',
     },
-    user_documentation: {
+    i18n: {
+      title: 'NotesItemsTitle',
+      description: 'NotesItemsDescription',
+    },
+  },
+  '$.document.notes.audience': {
+    userDocumentation: {
       specification: 'docs/user/types/notes/note/audience-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/notes/note/audience-usage.en.md',
-      },
+      usage: 'docs/user/types/notes/note/audience-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'NotesItemsAudienceTitle',
+      description: 'NotesItemsAudienceDescription',
     },
   },
-  'document.notes.category': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.notes.category': {
+    userDocumentation: {
       specification: 'docs/user/types/notes/note/category-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/notes/note/category-usage.en.md',
-      },
+      usage: 'docs/user/types/notes/note/category-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'NotesItemsCategoryTitle',
+      description: 'NotesItemsCategoryDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'document.notes.text': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.notes.text': {
+    userDocumentation: {
       specification: 'docs/user/types/notes/note/text-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/notes/note/text-usage.en.md',
-      },
+      usage: 'docs/user/types/notes/note/text-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'NotesItemsTextTitle',
+      description: 'NotesItemsTextDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'document.notes.title': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'best_practice',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.document.notes.title': {
+    userDocumentation: {
       specification: 'docs/user/types/notes/note/title-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/notes/note/title-usage.en.md',
-      },
+      usage: 'docs/user/types/notes/note/title-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'best_practice',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'NotesItemsTitleTitle',
+      description: 'NotesItemsTitleDescription',
     },
   },
-  'document.publisher': {
-    propertyOrder: [
-      'category',
-      'contact_details',
-      'issuing_authority',
-      'name',
-      'namespace',
-    ],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.publisher': {
+    userDocumentation: {
       specification: 'docs/user/document/publisher-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/publisher-usage.en.md',
-      },
+      usage: 'docs/user/document/publisher-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentPublisherTitle',
+      description: 'DocumentPublisherDescription',
     },
   },
-  'document.publisher.category': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.publisher.category': {
+    userDocumentation: {
       specification: 'docs/user/document/publisher/category-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/publisher/category-usage.en.md',
-      },
+      usage: 'docs/user/document/publisher/category-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentPublisherCategoryTitle',
+      description: 'DocumentPublisherCategoryDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'document.publisher.contact_details': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'want_to_have',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.document.publisher.contact_details': {
+    userDocumentation: {
       specification: 'docs/user/document/publisher/contact_details-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/publisher/contact_details-usage.en.md',
-      },
+      usage: 'docs/user/document/publisher/contact_details-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'want_to_have',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'DocumentPublisherContactDetailsTitle',
+      description: 'DocumentPublisherContactDetailsDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'document.publisher.issuing_authority': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.document.publisher.issuing_authority': {
+    userDocumentation: {
       specification:
         'docs/user/document/publisher/issuing_authority-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/publisher/issuing_authority-usage.en.md',
-      },
+      usage: 'docs/user/document/publisher/issuing_authority-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'DocumentPublisherIssuingAuthorityTitle',
+      description: 'DocumentPublisherIssuingAuthorityDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'document.publisher.name': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.publisher.name': {
+    userDocumentation: {
       specification: 'docs/user/document/publisher/name-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/publisher/name-usage.en.md',
-      },
+      usage: 'docs/user/document/publisher/name-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentPublisherNameTitle',
+      description: 'DocumentPublisherNameDescription',
     },
   },
-  'document.publisher.namespace': {
-    uiType: 'URI',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.publisher.namespace': {
+    userDocumentation: {
       specification: 'docs/user/document/publisher/namespace-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/publisher/namespace-usage.en.md',
-      },
+      usage: 'docs/user/document/publisher/namespace-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentPublisherNamespaceTitle',
+      description: 'DocumentPublisherNamespaceDescription',
     },
   },
-  'document.references[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification: 'docs/user/types/references/reference-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/references/reference-usage.en.md',
-      },
-    },
-  },
-  'document.references': {
-    propertyOrder: ['category', 'summary', 'url'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.document.references': {
+    userDocumentation: {
       specification: 'docs/user/document/references-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/references-usage.en.md',
-      },
+      usage: 'docs/user/document/references-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'DocumentReferencesTitle',
+      description: 'DocumentReferencesDescription',
     },
   },
-  'document.references.category': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
+  '$.document.references[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/references/reference-spec.en.md',
+      usage: 'docs/user/types/references/reference-usage.en.md',
     },
-    user_documentation: {
+    i18n: {
+      title: 'ReferencesItemsTitle',
+      description: 'ReferencesItemsDescription',
+    },
+  },
+  '$.document.references.category': {
+    userDocumentation: {
       specification: 'docs/user/types/references/reference/category-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/references/reference/category-usage.en.md',
-      },
+      usage: 'docs/user/types/references/reference/category-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'ReferencesItemsCategoryTitle',
+      description: 'ReferencesItemsCategoryDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'document.references.summary': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.references.summary': {
+    userDocumentation: {
       specification: 'docs/user/types/references/reference/summary-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/references/reference/summary-usage.en.md',
-      },
+      usage: 'docs/user/types/references/reference/summary-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'ReferencesItemsSummaryTitle',
+      description: 'ReferencesItemsSummaryDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'document.references.url': {
-    uiType: 'URI',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.references.url': {
+    userDocumentation: {
       specification: 'docs/user/types/references/reference/url-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/references/reference/url-usage.en.md',
-      },
+      usage: 'docs/user/types/references/reference/url-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'ReferencesItemsUrlTitle',
+      description: 'ReferencesItemsUrlDescription',
     },
   },
-  'document.source_lang': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.document.source_lang': {
+    userDocumentation: {
       specification: 'docs/user/document/source_lang-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/source_lang-usage.en.md',
-      },
+      usage: 'docs/user/document/source_lang-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'DocumentSourceLangTitle',
+      description: 'DocumentSourceLangDescription',
     },
   },
-  'document.title': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.title': {
+    userDocumentation: {
       specification: 'docs/user/document/title-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/title-usage.en.md',
-      },
+      usage: 'docs/user/document/title-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentTitleTitle',
+      description: 'DocumentTitleDescription',
     },
   },
-  'document.tracking': {
-    propertyOrder: [
-      'aliases',
-      'current_release_date',
-      'generator',
-      'id',
-      'initial_release_date',
-      'revision_history',
-      'status',
-      'version',
-    ],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.tracking': {
+    userDocumentation: {
       specification: 'docs/user/document/tracking-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/tracking-usage.en.md',
-      },
+      usage: 'docs/user/document/tracking-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentTrackingTitle',
+      description: 'DocumentTrackingDescription',
     },
   },
-  'document.tracking.aliases[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification: 'docs/user/document/tracking/aliases/alias-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/tracking/aliases/alias-usage.en.md',
-      },
-    },
-  },
-  'document.tracking.aliases': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.document.tracking.aliases': {
+    userDocumentation: {
       specification: 'docs/user/document/tracking/aliases-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/tracking/aliases-usage.en.md',
-      },
+      usage: 'docs/user/document/tracking/aliases-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'DocumentTrackingAliasesTitle',
+      description: 'DocumentTrackingAliasesDescription',
     },
   },
-  'document.tracking.current_release_date': {
-    uiType: 'DATETIME',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
+  '$.document.tracking.aliases[]': {
+    userDocumentation: {
+      specification: 'docs/user/document/tracking/aliases/alias-spec.en.md',
+      usage: 'docs/user/document/tracking/aliases/alias-usage.en.md',
     },
-    user_documentation: {
+    i18n: {
+      title: 'DocumentTrackingAliasesItemsTitle',
+      description: 'DocumentTrackingAliasesItemsDescription',
+    },
+  },
+  '$.document.tracking.current_release_date': {
+    userDocumentation: {
       specification:
         'docs/user/document/tracking/current_release_date-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/tracking/current_release_date-usage.en.md',
-      },
+      usage: 'docs/user/document/tracking/current_release_date-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentTrackingCurrentReleaseDateTitle',
+      description: 'DocumentTrackingCurrentReleaseDateDescription',
     },
   },
-  'document.tracking.generator': {
-    propertyOrder: ['date', 'engine'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.document.tracking.generator': {
+    userDocumentation: {
       specification: 'docs/user/document/tracking/generator-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/tracking/generator-usage.en.md',
-      },
+      usage: 'docs/user/document/tracking/generator-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'DocumentTrackingGeneratorTitle',
+      description: 'DocumentTrackingGeneratorDescription',
     },
   },
-  'document.tracking.generator.date': {
-    uiType: 'DATETIME',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.document.tracking.generator.date': {
+    userDocumentation: {
       specification: 'docs/user/document/tracking/generator/date-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/tracking/generator/date-usage.en.md',
-      },
+      usage: 'docs/user/document/tracking/generator/date-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'DocumentTrackingGeneratorDateTitle',
+      description: 'DocumentTrackingGeneratorDateDescription',
     },
   },
-  'document.tracking.generator.engine': {
-    propertyOrder: ['name', 'version'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.tracking.generator.engine': {
+    userDocumentation: {
       specification: 'docs/user/document/tracking/generator/engine-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/tracking/generator/engine-usage.en.md',
-      },
+      usage: 'docs/user/document/tracking/generator/engine-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentTrackingGeneratorEngineTitle',
+      description: 'DocumentTrackingGeneratorEngineDescription',
     },
   },
-  'document.tracking.generator.engine.name': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.tracking.generator.engine.name': {
+    userDocumentation: {
       specification:
         'docs/user/document/tracking/generator/engine/name-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/document/tracking/generator/engine/name-usage.en.md',
-      },
+      usage: 'docs/user/document/tracking/generator/engine/name-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentTrackingGeneratorEngineNameTitle',
+      description: 'DocumentTrackingGeneratorEngineNameDescription',
+    },
+    disable: {
+      ifStandaloneMode: false,
+      ifServerMode: true,
     },
   },
-  'document.tracking.generator.engine.version': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'want_to_have',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.document.tracking.generator.engine.version': {
+    userDocumentation: {
       specification:
         'docs/user/document/tracking/generator/engine/version-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/document/tracking/generator/engine/version-usage.en.md',
-      },
+      usage: 'docs/user/document/tracking/generator/engine/version-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'want_to_have',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'DocumentTrackingGeneratorEngineVersionTitle',
+      description: 'DocumentTrackingGeneratorEngineVersionDescription',
+    },
+    disable: {
+      ifStandaloneMode: false,
+      ifServerMode: true,
     },
   },
-  'document.tracking.id': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.tracking.id': {
+    userDocumentation: {
       specification: 'docs/user/document/tracking/id-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/tracking/id-usage.en.md',
-      },
+      usage: 'docs/user/document/tracking/id-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentTrackingIdTitle',
+      description: 'DocumentTrackingIdDescription',
+    },
+    disable: {
+      ifStandaloneMode: false,
+      ifServerMode: true,
     },
   },
-  'document.tracking.initial_release_date': {
-    uiType: 'DATETIME',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.tracking.initial_release_date': {
+    userDocumentation: {
       specification:
         'docs/user/document/tracking/initial_release_date-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/tracking/initial_release_date-usage.en.md',
-      },
+      usage: 'docs/user/document/tracking/initial_release_date-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentTrackingInitialReleaseDateTitle',
+      description: 'DocumentTrackingInitialReleaseDateDescription',
     },
   },
-  'document.tracking.revision_history[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
+  '$.document.tracking.revision_history': {
+    userDocumentation: {
+      specification: 'docs/user/document/tracking/revision_history-spec.en.md',
+      usage: 'docs/user/document/tracking/revision_history-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentTrackingRevisionHistoryTitle',
+      description: 'DocumentTrackingRevisionHistoryDescription',
+    },
+    uiType: 'ARRAY_REVISION_HISTORY',
+  },
+  '$.document.tracking.revision_history[]': {
+    userDocumentation: {
       specification:
         'docs/user/document/tracking/revision_history/revision-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/document/tracking/revision_history/revision-usage.en.md',
-      },
+      usage:
+        'docs/user/document/tracking/revision_history/revision-usage.en.md',
+    },
+    i18n: {
+      title: 'DocumentTrackingRevisionHistoryItemsTitle',
+      description: 'DocumentTrackingRevisionHistoryItemsDescription',
     },
   },
-  'document.tracking.revision_history': {
-    propertyOrder: ['date', 'legacy_version', 'number', 'summary'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
-      specification: 'docs/user/document/tracking/revision_history-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/tracking/revision_history-usage.en.md',
-      },
-    },
-  },
-  'document.tracking.revision_history.date': {
-    uiType: 'DATETIME',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.tracking.revision_history.date': {
+    userDocumentation: {
       specification:
         'docs/user/document/tracking/revision_history/revision/date-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/document/tracking/revision_history/revision/date-usage.en.md',
-      },
+      usage:
+        'docs/user/document/tracking/revision_history/revision/date-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentTrackingRevisionHistoryItemsDateTitle',
+      description: 'DocumentTrackingRevisionHistoryItemsDateDescription',
+    },
+    disable: {
+      ifStandaloneMode: false,
+      ifServerMode: true,
     },
   },
-  'document.tracking.revision_history.legacy_version': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'optional',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.document.tracking.revision_history.legacy_version': {
+    userDocumentation: {
       specification:
         'docs/user/document/tracking/revision_history/revision/legacy_version-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/document/tracking/revision_history/revision/legacy_version-usage.en.md',
-      },
+      usage:
+        'docs/user/document/tracking/revision_history/revision/legacy_version-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'optional',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'DocumentTrackingRevisionHistoryItemsLegacyVersionTitle',
+      description:
+        'DocumentTrackingRevisionHistoryItemsLegacyVersionDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
+    disable: {
+      ifStandaloneMode: false,
+      ifServerMode: true,
     },
   },
-  'document.tracking.revision_history.number': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.tracking.revision_history.number': {
+    userDocumentation: {
       specification:
         'docs/user/document/tracking/revision_history/revision/number-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/document/tracking/revision_history/revision/number-usage.en.md',
-      },
+      usage:
+        'docs/user/document/tracking/revision_history/revision/number-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: { title: 'VersionTitle', description: 'VersionDescription' },
+    uiType: 'STRING_MULTI_LINE',
+    disable: {
+      ifStandaloneMode: false,
+      ifServerMode: true,
     },
   },
-  'document.tracking.revision_history.summary': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.tracking.revision_history.summary': {
+    userDocumentation: {
       specification:
         'docs/user/document/tracking/revision_history/revision/summary-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/document/tracking/revision_history/revision/summary-usage.en.md',
-      },
+      usage:
+        'docs/user/document/tracking/revision_history/revision/summary-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentTrackingRevisionHistoryItemsSummaryTitle',
+      description: 'DocumentTrackingRevisionHistoryItemsSummaryDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
+    disable: {
+      ifStandaloneMode: false,
+      ifServerMode: true,
     },
   },
-  'document.tracking.status': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.tracking.status': {
+    userDocumentation: {
       specification: 'docs/user/document/tracking/status-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/tracking/status-usage.en.md',
-      },
+      usage: 'docs/user/document/tracking/status-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'DocumentTrackingStatusTitle',
+      description: 'DocumentTrackingStatusDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'document.tracking.version': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.document.tracking.version': {
+    userDocumentation: {
       specification: 'docs/user/document/tracking/version-spec.en.md',
-      usage: {
-        generic: 'docs/user/document/tracking/version-usage.en.md',
-      },
+      usage: 'docs/user/document/tracking/version-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: { title: 'VersionTitle', description: 'VersionDescription' },
   },
-  product_tree: {
-    propertyOrder: [
-      'branches',
-      'full_product_names',
-      'product_groups',
-      'relationships',
-    ],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'want_to_have',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.product_tree': {
+    userDocumentation: {
       specification: 'docs/user/product_tree-spec.en.md',
-      usage: {
-        generic: 'docs/user/product_tree-usage.en.md',
-      },
+      usage: 'docs/user/product_tree-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'want_to_have',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'ProductTreeTitle',
+      description: 'ProductTreeDescription',
     },
   },
-  'product_tree.branches[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification: 'docs/user/types/branches/branch-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/branches/branch-usage.en.md',
-      },
-    },
-  },
-  'product_tree.branches': {
-    propertyOrder: ['branches', 'category', 'name', 'product'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'want_to_have',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.product_tree.branches': {
+    userDocumentation: {
       specification: 'docs/user/product_tree/branches-spec.en.md',
-      usage: {
-        generic: 'docs/user/product_tree/branches-usage.en.md',
-      },
+      usage: 'docs/user/product_tree/branches-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'want_to_have',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: { title: 'BranchesTitle', description: 'BranchesDescription' },
+  },
+  '$.product_tree.branches[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/branches/branch-spec.en.md',
+      usage: 'docs/user/types/branches/branch-usage.en.md',
+    },
+    i18n: {
+      title: 'BranchesItemsTitle',
+      description: 'BranchesItemsDescription',
     },
   },
-  'product_tree.branches.category': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
+  '$.product_tree.branches.branches': {
+    userDocumentation: {
+      specification: 'docs/user/types/branches-spec.en.md',
+      usage: 'docs/user/types/branches-usage.en.md',
     },
-    user_documentation: {
+    i18n: { title: 'BranchesTitle', description: 'BranchesDescription' },
+  },
+  '$.product_tree.branches.category': {
+    userDocumentation: {
       specification: 'docs/user/types/branches/branch/category-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/branches/branch/category-usage.en.md',
-      },
+      usage: 'docs/user/types/branches/branch/category-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'BranchesItemsCategoryTitle',
+      description: 'BranchesItemsCategoryDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'product_tree.branches.name': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.product_tree.branches.name': {
+    userDocumentation: {
       specification: 'docs/user/types/branches/branch/name-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/branches/branch/name-usage.en.md',
-      },
+      usage: 'docs/user/types/branches/branch/name-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'BranchesItemsNameTitle',
+      description: 'BranchesItemsNameDescription',
     },
   },
-  'product_tree.branches.product': {
-    propertyOrder: ['name', 'product_id', 'product_identification_helper'],
-    uiType: 'OBJECT',
-    user_documentation: {
+  '$.product_tree.branches.product': {
+    userDocumentation: {
       specification: 'docs/user/types/branches/branch/product-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/branches/branch/product-usage.en.md',
-      },
+      usage: 'docs/user/types/branches/branch/product-usage.en.md',
+    },
+    i18n: {
+      title: 'FullProductNameTitle',
+      description: 'FullProductNameDescription',
     },
   },
-  'product_tree.branches.product.name': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.product_tree.branches.product.name': {
+    userDocumentation: {
       specification: 'docs/user/types/full_product_name/name-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/full_product_name/name-usage.en.md',
-      },
+      usage: 'docs/user/types/full_product_name/name-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'FullProductNameNameTitle',
+      description: 'FullProductNameNameDescription',
     },
   },
-  'product_tree.branches.product.product_id': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.product_tree.branches.product.product_id': {
+    userDocumentation: {
       specification: 'docs/user/types/full_product_name/product_id-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/product_id-usage.en.md',
-        specific: 'docs/user/types/full_product_name/product_id-usage.en.md',
-      },
+      usage: 'docs/user/types/product_id-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
   },
-  'product_tree.branches.product.product_identification_helper': {
-    propertyOrder: [
-      'cpe',
-      'hashes',
-      'model_numbers',
-      'purl',
-      'sbom_urls',
-      'serial_numbers',
-      'skus',
-      'x_generic_uris',
-    ],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'want_to_have',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.product_tree.branches.product.product_identification_helper': {
+    userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper-usage.en.md',
-      },
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'want_to_have',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperTitle',
+      description: 'FullProductNameProductIdentificationHelperDescription',
     },
   },
-  'product_tree.branches.product.product_identification_helper.cpe': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.product_tree.branches.product.product_identification_helper.cpe': {
+    userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md',
-      },
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperCpeTitle',
+      description: 'FullProductNameProductIdentificationHelperCpeDescription',
     },
   },
-  'product_tree.branches.product.product_identification_helper.hashes[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md',
-      },
-    },
-  },
-  'product_tree.branches.product.product_identification_helper.hashes': {
-    propertyOrder: ['file_hashes', 'filename'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.product_tree.branches.product.product_identification_helper.hashes': {
+    userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md',
-      },
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperHashesTitle',
+      description:
+        'FullProductNameProductIdentificationHelperHashesDescription',
     },
   },
-  'product_tree.branches.product.product_identification_helper.hashes.file_hashes[]':
-    {
-      uiType: 'ARRAY',
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md',
-        },
-      },
+  '$.product_tree.branches.product.product_identification_helper.hashes[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md',
     },
-  'product_tree.branches.product.product_identification_helper.hashes.file_hashes':
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperHashesItemsTitle',
+      description:
+        'FullProductNameProductIdentificationHelperHashesItemsDescription',
+    },
+  },
+  '$.product_tree.branches.product.product_identification_helper.hashes.file_hashes':
     {
-      propertyOrder: ['algorithm', 'value'],
-      uiType: 'OBJECT',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription',
       },
     },
-  'product_tree.branches.product.product_identification_helper.hashes.file_hashes.algorithm':
+  '$.product_tree.branches.product.product_identification_helper.hashes.file_hashes[]':
     {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md',
       },
-      user_documentation: {
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription',
+      },
+    },
+  '$.product_tree.branches.product.product_identification_helper.hashes.file_hashes.algorithm':
+    {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription',
       },
     },
-  'product_tree.branches.product.product_identification_helper.hashes.file_hashes.value':
+  '$.product_tree.branches.product.product_identification_helper.hashes.file_hashes.value':
     {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription',
       },
     },
-  'product_tree.branches.product.product_identification_helper.hashes.filename':
+  '$.product_tree.branches.product.product_identification_helper.hashes.filename':
     {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFilenameTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFilenameDescription',
       },
     },
-  'product_tree.branches.product.product_identification_helper.model_numbers[]':
+  '$.product_tree.branches.product.product_identification_helper.model_numbers':
     {
-      uiType: 'ARRAY',
-      user_documentation: {
+      userDocumentation: {
         specification:
-          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md',
-        },
-      },
-    },
-  'product_tree.branches.product.product_identification_helper.model_numbers': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md',
-      usage: {
-        generic:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md',
+        usage:
           'docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md',
       },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperModelNumbersTitle',
+        description:
+          'FullProductNameProductIdentificationHelperModelNumbersDescription',
+      },
     },
-  },
-  'product_tree.branches.product.product_identification_helper.purl': {
-    uiType: 'URI',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
+  '$.product_tree.branches.product.product_identification_helper.model_numbers[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperModelNumbersItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperModelNumbersItemsDescription',
+      },
     },
-    user_documentation: {
+  '$.product_tree.branches.product.product_identification_helper.purl': {
+    userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md',
-      },
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperPurlTitle',
+      description: 'FullProductNameProductIdentificationHelperPurlDescription',
     },
   },
-  'product_tree.branches.product.product_identification_helper.sbom_urls[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md',
-      },
-    },
-  },
-  'product_tree.branches.product.product_identification_helper.sbom_urls': {
-    uiType: 'URI',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.product_tree.branches.product.product_identification_helper.sbom_urls': {
+    userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md',
-      },
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperSbomUrlsTitle',
+      description:
+        'FullProductNameProductIdentificationHelperSbomUrlsDescription',
     },
   },
-  'product_tree.branches.product.product_identification_helper.serial_numbers[]':
-    {
-      uiType: 'ARRAY',
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md',
-        },
-      },
+  '$.product_tree.branches.product.product_identification_helper.sbom_urls[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md',
     },
-  'product_tree.branches.product.product_identification_helper.serial_numbers':
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperSbomUrlsItemsTitle',
+      description:
+        'FullProductNameProductIdentificationHelperSbomUrlsItemsDescription',
+    },
+  },
+  '$.product_tree.branches.product.product_identification_helper.serial_numbers':
     {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'nice_to_know',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperSerialNumbersTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSerialNumbersDescription',
       },
     },
-  'product_tree.branches.product.product_identification_helper.skus[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md',
+  '$.product_tree.branches.product.product_identification_helper.serial_numbers[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperSerialNumbersItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSerialNumbersItemsDescription',
       },
     },
-  },
-  'product_tree.branches.product.product_identification_helper.skus': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.product_tree.branches.product.product_identification_helper.skus': {
+    userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md',
-      },
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperSkusTitle',
+      description: 'FullProductNameProductIdentificationHelperSkusDescription',
     },
   },
-  'product_tree.branches.product.product_identification_helper.x_generic_uris[]':
-    {
-      uiType: 'ARRAY',
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md',
-        },
-      },
+  '$.product_tree.branches.product.product_identification_helper.skus[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md',
     },
-  'product_tree.branches.product.product_identification_helper.x_generic_uris':
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperSkusItemsTitle',
+      description:
+        'FullProductNameProductIdentificationHelperSkusItemsDescription',
+    },
+  },
+  '$.product_tree.branches.product.product_identification_helper.x_generic_uris':
     {
-      propertyOrder: ['namespace', 'uri'],
-      uiType: 'OBJECT',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'want_to_have',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'want_to_have',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperXGenericUrisTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisDescription',
       },
     },
-  'product_tree.branches.product.product_identification_helper.x_generic_uris.namespace':
+  '$.product_tree.branches.product.product_identification_helper.x_generic_uris[]':
     {
-      uiType: 'URI',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md',
       },
-      user_documentation: {
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsDescription',
+      },
+    },
+  '$.product_tree.branches.product.product_identification_helper.x_generic_uris.namespace':
+    {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription',
       },
     },
-  'product_tree.branches.product.product_identification_helper.x_generic_uris.uri':
+  '$.product_tree.branches.product.product_identification_helper.x_generic_uris.uri':
     {
-      uiType: 'URI',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription',
       },
     },
-  'product_tree.full_product_names[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification: 'docs/user/types/full_product_name-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/full_product_name-usage.en.md',
-      },
-    },
-  },
-  'product_tree.full_product_names': {
-    propertyOrder: ['name', 'product_id', 'product_identification_helper'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.product_tree.full_product_names': {
+    userDocumentation: {
       specification: 'docs/user/product_tree/full_product_names-spec.en.md',
-      usage: {
-        generic: 'docs/user/product_tree/full_product_names-usage.en.md',
-      },
+      usage: 'docs/user/product_tree/full_product_names-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'ProductTreeFullProductNamesTitle',
+      description: 'ProductTreeFullProductNamesDescription',
     },
   },
-  'product_tree.full_product_names.name': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
+  '$.product_tree.full_product_names[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/full_product_name-spec.en.md',
+      usage: 'docs/user/types/full_product_name-usage.en.md',
     },
-    user_documentation: {
+    i18n: {
+      title: 'FullProductNameTitle',
+      description: 'FullProductNameDescription',
+    },
+  },
+  '$.product_tree.full_product_names.name': {
+    userDocumentation: {
       specification: 'docs/user/types/full_product_name/name-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/full_product_name/name-usage.en.md',
-      },
+      usage: 'docs/user/types/full_product_name/name-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'FullProductNameNameTitle',
+      description: 'FullProductNameNameDescription',
     },
   },
-  'product_tree.full_product_names.product_id': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.product_tree.full_product_names.product_id': {
+    userDocumentation: {
       specification: 'docs/user/types/product_id-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/product_id-usage.en.md',
-      },
+      usage: 'docs/user/types/product_id-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
   },
-  'product_tree.full_product_names.product_identification_helper': {
-    propertyOrder: [
-      'cpe',
-      'hashes',
-      'model_numbers',
-      'purl',
-      'sbom_urls',
-      'serial_numbers',
-      'skus',
-      'x_generic_uris',
-    ],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'want_to_have',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.product_tree.full_product_names.product_identification_helper': {
+    userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper-usage.en.md',
-      },
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'want_to_have',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperTitle',
+      description: 'FullProductNameProductIdentificationHelperDescription',
     },
   },
-  'product_tree.full_product_names.product_identification_helper.cpe': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.product_tree.full_product_names.product_identification_helper.cpe': {
+    userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md',
-      },
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperCpeTitle',
+      description: 'FullProductNameProductIdentificationHelperCpeDescription',
     },
   },
-  'product_tree.full_product_names.product_identification_helper.hashes[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md',
-      },
-    },
-  },
-  'product_tree.full_product_names.product_identification_helper.hashes': {
-    propertyOrder: ['file_hashes', 'filename'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.product_tree.full_product_names.product_identification_helper.hashes': {
+    userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md',
-      },
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperHashesTitle',
+      description:
+        'FullProductNameProductIdentificationHelperHashesDescription',
     },
   },
-  'product_tree.full_product_names.product_identification_helper.hashes.file_hashes[]':
-    {
-      uiType: 'ARRAY',
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md',
-        },
-      },
+  '$.product_tree.full_product_names.product_identification_helper.hashes[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md',
     },
-  'product_tree.full_product_names.product_identification_helper.hashes.file_hashes':
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperHashesItemsTitle',
+      description:
+        'FullProductNameProductIdentificationHelperHashesItemsDescription',
+    },
+  },
+  '$.product_tree.full_product_names.product_identification_helper.hashes.file_hashes':
     {
-      propertyOrder: ['algorithm', 'value'],
-      uiType: 'OBJECT',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription',
       },
     },
-  'product_tree.full_product_names.product_identification_helper.hashes.file_hashes.algorithm':
+  '$.product_tree.full_product_names.product_identification_helper.hashes.file_hashes[]':
     {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md',
       },
-      user_documentation: {
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.hashes.file_hashes.algorithm':
+    {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription',
       },
     },
-  'product_tree.full_product_names.product_identification_helper.hashes.file_hashes.value':
+  '$.product_tree.full_product_names.product_identification_helper.hashes.file_hashes.value':
     {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription',
       },
     },
-  'product_tree.full_product_names.product_identification_helper.hashes.filename':
+  '$.product_tree.full_product_names.product_identification_helper.hashes.filename':
     {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFilenameTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFilenameDescription',
       },
     },
-  'product_tree.full_product_names.product_identification_helper.model_numbers[]':
+  '$.product_tree.full_product_names.product_identification_helper.model_numbers':
     {
-      uiType: 'ARRAY',
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md',
-        },
-      },
-    },
-  'product_tree.full_product_names.product_identification_helper.model_numbers':
-    {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'nice_to_know',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperModelNumbersTitle',
+        description:
+          'FullProductNameProductIdentificationHelperModelNumbersDescription',
       },
     },
-  'product_tree.full_product_names.product_identification_helper.purl': {
-    uiType: 'URI',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
+  '$.product_tree.full_product_names.product_identification_helper.model_numbers[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperModelNumbersItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperModelNumbersItemsDescription',
+      },
     },
-    user_documentation: {
+  '$.product_tree.full_product_names.product_identification_helper.purl': {
+    userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md',
-      },
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperPurlTitle',
+      description: 'FullProductNameProductIdentificationHelperPurlDescription',
     },
   },
-  'product_tree.full_product_names.product_identification_helper.sbom_urls[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md',
-      },
-    },
-  },
-  'product_tree.full_product_names.product_identification_helper.sbom_urls': {
-    uiType: 'URI',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.product_tree.full_product_names.product_identification_helper.sbom_urls': {
+    userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md',
-      },
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperSbomUrlsTitle',
+      description:
+        'FullProductNameProductIdentificationHelperSbomUrlsDescription',
     },
   },
-  'product_tree.full_product_names.product_identification_helper.serial_numbers[]':
+  '$.product_tree.full_product_names.product_identification_helper.sbom_urls[]':
     {
-      uiType: 'ARRAY',
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md',
-        },
-      },
-    },
-  'product_tree.full_product_names.product_identification_helper.serial_numbers':
-    {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'nice_to_know',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md',
-        },
-      },
-    },
-  'product_tree.full_product_names.product_identification_helper.skus[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md',
-      },
-    },
-  },
-  'product_tree.full_product_names.product_identification_helper.skus': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'nice_to_know',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md',
-      },
-    },
-  },
-  'product_tree.full_product_names.product_identification_helper.x_generic_uris[]':
-    {
-      uiType: 'ARRAY',
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md',
-        },
-      },
-    },
-  'product_tree.full_product_names.product_identification_helper.x_generic_uris':
-    {
-      propertyOrder: ['namespace', 'uri'],
-      uiType: 'OBJECT',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'want_to_have',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md',
-        },
-      },
-    },
-  'product_tree.full_product_names.product_identification_helper.x_generic_uris.namespace':
-    {
-      uiType: 'URI',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md',
-        },
-      },
-    },
-  'product_tree.full_product_names.product_identification_helper.x_generic_uris.uri':
-    {
-      uiType: 'URI',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md',
-        },
-      },
-    },
-  'product_tree.product_groups[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification:
-        'docs/user/product_tree/product_groups/product_group-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/product_tree/product_groups/product_group-usage.en.md',
-      },
-    },
-  },
-  'product_tree.product_groups': {
-    propertyOrder: ['group_id', 'product_ids', 'summary'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'optional',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
-      specification: 'docs/user/product_tree/product_groups-spec.en.md',
-      usage: {
-        generic: 'docs/user/product_tree/product_groups-usage.en.md',
-      },
-    },
-  },
-  'product_tree.product_groups.group_id': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
-      specification:
-        'docs/user/product_tree/product_groups/product_group/group_id-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/product_tree/product_groups/product_group/group_id-usage.en.md',
-      },
-    },
-  },
-  'product_tree.product_groups.product_ids[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification: 'docs/user/types/product_id-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/product_id-usage.en.md',
-      },
-    },
-  },
-  'product_tree.product_groups.product_ids': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
-      specification:
-        'docs/user/product_tree/product_groups/product_group/product_ids-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/product_tree/product_groups/product_group/product_ids-usage.en.md',
-      },
-    },
-  },
-  'product_tree.product_groups.summary': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'want_to_have',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
-      specification:
-        'docs/user/product_tree/product_groups/product_group/summary-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/product_tree/product_groups/product_group/summary-usage.en.md',
-      },
-    },
-  },
-  'product_tree.relationships[]': {
-    uiType: 'ARRAY',
-    user_documentation: {
-      specification:
-        'docs/user/product_tree/relationships/relationship-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/product_tree/relationships/relationship-usage.en.md',
-      },
-    },
-  },
-  'product_tree.relationships': {
-    propertyOrder: [
-      'category',
-      'full_product_name',
-      'product_reference',
-      'relates_to_product_reference',
-    ],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'optional',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
-      specification: 'docs/user/product_tree/relationships-spec.en.md',
-      usage: {
-        generic: 'docs/user/product_tree/relationships-usage.en.md',
-      },
-    },
-  },
-  'product_tree.relationships.category': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
-      specification:
-        'docs/user/product_tree/relationships/relationship/category-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/product_tree/relationships/relationship/category-usage.en.md',
-      },
-    },
-  },
-  'product_tree.relationships.full_product_name': {
-    propertyOrder: ['name', 'product_id', 'product_identification_helper'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
-      specification:
-        'docs/user/product_tree/relationships/relationship/full_product_name-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/product_tree/relationships/relationship/full_product_name-usage.en.md',
-      },
-    },
-  },
-  'product_tree.relationships.full_product_name.name': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
-      specification: 'docs/user/types/full_product_name/name-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/full_product_name/name-usage.en.md',
-      },
-    },
-  },
-  'product_tree.relationships.full_product_name.product_id': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
-      specification: 'docs/user/types/full_product_name/product_id-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/full_product_name/product_id-usage.en.md',
-      },
-    },
-  },
-  'product_tree.relationships.full_product_name.product_identification_helper':
-    {
-      propertyOrder: [
-        'cpe',
-        'hashes',
-        'model_numbers',
-        'purl',
-        'sbom_urls',
-        'serial_numbers',
-        'skus',
-        'x_generic_uris',
-      ],
-      uiType: 'OBJECT',
-      relevance_levels: {
-        csaf_base: 'want_to_have',
-        csaf_security_incident_response: 'want_to_have',
-        csaf_informational_advisory: 'want_to_have',
-        csaf_security_advisory: 'want_to_have',
-        csaf_vex: 'want_to_have',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.cpe':
-    {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'nice_to_know',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes[]':
-    {
-      uiType: 'ARRAY',
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes':
-    {
-      propertyOrder: ['file_hashes', 'filename'],
-      uiType: 'OBJECT',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'nice_to_know',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes[]':
-    {
-      uiType: 'ARRAY',
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes':
-    {
-      propertyOrder: ['algorithm', 'value'],
-      uiType: 'OBJECT',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes.algorithm':
-    {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes.value':
-    {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes.filename':
-    {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.model_numbers[]':
-    {
-      uiType: 'ARRAY',
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.model_numbers':
-    {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'nice_to_know',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.purl':
-    {
-      uiType: 'URI',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'nice_to_know',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.sbom_urls[]':
-    {
-      uiType: 'ARRAY',
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperSbomUrlsItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSbomUrlsItemsDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.sbom_urls':
+  '$.product_tree.full_product_names.product_identification_helper.serial_numbers':
     {
-      uiType: 'URI',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'nice_to_know',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.serial_numbers[]':
-    {
-      uiType: 'ARRAY',
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md',
-        },
-      },
-    },
-  'product_tree.relationships.full_product_name.product_identification_helper.serial_numbers':
-    {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'nice_to_know',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperSerialNumbersTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSerialNumbersDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.skus[]':
+  '$.product_tree.full_product_names.product_identification_helper.serial_numbers[]':
     {
-      uiType: 'ARRAY',
-      user_documentation: {
+      userDocumentation: {
         specification:
-          'docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md',
-        },
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperSerialNumbersItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSerialNumbersItemsDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.skus':
-    {
-      uiType: 'STRING',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'nice_to_know',
-      },
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md',
-        },
-      },
+  '$.product_tree.full_product_names.product_identification_helper.skus': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md',
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris[]':
-    {
-      uiType: 'ARRAY',
-      user_documentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md',
-        },
-      },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris':
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperSkusTitle',
+      description: 'FullProductNameProductIdentificationHelperSkusDescription',
+    },
+  },
+  '$.product_tree.full_product_names.product_identification_helper.skus[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperSkusItemsTitle',
+      description:
+        'FullProductNameProductIdentificationHelperSkusItemsDescription',
+    },
+  },
+  '$.product_tree.full_product_names.product_identification_helper.x_generic_uris':
     {
-      propertyOrder: ['namespace', 'uri'],
-      uiType: 'OBJECT',
-      relevance_levels: {
-        csaf_base: 'nice_to_know',
-        csaf_security_incident_response: 'nice_to_know',
-        csaf_informational_advisory: 'nice_to_know',
-        csaf_security_advisory: 'nice_to_know',
-        csaf_vex: 'want_to_have',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'want_to_have',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperXGenericUrisTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris.namespace':
+  '$.product_tree.full_product_names.product_identification_helper.x_generic_uris[]':
     {
-      uiType: 'URI',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md',
       },
-      user_documentation: {
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.x_generic_uris.namespace':
+    {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris.uri':
+  '$.product_tree.full_product_names.product_identification_helper.x_generic_uris.uri':
     {
-      uiType: 'URI',
-      relevance_levels: {
-        csaf_base: 'mandatory',
-        csaf_security_incident_response: 'mandatory',
-        csaf_informational_advisory: 'mandatory',
-        csaf_security_advisory: 'mandatory',
-        csaf_vex: 'mandatory',
-      },
-      user_documentation: {
+      userDocumentation: {
         specification:
           'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md',
-        usage: {
-          generic:
-            'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md',
-        },
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription',
       },
     },
-  'product_tree.relationships.product_reference': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
+  '$.product_tree.product_groups': {
+    userDocumentation: {
+      specification: 'docs/user/product_tree/product_groups-spec.en.md',
+      usage: 'docs/user/product_tree/product_groups-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'optional',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'ProductTreeProductGroupsTitle',
+      description: 'ProductTreeProductGroupsDescription',
+    },
+  },
+  '$.product_tree.product_groups[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/product_tree/product_groups/product_group-spec.en.md',
+      usage: 'docs/user/product_tree/product_groups/product_group-usage.en.md',
+    },
+    i18n: {
+      title: 'ProductTreeProductGroupsItemsTitle',
+      description: 'ProductTreeProductGroupsItemsDescription',
+    },
+  },
+  '$.product_tree.product_groups.group_id': {
+    userDocumentation: {
+      specification:
+        'docs/user/product_tree/product_groups/product_group/group_id-spec.en.md',
+      usage:
+        'docs/user/product_tree/product_groups/product_group/group_id-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'ProductGroupIdTitle',
+      description: 'ProductGroupIdDescription',
+    },
+  },
+  '$.product_tree.product_groups.product_ids': {
+    userDocumentation: {
+      specification:
+        'docs/user/product_tree/product_groups/product_group/product_ids-spec.en.md',
+      usage:
+        'docs/user/product_tree/product_groups/product_group/product_ids-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'ProductTreeProductGroupsItemsProductIdsTitle',
+      description: 'ProductTreeProductGroupsItemsProductIdsDescription',
+    },
+  },
+  '$.product_tree.product_groups.product_ids[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/product_id-spec.en.md',
+      usage: 'docs/user/types/product_id-usage.en.md',
+    },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
+  },
+  '$.product_tree.product_groups.summary': {
+    userDocumentation: {
+      specification:
+        'docs/user/product_tree/product_groups/product_group/summary-spec.en.md',
+      usage:
+        'docs/user/product_tree/product_groups/product_group/summary-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'want_to_have',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'ProductTreeProductGroupsItemsSummaryTitle',
+      description: 'ProductTreeProductGroupsItemsSummaryDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
+  },
+  '$.product_tree.relationships': {
+    userDocumentation: {
+      specification: 'docs/user/product_tree/relationships-spec.en.md',
+      usage: 'docs/user/product_tree/relationships-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'optional',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'ProductTreeRelationshipsTitle',
+      description: 'ProductTreeRelationshipsDescription',
+    },
+  },
+  '$.product_tree.relationships[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/product_tree/relationships/relationship-spec.en.md',
+      usage: 'docs/user/product_tree/relationships/relationship-usage.en.md',
+    },
+    i18n: {
+      title: 'ProductTreeRelationshipsItemsTitle',
+      description: 'ProductTreeRelationshipsItemsDescription',
+    },
+  },
+  '$.product_tree.relationships.category': {
+    userDocumentation: {
+      specification:
+        'docs/user/product_tree/relationships/relationship/category-spec.en.md',
+      usage:
+        'docs/user/product_tree/relationships/relationship/category-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'ProductTreeRelationshipsItemsCategoryTitle',
+      description: 'ProductTreeRelationshipsItemsCategoryDescription',
+    },
+    uiType: 'STRING_ENUM',
+  },
+  '$.product_tree.relationships.full_product_name': {
+    userDocumentation: {
+      specification:
+        'docs/user/product_tree/relationships/relationship/full_product_name-spec.en.md',
+      usage:
+        'docs/user/product_tree/relationships/relationship/full_product_name-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'FullProductNameTitle',
+      description: 'FullProductNameDescription',
+    },
+  },
+  '$.product_tree.relationships.full_product_name.name': {
+    userDocumentation: {
+      specification: 'docs/user/types/full_product_name/name-spec.en.md',
+      usage: 'docs/user/types/full_product_name/name-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'FullProductNameNameTitle',
+      description: 'FullProductNameNameDescription',
+    },
+  },
+  '$.product_tree.relationships.full_product_name.product_id': {
+    userDocumentation: {
+      specification: 'docs/user/types/full_product_name/product_id-spec.en.md',
+      usage: 'docs/user/types/full_product_name/product_id-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
+  },
+  '$.product_tree.relationships.full_product_name.product_identification_helper':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'want_to_have',
+        csafSecurityIncidentResponse: 'want_to_have',
+        csafInformationalAdvisory: 'want_to_have',
+        csafSecurityAdvisory: 'want_to_have',
+        csafVex: 'want_to_have',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperTitle',
+        description: 'FullProductNameProductIdentificationHelperDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.cpe':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperCpeTitle',
+        description: 'FullProductNameProductIdentificationHelperCpeDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperHashesTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperHashesItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes.algorithm':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes.value':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes.filename':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFilenameTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFilenameDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.model_numbers':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperModelNumbersTitle',
+        description:
+          'FullProductNameProductIdentificationHelperModelNumbersDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.model_numbers[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperModelNumbersItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperModelNumbersItemsDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.purl':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperPurlTitle',
+        description:
+          'FullProductNameProductIdentificationHelperPurlDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.sbom_urls':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperSbomUrlsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSbomUrlsDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.sbom_urls[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperSbomUrlsItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSbomUrlsItemsDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.serial_numbers':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperSerialNumbersTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSerialNumbersDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.serial_numbers[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperSerialNumbersItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSerialNumbersItemsDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.skus':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperSkusTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSkusDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.skus[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperSkusItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSkusItemsDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'want_to_have',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperXGenericUrisTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris.namespace':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription',
+      },
+    },
+  '$.product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris.uri':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription',
+      },
+    },
+  '$.product_tree.relationships.product_reference': {
+    userDocumentation: {
       specification:
         'docs/user/product_tree/relationships/relationship/product_reference-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/product_id-usage.en.md',
-        specific:
-          'docs/user/product_tree/relationships/relationship/product_reference-usage.en.md',
-      },
+      usage: 'docs/user/types/product_id-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'ProductTreeRelationshipsItemsProductReferenceTitle',
+      description: 'ProductTreeRelationshipsItemsProductReferenceDescription',
+    },
+    uiType: 'STRING_ID',
   },
-  'product_tree.relationships.relates_to_product_reference': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.product_tree.relationships.relates_to_product_reference': {
+    userDocumentation: {
       specification:
         'docs/user/product_tree/relationships/relationship/relates_to_product_reference-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/product_id-usage.en.md',
-        specific:
-          'docs/user/product_tree/relationships/relationship/relates_to_product_reference-usage.en.md',
-      },
+      usage: 'docs/user/types/product_id-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'ProductTreeRelationshipsItemsRelatesToProductReferenceTitle',
+      description:
+        'ProductTreeRelationshipsItemsRelatesToProductReferenceDescription',
+    },
+    uiType: 'STRING_ID',
   },
-  'vulnerabilities[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
-      specification: 'docs/user/vulnerabilities/vulnerability-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities/vulnerability-usage.en.md',
-      },
-    },
-  },
-  vulnerabilities: {
-    propertyOrder: [
-      'acknowledgments',
-      'cve',
-      'cwe',
-      'discovery_date',
-      'flags',
-      'ids',
-      'involvements',
-      'notes',
-      'product_status',
-      'references',
-      'release_date',
-      'remediations',
-      'scores',
-      'threats',
-      'title',
-    ],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities': {
+    userDocumentation: {
       specification: 'docs/user/vulnerabilities-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesTitle',
+      description: 'VulnerabilitiesDescription',
     },
   },
-  'vulnerabilities.acknowledgments[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
+  '$.vulnerabilities[]': {
+    userDocumentation: {
+      specification: 'docs/user/vulnerabilities/vulnerability-spec.en.md',
+      usage: 'docs/user/vulnerabilities/vulnerability-usage.en.md',
     },
-    user_documentation: {
-      specification:
-        'docs/user/types/acknowledgments/acknowledgment-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/acknowledgments/acknowledgment-usage.en.md',
-      },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'VulnerabilitiesItemsTitle',
+      description: 'VulnerabilitiesItemsDescription',
     },
   },
-  'vulnerabilities.acknowledgments': {
-    propertyOrder: ['names', 'organization', 'summary', 'urls'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.vulnerabilities.acknowledgments': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/acknowledgments-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/acknowledgments-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/acknowledgments-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsAcknowledgmentsTitle',
+      description: 'VulnerabilitiesItemsAcknowledgmentsDescription',
     },
   },
-  'vulnerabilities.acknowledgments.names[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.acknowledgments[]': {
+    userDocumentation: {
       specification:
-        'docs/user/types/acknowledgments/acknowledgment/names/name-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md',
-      },
+        'docs/user/types/acknowledgments/acknowledgment-spec.en.md',
+      usage: 'docs/user/types/acknowledgments/acknowledgment-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'AcknowledgmentsItemsTitle',
+      description: 'AcknowledgmentsItemsDescription',
     },
   },
-  'vulnerabilities.acknowledgments.names': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.vulnerabilities.acknowledgments.names': {
+    userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/names-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/acknowledgments/acknowledgment/names-usage.en.md',
-      },
+      usage: 'docs/user/types/acknowledgments/acknowledgment/names-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'AcknowledgmentsItemsNamesTitle',
+      description: 'AcknowledgmentsItemsNamesDescription',
     },
   },
-  'vulnerabilities.acknowledgments.organization': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'nice_to_know',
+  '$.vulnerabilities.acknowledgments.names[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/acknowledgments/acknowledgment/names/name-spec.en.md',
+      usage:
+        'docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'AcknowledgmentsItemsNamesItemsTitle',
+      description: 'AcknowledgmentsItemsNamesItemsDescription',
+    },
+  },
+  '$.vulnerabilities.acknowledgments.organization': {
+    userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/organization-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md',
-      },
+      usage:
+        'docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'AcknowledgmentsItemsOrganizationTitle',
+      description: 'AcknowledgmentsItemsOrganizationDescription',
     },
   },
-  'vulnerabilities.acknowledgments.summary': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.acknowledgments.summary': {
+    userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/summary-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md',
-      },
+      usage:
+        'docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'AcknowledgmentsItemsSummaryTitle',
+      description: 'AcknowledgmentsItemsSummaryDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.acknowledgments.urls[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
-      specification:
-        'docs/user/types/acknowledgments/acknowledgment/urls/url-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md',
-      },
-    },
-  },
-  'vulnerabilities.acknowledgments.urls': {
-    uiType: 'URI',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.acknowledgments.urls': {
+    userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/urls-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md',
-      },
+      usage: 'docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'AcknowledgmentsItemsUrlsTitle',
+      description: 'AcknowledgmentsItemsUrlsDescription',
     },
   },
-  'vulnerabilities.cve': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
+  '$.vulnerabilities.acknowledgments.urls[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/acknowledgments/acknowledgment/urls/url-spec.en.md',
+      usage:
+        'docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'AcknowledgmentsItemsUrlsItemsTitle',
+      description: 'AcknowledgmentsItemsUrlsItemsDescription',
+    },
+  },
+  '$.vulnerabilities.cve': {
+    userDocumentation: {
       specification: 'docs/user/vulnerabilities/vulnerability/cve-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities/vulnerability/cve-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/cve-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsCveTitle',
+      description: 'VulnerabilitiesItemsCveDescription',
     },
   },
-  'vulnerabilities.cwe': {
-    propertyOrder: ['id', 'name'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.vulnerabilities.cwe': {
+    userDocumentation: {
       specification: 'docs/user/vulnerabilities/vulnerability/cwe-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities/vulnerability/cwe-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/cwe-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsCweTitle',
+      description: 'VulnerabilitiesItemsCweDescription',
+    },
+    uiType: 'OBJECT_CWE',
   },
-  'vulnerabilities.cwe.id': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.cwe.id': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/cwe/id-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities/vulnerability/cwe/id-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/cwe/id-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsCweIdTitle',
+      description: 'VulnerabilitiesItemsCweIdDescription',
     },
   },
-  'vulnerabilities.cwe.name': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.cwe.name': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/cwe/name-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities/vulnerability/cwe/name-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/cwe/name-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsCweNameTitle',
+      description: 'VulnerabilitiesItemsCweNameDescription',
     },
   },
-  'vulnerabilities.discovery_date': {
-    uiType: 'DATETIME',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.discovery_date': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/discovery_date-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/discovery_date-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/discovery_date-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsDiscoveryDateTitle',
+      description: 'VulnerabilitiesItemsDiscoveryDateDescription',
     },
   },
-  'vulnerabilities.flags[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
+  '$.vulnerabilities.flags': {
+    userDocumentation: {
+      specification: 'docs/user/vulnerabilities/vulnerability/flags-spec.en.md',
+      usage: 'docs/user/vulnerabilities/vulnerability/flags-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsFlagsTitle',
+      description: 'VulnerabilitiesItemsFlagsDescription',
+    },
+  },
+  '$.vulnerabilities.flags[]': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/flags/flag-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/flags/flag-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/flags/flag-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'VulnerabilitiesItemsFlagsItemsTitle',
+      description: 'VulnerabilitiesItemsFlagsItemsDescription',
     },
   },
-  'vulnerabilities.flags': {
-    propertyOrder: ['date', 'group_ids', 'label', 'product_ids'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-    },
-    user_documentation: {
-      specification: 'docs/user/vulnerabilities/vulnerability/flags-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities/vulnerability/flags-usage.en.md',
-      },
-    },
-  },
-  'vulnerabilities.flags.date': {
-    uiType: 'DATETIME',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.flags.date': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/flags/flag/date-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/flags/flag/date-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/flags/flag/date-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsFlagsItemsDateTitle',
+      description: 'VulnerabilitiesItemsFlagsItemsDateDescription',
     },
   },
-  'vulnerabilities.flags.group_ids[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
-      specification: 'docs/user/types/product_group_id-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/product_group_id-spec.en.md',
-      },
-    },
-  },
-  'vulnerabilities.flags.group_ids': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.flags.group_ids': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/flags/flag/group_ids-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/flags/flag/group_ids-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/flags/flag/group_ids-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'ProductGroupsTitle',
+      description: 'ProductGroupsDescription',
     },
   },
-  'vulnerabilities.flags.label': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
+  '$.vulnerabilities.flags.group_ids[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/product_group_id-spec.en.md',
+      usage: 'docs/user/types/product_group_id-spec.en.md',
     },
-    user_documentation: {
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'ProductGroupIdTitle',
+      description: 'ProductGroupIdDescription',
+    },
+    uiType: 'STRING_ID',
+  },
+  '$.vulnerabilities.flags.label': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/flags/flag/label-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/flags/flag/label-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/flags/flag/label-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsFlagsItemsLabelTitle',
+      description: 'VulnerabilitiesItemsFlagsItemsLabelDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'vulnerabilities.flags.product_ids[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
-      specification: 'docs/user/types/product_id-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/product_id-usage.en.md',
-      },
-    },
-  },
-  'vulnerabilities.flags.product_ids': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.flags.product_ids': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/flags/flag/product_ids-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/flags/flag/product_ids-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/flags/flag/product_ids-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductsTitle', description: 'ProductsDescription' },
+  },
+  '$.vulnerabilities.flags.product_ids[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/product_id-spec.en.md',
+      usage: 'docs/user/types/product_id-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
+  },
+  '$.vulnerabilities.ids': {
+    userDocumentation: {
+      specification: 'docs/user/vulnerabilities/vulnerability/ids-spec.en.md',
+      usage: 'docs/user/vulnerabilities/vulnerability/ids-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsIdsTitle',
+      description: 'VulnerabilitiesItemsIdsDescription',
     },
   },
-  'vulnerabilities.ids[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.ids[]': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/ids/id-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities/vulnerability/ids/id-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/ids/id-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'VulnerabilitiesItemsIdsItemsTitle',
+      description: 'VulnerabilitiesItemsIdsItemsDescription',
     },
   },
-  'vulnerabilities.ids': {
-    propertyOrder: ['system_name', 'text'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-    },
-    user_documentation: {
-      specification: 'docs/user/vulnerabilities/vulnerability/ids-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities/vulnerability/ids-usage.en.md',
-      },
-    },
-  },
-  'vulnerabilities.ids.system_name': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.ids.system_name': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/ids/id/system_name-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/ids/id/system_name-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/ids/id/system_name-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsIdsItemsSystemNameTitle',
+      description: 'VulnerabilitiesItemsIdsItemsSystemNameDescription',
     },
   },
-  'vulnerabilities.ids.text': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.ids.text': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/ids/id/text-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/ids/id/text-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/ids/id/text-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsIdsItemsTextTitle',
+      description: 'VulnerabilitiesItemsIdsItemsTextDescription',
     },
   },
-  'vulnerabilities.involvements[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
-      specification:
-        'docs/user/vulnerabilities/vulnerability/involvements/involvement-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/involvements/involvement-usage.en.md',
-      },
-    },
-  },
-  'vulnerabilities.involvements': {
-    propertyOrder: ['date', 'party', 'status', 'summary'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.involvements': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/involvements-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/involvements-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/involvements-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsInvolvementsTitle',
+      description: 'VulnerabilitiesItemsInvolvementsDescription',
     },
   },
-  'vulnerabilities.involvements.date': {
-    uiType: 'DATETIME',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
+  '$.vulnerabilities.involvements[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/vulnerabilities/vulnerability/involvements/involvement-spec.en.md',
+      usage:
+        'docs/user/vulnerabilities/vulnerability/involvements/involvement-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'VulnerabilitiesItemsInvolvementsItemsTitle',
+      description: 'VulnerabilitiesItemsInvolvementsItemsDescription',
+    },
+  },
+  '$.vulnerabilities.involvements.date': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/involvements/involvement/date-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/involvements/involvement/date-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/involvements/involvement/date-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsInvolvementsItemsDateTitle',
+      description: 'VulnerabilitiesItemsInvolvementsItemsDateDescription',
     },
   },
-  'vulnerabilities.involvements.party': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.involvements.party': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/involvements/involvement/party-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/involvements/involvement/party-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/involvements/involvement/party-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsInvolvementsItemsPartyTitle',
+      description: 'VulnerabilitiesItemsInvolvementsItemsPartyDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'vulnerabilities.involvements.status': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.involvements.status': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/involvements/involvement/status-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/involvements/involvement/status-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/involvements/involvement/status-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsInvolvementsItemsStatusTitle',
+      description: 'VulnerabilitiesItemsInvolvementsItemsStatusDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'vulnerabilities.involvements.summary': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.involvements.summary': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/involvements/involvement/summary-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/involvements/involvement/summary-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/involvements/involvement/summary-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsInvolvementsItemsSummaryTitle',
+      description: 'VulnerabilitiesItemsInvolvementsItemsSummaryDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.notes[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
-      specification: 'docs/user/types/notes/note-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/notes/note-usage.en.md',
-      },
-    },
-  },
-  'vulnerabilities.notes': {
-    propertyOrder: ['audience', 'category', 'text', 'title'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.notes': {
+    userDocumentation: {
       specification: 'docs/user/vulnerabilities/vulnerability/notes-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities/vulnerability/notes-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/notes-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsNotesTitle',
+      description: 'VulnerabilitiesItemsNotesDescription',
     },
   },
-  'vulnerabilities.notes.audience': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
+  '$.vulnerabilities.notes[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/notes/note-spec.en.md',
+      usage: 'docs/user/types/notes/note-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'NotesItemsTitle',
+      description: 'NotesItemsDescription',
+    },
+  },
+  '$.vulnerabilities.notes.audience': {
+    userDocumentation: {
       specification: 'docs/user/types/notes/note/audience-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/notes/note/audience-usage.en.md',
-      },
+      usage: 'docs/user/types/notes/note/audience-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'NotesItemsAudienceTitle',
+      description: 'NotesItemsAudienceDescription',
     },
   },
-  'vulnerabilities.notes.category': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.notes.category': {
+    userDocumentation: {
       specification: 'docs/user/types/notes/note/category-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/notes/note/category-usage.en.md',
-      },
+      usage: 'docs/user/types/notes/note/category-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'NotesItemsCategoryTitle',
+      description: 'NotesItemsCategoryDescription',
     },
   },
-  'vulnerabilities.notes.text': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.notes.text': {
+    userDocumentation: {
       specification: 'docs/user/types/notes/note/text-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/notes/note/text-usage.en.md',
-      },
+      usage: 'docs/user/types/notes/note/text-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'NotesItemsTextTitle',
+      description: 'NotesItemsTextDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.notes.title': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.notes.title': {
+    userDocumentation: {
       specification: 'docs/user/types/notes/note/title-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/notes/note/title-usage.en.md',
-      },
+      usage: 'docs/user/types/notes/note/title-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'NotesItemsTitleTitle',
+      description: 'NotesItemsTitleDescription',
     },
   },
-  'vulnerabilities.product_status': {
-    propertyOrder: [
-      'first_affected',
-      'first_fixed',
-      'fixed',
-      'known_affected',
-      'known_not_affected',
-      'last_affected',
-      'recommended',
-      'under_investigation',
-    ],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/product_status-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/product_status-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsProductStatusTitle',
+      description: 'VulnerabilitiesItemsProductStatusDescription',
     },
   },
-  'vulnerabilities.product_status.first_affected[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
-      specification: 'docs/user/types/products-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/products-usage.en.md',
-      },
-    },
-  },
-  'vulnerabilities.product_status.first_affected': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.first_affected': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/first_affected-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/product_status/first_affected-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/product_status/first_affected-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsProductStatusFirstAffectedTitle',
+      description: 'VulnerabilitiesItemsProductStatusFirstAffectedDescription',
     },
   },
-  'vulnerabilities.product_status.first_fixed[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.first_affected[]': {
+    userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/products-usage.en.md',
-      },
+      usage: 'docs/user/types/products-usage.en.md',
     },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.first_fixed': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.first_fixed': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/first_fixed-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/product_status/first_fixed-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/product_status/first_fixed-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsProductStatusFirstFixedTitle',
+      description: 'VulnerabilitiesItemsProductStatusFirstFixedDescription',
     },
   },
-  'vulnerabilities.product_status.fixed[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.first_fixed[]': {
+    userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/products-usage.en.md',
-      },
+      usage: 'docs/user/types/products-usage.en.md',
     },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.fixed': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.fixed': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/fixed-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/product_status/fixed-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/product_status/fixed-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsProductStatusFixedTitle',
+      description: 'VulnerabilitiesItemsProductStatusFixedDescription',
     },
   },
-  'vulnerabilities.product_status.known_affected[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.fixed[]': {
+    userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/products-usage.en.md',
-      },
+      usage: 'docs/user/types/products-usage.en.md',
     },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.known_affected': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.known_affected': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/known_affected-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/product_status/known_affected-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/product_status/known_affected-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsProductStatusKnownAffectedTitle',
+      description: 'VulnerabilitiesItemsProductStatusKnownAffectedDescription',
     },
   },
-  'vulnerabilities.product_status.known_not_affected[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.known_affected[]': {
+    userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/products-usage.en.md',
-      },
+      usage: 'docs/user/types/products-usage.en.md',
     },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.known_not_affected': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.known_not_affected': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsProductStatusKnownNotAffectedTitle',
+      description:
+        'VulnerabilitiesItemsProductStatusKnownNotAffectedDescription',
     },
   },
-  'vulnerabilities.product_status.last_affected[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.known_not_affected[]': {
+    userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/products-usage.en.md',
-      },
+      usage: 'docs/user/types/products-usage.en.md',
     },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.last_affected': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.last_affected': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/last_affected-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/product_status/last_affected-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/product_status/last_affected-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsProductStatusLastAffectedTitle',
+      description: 'VulnerabilitiesItemsProductStatusLastAffectedDescription',
     },
   },
-  'vulnerabilities.product_status.recommended[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.last_affected[]': {
+    userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/products-usage.en.md',
-      },
+      usage: 'docs/user/types/products-usage.en.md',
     },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.recommended': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.recommended': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/recommended-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/product_status/recommended-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/product_status/recommended-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsProductStatusRecommendedTitle',
+      description: 'VulnerabilitiesItemsProductStatusRecommendedDescription',
     },
   },
-  'vulnerabilities.product_status.under_investigation[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.recommended[]': {
+    userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/products-usage.en.md',
-      },
+      usage: 'docs/user/types/products-usage.en.md',
     },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.under_investigation': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.product_status.under_investigation': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/under_investigation-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/product_status/under_investigation-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/product_status/under_investigation-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsProductStatusUnderInvestigationTitle',
+      description:
+        'VulnerabilitiesItemsProductStatusUnderInvestigationDescription',
     },
   },
-  'vulnerabilities.references[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
+  '$.vulnerabilities.product_status.under_investigation[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/products-spec.en.md',
+      usage: 'docs/user/types/products-usage.en.md',
     },
-    user_documentation: {
-      specification: 'docs/user/types/references/reference-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/references/reference-usage.en.md',
-      },
-    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
   },
-  'vulnerabilities.references': {
-    propertyOrder: ['category', 'summary', 'url'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.references': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/references-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/references-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/references-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsReferencesTitle',
+      description: 'VulnerabilitiesItemsReferencesDescription',
     },
   },
-  'vulnerabilities.references.category': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
+  '$.vulnerabilities.references[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/references/reference-spec.en.md',
+      usage: 'docs/user/types/references/reference-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'ReferencesItemsTitle',
+      description: 'ReferencesItemsDescription',
+    },
+  },
+  '$.vulnerabilities.references.category': {
+    userDocumentation: {
       specification: 'docs/user/types/references/reference/category-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/references/reference/category-usage.en.md',
-      },
+      usage: 'docs/user/types/references/reference/category-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'ReferencesItemsCategoryTitle',
+      description: 'ReferencesItemsCategoryDescription',
     },
   },
-  'vulnerabilities.references.summary': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.references.summary': {
+    userDocumentation: {
       specification: 'docs/user/types/references/reference/summary-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/references/reference/summary-usage.en.md',
-      },
+      usage: 'docs/user/types/references/reference/summary-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'ReferencesItemsSummaryTitle',
+      description: 'ReferencesItemsSummaryDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.references.url': {
-    uiType: 'URI',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.references.url': {
+    userDocumentation: {
       specification: 'docs/user/types/references/reference/url-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/references/reference/url-usage.en.md',
-      },
+      usage: 'docs/user/types/references/reference/url-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'ReferencesItemsUrlTitle',
+      description: 'ReferencesItemsUrlDescription',
     },
   },
-  'vulnerabilities.release_date': {
-    uiType: 'DATETIME',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.release_date': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/release_date-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/release_date-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/release_date-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsReleaseDateTitle',
+      description: 'VulnerabilitiesItemsReleaseDateDescription',
     },
   },
-  'vulnerabilities.remediations[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
-      specification:
-        'docs/user/vulnerabilities/vulnerability/remediations/remediation-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations/remediation-usage.en.md',
-      },
-    },
-  },
-  'vulnerabilities.remediations': {
-    propertyOrder: [
-      'category',
-      'date',
-      'details',
-      'entitlements',
-      'group_ids',
-      'product_ids',
-      'restart_required',
-      'url',
-    ],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.remediations': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/remediations-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsRemediationsTitle',
+      description: 'VulnerabilitiesItemsRemediationsDescription',
     },
   },
-  'vulnerabilities.remediations.category': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
+  '$.vulnerabilities.remediations[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation-spec.en.md',
+      usage:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'VulnerabilitiesItemsRemediationsItemsTitle',
+      description: 'VulnerabilitiesItemsRemediationsItemsDescription',
+    },
+  },
+  '$.vulnerabilities.remediations.category': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/category-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations/remediation/category-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation/category-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsRemediationsItemsCategoryTitle',
+      description: 'VulnerabilitiesItemsRemediationsItemsCategoryDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'vulnerabilities.remediations.date': {
-    uiType: 'DATETIME',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.vulnerabilities.remediations.date': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/date-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations/remediation/date-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation/date-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsRemediationsItemsDateTitle',
+      description: 'VulnerabilitiesItemsRemediationsItemsDateDescription',
     },
   },
-  'vulnerabilities.remediations.details': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.remediations.details': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/details-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations/remediation/details-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation/details-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsRemediationsItemsDetailsTitle',
+      description: 'VulnerabilitiesItemsRemediationsItemsDetailsDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.remediations.entitlements[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
-      specification:
-        'docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-usage.en.md',
-      },
-    },
-  },
-  'vulnerabilities.remediations.entitlements': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.remediations.entitlements': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsRemediationsItemsEntitlementsTitle',
+      description:
+        'VulnerabilitiesItemsRemediationsItemsEntitlementsDescription',
     },
   },
-  'vulnerabilities.remediations.group_ids[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
+  '$.vulnerabilities.remediations.entitlements[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-spec.en.md',
+      usage:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-usage.en.md',
     },
-    user_documentation: {
-      specification: 'docs/user/types/product_group_id-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/product_group_id-usage.en.md',
-      },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'VulnerabilitiesItemsRemediationsItemsEntitlementsItemsTitle',
+      description:
+        'VulnerabilitiesItemsRemediationsItemsEntitlementsItemsDescription',
     },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.remediations.group_ids': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.remediations.group_ids': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'ProductGroupsTitle',
+      description: 'ProductGroupsDescription',
     },
   },
-  'vulnerabilities.remediations.product_ids[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
+  '$.vulnerabilities.remediations.group_ids[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/product_group_id-spec.en.md',
+      usage: 'docs/user/types/product_group_id-usage.en.md',
     },
-    user_documentation: {
-      specification: 'docs/user/types/product_id-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/product_id-usage.en.md',
-      },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'ProductGroupIdTitle',
+      description: 'ProductGroupIdDescription',
     },
+    uiType: 'STRING_ID',
   },
-  'vulnerabilities.remediations.product_ids': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.remediations.product_ids': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids-usage.en.md',
     },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductsTitle', description: 'ProductsDescription' },
   },
-  'vulnerabilities.remediations.restart_required': {
-    propertyOrder: ['category', 'details'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'nice_to_know',
+  '$.vulnerabilities.remediations.product_ids[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/product_id-spec.en.md',
+      usage: 'docs/user/types/product_id-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
+  },
+  '$.vulnerabilities.remediations.restart_required': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsRemediationsItemsRestartRequiredTitle',
+      description:
+        'VulnerabilitiesItemsRemediationsItemsRestartRequiredDescription',
     },
   },
-  'vulnerabilities.remediations.restart_required.category': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.remediations.restart_required.category': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/category-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/category-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/category-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title:
+        'VulnerabilitiesItemsRemediationsItemsRestartRequiredCategoryTitle',
+      description:
+        'VulnerabilitiesItemsRemediationsItemsRestartRequiredCategoryDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'vulnerabilities.remediations.restart_required.details': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.remediations.restart_required.details': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/details-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/details-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/details-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsTitle',
+      description:
+        'VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.remediations.url': {
-    uiType: 'URI',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.remediations.url': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/url-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/remediations/remediation/url-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/remediations/remediation/url-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsRemediationsItemsUrlTitle',
+      description: 'VulnerabilitiesItemsRemediationsItemsUrlDescription',
     },
   },
-  'vulnerabilities.scores[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
-      specification:
-        'docs/user/vulnerabilities/vulnerability/scores/score-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score-usage.en.md',
-      },
-    },
-  },
-  'vulnerabilities.scores': {
-    propertyOrder: ['cvss_v2', 'cvss_v3', 'products'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities/vulnerability/scores-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/scores-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsScoresTitle',
+      description: 'VulnerabilitiesItemsScoresDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2': {
-    propertyOrder: [
-      'version',
-      'vectorString',
-      'accessVector',
-      'accessComplexity',
-      'authentication',
-      'confidentialityImpact',
-      'integrityImpact',
-      'availabilityImpact',
-      'exploitability',
-      'remediationLevel',
-      'reportConfidence',
-      'collateralDamagePotential',
-      'targetDistribution',
-      'confidentialityRequirement',
-      'integrityRequirement',
-      'availabilityRequirement',
-    ],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
+  '$.vulnerabilities.scores[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/vulnerabilities/vulnerability/scores/score-spec.en.md',
+      usage: 'docs/user/vulnerabilities/vulnerability/scores/score-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'VulnerabilitiesItemsScoresItemsTitle',
+      description: 'VulnerabilitiesItemsScoresItemsDescription',
+    },
+  },
+  '$.vulnerabilities.scores.cvss_v2': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: { title: 'CvssV2Title', description: 'CvssV2Description' },
+    uiType: 'OBJECT_CVSS_2',
   },
-  'vulnerabilities.scores.cvss_v2.version': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.version': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'CvssV2VersionTitle',
+      description: 'CvssV2VersionDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.vectorString': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.vectorString': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'CvssV2VectorStringTitle',
+      description: 'CvssV2VectorStringDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.accessVector': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.accessVector': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV2AccessVectorTitle',
+      description: 'CvssV2AccessVectorDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.accessComplexity': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.accessComplexity': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV2AccessComplexityTitle',
+      description: 'CvssV2AccessComplexityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.authentication': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.authentication': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV2AuthenticationTitle',
+      description: 'CvssV2AuthenticationDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.confidentialityImpact': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.confidentialityImpact': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV2ConfidentialityImpactTitle',
+      description: 'CvssV2ConfidentialityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.integrityImpact': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.integrityImpact': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV2IntegrityImpactTitle',
+      description: 'CvssV2IntegrityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.availabilityImpact': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.availabilityImpact': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV2AvailabilityImpactTitle',
+      description: 'CvssV2AvailabilityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.exploitability': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.baseScore': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'CvssV2BaseScoreTitle',
+      description: 'CvssV2BaseScoreDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.remediationLevel': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.exploitability': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'CvssV2ExploitabilityTitle',
+      description: 'CvssV2ExploitabilityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.reportConfidence': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.remediationLevel': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'CvssV2RemediationLevelTitle',
+      description: 'CvssV2RemediationLevelDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.collateralDamagePotential': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.reportConfidence': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'CvssV2ReportConfidenceTitle',
+      description: 'CvssV2ReportConfidenceDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.targetDistribution': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.temporalScore': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'CvssV2TemporalScoreTitle',
+      description: 'CvssV2TemporalScoreDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.confidentialityRequirement': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.collateralDamagePotential': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV2CollateralDamagePotentialTitle',
+      description: 'CvssV2CollateralDamagePotentialDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.integrityRequirement': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.targetDistribution': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV2TargetDistributionTitle',
+      description: 'CvssV2TargetDistributionDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.availabilityRequirement': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v2.confidentialityRequirement': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV2ConfidentialityRequirementTitle',
+      description: 'CvssV2ConfidentialityRequirementDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3': {
-    propertyOrder: [
-      'version',
-      'vectorString',
-      'attackVector',
-      'attackComplexity',
-      'privilegesRequired',
-      'userInteraction',
-      'scope',
-      'confidentialityImpact',
-      'integrityImpact',
-      'availabilityImpact',
-      'baseSeverity',
-      'exploitCodeMaturity',
-      'remediationLevel',
-      'reportConfidence',
-      'temporalSeverity',
-      'confidentialityRequirement',
-      'integrityRequirement',
-      'availabilityRequirement',
-      'modifiedAttackVector',
-      'modifiedAttackComplexity',
-      'modifiedPrivilegesRequired',
-      'modifiedUserInteraction',
-      'modifiedScope',
-      'modifiedConfidentialityImpact',
-      'modifiedIntegrityImpact',
-      'modifiedAvailabilityImpact',
-      'environmentalSeverity',
-    ],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
+  '$.vulnerabilities.scores.cvss_v2.integrityRequirement': {
+    userDocumentation: {
+      specification:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV2IntegrityRequirementTitle',
+      description: 'CvssV2IntegrityRequirementDescription',
+    },
+  },
+  '$.vulnerabilities.scores.cvss_v2.availabilityRequirement': {
+    userDocumentation: {
+      specification:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV2AvailabilityRequirementTitle',
+      description: 'CvssV2AvailabilityRequirementDescription',
+    },
+  },
+  '$.vulnerabilities.scores.cvss_v2.environmentalScore': {
+    userDocumentation: {
+      specification:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV2EnvironmentalScoreTitle',
+      description: 'CvssV2EnvironmentalScoreDescription',
+    },
+  },
+  '$.vulnerabilities.scores.cvss_v3': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: { title: 'CvssV3Title', description: 'CvssV3Description' },
+    uiType: 'OBJECT_CVSS_3',
   },
-  'vulnerabilities.scores.cvss_v3.version': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.version': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'CvssV3VersionTitle',
+      description: 'CvssV3VersionDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.vectorString': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.vectorString': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'CvssV3VectorStringTitle',
+      description: 'CvssV3VectorStringDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.attackVector': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.attackVector': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV3AttackVectorTitle',
+      description: 'CvssV3AttackVectorDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.attackComplexity': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.attackComplexity': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV3AttackComplexityTitle',
+      description: 'CvssV3AttackComplexityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.privilegesRequired': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.privilegesRequired': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV3PrivilegesRequiredTitle',
+      description: 'CvssV3PrivilegesRequiredDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.userInteraction': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.userInteraction': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV3UserInteractionTitle',
+      description: 'CvssV3UserInteractionDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.scope': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.scope': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV3ScopeTitle',
+      description: 'CvssV3ScopeDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.confidentialityImpact': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.confidentialityImpact': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV3ConfidentialityImpactTitle',
+      description: 'CvssV3ConfidentialityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.integrityImpact': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.integrityImpact': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV3IntegrityImpactTitle',
+      description: 'CvssV3IntegrityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.availabilityImpact': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'best_practice',
-      csaf_security_incident_response: 'best_practice',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.availabilityImpact': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'best_practice',
+      csafSecurityIncidentResponse: 'best_practice',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'CvssV3AvailabilityImpactTitle',
+      description: 'CvssV3AvailabilityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.baseSeverity': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.baseScore': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'CvssV3BaseScoreTitle',
+      description: 'CvssV3BaseScoreDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.exploitCodeMaturity': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-      csaf_vex: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.baseSeverity': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'CvssV3BaseSeverityTitle',
+      description: 'CvssV3BaseSeverityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.remediationLevel': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.exploitCodeMaturity': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'CvssV3ExploitCodeMaturityTitle',
+      description: 'CvssV3ExploitCodeMaturityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.reportConfidence': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.remediationLevel': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'CvssV3RemediationLevelTitle',
+      description: 'CvssV3RemediationLevelDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.temporalSeverity': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'want_to_have',
-      csaf_vex: 'want_to_have',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.reportConfidence': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'CvssV3ReportConfidenceTitle',
+      description: 'CvssV3ReportConfidenceDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.confidentialityRequirement': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.temporalScore': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'CvssV3TemporalScoreTitle',
+      description: 'CvssV3TemporalScoreDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.integrityRequirement': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.temporalSeverity': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'CvssV3TemporalSeverityTitle',
+      description: 'CvssV3TemporalSeverityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.availabilityRequirement': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.confidentialityRequirement': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3ConfidentialityRequirementTitle',
+      description: 'CvssV3ConfidentialityRequirementDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedAttackVector': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.integrityRequirement': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3IntegrityRequirementTitle',
+      description: 'CvssV3IntegrityRequirementDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedAttackComplexity': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.availabilityRequirement': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3AvailabilityRequirementTitle',
+      description: 'CvssV3AvailabilityRequirementDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedPrivilegesRequired': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.modifiedAttackVector': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3ModifiedAttackVectorTitle',
+      description: 'CvssV3ModifiedAttackVectorDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedUserInteraction': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.modifiedAttackComplexity': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3ModifiedAttackComplexityTitle',
+      description: 'CvssV3ModifiedAttackComplexityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedScope': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.modifiedPrivilegesRequired': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3ModifiedPrivilegesRequiredTitle',
+      description: 'CvssV3ModifiedPrivilegesRequiredDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedConfidentialityImpact': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.modifiedUserInteraction': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3ModifiedUserInteractionTitle',
+      description: 'CvssV3ModifiedUserInteractionDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedIntegrityImpact': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.modifiedScope': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3ModifiedScopeTitle',
+      description: 'CvssV3ModifiedScopeDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedAvailabilityImpact': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.modifiedConfidentialityImpact': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3ModifiedConfidentialityImpactTitle',
+      description: 'CvssV3ModifiedConfidentialityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.environmentalSeverity': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'optional',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'optional',
-      csaf_vex: 'optional',
-    },
-    user_documentation: {
+  '$.vulnerabilities.scores.cvss_v3.modifiedIntegrityImpact': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3ModifiedIntegrityImpactTitle',
+      description: 'CvssV3ModifiedIntegrityImpactDescription',
     },
   },
-  'vulnerabilities.scores.products[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
+  '$.vulnerabilities.scores.cvss_v3.modifiedAvailabilityImpact': {
+    userDocumentation: {
+      specification:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
     },
-    user_documentation: {
-      specification: 'docs/user/types/product_id-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/product_id-usage.en.md',
-      },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3ModifiedAvailabilityImpactTitle',
+      description: 'CvssV3ModifiedAvailabilityImpactDescription',
     },
   },
-  'vulnerabilities.scores.products': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
+  '$.vulnerabilities.scores.cvss_v3.environmentalScore': {
+    userDocumentation: {
+      specification:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3EnvironmentalScoreTitle',
+      description: 'CvssV3EnvironmentalScoreDescription',
+    },
+  },
+  '$.vulnerabilities.scores.cvss_v3.environmentalSeverity': {
+    userDocumentation: {
+      specification:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'optional',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'optional',
+      csafVex: 'optional',
+    },
+    i18n: {
+      title: 'CvssV3EnvironmentalSeverityTitle',
+      description: 'CvssV3EnvironmentalSeverityDescription',
+    },
+  },
+  '$.vulnerabilities.scores.products': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/products-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/scores/score/products-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/scores/score/products-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: { title: 'ProductsTitle', description: 'ProductsDescription' },
   },
-  'vulnerabilities.threats[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
+  '$.vulnerabilities.scores.products[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/product_id-spec.en.md',
+      usage: 'docs/user/types/product_id-usage.en.md',
     },
-    user_documentation: {
-      specification:
-        'docs/user/vulnerabilities/vulnerability/threats/threat-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/threats/threat-usage.en.md',
-      },
-    },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
   },
-  'vulnerabilities.threats': {
-    propertyOrder: ['category', 'date', 'details', 'group_ids', 'product_ids'],
-    uiType: 'OBJECT',
-    relevance_levels: {
-      csaf_base: 'optional',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'nice_to_know',
-    },
-    user_documentation: {
+  '$.vulnerabilities.threats': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities/vulnerability/threats-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/threats-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'optional',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'nice_to_know',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsThreatsTitle',
+      description: 'VulnerabilitiesItemsThreatsDescription',
     },
   },
-  'vulnerabilities.threats.category': {
-    uiType: 'ENUM',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
+  '$.vulnerabilities.threats[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/vulnerabilities/vulnerability/threats/threat-spec.en.md',
+      usage:
+        'docs/user/vulnerabilities/vulnerability/threats/threat-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'VulnerabilitiesItemsThreatsItemsTitle',
+      description: 'VulnerabilitiesItemsThreatsItemsDescription',
+    },
+  },
+  '$.vulnerabilities.threats.category': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats/threat/category-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/threats/threat/category-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/threats/threat/category-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsThreatsItemsCategoryTitle',
+      description: 'VulnerabilitiesItemsThreatsItemsCategoryDescription',
+    },
+    uiType: 'STRING_ENUM',
   },
-  'vulnerabilities.threats.date': {
-    uiType: 'DATETIME',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.threats.date': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats/threat/date-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/threats/threat/date-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/threats/threat/date-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'best_practice',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsThreatsItemsDateTitle',
+      description: 'VulnerabilitiesItemsThreatsItemsDateDescription',
     },
   },
-  'vulnerabilities.threats.details': {
-    uiType: 'MULTI_LINE',
-    relevance_levels: {
-      csaf_base: 'mandatory',
-      csaf_security_incident_response: 'mandatory',
-      csaf_informational_advisory: 'mandatory',
-      csaf_security_advisory: 'mandatory',
-      csaf_vex: 'mandatory',
-    },
-    user_documentation: {
+  '$.vulnerabilities.threats.details': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats/threat/details-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/threats/threat/details-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/threats/threat/details-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsThreatsItemsDetailsTitle',
+      description: 'VulnerabilitiesItemsThreatsItemsDetailsDescription',
+    },
+    uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.threats.group_ids[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
-    },
-    user_documentation: {
-      specification: 'docs/user/types/product_group_id-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/product_group_id-spec.en.md',
-      },
-    },
-  },
-  'vulnerabilities.threats.group_ids': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'nice_to_know',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.threats.group_ids': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats/threat/group_ids-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/threats/threat/group_ids-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/threats/threat/group_ids-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+    },
+    i18n: {
+      title: 'ProductGroupsTitle',
+      description: 'ProductGroupsDescription',
     },
   },
-  'vulnerabilities.threats.product_ids[]': {
-    uiType: 'ARRAY',
-    relevance_levels: {
-      csaf_informational_advisory: 'excluded',
+  '$.vulnerabilities.threats.group_ids[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/product_group_id-spec.en.md',
+      usage: 'docs/user/types/product_group_id-spec.en.md',
     },
-    user_documentation: {
-      specification: 'docs/user/types/product_id-spec.en.md',
-      usage: {
-        generic: 'docs/user/types/product_id-usage.en.md',
-      },
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: {
+      title: 'ProductGroupIdTitle',
+      description: 'ProductGroupIdDescription',
     },
+    uiType: 'STRING_ID',
   },
-  'vulnerabilities.threats.product_ids': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'want_to_have',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-    },
-    user_documentation: {
+  '$.vulnerabilities.threats.product_ids': {
+    userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats/threat/product_ids-spec.en.md',
-      usage: {
-        generic:
-          'docs/user/vulnerabilities/vulnerability/threats/threat/product_ids-usage.en.md',
-      },
+      usage:
+        'docs/user/vulnerabilities/vulnerability/threats/threat/product_ids-usage.en.md',
     },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+    },
+    i18n: { title: 'ProductsTitle', description: 'ProductsDescription' },
   },
-  'vulnerabilities.title': {
-    uiType: 'STRING',
-    relevance_levels: {
-      csaf_base: 'nice_to_know',
-      csaf_security_incident_response: 'want_to_have',
-      csaf_informational_advisory: 'excluded',
-      csaf_security_advisory: 'best_practice',
-      csaf_vex: 'want_to_have',
+  '$.vulnerabilities.threats.product_ids[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/product_id-spec.en.md',
+      usage: 'docs/user/types/product_id-usage.en.md',
     },
-    user_documentation: {
+    relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
+  },
+  '$.vulnerabilities.title': {
+    userDocumentation: {
       specification: 'docs/user/vulnerabilities/vulnerability/title-spec.en.md',
-      usage: {
-        generic: 'docs/user/vulnerabilities/vulnerability/title-usage.en.md',
-      },
+      usage: 'docs/user/vulnerabilities/vulnerability/title-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'excluded',
+      csafSecurityAdvisory: 'best_practice',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'VulnerabilitiesItemsTitleTitle',
+      description: 'VulnerabilitiesItemsTitleDescription',
     },
   },
 }

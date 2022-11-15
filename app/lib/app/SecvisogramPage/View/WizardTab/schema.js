@@ -6,11 +6,7 @@ export default {
   description:
     'Representation of security advisory information as a JSON document.',
   addMenuItemsForChildObjects: true,
-  metaData: {
-    propertyOrder: ['document', 'product_tree', 'vulnerabilities'],
-    uiType: 'OBJECT',
-    addMenuItemsForChildObjects: true,
-  },
+  metaData: { addMenuItemsForChildObjects: true },
   type: 'OBJECT',
   metaInfo: {
     propertyList: [
@@ -21,31 +17,17 @@ export default {
         description:
           'Captures the meta-data about this document describing a particular set of security advisories.',
         metaData: {
-          propertyOrder: [
-            'acknowledgments',
-            'aggregate_severity',
-            'category',
-            'csaf_version',
-            'distribution',
-            'lang',
-            'notes',
-            'publisher',
-            'references',
-            'source_lang',
-            'title',
-            'tracking',
-          ],
-          uiType: 'OBJECT',
-          relevance_levels: {
-            csaf_base: 'mandatory',
-            csaf_security_incident_response: 'mandatory',
-            csaf_informational_advisory: 'mandatory',
-            csaf_security_advisory: 'mandatory',
-            csaf_vex: 'mandatory',
-          },
-          user_documentation: {
+          userDocumentation: {
             specification: 'docs/user/document-spec.en.md',
-            usage: { generic: 'docs/user/document-usage.en.md' },
+            usage: 'docs/user/document-usage.en.md',
+          },
+          i18n: { title: 'DocumentTitle', description: 'DocumentDescription' },
+          relevanceLevels: {
+            csafBase: 'mandatory',
+            csafSecurityIncidentResponse: 'mandatory',
+            csafInformationalAdvisory: 'mandatory',
+            csafSecurityAdvisory: 'mandatory',
+            csafVex: 'mandatory',
           },
         },
         type: 'OBJECT',
@@ -57,21 +39,21 @@ export default {
               title: 'List of acknowledgments',
               description: 'Contains a list of acknowledgment elements.',
               metaData: {
-                propertyOrder: ['names', 'organization', 'summary', 'urls'],
-                uiType: 'OBJECT',
-                relevance_levels: {
-                  csaf_base: 'optional',
-                  csaf_security_incident_response: 'optional',
-                  csaf_informational_advisory: 'optional',
-                  csaf_security_advisory: 'best_practice',
-                  csaf_vex: 'want_to_have',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification:
                     'docs/user/document/acknowledgments-spec.en.md',
-                  usage: {
-                    generic: 'docs/user/document/acknowledgments-usage.en.md',
-                  },
+                  usage: 'docs/user/document/acknowledgments-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'optional',
+                  csafSecurityIncidentResponse: 'optional',
+                  csafInformationalAdvisory: 'optional',
+                  csafSecurityAdvisory: 'best_practice',
+                  csafVex: 'want_to_have',
+                },
+                i18n: {
+                  title: 'DocumentAcknowledgmentsTitle',
+                  description: 'DocumentAcknowledgmentsDescription',
                 },
               },
               type: 'ARRAY',
@@ -83,14 +65,15 @@ export default {
                   description:
                     'Acknowledges contributions by describing those that contributed.',
                   metaData: {
-                    uiType: 'ARRAY',
-                    user_documentation: {
+                    userDocumentation: {
                       specification:
                         'docs/user/types/acknowledgments/acknowledgment-spec.en.md',
-                      usage: {
-                        generic:
-                          'docs/user/types/acknowledgments/acknowledgment-usage.en.md',
-                      },
+                      usage:
+                        'docs/user/types/acknowledgments/acknowledgment-usage.en.md',
+                    },
+                    i18n: {
+                      title: 'AcknowledgmentsItemsTitle',
+                      description: 'AcknowledgmentsItemsDescription',
                     },
                   },
                   type: 'OBJECT',
@@ -179,22 +162,21 @@ export default {
               description:
                 "Is a vehicle that is provided by the document producer to convey the urgency and criticality with which the one or more vulnerabilities reported should be addressed. It is a document-level metric and applied to the document as a whole — not any specific vulnerability. The range of values in this field is defined according to the document producer's policies and procedures.",
               metaData: {
-                propertyOrder: ['namespace', 'text'],
-                uiType: 'OBJECT',
-                relevance_levels: {
-                  csaf_base: 'optional',
-                  csaf_security_incident_response: 'want_to_have',
-                  csaf_informational_advisory: 'want_to_have',
-                  csaf_security_advisory: 'best_practice',
-                  csaf_vex: 'want_to_have',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification:
                     'docs/user/document/aggregate_severity-spec.en.md',
-                  usage: {
-                    generic:
-                      'docs/user/document/aggregate_severity-usage.en.md',
-                  },
+                  usage: 'docs/user/document/aggregate_severity-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'optional',
+                  csafSecurityIncidentResponse: 'want_to_have',
+                  csafInformationalAdvisory: 'want_to_have',
+                  csafSecurityAdvisory: 'best_practice',
+                  csafVex: 'want_to_have',
+                },
+                i18n: {
+                  title: 'DocumentAggregateSeverityTitle',
+                  description: 'DocumentAggregateSeverityDescription',
                 },
               },
               type: 'OBJECT',
@@ -206,21 +188,23 @@ export default {
                     title: 'Namespace of aggregate severity',
                     description: 'Points to the namespace so referenced.',
                     metaData: {
-                      uiType: 'URI',
-                      relevance_levels: {
-                        csaf_base: 'optional',
-                        csaf_security_incident_response: 'nice_to_know',
-                        csaf_informational_advisory: 'nice_to_know',
-                        csaf_security_advisory: 'want_to_have',
-                        csaf_vex: 'nice_to_know',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/aggregate_severity/namespace-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/aggregate_severity/namespace-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/aggregate_severity/namespace-usage.en.md',
+                      },
+                      relevanceLevels: {
+                        csafBase: 'optional',
+                        csafSecurityIncidentResponse: 'nice_to_know',
+                        csafInformationalAdvisory: 'nice_to_know',
+                        csafSecurityAdvisory: 'want_to_have',
+                        csafVex: 'nice_to_know',
+                      },
+                      i18n: {
+                        title: 'DocumentAggregateSeverityNamespaceTitle',
+                        description:
+                          'DocumentAggregateSeverityNamespaceDescription',
                       },
                     },
                     metaInfo: {},
@@ -233,22 +217,24 @@ export default {
                     description:
                       'Provides a severity which is independent of - and in addition to - any other standard metric for determining the impact or severity of a given vulnerability (such as CVSS).',
                     metaData: {
-                      uiType: 'MULTI_LINE',
-                      relevance_levels: {
-                        csaf_base: 'optional',
-                        csaf_security_incident_response: 'want_to_have',
-                        csaf_informational_advisory: 'want_to_have',
-                        csaf_security_advisory: 'best_practice',
-                        csaf_vex: 'want_to_have',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/aggregate_severity/text-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/aggregate_severity/text-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/aggregate_severity/text-usage.en.md',
                       },
+                      relevanceLevels: {
+                        csafBase: 'optional',
+                        csafSecurityIncidentResponse: 'want_to_have',
+                        csafInformationalAdvisory: 'want_to_have',
+                        csafSecurityAdvisory: 'best_practice',
+                        csafVex: 'want_to_have',
+                      },
+                      i18n: {
+                        title: 'DocumentAggregateSeverityTextTitle',
+                        description: 'DocumentAggregateSeverityTextDescription',
+                      },
+                      uiType: 'STRING_MULTI_LINE',
                     },
                     minLength: 1,
                     examples: ['Critical', 'Important', 'Moderate'],
@@ -265,18 +251,22 @@ export default {
               description:
                 'Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document.',
               metaData: {
-                uiType: 'STRING',
-                relevance_levels: {
-                  csaf_base: 'mandatory',
-                  csaf_security_incident_response: 'mandatory',
-                  csaf_informational_advisory: 'mandatory',
-                  csaf_security_advisory: 'mandatory',
-                  csaf_vex: 'mandatory',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification: 'docs/user/document/category-spec.en.md',
-                  usage: { generic: 'docs/user/document/category-usage.en.md' },
+                  usage: 'docs/user/document/category-usage.en.md',
                 },
+                relevanceLevels: {
+                  csafBase: 'mandatory',
+                  csafSecurityIncidentResponse: 'mandatory',
+                  csafInformationalAdvisory: 'mandatory',
+                  csafSecurityAdvisory: 'mandatory',
+                  csafVex: 'mandatory',
+                },
+                i18n: {
+                  title: 'DocumentCategoryTitle',
+                  description: 'DocumentCategoryDescription',
+                },
+                uiType: 'STRING_ENUM',
               },
               minLength: 1,
               examples: [
@@ -296,20 +286,22 @@ export default {
               description:
                 'Gives the version of the CSAF specification which the document was generated for.',
               metaData: {
-                uiType: 'ENUM',
-                relevance_levels: {
-                  csaf_base: 'mandatory',
-                  csaf_security_incident_response: 'mandatory',
-                  csaf_informational_advisory: 'mandatory',
-                  csaf_security_advisory: 'mandatory',
-                  csaf_vex: 'mandatory',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification: 'docs/user/document/csaf_version-spec.en.md',
-                  usage: {
-                    generic: 'docs/user/document/csaf_version-usage.en.md',
-                  },
+                  usage: 'docs/user/document/csaf_version-usage.en.md',
                 },
+                relevanceLevels: {
+                  csafBase: 'mandatory',
+                  csafSecurityIncidentResponse: 'mandatory',
+                  csafInformationalAdvisory: 'mandatory',
+                  csafSecurityAdvisory: 'mandatory',
+                  csafVex: 'mandatory',
+                },
+                i18n: {
+                  title: 'DocumentCsafVersionTitle',
+                  description: 'DocumentCsafVersionDescription',
+                },
+                uiType: 'STRING_ENUM',
               },
               metaInfo: {},
               type: 'STRING',
@@ -321,20 +313,20 @@ export default {
               description:
                 'Describe any constraints on how this document might be shared.',
               metaData: {
-                propertyOrder: ['text', 'tlp'],
-                uiType: 'OBJECT',
-                relevance_levels: {
-                  csaf_base: 'want_to_have',
-                  csaf_security_incident_response: 'best_practice',
-                  csaf_informational_advisory: 'best_practice',
-                  csaf_security_advisory: 'best_practice',
-                  csaf_vex: 'want_to_have',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification: 'docs/user/document/distribution-spec.en.md',
-                  usage: {
-                    generic: 'docs/user/document/distribution-usage.en.md',
-                  },
+                  usage: 'docs/user/document/distribution-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'want_to_have',
+                  csafSecurityIncidentResponse: 'best_practice',
+                  csafInformationalAdvisory: 'best_practice',
+                  csafSecurityAdvisory: 'best_practice',
+                  csafVex: 'want_to_have',
+                },
+                i18n: {
+                  title: 'DocumentDistributionTitle',
+                  description: 'DocumentDistributionDescription',
                 },
               },
               type: 'OBJECT',
@@ -347,22 +339,24 @@ export default {
                     description:
                       'Provides a textual description of additional constraints.',
                     metaData: {
-                      uiType: 'MULTI_LINE',
-                      relevance_levels: {
-                        csaf_base: 'nice_to_know',
-                        csaf_security_incident_response: 'nice_to_know',
-                        csaf_informational_advisory: 'nice_to_know',
-                        csaf_security_advisory: 'nice_to_know',
-                        csaf_vex: 'nice_to_know',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/distribution/text-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/distribution/text-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/distribution/text-usage.en.md',
                       },
+                      relevanceLevels: {
+                        csafBase: 'nice_to_know',
+                        csafSecurityIncidentResponse: 'nice_to_know',
+                        csafInformationalAdvisory: 'nice_to_know',
+                        csafSecurityAdvisory: 'nice_to_know',
+                        csafVex: 'nice_to_know',
+                      },
+                      i18n: {
+                        title: 'DocumentDistributionTextTitle',
+                        description: 'DocumentDistributionTextDescription',
+                      },
+                      uiType: 'STRING_MULTI_LINE',
                     },
                     minLength: 1,
                     examples: [
@@ -380,22 +374,22 @@ export default {
                     description:
                       'Provides details about the TLP classification of the document.',
                     metaData: {
-                      propertyOrder: ['label', 'url'],
-                      uiType: 'OBJECT',
-                      relevance_levels: {
-                        csaf_base: 'want_to_have',
-                        csaf_security_incident_response: 'want_to_have',
-                        csaf_informational_advisory: 'want_to_have',
-                        csaf_security_advisory: 'best_practice',
-                        csaf_vex: 'want_to_have',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/distribution/tlp-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/distribution/tlp-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/distribution/tlp-usage.en.md',
+                      },
+                      relevanceLevels: {
+                        csafBase: 'want_to_have',
+                        csafSecurityIncidentResponse: 'want_to_have',
+                        csafInformationalAdvisory: 'want_to_have',
+                        csafSecurityAdvisory: 'best_practice',
+                        csafVex: 'want_to_have',
+                      },
+                      i18n: {
+                        title: 'DocumentDistributionTlpTitle',
+                        description: 'DocumentDistributionTlpDescription',
                       },
                     },
                     type: 'OBJECT',
@@ -413,22 +407,25 @@ export default {
                           description:
                             'Provides the TLP label of the document.',
                           metaData: {
-                            uiType: 'ENUM',
-                            relevance_levels: {
-                              csaf_base: 'mandatory',
-                              csaf_security_incident_response: 'mandatory',
-                              csaf_informational_advisory: 'mandatory',
-                              csaf_security_advisory: 'mandatory',
-                              csaf_vex: 'mandatory',
-                            },
-                            user_documentation: {
+                            userDocumentation: {
                               specification:
                                 'docs/user/document/distribution/tlp/label-spec.en.md',
-                              usage: {
-                                generic:
-                                  'docs/user/document/distribution/tlp/label-usage.en.md',
-                              },
+                              usage:
+                                'docs/user/document/distribution/tlp/label-usage.en.md',
                             },
+                            relevanceLevels: {
+                              csafBase: 'mandatory',
+                              csafSecurityIncidentResponse: 'mandatory',
+                              csafInformationalAdvisory: 'mandatory',
+                              csafSecurityAdvisory: 'mandatory',
+                              csafVex: 'mandatory',
+                            },
+                            i18n: {
+                              title: 'DocumentDistributionTlpLabelTitle',
+                              description:
+                                'DocumentDistributionTlpLabelDescription',
+                            },
+                            uiType: 'STRING_ENUM',
                           },
                           metaInfo: {},
                           type: 'STRING',
@@ -440,21 +437,23 @@ export default {
                           description:
                             'Provides a URL where to find the textual description of the TLP version which is used in this document. Default is the URL to the definition by FIRST.',
                           metaData: {
-                            uiType: 'URI',
-                            relevance_levels: {
-                              csaf_base: 'nice_to_know',
-                              csaf_security_incident_response: 'nice_to_know',
-                              csaf_informational_advisory: 'nice_to_know',
-                              csaf_security_advisory: 'want_to_have',
-                              csaf_vex: 'nice_to_know',
-                            },
-                            user_documentation: {
+                            userDocumentation: {
                               specification:
                                 'docs/user/document/distribution/tlp/url-spec.en.md',
-                              usage: {
-                                generic:
-                                  'docs/user/document/distribution/tlp/url-usage.en.md',
-                              },
+                              usage:
+                                'docs/user/document/distribution/tlp/url-usage.en.md',
+                            },
+                            relevanceLevels: {
+                              csafBase: 'nice_to_know',
+                              csafSecurityIncidentResponse: 'nice_to_know',
+                              csafInformationalAdvisory: 'nice_to_know',
+                              csafSecurityAdvisory: 'want_to_have',
+                              csafVex: 'nice_to_know',
+                            },
+                            i18n: {
+                              title: 'DocumentDistributionTlpUrlTitle',
+                              description:
+                                'DocumentDistributionTlpUrlDescription',
                             },
                           },
                           examples: [
@@ -477,17 +476,20 @@ export default {
               description:
                 'Identifies a language, corresponding to IETF BCP 47 / RFC 5646. See IETF language registry: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry',
               metaData: {
-                uiType: 'STRING',
-                relevance_levels: {
-                  csaf_base: 'nice_to_know',
-                  csaf_security_incident_response: 'nice_to_know',
-                  csaf_informational_advisory: 'nice_to_know',
-                  csaf_security_advisory: 'want_to_have',
-                  csaf_vex: 'want_to_have',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification: 'docs/user/document/lang-spec.en.md',
-                  usage: { generic: 'docs/user/document/lang-usage.en.md' },
+                  usage: 'docs/user/document/lang-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'nice_to_know',
+                  csafSecurityIncidentResponse: 'nice_to_know',
+                  csafInformationalAdvisory: 'nice_to_know',
+                  csafSecurityAdvisory: 'want_to_have',
+                  csafVex: 'want_to_have',
+                },
+                i18n: {
+                  title: 'DocumentLangTitle',
+                  description: 'DocumentLangDescription',
                 },
               },
               examples: ['de', 'en', 'fr', 'frc', 'jp'],
@@ -503,18 +505,20 @@ export default {
               description:
                 'Contains notes which are specific to the current context.',
               metaData: {
-                propertyOrder: ['audience', 'category', 'text', 'title'],
-                uiType: 'OBJECT',
-                relevance_levels: {
-                  csaf_base: 'want_to_have',
-                  csaf_security_incident_response: 'mandatory',
-                  csaf_informational_advisory: 'mandatory',
-                  csaf_security_advisory: 'best_practice',
-                  csaf_vex: 'want_to_have',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification: 'docs/user/document/notes-spec.en.md',
-                  usage: { generic: 'docs/user/document/notes-usage.en.md' },
+                  usage: 'docs/user/document/notes-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'want_to_have',
+                  csafSecurityIncidentResponse: 'mandatory',
+                  csafInformationalAdvisory: 'mandatory',
+                  csafSecurityAdvisory: 'best_practice',
+                  csafVex: 'want_to_have',
+                },
+                i18n: {
+                  title: 'DocumentNotesTitle',
+                  description: 'DocumentNotesDescription',
                 },
               },
               type: 'ARRAY',
@@ -526,12 +530,13 @@ export default {
                   description:
                     'Is a place to put all manner of text blobs related to the current context.',
                   metaData: {
-                    uiType: 'ARRAY',
-                    user_documentation: {
+                    userDocumentation: {
                       specification: 'docs/user/types/notes/note-spec.en.md',
-                      usage: {
-                        generic: 'docs/user/types/notes/note-usage.en.md',
-                      },
+                      usage: 'docs/user/types/notes/note-usage.en.md',
+                    },
+                    i18n: {
+                      title: 'NotesItemsTitle',
+                      description: 'NotesItemsDescription',
                     },
                   },
                   type: 'OBJECT',
@@ -599,26 +604,20 @@ export default {
               description:
                 'Provides information about the publisher of the document.',
               metaData: {
-                propertyOrder: [
-                  'category',
-                  'contact_details',
-                  'issuing_authority',
-                  'name',
-                  'namespace',
-                ],
-                uiType: 'OBJECT',
-                relevance_levels: {
-                  csaf_base: 'mandatory',
-                  csaf_security_incident_response: 'mandatory',
-                  csaf_informational_advisory: 'mandatory',
-                  csaf_security_advisory: 'mandatory',
-                  csaf_vex: 'mandatory',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification: 'docs/user/document/publisher-spec.en.md',
-                  usage: {
-                    generic: 'docs/user/document/publisher-usage.en.md',
-                  },
+                  usage: 'docs/user/document/publisher-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'mandatory',
+                  csafSecurityIncidentResponse: 'mandatory',
+                  csafInformationalAdvisory: 'mandatory',
+                  csafSecurityAdvisory: 'mandatory',
+                  csafVex: 'mandatory',
+                },
+                i18n: {
+                  title: 'DocumentPublisherTitle',
+                  description: 'DocumentPublisherDescription',
                 },
               },
               type: 'OBJECT',
@@ -631,22 +630,24 @@ export default {
                     description:
                       'Provides information about the category of publisher releasing the document.',
                     metaData: {
-                      uiType: 'ENUM',
-                      relevance_levels: {
-                        csaf_base: 'mandatory',
-                        csaf_security_incident_response: 'mandatory',
-                        csaf_informational_advisory: 'mandatory',
-                        csaf_security_advisory: 'mandatory',
-                        csaf_vex: 'mandatory',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/publisher/category-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/publisher/category-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/publisher/category-usage.en.md',
                       },
+                      relevanceLevels: {
+                        csafBase: 'mandatory',
+                        csafSecurityIncidentResponse: 'mandatory',
+                        csafInformationalAdvisory: 'mandatory',
+                        csafSecurityAdvisory: 'mandatory',
+                        csafVex: 'mandatory',
+                      },
+                      i18n: {
+                        title: 'DocumentPublisherCategoryTitle',
+                        description: 'DocumentPublisherCategoryDescription',
+                      },
+                      uiType: 'STRING_ENUM',
                     },
                     metaInfo: {},
                     type: 'STRING',
@@ -658,22 +659,25 @@ export default {
                     description:
                       'Information on how to contact the publisher, possibly including details such as web sites, email addresses, phone numbers, and postal mail addresses.',
                     metaData: {
-                      uiType: 'MULTI_LINE',
-                      relevance_levels: {
-                        csaf_base: 'want_to_have',
-                        csaf_security_incident_response: 'want_to_have',
-                        csaf_informational_advisory: 'want_to_have',
-                        csaf_security_advisory: 'best_practice',
-                        csaf_vex: 'best_practice',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/publisher/contact_details-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/publisher/contact_details-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/publisher/contact_details-usage.en.md',
                       },
+                      relevanceLevels: {
+                        csafBase: 'want_to_have',
+                        csafSecurityIncidentResponse: 'want_to_have',
+                        csafInformationalAdvisory: 'want_to_have',
+                        csafSecurityAdvisory: 'best_practice',
+                        csafVex: 'best_practice',
+                      },
+                      i18n: {
+                        title: 'DocumentPublisherContactDetailsTitle',
+                        description:
+                          'DocumentPublisherContactDetailsDescription',
+                      },
+                      uiType: 'STRING_MULTI_LINE',
                     },
                     minLength: 1,
                     examples: [
@@ -689,22 +693,25 @@ export default {
                     description:
                       "Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.",
                     metaData: {
-                      uiType: 'MULTI_LINE',
-                      relevance_levels: {
-                        csaf_base: 'nice_to_know',
-                        csaf_security_incident_response: 'nice_to_know',
-                        csaf_informational_advisory: 'nice_to_know',
-                        csaf_security_advisory: 'want_to_have',
-                        csaf_vex: 'want_to_have',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/publisher/issuing_authority-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/publisher/issuing_authority-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/publisher/issuing_authority-usage.en.md',
                       },
+                      relevanceLevels: {
+                        csafBase: 'nice_to_know',
+                        csafSecurityIncidentResponse: 'nice_to_know',
+                        csafInformationalAdvisory: 'nice_to_know',
+                        csafSecurityAdvisory: 'want_to_have',
+                        csafVex: 'want_to_have',
+                      },
+                      i18n: {
+                        title: 'DocumentPublisherIssuingAuthorityTitle',
+                        description:
+                          'DocumentPublisherIssuingAuthorityDescription',
+                      },
+                      uiType: 'STRING_MULTI_LINE',
                     },
                     minLength: 1,
                     metaInfo: {},
@@ -716,21 +723,21 @@ export default {
                     title: 'Name of publisher',
                     description: 'Contains the name of the issuing party.',
                     metaData: {
-                      uiType: 'STRING',
-                      relevance_levels: {
-                        csaf_base: 'mandatory',
-                        csaf_security_incident_response: 'mandatory',
-                        csaf_informational_advisory: 'mandatory',
-                        csaf_security_advisory: 'mandatory',
-                        csaf_vex: 'mandatory',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/publisher/name-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/publisher/name-usage.en.md',
-                        },
+                        usage: 'docs/user/document/publisher/name-usage.en.md',
+                      },
+                      relevanceLevels: {
+                        csafBase: 'mandatory',
+                        csafSecurityIncidentResponse: 'mandatory',
+                        csafInformationalAdvisory: 'mandatory',
+                        csafSecurityAdvisory: 'mandatory',
+                        csafVex: 'mandatory',
+                      },
+                      i18n: {
+                        title: 'DocumentPublisherNameTitle',
+                        description: 'DocumentPublisherNameDescription',
                       },
                     },
                     minLength: 1,
@@ -745,21 +752,22 @@ export default {
                     description:
                       'Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party.',
                     metaData: {
-                      uiType: 'URI',
-                      relevance_levels: {
-                        csaf_base: 'mandatory',
-                        csaf_security_incident_response: 'mandatory',
-                        csaf_informational_advisory: 'mandatory',
-                        csaf_security_advisory: 'mandatory',
-                        csaf_vex: 'mandatory',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/publisher/namespace-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/publisher/namespace-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/publisher/namespace-usage.en.md',
+                      },
+                      relevanceLevels: {
+                        csafBase: 'mandatory',
+                        csafSecurityIncidentResponse: 'mandatory',
+                        csafInformationalAdvisory: 'mandatory',
+                        csafSecurityAdvisory: 'mandatory',
+                        csafVex: 'mandatory',
+                      },
+                      i18n: {
+                        title: 'DocumentPublisherNamespaceTitle',
+                        description: 'DocumentPublisherNamespaceDescription',
                       },
                     },
                     examples: ['https://csaf.io', 'https://www.example.com'],
@@ -775,20 +783,20 @@ export default {
               title: 'List of references',
               description: 'Holds a list of references.',
               metaData: {
-                propertyOrder: ['category', 'summary', 'url'],
-                uiType: 'OBJECT',
-                relevance_levels: {
-                  csaf_base: 'want_to_have',
-                  csaf_security_incident_response: 'mandatory',
-                  csaf_informational_advisory: 'mandatory',
-                  csaf_security_advisory: 'best_practice',
-                  csaf_vex: 'best_practice',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification: 'docs/user/document/references-spec.en.md',
-                  usage: {
-                    generic: 'docs/user/document/references-usage.en.md',
-                  },
+                  usage: 'docs/user/document/references-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'want_to_have',
+                  csafSecurityIncidentResponse: 'mandatory',
+                  csafInformationalAdvisory: 'mandatory',
+                  csafSecurityAdvisory: 'best_practice',
+                  csafVex: 'best_practice',
+                },
+                i18n: {
+                  title: 'DocumentReferencesTitle',
+                  description: 'DocumentReferencesDescription',
                 },
               },
               type: 'ARRAY',
@@ -800,14 +808,14 @@ export default {
                   description:
                     'Holds any reference to conferences, papers, advisories, and other resources that are related and considered related to either a surrounding part of or the entire document and to be of value to the document consumer.',
                   metaData: {
-                    uiType: 'ARRAY',
-                    user_documentation: {
+                    userDocumentation: {
                       specification:
                         'docs/user/types/references/reference-spec.en.md',
-                      usage: {
-                        generic:
-                          'docs/user/types/references/reference-usage.en.md',
-                      },
+                      usage: 'docs/user/types/references/reference-usage.en.md',
+                    },
+                    i18n: {
+                      title: 'ReferencesItemsTitle',
+                      description: 'ReferencesItemsDescription',
                     },
                   },
                   type: 'OBJECT',
@@ -851,19 +859,20 @@ export default {
               description:
                 'Identifies a language, corresponding to IETF BCP 47 / RFC 5646. See IETF language registry: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry',
               metaData: {
-                uiType: 'STRING',
-                relevance_levels: {
-                  csaf_base: 'nice_to_know',
-                  csaf_security_incident_response: 'nice_to_know',
-                  csaf_informational_advisory: 'nice_to_know',
-                  csaf_security_advisory: 'nice_to_know',
-                  csaf_vex: 'nice_to_know',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification: 'docs/user/document/source_lang-spec.en.md',
-                  usage: {
-                    generic: 'docs/user/document/source_lang-usage.en.md',
-                  },
+                  usage: 'docs/user/document/source_lang-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'nice_to_know',
+                  csafSecurityIncidentResponse: 'nice_to_know',
+                  csafInformationalAdvisory: 'nice_to_know',
+                  csafSecurityAdvisory: 'nice_to_know',
+                  csafVex: 'nice_to_know',
+                },
+                i18n: {
+                  title: 'DocumentSourceLangTitle',
+                  description: 'DocumentSourceLangDescription',
                 },
               },
               examples: ['de', 'en', 'fr', 'frc', 'jp'],
@@ -879,17 +888,20 @@ export default {
               description:
                 'This SHOULD be a canonical name for the document, and sufficiently unique to distinguish it from similar documents.',
               metaData: {
-                uiType: 'STRING',
-                relevance_levels: {
-                  csaf_base: 'mandatory',
-                  csaf_security_incident_response: 'mandatory',
-                  csaf_informational_advisory: 'mandatory',
-                  csaf_security_advisory: 'mandatory',
-                  csaf_vex: 'mandatory',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification: 'docs/user/document/title-spec.en.md',
-                  usage: { generic: 'docs/user/document/title-usage.en.md' },
+                  usage: 'docs/user/document/title-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'mandatory',
+                  csafSecurityIncidentResponse: 'mandatory',
+                  csafInformationalAdvisory: 'mandatory',
+                  csafSecurityAdvisory: 'mandatory',
+                  csafVex: 'mandatory',
+                },
+                i18n: {
+                  title: 'DocumentTitleTitle',
+                  description: 'DocumentTitleDescription',
                 },
               },
               minLength: 1,
@@ -907,27 +919,20 @@ export default {
               description:
                 'Is a container designated to hold all management attributes necessary to track a CSAF document as a whole.',
               metaData: {
-                propertyOrder: [
-                  'aliases',
-                  'current_release_date',
-                  'generator',
-                  'id',
-                  'initial_release_date',
-                  'revision_history',
-                  'status',
-                  'version',
-                ],
-                uiType: 'OBJECT',
-                relevance_levels: {
-                  csaf_base: 'mandatory',
-                  csaf_security_incident_response: 'mandatory',
-                  csaf_informational_advisory: 'mandatory',
-                  csaf_security_advisory: 'mandatory',
-                  csaf_vex: 'mandatory',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification: 'docs/user/document/tracking-spec.en.md',
-                  usage: { generic: 'docs/user/document/tracking-usage.en.md' },
+                  usage: 'docs/user/document/tracking-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'mandatory',
+                  csafSecurityIncidentResponse: 'mandatory',
+                  csafInformationalAdvisory: 'mandatory',
+                  csafSecurityAdvisory: 'mandatory',
+                  csafVex: 'mandatory',
+                },
+                i18n: {
+                  title: 'DocumentTrackingTitle',
+                  description: 'DocumentTrackingDescription',
                 },
               },
               type: 'OBJECT',
@@ -940,21 +945,22 @@ export default {
                     description:
                       'Contains a list of alternate names for the same document.',
                     metaData: {
-                      uiType: 'STRING',
-                      relevance_levels: {
-                        csaf_base: 'optional',
-                        csaf_security_incident_response: 'nice_to_know',
-                        csaf_informational_advisory: 'nice_to_know',
-                        csaf_security_advisory: 'nice_to_know',
-                        csaf_vex: 'nice_to_know',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/tracking/aliases-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/tracking/aliases-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/tracking/aliases-usage.en.md',
+                      },
+                      relevanceLevels: {
+                        csafBase: 'optional',
+                        csafSecurityIncidentResponse: 'nice_to_know',
+                        csafInformationalAdvisory: 'nice_to_know',
+                        csafSecurityAdvisory: 'nice_to_know',
+                        csafVex: 'nice_to_know',
+                      },
+                      i18n: {
+                        title: 'DocumentTrackingAliasesTitle',
+                        description: 'DocumentTrackingAliasesDescription',
                       },
                     },
                     type: 'ARRAY',
@@ -966,14 +972,16 @@ export default {
                         description:
                           'Specifies a non-empty string that represents a distinct optional alternative ID used to refer to the document.',
                         metaData: {
-                          uiType: 'ARRAY',
-                          user_documentation: {
+                          userDocumentation: {
                             specification:
                               'docs/user/document/tracking/aliases/alias-spec.en.md',
-                            usage: {
-                              generic:
-                                'docs/user/document/tracking/aliases/alias-usage.en.md',
-                            },
+                            usage:
+                              'docs/user/document/tracking/aliases/alias-usage.en.md',
+                          },
+                          i18n: {
+                            title: 'DocumentTrackingAliasesItemsTitle',
+                            description:
+                              'DocumentTrackingAliasesItemsDescription',
                           },
                         },
                         minLength: 1,
@@ -990,21 +998,23 @@ export default {
                     description:
                       'The date when the current revision of this document was released',
                     metaData: {
-                      uiType: 'DATETIME',
-                      relevance_levels: {
-                        csaf_base: 'mandatory',
-                        csaf_security_incident_response: 'mandatory',
-                        csaf_informational_advisory: 'mandatory',
-                        csaf_security_advisory: 'mandatory',
-                        csaf_vex: 'mandatory',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/tracking/current_release_date-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/tracking/current_release_date-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/tracking/current_release_date-usage.en.md',
+                      },
+                      relevanceLevels: {
+                        csafBase: 'mandatory',
+                        csafSecurityIncidentResponse: 'mandatory',
+                        csafInformationalAdvisory: 'mandatory',
+                        csafSecurityAdvisory: 'mandatory',
+                        csafVex: 'mandatory',
+                      },
+                      i18n: {
+                        title: 'DocumentTrackingCurrentReleaseDateTitle',
+                        description:
+                          'DocumentTrackingCurrentReleaseDateDescription',
                       },
                     },
                     metaInfo: {},
@@ -1017,22 +1027,22 @@ export default {
                     description:
                       'Is a container to hold all elements related to the generation of the document. These items will reference when the document was actually created, including the date it was generated and the entity that generated it.',
                     metaData: {
-                      propertyOrder: ['date', 'engine'],
-                      uiType: 'OBJECT',
-                      relevance_levels: {
-                        csaf_base: 'nice_to_know',
-                        csaf_security_incident_response: 'nice_to_know',
-                        csaf_informational_advisory: 'nice_to_know',
-                        csaf_security_advisory: 'nice_to_know',
-                        csaf_vex: 'nice_to_know',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/tracking/generator-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/tracking/generator-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/tracking/generator-usage.en.md',
+                      },
+                      relevanceLevels: {
+                        csafBase: 'nice_to_know',
+                        csafSecurityIncidentResponse: 'nice_to_know',
+                        csafInformationalAdvisory: 'nice_to_know',
+                        csafSecurityAdvisory: 'nice_to_know',
+                        csafVex: 'nice_to_know',
+                      },
+                      i18n: {
+                        title: 'DocumentTrackingGeneratorTitle',
+                        description: 'DocumentTrackingGeneratorDescription',
                       },
                     },
                     type: 'OBJECT',
@@ -1050,21 +1060,23 @@ export default {
                           description:
                             'This SHOULD be the current date that the document was generated. Because documents are often generated internally by a document producer and exist for a nonzero amount of time before being released, this field MAY be different from the Initial Release Date and Current Release Date.',
                           metaData: {
-                            uiType: 'DATETIME',
-                            relevance_levels: {
-                              csaf_base: 'nice_to_know',
-                              csaf_security_incident_response: 'nice_to_know',
-                              csaf_informational_advisory: 'nice_to_know',
-                              csaf_security_advisory: 'nice_to_know',
-                              csaf_vex: 'nice_to_know',
-                            },
-                            user_documentation: {
+                            userDocumentation: {
                               specification:
                                 'docs/user/document/tracking/generator/date-spec.en.md',
-                              usage: {
-                                generic:
-                                  'docs/user/document/tracking/generator/date-usage.en.md',
-                              },
+                              usage:
+                                'docs/user/document/tracking/generator/date-usage.en.md',
+                            },
+                            relevanceLevels: {
+                              csafBase: 'nice_to_know',
+                              csafSecurityIncidentResponse: 'nice_to_know',
+                              csafInformationalAdvisory: 'nice_to_know',
+                              csafSecurityAdvisory: 'nice_to_know',
+                              csafVex: 'nice_to_know',
+                            },
+                            i18n: {
+                              title: 'DocumentTrackingGeneratorDateTitle',
+                              description:
+                                'DocumentTrackingGeneratorDateDescription',
                             },
                           },
                           metaInfo: {},
@@ -1082,22 +1094,23 @@ export default {
                           description:
                             'Contains information about the engine that generated the CSAF document.',
                           metaData: {
-                            propertyOrder: ['name', 'version'],
-                            uiType: 'OBJECT',
-                            relevance_levels: {
-                              csaf_base: 'mandatory',
-                              csaf_security_incident_response: 'mandatory',
-                              csaf_informational_advisory: 'mandatory',
-                              csaf_security_advisory: 'mandatory',
-                              csaf_vex: 'mandatory',
-                            },
-                            user_documentation: {
+                            userDocumentation: {
                               specification:
                                 'docs/user/document/tracking/generator/engine-spec.en.md',
-                              usage: {
-                                generic:
-                                  'docs/user/document/tracking/generator/engine-usage.en.md',
-                              },
+                              usage:
+                                'docs/user/document/tracking/generator/engine-usage.en.md',
+                            },
+                            relevanceLevels: {
+                              csafBase: 'mandatory',
+                              csafSecurityIncidentResponse: 'mandatory',
+                              csafInformationalAdvisory: 'mandatory',
+                              csafSecurityAdvisory: 'mandatory',
+                              csafVex: 'mandatory',
+                            },
+                            i18n: {
+                              title: 'DocumentTrackingGeneratorEngineTitle',
+                              description:
+                                'DocumentTrackingGeneratorEngineDescription',
                             },
                           },
                           type: 'OBJECT',
@@ -1116,22 +1129,28 @@ export default {
                                 description:
                                   'Represents the name of the engine that generated the CSAF document.',
                                 metaData: {
-                                  uiType: 'STRING',
-                                  relevance_levels: {
-                                    csaf_base: 'mandatory',
-                                    csaf_security_incident_response:
-                                      'mandatory',
-                                    csaf_informational_advisory: 'mandatory',
-                                    csaf_security_advisory: 'mandatory',
-                                    csaf_vex: 'mandatory',
-                                  },
-                                  user_documentation: {
+                                  userDocumentation: {
                                     specification:
                                       'docs/user/document/tracking/generator/engine/name-spec.en.md',
-                                    usage: {
-                                      generic:
-                                        'docs/user/document/tracking/generator/engine/name-usage.en.md',
-                                    },
+                                    usage:
+                                      'docs/user/document/tracking/generator/engine/name-usage.en.md',
+                                  },
+                                  relevanceLevels: {
+                                    csafBase: 'mandatory',
+                                    csafSecurityIncidentResponse: 'mandatory',
+                                    csafInformationalAdvisory: 'mandatory',
+                                    csafSecurityAdvisory: 'mandatory',
+                                    csafVex: 'mandatory',
+                                  },
+                                  i18n: {
+                                    title:
+                                      'DocumentTrackingGeneratorEngineNameTitle',
+                                    description:
+                                      'DocumentTrackingGeneratorEngineNameDescription',
+                                  },
+                                  disable: {
+                                    ifStandaloneMode: false,
+                                    ifServerMode: true,
                                   },
                                 },
                                 minLength: 1,
@@ -1156,22 +1175,29 @@ export default {
                                 description:
                                   'Contains the version of the engine that generated the CSAF document.',
                                 metaData: {
-                                  uiType: 'STRING',
-                                  relevance_levels: {
-                                    csaf_base: 'want_to_have',
-                                    csaf_security_incident_response:
-                                      'want_to_have',
-                                    csaf_informational_advisory: 'want_to_have',
-                                    csaf_security_advisory: 'want_to_have',
-                                    csaf_vex: 'want_to_have',
-                                  },
-                                  user_documentation: {
+                                  userDocumentation: {
                                     specification:
                                       'docs/user/document/tracking/generator/engine/version-spec.en.md',
-                                    usage: {
-                                      generic:
-                                        'docs/user/document/tracking/generator/engine/version-usage.en.md',
-                                    },
+                                    usage:
+                                      'docs/user/document/tracking/generator/engine/version-usage.en.md',
+                                  },
+                                  relevanceLevels: {
+                                    csafBase: 'want_to_have',
+                                    csafSecurityIncidentResponse:
+                                      'want_to_have',
+                                    csafInformationalAdvisory: 'want_to_have',
+                                    csafSecurityAdvisory: 'want_to_have',
+                                    csafVex: 'want_to_have',
+                                  },
+                                  i18n: {
+                                    title:
+                                      'DocumentTrackingGeneratorEngineVersionTitle',
+                                    description:
+                                      'DocumentTrackingGeneratorEngineVersionDescription',
+                                  },
+                                  disable: {
+                                    ifStandaloneMode: false,
+                                    ifServerMode: true,
                                   },
                                 },
                                 minLength: 1,
@@ -1196,21 +1222,23 @@ export default {
                     description:
                       'The ID is a simple label that provides for a wide range of numbering values, types, and schemes. Its value SHOULD be assigned and maintained by the original document issuing authority.',
                     metaData: {
-                      uiType: 'STRING',
-                      relevance_levels: {
-                        csaf_base: 'mandatory',
-                        csaf_security_incident_response: 'mandatory',
-                        csaf_informational_advisory: 'mandatory',
-                        csaf_security_advisory: 'mandatory',
-                        csaf_vex: 'mandatory',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/tracking/id-spec.en.md',
-                        usage: {
-                          generic: 'docs/user/document/tracking/id-usage.en.md',
-                        },
+                        usage: 'docs/user/document/tracking/id-usage.en.md',
                       },
+                      relevanceLevels: {
+                        csafBase: 'mandatory',
+                        csafSecurityIncidentResponse: 'mandatory',
+                        csafInformationalAdvisory: 'mandatory',
+                        csafSecurityAdvisory: 'mandatory',
+                        csafVex: 'mandatory',
+                      },
+                      i18n: {
+                        title: 'DocumentTrackingIdTitle',
+                        description: 'DocumentTrackingIdDescription',
+                      },
+                      disable: { ifStandaloneMode: false, ifServerMode: true },
                     },
                     minLength: 1,
                     examples: [
@@ -1229,21 +1257,23 @@ export default {
                     description:
                       'The date when this document was first published.',
                     metaData: {
-                      uiType: 'DATETIME',
-                      relevance_levels: {
-                        csaf_base: 'mandatory',
-                        csaf_security_incident_response: 'mandatory',
-                        csaf_informational_advisory: 'mandatory',
-                        csaf_security_advisory: 'mandatory',
-                        csaf_vex: 'mandatory',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/tracking/initial_release_date-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/tracking/initial_release_date-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/tracking/initial_release_date-usage.en.md',
+                      },
+                      relevanceLevels: {
+                        csafBase: 'mandatory',
+                        csafSecurityIncidentResponse: 'mandatory',
+                        csafInformationalAdvisory: 'mandatory',
+                        csafSecurityAdvisory: 'mandatory',
+                        csafVex: 'mandatory',
+                      },
+                      i18n: {
+                        title: 'DocumentTrackingInitialReleaseDateTitle',
+                        description:
+                          'DocumentTrackingInitialReleaseDateDescription',
                       },
                     },
                     metaInfo: {},
@@ -1256,28 +1286,25 @@ export default {
                     description:
                       'Holds one revision item for each version of the CSAF document, including the initial one.',
                     metaData: {
-                      propertyOrder: [
-                        'date',
-                        'legacy_version',
-                        'number',
-                        'summary',
-                      ],
-                      uiType: 'OBJECT',
-                      relevance_levels: {
-                        csaf_base: 'mandatory',
-                        csaf_security_incident_response: 'mandatory',
-                        csaf_informational_advisory: 'mandatory',
-                        csaf_security_advisory: 'mandatory',
-                        csaf_vex: 'mandatory',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/tracking/revision_history-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/tracking/revision_history-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/tracking/revision_history-usage.en.md',
                       },
+                      relevanceLevels: {
+                        csafBase: 'mandatory',
+                        csafSecurityIncidentResponse: 'mandatory',
+                        csafInformationalAdvisory: 'mandatory',
+                        csafSecurityAdvisory: 'mandatory',
+                        csafVex: 'mandatory',
+                      },
+                      i18n: {
+                        title: 'DocumentTrackingRevisionHistoryTitle',
+                        description:
+                          'DocumentTrackingRevisionHistoryDescription',
+                      },
+                      uiType: 'ARRAY_REVISION_HISTORY',
                     },
                     type: 'ARRAY',
                     metaInfo: {
@@ -1288,14 +1315,16 @@ export default {
                         description:
                           'Contains all the information elements required to track the evolution of a CSAF document.',
                         metaData: {
-                          uiType: 'ARRAY',
-                          user_documentation: {
+                          userDocumentation: {
                             specification:
                               'docs/user/document/tracking/revision_history/revision-spec.en.md',
-                            usage: {
-                              generic:
-                                'docs/user/document/tracking/revision_history/revision-usage.en.md',
-                            },
+                            usage:
+                              'docs/user/document/tracking/revision_history/revision-usage.en.md',
+                          },
+                          i18n: {
+                            title: 'DocumentTrackingRevisionHistoryItemsTitle',
+                            description:
+                              'DocumentTrackingRevisionHistoryItemsDescription',
                           },
                         },
                         type: 'OBJECT',
@@ -1379,22 +1408,23 @@ export default {
                     title: 'Document status',
                     description: 'Defines the draft status of the document.',
                     metaData: {
-                      uiType: 'ENUM',
-                      relevance_levels: {
-                        csaf_base: 'mandatory',
-                        csaf_security_incident_response: 'mandatory',
-                        csaf_informational_advisory: 'mandatory',
-                        csaf_security_advisory: 'mandatory',
-                        csaf_vex: 'mandatory',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/tracking/status-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/tracking/status-usage.en.md',
-                        },
+                        usage: 'docs/user/document/tracking/status-usage.en.md',
                       },
+                      relevanceLevels: {
+                        csafBase: 'mandatory',
+                        csafSecurityIncidentResponse: 'mandatory',
+                        csafInformationalAdvisory: 'mandatory',
+                        csafSecurityAdvisory: 'mandatory',
+                        csafVex: 'mandatory',
+                      },
+                      i18n: {
+                        title: 'DocumentTrackingStatusTitle',
+                        description: 'DocumentTrackingStatusDescription',
+                      },
+                      uiType: 'STRING_ENUM',
                     },
                     metaInfo: {},
                     type: 'STRING',
@@ -1406,21 +1436,22 @@ export default {
                     description:
                       'Specifies a version string to denote clearly the evolution of the content of the document. Format must be either integer or semantic versioning.',
                     metaData: {
-                      uiType: 'STRING',
-                      relevance_levels: {
-                        csaf_base: 'mandatory',
-                        csaf_security_incident_response: 'mandatory',
-                        csaf_informational_advisory: 'mandatory',
-                        csaf_security_advisory: 'mandatory',
-                        csaf_vex: 'mandatory',
-                      },
-                      user_documentation: {
+                      userDocumentation: {
                         specification:
                           'docs/user/document/tracking/version-spec.en.md',
-                        usage: {
-                          generic:
-                            'docs/user/document/tracking/version-usage.en.md',
-                        },
+                        usage:
+                          'docs/user/document/tracking/version-usage.en.md',
+                      },
+                      relevanceLevels: {
+                        csafBase: 'mandatory',
+                        csafSecurityIncidentResponse: 'mandatory',
+                        csafInformationalAdvisory: 'mandatory',
+                        csafSecurityAdvisory: 'mandatory',
+                        csafVex: 'mandatory',
+                      },
+                      i18n: {
+                        title: 'VersionTitle',
+                        description: 'VersionDescription',
                       },
                     },
                     examples: ['1', '4', '0.9.0', '1.4.3', '2.40.0+21AF26D3'],
@@ -1442,23 +1473,20 @@ export default {
         description:
           'Is a container for all fully qualified product names that can be referenced elsewhere in the document.',
         metaData: {
-          propertyOrder: [
-            'branches',
-            'full_product_names',
-            'product_groups',
-            'relationships',
-          ],
-          uiType: 'OBJECT',
-          relevance_levels: {
-            csaf_base: 'want_to_have',
-            csaf_security_incident_response: 'nice_to_know',
-            csaf_informational_advisory: 'want_to_have',
-            csaf_security_advisory: 'mandatory',
-            csaf_vex: 'mandatory',
-          },
-          user_documentation: {
+          userDocumentation: {
             specification: 'docs/user/product_tree-spec.en.md',
-            usage: { generic: 'docs/user/product_tree-usage.en.md' },
+            usage: 'docs/user/product_tree-usage.en.md',
+          },
+          relevanceLevels: {
+            csafBase: 'want_to_have',
+            csafSecurityIncidentResponse: 'nice_to_know',
+            csafInformationalAdvisory: 'want_to_have',
+            csafSecurityAdvisory: 'mandatory',
+            csafVex: 'mandatory',
+          },
+          i18n: {
+            title: 'ProductTreeTitle',
+            description: 'ProductTreeDescription',
           },
         },
         type: 'OBJECT',
@@ -1471,20 +1499,20 @@ export default {
               description:
                 'Contains branch elements as children of the current element.',
               metaData: {
-                propertyOrder: ['branches', 'category', 'name', 'product'],
-                uiType: 'OBJECT',
-                relevance_levels: {
-                  csaf_base: 'want_to_have',
-                  csaf_security_incident_response: 'want_to_have',
-                  csaf_informational_advisory: 'want_to_have',
-                  csaf_security_advisory: 'best_practice',
-                  csaf_vex: 'best_practice',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification: 'docs/user/product_tree/branches-spec.en.md',
-                  usage: {
-                    generic: 'docs/user/product_tree/branches-usage.en.md',
-                  },
+                  usage: 'docs/user/product_tree/branches-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'want_to_have',
+                  csafSecurityIncidentResponse: 'want_to_have',
+                  csafInformationalAdvisory: 'want_to_have',
+                  csafSecurityAdvisory: 'best_practice',
+                  csafVex: 'best_practice',
+                },
+                i18n: {
+                  title: 'BranchesTitle',
+                  description: 'BranchesDescription',
                 },
               },
               type: 'ARRAY',
@@ -1496,13 +1524,14 @@ export default {
                   description:
                     'Is a part of the hierarchical structure of the product tree.',
                   metaData: {
-                    uiType: 'ARRAY',
-                    user_documentation: {
+                    userDocumentation: {
                       specification:
                         'docs/user/types/branches/branch-spec.en.md',
-                      usage: {
-                        generic: 'docs/user/types/branches/branch-usage.en.md',
-                      },
+                      usage: 'docs/user/types/branches/branch-usage.en.md',
+                    },
+                    i18n: {
+                      title: 'BranchesItemsTitle',
+                      description: 'BranchesItemsDescription',
                     },
                   },
                   type: 'OBJECT',
@@ -1515,27 +1544,22 @@ export default {
                         description:
                           'Contains branch elements as children of the current element.',
                         metaData: {
-                          propertyOrder: [
-                            'branches',
-                            'category',
-                            'name',
-                            'product',
-                          ],
-                          uiType: 'OBJECT',
-                          relevance_levels: {
-                            csaf_base: 'want_to_have',
-                            csaf_security_incident_response: 'want_to_have',
-                            csaf_informational_advisory: 'want_to_have',
-                            csaf_security_advisory: 'best_practice',
-                            csaf_vex: 'best_practice',
-                          },
-                          user_documentation: {
+                          userDocumentation: {
                             specification:
                               'docs/user/product_tree/branches-spec.en.md',
-                            usage: {
-                              generic:
-                                'docs/user/product_tree/branches-usage.en.md',
-                            },
+                            usage:
+                              'docs/user/product_tree/branches-usage.en.md',
+                          },
+                          relevanceLevels: {
+                            csafBase: 'want_to_have',
+                            csafSecurityIncidentResponse: 'want_to_have',
+                            csafInformationalAdvisory: 'want_to_have',
+                            csafSecurityAdvisory: 'best_practice',
+                            csafVex: 'best_practice',
+                          },
+                          i18n: {
+                            title: 'BranchesTitle',
+                            description: 'BranchesDescription',
                           },
                         },
                         metaInfo: {},
@@ -2020,26 +2044,22 @@ export default {
               title: 'List of full product names',
               description: 'Contains a list of full product names.',
               metaData: {
-                propertyOrder: [
-                  'name',
-                  'product_id',
-                  'product_identification_helper',
-                ],
-                uiType: 'OBJECT',
-                relevance_levels: {
-                  csaf_base: 'nice_to_know',
-                  csaf_security_incident_response: 'nice_to_know',
-                  csaf_informational_advisory: 'nice_to_know',
-                  csaf_security_advisory: 'nice_to_know',
-                  csaf_vex: 'nice_to_know',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification:
                     'docs/user/product_tree/full_product_names-spec.en.md',
-                  usage: {
-                    generic:
-                      'docs/user/product_tree/full_product_names-usage.en.md',
-                  },
+                  usage:
+                    'docs/user/product_tree/full_product_names-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'nice_to_know',
+                  csafSecurityIncidentResponse: 'nice_to_know',
+                  csafInformationalAdvisory: 'nice_to_know',
+                  csafSecurityAdvisory: 'nice_to_know',
+                  csafVex: 'nice_to_know',
+                },
+                i18n: {
+                  title: 'ProductTreeFullProductNamesTitle',
+                  description: 'ProductTreeFullProductNamesDescription',
                 },
               },
               type: 'ARRAY',
@@ -2051,14 +2071,14 @@ export default {
                   description:
                     'Specifies information about the product and assigns the product_id.',
                   metaData: {
-                    uiType: 'ARRAY',
-                    user_documentation: {
+                    userDocumentation: {
                       specification:
                         'docs/user/types/full_product_name-spec.en.md',
-                      usage: {
-                        generic:
-                          'docs/user/types/full_product_name-usage.en.md',
-                      },
+                      usage: 'docs/user/types/full_product_name-usage.en.md',
+                    },
+                    i18n: {
+                      title: 'FullProductNameTitle',
+                      description: 'FullProductNameDescription',
                     },
                   },
                   type: 'OBJECT',
@@ -2476,22 +2496,21 @@ export default {
               title: 'List of product groups',
               description: 'Contains a list of product groups.',
               metaData: {
-                propertyOrder: ['group_id', 'product_ids', 'summary'],
-                uiType: 'OBJECT',
-                relevance_levels: {
-                  csaf_base: 'optional',
-                  csaf_security_incident_response: 'optional',
-                  csaf_informational_advisory: 'optional',
-                  csaf_security_advisory: 'nice_to_know',
-                  csaf_vex: 'optional',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification:
                     'docs/user/product_tree/product_groups-spec.en.md',
-                  usage: {
-                    generic:
-                      'docs/user/product_tree/product_groups-usage.en.md',
-                  },
+                  usage: 'docs/user/product_tree/product_groups-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'optional',
+                  csafSecurityIncidentResponse: 'optional',
+                  csafInformationalAdvisory: 'optional',
+                  csafSecurityAdvisory: 'nice_to_know',
+                  csafVex: 'optional',
+                },
+                i18n: {
+                  title: 'ProductTreeProductGroupsTitle',
+                  description: 'ProductTreeProductGroupsDescription',
                 },
               },
               type: 'ARRAY',
@@ -2503,14 +2522,15 @@ export default {
                   description:
                     'Defines a new logical group of products that can then be referred to in other parts of the document to address a group of products with a single identifier.',
                   metaData: {
-                    uiType: 'ARRAY',
-                    user_documentation: {
+                    userDocumentation: {
                       specification:
                         'docs/user/product_tree/product_groups/product_group-spec.en.md',
-                      usage: {
-                        generic:
-                          'docs/user/product_tree/product_groups/product_group-usage.en.md',
-                      },
+                      usage:
+                        'docs/user/product_tree/product_groups/product_group-usage.en.md',
+                    },
+                    i18n: {
+                      title: 'ProductTreeProductGroupsItemsTitle',
+                      description: 'ProductTreeProductGroupsItemsDescription',
                     },
                   },
                   type: 'OBJECT',
@@ -2589,26 +2609,21 @@ export default {
               title: 'List of relationships',
               description: 'Contains a list of relationships.',
               metaData: {
-                propertyOrder: [
-                  'category',
-                  'full_product_name',
-                  'product_reference',
-                  'relates_to_product_reference',
-                ],
-                uiType: 'OBJECT',
-                relevance_levels: {
-                  csaf_base: 'optional',
-                  csaf_security_incident_response: 'optional',
-                  csaf_informational_advisory: 'optional',
-                  csaf_security_advisory: 'want_to_have',
-                  csaf_vex: 'want_to_have',
-                },
-                user_documentation: {
+                userDocumentation: {
                   specification:
                     'docs/user/product_tree/relationships-spec.en.md',
-                  usage: {
-                    generic: 'docs/user/product_tree/relationships-usage.en.md',
-                  },
+                  usage: 'docs/user/product_tree/relationships-usage.en.md',
+                },
+                relevanceLevels: {
+                  csafBase: 'optional',
+                  csafSecurityIncidentResponse: 'optional',
+                  csafInformationalAdvisory: 'optional',
+                  csafSecurityAdvisory: 'want_to_have',
+                  csafVex: 'want_to_have',
+                },
+                i18n: {
+                  title: 'ProductTreeRelationshipsTitle',
+                  description: 'ProductTreeRelationshipsDescription',
                 },
               },
               type: 'ARRAY',
@@ -2620,14 +2635,15 @@ export default {
                   description:
                     'Establishes a link between two existing full_product_name_t elements, allowing the document producer to define a combination of two products that form a new full_product_name entry.',
                   metaData: {
-                    uiType: 'ARRAY',
-                    user_documentation: {
+                    userDocumentation: {
                       specification:
                         'docs/user/product_tree/relationships/relationship-spec.en.md',
-                      usage: {
-                        generic:
-                          'docs/user/product_tree/relationships/relationship-usage.en.md',
-                      },
+                      usage:
+                        'docs/user/product_tree/relationships/relationship-usage.en.md',
+                    },
+                    i18n: {
+                      title: 'ProductTreeRelationshipsItemsTitle',
+                      description: 'ProductTreeRelationshipsItemsDescription',
                     },
                   },
                   type: 'OBJECT',
@@ -3130,34 +3146,20 @@ export default {
         description:
           'Represents a list of all relevant vulnerability information items.',
         metaData: {
-          propertyOrder: [
-            'acknowledgments',
-            'cve',
-            'cwe',
-            'discovery_date',
-            'flags',
-            'ids',
-            'involvements',
-            'notes',
-            'product_status',
-            'references',
-            'release_date',
-            'remediations',
-            'scores',
-            'threats',
-            'title',
-          ],
-          uiType: 'OBJECT',
-          relevance_levels: {
-            csaf_base: 'want_to_have',
-            csaf_security_incident_response: 'nice_to_know',
-            csaf_informational_advisory: 'excluded',
-            csaf_security_advisory: 'mandatory',
-            csaf_vex: 'mandatory',
-          },
-          user_documentation: {
+          userDocumentation: {
             specification: 'docs/user/vulnerabilities-spec.en.md',
-            usage: { generic: 'docs/user/vulnerabilities-usage.en.md' },
+            usage: 'docs/user/vulnerabilities-usage.en.md',
+          },
+          relevanceLevels: {
+            csafBase: 'want_to_have',
+            csafSecurityIncidentResponse: 'nice_to_know',
+            csafInformationalAdvisory: 'excluded',
+            csafSecurityAdvisory: 'mandatory',
+            csafVex: 'mandatory',
+          },
+          i18n: {
+            title: 'VulnerabilitiesTitle',
+            description: 'VulnerabilitiesDescription',
           },
         },
         type: 'ARRAY',
@@ -3169,15 +3171,15 @@ export default {
             description:
               'Is a container for the aggregation of all fields that are related to a single vulnerability in the document.',
             metaData: {
-              uiType: 'ARRAY',
-              relevance_levels: { csaf_informational_advisory: 'excluded' },
-              user_documentation: {
+              userDocumentation: {
                 specification:
                   'docs/user/vulnerabilities/vulnerability-spec.en.md',
-                usage: {
-                  generic:
-                    'docs/user/vulnerabilities/vulnerability-usage.en.md',
-                },
+                usage: 'docs/user/vulnerabilities/vulnerability-usage.en.md',
+              },
+              relevanceLevels: { csafInformationalAdvisory: 'excluded' },
+              i18n: {
+                title: 'VulnerabilitiesItemsTitle',
+                description: 'VulnerabilitiesItemsDescription',
               },
             },
             type: 'OBJECT',

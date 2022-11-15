@@ -34,7 +34,8 @@ function convertSchema(subschema, path) {
 
   const fullName = path.filter((s) => s !== 'properties' && s !== 'items')
   const metaDataPath = strPath
-    .replace(/^properties\./, '')
+    .replace(/^$/, '$')
+    .replace(/^properties\./, '$.')
     .replaceAll('.properties.', '.')
     .replace(/\.items$/, '[]')
     .replaceAll('.items.', '[].')
@@ -47,7 +48,11 @@ function convertSchema(subschema, path) {
     description: subschema.description,
     addMenuItemsForChildObjects:
       metaDataRecord[metaDataPath]?.addMenuItemsForChildObjects,
-    metaData,
+    metaData:
+      metaData &&
+      Object.fromEntries(
+        Object.entries(metaData).filter(([key]) => key !== 'propertyOrder')
+      ),
   }
 
   if (
