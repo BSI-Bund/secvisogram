@@ -1,9 +1,9 @@
 export default {
-  '': {
+  $: {
     addMenuItemsForChildObjects: true,
     propertyOrder: ['document', 'product_tree', 'vulnerabilities'],
   },
-  document: {
+  '$.document': {
     userDocumentation: {
       specification: 'docs/user/document-spec.en.md',
       usage: 'docs/user/document-usage.en.md',
@@ -17,7 +17,7 @@ export default {
       csafVex: 'mandatory',
     },
   },
-  'document.acknowledgments': {
+  '$.document.acknowledgments': {
     userDocumentation: {
       specification: 'docs/user/document/acknowledgments-spec.en.md',
       usage: 'docs/user/document/acknowledgments-usage.en.md',
@@ -34,7 +34,7 @@ export default {
       description: 'DocumentAcknowledgmentsDescription',
     },
   },
-  'document.acknowledgments[]': {
+  '$.document.acknowledgments[]': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment-spec.en.md',
@@ -45,7 +45,7 @@ export default {
       description: 'AcknowledgmentsItemsDescription',
     },
   },
-  'document.acknowledgments.names': {
+  '$.document.acknowledgments.names': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/names-spec.en.md',
@@ -63,7 +63,7 @@ export default {
       description: 'AcknowledgmentsItemsNamesDescription',
     },
   },
-  'document.acknowledgments.names[]': {
+  '$.document.acknowledgments.names[]': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/names/name-spec.en.md',
@@ -75,7 +75,7 @@ export default {
       description: 'AcknowledgmentsItemsNamesItemsDescription',
     },
   },
-  'document.acknowledgments.organization': {
+  '$.document.acknowledgments.organization': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/organization-spec.en.md',
@@ -94,7 +94,7 @@ export default {
       description: 'AcknowledgmentsItemsOrganizationDescription',
     },
   },
-  'document.acknowledgments.summary': {
+  '$.document.acknowledgments.summary': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/summary-spec.en.md',
@@ -114,7 +114,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'document.acknowledgments.urls': {
+  '$.document.acknowledgments.urls': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/urls-spec.en.md',
@@ -132,7 +132,7 @@ export default {
       description: 'AcknowledgmentsItemsUrlsDescription',
     },
   },
-  'document.acknowledgments.urls[]': {
+  '$.document.acknowledgments.urls[]': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/urls/url-spec.en.md',
@@ -144,7 +144,7 @@ export default {
       description: 'AcknowledgmentsItemsUrlsItemsDescription',
     },
   },
-  'document.aggregate_severity': {
+  '$.document.aggregate_severity': {
     userDocumentation: {
       specification: 'docs/user/document/aggregate_severity-spec.en.md',
       usage: 'docs/user/document/aggregate_severity-usage.en.md',
@@ -161,7 +161,7 @@ export default {
       description: 'DocumentAggregateSeverityDescription',
     },
   },
-  'document.aggregate_severity.namespace': {
+  '$.document.aggregate_severity.namespace': {
     userDocumentation: {
       specification:
         'docs/user/document/aggregate_severity/namespace-spec.en.md',
@@ -179,7 +179,7 @@ export default {
       description: 'DocumentAggregateSeverityNamespaceDescription',
     },
   },
-  'document.aggregate_severity.text': {
+  '$.document.aggregate_severity.text': {
     userDocumentation: {
       specification: 'docs/user/document/aggregate_severity/text-spec.en.md',
       usage: 'docs/user/document/aggregate_severity/text-usage.en.md',
@@ -197,7 +197,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'document.category': {
+  '$.document.category': {
     userDocumentation: {
       specification: 'docs/user/document/category-spec.en.md',
       usage: 'docs/user/document/category-usage.en.md',
@@ -215,7 +215,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'document.csaf_version': {
+  '$.document.csaf_version': {
     userDocumentation: {
       specification: 'docs/user/document/csaf_version-spec.en.md',
       usage: 'docs/user/document/csaf_version-usage.en.md',
@@ -233,7 +233,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'document.distribution': {
+  '$.document.distribution': {
     userDocumentation: {
       specification: 'docs/user/document/distribution-spec.en.md',
       usage: 'docs/user/document/distribution-usage.en.md',
@@ -250,7 +250,7 @@ export default {
       description: 'DocumentDistributionDescription',
     },
   },
-  'document.distribution.text': {
+  '$.document.distribution.text': {
     userDocumentation: {
       specification: 'docs/user/document/distribution/text-spec.en.md',
       usage: 'docs/user/document/distribution/text-usage.en.md',
@@ -268,7 +268,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'document.distribution.tlp': {
+  '$.document.distribution.tlp': {
     userDocumentation: {
       specification: 'docs/user/document/distribution/tlp-spec.en.md',
       usage: 'docs/user/document/distribution/tlp-usage.en.md',
@@ -285,7 +285,7 @@ export default {
       description: 'DocumentDistributionTlpDescription',
     },
   },
-  'document.distribution.tlp.label': {
+  '$.document.distribution.tlp.label': {
     userDocumentation: {
       specification: 'docs/user/document/distribution/tlp/label-spec.en.md',
       usage: 'docs/user/document/distribution/tlp/label-usage.en.md',
@@ -303,7 +303,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'document.distribution.tlp.url': {
+  '$.document.distribution.tlp.url': {
     userDocumentation: {
       specification: 'docs/user/document/distribution/tlp/url-spec.en.md',
       usage: 'docs/user/document/distribution/tlp/url-usage.en.md',
@@ -320,7 +320,7 @@ export default {
       description: 'DocumentDistributionTlpUrlDescription',
     },
   },
-  'document.lang': {
+  '$.document.lang': {
     userDocumentation: {
       specification: 'docs/user/document/lang-spec.en.md',
       usage: 'docs/user/document/lang-usage.en.md',
@@ -337,7 +337,7 @@ export default {
       description: 'DocumentLangDescription',
     },
   },
-  'document.notes': {
+  '$.document.notes': {
     userDocumentation: {
       specification: 'docs/user/document/notes-spec.en.md',
       usage: 'docs/user/document/notes-usage.en.md',
@@ -354,7 +354,7 @@ export default {
       description: 'DocumentNotesDescription',
     },
   },
-  'document.notes[]': {
+  '$.document.notes[]': {
     userDocumentation: {
       specification: 'docs/user/types/notes/note-spec.en.md',
       usage: 'docs/user/types/notes/note-usage.en.md',
@@ -364,7 +364,7 @@ export default {
       description: 'NotesItemsDescription',
     },
   },
-  'document.notes.audience': {
+  '$.document.notes.audience': {
     userDocumentation: {
       specification: 'docs/user/types/notes/note/audience-spec.en.md',
       usage: 'docs/user/types/notes/note/audience-usage.en.md',
@@ -381,7 +381,7 @@ export default {
       description: 'NotesItemsAudienceDescription',
     },
   },
-  'document.notes.category': {
+  '$.document.notes.category': {
     userDocumentation: {
       specification: 'docs/user/types/notes/note/category-spec.en.md',
       usage: 'docs/user/types/notes/note/category-usage.en.md',
@@ -399,7 +399,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'document.notes.text': {
+  '$.document.notes.text': {
     userDocumentation: {
       specification: 'docs/user/types/notes/note/text-spec.en.md',
       usage: 'docs/user/types/notes/note/text-usage.en.md',
@@ -417,7 +417,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'document.notes.title': {
+  '$.document.notes.title': {
     userDocumentation: {
       specification: 'docs/user/types/notes/note/title-spec.en.md',
       usage: 'docs/user/types/notes/note/title-usage.en.md',
@@ -434,7 +434,7 @@ export default {
       description: 'NotesItemsTitleDescription',
     },
   },
-  'document.publisher': {
+  '$.document.publisher': {
     userDocumentation: {
       specification: 'docs/user/document/publisher-spec.en.md',
       usage: 'docs/user/document/publisher-usage.en.md',
@@ -451,7 +451,7 @@ export default {
       description: 'DocumentPublisherDescription',
     },
   },
-  'document.publisher.category': {
+  '$.document.publisher.category': {
     userDocumentation: {
       specification: 'docs/user/document/publisher/category-spec.en.md',
       usage: 'docs/user/document/publisher/category-usage.en.md',
@@ -469,7 +469,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'document.publisher.contact_details': {
+  '$.document.publisher.contact_details': {
     userDocumentation: {
       specification: 'docs/user/document/publisher/contact_details-spec.en.md',
       usage: 'docs/user/document/publisher/contact_details-usage.en.md',
@@ -487,7 +487,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'document.publisher.issuing_authority': {
+  '$.document.publisher.issuing_authority': {
     userDocumentation: {
       specification:
         'docs/user/document/publisher/issuing_authority-spec.en.md',
@@ -506,7 +506,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'document.publisher.name': {
+  '$.document.publisher.name': {
     userDocumentation: {
       specification: 'docs/user/document/publisher/name-spec.en.md',
       usage: 'docs/user/document/publisher/name-usage.en.md',
@@ -523,7 +523,7 @@ export default {
       description: 'DocumentPublisherNameDescription',
     },
   },
-  'document.publisher.namespace': {
+  '$.document.publisher.namespace': {
     userDocumentation: {
       specification: 'docs/user/document/publisher/namespace-spec.en.md',
       usage: 'docs/user/document/publisher/namespace-usage.en.md',
@@ -540,7 +540,7 @@ export default {
       description: 'DocumentPublisherNamespaceDescription',
     },
   },
-  'document.references': {
+  '$.document.references': {
     userDocumentation: {
       specification: 'docs/user/document/references-spec.en.md',
       usage: 'docs/user/document/references-usage.en.md',
@@ -557,7 +557,7 @@ export default {
       description: 'DocumentReferencesDescription',
     },
   },
-  'document.references[]': {
+  '$.document.references[]': {
     userDocumentation: {
       specification: 'docs/user/types/references/reference-spec.en.md',
       usage: 'docs/user/types/references/reference-usage.en.md',
@@ -567,7 +567,7 @@ export default {
       description: 'ReferencesItemsDescription',
     },
   },
-  'document.references.category': {
+  '$.document.references.category': {
     userDocumentation: {
       specification: 'docs/user/types/references/reference/category-spec.en.md',
       usage: 'docs/user/types/references/reference/category-usage.en.md',
@@ -585,7 +585,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'document.references.summary': {
+  '$.document.references.summary': {
     userDocumentation: {
       specification: 'docs/user/types/references/reference/summary-spec.en.md',
       usage: 'docs/user/types/references/reference/summary-usage.en.md',
@@ -603,7 +603,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'document.references.url': {
+  '$.document.references.url': {
     userDocumentation: {
       specification: 'docs/user/types/references/reference/url-spec.en.md',
       usage: 'docs/user/types/references/reference/url-usage.en.md',
@@ -620,7 +620,7 @@ export default {
       description: 'ReferencesItemsUrlDescription',
     },
   },
-  'document.source_lang': {
+  '$.document.source_lang': {
     userDocumentation: {
       specification: 'docs/user/document/source_lang-spec.en.md',
       usage: 'docs/user/document/source_lang-usage.en.md',
@@ -637,7 +637,7 @@ export default {
       description: 'DocumentSourceLangDescription',
     },
   },
-  'document.title': {
+  '$.document.title': {
     userDocumentation: {
       specification: 'docs/user/document/title-spec.en.md',
       usage: 'docs/user/document/title-usage.en.md',
@@ -654,7 +654,7 @@ export default {
       description: 'DocumentTitleDescription',
     },
   },
-  'document.tracking': {
+  '$.document.tracking': {
     userDocumentation: {
       specification: 'docs/user/document/tracking-spec.en.md',
       usage: 'docs/user/document/tracking-usage.en.md',
@@ -671,7 +671,7 @@ export default {
       description: 'DocumentTrackingDescription',
     },
   },
-  'document.tracking.aliases': {
+  '$.document.tracking.aliases': {
     userDocumentation: {
       specification: 'docs/user/document/tracking/aliases-spec.en.md',
       usage: 'docs/user/document/tracking/aliases-usage.en.md',
@@ -688,7 +688,7 @@ export default {
       description: 'DocumentTrackingAliasesDescription',
     },
   },
-  'document.tracking.aliases[]': {
+  '$.document.tracking.aliases[]': {
     userDocumentation: {
       specification: 'docs/user/document/tracking/aliases/alias-spec.en.md',
       usage: 'docs/user/document/tracking/aliases/alias-usage.en.md',
@@ -698,7 +698,7 @@ export default {
       description: 'DocumentTrackingAliasesItemsDescription',
     },
   },
-  'document.tracking.current_release_date': {
+  '$.document.tracking.current_release_date': {
     userDocumentation: {
       specification:
         'docs/user/document/tracking/current_release_date-spec.en.md',
@@ -716,7 +716,7 @@ export default {
       description: 'DocumentTrackingCurrentReleaseDateDescription',
     },
   },
-  'document.tracking.generator': {
+  '$.document.tracking.generator': {
     userDocumentation: {
       specification: 'docs/user/document/tracking/generator-spec.en.md',
       usage: 'docs/user/document/tracking/generator-usage.en.md',
@@ -733,7 +733,7 @@ export default {
       description: 'DocumentTrackingGeneratorDescription',
     },
   },
-  'document.tracking.generator.date': {
+  '$.document.tracking.generator.date': {
     userDocumentation: {
       specification: 'docs/user/document/tracking/generator/date-spec.en.md',
       usage: 'docs/user/document/tracking/generator/date-usage.en.md',
@@ -750,7 +750,7 @@ export default {
       description: 'DocumentTrackingGeneratorDateDescription',
     },
   },
-  'document.tracking.generator.engine': {
+  '$.document.tracking.generator.engine': {
     userDocumentation: {
       specification: 'docs/user/document/tracking/generator/engine-spec.en.md',
       usage: 'docs/user/document/tracking/generator/engine-usage.en.md',
@@ -767,7 +767,7 @@ export default {
       description: 'DocumentTrackingGeneratorEngineDescription',
     },
   },
-  'document.tracking.generator.engine.name': {
+  '$.document.tracking.generator.engine.name': {
     userDocumentation: {
       specification:
         'docs/user/document/tracking/generator/engine/name-spec.en.md',
@@ -789,7 +789,7 @@ export default {
       ifServerMode: true,
     },
   },
-  'document.tracking.generator.engine.version': {
+  '$.document.tracking.generator.engine.version': {
     userDocumentation: {
       specification:
         'docs/user/document/tracking/generator/engine/version-spec.en.md',
@@ -811,7 +811,7 @@ export default {
       ifServerMode: true,
     },
   },
-  'document.tracking.id': {
+  '$.document.tracking.id': {
     userDocumentation: {
       specification: 'docs/user/document/tracking/id-spec.en.md',
       usage: 'docs/user/document/tracking/id-usage.en.md',
@@ -832,7 +832,7 @@ export default {
       ifServerMode: true,
     },
   },
-  'document.tracking.initial_release_date': {
+  '$.document.tracking.initial_release_date': {
     userDocumentation: {
       specification:
         'docs/user/document/tracking/initial_release_date-spec.en.md',
@@ -850,7 +850,7 @@ export default {
       description: 'DocumentTrackingInitialReleaseDateDescription',
     },
   },
-  'document.tracking.revision_history': {
+  '$.document.tracking.revision_history': {
     userDocumentation: {
       specification: 'docs/user/document/tracking/revision_history-spec.en.md',
       usage: 'docs/user/document/tracking/revision_history-usage.en.md',
@@ -868,7 +868,7 @@ export default {
     },
     uiType: 'ARRAY_REVISION_HISTORY',
   },
-  'document.tracking.revision_history[]': {
+  '$.document.tracking.revision_history[]': {
     userDocumentation: {
       specification:
         'docs/user/document/tracking/revision_history/revision-spec.en.md',
@@ -880,7 +880,7 @@ export default {
       description: 'DocumentTrackingRevisionHistoryItemsDescription',
     },
   },
-  'document.tracking.revision_history.date': {
+  '$.document.tracking.revision_history.date': {
     userDocumentation: {
       specification:
         'docs/user/document/tracking/revision_history/revision/date-spec.en.md',
@@ -903,7 +903,7 @@ export default {
       ifServerMode: true,
     },
   },
-  'document.tracking.revision_history.legacy_version': {
+  '$.document.tracking.revision_history.legacy_version': {
     userDocumentation: {
       specification:
         'docs/user/document/tracking/revision_history/revision/legacy_version-spec.en.md',
@@ -928,7 +928,7 @@ export default {
       ifServerMode: true,
     },
   },
-  'document.tracking.revision_history.number': {
+  '$.document.tracking.revision_history.number': {
     userDocumentation: {
       specification:
         'docs/user/document/tracking/revision_history/revision/number-spec.en.md',
@@ -949,7 +949,7 @@ export default {
       ifServerMode: true,
     },
   },
-  'document.tracking.revision_history.summary': {
+  '$.document.tracking.revision_history.summary': {
     userDocumentation: {
       specification:
         'docs/user/document/tracking/revision_history/revision/summary-spec.en.md',
@@ -973,7 +973,7 @@ export default {
       ifServerMode: true,
     },
   },
-  'document.tracking.status': {
+  '$.document.tracking.status': {
     userDocumentation: {
       specification: 'docs/user/document/tracking/status-spec.en.md',
       usage: 'docs/user/document/tracking/status-usage.en.md',
@@ -991,7 +991,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'document.tracking.version': {
+  '$.document.tracking.version': {
     userDocumentation: {
       specification: 'docs/user/document/tracking/version-spec.en.md',
       usage: 'docs/user/document/tracking/version-usage.en.md',
@@ -1005,7 +1005,7 @@ export default {
     },
     i18n: { title: 'VersionTitle', description: 'VersionDescription' },
   },
-  product_tree: {
+  '$.product_tree': {
     userDocumentation: {
       specification: 'docs/user/product_tree-spec.en.md',
       usage: 'docs/user/product_tree-usage.en.md',
@@ -1022,7 +1022,7 @@ export default {
       description: 'ProductTreeDescription',
     },
   },
-  'product_tree.branches': {
+  '$.product_tree.branches': {
     userDocumentation: {
       specification: 'docs/user/product_tree/branches-spec.en.md',
       usage: 'docs/user/product_tree/branches-usage.en.md',
@@ -1036,7 +1036,7 @@ export default {
     },
     i18n: { title: 'BranchesTitle', description: 'BranchesDescription' },
   },
-  'product_tree.branches[]': {
+  '$.product_tree.branches[]': {
     userDocumentation: {
       specification: 'docs/user/types/branches/branch-spec.en.md',
       usage: 'docs/user/types/branches/branch-usage.en.md',
@@ -1046,14 +1046,14 @@ export default {
       description: 'BranchesItemsDescription',
     },
   },
-  'product_tree.branches.branches': {
+  '$.product_tree.branches.branches': {
     userDocumentation: {
       specification: 'docs/user/types/branches-spec.en.md',
       usage: 'docs/user/types/branches-usage.en.md',
     },
     i18n: { title: 'BranchesTitle', description: 'BranchesDescription' },
   },
-  'product_tree.branches.category': {
+  '$.product_tree.branches.category': {
     userDocumentation: {
       specification: 'docs/user/types/branches/branch/category-spec.en.md',
       usage: 'docs/user/types/branches/branch/category-usage.en.md',
@@ -1071,7 +1071,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'product_tree.branches.name': {
+  '$.product_tree.branches.name': {
     userDocumentation: {
       specification: 'docs/user/types/branches/branch/name-spec.en.md',
       usage: 'docs/user/types/branches/branch/name-usage.en.md',
@@ -1088,7 +1088,7 @@ export default {
       description: 'BranchesItemsNameDescription',
     },
   },
-  'product_tree.branches.product': {
+  '$.product_tree.branches.product': {
     userDocumentation: {
       specification: 'docs/user/types/branches/branch/product-spec.en.md',
       usage: 'docs/user/types/branches/branch/product-usage.en.md',
@@ -1098,7 +1098,7 @@ export default {
       description: 'FullProductNameDescription',
     },
   },
-  'product_tree.branches.product.name': {
+  '$.product_tree.branches.product.name': {
     userDocumentation: {
       specification: 'docs/user/types/full_product_name/name-spec.en.md',
       usage: 'docs/user/types/full_product_name/name-usage.en.md',
@@ -1115,7 +1115,7 @@ export default {
       description: 'FullProductNameNameDescription',
     },
   },
-  'product_tree.branches.product.product_id': {
+  '$.product_tree.branches.product.product_id': {
     userDocumentation: {
       specification: 'docs/user/types/full_product_name/product_id-spec.en.md',
       usage: 'docs/user/types/product_id-usage.en.md',
@@ -1130,7 +1130,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'product_tree.branches.product.product_identification_helper': {
+  '$.product_tree.branches.product.product_identification_helper': {
     userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper-spec.en.md',
@@ -1149,7 +1149,7 @@ export default {
       description: 'FullProductNameProductIdentificationHelperDescription',
     },
   },
-  'product_tree.branches.product.product_identification_helper.cpe': {
+  '$.product_tree.branches.product.product_identification_helper.cpe': {
     userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md',
@@ -1168,7 +1168,7 @@ export default {
       description: 'FullProductNameProductIdentificationHelperCpeDescription',
     },
   },
-  'product_tree.branches.product.product_identification_helper.hashes': {
+  '$.product_tree.branches.product.product_identification_helper.hashes': {
     userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md',
@@ -1188,7 +1188,7 @@ export default {
         'FullProductNameProductIdentificationHelperHashesDescription',
     },
   },
-  'product_tree.branches.product.product_identification_helper.hashes[]': {
+  '$.product_tree.branches.product.product_identification_helper.hashes[]': {
     userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md',
@@ -1201,7 +1201,7 @@ export default {
         'FullProductNameProductIdentificationHelperHashesItemsDescription',
     },
   },
-  'product_tree.branches.product.product_identification_helper.hashes.file_hashes':
+  '$.product_tree.branches.product.product_identification_helper.hashes.file_hashes':
     {
       userDocumentation: {
         specification:
@@ -1223,7 +1223,7 @@ export default {
           'FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription',
       },
     },
-  'product_tree.branches.product.product_identification_helper.hashes.file_hashes[]':
+  '$.product_tree.branches.product.product_identification_helper.hashes.file_hashes[]':
     {
       userDocumentation: {
         specification:
@@ -1238,7 +1238,7 @@ export default {
           'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription',
       },
     },
-  'product_tree.branches.product.product_identification_helper.hashes.file_hashes.algorithm':
+  '$.product_tree.branches.product.product_identification_helper.hashes.file_hashes.algorithm':
     {
       userDocumentation: {
         specification:
@@ -1260,7 +1260,7 @@ export default {
           'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription',
       },
     },
-  'product_tree.branches.product.product_identification_helper.hashes.file_hashes.value':
+  '$.product_tree.branches.product.product_identification_helper.hashes.file_hashes.value':
     {
       userDocumentation: {
         specification:
@@ -1282,7 +1282,7 @@ export default {
           'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription',
       },
     },
-  'product_tree.branches.product.product_identification_helper.hashes.filename':
+  '$.product_tree.branches.product.product_identification_helper.hashes.filename':
     {
       userDocumentation: {
         specification:
@@ -1304,475 +1304,7 @@ export default {
           'FullProductNameProductIdentificationHelperHashesItemsFilenameDescription',
       },
     },
-  'product_tree.branches.product.product_identification_helper.model_numbers': {
-    userDocumentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md',
-      usage:
-        'docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md',
-    },
-    relevanceLevels: {
-      csafBase: 'nice_to_know',
-      csafSecurityIncidentResponse: 'nice_to_know',
-      csafInformationalAdvisory: 'nice_to_know',
-      csafSecurityAdvisory: 'nice_to_know',
-      csafVex: 'nice_to_know',
-    },
-    i18n: {
-      title: 'FullProductNameProductIdentificationHelperModelNumbersTitle',
-      description:
-        'FullProductNameProductIdentificationHelperModelNumbersDescription',
-    },
-  },
-  'product_tree.branches.product.product_identification_helper.model_numbers[]':
-    {
-      userDocumentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md',
-        usage:
-          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md',
-      },
-      i18n: {
-        title:
-          'FullProductNameProductIdentificationHelperModelNumbersItemsTitle',
-        description:
-          'FullProductNameProductIdentificationHelperModelNumbersItemsDescription',
-      },
-    },
-  'product_tree.branches.product.product_identification_helper.purl': {
-    userDocumentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md',
-      usage:
-        'docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md',
-    },
-    relevanceLevels: {
-      csafBase: 'nice_to_know',
-      csafSecurityIncidentResponse: 'nice_to_know',
-      csafInformationalAdvisory: 'nice_to_know',
-      csafSecurityAdvisory: 'nice_to_know',
-      csafVex: 'nice_to_know',
-    },
-    i18n: {
-      title: 'FullProductNameProductIdentificationHelperPurlTitle',
-      description: 'FullProductNameProductIdentificationHelperPurlDescription',
-    },
-  },
-  'product_tree.branches.product.product_identification_helper.sbom_urls': {
-    userDocumentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md',
-      usage:
-        'docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md',
-    },
-    relevanceLevels: {
-      csafBase: 'nice_to_know',
-      csafSecurityIncidentResponse: 'nice_to_know',
-      csafInformationalAdvisory: 'nice_to_know',
-      csafSecurityAdvisory: 'nice_to_know',
-      csafVex: 'nice_to_know',
-    },
-    i18n: {
-      title: 'FullProductNameProductIdentificationHelperSbomUrlsTitle',
-      description:
-        'FullProductNameProductIdentificationHelperSbomUrlsDescription',
-    },
-  },
-  'product_tree.branches.product.product_identification_helper.sbom_urls[]': {
-    userDocumentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md',
-      usage:
-        'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md',
-    },
-    i18n: {
-      title: 'FullProductNameProductIdentificationHelperSbomUrlsItemsTitle',
-      description:
-        'FullProductNameProductIdentificationHelperSbomUrlsItemsDescription',
-    },
-  },
-  'product_tree.branches.product.product_identification_helper.serial_numbers':
-    {
-      userDocumentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md',
-        usage:
-          'docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md',
-      },
-      relevanceLevels: {
-        csafBase: 'nice_to_know',
-        csafSecurityIncidentResponse: 'nice_to_know',
-        csafInformationalAdvisory: 'nice_to_know',
-        csafSecurityAdvisory: 'nice_to_know',
-        csafVex: 'nice_to_know',
-      },
-      i18n: {
-        title: 'FullProductNameProductIdentificationHelperSerialNumbersTitle',
-        description:
-          'FullProductNameProductIdentificationHelperSerialNumbersDescription',
-      },
-    },
-  'product_tree.branches.product.product_identification_helper.serial_numbers[]':
-    {
-      userDocumentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md',
-        usage:
-          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md',
-      },
-      i18n: {
-        title:
-          'FullProductNameProductIdentificationHelperSerialNumbersItemsTitle',
-        description:
-          'FullProductNameProductIdentificationHelperSerialNumbersItemsDescription',
-      },
-    },
-  'product_tree.branches.product.product_identification_helper.skus': {
-    userDocumentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md',
-      usage:
-        'docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md',
-    },
-    relevanceLevels: {
-      csafBase: 'nice_to_know',
-      csafSecurityIncidentResponse: 'nice_to_know',
-      csafInformationalAdvisory: 'nice_to_know',
-      csafSecurityAdvisory: 'nice_to_know',
-      csafVex: 'nice_to_know',
-    },
-    i18n: {
-      title: 'FullProductNameProductIdentificationHelperSkusTitle',
-      description: 'FullProductNameProductIdentificationHelperSkusDescription',
-    },
-  },
-  'product_tree.branches.product.product_identification_helper.skus[]': {
-    userDocumentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md',
-      usage:
-        'docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md',
-    },
-    i18n: {
-      title: 'FullProductNameProductIdentificationHelperSkusItemsTitle',
-      description:
-        'FullProductNameProductIdentificationHelperSkusItemsDescription',
-    },
-  },
-  'product_tree.branches.product.product_identification_helper.x_generic_uris':
-    {
-      userDocumentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md',
-        usage:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md',
-      },
-      relevanceLevels: {
-        csafBase: 'nice_to_know',
-        csafSecurityIncidentResponse: 'nice_to_know',
-        csafInformationalAdvisory: 'nice_to_know',
-        csafSecurityAdvisory: 'nice_to_know',
-        csafVex: 'want_to_have',
-      },
-      i18n: {
-        title: 'FullProductNameProductIdentificationHelperXGenericUrisTitle',
-        description:
-          'FullProductNameProductIdentificationHelperXGenericUrisDescription',
-      },
-    },
-  'product_tree.branches.product.product_identification_helper.x_generic_uris[]':
-    {
-      userDocumentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md',
-        usage:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md',
-      },
-      i18n: {
-        title:
-          'FullProductNameProductIdentificationHelperXGenericUrisItemsTitle',
-        description:
-          'FullProductNameProductIdentificationHelperXGenericUrisItemsDescription',
-      },
-    },
-  'product_tree.branches.product.product_identification_helper.x_generic_uris.namespace':
-    {
-      userDocumentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md',
-        usage:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md',
-      },
-      relevanceLevels: {
-        csafBase: 'mandatory',
-        csafSecurityIncidentResponse: 'mandatory',
-        csafInformationalAdvisory: 'mandatory',
-        csafSecurityAdvisory: 'mandatory',
-        csafVex: 'mandatory',
-      },
-      i18n: {
-        title:
-          'FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceTitle',
-        description:
-          'FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription',
-      },
-    },
-  'product_tree.branches.product.product_identification_helper.x_generic_uris.uri':
-    {
-      userDocumentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md',
-        usage:
-          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md',
-      },
-      relevanceLevels: {
-        csafBase: 'mandatory',
-        csafSecurityIncidentResponse: 'mandatory',
-        csafInformationalAdvisory: 'mandatory',
-        csafSecurityAdvisory: 'mandatory',
-        csafVex: 'mandatory',
-      },
-      i18n: {
-        title:
-          'FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle',
-        description:
-          'FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription',
-      },
-    },
-  'product_tree.full_product_names': {
-    userDocumentation: {
-      specification: 'docs/user/product_tree/full_product_names-spec.en.md',
-      usage: 'docs/user/product_tree/full_product_names-usage.en.md',
-    },
-    relevanceLevels: {
-      csafBase: 'nice_to_know',
-      csafSecurityIncidentResponse: 'nice_to_know',
-      csafInformationalAdvisory: 'nice_to_know',
-      csafSecurityAdvisory: 'nice_to_know',
-      csafVex: 'nice_to_know',
-    },
-    i18n: {
-      title: 'ProductTreeFullProductNamesTitle',
-      description: 'ProductTreeFullProductNamesDescription',
-    },
-  },
-  'product_tree.full_product_names[]': {
-    userDocumentation: {
-      specification: 'docs/user/types/full_product_name-spec.en.md',
-      usage: 'docs/user/types/full_product_name-usage.en.md',
-    },
-    i18n: {
-      title: 'FullProductNameTitle',
-      description: 'FullProductNameDescription',
-    },
-  },
-  'product_tree.full_product_names.name': {
-    userDocumentation: {
-      specification: 'docs/user/types/full_product_name/name-spec.en.md',
-      usage: 'docs/user/types/full_product_name/name-usage.en.md',
-    },
-    relevanceLevels: {
-      csafBase: 'mandatory',
-      csafSecurityIncidentResponse: 'mandatory',
-      csafInformationalAdvisory: 'mandatory',
-      csafSecurityAdvisory: 'mandatory',
-      csafVex: 'mandatory',
-    },
-    i18n: {
-      title: 'FullProductNameNameTitle',
-      description: 'FullProductNameNameDescription',
-    },
-  },
-  'product_tree.full_product_names.product_id': {
-    userDocumentation: {
-      specification: 'docs/user/types/product_id-spec.en.md',
-      usage: 'docs/user/types/product_id-usage.en.md',
-    },
-    relevanceLevels: {
-      csafBase: 'mandatory',
-      csafSecurityIncidentResponse: 'mandatory',
-      csafInformationalAdvisory: 'mandatory',
-      csafSecurityAdvisory: 'mandatory',
-      csafVex: 'mandatory',
-    },
-    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
-  },
-  'product_tree.full_product_names.product_identification_helper': {
-    userDocumentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper-spec.en.md',
-      usage:
-        'docs/user/types/full_product_name/product_identification_helper-usage.en.md',
-    },
-    relevanceLevels: {
-      csafBase: 'want_to_have',
-      csafSecurityIncidentResponse: 'want_to_have',
-      csafInformationalAdvisory: 'want_to_have',
-      csafSecurityAdvisory: 'want_to_have',
-      csafVex: 'want_to_have',
-    },
-    i18n: {
-      title: 'FullProductNameProductIdentificationHelperTitle',
-      description: 'FullProductNameProductIdentificationHelperDescription',
-    },
-  },
-  'product_tree.full_product_names.product_identification_helper.cpe': {
-    userDocumentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md',
-      usage:
-        'docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md',
-    },
-    relevanceLevels: {
-      csafBase: 'nice_to_know',
-      csafSecurityIncidentResponse: 'nice_to_know',
-      csafInformationalAdvisory: 'nice_to_know',
-      csafSecurityAdvisory: 'nice_to_know',
-      csafVex: 'nice_to_know',
-    },
-    i18n: {
-      title: 'FullProductNameProductIdentificationHelperCpeTitle',
-      description: 'FullProductNameProductIdentificationHelperCpeDescription',
-    },
-  },
-  'product_tree.full_product_names.product_identification_helper.hashes': {
-    userDocumentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md',
-      usage:
-        'docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md',
-    },
-    relevanceLevels: {
-      csafBase: 'nice_to_know',
-      csafSecurityIncidentResponse: 'nice_to_know',
-      csafInformationalAdvisory: 'nice_to_know',
-      csafSecurityAdvisory: 'nice_to_know',
-      csafVex: 'nice_to_know',
-    },
-    i18n: {
-      title: 'FullProductNameProductIdentificationHelperHashesTitle',
-      description:
-        'FullProductNameProductIdentificationHelperHashesDescription',
-    },
-  },
-  'product_tree.full_product_names.product_identification_helper.hashes[]': {
-    userDocumentation: {
-      specification:
-        'docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md',
-      usage:
-        'docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md',
-    },
-    i18n: {
-      title: 'FullProductNameProductIdentificationHelperHashesItemsTitle',
-      description:
-        'FullProductNameProductIdentificationHelperHashesItemsDescription',
-    },
-  },
-  'product_tree.full_product_names.product_identification_helper.hashes.file_hashes':
-    {
-      userDocumentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md',
-        usage:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md',
-      },
-      relevanceLevels: {
-        csafBase: 'mandatory',
-        csafSecurityIncidentResponse: 'mandatory',
-        csafInformationalAdvisory: 'mandatory',
-        csafSecurityAdvisory: 'mandatory',
-        csafVex: 'mandatory',
-      },
-      i18n: {
-        title:
-          'FullProductNameProductIdentificationHelperHashesItemsFileHashesTitle',
-        description:
-          'FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription',
-      },
-    },
-  'product_tree.full_product_names.product_identification_helper.hashes.file_hashes[]':
-    {
-      userDocumentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md',
-        usage:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md',
-      },
-      i18n: {
-        title:
-          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle',
-        description:
-          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription',
-      },
-    },
-  'product_tree.full_product_names.product_identification_helper.hashes.file_hashes.algorithm':
-    {
-      userDocumentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md',
-        usage:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md',
-      },
-      relevanceLevels: {
-        csafBase: 'mandatory',
-        csafSecurityIncidentResponse: 'mandatory',
-        csafInformationalAdvisory: 'mandatory',
-        csafSecurityAdvisory: 'mandatory',
-        csafVex: 'mandatory',
-      },
-      i18n: {
-        title:
-          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmTitle',
-        description:
-          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription',
-      },
-    },
-  'product_tree.full_product_names.product_identification_helper.hashes.file_hashes.value':
-    {
-      userDocumentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md',
-        usage:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md',
-      },
-      relevanceLevels: {
-        csafBase: 'mandatory',
-        csafSecurityIncidentResponse: 'mandatory',
-        csafInformationalAdvisory: 'mandatory',
-        csafSecurityAdvisory: 'mandatory',
-        csafVex: 'mandatory',
-      },
-      i18n: {
-        title:
-          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueTitle',
-        description:
-          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription',
-      },
-    },
-  'product_tree.full_product_names.product_identification_helper.hashes.filename':
-    {
-      userDocumentation: {
-        specification:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md',
-        usage:
-          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md',
-      },
-      relevanceLevels: {
-        csafBase: 'mandatory',
-        csafSecurityIncidentResponse: 'mandatory',
-        csafInformationalAdvisory: 'mandatory',
-        csafSecurityAdvisory: 'mandatory',
-        csafVex: 'mandatory',
-      },
-      i18n: {
-        title:
-          'FullProductNameProductIdentificationHelperHashesItemsFilenameTitle',
-        description:
-          'FullProductNameProductIdentificationHelperHashesItemsFilenameDescription',
-      },
-    },
-  'product_tree.full_product_names.product_identification_helper.model_numbers':
+  '$.product_tree.branches.product.product_identification_helper.model_numbers':
     {
       userDocumentation: {
         specification:
@@ -1793,7 +1325,7 @@ export default {
           'FullProductNameProductIdentificationHelperModelNumbersDescription',
       },
     },
-  'product_tree.full_product_names.product_identification_helper.model_numbers[]':
+  '$.product_tree.branches.product.product_identification_helper.model_numbers[]':
     {
       userDocumentation: {
         specification:
@@ -1808,7 +1340,7 @@ export default {
           'FullProductNameProductIdentificationHelperModelNumbersItemsDescription',
       },
     },
-  'product_tree.full_product_names.product_identification_helper.purl': {
+  '$.product_tree.branches.product.product_identification_helper.purl': {
     userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md',
@@ -1827,7 +1359,7 @@ export default {
       description: 'FullProductNameProductIdentificationHelperPurlDescription',
     },
   },
-  'product_tree.full_product_names.product_identification_helper.sbom_urls': {
+  '$.product_tree.branches.product.product_identification_helper.sbom_urls': {
     userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md',
@@ -1847,7 +1379,7 @@ export default {
         'FullProductNameProductIdentificationHelperSbomUrlsDescription',
     },
   },
-  'product_tree.full_product_names.product_identification_helper.sbom_urls[]': {
+  '$.product_tree.branches.product.product_identification_helper.sbom_urls[]': {
     userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md',
@@ -1860,7 +1392,7 @@ export default {
         'FullProductNameProductIdentificationHelperSbomUrlsItemsDescription',
     },
   },
-  'product_tree.full_product_names.product_identification_helper.serial_numbers':
+  '$.product_tree.branches.product.product_identification_helper.serial_numbers':
     {
       userDocumentation: {
         specification:
@@ -1881,7 +1413,7 @@ export default {
           'FullProductNameProductIdentificationHelperSerialNumbersDescription',
       },
     },
-  'product_tree.full_product_names.product_identification_helper.serial_numbers[]':
+  '$.product_tree.branches.product.product_identification_helper.serial_numbers[]':
     {
       userDocumentation: {
         specification:
@@ -1896,7 +1428,7 @@ export default {
           'FullProductNameProductIdentificationHelperSerialNumbersItemsDescription',
       },
     },
-  'product_tree.full_product_names.product_identification_helper.skus': {
+  '$.product_tree.branches.product.product_identification_helper.skus': {
     userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md',
@@ -1915,7 +1447,7 @@ export default {
       description: 'FullProductNameProductIdentificationHelperSkusDescription',
     },
   },
-  'product_tree.full_product_names.product_identification_helper.skus[]': {
+  '$.product_tree.branches.product.product_identification_helper.skus[]': {
     userDocumentation: {
       specification:
         'docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md',
@@ -1928,7 +1460,7 @@ export default {
         'FullProductNameProductIdentificationHelperSkusItemsDescription',
     },
   },
-  'product_tree.full_product_names.product_identification_helper.x_generic_uris':
+  '$.product_tree.branches.product.product_identification_helper.x_generic_uris':
     {
       userDocumentation: {
         specification:
@@ -1949,7 +1481,7 @@ export default {
           'FullProductNameProductIdentificationHelperXGenericUrisDescription',
       },
     },
-  'product_tree.full_product_names.product_identification_helper.x_generic_uris[]':
+  '$.product_tree.branches.product.product_identification_helper.x_generic_uris[]':
     {
       userDocumentation: {
         specification:
@@ -1964,7 +1496,7 @@ export default {
           'FullProductNameProductIdentificationHelperXGenericUrisItemsDescription',
       },
     },
-  'product_tree.full_product_names.product_identification_helper.x_generic_uris.namespace':
+  '$.product_tree.branches.product.product_identification_helper.x_generic_uris.namespace':
     {
       userDocumentation: {
         specification:
@@ -1986,7 +1518,7 @@ export default {
           'FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription',
       },
     },
-  'product_tree.full_product_names.product_identification_helper.x_generic_uris.uri':
+  '$.product_tree.branches.product.product_identification_helper.x_generic_uris.uri':
     {
       userDocumentation: {
         specification:
@@ -2008,7 +1540,477 @@ export default {
           'FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription',
       },
     },
-  'product_tree.product_groups': {
+  '$.product_tree.full_product_names': {
+    userDocumentation: {
+      specification: 'docs/user/product_tree/full_product_names-spec.en.md',
+      usage: 'docs/user/product_tree/full_product_names-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'ProductTreeFullProductNamesTitle',
+      description: 'ProductTreeFullProductNamesDescription',
+    },
+  },
+  '$.product_tree.full_product_names[]': {
+    userDocumentation: {
+      specification: 'docs/user/types/full_product_name-spec.en.md',
+      usage: 'docs/user/types/full_product_name-usage.en.md',
+    },
+    i18n: {
+      title: 'FullProductNameTitle',
+      description: 'FullProductNameDescription',
+    },
+  },
+  '$.product_tree.full_product_names.name': {
+    userDocumentation: {
+      specification: 'docs/user/types/full_product_name/name-spec.en.md',
+      usage: 'docs/user/types/full_product_name/name-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: {
+      title: 'FullProductNameNameTitle',
+      description: 'FullProductNameNameDescription',
+    },
+  },
+  '$.product_tree.full_product_names.product_id': {
+    userDocumentation: {
+      specification: 'docs/user/types/product_id-spec.en.md',
+      usage: 'docs/user/types/product_id-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'mandatory',
+      csafSecurityIncidentResponse: 'mandatory',
+      csafInformationalAdvisory: 'mandatory',
+      csafSecurityAdvisory: 'mandatory',
+      csafVex: 'mandatory',
+    },
+    i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_ID',
+  },
+  '$.product_tree.full_product_names.product_identification_helper': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'want_to_have',
+      csafSecurityIncidentResponse: 'want_to_have',
+      csafInformationalAdvisory: 'want_to_have',
+      csafSecurityAdvisory: 'want_to_have',
+      csafVex: 'want_to_have',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperTitle',
+      description: 'FullProductNameProductIdentificationHelperDescription',
+    },
+  },
+  '$.product_tree.full_product_names.product_identification_helper.cpe': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperCpeTitle',
+      description: 'FullProductNameProductIdentificationHelperCpeDescription',
+    },
+  },
+  '$.product_tree.full_product_names.product_identification_helper.hashes': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperHashesTitle',
+      description:
+        'FullProductNameProductIdentificationHelperHashesDescription',
+    },
+  },
+  '$.product_tree.full_product_names.product_identification_helper.hashes[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperHashesItemsTitle',
+      description:
+        'FullProductNameProductIdentificationHelperHashesItemsDescription',
+    },
+  },
+  '$.product_tree.full_product_names.product_identification_helper.hashes.file_hashes':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.hashes.file_hashes[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.hashes.file_hashes.algorithm':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.hashes.file_hashes.value':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.hashes.filename':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperHashesItemsFilenameTitle',
+        description:
+          'FullProductNameProductIdentificationHelperHashesItemsFilenameDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.model_numbers':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperModelNumbersTitle',
+        description:
+          'FullProductNameProductIdentificationHelperModelNumbersDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.model_numbers[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperModelNumbersItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperModelNumbersItemsDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.purl': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperPurlTitle',
+      description: 'FullProductNameProductIdentificationHelperPurlDescription',
+    },
+  },
+  '$.product_tree.full_product_names.product_identification_helper.sbom_urls': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperSbomUrlsTitle',
+      description:
+        'FullProductNameProductIdentificationHelperSbomUrlsDescription',
+    },
+  },
+  '$.product_tree.full_product_names.product_identification_helper.sbom_urls[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperSbomUrlsItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSbomUrlsItemsDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.serial_numbers':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'nice_to_know',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperSerialNumbersTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSerialNumbersDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.serial_numbers[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperSerialNumbersItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperSerialNumbersItemsDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.skus': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md',
+    },
+    relevanceLevels: {
+      csafBase: 'nice_to_know',
+      csafSecurityIncidentResponse: 'nice_to_know',
+      csafInformationalAdvisory: 'nice_to_know',
+      csafSecurityAdvisory: 'nice_to_know',
+      csafVex: 'nice_to_know',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperSkusTitle',
+      description: 'FullProductNameProductIdentificationHelperSkusDescription',
+    },
+  },
+  '$.product_tree.full_product_names.product_identification_helper.skus[]': {
+    userDocumentation: {
+      specification:
+        'docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md',
+      usage:
+        'docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md',
+    },
+    i18n: {
+      title: 'FullProductNameProductIdentificationHelperSkusItemsTitle',
+      description:
+        'FullProductNameProductIdentificationHelperSkusItemsDescription',
+    },
+  },
+  '$.product_tree.full_product_names.product_identification_helper.x_generic_uris':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'nice_to_know',
+        csafSecurityIncidentResponse: 'nice_to_know',
+        csafInformationalAdvisory: 'nice_to_know',
+        csafSecurityAdvisory: 'nice_to_know',
+        csafVex: 'want_to_have',
+      },
+      i18n: {
+        title: 'FullProductNameProductIdentificationHelperXGenericUrisTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.x_generic_uris[]':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.x_generic_uris.namespace':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription',
+      },
+    },
+  '$.product_tree.full_product_names.product_identification_helper.x_generic_uris.uri':
+    {
+      userDocumentation: {
+        specification:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md',
+        usage:
+          'docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md',
+      },
+      relevanceLevels: {
+        csafBase: 'mandatory',
+        csafSecurityIncidentResponse: 'mandatory',
+        csafInformationalAdvisory: 'mandatory',
+        csafSecurityAdvisory: 'mandatory',
+        csafVex: 'mandatory',
+      },
+      i18n: {
+        title:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle',
+        description:
+          'FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription',
+      },
+    },
+  '$.product_tree.product_groups': {
     userDocumentation: {
       specification: 'docs/user/product_tree/product_groups-spec.en.md',
       usage: 'docs/user/product_tree/product_groups-usage.en.md',
@@ -2025,7 +2027,7 @@ export default {
       description: 'ProductTreeProductGroupsDescription',
     },
   },
-  'product_tree.product_groups[]': {
+  '$.product_tree.product_groups[]': {
     userDocumentation: {
       specification:
         'docs/user/product_tree/product_groups/product_group-spec.en.md',
@@ -2036,7 +2038,7 @@ export default {
       description: 'ProductTreeProductGroupsItemsDescription',
     },
   },
-  'product_tree.product_groups.group_id': {
+  '$.product_tree.product_groups.group_id': {
     userDocumentation: {
       specification:
         'docs/user/product_tree/product_groups/product_group/group_id-spec.en.md',
@@ -2055,7 +2057,7 @@ export default {
       description: 'ProductGroupIdDescription',
     },
   },
-  'product_tree.product_groups.product_ids': {
+  '$.product_tree.product_groups.product_ids': {
     userDocumentation: {
       specification:
         'docs/user/product_tree/product_groups/product_group/product_ids-spec.en.md',
@@ -2074,7 +2076,7 @@ export default {
       description: 'ProductTreeProductGroupsItemsProductIdsDescription',
     },
   },
-  'product_tree.product_groups.product_ids[]': {
+  '$.product_tree.product_groups.product_ids[]': {
     userDocumentation: {
       specification: 'docs/user/types/product_id-spec.en.md',
       usage: 'docs/user/types/product_id-usage.en.md',
@@ -2082,7 +2084,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'product_tree.product_groups.summary': {
+  '$.product_tree.product_groups.summary': {
     userDocumentation: {
       specification:
         'docs/user/product_tree/product_groups/product_group/summary-spec.en.md',
@@ -2102,7 +2104,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'product_tree.relationships': {
+  '$.product_tree.relationships': {
     userDocumentation: {
       specification: 'docs/user/product_tree/relationships-spec.en.md',
       usage: 'docs/user/product_tree/relationships-usage.en.md',
@@ -2119,7 +2121,7 @@ export default {
       description: 'ProductTreeRelationshipsDescription',
     },
   },
-  'product_tree.relationships[]': {
+  '$.product_tree.relationships[]': {
     userDocumentation: {
       specification:
         'docs/user/product_tree/relationships/relationship-spec.en.md',
@@ -2130,7 +2132,7 @@ export default {
       description: 'ProductTreeRelationshipsItemsDescription',
     },
   },
-  'product_tree.relationships.category': {
+  '$.product_tree.relationships.category': {
     userDocumentation: {
       specification:
         'docs/user/product_tree/relationships/relationship/category-spec.en.md',
@@ -2150,7 +2152,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'product_tree.relationships.full_product_name': {
+  '$.product_tree.relationships.full_product_name': {
     userDocumentation: {
       specification:
         'docs/user/product_tree/relationships/relationship/full_product_name-spec.en.md',
@@ -2169,7 +2171,7 @@ export default {
       description: 'FullProductNameDescription',
     },
   },
-  'product_tree.relationships.full_product_name.name': {
+  '$.product_tree.relationships.full_product_name.name': {
     userDocumentation: {
       specification: 'docs/user/types/full_product_name/name-spec.en.md',
       usage: 'docs/user/types/full_product_name/name-usage.en.md',
@@ -2186,7 +2188,7 @@ export default {
       description: 'FullProductNameNameDescription',
     },
   },
-  'product_tree.relationships.full_product_name.product_id': {
+  '$.product_tree.relationships.full_product_name.product_id': {
     userDocumentation: {
       specification: 'docs/user/types/full_product_name/product_id-spec.en.md',
       usage: 'docs/user/types/full_product_name/product_id-usage.en.md',
@@ -2201,7 +2203,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'product_tree.relationships.full_product_name.product_identification_helper':
+  '$.product_tree.relationships.full_product_name.product_identification_helper':
     {
       userDocumentation: {
         specification:
@@ -2221,7 +2223,7 @@ export default {
         description: 'FullProductNameProductIdentificationHelperDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.cpe':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.cpe':
     {
       userDocumentation: {
         specification:
@@ -2241,7 +2243,7 @@ export default {
         description: 'FullProductNameProductIdentificationHelperCpeDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes':
     {
       userDocumentation: {
         specification:
@@ -2262,7 +2264,7 @@ export default {
           'FullProductNameProductIdentificationHelperHashesDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes[]':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes[]':
     {
       userDocumentation: {
         specification:
@@ -2276,7 +2278,7 @@ export default {
           'FullProductNameProductIdentificationHelperHashesItemsDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes':
     {
       userDocumentation: {
         specification:
@@ -2298,7 +2300,7 @@ export default {
           'FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes[]':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes[]':
     {
       userDocumentation: {
         specification:
@@ -2313,7 +2315,7 @@ export default {
           'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes.algorithm':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes.algorithm':
     {
       userDocumentation: {
         specification:
@@ -2335,7 +2337,7 @@ export default {
           'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes.value':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes.file_hashes.value':
     {
       userDocumentation: {
         specification:
@@ -2357,7 +2359,7 @@ export default {
           'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.hashes.filename':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.hashes.filename':
     {
       userDocumentation: {
         specification:
@@ -2379,7 +2381,7 @@ export default {
           'FullProductNameProductIdentificationHelperHashesItemsFilenameDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.model_numbers':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.model_numbers':
     {
       userDocumentation: {
         specification:
@@ -2400,7 +2402,7 @@ export default {
           'FullProductNameProductIdentificationHelperModelNumbersDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.model_numbers[]':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.model_numbers[]':
     {
       userDocumentation: {
         specification:
@@ -2415,7 +2417,7 @@ export default {
           'FullProductNameProductIdentificationHelperModelNumbersItemsDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.purl':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.purl':
     {
       userDocumentation: {
         specification:
@@ -2436,7 +2438,7 @@ export default {
           'FullProductNameProductIdentificationHelperPurlDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.sbom_urls':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.sbom_urls':
     {
       userDocumentation: {
         specification:
@@ -2457,7 +2459,7 @@ export default {
           'FullProductNameProductIdentificationHelperSbomUrlsDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.sbom_urls[]':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.sbom_urls[]':
     {
       userDocumentation: {
         specification:
@@ -2471,7 +2473,7 @@ export default {
           'FullProductNameProductIdentificationHelperSbomUrlsItemsDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.serial_numbers':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.serial_numbers':
     {
       userDocumentation: {
         specification:
@@ -2492,7 +2494,7 @@ export default {
           'FullProductNameProductIdentificationHelperSerialNumbersDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.serial_numbers[]':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.serial_numbers[]':
     {
       userDocumentation: {
         specification:
@@ -2507,7 +2509,7 @@ export default {
           'FullProductNameProductIdentificationHelperSerialNumbersItemsDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.skus':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.skus':
     {
       userDocumentation: {
         specification:
@@ -2528,7 +2530,7 @@ export default {
           'FullProductNameProductIdentificationHelperSkusDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.skus[]':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.skus[]':
     {
       userDocumentation: {
         specification:
@@ -2542,7 +2544,7 @@ export default {
           'FullProductNameProductIdentificationHelperSkusItemsDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris':
     {
       userDocumentation: {
         specification:
@@ -2563,7 +2565,7 @@ export default {
           'FullProductNameProductIdentificationHelperXGenericUrisDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris[]':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris[]':
     {
       userDocumentation: {
         specification:
@@ -2578,7 +2580,7 @@ export default {
           'FullProductNameProductIdentificationHelperXGenericUrisItemsDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris.namespace':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris.namespace':
     {
       userDocumentation: {
         specification:
@@ -2600,7 +2602,7 @@ export default {
           'FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription',
       },
     },
-  'product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris.uri':
+  '$.product_tree.relationships.full_product_name.product_identification_helper.x_generic_uris.uri':
     {
       userDocumentation: {
         specification:
@@ -2622,7 +2624,7 @@ export default {
           'FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription',
       },
     },
-  'product_tree.relationships.product_reference': {
+  '$.product_tree.relationships.product_reference': {
     userDocumentation: {
       specification:
         'docs/user/product_tree/relationships/relationship/product_reference-spec.en.md',
@@ -2641,7 +2643,7 @@ export default {
     },
     uiType: 'STRING_ID',
   },
-  'product_tree.relationships.relates_to_product_reference': {
+  '$.product_tree.relationships.relates_to_product_reference': {
     userDocumentation: {
       specification:
         'docs/user/product_tree/relationships/relationship/relates_to_product_reference-spec.en.md',
@@ -2661,7 +2663,7 @@ export default {
     },
     uiType: 'STRING_ID',
   },
-  vulnerabilities: {
+  '$.vulnerabilities': {
     userDocumentation: {
       specification: 'docs/user/vulnerabilities-spec.en.md',
       usage: 'docs/user/vulnerabilities-usage.en.md',
@@ -2678,7 +2680,7 @@ export default {
       description: 'VulnerabilitiesDescription',
     },
   },
-  'vulnerabilities[]': {
+  '$.vulnerabilities[]': {
     userDocumentation: {
       specification: 'docs/user/vulnerabilities/vulnerability-spec.en.md',
       usage: 'docs/user/vulnerabilities/vulnerability-usage.en.md',
@@ -2689,7 +2691,7 @@ export default {
       description: 'VulnerabilitiesItemsDescription',
     },
   },
-  'vulnerabilities.acknowledgments': {
+  '$.vulnerabilities.acknowledgments': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/acknowledgments-spec.en.md',
@@ -2708,7 +2710,7 @@ export default {
       description: 'VulnerabilitiesItemsAcknowledgmentsDescription',
     },
   },
-  'vulnerabilities.acknowledgments[]': {
+  '$.vulnerabilities.acknowledgments[]': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment-spec.en.md',
@@ -2720,7 +2722,7 @@ export default {
       description: 'AcknowledgmentsItemsDescription',
     },
   },
-  'vulnerabilities.acknowledgments.names': {
+  '$.vulnerabilities.acknowledgments.names': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/names-spec.en.md',
@@ -2738,7 +2740,7 @@ export default {
       description: 'AcknowledgmentsItemsNamesDescription',
     },
   },
-  'vulnerabilities.acknowledgments.names[]': {
+  '$.vulnerabilities.acknowledgments.names[]': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/names/name-spec.en.md',
@@ -2751,7 +2753,7 @@ export default {
       description: 'AcknowledgmentsItemsNamesItemsDescription',
     },
   },
-  'vulnerabilities.acknowledgments.organization': {
+  '$.vulnerabilities.acknowledgments.organization': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/organization-spec.en.md',
@@ -2770,7 +2772,7 @@ export default {
       description: 'AcknowledgmentsItemsOrganizationDescription',
     },
   },
-  'vulnerabilities.acknowledgments.summary': {
+  '$.vulnerabilities.acknowledgments.summary': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/summary-spec.en.md',
@@ -2790,7 +2792,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.acknowledgments.urls': {
+  '$.vulnerabilities.acknowledgments.urls': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/urls-spec.en.md',
@@ -2808,7 +2810,7 @@ export default {
       description: 'AcknowledgmentsItemsUrlsDescription',
     },
   },
-  'vulnerabilities.acknowledgments.urls[]': {
+  '$.vulnerabilities.acknowledgments.urls[]': {
     userDocumentation: {
       specification:
         'docs/user/types/acknowledgments/acknowledgment/urls/url-spec.en.md',
@@ -2821,7 +2823,7 @@ export default {
       description: 'AcknowledgmentsItemsUrlsItemsDescription',
     },
   },
-  'vulnerabilities.cve': {
+  '$.vulnerabilities.cve': {
     userDocumentation: {
       specification: 'docs/user/vulnerabilities/vulnerability/cve-spec.en.md',
       usage: 'docs/user/vulnerabilities/vulnerability/cve-usage.en.md',
@@ -2837,7 +2839,7 @@ export default {
       description: 'VulnerabilitiesItemsCveDescription',
     },
   },
-  'vulnerabilities.cwe': {
+  '$.vulnerabilities.cwe': {
     userDocumentation: {
       specification: 'docs/user/vulnerabilities/vulnerability/cwe-spec.en.md',
       usage: 'docs/user/vulnerabilities/vulnerability/cwe-usage.en.md',
@@ -2855,7 +2857,7 @@ export default {
     },
     uiType: 'OBJECT_CWE',
   },
-  'vulnerabilities.cwe.id': {
+  '$.vulnerabilities.cwe.id': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/cwe/id-spec.en.md',
@@ -2873,7 +2875,7 @@ export default {
       description: 'VulnerabilitiesItemsCweIdDescription',
     },
   },
-  'vulnerabilities.cwe.name': {
+  '$.vulnerabilities.cwe.name': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/cwe/name-spec.en.md',
@@ -2891,7 +2893,7 @@ export default {
       description: 'VulnerabilitiesItemsCweNameDescription',
     },
   },
-  'vulnerabilities.discovery_date': {
+  '$.vulnerabilities.discovery_date': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/discovery_date-spec.en.md',
@@ -2910,7 +2912,7 @@ export default {
       description: 'VulnerabilitiesItemsDiscoveryDateDescription',
     },
   },
-  'vulnerabilities.flags': {
+  '$.vulnerabilities.flags': {
     userDocumentation: {
       specification: 'docs/user/vulnerabilities/vulnerability/flags-spec.en.md',
       usage: 'docs/user/vulnerabilities/vulnerability/flags-usage.en.md',
@@ -2926,7 +2928,7 @@ export default {
       description: 'VulnerabilitiesItemsFlagsDescription',
     },
   },
-  'vulnerabilities.flags[]': {
+  '$.vulnerabilities.flags[]': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/flags/flag-spec.en.md',
@@ -2938,7 +2940,7 @@ export default {
       description: 'VulnerabilitiesItemsFlagsItemsDescription',
     },
   },
-  'vulnerabilities.flags.date': {
+  '$.vulnerabilities.flags.date': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/flags/flag/date-spec.en.md',
@@ -2957,7 +2959,7 @@ export default {
       description: 'VulnerabilitiesItemsFlagsItemsDateDescription',
     },
   },
-  'vulnerabilities.flags.group_ids': {
+  '$.vulnerabilities.flags.group_ids': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/flags/flag/group_ids-spec.en.md',
@@ -2970,7 +2972,7 @@ export default {
       description: 'ProductGroupsDescription',
     },
   },
-  'vulnerabilities.flags.group_ids[]': {
+  '$.vulnerabilities.flags.group_ids[]': {
     userDocumentation: {
       specification: 'docs/user/types/product_group_id-spec.en.md',
       usage: 'docs/user/types/product_group_id-spec.en.md',
@@ -2982,7 +2984,7 @@ export default {
     },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.flags.label': {
+  '$.vulnerabilities.flags.label': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/flags/flag/label-spec.en.md',
@@ -3002,7 +3004,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'vulnerabilities.flags.product_ids': {
+  '$.vulnerabilities.flags.product_ids': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/flags/flag/product_ids-spec.en.md',
@@ -3012,7 +3014,7 @@ export default {
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductsTitle', description: 'ProductsDescription' },
   },
-  'vulnerabilities.flags.product_ids[]': {
+  '$.vulnerabilities.flags.product_ids[]': {
     userDocumentation: {
       specification: 'docs/user/types/product_id-spec.en.md',
       usage: 'docs/user/types/product_id-usage.en.md',
@@ -3021,7 +3023,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.ids': {
+  '$.vulnerabilities.ids': {
     userDocumentation: {
       specification: 'docs/user/vulnerabilities/vulnerability/ids-spec.en.md',
       usage: 'docs/user/vulnerabilities/vulnerability/ids-usage.en.md',
@@ -3037,7 +3039,7 @@ export default {
       description: 'VulnerabilitiesItemsIdsDescription',
     },
   },
-  'vulnerabilities.ids[]': {
+  '$.vulnerabilities.ids[]': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/ids/id-spec.en.md',
@@ -3049,7 +3051,7 @@ export default {
       description: 'VulnerabilitiesItemsIdsItemsDescription',
     },
   },
-  'vulnerabilities.ids.system_name': {
+  '$.vulnerabilities.ids.system_name': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/ids/id/system_name-spec.en.md',
@@ -3068,7 +3070,7 @@ export default {
       description: 'VulnerabilitiesItemsIdsItemsSystemNameDescription',
     },
   },
-  'vulnerabilities.ids.text': {
+  '$.vulnerabilities.ids.text': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/ids/id/text-spec.en.md',
@@ -3086,7 +3088,7 @@ export default {
       description: 'VulnerabilitiesItemsIdsItemsTextDescription',
     },
   },
-  'vulnerabilities.involvements': {
+  '$.vulnerabilities.involvements': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/involvements-spec.en.md',
@@ -3104,7 +3106,7 @@ export default {
       description: 'VulnerabilitiesItemsInvolvementsDescription',
     },
   },
-  'vulnerabilities.involvements[]': {
+  '$.vulnerabilities.involvements[]': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/involvements/involvement-spec.en.md',
@@ -3117,7 +3119,7 @@ export default {
       description: 'VulnerabilitiesItemsInvolvementsItemsDescription',
     },
   },
-  'vulnerabilities.involvements.date': {
+  '$.vulnerabilities.involvements.date': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/involvements/involvement/date-spec.en.md',
@@ -3136,7 +3138,7 @@ export default {
       description: 'VulnerabilitiesItemsInvolvementsItemsDateDescription',
     },
   },
-  'vulnerabilities.involvements.party': {
+  '$.vulnerabilities.involvements.party': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/involvements/involvement/party-spec.en.md',
@@ -3156,7 +3158,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'vulnerabilities.involvements.status': {
+  '$.vulnerabilities.involvements.status': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/involvements/involvement/status-spec.en.md',
@@ -3176,7 +3178,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'vulnerabilities.involvements.summary': {
+  '$.vulnerabilities.involvements.summary': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/involvements/involvement/summary-spec.en.md',
@@ -3196,7 +3198,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.notes': {
+  '$.vulnerabilities.notes': {
     userDocumentation: {
       specification: 'docs/user/vulnerabilities/vulnerability/notes-spec.en.md',
       usage: 'docs/user/vulnerabilities/vulnerability/notes-usage.en.md',
@@ -3213,7 +3215,7 @@ export default {
       description: 'VulnerabilitiesItemsNotesDescription',
     },
   },
-  'vulnerabilities.notes[]': {
+  '$.vulnerabilities.notes[]': {
     userDocumentation: {
       specification: 'docs/user/types/notes/note-spec.en.md',
       usage: 'docs/user/types/notes/note-usage.en.md',
@@ -3224,7 +3226,7 @@ export default {
       description: 'NotesItemsDescription',
     },
   },
-  'vulnerabilities.notes.audience': {
+  '$.vulnerabilities.notes.audience': {
     userDocumentation: {
       specification: 'docs/user/types/notes/note/audience-spec.en.md',
       usage: 'docs/user/types/notes/note/audience-usage.en.md',
@@ -3241,7 +3243,7 @@ export default {
       description: 'NotesItemsAudienceDescription',
     },
   },
-  'vulnerabilities.notes.category': {
+  '$.vulnerabilities.notes.category': {
     userDocumentation: {
       specification: 'docs/user/types/notes/note/category-spec.en.md',
       usage: 'docs/user/types/notes/note/category-usage.en.md',
@@ -3258,7 +3260,7 @@ export default {
       description: 'NotesItemsCategoryDescription',
     },
   },
-  'vulnerabilities.notes.text': {
+  '$.vulnerabilities.notes.text': {
     userDocumentation: {
       specification: 'docs/user/types/notes/note/text-spec.en.md',
       usage: 'docs/user/types/notes/note/text-usage.en.md',
@@ -3276,7 +3278,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.notes.title': {
+  '$.vulnerabilities.notes.title': {
     userDocumentation: {
       specification: 'docs/user/types/notes/note/title-spec.en.md',
       usage: 'docs/user/types/notes/note/title-usage.en.md',
@@ -3293,7 +3295,7 @@ export default {
       description: 'NotesItemsTitleDescription',
     },
   },
-  'vulnerabilities.product_status': {
+  '$.vulnerabilities.product_status': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status-spec.en.md',
@@ -3311,7 +3313,7 @@ export default {
       description: 'VulnerabilitiesItemsProductStatusDescription',
     },
   },
-  'vulnerabilities.product_status.first_affected': {
+  '$.vulnerabilities.product_status.first_affected': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/first_affected-spec.en.md',
@@ -3330,7 +3332,7 @@ export default {
       description: 'VulnerabilitiesItemsProductStatusFirstAffectedDescription',
     },
   },
-  'vulnerabilities.product_status.first_affected[]': {
+  '$.vulnerabilities.product_status.first_affected[]': {
     userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
       usage: 'docs/user/types/products-usage.en.md',
@@ -3339,7 +3341,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.first_fixed': {
+  '$.vulnerabilities.product_status.first_fixed': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/first_fixed-spec.en.md',
@@ -3358,7 +3360,7 @@ export default {
       description: 'VulnerabilitiesItemsProductStatusFirstFixedDescription',
     },
   },
-  'vulnerabilities.product_status.first_fixed[]': {
+  '$.vulnerabilities.product_status.first_fixed[]': {
     userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
       usage: 'docs/user/types/products-usage.en.md',
@@ -3367,7 +3369,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.fixed': {
+  '$.vulnerabilities.product_status.fixed': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/fixed-spec.en.md',
@@ -3385,7 +3387,7 @@ export default {
       description: 'VulnerabilitiesItemsProductStatusFixedDescription',
     },
   },
-  'vulnerabilities.product_status.fixed[]': {
+  '$.vulnerabilities.product_status.fixed[]': {
     userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
       usage: 'docs/user/types/products-usage.en.md',
@@ -3394,7 +3396,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.known_affected': {
+  '$.vulnerabilities.product_status.known_affected': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/known_affected-spec.en.md',
@@ -3412,7 +3414,7 @@ export default {
       description: 'VulnerabilitiesItemsProductStatusKnownAffectedDescription',
     },
   },
-  'vulnerabilities.product_status.known_affected[]': {
+  '$.vulnerabilities.product_status.known_affected[]': {
     userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
       usage: 'docs/user/types/products-usage.en.md',
@@ -3421,7 +3423,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.known_not_affected': {
+  '$.vulnerabilities.product_status.known_not_affected': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-spec.en.md',
@@ -3440,7 +3442,7 @@ export default {
         'VulnerabilitiesItemsProductStatusKnownNotAffectedDescription',
     },
   },
-  'vulnerabilities.product_status.known_not_affected[]': {
+  '$.vulnerabilities.product_status.known_not_affected[]': {
     userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
       usage: 'docs/user/types/products-usage.en.md',
@@ -3449,7 +3451,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.last_affected': {
+  '$.vulnerabilities.product_status.last_affected': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/last_affected-spec.en.md',
@@ -3468,7 +3470,7 @@ export default {
       description: 'VulnerabilitiesItemsProductStatusLastAffectedDescription',
     },
   },
-  'vulnerabilities.product_status.last_affected[]': {
+  '$.vulnerabilities.product_status.last_affected[]': {
     userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
       usage: 'docs/user/types/products-usage.en.md',
@@ -3477,7 +3479,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.recommended': {
+  '$.vulnerabilities.product_status.recommended': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/recommended-spec.en.md',
@@ -3496,7 +3498,7 @@ export default {
       description: 'VulnerabilitiesItemsProductStatusRecommendedDescription',
     },
   },
-  'vulnerabilities.product_status.recommended[]': {
+  '$.vulnerabilities.product_status.recommended[]': {
     userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
       usage: 'docs/user/types/products-usage.en.md',
@@ -3505,7 +3507,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.product_status.under_investigation': {
+  '$.vulnerabilities.product_status.under_investigation': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/product_status/under_investigation-spec.en.md',
@@ -3524,7 +3526,7 @@ export default {
         'VulnerabilitiesItemsProductStatusUnderInvestigationDescription',
     },
   },
-  'vulnerabilities.product_status.under_investigation[]': {
+  '$.vulnerabilities.product_status.under_investigation[]': {
     userDocumentation: {
       specification: 'docs/user/types/products-spec.en.md',
       usage: 'docs/user/types/products-usage.en.md',
@@ -3533,7 +3535,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.references': {
+  '$.vulnerabilities.references': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/references-spec.en.md',
@@ -3551,7 +3553,7 @@ export default {
       description: 'VulnerabilitiesItemsReferencesDescription',
     },
   },
-  'vulnerabilities.references[]': {
+  '$.vulnerabilities.references[]': {
     userDocumentation: {
       specification: 'docs/user/types/references/reference-spec.en.md',
       usage: 'docs/user/types/references/reference-usage.en.md',
@@ -3562,7 +3564,7 @@ export default {
       description: 'ReferencesItemsDescription',
     },
   },
-  'vulnerabilities.references.category': {
+  '$.vulnerabilities.references.category': {
     userDocumentation: {
       specification: 'docs/user/types/references/reference/category-spec.en.md',
       usage: 'docs/user/types/references/reference/category-usage.en.md',
@@ -3579,7 +3581,7 @@ export default {
       description: 'ReferencesItemsCategoryDescription',
     },
   },
-  'vulnerabilities.references.summary': {
+  '$.vulnerabilities.references.summary': {
     userDocumentation: {
       specification: 'docs/user/types/references/reference/summary-spec.en.md',
       usage: 'docs/user/types/references/reference/summary-usage.en.md',
@@ -3597,7 +3599,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.references.url': {
+  '$.vulnerabilities.references.url': {
     userDocumentation: {
       specification: 'docs/user/types/references/reference/url-spec.en.md',
       usage: 'docs/user/types/references/reference/url-usage.en.md',
@@ -3614,7 +3616,7 @@ export default {
       description: 'ReferencesItemsUrlDescription',
     },
   },
-  'vulnerabilities.release_date': {
+  '$.vulnerabilities.release_date': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/release_date-spec.en.md',
@@ -3632,7 +3634,7 @@ export default {
       description: 'VulnerabilitiesItemsReleaseDateDescription',
     },
   },
-  'vulnerabilities.remediations': {
+  '$.vulnerabilities.remediations': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations-spec.en.md',
@@ -3649,7 +3651,7 @@ export default {
       description: 'VulnerabilitiesItemsRemediationsDescription',
     },
   },
-  'vulnerabilities.remediations[]': {
+  '$.vulnerabilities.remediations[]': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation-spec.en.md',
@@ -3662,7 +3664,7 @@ export default {
       description: 'VulnerabilitiesItemsRemediationsItemsDescription',
     },
   },
-  'vulnerabilities.remediations.category': {
+  '$.vulnerabilities.remediations.category': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/category-spec.en.md',
@@ -3682,7 +3684,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'vulnerabilities.remediations.date': {
+  '$.vulnerabilities.remediations.date': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/date-spec.en.md',
@@ -3701,7 +3703,7 @@ export default {
       description: 'VulnerabilitiesItemsRemediationsItemsDateDescription',
     },
   },
-  'vulnerabilities.remediations.details': {
+  '$.vulnerabilities.remediations.details': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/details-spec.en.md',
@@ -3721,7 +3723,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.remediations.entitlements': {
+  '$.vulnerabilities.remediations.entitlements': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements-spec.en.md',
@@ -3741,7 +3743,7 @@ export default {
         'VulnerabilitiesItemsRemediationsItemsEntitlementsDescription',
     },
   },
-  'vulnerabilities.remediations.entitlements[]': {
+  '$.vulnerabilities.remediations.entitlements[]': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-spec.en.md',
@@ -3756,7 +3758,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.remediations.group_ids': {
+  '$.vulnerabilities.remediations.group_ids': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids-spec.en.md',
@@ -3769,7 +3771,7 @@ export default {
       description: 'ProductGroupsDescription',
     },
   },
-  'vulnerabilities.remediations.group_ids[]': {
+  '$.vulnerabilities.remediations.group_ids[]': {
     userDocumentation: {
       specification: 'docs/user/types/product_group_id-spec.en.md',
       usage: 'docs/user/types/product_group_id-usage.en.md',
@@ -3781,7 +3783,7 @@ export default {
     },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.remediations.product_ids': {
+  '$.vulnerabilities.remediations.product_ids': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids-spec.en.md',
@@ -3791,7 +3793,7 @@ export default {
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductsTitle', description: 'ProductsDescription' },
   },
-  'vulnerabilities.remediations.product_ids[]': {
+  '$.vulnerabilities.remediations.product_ids[]': {
     userDocumentation: {
       specification: 'docs/user/types/product_id-spec.en.md',
       usage: 'docs/user/types/product_id-usage.en.md',
@@ -3800,7 +3802,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.remediations.restart_required': {
+  '$.vulnerabilities.remediations.restart_required': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required-spec.en.md',
@@ -3820,7 +3822,7 @@ export default {
         'VulnerabilitiesItemsRemediationsItemsRestartRequiredDescription',
     },
   },
-  'vulnerabilities.remediations.restart_required.category': {
+  '$.vulnerabilities.remediations.restart_required.category': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/category-spec.en.md',
@@ -3842,7 +3844,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'vulnerabilities.remediations.restart_required.details': {
+  '$.vulnerabilities.remediations.restart_required.details': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/details-spec.en.md',
@@ -3863,7 +3865,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.remediations.url': {
+  '$.vulnerabilities.remediations.url': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/remediations/remediation/url-spec.en.md',
@@ -3882,7 +3884,7 @@ export default {
       description: 'VulnerabilitiesItemsRemediationsItemsUrlDescription',
     },
   },
-  'vulnerabilities.scores': {
+  '$.vulnerabilities.scores': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores-spec.en.md',
@@ -3899,7 +3901,7 @@ export default {
       description: 'VulnerabilitiesItemsScoresDescription',
     },
   },
-  'vulnerabilities.scores[]': {
+  '$.vulnerabilities.scores[]': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score-spec.en.md',
@@ -3911,7 +3913,7 @@ export default {
       description: 'VulnerabilitiesItemsScoresItemsDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2': {
+  '$.vulnerabilities.scores.cvss_v2': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -3928,7 +3930,7 @@ export default {
     i18n: { title: 'CvssV2Title', description: 'CvssV2Description' },
     uiType: 'OBJECT_CVSS_2',
   },
-  'vulnerabilities.scores.cvss_v2.version': {
+  '$.vulnerabilities.scores.cvss_v2.version': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -3941,7 +3943,7 @@ export default {
       description: 'CvssV2VersionDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.vectorString': {
+  '$.vulnerabilities.scores.cvss_v2.vectorString': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -3954,7 +3956,7 @@ export default {
       description: 'CvssV2VectorStringDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.accessVector': {
+  '$.vulnerabilities.scores.cvss_v2.accessVector': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -3973,7 +3975,7 @@ export default {
       description: 'CvssV2AccessVectorDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.accessComplexity': {
+  '$.vulnerabilities.scores.cvss_v2.accessComplexity': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -3992,7 +3994,7 @@ export default {
       description: 'CvssV2AccessComplexityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.authentication': {
+  '$.vulnerabilities.scores.cvss_v2.authentication': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4011,7 +4013,7 @@ export default {
       description: 'CvssV2AuthenticationDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.confidentialityImpact': {
+  '$.vulnerabilities.scores.cvss_v2.confidentialityImpact': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4030,7 +4032,7 @@ export default {
       description: 'CvssV2ConfidentialityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.integrityImpact': {
+  '$.vulnerabilities.scores.cvss_v2.integrityImpact': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4049,7 +4051,7 @@ export default {
       description: 'CvssV2IntegrityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.availabilityImpact': {
+  '$.vulnerabilities.scores.cvss_v2.availabilityImpact': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4068,7 +4070,7 @@ export default {
       description: 'CvssV2AvailabilityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.baseScore': {
+  '$.vulnerabilities.scores.cvss_v2.baseScore': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4081,7 +4083,7 @@ export default {
       description: 'CvssV2BaseScoreDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.exploitability': {
+  '$.vulnerabilities.scores.cvss_v2.exploitability': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4100,7 +4102,7 @@ export default {
       description: 'CvssV2ExploitabilityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.remediationLevel': {
+  '$.vulnerabilities.scores.cvss_v2.remediationLevel': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4119,7 +4121,7 @@ export default {
       description: 'CvssV2RemediationLevelDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.reportConfidence': {
+  '$.vulnerabilities.scores.cvss_v2.reportConfidence': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4138,7 +4140,7 @@ export default {
       description: 'CvssV2ReportConfidenceDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.temporalScore': {
+  '$.vulnerabilities.scores.cvss_v2.temporalScore': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4157,7 +4159,7 @@ export default {
       description: 'CvssV2TemporalScoreDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.collateralDamagePotential': {
+  '$.vulnerabilities.scores.cvss_v2.collateralDamagePotential': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4176,7 +4178,7 @@ export default {
       description: 'CvssV2CollateralDamagePotentialDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.targetDistribution': {
+  '$.vulnerabilities.scores.cvss_v2.targetDistribution': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4195,7 +4197,7 @@ export default {
       description: 'CvssV2TargetDistributionDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.confidentialityRequirement': {
+  '$.vulnerabilities.scores.cvss_v2.confidentialityRequirement': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4214,7 +4216,7 @@ export default {
       description: 'CvssV2ConfidentialityRequirementDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.integrityRequirement': {
+  '$.vulnerabilities.scores.cvss_v2.integrityRequirement': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4233,7 +4235,7 @@ export default {
       description: 'CvssV2IntegrityRequirementDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.availabilityRequirement': {
+  '$.vulnerabilities.scores.cvss_v2.availabilityRequirement': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4252,7 +4254,7 @@ export default {
       description: 'CvssV2AvailabilityRequirementDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v2.environmentalScore': {
+  '$.vulnerabilities.scores.cvss_v2.environmentalScore': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4271,7 +4273,7 @@ export default {
       description: 'CvssV2EnvironmentalScoreDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3': {
+  '$.vulnerabilities.scores.cvss_v3': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4288,7 +4290,7 @@ export default {
     i18n: { title: 'CvssV3Title', description: 'CvssV3Description' },
     uiType: 'OBJECT_CVSS_3',
   },
-  'vulnerabilities.scores.cvss_v3.version': {
+  '$.vulnerabilities.scores.cvss_v3.version': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4301,7 +4303,7 @@ export default {
       description: 'CvssV3VersionDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.vectorString': {
+  '$.vulnerabilities.scores.cvss_v3.vectorString': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4314,7 +4316,7 @@ export default {
       description: 'CvssV3VectorStringDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.attackVector': {
+  '$.vulnerabilities.scores.cvss_v3.attackVector': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4333,7 +4335,7 @@ export default {
       description: 'CvssV3AttackVectorDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.attackComplexity': {
+  '$.vulnerabilities.scores.cvss_v3.attackComplexity': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4352,7 +4354,7 @@ export default {
       description: 'CvssV3AttackComplexityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.privilegesRequired': {
+  '$.vulnerabilities.scores.cvss_v3.privilegesRequired': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4371,7 +4373,7 @@ export default {
       description: 'CvssV3PrivilegesRequiredDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.userInteraction': {
+  '$.vulnerabilities.scores.cvss_v3.userInteraction': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4390,7 +4392,7 @@ export default {
       description: 'CvssV3UserInteractionDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.scope': {
+  '$.vulnerabilities.scores.cvss_v3.scope': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4409,7 +4411,7 @@ export default {
       description: 'CvssV3ScopeDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.confidentialityImpact': {
+  '$.vulnerabilities.scores.cvss_v3.confidentialityImpact': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4428,7 +4430,7 @@ export default {
       description: 'CvssV3ConfidentialityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.integrityImpact': {
+  '$.vulnerabilities.scores.cvss_v3.integrityImpact': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4447,7 +4449,7 @@ export default {
       description: 'CvssV3IntegrityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.availabilityImpact': {
+  '$.vulnerabilities.scores.cvss_v3.availabilityImpact': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4466,7 +4468,7 @@ export default {
       description: 'CvssV3AvailabilityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.baseScore': {
+  '$.vulnerabilities.scores.cvss_v3.baseScore': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4479,7 +4481,7 @@ export default {
       description: 'CvssV3BaseScoreDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.baseSeverity': {
+  '$.vulnerabilities.scores.cvss_v3.baseSeverity': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4492,7 +4494,7 @@ export default {
       description: 'CvssV3BaseSeverityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.exploitCodeMaturity': {
+  '$.vulnerabilities.scores.cvss_v3.exploitCodeMaturity': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4511,7 +4513,7 @@ export default {
       description: 'CvssV3ExploitCodeMaturityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.remediationLevel': {
+  '$.vulnerabilities.scores.cvss_v3.remediationLevel': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4530,7 +4532,7 @@ export default {
       description: 'CvssV3RemediationLevelDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.reportConfidence': {
+  '$.vulnerabilities.scores.cvss_v3.reportConfidence': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4549,7 +4551,7 @@ export default {
       description: 'CvssV3ReportConfidenceDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.temporalScore': {
+  '$.vulnerabilities.scores.cvss_v3.temporalScore': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4568,7 +4570,7 @@ export default {
       description: 'CvssV3TemporalScoreDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.temporalSeverity': {
+  '$.vulnerabilities.scores.cvss_v3.temporalSeverity': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4587,7 +4589,7 @@ export default {
       description: 'CvssV3TemporalSeverityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.confidentialityRequirement': {
+  '$.vulnerabilities.scores.cvss_v3.confidentialityRequirement': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4606,7 +4608,7 @@ export default {
       description: 'CvssV3ConfidentialityRequirementDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.integrityRequirement': {
+  '$.vulnerabilities.scores.cvss_v3.integrityRequirement': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4625,7 +4627,7 @@ export default {
       description: 'CvssV3IntegrityRequirementDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.availabilityRequirement': {
+  '$.vulnerabilities.scores.cvss_v3.availabilityRequirement': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4644,7 +4646,7 @@ export default {
       description: 'CvssV3AvailabilityRequirementDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedAttackVector': {
+  '$.vulnerabilities.scores.cvss_v3.modifiedAttackVector': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4663,7 +4665,7 @@ export default {
       description: 'CvssV3ModifiedAttackVectorDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedAttackComplexity': {
+  '$.vulnerabilities.scores.cvss_v3.modifiedAttackComplexity': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4682,7 +4684,7 @@ export default {
       description: 'CvssV3ModifiedAttackComplexityDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedPrivilegesRequired': {
+  '$.vulnerabilities.scores.cvss_v3.modifiedPrivilegesRequired': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4701,7 +4703,7 @@ export default {
       description: 'CvssV3ModifiedPrivilegesRequiredDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedUserInteraction': {
+  '$.vulnerabilities.scores.cvss_v3.modifiedUserInteraction': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4720,7 +4722,7 @@ export default {
       description: 'CvssV3ModifiedUserInteractionDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedScope': {
+  '$.vulnerabilities.scores.cvss_v3.modifiedScope': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4739,7 +4741,7 @@ export default {
       description: 'CvssV3ModifiedScopeDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedConfidentialityImpact': {
+  '$.vulnerabilities.scores.cvss_v3.modifiedConfidentialityImpact': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4758,7 +4760,7 @@ export default {
       description: 'CvssV3ModifiedConfidentialityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedIntegrityImpact': {
+  '$.vulnerabilities.scores.cvss_v3.modifiedIntegrityImpact': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4777,7 +4779,7 @@ export default {
       description: 'CvssV3ModifiedIntegrityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.modifiedAvailabilityImpact': {
+  '$.vulnerabilities.scores.cvss_v3.modifiedAvailabilityImpact': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4796,7 +4798,7 @@ export default {
       description: 'CvssV3ModifiedAvailabilityImpactDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.environmentalScore': {
+  '$.vulnerabilities.scores.cvss_v3.environmentalScore': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4815,7 +4817,7 @@ export default {
       description: 'CvssV3EnvironmentalScoreDescription',
     },
   },
-  'vulnerabilities.scores.cvss_v3.environmentalSeverity': {
+  '$.vulnerabilities.scores.cvss_v3.environmentalSeverity': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',
@@ -4834,7 +4836,7 @@ export default {
       description: 'CvssV3EnvironmentalSeverityDescription',
     },
   },
-  'vulnerabilities.scores.products': {
+  '$.vulnerabilities.scores.products': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/products-spec.en.md',
@@ -4850,7 +4852,7 @@ export default {
     },
     i18n: { title: 'ProductsTitle', description: 'ProductsDescription' },
   },
-  'vulnerabilities.scores.products[]': {
+  '$.vulnerabilities.scores.products[]': {
     userDocumentation: {
       specification: 'docs/user/types/product_id-spec.en.md',
       usage: 'docs/user/types/product_id-usage.en.md',
@@ -4859,7 +4861,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.threats': {
+  '$.vulnerabilities.threats': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats-spec.en.md',
@@ -4876,7 +4878,7 @@ export default {
       description: 'VulnerabilitiesItemsThreatsDescription',
     },
   },
-  'vulnerabilities.threats[]': {
+  '$.vulnerabilities.threats[]': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats/threat-spec.en.md',
@@ -4889,7 +4891,7 @@ export default {
       description: 'VulnerabilitiesItemsThreatsItemsDescription',
     },
   },
-  'vulnerabilities.threats.category': {
+  '$.vulnerabilities.threats.category': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats/threat/category-spec.en.md',
@@ -4909,7 +4911,7 @@ export default {
     },
     uiType: 'STRING_ENUM',
   },
-  'vulnerabilities.threats.date': {
+  '$.vulnerabilities.threats.date': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats/threat/date-spec.en.md',
@@ -4928,7 +4930,7 @@ export default {
       description: 'VulnerabilitiesItemsThreatsItemsDateDescription',
     },
   },
-  'vulnerabilities.threats.details': {
+  '$.vulnerabilities.threats.details': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats/threat/details-spec.en.md',
@@ -4948,7 +4950,7 @@ export default {
     },
     uiType: 'STRING_MULTI_LINE',
   },
-  'vulnerabilities.threats.group_ids': {
+  '$.vulnerabilities.threats.group_ids': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats/threat/group_ids-spec.en.md',
@@ -4966,7 +4968,7 @@ export default {
       description: 'ProductGroupsDescription',
     },
   },
-  'vulnerabilities.threats.group_ids[]': {
+  '$.vulnerabilities.threats.group_ids[]': {
     userDocumentation: {
       specification: 'docs/user/types/product_group_id-spec.en.md',
       usage: 'docs/user/types/product_group_id-spec.en.md',
@@ -4978,7 +4980,7 @@ export default {
     },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.threats.product_ids': {
+  '$.vulnerabilities.threats.product_ids': {
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/threats/threat/product_ids-spec.en.md',
@@ -4993,7 +4995,7 @@ export default {
     },
     i18n: { title: 'ProductsTitle', description: 'ProductsDescription' },
   },
-  'vulnerabilities.threats.product_ids[]': {
+  '$.vulnerabilities.threats.product_ids[]': {
     userDocumentation: {
       specification: 'docs/user/types/product_id-spec.en.md',
       usage: 'docs/user/types/product_id-usage.en.md',
@@ -5002,7 +5004,7 @@ export default {
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
     uiType: 'STRING_ID',
   },
-  'vulnerabilities.title': {
+  '$.vulnerabilities.title': {
     userDocumentation: {
       specification: 'docs/user/vulnerabilities/vulnerability/title-spec.en.md',
       usage: 'docs/user/vulnerabilities/vulnerability/title-usage.en.md',
