@@ -15,12 +15,7 @@ declare module '*/extensions.json' {
   export default extensions
 }
 
-declare module '*.json' {
-  const content: {}
-  export default content
-}
-
-declare module "*.md"
+declare module '*.md'
 
 declare module '*/metaData2.json' {
   const metadata: Object
