@@ -1,20 +1,22 @@
 import prettier from 'prettier'
 
-/** @typedef {import('./convert/csaf_json_schema.json')} CSAFJSONSchema */
+/** @typedef {import('./importUiMetaData/csaf_json_schema.json')} CSAFJSONSchema */
 
 import { readFile, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
-import metaData from './convert/metaData.js'
+import metaData from './importUiMetaData/metaData.js'
 
 /** @type {CSAFJSONSchema} */
 const schema = JSON.parse(
   await readFile(
-    new URL('convert/csaf_json_schema.json', import.meta.url),
+    new URL('importUiMetadata/csaf_json_schema.json', import.meta.url),
     'utf-8'
   )
 )
 
-const defs = /** @type {import('./convert/types').Defs} */ (schema.$defs)
+const defs = /** @type {import('./importUiMetaData/types').Defs} */ (
+  schema.$defs
+)
 
 const metaDataRecord =
   /** @type {Record<String, { addMenuItemsForChildObjects?: boolean; propertyOrder?: string[] } | undefined>} */ (
@@ -22,9 +24,9 @@ const metaDataRecord =
   )
 
 /**
- * @param {import('./convert/types').Schema} subschema
+ * @param {import('./importUiMetaData/types').Schema} subschema
  * @param {string[]} path
- * @returns {import('./convert/types').UiSchema}
+ * @returns {import('./importUiMetaData/types').UiSchema}
  */
 function convertSchema(subschema, path) {
   const strPath = path.join('.')
@@ -93,9 +95,10 @@ function convertSchema(subschema, path) {
         ([key]) => key !== 'branches'
       )
     )
-    const arrayType = /** @type {import('./convert/types').ObjectUiSchema} */ (
-      convertSchema({ ...subschema.items, properties }, [...path, 'items'])
-    )
+    const arrayType =
+      /** @type {import('./importUiMetaData/types').ObjectUiSchema} */ (
+        convertSchema({ ...subschema.items, properties }, [...path, 'items'])
+      )
     arrayType.metaInfo.propertyList.unshift({
       ...commonUiSchemaFields,
       key: 'branches',
@@ -183,7 +186,7 @@ const prettierString = prettier.format(
   "/** @typedef {import('./shared/types').Property} Property */\n" +
     `export default (${JSON.stringify(
       convertSchema(
-        /** @type {import('./convert/types').Schema} */ (schema),
+        /** @type {import('./importUiMetaData/types').Schema} */ (schema),
         []
       )
     )})`,
