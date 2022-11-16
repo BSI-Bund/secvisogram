@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import ReactMarkdown from 'react-markdown'
-import metadata from '../../../../../../data/metaData2.json'
+import metadata from '../../../../../scripts/importUiMetaData/metaData.js'
 
 /**
  * Defines the content of the SideBar displaying documentation of a selected path
@@ -32,7 +32,7 @@ export default function InfoPanel({ selectedPath }) {
     if (jsonPath in metadata) {
       // @ts-ignore
       const meta = metadata[jsonPath]
-      updateMarkdownText(meta.user_documentation.usage.generic)
+      updateMarkdownText(meta.userDocumentation.usage)
     }
   }, [selectedPath])
 

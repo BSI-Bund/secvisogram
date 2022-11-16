@@ -214,7 +214,7 @@ export default function ObjectEditor({
  * @param {string[]} [instancePath]
  */
 export function getObjectMenuStructure(property, instancePath = []) {
-  /** @type {Array<{ instancePath: string[]; title: string }>} */
+  /** @type {Array<{ instancePath: string[]; title?: string }>} */
   const menuStructure =
     property.metaInfo.propertyList?.flatMap((childProperty) => {
       return [
