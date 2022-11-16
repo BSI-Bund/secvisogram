@@ -22,18 +22,23 @@ Example:
 
 ### `uiType`
 
-The CSAF JSON schema already provides basic type information like String or
-Date. In some cases we need additional information to select the correct
-input components.
+Some fields need additional logic that can not be derived from the CSAF schema.
+This field specifies the correct input component for the given json path.
 
 Available uiTypes:
-- STRING_MULTI_LINE
+- STRING_DATETIME
+- STRING_URI
 - STRING_ENUM
+- STRING_MULTI_LINE
 - STRING_ID
 - OBJECT_CWE
 - OBJECT_CVSS_2
 - OBJECT_CVSS_3
 - ARRAY_REVISION_HISTORY
+
+The `importUiMetaData.js` script can detect `STRING_DATETIME`, `STRING_URI`
+and `STRING_ENUM` on its own. All other uiTypes must be provided in the
+`metaData.js` file.
 
 ### `propertyOrder`
 
