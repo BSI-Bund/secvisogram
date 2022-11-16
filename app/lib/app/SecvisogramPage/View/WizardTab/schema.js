@@ -1,5 +1,5 @@
 /** @typedef {import('./shared/types').Property} Property */
-export default {
+export default /** @type {const} */ ({
   key: '',
   fullName: [],
   title: 'Common Security Advisory Framework',
@@ -93,6 +93,7 @@ export default {
                             title: 'Name of the contributor',
                             description:
                               'Contains the name of a single contributor being recognized.',
+                            metaData: {},
                             minLength: 1,
                             examples: [
                               'Albert Einstein',
@@ -113,6 +114,7 @@ export default {
                         title: 'Contributing organization',
                         description:
                           'Contains the name of a contributing organization being recognized.',
+                        metaData: {},
                         minLength: 1,
                         examples: ['CISA', 'Google Project Zero', 'Talos'],
                         metaInfo: {},
@@ -124,6 +126,7 @@ export default {
                         title: 'Summary of the acknowledgment',
                         description:
                           'SHOULD represent any contextual details the document producers wish to make known about the acknowledgment or acknowledged parties.',
+                        metaData: {},
                         minLength: 1,
                         examples: [
                           'First analysis of Coordinated Multi-Stream Attack (CMSA)',
@@ -145,8 +148,9 @@ export default {
                             title: 'URL of acknowledgment',
                             description:
                               'Contains the URL or location of the reference to be acknowledged.',
+                            metaData: { uiType: 'STRING_URI' },
                             metaInfo: {},
-                            type: 'URI',
+                            type: 'STRING',
                           },
                         },
                       },
@@ -188,6 +192,7 @@ export default {
                     title: 'Namespace of aggregate severity',
                     description: 'Points to the namespace so referenced.',
                     metaData: {
+                      uiType: 'STRING_URI',
                       userDocumentation: {
                         specification:
                           'docs/user/document/aggregate_severity/namespace-spec.en.md',
@@ -208,7 +213,7 @@ export default {
                       },
                     },
                     metaInfo: {},
-                    type: 'URI',
+                    type: 'STRING',
                   },
                   {
                     key: 'text',
@@ -217,6 +222,7 @@ export default {
                     description:
                       'Provides a severity which is independent of - and in addition to - any other standard metric for determining the impact or severity of a given vulnerability (such as CVSS).',
                     metaData: {
+                      uiType: 'STRING_MULTI_LINE',
                       userDocumentation: {
                         specification:
                           'docs/user/document/aggregate_severity/text-spec.en.md',
@@ -234,7 +240,6 @@ export default {
                         title: 'DocumentAggregateSeverityTextTitle',
                         description: 'DocumentAggregateSeverityTextDescription',
                       },
-                      uiType: 'STRING_MULTI_LINE',
                     },
                     minLength: 1,
                     examples: ['Critical', 'Important', 'Moderate'],
@@ -251,6 +256,7 @@ export default {
               description:
                 'Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document.',
               metaData: {
+                uiType: 'STRING_ENUM',
                 userDocumentation: {
                   specification: 'docs/user/document/category-spec.en.md',
                   usage: 'docs/user/document/category-usage.en.md',
@@ -266,7 +272,6 @@ export default {
                   title: 'DocumentCategoryTitle',
                   description: 'DocumentCategoryDescription',
                 },
-                uiType: 'STRING_ENUM',
               },
               minLength: 1,
               examples: [
@@ -286,6 +291,7 @@ export default {
               description:
                 'Gives the version of the CSAF specification which the document was generated for.',
               metaData: {
+                uiType: 'STRING_ENUM',
                 userDocumentation: {
                   specification: 'docs/user/document/csaf_version-spec.en.md',
                   usage: 'docs/user/document/csaf_version-usage.en.md',
@@ -301,8 +307,8 @@ export default {
                   title: 'DocumentCsafVersionTitle',
                   description: 'DocumentCsafVersionDescription',
                 },
-                uiType: 'STRING_ENUM',
               },
+              enum: ['2.0'],
               metaInfo: {},
               type: 'STRING',
             },
@@ -339,6 +345,7 @@ export default {
                     description:
                       'Provides a textual description of additional constraints.',
                     metaData: {
+                      uiType: 'STRING_MULTI_LINE',
                       userDocumentation: {
                         specification:
                           'docs/user/document/distribution/text-spec.en.md',
@@ -356,7 +363,6 @@ export default {
                         title: 'DocumentDistributionTextTitle',
                         description: 'DocumentDistributionTextDescription',
                       },
-                      uiType: 'STRING_MULTI_LINE',
                     },
                     minLength: 1,
                     examples: [
@@ -407,6 +413,7 @@ export default {
                           description:
                             'Provides the TLP label of the document.',
                           metaData: {
+                            uiType: 'STRING_ENUM',
                             userDocumentation: {
                               specification:
                                 'docs/user/document/distribution/tlp/label-spec.en.md',
@@ -425,8 +432,8 @@ export default {
                               description:
                                 'DocumentDistributionTlpLabelDescription',
                             },
-                            uiType: 'STRING_ENUM',
                           },
+                          enum: ['AMBER', 'GREEN', 'RED', 'WHITE'],
                           metaInfo: {},
                           type: 'STRING',
                         },
@@ -437,6 +444,7 @@ export default {
                           description:
                             'Provides a URL where to find the textual description of the TLP version which is used in this document. Default is the URL to the definition by FIRST.',
                           metaData: {
+                            uiType: 'STRING_URI',
                             userDocumentation: {
                               specification:
                                 'docs/user/document/distribution/tlp/url-spec.en.md',
@@ -461,7 +469,7 @@ export default {
                             'https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Kritis/Merkblatt_TLP.pdf',
                           ],
                           metaInfo: {},
-                          type: 'URI',
+                          type: 'STRING',
                         },
                       ],
                     },
@@ -547,6 +555,7 @@ export default {
                         fullName: ['document', 'notes', 'audience'],
                         title: 'Audience of note',
                         description: 'Indicates who is intended to read it.',
+                        metaData: {},
                         minLength: 1,
                         examples: [
                           'all',
@@ -563,6 +572,16 @@ export default {
                         title: 'Note category',
                         description:
                           'Contains the information of what kind of note this is.',
+                        metaData: { uiType: 'STRING_ENUM' },
+                        enum: [
+                          'description',
+                          'details',
+                          'faq',
+                          'general',
+                          'legal_disclaimer',
+                          'other',
+                          'summary',
+                        ],
                         metaInfo: {},
                         type: 'STRING',
                       },
@@ -572,6 +591,7 @@ export default {
                         title: 'Note content',
                         description:
                           'Holds the content of the note. Content varies depending on type.',
+                        metaData: {},
                         minLength: 1,
                         metaInfo: {},
                         type: 'STRING',
@@ -582,6 +602,7 @@ export default {
                         title: 'Title of note',
                         description:
                           'Provides a concise description of what is contained in the text of the note.',
+                        metaData: {},
                         minLength: 1,
                         examples: [
                           'Details',
@@ -630,6 +651,7 @@ export default {
                     description:
                       'Provides information about the category of publisher releasing the document.',
                     metaData: {
+                      uiType: 'STRING_ENUM',
                       userDocumentation: {
                         specification:
                           'docs/user/document/publisher/category-spec.en.md',
@@ -647,8 +669,15 @@ export default {
                         title: 'DocumentPublisherCategoryTitle',
                         description: 'DocumentPublisherCategoryDescription',
                       },
-                      uiType: 'STRING_ENUM',
                     },
+                    enum: [
+                      'coordinator',
+                      'discoverer',
+                      'other',
+                      'translator',
+                      'user',
+                      'vendor',
+                    ],
                     metaInfo: {},
                     type: 'STRING',
                   },
@@ -659,6 +688,7 @@ export default {
                     description:
                       'Information on how to contact the publisher, possibly including details such as web sites, email addresses, phone numbers, and postal mail addresses.',
                     metaData: {
+                      uiType: 'STRING_MULTI_LINE',
                       userDocumentation: {
                         specification:
                           'docs/user/document/publisher/contact_details-spec.en.md',
@@ -677,7 +707,6 @@ export default {
                         description:
                           'DocumentPublisherContactDetailsDescription',
                       },
-                      uiType: 'STRING_MULTI_LINE',
                     },
                     minLength: 1,
                     examples: [
@@ -693,6 +722,7 @@ export default {
                     description:
                       "Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.",
                     metaData: {
+                      uiType: 'STRING_MULTI_LINE',
                       userDocumentation: {
                         specification:
                           'docs/user/document/publisher/issuing_authority-spec.en.md',
@@ -711,7 +741,6 @@ export default {
                         description:
                           'DocumentPublisherIssuingAuthorityDescription',
                       },
-                      uiType: 'STRING_MULTI_LINE',
                     },
                     minLength: 1,
                     metaInfo: {},
@@ -752,6 +781,7 @@ export default {
                     description:
                       'Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party.',
                     metaData: {
+                      uiType: 'STRING_URI',
                       userDocumentation: {
                         specification:
                           'docs/user/document/publisher/namespace-spec.en.md',
@@ -772,7 +802,7 @@ export default {
                     },
                     examples: ['https://csaf.io', 'https://www.example.com'],
                     metaInfo: {},
-                    type: 'URI',
+                    type: 'STRING',
                   },
                 ],
               },
@@ -827,6 +857,8 @@ export default {
                         title: 'Category of reference',
                         description:
                           'Indicates whether the reference points to the same document or vulnerability in focus (depending on scope) or to an external resource.',
+                        metaData: { uiType: 'STRING_ENUM' },
+                        enum: ['external', 'self'],
                         metaInfo: {},
                         type: 'STRING',
                       },
@@ -835,6 +867,7 @@ export default {
                         fullName: ['document', 'references', 'summary'],
                         title: 'Summary of the reference',
                         description: 'Indicates what this reference refers to.',
+                        metaData: {},
                         minLength: 1,
                         metaInfo: {},
                         type: 'STRING',
@@ -844,8 +877,9 @@ export default {
                         fullName: ['document', 'references', 'url'],
                         title: 'URL of reference',
                         description: 'Provides the URL for the reference.',
+                        metaData: { uiType: 'STRING_URI' },
                         metaInfo: {},
-                        type: 'URI',
+                        type: 'STRING',
                       },
                     ],
                   },
@@ -998,6 +1032,7 @@ export default {
                     description:
                       'The date when the current revision of this document was released',
                     metaData: {
+                      uiType: 'STRING_DATETIME',
                       userDocumentation: {
                         specification:
                           'docs/user/document/tracking/current_release_date-spec.en.md',
@@ -1018,7 +1053,7 @@ export default {
                       },
                     },
                     metaInfo: {},
-                    type: 'DATETIME',
+                    type: 'STRING',
                   },
                   {
                     key: 'generator',
@@ -1060,6 +1095,7 @@ export default {
                           description:
                             'This SHOULD be the current date that the document was generated. Because documents are often generated internally by a document producer and exist for a nonzero amount of time before being released, this field MAY be different from the Initial Release Date and Current Release Date.',
                           metaData: {
+                            uiType: 'STRING_DATETIME',
                             userDocumentation: {
                               specification:
                                 'docs/user/document/tracking/generator/date-spec.en.md',
@@ -1080,7 +1116,7 @@ export default {
                             },
                           },
                           metaInfo: {},
-                          type: 'DATETIME',
+                          type: 'STRING',
                         },
                         {
                           key: 'engine',
@@ -1257,6 +1293,7 @@ export default {
                     description:
                       'The date when this document was first published.',
                     metaData: {
+                      uiType: 'STRING_DATETIME',
                       userDocumentation: {
                         specification:
                           'docs/user/document/tracking/initial_release_date-spec.en.md',
@@ -1277,7 +1314,7 @@ export default {
                       },
                     },
                     metaInfo: {},
-                    type: 'DATETIME',
+                    type: 'STRING',
                   },
                   {
                     key: 'revision_history',
@@ -1340,8 +1377,9 @@ export default {
                               ],
                               title: 'Date of the revision',
                               description: 'The date of the revision entry',
+                              metaData: { uiType: 'STRING_DATETIME' },
                               metaInfo: {},
-                              type: 'DATETIME',
+                              type: 'STRING',
                             },
                             {
                               key: 'legacy_version',
@@ -1354,6 +1392,7 @@ export default {
                               title: 'Legacy version of the revision',
                               description:
                                 'Contains the version string used in an existing document with the same content.',
+                              metaData: {},
                               minLength: 1,
                               metaInfo: {},
                               type: 'STRING',
@@ -1369,6 +1408,7 @@ export default {
                               title: 'Version',
                               description:
                                 'Specifies a version string to denote clearly the evolution of the content of the document. Format must be either integer or semantic versioning.',
+                              metaData: {},
                               examples: [
                                 '1',
                                 '4',
@@ -1392,6 +1432,7 @@ export default {
                               title: 'Summary of the revision',
                               description:
                                 'Holds a single non-empty string representing a short description of the changes.',
+                              metaData: {},
                               minLength: 1,
                               examples: ['Initial version.'],
                               metaInfo: {},
@@ -1408,6 +1449,7 @@ export default {
                     title: 'Document status',
                     description: 'Defines the draft status of the document.',
                     metaData: {
+                      uiType: 'STRING_ENUM',
                       userDocumentation: {
                         specification:
                           'docs/user/document/tracking/status-spec.en.md',
@@ -1424,8 +1466,8 @@ export default {
                         title: 'DocumentTrackingStatusTitle',
                         description: 'DocumentTrackingStatusDescription',
                       },
-                      uiType: 'STRING_ENUM',
                     },
+                    enum: ['draft', 'final', 'interim'],
                     metaInfo: {},
                     type: 'STRING',
                   },
@@ -1571,6 +1613,21 @@ export default {
                         title: 'Category of the branch',
                         description:
                           'Describes the characteristics of the labeled branch.',
+                        metaData: { uiType: 'STRING_ENUM' },
+                        enum: [
+                          'architecture',
+                          'host_name',
+                          'language',
+                          'legacy',
+                          'patch_level',
+                          'product_family',
+                          'product_name',
+                          'product_version',
+                          'product_version_range',
+                          'service_pack',
+                          'specification',
+                          'vendor',
+                        ],
                         metaInfo: {},
                         type: 'STRING',
                       },
@@ -1580,6 +1637,7 @@ export default {
                         title: 'Name of the branch',
                         description:
                           "Contains the canonical descriptor or 'friendly name' of the branch.",
+                        metaData: {},
                         minLength: 1,
                         examples: [
                           '10',
@@ -1614,6 +1672,7 @@ export default {
                               title: 'Textual description of the product',
                               description:
                                 'The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.',
+                              metaData: {},
                               minLength: 1,
                               examples: [
                                 'Cisco AnyConnect Secure Mobility Client 2.3.185',
@@ -1633,6 +1692,7 @@ export default {
                               title: 'Reference token for product instance',
                               description:
                                 'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                              metaData: {},
                               minLength: 1,
                               examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                               metaInfo: {},
@@ -1665,6 +1725,7 @@ export default {
                                       'Common Platform Enumeration representation',
                                     description:
                                       'The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification.',
+                                    metaData: {},
                                     minLength: 5,
                                     pattern:
                                       '^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!"#\\$%&\'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!"#\\$%&\'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$',
@@ -1746,6 +1807,7 @@ export default {
                                                           'Algorithm of the cryptographic hash',
                                                         description:
                                                           'Contains the name of the cryptographic hash algorithm used to calculate the value.',
+                                                        metaData: {},
                                                         minLength: 1,
                                                         examples: [
                                                           'blake2b512',
@@ -1772,6 +1834,7 @@ export default {
                                                           'Value of the cryptographic hash',
                                                         description:
                                                           'Contains the cryptographic hash value in hexadecimal representation.',
+                                                        metaData: {},
                                                         minLength: 32,
                                                         examples: [
                                                           '37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3',
@@ -1801,6 +1864,7 @@ export default {
                                               title: 'Filename',
                                               description:
                                                 'Contains the name of the file which is identified by the hash values.',
+                                              metaData: {},
                                               minLength: 1,
                                               examples: [
                                                 'WINWORD.EXE',
@@ -1841,6 +1905,7 @@ export default {
                                         title: 'Model number',
                                         description:
                                           'Contains a full or abbreviated (partial) model number of the component to identify.',
+                                        metaData: {},
                                         minLength: 1,
                                         metaInfo: {},
                                         type: 'STRING',
@@ -1859,11 +1924,12 @@ export default {
                                     title: 'package URL representation',
                                     description:
                                       'The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification.',
+                                    metaData: { uiType: 'STRING_URI' },
                                     minLength: 7,
                                     pattern:
                                       '^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+',
                                     metaInfo: {},
-                                    type: 'URI',
+                                    type: 'STRING',
                                   },
                                   {
                                     key: 'sbom_urls',
@@ -1891,8 +1957,9 @@ export default {
                                         title: 'SBOM URL',
                                         description:
                                           'Contains a URL of one SBOM for this product.',
+                                        metaData: { uiType: 'STRING_URI' },
                                         metaInfo: {},
-                                        type: 'URI',
+                                        type: 'STRING',
                                       },
                                     },
                                   },
@@ -1922,6 +1989,7 @@ export default {
                                         title: 'Serial number',
                                         description:
                                           'Contains a full or abbreviated (partial) serial number of the component to identify.',
+                                        metaData: {},
                                         minLength: 1,
                                         metaInfo: {},
                                         type: 'STRING',
@@ -1954,6 +2022,7 @@ export default {
                                         title: 'Stock keeping unit',
                                         description:
                                           'Contains a full or abbreviated (partial) stock keeping unit (SKU) which is used in the ordering process to identify the component.',
+                                        metaData: {},
                                         minLength: 1,
                                         metaInfo: {},
                                         type: 'STRING',
@@ -2003,8 +2072,11 @@ export default {
                                                 'Namespace of the generic URI',
                                               description:
                                                 'Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid.',
+                                              metaData: {
+                                                uiType: 'STRING_URI',
+                                              },
                                               metaInfo: {},
-                                              type: 'URI',
+                                              type: 'STRING',
                                             },
                                             {
                                               key: 'uri',
@@ -2019,8 +2091,11 @@ export default {
                                               title: 'URI',
                                               description:
                                                 'Contains the identifier itself.',
+                                              metaData: {
+                                                uiType: 'STRING_URI',
+                                              },
                                               metaInfo: {},
-                                              type: 'URI',
+                                              type: 'STRING',
                                             },
                                           ],
                                         },
@@ -2094,6 +2169,7 @@ export default {
                         title: 'Textual description of the product',
                         description:
                           'The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.',
+                        metaData: {},
                         minLength: 1,
                         examples: [
                           'Cisco AnyConnect Secure Mobility Client 2.3.185',
@@ -2112,6 +2188,7 @@ export default {
                         title: 'Reference token for product instance',
                         description:
                           'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                        metaData: {},
                         minLength: 1,
                         examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                         metaInfo: {},
@@ -2142,6 +2219,7 @@ export default {
                                 'Common Platform Enumeration representation',
                               description:
                                 'The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification.',
+                              metaData: {},
                               minLength: 5,
                               pattern:
                                 '^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!"#\\$%&\'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!"#\\$%&\'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$',
@@ -2218,6 +2296,7 @@ export default {
                                                     'Algorithm of the cryptographic hash',
                                                   description:
                                                     'Contains the name of the cryptographic hash algorithm used to calculate the value.',
+                                                  metaData: {},
                                                   minLength: 1,
                                                   examples: [
                                                     'blake2b512',
@@ -2243,6 +2322,7 @@ export default {
                                                     'Value of the cryptographic hash',
                                                   description:
                                                     'Contains the cryptographic hash value in hexadecimal representation.',
+                                                  metaData: {},
                                                   minLength: 32,
                                                   examples: [
                                                     '37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3',
@@ -2270,6 +2350,7 @@ export default {
                                         title: 'Filename',
                                         description:
                                           'Contains the name of the file which is identified by the hash values.',
+                                        metaData: {},
                                         minLength: 1,
                                         examples: [
                                           'WINWORD.EXE',
@@ -2308,6 +2389,7 @@ export default {
                                   title: 'Model number',
                                   description:
                                     'Contains a full or abbreviated (partial) model number of the component to identify.',
+                                  metaData: {},
                                   minLength: 1,
                                   metaInfo: {},
                                   type: 'STRING',
@@ -2325,11 +2407,12 @@ export default {
                               title: 'package URL representation',
                               description:
                                 'The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification.',
+                              metaData: { uiType: 'STRING_URI' },
                               minLength: 7,
                               pattern:
                                 '^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+',
                               metaInfo: {},
-                              type: 'URI',
+                              type: 'STRING',
                             },
                             {
                               key: 'sbom_urls',
@@ -2355,8 +2438,9 @@ export default {
                                   title: 'SBOM URL',
                                   description:
                                     'Contains a URL of one SBOM for this product.',
+                                  metaData: { uiType: 'STRING_URI' },
                                   metaInfo: {},
-                                  type: 'URI',
+                                  type: 'STRING',
                                 },
                               },
                             },
@@ -2384,6 +2468,7 @@ export default {
                                   title: 'Serial number',
                                   description:
                                     'Contains a full or abbreviated (partial) serial number of the component to identify.',
+                                  metaData: {},
                                   minLength: 1,
                                   metaInfo: {},
                                   type: 'STRING',
@@ -2414,6 +2499,7 @@ export default {
                                   title: 'Stock keeping unit',
                                   description:
                                     'Contains a full or abbreviated (partial) stock keeping unit (SKU) which is used in the ordering process to identify the component.',
+                                  metaData: {},
                                   minLength: 1,
                                   metaInfo: {},
                                   type: 'STRING',
@@ -2459,8 +2545,9 @@ export default {
                                         title: 'Namespace of the generic URI',
                                         description:
                                           'Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid.',
+                                        metaData: { uiType: 'STRING_URI' },
                                         metaInfo: {},
-                                        type: 'URI',
+                                        type: 'STRING',
                                       },
                                       {
                                         key: 'uri',
@@ -2474,8 +2561,9 @@ export default {
                                         title: 'URI',
                                         description:
                                           'Contains the identifier itself.',
+                                        metaData: { uiType: 'STRING_URI' },
                                         metaInfo: {},
-                                        type: 'URI',
+                                        type: 'STRING',
                                       },
                                     ],
                                   },
@@ -2546,6 +2634,7 @@ export default {
                         title: 'Reference token for product group instance',
                         description:
                           'Token required to identify a group of products so that it can be referred to from other parts in the document. There is no predefined or required format for the product_group_id as long as it uniquely identifies a group in the context of the current document.',
+                        metaData: {},
                         minLength: 1,
                         examples: [
                           'CSAFGID-0001',
@@ -2577,6 +2666,7 @@ export default {
                             title: 'Reference token for product instance',
                             description:
                               'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                            metaData: {},
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                             metaInfo: {},
@@ -2590,6 +2680,7 @@ export default {
                         title: 'Summary of the product group',
                         description:
                           'Gives a short, optional description of the group.',
+                        metaData: {},
                         minLength: 1,
                         examples: [
                           'Products supporting Modbus.',
@@ -2655,6 +2746,14 @@ export default {
                         title: 'Relationship category',
                         description:
                           'Defines the category of relationship for the referenced component.',
+                        metaData: { uiType: 'STRING_ENUM' },
+                        enum: [
+                          'default_component_of',
+                          'external_component_of',
+                          'installed_on',
+                          'installed_with',
+                          'optional_component_of',
+                        ],
                         metaInfo: {},
                         type: 'STRING',
                       },
@@ -2682,6 +2781,7 @@ export default {
                               title: 'Textual description of the product',
                               description:
                                 'The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.',
+                              metaData: {},
                               minLength: 1,
                               examples: [
                                 'Cisco AnyConnect Secure Mobility Client 2.3.185',
@@ -2701,6 +2801,7 @@ export default {
                               title: 'Reference token for product instance',
                               description:
                                 'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                              metaData: {},
                               minLength: 1,
                               examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                               metaInfo: {},
@@ -2733,6 +2834,7 @@ export default {
                                       'Common Platform Enumeration representation',
                                     description:
                                       'The Common Platform Enumeration (CPE) attribute refers to a method for naming platforms external to this specification.',
+                                    metaData: {},
                                     minLength: 5,
                                     pattern:
                                       '^(cpe:2\\.3:[aho\\*\\-](:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!"#\\$%&\'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){5}(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\\*\\-]))(:(((\\?*|\\*?)([a-zA-Z0-9\\-\\._]|(\\\\[\\\\\\*\\?!"#\\$%&\'\\(\\)\\+,/:;<=>@\\[\\]\\^`\\{\\|\\}~]))+(\\?*|\\*?))|[\\*\\-])){4})|([c][pP][eE]:/[AHOaho]?(:[A-Za-z0-9\\._\\-~%]*){0,6})$',
@@ -2814,6 +2916,7 @@ export default {
                                                           'Algorithm of the cryptographic hash',
                                                         description:
                                                           'Contains the name of the cryptographic hash algorithm used to calculate the value.',
+                                                        metaData: {},
                                                         minLength: 1,
                                                         examples: [
                                                           'blake2b512',
@@ -2840,6 +2943,7 @@ export default {
                                                           'Value of the cryptographic hash',
                                                         description:
                                                           'Contains the cryptographic hash value in hexadecimal representation.',
+                                                        metaData: {},
                                                         minLength: 32,
                                                         examples: [
                                                           '37df33cb7464da5c7f077f4d56a32bc84987ec1d85b234537c1c1a4d4fc8d09dc29e2e762cb5203677bf849a2855a0283710f1f5fe1d6ce8d5ac85c645d0fcb3',
@@ -2869,6 +2973,7 @@ export default {
                                               title: 'Filename',
                                               description:
                                                 'Contains the name of the file which is identified by the hash values.',
+                                              metaData: {},
                                               minLength: 1,
                                               examples: [
                                                 'WINWORD.EXE',
@@ -2909,6 +3014,7 @@ export default {
                                         title: 'Model number',
                                         description:
                                           'Contains a full or abbreviated (partial) model number of the component to identify.',
+                                        metaData: {},
                                         minLength: 1,
                                         metaInfo: {},
                                         type: 'STRING',
@@ -2927,11 +3033,12 @@ export default {
                                     title: 'package URL representation',
                                     description:
                                       'The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification.',
+                                    metaData: { uiType: 'STRING_URI' },
                                     minLength: 7,
                                     pattern:
                                       '^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*/.+',
                                     metaInfo: {},
-                                    type: 'URI',
+                                    type: 'STRING',
                                   },
                                   {
                                     key: 'sbom_urls',
@@ -2959,8 +3066,9 @@ export default {
                                         title: 'SBOM URL',
                                         description:
                                           'Contains a URL of one SBOM for this product.',
+                                        metaData: { uiType: 'STRING_URI' },
                                         metaInfo: {},
-                                        type: 'URI',
+                                        type: 'STRING',
                                       },
                                     },
                                   },
@@ -2990,6 +3098,7 @@ export default {
                                         title: 'Serial number',
                                         description:
                                           'Contains a full or abbreviated (partial) serial number of the component to identify.',
+                                        metaData: {},
                                         minLength: 1,
                                         metaInfo: {},
                                         type: 'STRING',
@@ -3022,6 +3131,7 @@ export default {
                                         title: 'Stock keeping unit',
                                         description:
                                           'Contains a full or abbreviated (partial) stock keeping unit (SKU) which is used in the ordering process to identify the component.',
+                                        metaData: {},
                                         minLength: 1,
                                         metaInfo: {},
                                         type: 'STRING',
@@ -3071,8 +3181,11 @@ export default {
                                                 'Namespace of the generic URI',
                                               description:
                                                 'Refers to a URL which provides the name and knowledge about the specification used or is the namespace in which these values are valid.',
+                                              metaData: {
+                                                uiType: 'STRING_URI',
+                                              },
                                               metaInfo: {},
-                                              type: 'URI',
+                                              type: 'STRING',
                                             },
                                             {
                                               key: 'uri',
@@ -3087,8 +3200,11 @@ export default {
                                               title: 'URI',
                                               description:
                                                 'Contains the identifier itself.',
+                                              metaData: {
+                                                uiType: 'STRING_URI',
+                                              },
                                               metaInfo: {},
-                                              type: 'URI',
+                                              type: 'STRING',
                                             },
                                           ],
                                         },
@@ -3111,6 +3227,7 @@ export default {
                         title: 'Reference token for product instance',
                         description:
                           'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                        metaData: {},
                         minLength: 1,
                         examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                         metaInfo: {},
@@ -3126,6 +3243,7 @@ export default {
                         title: 'Reference token for product instance',
                         description:
                           'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                        metaData: {},
                         minLength: 1,
                         examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                         metaInfo: {},
@@ -3223,6 +3341,7 @@ export default {
                                 title: 'Name of the contributor',
                                 description:
                                   'Contains the name of a single contributor being recognized.',
+                                metaData: {},
                                 minLength: 1,
                                 examples: [
                                   'Albert Einstein',
@@ -3243,6 +3362,7 @@ export default {
                             title: 'Contributing organization',
                             description:
                               'Contains the name of a contributing organization being recognized.',
+                            metaData: {},
                             minLength: 1,
                             examples: ['CISA', 'Google Project Zero', 'Talos'],
                             metaInfo: {},
@@ -3258,6 +3378,7 @@ export default {
                             title: 'Summary of the acknowledgment',
                             description:
                               'SHOULD represent any contextual details the document producers wish to make known about the acknowledgment or acknowledged parties.',
+                            metaData: {},
                             minLength: 1,
                             examples: [
                               'First analysis of Coordinated Multi-Stream Attack (CMSA)',
@@ -3287,8 +3408,9 @@ export default {
                                 title: 'URL of acknowledgment',
                                 description:
                                   'Contains the URL or location of the reference to be acknowledged.',
+                                metaData: { uiType: 'STRING_URI' },
                                 metaInfo: {},
-                                type: 'URI',
+                                type: 'STRING',
                               },
                             },
                           },
@@ -3303,6 +3425,7 @@ export default {
                   title: 'CVE',
                   description:
                     'Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.',
+                  metaData: {},
                   pattern: '^CVE-[0-9]{4}-[0-9]{4,}$',
                   metaInfo: {},
                   type: 'STRING',
@@ -3322,6 +3445,7 @@ export default {
                         title: 'Weakness ID',
                         description:
                           'Holds the ID for the weakness associated.',
+                        metaData: {},
                         examples: ['CWE-22', 'CWE-352', 'CWE-79'],
                         pattern: '^CWE-[1-9]\\d{0,5}$',
                         metaInfo: {},
@@ -3333,6 +3457,7 @@ export default {
                         title: 'Weakness name',
                         description:
                           'Holds the full name of the weakness as given in the CWE specification.',
+                        metaData: {},
                         minLength: 1,
                         examples: [
                           'Cross-Site Request Forgery (CSRF)',
@@ -3351,8 +3476,9 @@ export default {
                   title: 'Discovery date',
                   description:
                     'Holds the date and time the vulnerability was originally discovered.',
+                  metaData: { uiType: 'STRING_DATETIME' },
                   metaInfo: {},
-                  type: 'DATETIME',
+                  type: 'STRING',
                 },
                 {
                   key: 'flags',
@@ -3376,8 +3502,9 @@ export default {
                             title: 'Date of the flag',
                             description:
                               'Contains the date when assessment was done or the flag was assigned.',
+                            metaData: { uiType: 'STRING_DATETIME' },
                             metaInfo: {},
-                            type: 'DATETIME',
+                            type: 'STRING',
                           },
                           {
                             key: 'group_ids',
@@ -3398,6 +3525,7 @@ export default {
                                   'Reference token for product group instance',
                                 description:
                                   'Token required to identify a group of products so that it can be referred to from other parts in the document. There is no predefined or required format for the product_group_id as long as it uniquely identifies a group in the context of the current document.',
+                                metaData: {},
                                 minLength: 1,
                                 examples: [
                                   'CSAFGID-0001',
@@ -3415,6 +3543,14 @@ export default {
                             title: 'Label of the flag',
                             description:
                               'Specifies the machine readable label.',
+                            metaData: { uiType: 'STRING_ENUM' },
+                            enum: [
+                              'component_not_present',
+                              'inline_mitigations_already_exist',
+                              'vulnerable_code_cannot_be_controlled_by_adversary',
+                              'vulnerable_code_not_in_execute_path',
+                              'vulnerable_code_not_present',
+                            ],
                             metaInfo: {},
                             type: 'STRING',
                           },
@@ -3440,6 +3576,7 @@ export default {
                                 title: 'Reference token for product instance',
                                 description:
                                   'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                                metaData: {},
                                 minLength: 1,
                                 examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                                 metaInfo: {},
@@ -3475,6 +3612,7 @@ export default {
                             title: 'System name',
                             description:
                               'Indicates the name of the vulnerability tracking or numbering system.',
+                            metaData: {},
                             minLength: 1,
                             examples: ['Cisco Bug ID', 'GitHub Issue'],
                             metaInfo: {},
@@ -3486,6 +3624,7 @@ export default {
                             title: 'Text',
                             description:
                               'Is unique label or tracking ID for the vulnerability (if such information exists).',
+                            metaData: {},
                             minLength: 1,
                             examples: ['CSCso66472', 'oasis-tcs/csaf#210'],
                             metaInfo: {},
@@ -3522,8 +3661,9 @@ export default {
                             title: 'Date of involvement',
                             description:
                               'Holds the date and time of the involvement entry.',
+                            metaData: { uiType: 'STRING_DATETIME' },
                             metaInfo: {},
-                            type: 'DATETIME',
+                            type: 'STRING',
                           },
                           {
                             key: 'party',
@@ -3535,6 +3675,14 @@ export default {
                             title: 'Party category',
                             description:
                               'Defines the category of the involved party.',
+                            metaData: { uiType: 'STRING_ENUM' },
+                            enum: [
+                              'coordinator',
+                              'discoverer',
+                              'other',
+                              'user',
+                              'vendor',
+                            ],
                             metaInfo: {},
                             type: 'STRING',
                           },
@@ -3548,6 +3696,15 @@ export default {
                             title: 'Party status',
                             description:
                               'Defines contact status of the involved party.',
+                            metaData: { uiType: 'STRING_ENUM' },
+                            enum: [
+                              'completed',
+                              'contact_attempted',
+                              'disputed',
+                              'in_progress',
+                              'not_contacted',
+                              'open',
+                            ],
                             metaInfo: {},
                             type: 'STRING',
                           },
@@ -3561,6 +3718,7 @@ export default {
                             title: 'Summary of the involvement',
                             description:
                               'Contains additional context regarding what is going on.',
+                            metaData: {},
                             minLength: 1,
                             metaInfo: {},
                             type: 'STRING',
@@ -3593,6 +3751,7 @@ export default {
                             title: 'Audience of note',
                             description:
                               'Indicates who is intended to read it.',
+                            metaData: {},
                             minLength: 1,
                             examples: [
                               'all',
@@ -3609,6 +3768,16 @@ export default {
                             title: 'Note category',
                             description:
                               'Contains the information of what kind of note this is.',
+                            metaData: { uiType: 'STRING_ENUM' },
+                            enum: [
+                              'description',
+                              'details',
+                              'faq',
+                              'general',
+                              'legal_disclaimer',
+                              'other',
+                              'summary',
+                            ],
                             metaInfo: {},
                             type: 'STRING',
                           },
@@ -3618,6 +3787,7 @@ export default {
                             title: 'Note content',
                             description:
                               'Holds the content of the note. Content varies depending on type.',
+                            metaData: {},
                             minLength: 1,
                             metaInfo: {},
                             type: 'STRING',
@@ -3628,6 +3798,7 @@ export default {
                             title: 'Title of note',
                             description:
                               'Provides a concise description of what is contained in the text of the note.',
+                            metaData: {},
                             minLength: 1,
                             examples: [
                               'Details',
@@ -3674,6 +3845,7 @@ export default {
                             title: 'Reference token for product instance',
                             description:
                               'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                            metaData: {},
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                             metaInfo: {},
@@ -3703,6 +3875,7 @@ export default {
                             title: 'Reference token for product instance',
                             description:
                               'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                            metaData: {},
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                             metaInfo: {},
@@ -3732,6 +3905,7 @@ export default {
                             title: 'Reference token for product instance',
                             description:
                               'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                            metaData: {},
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                             metaInfo: {},
@@ -3761,6 +3935,7 @@ export default {
                             title: 'Reference token for product instance',
                             description:
                               'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                            metaData: {},
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                             metaInfo: {},
@@ -3790,6 +3965,7 @@ export default {
                             title: 'Reference token for product instance',
                             description:
                               'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                            metaData: {},
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                             metaInfo: {},
@@ -3819,6 +3995,7 @@ export default {
                             title: 'Reference token for product instance',
                             description:
                               'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                            metaData: {},
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                             metaInfo: {},
@@ -3848,6 +4025,7 @@ export default {
                             title: 'Reference token for product instance',
                             description:
                               'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                            metaData: {},
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                             metaInfo: {},
@@ -3877,6 +4055,7 @@ export default {
                             title: 'Reference token for product instance',
                             description:
                               'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                            metaData: {},
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                             metaInfo: {},
@@ -3913,6 +4092,8 @@ export default {
                             title: 'Category of reference',
                             description:
                               'Indicates whether the reference points to the same document or vulnerability in focus (depending on scope) or to an external resource.',
+                            metaData: { uiType: 'STRING_ENUM' },
+                            enum: ['external', 'self'],
                             metaInfo: {},
                             type: 'STRING',
                           },
@@ -3926,6 +4107,7 @@ export default {
                             title: 'Summary of the reference',
                             description:
                               'Indicates what this reference refers to.',
+                            metaData: {},
                             minLength: 1,
                             metaInfo: {},
                             type: 'STRING',
@@ -3935,8 +4117,9 @@ export default {
                             fullName: ['vulnerabilities', 'references', 'url'],
                             title: 'URL of reference',
                             description: 'Provides the URL for the reference.',
+                            metaData: { uiType: 'STRING_URI' },
                             metaInfo: {},
-                            type: 'URI',
+                            type: 'STRING',
                           },
                         ],
                       },
@@ -3949,8 +4132,9 @@ export default {
                   title: 'Release date',
                   description:
                     'Holds the date and time the vulnerability was originally released into the wild.',
+                  metaData: { uiType: 'STRING_DATETIME' },
                   metaInfo: {},
-                  type: 'DATETIME',
+                  type: 'STRING',
                 },
                 {
                   key: 'remediations',
@@ -3978,6 +4162,14 @@ export default {
                             title: 'Category of the remediation',
                             description:
                               'Specifies the category which this remediation belongs to.',
+                            metaData: { uiType: 'STRING_ENUM' },
+                            enum: [
+                              'mitigation',
+                              'no_fix_planned',
+                              'none_available',
+                              'vendor_fix',
+                              'workaround',
+                            ],
                             metaInfo: {},
                             type: 'STRING',
                           },
@@ -3991,8 +4183,9 @@ export default {
                             title: 'Date of the remediation',
                             description:
                               'Contains the date from which the remediation is available.',
+                            metaData: { uiType: 'STRING_DATETIME' },
                             metaInfo: {},
-                            type: 'DATETIME',
+                            type: 'STRING',
                           },
                           {
                             key: 'details',
@@ -4004,6 +4197,7 @@ export default {
                             title: 'Details of the remediation',
                             description:
                               'Contains a thorough human-readable discussion of the remediation.',
+                            metaData: {},
                             minLength: 1,
                             metaInfo: {},
                             type: 'STRING',
@@ -4029,6 +4223,7 @@ export default {
                                 title: 'Entitlement of the remediation',
                                 description:
                                   'Contains any possible vendor-defined constraints for obtaining fixed software or hardware that fully resolves the vulnerability.',
+                                metaData: {},
                                 minLength: 1,
                                 metaInfo: {},
                                 type: 'STRING',
@@ -4058,6 +4253,7 @@ export default {
                                   'Reference token for product group instance',
                                 description:
                                   'Token required to identify a group of products so that it can be referred to from other parts in the document. There is no predefined or required format for the product_group_id as long as it uniquely identifies a group in the context of the current document.',
+                                metaData: {},
                                 minLength: 1,
                                 examples: [
                                   'CSAFGID-0001',
@@ -4091,6 +4287,7 @@ export default {
                                 title: 'Reference token for product instance',
                                 description:
                                   'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                                metaData: {},
                                 minLength: 1,
                                 examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                                 metaInfo: {},
@@ -4122,6 +4319,18 @@ export default {
                                   title: 'Category of restart',
                                   description:
                                     'Specifies what category of restart is required by this remediation to become effective.',
+                                  metaData: { uiType: 'STRING_ENUM' },
+                                  enum: [
+                                    'connected',
+                                    'dependencies',
+                                    'machine',
+                                    'none',
+                                    'parent',
+                                    'service',
+                                    'system',
+                                    'vulnerable_component',
+                                    'zone',
+                                  ],
                                   metaInfo: {},
                                   type: 'STRING',
                                 },
@@ -4136,6 +4345,7 @@ export default {
                                   title: 'Additional restart information',
                                   description:
                                     'Provides additional information for the restart. This can include details on procedures, scope or impact.',
+                                  metaData: {},
                                   minLength: 1,
                                   metaInfo: {},
                                   type: 'STRING',
@@ -4153,8 +4363,9 @@ export default {
                             title: 'URL to the remediation',
                             description:
                               'Contains the URL where to obtain the remediation.',
+                            metaData: { uiType: 'STRING_URI' },
                             metaInfo: {},
-                            type: 'URI',
+                            type: 'STRING',
                           },
                         ],
                       },
@@ -4208,6 +4419,7 @@ export default {
                                 title: 'Reference token for product instance',
                                 description:
                                   'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                                metaData: {},
                                 minLength: 1,
                                 examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                                 metaInfo: {},
@@ -4247,6 +4459,8 @@ export default {
                             title: 'Category of the threat',
                             description:
                               'Categorizes the threat according to the rules of the specification.',
+                            metaData: { uiType: 'STRING_ENUM' },
+                            enum: ['exploit_status', 'impact', 'target_set'],
                             metaInfo: {},
                             type: 'STRING',
                           },
@@ -4256,8 +4470,9 @@ export default {
                             title: 'Date of the threat',
                             description:
                               'Contains the date when the assessment was done or the threat appeared.',
+                            metaData: { uiType: 'STRING_DATETIME' },
                             metaInfo: {},
-                            type: 'DATETIME',
+                            type: 'STRING',
                           },
                           {
                             key: 'details',
@@ -4265,6 +4480,7 @@ export default {
                             title: 'Details of the threat',
                             description:
                               'Represents a thorough human-readable discussion of the threat.',
+                            metaData: {},
                             minLength: 1,
                             metaInfo: {},
                             type: 'STRING',
@@ -4292,6 +4508,7 @@ export default {
                                   'Reference token for product group instance',
                                 description:
                                   'Token required to identify a group of products so that it can be referred to from other parts in the document. There is no predefined or required format for the product_group_id as long as it uniquely identifies a group in the context of the current document.',
+                                metaData: {},
                                 minLength: 1,
                                 examples: [
                                   'CSAFGID-0001',
@@ -4325,6 +4542,7 @@ export default {
                                 title: 'Reference token for product instance',
                                 description:
                                   'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                                metaData: {},
                                 minLength: 1,
                                 examples: ['CSAFPID-0004', 'CSAFPID-0008'],
                                 metaInfo: {},
@@ -4343,6 +4561,7 @@ export default {
                   title: 'Title',
                   description:
                     'Gives the document producer the ability to apply a canonical name or title to the vulnerability.',
+                  metaData: {},
                   minLength: 1,
                   metaInfo: {},
                   type: 'STRING',
@@ -4354,4 +4573,4 @@ export default {
       },
     ],
   },
-}
+})

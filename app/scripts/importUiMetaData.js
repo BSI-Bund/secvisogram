@@ -165,14 +165,21 @@ function convertSchema(subschema, path) {
         examples: subschema.examples,
         pattern: subschema.pattern,
         uniqueItems: subschema.uniqueItems,
+        enum: subschema.enum,
       },
       metaInfo: {},
-      type:
-        subschema.format === 'date-time'
-          ? 'DATETIME'
-          : subschema.format === 'uri'
-          ? 'URI'
-          : 'STRING',
+      metaData: {
+        uiType:
+          subschema.format === 'date-time'
+            ? 'STRING_DATETIME'
+            : subschema.format === 'uri'
+            ? 'STRING_URI'
+            : subschema.enum !== undefined
+            ? 'STRING_ENUM'
+            : undefined,
+        ...commonUiSchemaFields.metaData,
+      },
+      type: 'STRING',
     }
   }
 
@@ -187,7 +194,7 @@ const outputFile = fileURLToPath(
 )
 const prettierString = prettier.format(
   "/** @typedef {import('./shared/types').Property} Property */\n" +
-    `export default (${JSON.stringify(
+    `export default /** @type {const} */ (${JSON.stringify(
       convertSchema(
         /** @type {import('./importUiMetaData/types').Schema} */ (schema),
         []

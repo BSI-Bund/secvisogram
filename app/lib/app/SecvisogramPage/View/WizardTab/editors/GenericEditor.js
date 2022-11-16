@@ -1,10 +1,10 @@
+import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import SideBarContext from '../../shared/context/SideBarContext.js'
 import DocumentEditorContext from '../../shared/DocumentEditorContext.js'
 import ArrayEditor from './GenericEditor/ArrayEditor.js'
 import ObjectEditor from './GenericEditor/ObjectEditor.js'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import SideBarContext from '../../shared/context/SideBarContext.js'
 
 /**
  * utility function to get the color of circles identifying errors
@@ -49,7 +49,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
         instancePath={instancePath}
       />
     )
-  } else if (['STRING', 'URI'].includes(property.type)) {
+  } else if (property.type === 'STRING') {
     const value = instancePath.reduce((value, pathSegment) => {
       return (value ?? {})[pathSegment]
     }, /** @type {Record<string, any> | null} */ (doc))

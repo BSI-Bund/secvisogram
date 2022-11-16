@@ -24,6 +24,7 @@ export interface StringSchema extends CommonSchemaFields {
   uniqueItems?: boolean
   examples?: string[]
   minLength?: number
+  enum?: string[]
 }
 
 export interface Ref extends CommonSchemaFields {
@@ -35,7 +36,9 @@ export interface CommonUiSchemaFields {
   description?: string
   addMenuItemsForChildObjects?: boolean
   key: string
-  metaData?: {}
+  metaData?: {
+    uiType?: string
+  }
 }
 
 export interface ArrayUiSchema extends CommonUiSchemaFields {
@@ -57,9 +60,14 @@ export interface RecursionUiSchema extends CommonUiSchemaFields {
   metaInfo: {}
 }
 
+export interface StringUiSchema extends CommonUiSchemaFields {
+  type: 'STRING'
+  metaInfo: {}
+}
+
 export type UiSchema =
   | ArrayUiSchema
   | ObjectUiSchema
   | RecursionUiSchema
-  | { type: 'STRING' | 'DATETIME' | 'URI'; metaInfo: {} }
+  | StringUiSchema
   | { type: 'UNKNOWN' }
