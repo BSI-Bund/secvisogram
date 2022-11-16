@@ -129,9 +129,12 @@ function convertSchema(subschema, path) {
     let propertyList = Object.entries(subschema.properties)
     const propertyOrder = metaData?.propertyOrder
     if (propertyOrder) {
-      propertyList.sort(([a], [b]) => {
-        return propertyOrder.indexOf(a) - propertyOrder.indexOf(b)
-      })
+      propertyList = propertyList
+        .filter((p) => propertyOrder.includes(p[0]))
+        .sort(([a], [b]) => {
+          return propertyOrder.indexOf(a) - propertyOrder.indexOf(b)
+        })
+        .concat(propertyList.filter((p) => !propertyOrder.includes(p[0])))
     }
     return {
       ...commonUiSchemaFields,
