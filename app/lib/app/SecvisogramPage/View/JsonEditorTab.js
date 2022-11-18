@@ -1,8 +1,4 @@
-import {
-  faCheckCircle,
-  faExclamationTriangle,
-  faWindowClose,
-} from '@fortawesome/free-solid-svg-icons'
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as jsonMap from 'json-source-map'
 import React from 'react'
@@ -107,10 +103,6 @@ export default function JsonEditorTab({
 
   const [showErrors, setShowErrors] = React.useState(false)
   const debouncedValue = useDebounce(value)
-
-  const toggleShowErrors = () => {
-    setShowErrors(!showErrors)
-  }
 
   /**
    * Locks the tab navigation if there are any parse errors.
