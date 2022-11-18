@@ -941,7 +941,7 @@ function View({
                 />
               ) : null}
             </div>
-            {activeTab === 'WIZZARD' ? <SideBar /> : null}
+            {activeTab === 'WIZZARD' || activeTab === 'SOURCE' ? <SideBar /> : null}
           </div>
         </Hotkeys>
         {toast ? (
