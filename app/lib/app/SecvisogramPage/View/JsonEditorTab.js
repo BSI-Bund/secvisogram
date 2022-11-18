@@ -9,6 +9,7 @@ import React from 'react'
 import MonacoEditor from 'react-monaco-editor'
 import sortObjectKeys from '../../shared/sortObjectKeys.js'
 import editorSchema from './JsonEditorTab/editorSchema.js'
+import SideBarContext from './shared/context/SideBarContext.js'
 import useDebounce from './shared/useDebounce.js'
 
 /**
@@ -32,6 +33,7 @@ export default function JsonEditorTab({
   onUnlockTab,
 }) {
   const { doc } = formValues
+  const sideBarData = React.useContext(SideBarContext)
 
   const [editor, setEditor] = React.useState(
     /** @type {import ("react-monaco-editor").monaco.editor.IStandaloneCodeEditor | null} */ (
@@ -202,6 +204,42 @@ export default function JsonEditorTab({
     /** @type {any } */ editor,
     /** @type {any} */ monaco
   ) => {
+    editor.addAction({
+      id: 'set-sidebar-context',
+      label: 'Set Sidebar Context',
+      precondition: null,
+      keybindingContext: null,
+      contextMenuGroupId: 'navigation',
+      contextMenuOrder: 1.5,
+      run: function (/** @type {any} */ ed) {
+        const currentCursorPosition = ed.getPosition()
+        let docMap
+        try {
+          docMap = jsonMap.parse(ed.getModel().getValue())
+        } catch (/** @type {any} */ e) {
+          return
+        }
+
+        const filteredList = Object.entries(docMap.pointers).filter((entry) => {
+          return (
+            currentCursorPosition.lineNumber - 1 === entry[1].key?.line &&
+            currentCursorPosition.column - 1 >= entry[1].key.column &&
+            currentCursorPosition.column - 1 <= entry[1].keyEnd.column
+          )
+        })
+
+        const path = filteredList[0][0].split('/')
+        const pathWithoutIndex = path
+          .filter((partOfPath) => Number.isNaN(Number.parseInt(partOfPath)))
+          .filter(Boolean) // remove empty strings
+
+        sideBarData.setSideBarSelectedPath(pathWithoutIndex)
+        if (!sideBarData.sideBarIsOpen) {
+          sideBarData.setSideBarIsOpen(true)
+        }
+      },
+    })
+
     /** @type {any} */
     const win = window
     if (win.Cypress) {
@@ -236,7 +274,7 @@ export default function JsonEditorTab({
   }
   return (
     <>
-      <div className="json-editor flex h-full mr-3 bg-white">
+      <div className="json-editor flex h-full bg-white">
         <div className=" w-full">
           <div className={'relative ' + (showErrors ? 'h-4/5' : 'h-full')}>
             <MonacoEditor
@@ -296,42 +334,6 @@ export default function JsonEditorTab({
                 <FontAwesomeIcon className="mr-1" icon={faWindowClose} />
               </button>
             </div>
-          </div>
-        </div>
-        <div className="pl-3 pr-6 py-6 w-72 flex flex-col justify-between">
-          <div className="flex flex-col" />
-          <div>
-            <h2 className="mb-4 text-xl font-bold">Validation Status</h2>
-            {errors.length === 0 ? (
-              <>
-                <div className="mb-4 flex justify-end">
-                  <FontAwesomeIcon
-                    className="text-6xl text-green-500"
-                    icon={faCheckCircle}
-                  />
-                </div>
-                <div className="h-9" />
-              </>
-            ) : (
-              <>
-                <div className="mb-4 flex justify-between">
-                  <span className="text-6xl text-red-500 font-bold">
-                    {errors.length}
-                  </span>
-                  <FontAwesomeIcon
-                    className="text-6xl text-red-500"
-                    icon={faExclamationTriangle}
-                  />
-                </div>
-                <button
-                  type="button"
-                  className="py-1 px-3 h-9 underline text-gray-500"
-                  onClick={toggleShowErrors}
-                >
-                  {showErrors ? 'Hide errors' : 'Show errors'}
-                </button>
-              </>
-            )}
           </div>
         </div>
       </div>
