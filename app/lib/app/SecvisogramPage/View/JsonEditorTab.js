@@ -212,7 +212,7 @@ export default function JsonEditorTab({
           return
         }
 
-        const filteredList = Object.entries(docMap.pointers).filter((entry) => {
+        const relevantPath = Object.entries(docMap.pointers).find((entry) => {
           return (
             currentCursorPosition.lineNumber - 1 === entry[1].key?.line &&
             currentCursorPosition.column - 1 >= entry[1].key.column &&
@@ -220,15 +220,15 @@ export default function JsonEditorTab({
           )
         })
 
-        const path = filteredList[0][0].split('/')
-        const pathWithoutIndex = path
-          .filter((partOfPath) => Number.isNaN(Number.parseInt(partOfPath)))
-          .filter(Boolean) // remove empty strings
+        if (!relevantPath) return
 
-        sideBarData.setSideBarSelectedPath(pathWithoutIndex)
-        if (!sideBarData.sideBarIsOpen) {
-          sideBarData.setSideBarIsOpen(true)
-        }
+        const pathSegments = relevantPath[0].split('/')
+        const pathSegmentsWithoutIndex = pathSegments
+          .filter((partOfPath) => Number.isNaN(Number.parseInt(partOfPath)))
+          .filter((partOfPath) => Boolean(partOfPath)) // remove empty strings
+
+        sideBarData.setSideBarSelectedPath(pathSegmentsWithoutIndex)
+        sideBarData.setSideBarIsOpen(true)
       },
     })
 

@@ -47,9 +47,7 @@ export default function SideBar() {
                 }
                 onClick={() => {
                   sideBarData.setSideBarContent(targetString)
-                  if (!sideBarData.sideBarIsOpen) {
-                    sideBarData.setSideBarIsOpen(true)
-                  }
+                  sideBarData.setSideBarIsOpen(true)
                 }}
               >
                 <FontAwesomeIcon className="fa-2x" icon={icon} />
