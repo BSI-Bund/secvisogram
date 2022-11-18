@@ -374,6 +374,15 @@ export default /** @type {const} */ ({
                   title: 'DocumentCategoryTitle',
                   description: 'DocumentCategoryDescription',
                 },
+                options: [
+                  'csaf_base',
+                  'csaf_base',
+                  'csaf_security_incident_response',
+                  'csaf_informational_advisory',
+                  'csaf_security_advisory',
+                  'csaf_vex',
+                ],
+                freeSolo: true,
               },
               minLength: 1,
               examples: [

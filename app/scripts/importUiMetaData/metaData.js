@@ -214,6 +214,15 @@ export default {
       description: 'DocumentCategoryDescription',
     },
     uiType: 'STRING_ENUM',
+    options: [
+      'csaf_base',
+      'csaf_base',
+      'csaf_security_incident_response',
+      'csaf_informational_advisory',
+      'csaf_security_advisory',
+      'csaf_vex',
+    ],
+    freeSolo: true,
   },
   '$.document.csaf_version': {
     userDocumentation: {

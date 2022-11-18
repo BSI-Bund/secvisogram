@@ -29,4 +29,6 @@ type MetaData = Readonly<{
     | 'OBJECT_CVSS_2'
     | 'OBJECT_CVSS_3'
     | 'ARRAY_REVISION_HISTORY'
+  options?: string[]
+  freeSolo?: boolean
 }>

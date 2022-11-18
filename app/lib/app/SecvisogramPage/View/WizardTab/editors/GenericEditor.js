@@ -67,7 +67,8 @@ export default function Editor({ parentProperty, property, instancePath }) {
         <EnumAttribute
           label={property.title || ''}
           description={property.description}
-          options={property.enum || []}
+          options={property.enum || property.metaData?.options || []}
+          freeSolo={property.metaData?.freeSolo || false}
           validationErrors={errors}
           instancePath={instancePath}
           value={value}

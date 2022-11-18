@@ -1,5 +1,5 @@
-import {TextField} from '@material-ui/core'
-import {Autocomplete} from '@material-ui/lab'
+import { TextField } from '@material-ui/core'
+import { Autocomplete } from '@material-ui/lab'
 import React from 'react'
 import Attribute from './shared/Attribute.js'
 
@@ -8,13 +8,20 @@ import Attribute from './shared/Attribute.js'
  *  label: string
  *  description: string
  *  options: string[]
+ *  freeSolo: boolean
  *  validationErrors: import('../../../../../shared/types').ValidationError[]
  *  instancePath: string[]
  *  value: unknown
  *  updateDoc(instancePath: string[], value: string): void
  * }} props
  */
-export default function EnumAttribute({ options, updateDoc, value, ...props }) {
+export default function EnumAttribute({
+  options,
+  freeSolo,
+  updateDoc,
+  value,
+  ...props
+}) {
   const [inputValue, setInputValue] = React.useState(value)
   return (
     <Attribute {...props}>
@@ -23,6 +30,7 @@ export default function EnumAttribute({ options, updateDoc, value, ...props }) {
           <Autocomplete
             disableClearable
             options={options}
+            freeSolo={freeSolo}
             value={value}
             onChange={(event, newValue) =>
               updateDoc(props.instancePath, /** @type {string} */ (newValue))
@@ -30,6 +38,13 @@ export default function EnumAttribute({ options, updateDoc, value, ...props }) {
             inputValue={/** @type {string} */ (inputValue)}
             onInputChange={(event, newInputValue) => {
               setInputValue(newInputValue ?? '')
+            }}
+            onBlur={() => {
+              if (freeSolo)
+                updateDoc(
+                  props.instancePath,
+                  /** @type {string} */ (inputValue)
+                )
             }}
             renderInput={(params) => (
               <TextField
