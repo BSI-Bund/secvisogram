@@ -27,7 +27,6 @@ export default function ObjectEditor({
     ['OBJECT', 'ARRAY'].includes(p.type)
   )
   const menuStructure = getObjectMenuStructure(property)
-  const menuDepth = Math.max(...menuStructure.map((p) => p.instancePath.length))
   const selectedSubPath = menuStructure
     .slice()
     .map((p) => p.instancePath)
@@ -104,7 +103,7 @@ export default function ObjectEditor({
                 {fieldProperties?.length ? (
                   <li
                     className={
-                      (!selectedMenuPath.length ? 'bg-blue-400' : '') +
+                      (!selectedMenuPath.length ? 'font-bold' : '') +
                       ' border-b border-gray-300 flex w-full'
                     }
                   >
@@ -116,7 +115,7 @@ export default function ObjectEditor({
                       />
                     </div>
                     <button
-                      className="italic text-left w-full px-2 h-9 hover:bg-blue-300"
+                      className="italic text-left w-full px-2 h-9 hover:underline"
                       onClick={() => {
                         setSelectedPath(instancePath)
                       }}
@@ -125,33 +124,52 @@ export default function ObjectEditor({
                     </button>
                   </li>
                 ) : null}
-                {menuStructure.map((menuItem) => {
+                {menuStructure.map((menuItem, menuItemIndex) => {
                   const childErrors = errors.filter((e) =>
                     e.instancePath.startsWith(
                       '/' + menuItem.instancePath.join('/')
                     )
                   )
+                  const isSelected =
+                    selectedSubPath &&
+                    menuItem.instancePath.every(
+                      (p, i) => selectedSubPath[i] === p
+                    )
+                  const docuPathFromInstancePath = [
+                    ...instancePath,
+                    ...menuItem.instancePath,
+                  ].filter((p) => Number.isNaN(Number(p)))
+                  const isActiveInSidebar =
+                    docuPathFromInstancePath.length ===
+                      sideBarData.sideBarSelectedPath.length &&
+                    docuPathFromInstancePath.every(
+                      (p, i) => sideBarData.sideBarSelectedPath[i] === p
+                    )
 
                   return (
                     <React.Fragment key={menuItem.instancePath.join('.')}>
                       <li
-                        className={`bg-gray-200 ${
-                          menuDepth > 1 && menuItem.instancePath.length === 1
-                            ? 'bg-gray-300'
+                        className={`bg-gray-300 ${
+                          menuItem.instancePath.length === 1 &&
+                          menuItemIndex > 0
+                            ? 'mt-4'
                             : ''
                         }`}
                         style={{
-                          marginLeft: (menuItem.instancePath.length - 1) * 10,
+                          paddingLeft: (menuItem.instancePath.length - 1) * 10,
                         }}
                       >
                         <div
                           className={
-                            (selectedSubPath &&
-                            menuItem.instancePath.every(
-                              (p, i) => selectedSubPath[i] === p
-                            )
-                              ? 'bg-blue-400'
-                              : '') + ' border-b border-gray-300 flex w-full'
+                            `${isSelected ? 'font-bold' : ''} ${
+                              menuItem.instancePath.length === 1 &&
+                              !fieldProperties?.length
+                                ? 'bg-gray-300'
+                                : 'bg-gray-200'
+                            }` +
+                            (menuItem.instancePath.length > 1
+                              ? ' border-b border-gray-200 flex w-full'
+                              : ' border-b border-gray-300 flex w-full')
                           }
                         >
                           <div className="grid place-items-center px-2">
@@ -163,7 +181,7 @@ export default function ObjectEditor({
                           </div>
                           <button
                             type="button"
-                            className="px-2 w-full text-left hover:bg-blue-300"
+                            className="px-2 w-full text-left hover:underline whitespace-nowrap"
                             data-testid={`menu_entry-/${instancePath
                               .concat(menuItem.instancePath)
                               .join('/')}`}
@@ -183,7 +201,14 @@ export default function ObjectEditor({
                               ) + '-infoButton'
                             }
                             type="button"
-                            className="w-9 h-9 flex-none hover:bg-blue-300"
+                            className={
+                              'w-9 h-9 flex-none hover:text-slate-600 ' +
+                              `${
+                                isActiveInSidebar
+                                  ? 'text-slate-600'
+                                  : 'text-slate-400'
+                              }`
+                            }
                             onClick={() => {
                               sideBarData.setSideBarIsOpen(true)
                               sideBarData.setSideBarSelectedPath([

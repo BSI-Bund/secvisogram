@@ -22,7 +22,7 @@ export function getErrorTextColor(errors) {
     ? 'text-blue-600'
     : errors.length
     ? 'text-red-600' // fall back to red if there are errors but their type is not known
-    : 'text-green-600'
+    : 'invisible'
 }
 
 /**

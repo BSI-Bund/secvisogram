@@ -149,7 +149,7 @@ function Menu({ instancePath, level = 1, ...props }) {
             <li key={instancePath.concat([String(i)]).join('.')}>
               <div
                 className={
-                  (selectedIndex === i ? 'bg-blue-400' : '') +
+                  (selectedIndex === i ? 'font-bold' : '') +
                   ' border-b border-gray-300 flex w-full'
                 }
               >
@@ -163,7 +163,7 @@ function Menu({ instancePath, level = 1, ...props }) {
                 <button
                   type="button"
                   className={
-                    'px-2 h-9 w-full text-left hover:bg-blue-300 whitespace-nowrap'
+                    'px-2 h-9 w-full text-left hover:underline whitespace-nowrap'
                   }
                   onClick={() => {
                     setSelectedIndex(i)
@@ -174,7 +174,7 @@ function Menu({ instancePath, level = 1, ...props }) {
                 <button
                   data-testid={[...instancePath, i].join('-') + '-infoButton'}
                   type="button"
-                  className="w-9 h-9 flex-none hover:bg-blue-300"
+                  className="w-9 h-9 flex-none hover:underline"
                   onClick={() => {
                     setSideBarIsOpen(true)
                     setSideBarSelectedPath(instancePath.concat(i.toString()))
