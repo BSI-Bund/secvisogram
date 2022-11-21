@@ -6,6 +6,7 @@ import TextAttribute from './GenericEditor/Attributes/TextAttribute.js'
 import TextAreaAttribute from './GenericEditor/Attributes/TextAreaAttribute.js'
 import DateAttribute from './GenericEditor/Attributes/DateAttribute.js'
 import EnumAttribute from './GenericEditor/Attributes/EnumAttribute.js'
+import CweAttribute from './GenericEditor/Attributes/CweAttribute.js'
 
 /**
  * utility function to get the color of circles identifying errors
@@ -38,6 +39,16 @@ export default function Editor({ parentProperty, property, instancePath }) {
   if (property.type === 'ARRAY') {
     return <ArrayEditor property={property} instancePath={instancePath} />
   } else if (property.type === 'OBJECT') {
+    if (property.metaData?.uiType === 'OBJECT_CWE') {
+      return (
+        <CweAttribute
+          label={property.title || ''}
+          description={property.description}
+          property={property}
+          instancePath={instancePath}
+        />
+      )
+    }
     return (
       <ObjectEditor
         parentProperty={parentProperty}
