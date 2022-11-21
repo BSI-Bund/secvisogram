@@ -38,7 +38,8 @@ export default function Editor({ parentProperty, property, instancePath }) {
   const { doc, collectIds } = React.useContext(DocumentEditorContext)
 
   const uiType = property.metaData?.uiType
-  const label = property.title || ''
+  const label = property.title || 'missing title'
+  const description = property.description || 'missing description'
 
   if (property.type === 'ARRAY') {
     return <ArrayEditor property={property} instancePath={instancePath} />
@@ -47,7 +48,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
       return (
         <CweAttribute
           label={label}
-          description={property.description}
+          description={description}
           property={property}
           instancePath={instancePath}
         />
@@ -69,7 +70,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
       return (
         <DateAttribute
           label={label}
-          description={property.description}
+          description={description}
           instancePath={instancePath}
           value={value}
         />
@@ -78,7 +79,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
       return (
         <EnumAttribute
           label={label}
-          description={property.description}
+          description={description}
           options={property.enum || property.metaData?.options || []}
           freeSolo={property.metaData?.freeSolo || false}
           instancePath={instancePath}
@@ -89,7 +90,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
       return (
         <TextAreaAttribute
           label={label}
-          description={property.description}
+          description={description}
           minLength={property.minLength || 0}
           required={property.mandatory}
           instancePath={instancePath}
@@ -100,7 +101,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
       return (
         <IdAttribute
           label={property.title || ''}
-          description={property.description}
+          description={description}
           instancePath={instancePath}
           value={value || ''}
           onCollectIds={collectIds['productIds']}
@@ -110,7 +111,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
       return (
         <IdAttribute
           label={property.title || ''}
-          description={property.description}
+          description={description}
           instancePath={instancePath}
           value={value || ''}
           onCollectIds={collectIds['groupIds']}
@@ -120,7 +121,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
       return (
         <TextAttribute
           label={label}
-          description={property.description}
+          description={description}
           minLength={property.minLength || 0}
           type={'url'}
           pattern={property.pattern}
@@ -133,7 +134,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
       return (
         <TextAttribute
           label={label}
-          description={property.description}
+          description={description}
           minLength={property.minLength || 0}
           pattern={property.pattern}
           required={property.mandatory}
