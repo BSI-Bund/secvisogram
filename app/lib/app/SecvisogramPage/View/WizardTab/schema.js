@@ -2100,7 +2100,6 @@ export default /** @type {const} */ ({
                               description:
                                 'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
                               metaData: {
-                                uiType: 'STRING_PRODUCT_ID',
                                 userDocumentation: {
                                   specification:
                                     'docs/user/types/full_product_name/product_id-spec.en.md',
@@ -3073,7 +3072,6 @@ export default /** @type {const} */ ({
                         description:
                           'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
                         metaData: {
-                          uiType: 'STRING_PRODUCT_ID',
                           userDocumentation: {
                             specification:
                               'docs/user/types/product_id-spec.en.md',
@@ -4251,7 +4249,6 @@ export default /** @type {const} */ ({
                               description:
                                 'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
                               metaData: {
-                                uiType: 'STRING_PRODUCT_ID',
                                 userDocumentation: {
                                   specification:
                                     'docs/user/types/full_product_name/product_id-spec.en.md',
