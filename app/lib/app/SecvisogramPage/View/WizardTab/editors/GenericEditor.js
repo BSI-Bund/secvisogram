@@ -34,15 +34,18 @@ export function getErrorTextColor(errors) {
  * @param {string[]} props.instancePath
  */
 export default function Editor({ parentProperty, property, instancePath }) {
-  const { doc, errors, updateDoc } = React.useContext(DocumentEditorContext)
+  const { doc } = React.useContext(DocumentEditorContext)
+
+  const uiType = property.metaData?.uiType
+  const label = property.title || ''
 
   if (property.type === 'ARRAY') {
     return <ArrayEditor property={property} instancePath={instancePath} />
   } else if (property.type === 'OBJECT') {
-    if (property.metaData?.uiType === 'OBJECT_CWE') {
+    if (uiType === 'OBJECT_CWE') {
       return (
         <CweAttribute
-          label={property.title || ''}
+          label={label}
           description={property.description}
           property={property}
           instancePath={instancePath}
@@ -60,72 +63,61 @@ export default function Editor({ parentProperty, property, instancePath }) {
     const value = instancePath.reduce((value, pathSegment) => {
       return (value ?? {})[pathSegment]
     }, /** @type {Record<string, any> | null} */ (doc))
-    const uiType = property.metaData?.uiType
 
     if (uiType === 'STRING_DATETIME') {
       return (
         <DateAttribute
-          label={property.title || ''}
+          label={label}
           description={property.description}
-          validationErrors={errors}
           instancePath={instancePath}
           value={value}
-          updateDoc={updateDoc}
         />
       )
     } else if (uiType === 'STRING_ENUM') {
       return (
         <EnumAttribute
-          label={property.title || ''}
+          label={label}
           description={property.description}
           options={property.enum || property.metaData?.options || []}
           freeSolo={property.metaData?.freeSolo || false}
-          validationErrors={errors}
           instancePath={instancePath}
           value={value}
-          updateDoc={updateDoc}
         />
       )
     } else if (uiType === 'STRING_MULTI_LINE') {
       return (
         <TextAreaAttribute
-          label={property.title || ''}
+          label={label}
           description={property.description}
           minLength={property.minLength || 0}
           required={property.mandatory}
-          validationErrors={errors}
           instancePath={instancePath}
           value={value}
-          updateDoc={updateDoc}
         />
       )
     } else if (uiType === 'STRING_URI') {
       return (
         <TextAttribute
-          label={property.title || ''}
+          label={label}
           description={property.description}
           minLength={property.minLength || 0}
           type={'url'}
           pattern={property.pattern || ''}
           required={property.mandatory}
-          validationErrors={errors}
           instancePath={instancePath}
           value={value}
-          updateDoc={updateDoc}
         />
       )
     } else {
       return (
         <TextAttribute
-          label={property.title || ''}
+          label={label}
           description={property.description}
           minLength={property.minLength || 0}
           pattern={property.pattern || ''}
           required={property.mandatory}
-          validationErrors={errors}
           instancePath={instancePath}
           value={value}
-          updateDoc={updateDoc}
         />
       )
     }

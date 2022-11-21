@@ -1,5 +1,6 @@
 import React from 'react'
 import Attribute from './shared/Attribute.js'
+import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 
 /**
  * @param {Pick<React.HTMLProps<HTMLInputElement>, 'type'> &{
@@ -10,10 +11,8 @@ import Attribute from './shared/Attribute.js'
  *  minLength: number
  *  readOnly?: boolean
  *  required?: boolean
- *  validationErrors: import('../../../../../shared/types').ValidationError[]
  *  instancePath: string[]
  *  value: unknown
- *  updateDoc(instancePath: string[], value: string): void
  * }} props
  */
 export default function TextAttribute({
@@ -23,10 +22,10 @@ export default function TextAttribute({
   minLength,
   required = false,
   readOnly = false,
-  updateDoc,
   value,
   ...props
 }) {
+  const { updateDoc } = React.useContext(DocumentEditorContext)
   return (
     <Attribute {...props}>
       <div className="max-w-md flex items-baseline justify-center">

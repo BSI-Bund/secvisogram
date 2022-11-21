@@ -2,6 +2,7 @@ import { TextField } from '@material-ui/core'
 import { Autocomplete } from '@material-ui/lab'
 import React from 'react'
 import Attribute from './shared/Attribute.js'
+import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 
 /**
  * @param {{
@@ -9,19 +10,12 @@ import Attribute from './shared/Attribute.js'
  *  description: string
  *  options: string[]
  *  freeSolo: boolean
- *  validationErrors: import('../../../../../shared/types').ValidationError[]
  *  instancePath: string[]
  *  value: unknown
- *  updateDoc(instancePath: string[], value: string): void
  * }} props
  */
-export default function EnumAttribute({
-  options,
-  freeSolo,
-  updateDoc,
-  value,
-  ...props
-}) {
+export default function EnumAttribute({ options, freeSolo, value, ...props }) {
+  const { updateDoc } = React.useContext(DocumentEditorContext)
   const [inputValue, setInputValue] = React.useState(value)
   return (
     <Attribute {...props}>

@@ -4,6 +4,7 @@ import AttributeErrors from './AttributeErrors.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import SideBarContext from '../../../../../shared/context/SideBarContext.js'
+import DocumentEditorContext from '../../../../../shared/DocumentEditorContext.js'
 
 /**
  * Abstracts the base functionality for all input fields in the wizard.
@@ -12,7 +13,6 @@ import SideBarContext from '../../../../../shared/context/SideBarContext.js'
  * @param {{
  *  label: string
  *  description: string
- *  validationErrors: import('../../../../../../shared/types').ValidationError[]
  *  instancePath: string[]
  *  children?: React.ReactNode | ((params: {}) => React.ReactNode)
  * }} props
@@ -21,16 +21,17 @@ import SideBarContext from '../../../../../shared/context/SideBarContext.js'
 export default function Attribute({
   label,
   description,
-  validationErrors,
   instancePath,
   children,
 }) {
+  const { errors } = React.useContext(DocumentEditorContext)
+
   const { setSideBarIsOpen, setSideBarSelectedPath } =
     React.useContext(SideBarContext)
 
   const jsonInstancePath = compile(instancePath)
 
-  const localValidationErrors = validationErrors.filter(
+  const localValidationErrors = errors.filter(
     (e) => e.instancePath === jsonInstancePath
   )
   const attributeName = React.useMemo(

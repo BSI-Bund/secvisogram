@@ -1,6 +1,7 @@
 import React from 'react'
 import DatePicker from './DateAttribute/DatePicker.js'
 import Attribute from './shared/Attribute.js'
+import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 
 /**
  * @param {{
@@ -8,19 +9,17 @@ import Attribute from './shared/Attribute.js'
  *  description: string
  *  readOnly?: boolean
  *  required?: boolean
- *  validationErrors: import('../../../../../shared/types').ValidationError[]
  *  instancePath: string[]
  *  value: unknown
- *  updateDoc(instancePath: string[], value: string): void
  * }} props
  */
 export default function DateAttribute({
   required = true,
   readOnly = false,
-  updateDoc,
   value,
   ...props
 }) {
+  const { updateDoc } = React.useContext(DocumentEditorContext)
   return (
     <Attribute {...props}>
       <div className="max-w-md flex items-center justify-center">
