@@ -632,9 +632,19 @@ function View({
       updateDoc(instancePath, value) {
         onReplaceDoc(set(instancePath, value, formValues.doc))
       },
+      collectIds: {
+        productIds: () => onCollectProductIds(formValues.doc),
+        groupIds: () => onCollectGroupIds(formValues.doc),
+      },
       errors,
     }),
-    [formValues.doc, errors, onReplaceDoc]
+    [
+      formValues.doc,
+      errors,
+      onReplaceDoc,
+      onCollectProductIds,
+      onCollectGroupIds,
+    ]
   )
 
   const [sideBarIsOpen, setSideBarIsOpen] = React.useState(

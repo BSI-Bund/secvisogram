@@ -7,6 +7,7 @@ import TextAreaAttribute from './GenericEditor/Attributes/TextAreaAttribute.js'
 import DateAttribute from './GenericEditor/Attributes/DateAttribute.js'
 import EnumAttribute from './GenericEditor/Attributes/EnumAttribute.js'
 import CweAttribute from './GenericEditor/Attributes/CweAttribute.js'
+import IdAttribute from './GenericEditor/Attributes/IdAttribute.js'
 
 /**
  * utility function to get the color of circles identifying errors
@@ -34,7 +35,7 @@ export function getErrorTextColor(errors) {
  * @param {string[]} props.instancePath
  */
 export default function Editor({ parentProperty, property, instancePath }) {
-  const { doc } = React.useContext(DocumentEditorContext)
+  const { doc, collectIds } = React.useContext(DocumentEditorContext)
 
   const uiType = property.metaData?.uiType
   const label = property.title || ''
@@ -93,6 +94,26 @@ export default function Editor({ parentProperty, property, instancePath }) {
           required={property.mandatory}
           instancePath={instancePath}
           value={value}
+        />
+      )
+    } else if (uiType === 'STRING_PRODUCT_ID') {
+      return (
+        <IdAttribute
+          label={property.title || ''}
+          description={property.description}
+          instancePath={instancePath}
+          value={value || ''}
+          onCollectIds={collectIds['productIds']}
+        />
+      )
+    } else if (uiType === 'STRING_GROUP_ID') {
+      return (
+        <IdAttribute
+          label={property.title || ''}
+          description={property.description}
+          instancePath={instancePath}
+          value={value || ''}
+          onCollectIds={collectIds['groupIds']}
         />
       )
     } else if (uiType === 'STRING_URI') {
