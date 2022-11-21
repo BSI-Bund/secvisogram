@@ -123,7 +123,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           description={property.description}
           minLength={property.minLength || 0}
           type={'url'}
-          pattern={property.pattern || ''}
+          pattern={property.pattern}
           required={property.mandatory}
           instancePath={instancePath}
           value={value}
@@ -135,7 +135,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           label={label}
           description={property.description}
           minLength={property.minLength || 0}
-          pattern={property.pattern || ''}
+          pattern={property.pattern}
           required={property.mandatory}
           instancePath={instancePath}
           value={value}
