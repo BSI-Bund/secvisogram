@@ -150,6 +150,7 @@ export default function ObjectEditor({
                     <React.Fragment key={menuItem.instancePath.join('.')}>
                       <li
                         className={`bg-gray-300 ${
+                          instancePath.length === 0 &&
                           menuItem.instancePath.length === 1 &&
                           menuItemIndex > 0
                             ? 'mt-4'
