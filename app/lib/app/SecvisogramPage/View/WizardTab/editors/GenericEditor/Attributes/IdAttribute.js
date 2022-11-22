@@ -78,7 +78,6 @@ export default function IdAttribute({ placeholder, onCollectIds, ...props }) {
           <Combobox
             className="w-full"
             onSelect={(id) => {
-              console.log('calling onSelect fn')
               setTerm('')
               updateDoc(props.instancePath, id)
             }}
