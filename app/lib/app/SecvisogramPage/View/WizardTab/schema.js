@@ -3007,6 +3007,7 @@ export default /** @type {const} */ ({
                   title: 'Full product name',
                   description:
                     'Specifies information about the product and assigns the product_id.',
+                  addMenuItemsForChildObjects: true,
                   metaData: {
                     userDocumentation: {
                       specification:
@@ -3017,6 +3018,7 @@ export default /** @type {const} */ ({
                       title: 'FullProductNameTitle',
                       description: 'FullProductNameDescription',
                     },
+                    addMenuItemsForChildObjects: true,
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -4113,6 +4115,7 @@ export default /** @type {const} */ ({
                   title: 'Relationship',
                   description:
                     'Establishes a link between two existing full_product_name_t elements, allowing the document producer to define a combination of two products that form a new full_product_name entry.',
+                  addMenuItemsForChildObjects: true,
                   metaData: {
                     userDocumentation: {
                       specification:
@@ -4124,6 +4127,7 @@ export default /** @type {const} */ ({
                       title: 'ProductTreeRelationshipsItemsTitle',
                       description: 'ProductTreeRelationshipsItemsDescription',
                     },
+                    addMenuItemsForChildObjects: true,
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -4175,6 +4179,7 @@ export default /** @type {const} */ ({
                         title: 'Full product name',
                         description:
                           'Specifies information about the product and assigns the product_id.',
+                        addMenuItemsForChildObjects: true,
                         metaData: {
                           userDocumentation: {
                             specification:
@@ -4193,6 +4198,7 @@ export default /** @type {const} */ ({
                             title: 'FullProductNameTitle',
                             description: 'FullProductNameDescription',
                           },
+                          addMenuItemsForChildObjects: true,
                         },
                         type: 'OBJECT',
                         metaInfo: {

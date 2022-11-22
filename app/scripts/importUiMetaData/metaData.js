@@ -1568,6 +1568,7 @@ export default {
       title: 'FullProductNameTitle',
       description: 'FullProductNameDescription',
     },
+    addMenuItemsForChildObjects: true,
   },
   '$.product_tree.full_product_names.name': {
     userDocumentation: {
@@ -2133,6 +2134,7 @@ export default {
       title: 'ProductTreeRelationshipsItemsTitle',
       description: 'ProductTreeRelationshipsItemsDescription',
     },
+    addMenuItemsForChildObjects: true,
   },
   '$.product_tree.relationships.category': {
     userDocumentation: {
@@ -2172,6 +2174,7 @@ export default {
       title: 'FullProductNameTitle',
       description: 'FullProductNameDescription',
     },
+    addMenuItemsForChildObjects: true,
   },
   '$.product_tree.relationships.full_product_name.name': {
     userDocumentation: {
