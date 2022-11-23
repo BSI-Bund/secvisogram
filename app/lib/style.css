@@ -161,3 +161,52 @@ textarea:invalid {
 .advisory p {
   @apply whitespace-pre-wrap;
 }
+
+.treeview ul {
+  list-style: none;
+  @apply ml-8;
+}
+
+.treeview > ul {
+  margin-left: 0;
+}
+
+.treeview ul li {
+  position: relative;
+}
+
+.treeview ul li:before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: -13px;
+  border-left: 2px dashed #a2a5b5;
+  width: 1px;
+  height: 100%;
+}
+
+.treeview ul li:last-child:before {
+  top: 0;
+  height: 20px;
+}
+
+.treeview ul li:after {
+  content: '';
+  position: absolute;
+  border-top: 2px dashed #a2a5b5;
+  top: 17px;
+  left: -8px;
+  width: 15px;
+}
+
+.treeview > ul > li:before {
+  content: unset;
+}
+
+.treeview > ul > li:last-child:before {
+  content: unset;
+}
+
+.treeview > ul > li:after {
+  content: unset;
+}

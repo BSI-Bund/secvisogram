@@ -1,4 +1,4 @@
-import { getObjectMenuStructure } from '../../../lib/app/SecvisogramPage/View/WizardTab/editors/GenericEditor/ObjectEditor.js'
+import { getObjectMenuPaths } from '../../../lib/app/SecvisogramPage/View/WizardTab/editors/GenericEditor/ObjectEditor.js'
 import schema from '../../../lib/app/SecvisogramPage/View/WizardTab/schema.js'
 import { getLoginEnabledConfig } from '../../fixtures/appConfigData.js'
 
@@ -39,71 +39,29 @@ describe('SecvisogramPage / WizardTab', function () {
     })
   })
 
-  describe('getObjectMenuStructure()', function () {
+  describe('getMenuPaths()', function () {
     it('can calculate the menu structure for the top level sidebar', function () {
       expect(
-        getObjectMenuStructure(
+        getObjectMenuPaths(
           /** @type {import('../../../lib/app/SecvisogramPage/View/WizardTab/schema.js').Property} */ (
             schema
           )
         )
       ).to.deep.equal([
-        {
-          instancePath: ['document'],
-          title: 'Document level meta-data',
-        },
-        {
-          instancePath: ['document', 'acknowledgments'],
-          title: 'List of acknowledgments',
-        },
-        {
-          instancePath: ['document', 'aggregate_severity'],
-          title: 'Aggregate severity',
-        },
-        {
-          instancePath: ['document', 'distribution'],
-          title: 'Rules for sharing document',
-        },
-        {
-          instancePath: ['document', 'notes'],
-          title: 'List of notes',
-        },
-        {
-          instancePath: ['document', 'publisher'],
-          title: 'Publisher',
-        },
-        {
-          instancePath: ['document', 'references'],
-          title: 'List of references',
-        },
-        {
-          instancePath: ['document', 'tracking'],
-          title: 'Tracking',
-        },
-        {
-          instancePath: ['product_tree'],
-          title: 'Product tree',
-        },
-        {
-          instancePath: ['product_tree', 'branches'],
-          title: 'List of branches',
-        },
-        {
-          instancePath: ['product_tree', 'full_product_names'],
-          title: 'List of full product names',
-        },
-        {
-          instancePath: ['product_tree', 'product_groups'],
-          title: 'List of product groups',
-        },
-        {
-          instancePath: ['product_tree', 'relationships'],
-          title: 'List of relationships',
-        },
-        {
-          instancePath: ['vulnerabilities'],
-          title: 'Vulnerabilities',
-        },
+        { instancePath: ['document'] },
+        { instancePath: ['document', 'acknowledgments'] },
+        { instancePath: ['document', 'aggregate_severity'] },
+        { instancePath: ['document', 'distribution'] },
+        { instancePath: ['document', 'notes'] },
+        { instancePath: ['document', 'publisher'] },
+        { instancePath: ['document', 'references'] },
+        { instancePath: ['document', 'tracking'] },
+        { instancePath: ['product_tree'] },
+        { instancePath: ['product_tree', 'branches'] },
+        { instancePath: ['product_tree', 'full_product_names'] },
+        { instancePath: ['product_tree', 'product_groups'] },
+        { instancePath: ['product_tree', 'relationships'] },
+        { instancePath: ['vulnerabilities'] },
       ])
     })
   })
