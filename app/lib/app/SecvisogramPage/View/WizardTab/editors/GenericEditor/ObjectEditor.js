@@ -156,9 +156,7 @@ export default function ObjectEditor({
                             ? 'mt-4'
                             : ''
                         }`}
-                        style={{
-                          paddingLeft: (menuItem.instancePath.length - 1) * 10,
-                        }}
+                        style={{}}
                       >
                         <div
                           className={
@@ -173,6 +171,23 @@ export default function ObjectEditor({
                               : ' border-b border-gray-300 flex w-full')
                           }
                         >
+                          {Array.from({
+                            length: menuItem.instancePath.length - 2,
+                          }).map((_, i) => (
+                            <div key={i} className={'spacer w-4'}>
+                              I
+                            </div>
+                          ))}
+                          {menuItem.instancePath.length === 1 ? null : menuItem
+                              .instancePath.length > 1 ? (
+                            menuItem.index === 0 ? (
+                              <div className="spacer-t">T</div>
+                            ) : menuItem.parentLength - 1 === menuItem.index ? (
+                              <div className="spacer-l">L</div>
+                            ) : (
+                              <div className="spacer-t">T</div>
+                            )
+                          ) : null}
                           <div className="grid place-items-center px-2">
                             <FontAwesomeIcon
                               icon={faCircle}
@@ -240,13 +255,19 @@ export default function ObjectEditor({
  * @param {string[]} [instancePath]
  */
 export function getObjectMenuStructure(property, instancePath = []) {
-  /** @type {Array<{ instancePath: string[]; title?: string }>} */
+  const menuProperties =
+    property.metaInfo.propertyList?.filter(
+      (p) => p.type === 'OBJECT' || p.type === 'ARRAY'
+    ) ?? []
+  /** @type {Array<{ instancePath: string[]; title?: string; index: number; parentLength: number }>} */
   const menuStructure =
-    property.metaInfo.propertyList?.flatMap((childProperty) => {
+    menuProperties.flatMap((childProperty, index) => {
       return [
         ...(childProperty.type === 'OBJECT' || childProperty.type === 'ARRAY'
           ? [
               {
+                index,
+                parentLength: menuProperties.length ?? 0,
                 instancePath: [...instancePath, childProperty.key],
                 title: childProperty.title,
               },
