@@ -44,7 +44,7 @@ export default function ArrayEditor({ property, instancePath }) {
 
   return (
     <>
-      <div className="border-l border-r border-solid bg-gray-50 border-gray-400 wizard-menu-shadow mr-2">
+      <div className="treeview border-l border-r border-solid bg-gray-50 border-gray-400 wizard-menu-shadow mr-2">
         <Menu
           value={sanitizedValue}
           instancePath={instancePath}
@@ -139,86 +139,62 @@ function Menu({ instancePath, level = 1, ...props }) {
   }
 
   return (
-    <div>
-      <ul className={`block ${level > 1 ? 'ml-2' : ''}`}>
-        {sanitizedValue.map((_, i) => {
-          const indexErrors = errors.filter((e) =>
-            e.instancePath.startsWith('/' + [...instancePath, i].join('/'))
-          )
-          return (
-            <li key={instancePath.concat([String(i)]).join('.')}>
-              <div
-                className={
-                  (selectedIndex === i ? 'font-bold' : '') +
-                  ' border-b border-gray-300 flex w-full'
-                }
-              >
-                <div className="grid place-items-center px-2 h-9">
-                  <FontAwesomeIcon
-                    icon={faCircle}
-                    className={getErrorTextColor(indexErrors)}
-                    size="xs"
-                  />
-                </div>
-                <button
-                  type="button"
-                  className={
-                    'px-2 h-9 w-full text-left hover:underline whitespace-nowrap'
-                  }
-                  onClick={() => {
-                    setSelectedIndex(i)
-                  }}
-                >
-                  Item {i + 1}
-                </button>
-                <button
-                  data-testid={[...instancePath, i].join('-') + '-infoButton'}
-                  type="button"
-                  className="w-9 h-9 flex-none hover:underline"
-                  onClick={() => {
-                    setSideBarIsOpen(true)
-                    setSideBarSelectedPath(instancePath.concat(i.toString()))
-                  }}
-                >
-                  <FontAwesomeIcon icon={faInfoCircle} size="xs" />
-                </button>
-              </div>
-              {recursionProperty ? (
-                <Menu
-                  {...props}
-                  instancePath={instancePath.concat([
-                    String(i),
-                    recursionProperty.key,
-                  ])}
-                  level={level + 1}
+    <ul>
+      {sanitizedValue.map((_, i) => {
+        const indexErrors = errors.filter((e) =>
+          e.instancePath.startsWith('/' + [...instancePath, i].join('/'))
+        )
+        return (
+          <li key={instancePath.concat([String(i)]).join('.')} className="bg-gray-200">
+            <div
+              className={
+                (selectedIndex === i ? 'font-bold' : '') +
+                ' flex w-full'
+              }
+            >
+              <div className="grid place-items-center px-2 h-9">
+                <FontAwesomeIcon
+                  icon={faCircle}
+                  className={getErrorTextColor(indexErrors)}
+                  size="xs"
                 />
-              ) : null}
-            </li>
-          )
-        })}
-      </ul>
-      <button
-        type="button"
-        className={`h-9 pr-2 text-left hover:bg-gray-300 border-b border-blue-300 border-solid w-full whitespace-nowrap ${
-          level > 1 ? 'pl-4' : 'pl-2'
-        }`}
-        data-testid={`menu_entry-/${instancePath.join('/')}-add_item_button`}
-        onClick={() => {
-          const value =
-            childProperty.type === 'OBJECT'
-              ? {}
-              : childProperty.type === 'ARRAY'
-              ? []
-              : ['STRING', 'DATETIME', 'URI'].includes(childProperty.type)
-              ? ''
-              : null
-          if (value !== null) {
-            updateDoc(instancePath, sanitizedValue.concat([value]))
-          }
-        }}
-      >
-        Add item
-      </button>
-    </div>
+              </div>
+              <button
+                type="button"
+                className={
+                  'px-2 h-9 w-full text-left hover:underline whitespace-nowrap'
+                }
+                onClick={() => {
+                  setSelectedIndex(i)
+                }}
+              >
+                Item {i + 1}
+              </button>
+              <button
+                data-testid={[...instancePath, i].join('-') + '-infoButton'}
+                type="button"
+                className="w-9 h-9 flex-none hover:underline"
+                onClick={() => {
+                  setSideBarIsOpen(true)
+                  setSideBarSelectedPath(instancePath.concat(i.toString()))
+                }}
+              >
+                <FontAwesomeIcon icon={faInfoCircle} size="xs" />
+              </button>
+            </div>
+            {recursionProperty ? (
+              <Menu
+                {...props}
+                instancePath={instancePath.concat([
+                  String(i),
+                  recursionProperty.key,
+                ])}
+                level={level + 1}
+              />
+            ) : null}
+          </li>
+        )
+      })}
+    </ul>
   )
 }

@@ -125,7 +125,7 @@ export default function ObjectEditor({
                 <li
                   className={
                     (!selectedMenuPath.length ? 'font-bold' : '') +
-                    ' border-b border-gray-300 flex w-full'
+                    ' bg-gray-200 flex w-full'
                   }
                 >
                   <div className="grid place-items-center px-2">
@@ -146,7 +146,7 @@ export default function ObjectEditor({
                 </li>
               ) : null}
               <li
-                className={`bg-gray-300 ${
+                className={`bg-gray-200 ${
                   instancePath.length === 0 &&
                   menuItem.instancePath.length === 1 &&
                   menuItemIndex > 0
@@ -157,15 +157,7 @@ export default function ObjectEditor({
               >
                 <div
                   className={
-                    `${isSelected ? 'font-bold' : ''} ${
-                      menuItem.instancePath.length === 1 &&
-                      !fieldProperties?.length
-                        ? 'bg-gray-300'
-                        : 'bg-gray-200'
-                    }` +
-                    (menuItem.instancePath.length > 1
-                      ? ' border-b border-gray-200 flex w-full'
-                      : ' border-b border-gray-300 flex w-full')
+                    `${isSelected ? 'font-bold' : ''}` + ' flex w-full'
                   }
                 >
                   <div className="grid place-items-center px-2">
