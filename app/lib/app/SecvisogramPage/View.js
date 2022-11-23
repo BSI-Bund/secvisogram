@@ -888,14 +888,14 @@ function View({
                       const count = errors.filter((e) => e.type === type).length
                       if (count) {
                         return (
-                          <>
-                            <FontAwesomeIcon
-                              icon={faCircle}
-                              className={color}
-                              size="xs"
-                            />
+                          <span key={'errors-' + type}>
+                          <FontAwesomeIcon
+                            icon={faCircle}
+                            className={color}
+                            size="xs"
+                          />
                             {` ${count} ${type}${count > 1 ? 's' : ''} `}
-                          </>
+                        </span>
                         )
                       }
                     })}
