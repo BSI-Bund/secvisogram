@@ -7,6 +7,7 @@ import sortObjectKeys from '../../shared/sortObjectKeys.js'
 import editorSchema from './JsonEditorTab/editorSchema.js'
 import SideBarContext from './shared/context/SideBarContext.js'
 import useDebounce from './shared/useDebounce.js'
+import SelectedPathContext from './shared/context/SelectedPathContext.js'
 
 /**
  * @param {{
@@ -171,26 +172,36 @@ export default function JsonEditorTab({
     }
   }, [errors, monaco, editor, debouncedValue])
 
-  const setCursor = (/** @type {string} */ jsonPath) => {
-    if (editor) {
-      let result
-      try {
-        result = jsonMap.parse(debouncedValue)
-      } catch (/** @type {any} */ e) {
-        return
-      }
+  const setCursor = React.useCallback(
+    (/** @type {string} */ jsonPath) => {
+      if (editor) {
+        let result
+        try {
+          result = jsonMap.parse(debouncedValue)
+        } catch (/** @type {any} */ e) {
+          return
+        }
 
-      let positionData = result.pointers[jsonPath]
-      if (positionData) {
-        editor.setPosition({
-          lineNumber: positionData.value.line + 1,
-          column: positionData.value.column + 2,
-        })
-        editor.revealLine(positionData.value.line + 1)
-        editor.focus()
+        let positionData = result.pointers[jsonPath]
+        if (positionData) {
+          editor.setPosition({
+            lineNumber: positionData.value.line + 1,
+            column: positionData.value.column + 2,
+          })
+          editor.revealLine(positionData.value.line + 1)
+          editor.focus()
+        }
       }
-    }
-  }
+    },
+    [editor, debouncedValue]
+  )
+
+  const { selectedPath } = React.useContext(SelectedPathContext)
+
+  React.useEffect(
+    () => setCursor('/' + selectedPath.join('/')),
+    [setCursor, selectedPath]
+  )
 
   const editorDidMount = (
     /** @type {any } */ editor,

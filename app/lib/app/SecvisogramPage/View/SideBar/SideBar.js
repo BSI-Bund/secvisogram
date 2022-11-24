@@ -2,13 +2,11 @@ import { faFileLines } from '@fortawesome/free-regular-svg-icons'
 import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
-  faComment,
   faExclamationTriangle,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import SideBarContext from '../shared/context/SideBarContext.js'
-import CommentPanel from './CommentPanel.js'
 import ErrorPanel from './ErrorPanel.js'
 import InfoPanel from './InfoPanel.js'
 
@@ -22,8 +20,6 @@ export default function SideBar() {
           <div className="w-72 p-3 bg-gray-200 overflow-auto">
             {sideBarData.sideBarContent === 'ERRORS' ? (
               <ErrorPanel selectedPath={sideBarData.sideBarSelectedPath} />
-            ) : sideBarData.sideBarContent === 'COMMENTS' ? (
-              <CommentPanel selectedPath={sideBarData.sideBarSelectedPath} />
             ) : sideBarData.sideBarContent === 'DOCUMENTATION' ? (
               <InfoPanel selectedPath={sideBarData.sideBarSelectedPath} />
             ) : null}
@@ -32,7 +28,6 @@ export default function SideBar() {
         <div className="flex-col">
           {[
             { targetString: 'ERRORS', icon: faExclamationTriangle },
-            { targetString: 'COMMENTS', icon: faComment },
             { targetString: 'DOCUMENTATION', icon: faFileLines },
           ].map(({ targetString, icon }) => (
             <div key={targetString}>

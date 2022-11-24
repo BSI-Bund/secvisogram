@@ -2,7 +2,7 @@ import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import SideBarContext from '../../../shared/context/SideBarContext.js'
-import WizardContext from '../../../shared/context/WizardContext.js'
+import SelectedPathContext from '../../../shared/context/SelectedPathContext.js'
 import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import { getErrorTextColor } from '../GenericEditor.js'
@@ -18,7 +18,8 @@ export default function ObjectEditor({
   property,
   instancePath,
 }) {
-  const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
+  const { selectedPath, setSelectedPath } =
+    React.useContext(SelectedPathContext)
   const { errors } = React.useContext(DocumentEditorContext)
   const fieldProperties = property.metaInfo.propertyList?.filter(
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
