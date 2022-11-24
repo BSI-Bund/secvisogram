@@ -19,8 +19,8 @@ describe('SecvisogramPage / WizardTab', function () {
     infoPanelContent.should('contain.text', 'Acknowledgments - Usage')
   })
 
-  describe('recursion fields work', function () {
-    it('branches tree', function () {
+  describe('can add new array items from object editor', function () {
+    it('/product_tree/branches', function () {
       cy.intercept('/.well-known/appspecific/de.bsi.secvisogram.json', {
         statusCode: 404,
         body: {},
@@ -34,8 +34,14 @@ describe('SecvisogramPage / WizardTab', function () {
         `[data-testid="menu_entry-/product_tree/branches-add_item_button"]`
       ).click()
       cy.get(
+        `[data-testid="menu_entry-/product_tree/branches/0/branches"]`
+      ).should('have.class', 'menu_entry-selected')
+      cy.get(
         `[data-testid="menu_entry-/product_tree/branches/0/branches-add_item_button"]`
       ).click()
+      cy.get(
+        `[data-testid="menu_entry-/product_tree/branches/0/branches/0/branches"]`
+      ).should('have.class', 'menu_entry-selected')
     })
   })
 

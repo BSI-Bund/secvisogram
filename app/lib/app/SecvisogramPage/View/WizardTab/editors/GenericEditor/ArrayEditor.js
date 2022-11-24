@@ -1,4 +1,8 @@
-import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCircle,
+  faInfoCircle,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import SideBarContext from '../../../shared/context/SideBarContext.js'
@@ -140,15 +144,27 @@ function Menu({ instancePath, level = 1, ...props }) {
 
   return (
     <ul>
-      {sanitizedValue.map((_, i) => {
+      {sanitizedValue.map((childValue, i) => {
         const indexErrors = errors.filter((e) =>
           e.instancePath.startsWith('/' + [...instancePath, i].join('/'))
         )
         return (
-          <li key={instancePath.concat([String(i)]).join('.')} className="bg-gray-200">
+          <li
+            key={instancePath.concat([String(i)]).join('.')}
+            className="bg-gray-200"
+          >
             <div
+              data-testid={
+                recursionProperty
+                  ? `menu_entry-/${[
+                      ...instancePath,
+                      String(i),
+                      recursionProperty.key,
+                    ].join('/')}`
+                  : `menu_entry-/${[...instancePath, String(i)].join('/')}`
+              }
               className={
-                (selectedIndex === i ? 'font-bold' : '') +
+                (selectedIndex === i ? 'menu_entry-selected font-bold' : '') +
                 ' flex w-full'
               }
             >
@@ -170,6 +186,43 @@ function Menu({ instancePath, level = 1, ...props }) {
               >
                 Item {i + 1}
               </button>
+              {recursionProperty ? (
+                <button
+                  data-testid={`menu_entry-/${[
+                    ...instancePath,
+                    String(i),
+                    recursionProperty.key,
+                  ].join('/')}-add_item_button`}
+                  onClick={() => {
+                    const subArray = childValue?.[recursionProperty.key]
+                    const sanitizedChildValue = Array.isArray(subArray)
+                      ? subArray
+                      : []
+                    const value =
+                      childProperty.type === 'OBJECT'
+                        ? {}
+                        : childProperty.type === 'ARRAY'
+                        ? []
+                        : childProperty.type === 'STRING'
+                        ? ''
+                        : null
+                    if (value !== null) {
+                      updateDoc(
+                        [...instancePath, String(i), recursionProperty.key],
+                        sanitizedChildValue.concat([value])
+                      )
+                      setSelectedPath([
+                        ...instancePath,
+                        String(i),
+                        recursionProperty.key,
+                        String(sanitizedChildValue.length),
+                      ])
+                    }
+                  }}
+                >
+                  <FontAwesomeIcon icon={faPlus} />
+                </button>
+              ) : null}
               <button
                 data-testid={[...instancePath, i].join('-') + '-infoButton'}
                 type="button"

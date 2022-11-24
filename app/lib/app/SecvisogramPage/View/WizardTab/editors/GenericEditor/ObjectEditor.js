@@ -1,4 +1,8 @@
-import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCircle,
+  faInfoCircle,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import SideBarContext from '../../../shared/context/SideBarContext.js'
@@ -19,6 +23,7 @@ export default function ObjectEditor({
   instancePath,
 }) {
   const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
+  const { doc, updateDoc } = React.useContext(DocumentEditorContext)
   const { errors } = React.useContext(DocumentEditorContext)
   const fieldProperties = property.metaInfo.propertyList?.filter(
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
@@ -43,6 +48,11 @@ export default function ObjectEditor({
       e.instancePath.startsWith('/' + instancePath.join('/')) &&
       e.instancePath.split('/').length === instancePath.length + 2
   )
+
+  const value = instancePath.reduce((value, pathSegment) => {
+    return (value ?? {})[pathSegment]
+  }, /** @type {Record<string, any> | null} */ (doc))
+  const sanitizedValue = value ?? {}
 
   const selectedMenuPath = selectedPath.slice(instancePath.length)
 
@@ -182,6 +192,52 @@ export default function ObjectEditor({
                   >
                     {menuItem.title}
                   </button>
+                  {menuItem.property.type === 'ARRAY' ? (
+                    <button
+                      data-testid={`menu_entry-/${[
+                        ...instancePath,
+                        ...menuItem.instancePath,
+                      ].join('/')}-add_item_button`}
+                      onClick={() => {
+                        const menuItemValue = menuItem.instancePath.reduce(
+                          (value, pathSegment) => {
+                            return (value ?? {})[pathSegment]
+                          },
+                          /** @type {Record<string, any> | null} */ (
+                            sanitizedValue
+                          )
+                        )
+                        const sanitizedMenuItemValue = Array.isArray(
+                          menuItemValue
+                        )
+                          ? menuItemValue
+                          : []
+                        const childType =
+                          menuItem.property.metaInfo.arrayType?.type
+                        const newItem =
+                          childType === 'OBJECT'
+                            ? {}
+                            : childType === 'ARRAY'
+                            ? []
+                            : childType === 'STRING'
+                            ? ''
+                            : null
+                        if (newItem !== null) {
+                          updateDoc(
+                            [...instancePath, ...menuItem.instancePath],
+                            sanitizedMenuItemValue.concat([newItem])
+                          )
+                          setSelectedPath([
+                            ...instancePath,
+                            ...menuItem.instancePath,
+                            String(sanitizedMenuItemValue.length),
+                          ])
+                        }
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                  ) : null}
                   <button
                     data-testid={
                       [...instancePath, ...menuItem.instancePath].join('-') +
@@ -267,7 +323,11 @@ export function getObjectMenuPaths(property, instancePath = []) {
 
 /**
  * @typedef {object} MenuNode
+ * @property {boolean} isArray
+ * @property {string} key
+ * @property {'STRING' | 'ARRAY' | 'OBJECT' | 'RECURSION'} type
  * @property {string[]} instancePath
+ * @property {import('../../shared/types').Property} property
  * @property {string} [title]
  * @property {MenuNode[]} children
  */
@@ -288,6 +348,10 @@ function getObjectMenuNodes(property, instancePath = []) {
       return {
         title: childProperty.title,
         instancePath: [...instancePath, childProperty.key],
+        isArray: childProperty.type === 'ARRAY',
+        type: childProperty.type,
+        property: childProperty,
+        key: childProperty.key,
         children: property.addMenuItemsForChildObjects
           ? getObjectMenuNodes(childProperty, [
               ...instancePath,
