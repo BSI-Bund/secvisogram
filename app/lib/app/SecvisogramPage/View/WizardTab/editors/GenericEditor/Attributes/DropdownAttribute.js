@@ -1,20 +1,25 @@
 import { TextField } from '@material-ui/core'
 import { Autocomplete } from '@material-ui/lab'
 import React from 'react'
-import Attribute from './shared/Attribute.js'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
+import Attribute from './shared/Attribute.js'
 
 /**
  * @param {{
  *  label: string
  *  description: string
  *  options: string[]
- *  freeSolo: boolean
+ *  isEnum: boolean
  *  instancePath: string[]
  *  value: unknown
  * }} props
  */
-export default function EnumAttribute({ options, freeSolo, value, ...props }) {
+export default function DropdownAttribute({
+  options,
+  isEnum,
+  value,
+  ...props
+}) {
   const { updateDoc } = React.useContext(DocumentEditorContext)
   const [inputValue, setInputValue] = React.useState(value)
   return (
@@ -24,7 +29,7 @@ export default function EnumAttribute({ options, freeSolo, value, ...props }) {
           <Autocomplete
             disableClearable
             options={options}
-            freeSolo={freeSolo}
+            freeSolo={!isEnum}
             value={value}
             onChange={(event, newValue) =>
               updateDoc(props.instancePath, /** @type {string} */ (newValue))
@@ -34,7 +39,7 @@ export default function EnumAttribute({ options, freeSolo, value, ...props }) {
               setInputValue(newInputValue ?? '')
             }}
             onBlur={() => {
-              if (freeSolo)
+              if (!isEnum)
                 updateDoc(
                   props.instancePath,
                   /** @type {string} */ (inputValue)

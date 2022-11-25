@@ -7,8 +7,8 @@ export default function WizardTab() {
   const [selectedPath, setSelectedPath] = React.useState(
     /** @type {string[]} */ ([])
   )
-  /** @type {import('./WizardTab/schema.js').Property} */
-  const property = schema
+
+  const property = /** @type {import('./WizardTab/schema.js').Property} */ (schema)
 
   return (
     <WizardContext.Provider value={{ selectedPath, setSelectedPath }}>

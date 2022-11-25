@@ -358,7 +358,7 @@ export default /** @type {const} */ ({
               description:
                 'Defines a short canonical name, chosen by the document producer, which will inform the end user as to the category of document.',
               metaData: {
-                uiType: 'STRING_ENUM',
+                uiType: 'STRING_WITH_OPTIONS',
                 userDocumentation: {
                   specification: 'docs/user/document/category-spec.en.md',
                   usage: 'docs/user/document/category-usage.en.md',
@@ -376,13 +376,11 @@ export default /** @type {const} */ ({
                 },
                 options: [
                   'csaf_base',
-                  'csaf_base',
                   'csaf_security_incident_response',
                   'csaf_informational_advisory',
                   'csaf_security_advisory',
                   'csaf_vex',
                 ],
-                freeSolo: true,
               },
               minLength: 1,
               examples: [

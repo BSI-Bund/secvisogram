@@ -5,7 +5,7 @@ import ObjectEditor from './GenericEditor/ObjectEditor.js'
 import TextAttribute from './GenericEditor/Attributes/TextAttribute.js'
 import TextAreaAttribute from './GenericEditor/Attributes/TextAreaAttribute.js'
 import DateAttribute from './GenericEditor/Attributes/DateAttribute.js'
-import EnumAttribute from './GenericEditor/Attributes/EnumAttribute.js'
+import DropdownAttribute from './GenericEditor/Attributes/DropdownAttribute.js'
 import CweAttribute from './GenericEditor/Attributes/CweAttribute.js'
 import IdAttribute from './GenericEditor/Attributes/IdAttribute.js'
 
@@ -77,11 +77,22 @@ export default function Editor({ parentProperty, property, instancePath }) {
       )
     } else if (uiType === 'STRING_ENUM') {
       return (
-        <EnumAttribute
+        <DropdownAttribute
           label={label}
           description={description}
-          options={property.enum || property.metaData?.options || []}
-          freeSolo={property.metaData?.freeSolo || false}
+          options={/** @type {string[]} */ (property.enum || [])}
+          isEnum={true}
+          instancePath={instancePath}
+          value={value}
+        />
+      )
+    } else if (uiType === 'STRING_WITH_OPTIONS') {
+      return (
+        <DropdownAttribute
+          label={label}
+          description={description}
+          options={/** @type {string[]} */ (property.metaData?.options || [])}
+          isEnum={false}
           instancePath={instancePath}
           value={value}
         />
