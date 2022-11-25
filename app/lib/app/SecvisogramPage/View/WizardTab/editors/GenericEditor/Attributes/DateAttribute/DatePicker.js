@@ -5,9 +5,10 @@ const DatePicker = (
    * @type {Omit<React.HTMLProps<HTMLInputElement>, 'value' | 'onChange'> & {
    *   value: string | null
    *   onChange(str: string | null): void
+   *   onBlur(): void
    * }}
    */
-  { onChange, value, ...props }
+  { onChange, onBlur, value, ...props }
 ) => {
   const [dateString, timeString] = React.useMemo(() => {
     if (!value) return ['', '']
@@ -37,6 +38,7 @@ const DatePicker = (
               : ''
           )
         }}
+        onBlur={onBlur}
       />
       <input
         {...props}
@@ -52,6 +54,7 @@ const DatePicker = (
             ).toISOString()
           )
         }}
+        onBlur={onBlur}
       />
     </div>
   )

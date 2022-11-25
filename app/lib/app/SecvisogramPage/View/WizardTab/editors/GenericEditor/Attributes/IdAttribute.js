@@ -39,7 +39,7 @@ function useMatch(term, entries) {
  * }} props
  */
 export default function IdAttribute({ placeholder, onCollectIds, ...props }) {
-  const { updateDoc } = React.useContext(DocumentEditorContext)
+  const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
 
   const [value, setValue] = React.useState(/** @type string */ (props.value))
   const [term, setTerm] = React.useState(/** @type string */ (props.value))
@@ -80,6 +80,9 @@ export default function IdAttribute({ placeholder, onCollectIds, ...props }) {
             onSelect={(id) => {
               setTerm('')
               updateDoc(props.instancePath, id)
+              if (!id) {
+                pruneEmpty()
+              }
             }}
           >
             <ComboboxInput
