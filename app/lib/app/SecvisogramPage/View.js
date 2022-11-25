@@ -1,6 +1,6 @@
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { set } from 'lodash/fp.js'
+import { isEmpty, set } from 'lodash/fp.js'
 import React from 'react'
 import Hotkeys from 'react-hot-keys'
 import * as semver from 'semver'
@@ -624,6 +624,30 @@ function View({
       : ''
   }
 
+  /**
+   * recursively removes all keys with empty values and objects containing only empty values
+   * @param {{}} obj the object to prune empty fields from
+   * @returns {{}}
+   */
+  const pruneEmpty = (obj) => {
+    if (typeof obj === 'string' || typeof obj === 'number') return obj
+    if (Array.isArray(obj)) return obj.map((item) => pruneEmpty(item))
+    return {
+      ...Object.fromEntries(
+        Object.entries(obj)
+          .map(([key, value]) => [key, pruneEmpty(value)])
+          .filter(
+            ([_, value]) =>
+              !(
+                value === '' ||
+                value === null ||
+                (typeof value === 'object' && isEmpty(value))
+              )
+          )
+      ),
+    }
+  }
+
   const documentEditor = React.useMemo(
     /**
      * @returns {React.ContextType<typeof DocumentEditorContext>}
@@ -633,6 +657,7 @@ function View({
       updateDoc(instancePath, value) {
         onReplaceDoc(set(instancePath, value, formValues.doc))
       },
+      pruneEmpty: () => onReplaceDoc(pruneEmpty(formValues.doc)),
       collectIds: {
         productIds: () => onCollectProductIds(formValues.doc),
         groupIds: () => onCollectGroupIds(formValues.doc),
@@ -643,6 +668,7 @@ function View({
       formValues.doc,
       errors,
       onReplaceDoc,
+      pruneEmpty,
       onCollectProductIds,
       onCollectGroupIds,
     ]
