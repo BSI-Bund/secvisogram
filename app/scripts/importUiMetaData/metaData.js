@@ -213,7 +213,14 @@ export default {
       title: 'DocumentCategoryTitle',
       description: 'DocumentCategoryDescription',
     },
-    uiType: 'STRING_ENUM',
+    uiType: 'STRING_WITH_OPTIONS',
+    options: [
+      'csaf_base',
+      'csaf_security_incident_response',
+      'csaf_informational_advisory',
+      'csaf_security_advisory',
+      'csaf_vex',
+    ],
   },
   '$.document.csaf_version': {
     userDocumentation: {
@@ -1128,7 +1135,6 @@ export default {
       csafVex: 'mandatory',
     },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
   },
   '$.product_tree.branches.product.product_identification_helper': {
     userDocumentation: {
@@ -1597,7 +1603,6 @@ export default {
       csafVex: 'mandatory',
     },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
   },
   '$.product_tree.full_product_names.product_identification_helper': {
     userDocumentation: {
@@ -2082,7 +2087,7 @@ export default {
       usage: 'docs/user/types/product_id-usage.en.md',
     },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.product_tree.product_groups.summary': {
     userDocumentation: {
@@ -2201,7 +2206,6 @@ export default {
       csafVex: 'mandatory',
     },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
   },
   '$.product_tree.relationships.full_product_name.product_identification_helper':
     {
@@ -2641,7 +2645,7 @@ export default {
       title: 'ProductTreeRelationshipsItemsProductReferenceTitle',
       description: 'ProductTreeRelationshipsItemsProductReferenceDescription',
     },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.product_tree.relationships.relates_to_product_reference': {
     userDocumentation: {
@@ -2661,7 +2665,7 @@ export default {
       description:
         'ProductTreeRelationshipsItemsRelatesToProductReferenceDescription',
     },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities': {
     userDocumentation: {
@@ -2982,7 +2986,7 @@ export default {
       title: 'ProductGroupIdTitle',
       description: 'ProductGroupIdDescription',
     },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_GROUP_ID',
   },
   '$.vulnerabilities.flags.label': {
     userDocumentation: {
@@ -3021,7 +3025,7 @@ export default {
     },
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities.ids': {
     userDocumentation: {
@@ -3339,7 +3343,7 @@ export default {
     },
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities.product_status.first_fixed': {
     userDocumentation: {
@@ -3367,7 +3371,7 @@ export default {
     },
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities.product_status.fixed': {
     userDocumentation: {
@@ -3394,7 +3398,7 @@ export default {
     },
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities.product_status.known_affected': {
     userDocumentation: {
@@ -3421,7 +3425,7 @@ export default {
     },
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities.product_status.known_not_affected': {
     userDocumentation: {
@@ -3449,7 +3453,7 @@ export default {
     },
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities.product_status.last_affected': {
     userDocumentation: {
@@ -3477,7 +3481,7 @@ export default {
     },
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities.product_status.recommended': {
     userDocumentation: {
@@ -3505,7 +3509,7 @@ export default {
     },
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities.product_status.under_investigation': {
     userDocumentation: {
@@ -3533,7 +3537,7 @@ export default {
     },
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities.references': {
     userDocumentation: {
@@ -3781,7 +3785,7 @@ export default {
       title: 'ProductGroupIdTitle',
       description: 'ProductGroupIdDescription',
     },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_GROUP_ID',
   },
   '$.vulnerabilities.remediations.product_ids': {
     userDocumentation: {
@@ -3800,7 +3804,7 @@ export default {
     },
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities.remediations.restart_required': {
     userDocumentation: {
@@ -4859,7 +4863,7 @@ export default {
     },
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities.threats': {
     userDocumentation: {
@@ -4978,7 +4982,7 @@ export default {
       title: 'ProductGroupIdTitle',
       description: 'ProductGroupIdDescription',
     },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_GROUP_ID',
   },
   '$.vulnerabilities.threats.product_ids': {
     userDocumentation: {
@@ -5002,7 +5006,7 @@ export default {
     },
     relevanceLevels: { csafInformationalAdvisory: 'excluded' },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
-    uiType: 'STRING_ID',
+    uiType: 'STRING_PRODUCT_ID',
   },
   '$.vulnerabilities.title': {
     userDocumentation: {

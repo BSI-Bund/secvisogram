@@ -9,7 +9,7 @@ import metaData from './importUiMetaData/metaData.js'
 /** @type {CSAFJSONSchema} */
 const schema = JSON.parse(
   await readFile(
-    new URL('importUiMetadata/csaf_json_schema.json', import.meta.url),
+    new URL('importUiMetaData/csaf_json_schema.json', import.meta.url),
     'utf-8'
   )
 )
@@ -40,7 +40,7 @@ function convertSchema(subschema, path) {
     .replace(/^properties\./, '$.')
     .replaceAll('.properties.', '.')
     .replace(/\.items$/, '[]')
-    .replaceAll('.items.', '[].')
+    .replaceAll('.items.', '.')
   const metaData = metaDataRecord[metaDataPath]
 
   const commonUiSchemaFields = {
