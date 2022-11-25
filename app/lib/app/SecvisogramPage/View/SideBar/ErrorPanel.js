@@ -1,5 +1,6 @@
 import React from 'react'
 import DocumentEditorContext from '../shared/DocumentEditorContext.js'
+import SelectedPathContext from '../shared/context/SelectedPathContext.js'
 
 /**
  * Defines the content of the sideBar displaying errors for a selected path
@@ -10,6 +11,7 @@ import DocumentEditorContext from '../shared/DocumentEditorContext.js'
  */
 export default function ErrorPanel({ selectedPath }) {
   const { errors } = React.useContext(DocumentEditorContext)
+  const { setSelectedPath } = React.useContext(SelectedPathContext)
 
   const errorsUnderPath = errors.filter((error) =>
     error.instancePath.startsWith('/' + selectedPath.join('/'))
@@ -27,7 +29,13 @@ export default function ErrorPanel({ selectedPath }) {
             ? 'border-blue-600 bg-blue-400'
             : ''
         return (
-          <div key={i} className={'p-2 m-1 rounded border ' + color}>
+          <div
+            key={i}
+            className={'p-2 m-1 rounded border hover:cursor-pointer ' + color}
+            onClick={() =>
+              setSelectedPath(err.instancePath.split('/').slice(1))
+            }
+          >
             <b>{err.instancePath}</b>: {err.message}
           </div>
         )
