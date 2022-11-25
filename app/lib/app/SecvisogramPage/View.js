@@ -601,6 +601,10 @@ function View({
   const keyDownHandler = (keyName, event) => {
     event.preventDefault()
 
+    if (Object.values(appConfig.keyBindings).indexOf(keyName) > -1) {
+      onReplaceDoc(pruneEmpty(formValues.doc))
+    }
+
     if (keyName === appConfig.keyBindings.keySave) {
       onSaveHandler()
     } else if (keyName === appConfig.keyBindings.keyValidate) {
