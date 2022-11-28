@@ -70,4 +70,4 @@ export type UiSchema =
   | ObjectUiSchema
   | RecursionUiSchema
   | StringUiSchema
-  | { type: 'UNKNOWN' }
+  | ({ type: 'UNKNOWN' } & CommonUiSchemaFields)

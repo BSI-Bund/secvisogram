@@ -1,4 +1,8 @@
-import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCircle,
+  faInfoCircle,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import SideBarContext from '../../../shared/context/SideBarContext.js'
@@ -20,6 +24,7 @@ export default function ObjectEditor({
 }) {
   const { selectedPath, setSelectedPath } =
     React.useContext(SelectedPathContext)
+  const { doc, updateDoc } = React.useContext(DocumentEditorContext)
   const { errors } = React.useContext(DocumentEditorContext)
   const fieldProperties = property.metaInfo.propertyList?.filter(
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
@@ -27,9 +32,8 @@ export default function ObjectEditor({
   const complexProperties = property.metaInfo.propertyList?.filter((p) =>
     ['OBJECT', 'ARRAY'].includes(p.type)
   )
-  const menuStructure = getObjectMenuStructure(property)
-  const menuDepth = Math.max(...menuStructure.map((p) => p.instancePath.length))
-  const selectedSubPath = menuStructure
+  const menuNodes = getObjectMenuNodes(property)
+  const selectedSubPath = getObjectMenuPaths(property)
     .slice()
     .map((p) => p.instancePath)
     .sort((a, z) => z.length - a.length)
@@ -45,6 +49,11 @@ export default function ObjectEditor({
       e.instancePath.startsWith('/' + instancePath.join('/')) &&
       e.instancePath.split('/').length === instancePath.length + 2
   )
+
+  const value = instancePath.reduce((value, pathSegment) => {
+    return (value ?? {})[pathSegment]
+  }, /** @type {Record<string, any> | null} */ (doc))
+  const sanitizedValue = value ?? {}
 
   const selectedMenuPath = selectedPath.slice(instancePath.length)
 
@@ -93,6 +102,175 @@ export default function ObjectEditor({
     )
   }
 
+  /**
+   * @param {MenuNode[]} menuNodes
+   * @param {number} [level]
+   * @returns
+   */
+  const renderMenuNodes = (menuNodes, level = 0) => {
+    return (
+      <ul>
+        {menuNodes.map((menuItem, menuItemIndex) => {
+          const childErrors = errors.filter((e) =>
+            e.instancePath.startsWith(
+              '/' + [...instancePath, ...menuItem.instancePath].join('/')
+            )
+          )
+          const isSelected =
+            selectedSubPath &&
+            menuItem.instancePath.every((p, i) => selectedSubPath[i] === p)
+          const docuPathFromInstancePath = [
+            ...instancePath,
+            ...menuItem.instancePath,
+          ].filter((p) => Number.isNaN(Number(p)))
+          const isActiveInSidebar =
+            docuPathFromInstancePath.length ===
+              sideBarData.sideBarSelectedPath.length &&
+            docuPathFromInstancePath.every(
+              (p, i) => sideBarData.sideBarSelectedPath[i] === p
+            )
+
+          return (
+            <React.Fragment key={menuItem.instancePath.join('.')}>
+              {level === 0 && fieldProperties?.length ? (
+                <li
+                  className={
+                    (!selectedMenuPath.length ? 'font-bold' : '') +
+                    ' bg-gray-200 flex w-full'
+                  }
+                >
+                  <div className="grid place-items-center px-2">
+                    <FontAwesomeIcon
+                      icon={faCircle}
+                      className={getErrorTextColor(fieldsErrors)}
+                      size="xs"
+                    />
+                  </div>
+                  <button
+                    className="italic text-left w-full px-2 h-9 hover:underline"
+                    onClick={() => {
+                      setSelectedPath(instancePath)
+                    }}
+                  >
+                    Fields
+                  </button>
+                </li>
+              ) : null}
+              <li
+                className={`bg-gray-200 ${
+                  instancePath.length === 0 &&
+                  menuItem.instancePath.length === 1 &&
+                  menuItemIndex > 0
+                    ? 'mt-4'
+                    : ''
+                }`}
+                style={{}}
+              >
+                <div
+                  className={
+                    `${isSelected ? 'font-bold' : ''}` + ' flex w-full'
+                  }
+                >
+                  <div className="grid place-items-center px-2">
+                    <FontAwesomeIcon
+                      icon={faCircle}
+                      className={getErrorTextColor(childErrors)}
+                      size="xs"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    className="px-2 w-full text-left hover:underline whitespace-nowrap"
+                    data-testid={`menu_entry-/${instancePath
+                      .concat(menuItem.instancePath)
+                      .join('/')}`}
+                    onClick={() => {
+                      setSelectedPath([
+                        ...instancePath,
+                        ...menuItem.instancePath,
+                      ])
+                    }}
+                  >
+                    {menuItem.title}
+                  </button>
+                  {menuItem.property.type === 'ARRAY' ? (
+                    <button
+                      data-testid={`menu_entry-/${[
+                        ...instancePath,
+                        ...menuItem.instancePath,
+                      ].join('/')}-add_item_button`}
+                      onClick={() => {
+                        const menuItemValue = menuItem.instancePath.reduce(
+                          (value, pathSegment) => {
+                            return (value ?? {})[pathSegment]
+                          },
+                          /** @type {Record<string, any> | null} */ (
+                            sanitizedValue
+                          )
+                        )
+                        const sanitizedMenuItemValue = Array.isArray(
+                          menuItemValue
+                        )
+                          ? menuItemValue
+                          : []
+                        const childType =
+                          menuItem.property.metaInfo.arrayType?.type
+                        const newItem =
+                          childType === 'OBJECT'
+                            ? {}
+                            : childType === 'ARRAY'
+                            ? []
+                            : childType === 'STRING'
+                            ? ''
+                            : null
+                        if (newItem !== null) {
+                          updateDoc(
+                            [...instancePath, ...menuItem.instancePath],
+                            sanitizedMenuItemValue.concat([newItem])
+                          )
+                          setSelectedPath([
+                            ...instancePath,
+                            ...menuItem.instancePath,
+                            String(sanitizedMenuItemValue.length),
+                          ])
+                        }
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                  ) : null}
+                  <button
+                    data-testid={
+                      [...instancePath, ...menuItem.instancePath].join('-') +
+                      '-infoButton'
+                    }
+                    type="button"
+                    className={
+                      'w-9 h-9 flex-none hover:text-slate-600 ' +
+                      `${
+                        isActiveInSidebar ? 'text-slate-600' : 'text-slate-400'
+                      }`
+                    }
+                    onClick={() => {
+                      sideBarData.setSideBarIsOpen(true)
+                      sideBarData.setSideBarSelectedPath([
+                        ...instancePath,
+                        ...menuItem.instancePath,
+                      ])
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faInfoCircle} size="xs" />
+                  </button>
+                </div>
+                {renderMenuNodes(menuItem.children, level + 1)}
+              </li>
+            </React.Fragment>
+          )
+        })}
+      </ul>
+    )
+  }
+
   return (
     <>
       {!complexProperties?.length ? (
@@ -100,107 +278,8 @@ export default function ObjectEditor({
       ) : (
         <>
           {parentProperty?.addMenuItemsForChildObjects ? null : (
-            <div className="flex bg-gray-50 border-r border-l border-solid border-gray-400 wizard-menu-shadow mr-2">
-              <ul className="mb-4">
-                {fieldProperties?.length ? (
-                  <li
-                    className={
-                      (!selectedMenuPath.length ? 'bg-blue-400' : '') +
-                      ' border-b border-gray-300 flex w-full'
-                    }
-                  >
-                    <div className="grid place-items-center px-2">
-                      <FontAwesomeIcon
-                        icon={faCircle}
-                        className={getErrorTextColor(fieldsErrors)}
-                        size="xs"
-                      />
-                    </div>
-                    <button
-                      className="italic text-left w-full px-2 h-9 hover:bg-blue-300"
-                      onClick={() => {
-                        setSelectedPath(instancePath)
-                      }}
-                    >
-                      Fields
-                    </button>
-                  </li>
-                ) : null}
-                {menuStructure.map((menuItem) => {
-                  const childErrors = errors.filter((e) =>
-                    e.instancePath.startsWith(
-                      '/' + menuItem.instancePath.join('/')
-                    )
-                  )
-
-                  return (
-                    <React.Fragment key={menuItem.instancePath.join('.')}>
-                      <li
-                        className={`bg-gray-200 ${
-                          menuDepth > 1 && menuItem.instancePath.length === 1
-                            ? 'bg-gray-300'
-                            : ''
-                        }`}
-                        style={{
-                          marginLeft: (menuItem.instancePath.length - 1) * 10,
-                        }}
-                      >
-                        <div
-                          className={
-                            (selectedSubPath &&
-                            menuItem.instancePath.every(
-                              (p, i) => selectedSubPath[i] === p
-                            )
-                              ? 'bg-blue-400'
-                              : '') + ' border-b border-gray-300 flex w-full'
-                          }
-                        >
-                          <div className="grid place-items-center px-2">
-                            <FontAwesomeIcon
-                              icon={faCircle}
-                              className={getErrorTextColor(childErrors)}
-                              size="xs"
-                            />
-                          </div>
-                          <button
-                            type="button"
-                            className="px-2 w-full text-left hover:bg-blue-300"
-                            data-testid={`menu_entry-/${instancePath
-                              .concat(menuItem.instancePath)
-                              .join('/')}`}
-                            onClick={() => {
-                              setSelectedPath([
-                                ...instancePath,
-                                ...menuItem.instancePath,
-                              ])
-                            }}
-                          >
-                            {menuItem.title}
-                          </button>
-                          <button
-                            data-testid={
-                              [...instancePath, ...menuItem.instancePath].join(
-                                '-'
-                              ) + '-infoButton'
-                            }
-                            type="button"
-                            className="w-9 h-9 flex-none hover:bg-blue-300"
-                            onClick={() => {
-                              sideBarData.setSideBarIsOpen(true)
-                              sideBarData.setSideBarSelectedPath([
-                                ...instancePath,
-                                ...menuItem.instancePath,
-                              ])
-                            }}
-                          >
-                            <FontAwesomeIcon icon={faInfoCircle} size="xs" />
-                          </button>
-                        </div>
-                      </li>
-                    </React.Fragment>
-                  )
-                })}
-              </ul>
+            <div className="treeview flex bg-gray-50 border-r border-l border-solid border-gray-400 wizard-menu-shadow mr-2">
+              {renderMenuNodes(menuNodes)}
             </div>
           )}
           {selectedSubPath ? renderComplexEditor() : renderFieldsEditor()}
@@ -214,27 +293,73 @@ export default function ObjectEditor({
  * @param {import('../../shared/types').Property} property
  * @param {string[]} [instancePath]
  */
-export function getObjectMenuStructure(property, instancePath = []) {
-  /** @type {Array<{ instancePath: string[]; title?: string }>} */
+export function getObjectMenuPaths(property, instancePath = []) {
+  const menuProperties =
+    property.metaInfo.propertyList?.filter(
+      (p) => p.type === 'OBJECT' || p.type === 'ARRAY'
+    ) ?? []
+  /** @type {Array<{ instancePath: string[] }>} */
   const menuStructure =
-    property.metaInfo.propertyList?.flatMap((childProperty) => {
+    menuProperties.flatMap((childProperty) => {
       return [
         ...(childProperty.type === 'OBJECT' || childProperty.type === 'ARRAY'
           ? [
               {
                 instancePath: [...instancePath, childProperty.key],
-                title: childProperty.title,
               },
             ]
           : []),
         ...(childProperty.type === 'OBJECT' &&
         property.addMenuItemsForChildObjects
-          ? getObjectMenuStructure(childProperty, [
+          ? getObjectMenuPaths(childProperty, [
               ...instancePath,
               childProperty.key,
             ])
           : []),
       ]
+    }) ?? []
+
+  return menuStructure
+}
+
+/**
+ * @typedef {object} MenuNode
+ * @property {boolean} isArray
+ * @property {string} key
+ * @property {'STRING' | 'ARRAY' | 'OBJECT' | 'RECURSION'} type
+ * @property {string[]} instancePath
+ * @property {import('../../shared/types').Property} property
+ * @property {string} [title]
+ * @property {MenuNode[]} children
+ */
+
+/**
+ * @param {import('../../shared/types').Property} property
+ * @param {string[]} [instancePath]
+ */
+function getObjectMenuNodes(property, instancePath = []) {
+  const menuProperties =
+    property.metaInfo.propertyList?.filter(
+      (p) => p.type === 'OBJECT' || p.type === 'ARRAY'
+    ) ?? []
+
+  /** @type {Array<MenuNode>} */
+  const menuStructure =
+    menuProperties.map((childProperty) => {
+      return {
+        title: childProperty.title,
+        instancePath: [...instancePath, childProperty.key],
+        isArray: childProperty.type === 'ARRAY',
+        type: childProperty.type,
+        property: childProperty,
+        key: childProperty.key,
+        children: property.addMenuItemsForChildObjects
+          ? getObjectMenuNodes(childProperty, [
+              ...instancePath,
+              childProperty.key,
+            ])
+          : [],
+      }
     }) ?? []
 
   return menuStructure

@@ -122,7 +122,12 @@ function convertSchema(subschema, path) {
         'Ref with name `' + refName + '` not found (`' + strPath + '`)'
       )
     }
-    return convertSchema(ref, path)
+    const resolvedSchema = convertSchema(ref, path)
+    return {
+      ...resolvedSchema,
+      title: subschema.title ?? resolvedSchema.title,
+      description: subschema.description ?? resolvedSchema.description,
+    }
   }
 
   if (subschema.type === 'object') {
@@ -183,7 +188,7 @@ function convertSchema(subschema, path) {
     }
   }
 
-  return { type: 'UNKNOWN' }
+  return { ...commonUiSchemaFields, type: 'UNKNOWN' }
 }
 
 const outputFile = fileURLToPath(

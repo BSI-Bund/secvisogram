@@ -552,10 +552,10 @@ function View({
         className: [
           'text-sm font-bold p-4 h-auto',
           activeTab === tab
-            ? 'bg-gray-900 text-white'
+            ? 'bg-slate-900 text-white'
             : isTabLocked
             ? 'text-gray-500'
-            : 'hover:bg-gray-800 hover:text-white text-gray-300',
+            : 'hover:bg-slate-800 hover:text-white text-gray-300',
         ].join(' '),
         onClick() {
           onChangeTab(tab, formValues.doc)
@@ -688,7 +688,7 @@ function View({
               className="mx-auto w-full h-screen grid grid-cols-[1fr_auto] grid-rows-[53px_36px_minmax(0,1fr)]"
               tabIndex={0}
             >
-              <div className="col-span-2 flex justify-between bg-gray-700">
+              <div className="col-span-2 flex justify-between bg-slate-700">
                 <div className="flex pl-5">
                   <button {...tabButtonProps('WIZZARD')}>Wizard</button>
                   <button {...tabButtonProps('EDITOR')}>Form Editor</button>
@@ -735,7 +735,7 @@ function View({
                       </button>
                       <div
                         data-testid="user_info"
-                        className="dropdown relative hover:bg-gray-800 hover:text-white text-gray-300"
+                        className="dropdown relative hover:bg-slate-800 hover:text-white text-gray-300"
                       >
                         <div className="text-sm font-bold p-4 h-auto flex items-center">
                           <svg
@@ -805,7 +805,7 @@ function View({
                 {errors.length}
               </div>
               {activeTab !== 'DOCUMENTS' && (
-                <div className="col-span-2 bg-gray-400 flex items-center justify-between">
+                <div className="col-span-2 bg-slate-600 flex items-center justify-between">
                   <div className="pl-5">
                     {(appConfig.loginAvailable &&
                       userInfo?.groups &&
@@ -814,7 +814,7 @@ function View({
                     !appConfig.loginAvailable ? (
                       <button
                         data-testid="new_document_button"
-                        className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                        className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
                         onClick={onNewHandler}
                       >
                         New
@@ -829,7 +829,7 @@ function View({
                       <button
                         data-testid="save_button"
                         type="button"
-                        className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                        className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
                         onClick={onSaveHandler}
                       >
                         Save
@@ -837,7 +837,7 @@ function View({
                     ) : null}
                     <button
                       data-testid="new_export_document_button"
-                      className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                      className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
                       onClick={onExportHandler}
                     >
                       Export
@@ -847,7 +847,7 @@ function View({
                         ref={sortButtonRef}
                         data-testid="sort_document_button"
                         type="button"
-                        className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                        className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
                       >
                         Sort document
                       </button>
@@ -856,7 +856,7 @@ function View({
                       <button
                         data-testid="validate_button"
                         type="button"
-                        className="text-gray-300 hover:bg-gray-500 hover:text-white text-sm font-bold p-2 h-auto"
+                        className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
                         onClick={async () => {
                           doValidate()
                         }}

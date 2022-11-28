@@ -1044,6 +1044,7 @@ export default {
     i18n: { title: 'BranchesTitle', description: 'BranchesDescription' },
   },
   '$.product_tree.branches[]': {
+    addMenuItemsForChildObjects: true,
     userDocumentation: {
       specification: 'docs/user/types/branches/branch-spec.en.md',
       usage: 'docs/user/types/branches/branch-usage.en.md',
@@ -1096,6 +1097,7 @@ export default {
     },
   },
   '$.product_tree.branches.product': {
+    addMenuItemsForChildObjects: true,
     userDocumentation: {
       specification: 'docs/user/types/branches/branch/product-spec.en.md',
       usage: 'docs/user/types/branches/branch/product-usage.en.md',
@@ -1572,6 +1574,7 @@ export default {
       title: 'FullProductNameTitle',
       description: 'FullProductNameDescription',
     },
+    addMenuItemsForChildObjects: true,
   },
   '$.product_tree.full_product_names.name': {
     userDocumentation: {
@@ -2136,6 +2139,7 @@ export default {
       title: 'ProductTreeRelationshipsItemsTitle',
       description: 'ProductTreeRelationshipsItemsDescription',
     },
+    addMenuItemsForChildObjects: true,
   },
   '$.product_tree.relationships.category': {
     userDocumentation: {
@@ -2175,6 +2179,7 @@ export default {
       title: 'FullProductNameTitle',
       description: 'FullProductNameDescription',
     },
+    addMenuItemsForChildObjects: true,
   },
   '$.product_tree.relationships.full_product_name.name': {
     userDocumentation: {

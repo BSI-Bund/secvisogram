@@ -36,8 +36,9 @@ export default /** @type {const} */ ({
             {
               key: 'acknowledgments',
               fullName: ['document', 'acknowledgments'],
-              title: 'List of acknowledgments',
-              description: 'Contains a list of acknowledgment elements.',
+              title: 'Document acknowledgments',
+              description:
+                'Contains a list of acknowledgment elements associated with the whole document.',
               metaData: {
                 userDocumentation: {
                   specification:
@@ -589,9 +590,9 @@ export default /** @type {const} */ ({
             {
               key: 'lang',
               fullName: ['document', 'lang'],
-              title: 'Language type',
+              title: 'Document language',
               description:
-                'Identifies a language, corresponding to IETF BCP 47 / RFC 5646. See IETF language registry: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry',
+                'Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.',
               metaData: {
                 userDocumentation: {
                   specification: 'docs/user/document/lang-spec.en.md',
@@ -618,9 +619,8 @@ export default /** @type {const} */ ({
             {
               key: 'notes',
               fullName: ['document', 'notes'],
-              title: 'List of notes',
-              description:
-                'Contains notes which are specific to the current context.',
+              title: 'Document notes',
+              description: 'Holds notes associated with the whole document.',
               metaData: {
                 userDocumentation: {
                   specification: 'docs/user/document/notes-spec.en.md',
@@ -993,8 +993,9 @@ export default /** @type {const} */ ({
             {
               key: 'references',
               fullName: ['document', 'references'],
-              title: 'List of references',
-              description: 'Holds a list of references.',
+              title: 'Document references',
+              description:
+                'Holds a list of references associated with the whole document.',
               metaData: {
                 userDocumentation: {
                   specification: 'docs/user/document/references-spec.en.md',
@@ -1129,9 +1130,9 @@ export default /** @type {const} */ ({
             {
               key: 'source_lang',
               fullName: ['document', 'source_lang'],
-              title: 'Language type',
+              title: 'Source language',
               description:
-                'Identifies a language, corresponding to IETF BCP 47 / RFC 5646. See IETF language registry: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry',
+                'If this copy of the document is a translation then the value of this property describes from which language this document was translated.',
               metaData: {
                 userDocumentation: {
                   specification: 'docs/user/document/source_lang-spec.en.md',
@@ -1903,7 +1904,9 @@ export default /** @type {const} */ ({
                   title: 'Branch',
                   description:
                     'Is a part of the hierarchical structure of the product tree.',
+                  addMenuItemsForChildObjects: true,
                   metaData: {
+                    addMenuItemsForChildObjects: true,
                     userDocumentation: {
                       specification:
                         'docs/user/types/branches/branch-spec.en.md',
@@ -2033,7 +2036,9 @@ export default /** @type {const} */ ({
                         title: 'Full product name',
                         description:
                           'Specifies information about the product and assigns the product_id.',
+                        addMenuItemsForChildObjects: true,
                         metaData: {
+                          addMenuItemsForChildObjects: true,
                           userDocumentation: {
                             specification:
                               'docs/user/types/branches/branch/product-spec.en.md',
@@ -2098,6 +2103,7 @@ export default /** @type {const} */ ({
                               description:
                                 'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
                               metaData: {
+                                uiType: 'STRING_ID',
                                 userDocumentation: {
                                   specification:
                                     'docs/user/types/full_product_name/product_id-spec.en.md',
@@ -3008,6 +3014,7 @@ export default /** @type {const} */ ({
                   title: 'Full product name',
                   description:
                     'Specifies information about the product and assigns the product_id.',
+                  addMenuItemsForChildObjects: true,
                   metaData: {
                     userDocumentation: {
                       specification:
@@ -3018,6 +3025,7 @@ export default /** @type {const} */ ({
                       title: 'FullProductNameTitle',
                       description: 'FullProductNameDescription',
                     },
+                    addMenuItemsForChildObjects: true,
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -3070,6 +3078,7 @@ export default /** @type {const} */ ({
                         description:
                           'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
                         metaData: {
+                          uiType: 'STRING_ID',
                           userDocumentation: {
                             specification:
                               'docs/user/types/product_id-spec.en.md',
@@ -4113,6 +4122,7 @@ export default /** @type {const} */ ({
                   title: 'Relationship',
                   description:
                     'Establishes a link between two existing full_product_name_t elements, allowing the document producer to define a combination of two products that form a new full_product_name entry.',
+                  addMenuItemsForChildObjects: true,
                   metaData: {
                     userDocumentation: {
                       specification:
@@ -4124,6 +4134,7 @@ export default /** @type {const} */ ({
                       title: 'ProductTreeRelationshipsItemsTitle',
                       description: 'ProductTreeRelationshipsItemsDescription',
                     },
+                    addMenuItemsForChildObjects: true,
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -4175,6 +4186,7 @@ export default /** @type {const} */ ({
                         title: 'Full product name',
                         description:
                           'Specifies information about the product and assigns the product_id.',
+                        addMenuItemsForChildObjects: true,
                         metaData: {
                           userDocumentation: {
                             specification:
@@ -4193,6 +4205,7 @@ export default /** @type {const} */ ({
                             title: 'FullProductNameTitle',
                             description: 'FullProductNameDescription',
                           },
+                          addMenuItemsForChildObjects: true,
                         },
                         type: 'OBJECT',
                         metaInfo: {
@@ -4247,6 +4260,7 @@ export default /** @type {const} */ ({
                               description:
                                 'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
                               metaData: {
+                                uiType: 'STRING_ID',
                                 userDocumentation: {
                                   specification:
                                     'docs/user/types/full_product_name/product_id-spec.en.md',
@@ -5127,9 +5141,9 @@ export default /** @type {const} */ ({
                           'relationships',
                           'product_reference',
                         ],
-                        title: 'Reference token for product instance',
+                        title: 'Product reference',
                         description:
-                          'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                          'Holds a Product ID that refers to the Full Product Name element, which is referenced as the first element of the relationship.',
                         metaData: {
                           uiType: 'STRING_PRODUCT_ID',
                           userDocumentation: {
@@ -5163,9 +5177,9 @@ export default /** @type {const} */ ({
                           'relationships',
                           'relates_to_product_reference',
                         ],
-                        title: 'Reference token for product instance',
+                        title: 'Relates to product reference',
                         description:
-                          'Token required to identify a full_product_name so that it can be referred to from other parts in the document. There is no predefined or required format for the product_id as long as it uniquely identifies a product in the context of the current document.',
+                          'Holds a Product ID that refers to the Full Product Name element, which is referenced as the second element of the relationship.',
                         metaData: {
                           uiType: 'STRING_PRODUCT_ID',
                           userDocumentation: {
@@ -5249,8 +5263,9 @@ export default /** @type {const} */ ({
                 {
                   key: 'acknowledgments',
                   fullName: ['vulnerabilities', 'acknowledgments'],
-                  title: 'List of acknowledgments',
-                  description: 'Contains a list of acknowledgment elements.',
+                  title: 'Vulnerability acknowledgments',
+                  description:
+                    'Contains a list of acknowledgment elements associated with this vulnerability item.',
                   metaData: {
                     userDocumentation: {
                       specification:
@@ -6243,9 +6258,9 @@ export default /** @type {const} */ ({
                 {
                   key: 'notes',
                   fullName: ['vulnerabilities', 'notes'],
-                  title: 'List of notes',
+                  title: 'Vulnerability notes',
                   description:
-                    'Contains notes which are specific to the current context.',
+                    'Holds notes associated with this vulnerability item.',
                   metaData: {
                     userDocumentation: {
                       specification:
@@ -6468,9 +6483,9 @@ export default /** @type {const} */ ({
                           'product_status',
                           'first_affected',
                         ],
-                        title: 'List of product_ids',
+                        title: 'First affected',
                         description:
-                          'Specifies a list of product_ids to give context to the parent item.',
+                          'These are the first versions of the releases known to be affected by the vulnerability.',
                         metaData: {
                           userDocumentation: {
                             specification:
@@ -6533,9 +6548,9 @@ export default /** @type {const} */ ({
                           'product_status',
                           'first_fixed',
                         ],
-                        title: 'List of product_ids',
+                        title: 'First fixed',
                         description:
-                          'Specifies a list of product_ids to give context to the parent item.',
+                          'These versions contain the first fix for the vulnerability but may not be the recommended fixed versions.',
                         metaData: {
                           userDocumentation: {
                             specification:
@@ -6598,9 +6613,9 @@ export default /** @type {const} */ ({
                           'product_status',
                           'fixed',
                         ],
-                        title: 'List of product_ids',
+                        title: 'Fixed',
                         description:
-                          'Specifies a list of product_ids to give context to the parent item.',
+                          'These versions contain a fix for the vulnerability but may not be the recommended fixed versions.',
                         metaData: {
                           userDocumentation: {
                             specification:
@@ -6662,9 +6677,9 @@ export default /** @type {const} */ ({
                           'product_status',
                           'known_affected',
                         ],
-                        title: 'List of product_ids',
+                        title: 'Known affected',
                         description:
-                          'Specifies a list of product_ids to give context to the parent item.',
+                          'These versions are known to be affected by the vulnerability.',
                         metaData: {
                           userDocumentation: {
                             specification:
@@ -6726,9 +6741,9 @@ export default /** @type {const} */ ({
                           'product_status',
                           'known_not_affected',
                         ],
-                        title: 'List of product_ids',
+                        title: 'Known not affected',
                         description:
-                          'Specifies a list of product_ids to give context to the parent item.',
+                          'These versions are known not to be affected by the vulnerability.',
                         metaData: {
                           userDocumentation: {
                             specification:
@@ -6790,9 +6805,9 @@ export default /** @type {const} */ ({
                           'product_status',
                           'last_affected',
                         ],
-                        title: 'List of product_ids',
+                        title: 'Last affected',
                         description:
-                          'Specifies a list of product_ids to give context to the parent item.',
+                          'These are the last versions in a release train known to be affected by the vulnerability. Subsequently released versions would contain a fix for the vulnerability.',
                         metaData: {
                           userDocumentation: {
                             specification:
@@ -6855,9 +6870,9 @@ export default /** @type {const} */ ({
                           'product_status',
                           'recommended',
                         ],
-                        title: 'List of product_ids',
+                        title: 'Recommended',
                         description:
-                          'Specifies a list of product_ids to give context to the parent item.',
+                          'These versions have a fix for the vulnerability and are the vendor-recommended versions for fixing the vulnerability.',
                         metaData: {
                           userDocumentation: {
                             specification:
@@ -6920,9 +6935,9 @@ export default /** @type {const} */ ({
                           'product_status',
                           'under_investigation',
                         ],
-                        title: 'List of product_ids',
+                        title: 'Under investigation',
                         description:
-                          'Specifies a list of product_ids to give context to the parent item.',
+                          'It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation - the result will be provided in a later release of the document.',
                         metaData: {
                           userDocumentation: {
                             specification:
@@ -6983,8 +6998,9 @@ export default /** @type {const} */ ({
                 {
                   key: 'references',
                   fullName: ['vulnerabilities', 'references'],
-                  title: 'List of references',
-                  description: 'Holds a list of references.',
+                  title: 'Vulnerability references',
+                  description:
+                    'Holds a list of references associated with this vulnerability item.',
                   metaData: {
                     userDocumentation: {
                       specification:
