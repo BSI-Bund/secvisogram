@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import SideBarContext from '../../../shared/context/SideBarContext.js'
-import WizardContext from '../../../shared/context/WizardContext.js'
+import SelectedPathContext from '../../../shared/context/SelectedPathContext.js'
 import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import { getErrorTextColor } from '../GenericEditor.js'
@@ -18,7 +18,7 @@ import { getErrorTextColor } from '../GenericEditor.js'
  */
 export default function ArrayEditor({ property, instancePath }) {
   const { doc } = React.useContext(DocumentEditorContext)
-  const { selectedPath } = React.useContext(WizardContext)
+  const { selectedPath } = React.useContext(SelectedPathContext)
 
   const value = instancePath.reduce((value, pathSegment) => {
     return (value ?? {})[pathSegment]
@@ -110,7 +110,7 @@ function Menu({ instancePath, level = 1, ...props }) {
   const { property } = props
 
   const { errors } = React.useContext(DocumentEditorContext)
-  const { selectedPath, setSelectedPath } = React.useContext(WizardContext)
+  const { selectedPath, setSelectedPath } = React.useContext(SelectedPathContext)
   const { setSideBarIsOpen, setSideBarSelectedPath } =
     React.useContext(SideBarContext)
   const { doc, updateDoc } = React.useContext(DocumentEditorContext)

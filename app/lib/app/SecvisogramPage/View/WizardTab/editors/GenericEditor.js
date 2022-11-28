@@ -1,10 +1,13 @@
-import { faCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import SideBarContext from '../../shared/context/SideBarContext.js'
 import DocumentEditorContext from '../../shared/DocumentEditorContext.js'
 import ArrayEditor from './GenericEditor/ArrayEditor.js'
 import ObjectEditor from './GenericEditor/ObjectEditor.js'
+import TextAttribute from './GenericEditor/Attributes/TextAttribute.js'
+import TextAreaAttribute from './GenericEditor/Attributes/TextAreaAttribute.js'
+import DateAttribute from './GenericEditor/Attributes/DateAttribute.js'
+import DropdownAttribute from './GenericEditor/Attributes/DropdownAttribute.js'
+import CweAttribute from './GenericEditor/Attributes/CweAttribute.js'
+import IdAttribute from './GenericEditor/Attributes/IdAttribute.js'
 
 /**
  * utility function to get the color of circles identifying errors
@@ -32,16 +35,25 @@ export function getErrorTextColor(errors) {
  * @param {string[]} props.instancePath
  */
 export default function Editor({ parentProperty, property, instancePath }) {
-  const { doc, errors, updateDoc } = React.useContext(DocumentEditorContext)
-  const sideBarData = React.useContext(SideBarContext)
+  const { doc, collectIds } = React.useContext(DocumentEditorContext)
 
-  const fieldErrors = errors.filter(
-    (e) => e.instancePath === '/' + instancePath.join('/')
-  )
+  const uiType = property.metaData?.uiType
+  const label = property.title || 'missing title'
+  const description = property.description || 'missing description'
 
   if (property.type === 'ARRAY') {
     return <ArrayEditor property={property} instancePath={instancePath} />
   } else if (property.type === 'OBJECT') {
+    if (uiType === 'OBJECT_CWE') {
+      return (
+        <CweAttribute
+          label={label}
+          description={description}
+          property={property}
+          instancePath={instancePath}
+        />
+      )
+    }
     return (
       <ObjectEditor
         parentProperty={parentProperty}
@@ -53,52 +65,95 @@ export default function Editor({ parentProperty, property, instancePath }) {
     const value = instancePath.reduce((value, pathSegment) => {
       return (value ?? {})[pathSegment]
     }, /** @type {Record<string, any> | null} */ (doc))
-    const sanitizedValue = typeof value === 'string' ? value : ''
 
-    return (
-      <div className="bg-white">
-        <div className="flex m-1">
-          <div className="flex place-items-center">
-            <label className="text-left">{property.title}</label>
-          </div>
-          <button
-            data-testid={instancePath.join('-') + '-infoButton'}
-            type="button"
-            className="w-9 h-9 flex-none hover:bg-blue-300 m-1"
-            onClick={() => {
-              sideBarData.setSideBarIsOpen(true)
-              sideBarData.setSideBarSelectedPath(instancePath)
-            }}
-          >
-            <FontAwesomeIcon icon={faInfoCircle} size="xs" />
-          </button>
-        </div>
-        <input
-          className="border px-2 py-1"
-          type="text"
-          value={sanitizedValue}
-          onChange={(e) => {
-            updateDoc(instancePath, e.target.value)
-          }}
+    if (uiType === 'STRING_DATETIME') {
+      return (
+        <DateAttribute
+          label={label}
+          description={description}
+          instancePath={instancePath}
+          value={value}
         />
-        <div className="m-1">
-          <ul className="block list-disc list-inside">
-            {fieldErrors.map((e, i) => (
-              <li key={`${i}-${e.message}`} className="flex">
-                <div className="grid place-items-center px-2">
-                  <FontAwesomeIcon
-                    icon={faCircle}
-                    className={getErrorTextColor([e])}
-                    size="xs"
-                  />
-                </div>
-                {e.message}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    )
+      )
+    } else if (uiType === 'STRING_ENUM') {
+      return (
+        <DropdownAttribute
+          label={label}
+          description={description}
+          options={/** @type {string[]} */ (property.enum || [])}
+          isEnum={true}
+          instancePath={instancePath}
+          value={value}
+        />
+      )
+    } else if (uiType === 'STRING_WITH_OPTIONS') {
+      return (
+        <DropdownAttribute
+          label={label}
+          description={description}
+          options={/** @type {string[]} */ (property.metaData?.options || [])}
+          isEnum={false}
+          instancePath={instancePath}
+          value={value}
+        />
+      )
+    } else if (uiType === 'STRING_MULTI_LINE') {
+      return (
+        <TextAreaAttribute
+          label={label}
+          description={description}
+          minLength={property.minLength || 0}
+          required={property.mandatory}
+          instancePath={instancePath}
+          value={value}
+        />
+      )
+    } else if (uiType === 'STRING_PRODUCT_ID') {
+      return (
+        <IdAttribute
+          label={property.title || ''}
+          description={description}
+          instancePath={instancePath}
+          value={value || ''}
+          onCollectIds={collectIds['productIds']}
+        />
+      )
+    } else if (uiType === 'STRING_GROUP_ID') {
+      return (
+        <IdAttribute
+          label={property.title || ''}
+          description={description}
+          instancePath={instancePath}
+          value={value || ''}
+          onCollectIds={collectIds['groupIds']}
+        />
+      )
+    } else if (uiType === 'STRING_URI') {
+      return (
+        <TextAttribute
+          label={label}
+          description={description}
+          minLength={property.minLength || 0}
+          type={'url'}
+          pattern={property.pattern}
+          required={property.mandatory}
+          instancePath={instancePath}
+          value={value}
+        />
+      )
+    } else {
+      return (
+        <TextAttribute
+          label={label}
+          description={description}
+          minLength={property.minLength || 0}
+          pattern={property.pattern}
+          required={property.mandatory}
+          instancePath={instancePath}
+          value={value}
+        />
+      )
+    }
   } else {
     return (
       <div className="bg-white">
