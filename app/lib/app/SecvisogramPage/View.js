@@ -628,12 +628,8 @@ function View({
       : ''
   }
 
-  /**
-   * recursively removes all keys with empty values and objects containing only empty values
-   * @param {{}} obj the object to prune empty fields from
-   * @returns {{}}
-   */
-  const pruneEmpty = (obj) => {
+  /** @type {({}) => {}} */
+  const pruneEmpty = React.useCallback((obj) => {
     if (typeof obj === 'string' || typeof obj === 'number') return obj
     if (Array.isArray(obj)) return obj.map((item) => pruneEmpty(item))
     return {
@@ -650,7 +646,7 @@ function View({
           })
       ),
     }
-  }
+  }, [])
 
   const documentEditor = React.useMemo(
     /**
