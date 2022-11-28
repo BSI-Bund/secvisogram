@@ -48,7 +48,7 @@ export default function ArrayEditor({ property, instancePath }) {
 
   return (
     <>
-      <div className="treeview border-l border-r border-solid bg-gray-50 border-gray-400 wizard-menu-shadow mr-2">
+      <div className="treeview border-l border-r border-solid bg-gray-50 border-gray-400 wizard-menu-shadow mr-2 min-w-[128px]">
         <Menu
           value={sanitizedValue}
           instancePath={instancePath}
@@ -110,7 +110,8 @@ function Menu({ instancePath, level = 1, ...props }) {
   const { property } = props
 
   const { errors } = React.useContext(DocumentEditorContext)
-  const { selectedPath, setSelectedPath } = React.useContext(SelectedPathContext)
+  const { selectedPath, setSelectedPath } =
+    React.useContext(SelectedPathContext)
   const { setSideBarIsOpen, setSideBarSelectedPath } =
     React.useContext(SideBarContext)
   const { doc, updateDoc } = React.useContext(DocumentEditorContext)
