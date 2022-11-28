@@ -24,6 +24,7 @@ export default function ObjectEditor({
 }) {
   const { selectedPath, setSelectedPath } =
     React.useContext(SelectedPathContext)
+  const { doc, updateDoc } = React.useContext(DocumentEditorContext)
   const { errors } = React.useContext(DocumentEditorContext)
   const fieldProperties = property.metaInfo.propertyList?.filter(
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
