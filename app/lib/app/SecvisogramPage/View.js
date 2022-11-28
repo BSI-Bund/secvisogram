@@ -640,14 +640,14 @@ function View({
       ...Object.fromEntries(
         Object.entries(obj)
           .map(([key, value]) => [key, pruneEmpty(value)])
-          .filter(
-            ([_, value]) =>
-              !(
-                value === '' ||
-                value === null ||
-                (typeof value === 'object' && isEmpty(value))
-              )
-          )
+          .filter((keyValue) => {
+            const value = keyValue[1]
+            return !(
+              value === '' ||
+              value === null ||
+              (typeof value === 'object' && isEmpty(value))
+            )
+          })
       ),
     }
   }
@@ -919,13 +919,13 @@ function View({
                       if (count) {
                         return (
                           <span key={'errors-' + type}>
-                          <FontAwesomeIcon
-                            icon={faCircle}
-                            className={color}
-                            size="xs"
-                          />
+                            <FontAwesomeIcon
+                              icon={faCircle}
+                              className={color}
+                              size="xs"
+                            />
                             {` ${count} ${type}${count > 1 ? 's' : ''} `}
-                        </span>
+                          </span>
                         )
                       }
                     })}
