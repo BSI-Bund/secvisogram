@@ -110,6 +110,30 @@ export default function ObjectEditor({
   const renderMenuNodes = (menuNodes, level = 0) => {
     return (
       <ul>
+        {level === 0 && fieldProperties?.length ? (
+          <li
+            className={
+              (!selectedMenuPath.length ? 'font-bold' : '') +
+              ' bg-gray-200 flex w-full'
+            }
+          >
+            <div className="grid place-items-center px-2">
+              <FontAwesomeIcon
+                icon={faCircle}
+                className={getErrorTextColor(fieldsErrors)}
+                size="xs"
+              />
+            </div>
+            <button
+              className="italic text-left w-full px-2 h-9 hover:underline"
+              onClick={() => {
+                setSelectedPath(instancePath)
+              }}
+            >
+              Fields
+            </button>
+          </li>
+        ) : null}
         {menuNodes.map((menuItem, menuItemIndex) => {
           const childErrors = errors.filter((e) =>
             e.instancePath.startsWith(
@@ -132,30 +156,6 @@ export default function ObjectEditor({
 
           return (
             <React.Fragment key={menuItem.instancePath.join('.')}>
-              {level === 0 && fieldProperties?.length ? (
-                <li
-                  className={
-                    (!selectedMenuPath.length ? 'font-bold' : '') +
-                    ' bg-gray-200 flex w-full'
-                  }
-                >
-                  <div className="grid place-items-center px-2">
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      className={getErrorTextColor(fieldsErrors)}
-                      size="xs"
-                    />
-                  </div>
-                  <button
-                    className="italic text-left w-full px-2 h-9 hover:underline"
-                    onClick={() => {
-                      setSelectedPath(instancePath)
-                    }}
-                  >
-                    Fields
-                  </button>
-                </li>
-              ) : null}
               <li
                 className={`bg-gray-200 ${
                   instancePath.length === 0 &&
