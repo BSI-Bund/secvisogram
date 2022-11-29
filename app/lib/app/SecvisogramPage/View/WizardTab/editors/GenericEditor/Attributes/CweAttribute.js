@@ -11,6 +11,7 @@ import cwec_4_3 from '../../../../../../shared/Core/cwec_4.3.json'
 import useDebounce from '../../../../shared/useDebounce.js'
 import Attribute from './shared/Attribute.js'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
+import { isEmpty } from 'lodash/fp.js'
 
 /**
  * helper function getting path and value for a child
@@ -48,7 +49,7 @@ export default function CweAttribute({
   property,
   instancePath,
 }) {
-  const { doc, updateDoc } = React.useContext(DocumentEditorContext)
+  const { doc, updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
 
   const idProperties = getChildProps(property, 'id')
   const nameProperties = getChildProps(property, 'name')
@@ -58,6 +59,9 @@ export default function CweAttribute({
 
   const onChange = (/** @type {{id: string, name: string}} */ newCwe) => {
     updateDoc(instancePath, newCwe)
+    if (isEmpty(newCwe)) {
+      pruneEmpty()
+    }
   }
 
   return (

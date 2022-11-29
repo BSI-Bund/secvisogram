@@ -20,7 +20,7 @@ export default function DropdownAttribute({
   value,
   ...props
 }) {
-  const { updateDoc } = React.useContext(DocumentEditorContext)
+  const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
   const [inputValue, setInputValue] = React.useState(value)
   return (
     <Attribute {...props}>
@@ -44,6 +44,9 @@ export default function DropdownAttribute({
                   props.instancePath,
                   /** @type {string} */ (inputValue)
                 )
+              if (!inputValue) {
+                pruneEmpty()
+              }
             }}
             renderInput={(params) => (
               <TextField

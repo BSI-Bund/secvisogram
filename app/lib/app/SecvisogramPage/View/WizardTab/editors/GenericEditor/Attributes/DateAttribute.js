@@ -19,7 +19,7 @@ export default function DateAttribute({
   value,
   ...props
 }) {
-  const { updateDoc } = React.useContext(DocumentEditorContext)
+  const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
   return (
     <Attribute {...props}>
       <div className="max-w-md flex items-center justify-center">
@@ -30,6 +30,11 @@ export default function DateAttribute({
             onChange={(/** @type {string} */ newValue) =>
               updateDoc(props.instancePath, newValue)
             }
+            onBlur={(e) => {
+              if (!e.target.value) {
+                pruneEmpty()
+              }
+            }}
             readOnly={readOnly}
           />
         </div>

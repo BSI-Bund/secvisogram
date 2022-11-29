@@ -1,6 +1,6 @@
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { set } from 'lodash/fp.js'
+import { isEmpty, set } from 'lodash/fp.js'
 import React from 'react'
 import Hotkeys from 'react-hot-keys'
 import * as semver from 'semver'
@@ -601,6 +601,10 @@ function View({
   const keyDownHandler = (keyName, event) => {
     event.preventDefault()
 
+    if (Object.values(appConfig.keyBindings).indexOf(keyName) > -1) {
+      onReplaceDoc(pruneEmpty(formValues.doc))
+    }
+
     if (keyName === appConfig.keyBindings.keySave) {
       onSaveHandler()
     } else if (keyName === appConfig.keyBindings.keyValidate) {
@@ -624,6 +628,26 @@ function View({
       : ''
   }
 
+  /** @type {({}) => {}} */
+  const pruneEmpty = React.useCallback((obj) => {
+    if (typeof obj === 'string' || typeof obj === 'number') return obj
+    if (Array.isArray(obj)) return obj.map((item) => pruneEmpty(item))
+    return {
+      ...Object.fromEntries(
+        Object.entries(obj)
+          .map(([key, value]) => [key, pruneEmpty(value)])
+          .filter((keyValue) => {
+            const value = keyValue[1]
+            return !(
+              value === '' ||
+              value === null ||
+              (typeof value === 'object' && isEmpty(value))
+            )
+          })
+      ),
+    }
+  }, [])
+
   const documentEditor = React.useMemo(
     /**
      * @returns {React.ContextType<typeof DocumentEditorContext>}
@@ -633,6 +657,7 @@ function View({
       updateDoc(instancePath, value) {
         onReplaceDoc(set(instancePath, value, formValues.doc))
       },
+      pruneEmpty: () => onReplaceDoc(pruneEmpty(formValues.doc)),
       collectIds: {
         productIds: () => onCollectProductIds(formValues.doc),
         groupIds: () => onCollectGroupIds(formValues.doc),
@@ -643,6 +668,7 @@ function View({
       formValues.doc,
       errors,
       onReplaceDoc,
+      pruneEmpty,
       onCollectProductIds,
       onCollectGroupIds,
     ]
@@ -888,14 +914,14 @@ function View({
                       const count = errors.filter((e) => e.type === type).length
                       if (count) {
                         return (
-                          <>
+                          <span key={'errors-' + type}>
                             <FontAwesomeIcon
                               icon={faCircle}
                               className={color}
                               size="xs"
                             />
                             {` ${count} ${type}${count > 1 ? 's' : ''} `}
-                          </>
+                          </span>
                         )
                       }
                     })}

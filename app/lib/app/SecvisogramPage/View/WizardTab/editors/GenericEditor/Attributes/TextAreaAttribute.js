@@ -24,7 +24,7 @@ export default function TextAreaAttribute({
   value,
   ...props
 }) {
-  const { updateDoc } = React.useContext(DocumentEditorContext)
+  const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
   return (
     <Attribute {...props}>
       <div className="max-w-md flex items-center justify-center">
@@ -38,6 +38,11 @@ export default function TextAreaAttribute({
             required={required}
             readOnly={readOnly}
             onChange={(e) => updateDoc(props.instancePath, e.target.value)}
+            onBlur={(e) => {
+              if (!e.target.value) {
+                pruneEmpty()
+              }
+            }}
           />
         </div>
       </div>
