@@ -28,7 +28,7 @@ export default function InfoPanel({ selectedPath }) {
       setMdText('')
     }
 
-    const jsonPath = `$.${selectedPath.join('.')}`.replaceAll(/\.\d+/g, '[]')
+    const jsonPath = `$.${selectedPath.join('.')}`.replaceAll(/\.\d+/g, '')
     if (jsonPath in metadata) {
       // @ts-ignore
       const meta = metadata[jsonPath]

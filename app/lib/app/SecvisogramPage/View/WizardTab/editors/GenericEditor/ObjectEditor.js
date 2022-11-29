@@ -110,6 +110,30 @@ export default function ObjectEditor({
   const renderMenuNodes = (menuNodes, level = 0) => {
     return (
       <ul>
+        {level === 0 && fieldProperties?.length ? (
+          <li
+            className={
+              (!selectedMenuPath.length ? 'font-bold' : '') +
+              ' bg-gray-200 flex w-full'
+            }
+          >
+            <div className="grid place-items-center px-2">
+              <FontAwesomeIcon
+                icon={faCircle}
+                className={getErrorTextColor(fieldsErrors)}
+                size="xs"
+              />
+            </div>
+            <button
+              className="italic text-left w-full px-2 h-9 hover:underline"
+              onClick={() => {
+                setSelectedPath(instancePath)
+              }}
+            >
+              Fields
+            </button>
+          </li>
+        ) : null}
         {menuNodes.map((menuItem, menuItemIndex) => {
           const childErrors = errors.filter((e) =>
             e.instancePath.startsWith(
@@ -132,30 +156,6 @@ export default function ObjectEditor({
 
           return (
             <React.Fragment key={menuItem.instancePath.join('.')}>
-              {level === 0 && fieldProperties?.length ? (
-                <li
-                  className={
-                    (!selectedMenuPath.length ? 'font-bold' : '') +
-                    ' bg-gray-200 flex w-full'
-                  }
-                >
-                  <div className="grid place-items-center px-2">
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      className={getErrorTextColor(fieldsErrors)}
-                      size="xs"
-                    />
-                  </div>
-                  <button
-                    className="italic text-left w-full px-2 h-9 hover:underline"
-                    onClick={() => {
-                      setSelectedPath(instancePath)
-                    }}
-                  >
-                    Fields
-                  </button>
-                </li>
-              ) : null}
               <li
                 className={`bg-gray-200 ${
                   instancePath.length === 0 &&
@@ -292,15 +292,14 @@ export default function ObjectEditor({
 /**
  * @param {import('../../shared/types').Property} property
  * @param {string[]} [instancePath]
+ * @return {Array<{ instancePath: string[] }>}
  */
 export function getObjectMenuPaths(property, instancePath = []) {
   const menuProperties =
     property.metaInfo.propertyList?.filter(
       (p) => p.type === 'OBJECT' || p.type === 'ARRAY'
     ) ?? []
-  /** @type {Array<{ instancePath: string[] }>} */
-  const menuStructure =
-    menuProperties.flatMap((childProperty) => {
+  return menuProperties.flatMap((childProperty) => {
       return [
         ...(childProperty.type === 'OBJECT' || childProperty.type === 'ARRAY'
           ? [
@@ -318,8 +317,6 @@ export function getObjectMenuPaths(property, instancePath = []) {
           : []),
       ]
     }) ?? []
-
-  return menuStructure
 }
 
 /**
@@ -336,6 +333,7 @@ export function getObjectMenuPaths(property, instancePath = []) {
 /**
  * @param {import('../../shared/types').Property} property
  * @param {string[]} [instancePath]
+ * @return {Array<MenuNode>}
  */
 function getObjectMenuNodes(property, instancePath = []) {
   const menuProperties =
@@ -343,9 +341,7 @@ function getObjectMenuNodes(property, instancePath = []) {
       (p) => p.type === 'OBJECT' || p.type === 'ARRAY'
     ) ?? []
 
-  /** @type {Array<MenuNode>} */
-  const menuStructure =
-    menuProperties.map((childProperty) => {
+  return menuProperties.map((childProperty) => {
       return {
         title: childProperty.title,
         instancePath: [...instancePath, childProperty.key],
@@ -361,6 +357,4 @@ function getObjectMenuNodes(property, instancePath = []) {
           : [],
       }
     }) ?? []
-
-  return menuStructure
 }
