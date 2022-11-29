@@ -72,7 +72,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           label={label}
           description={description}
           instancePath={instancePath}
-          value={value}
+          value={value || ''}
         />
       )
     } else if (uiType === 'STRING_ENUM') {
@@ -83,7 +83,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           options={/** @type {string[]} */ (property.enum || [])}
           isEnum={true}
           instancePath={instancePath}
-          value={value}
+          value={value || ''}
         />
       )
     } else if (uiType === 'STRING_WITH_OPTIONS') {
@@ -94,7 +94,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           options={/** @type {string[]} */ (property.metaData?.options || [])}
           isEnum={false}
           instancePath={instancePath}
-          value={value}
+          value={value || ''}
         />
       )
     } else if (uiType === 'STRING_MULTI_LINE') {
@@ -105,7 +105,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           minLength={property.minLength || 0}
           required={property.mandatory}
           instancePath={instancePath}
-          value={value}
+          value={value || ''}
         />
       )
     } else if (uiType === 'STRING_PRODUCT_ID') {
@@ -138,7 +138,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           pattern={property.pattern}
           required={property.mandatory}
           instancePath={instancePath}
-          value={value}
+          value={value || ''}
         />
       )
     } else {
@@ -150,7 +150,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           pattern={property.pattern}
           required={property.mandatory}
           instancePath={instancePath}
-          value={value}
+          value={value || ''}
         />
       )
     }
