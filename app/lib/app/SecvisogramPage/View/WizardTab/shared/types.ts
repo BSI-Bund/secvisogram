@@ -1,7 +1,7 @@
 export type Property = Readonly<{
   key: string
   title?: string
-  type: 'STRING' | 'ARRAY' | 'OBJECT' | 'RECURSION'
+  type: 'STRING' | 'ARRAY' | 'OBJECT' | 'RECURSION' | 'NUMBER'
   fullName: ReadonlyArray<string>
   description?: string
   mandatory?: boolean
@@ -38,7 +38,7 @@ type MetaData = Readonly<{
     csafInformationalAdvisory: RelevanceLevel
     csafSecurityAdvisory: RelevanceLevel
     csafVex: RelevanceLevel
-  },
+  }
   userDocumentation?: {
     specification: string
     usage: string
@@ -50,4 +50,9 @@ type MetaData = Readonly<{
   options?: ReadonlyArray<string>
 }>
 
-type RelevanceLevel = 'mandatory' | 'want_to_have' | 'best_practice' | 'nice_to_know' | 'optional'
+type RelevanceLevel =
+  | 'mandatory'
+  | 'want_to_have'
+  | 'best_practice'
+  | 'nice_to_know'
+  | 'optional'

@@ -1,4 +1,10 @@
-export type Schema = ObjectSchema | ArraySchema | StringSchema | Ref
+export type Schema =
+  | ObjectSchema
+  | ArraySchema
+  | StringSchema
+  | NumberSchema
+  | Ref
+export type JSONSchema = Schema & { $defs?: Defs }
 
 export type Defs = Record<string, Schema | undefined>
 
@@ -15,6 +21,16 @@ export interface ObjectSchema extends CommonSchemaFields {
 export interface ArraySchema extends CommonSchemaFields {
   type: 'array'
   items: Schema
+}
+
+export interface NumberSchema extends CommonSchemaFields {
+  type: 'number'
+  format?: string
+  pattern?: string
+  uniqueItems?: boolean
+  examples?: string[]
+  minLength?: number
+  enum?: string[]
 }
 
 export interface StringSchema extends CommonSchemaFields {
@@ -36,8 +52,20 @@ export interface CommonUiSchemaFields {
   description?: string
   addMenuItemsForChildObjects?: boolean
   key: string
+  fullName: string[]
   metaData?: {
-    uiType?: string
+    uiType?:
+      | 'STRING_DATETIME'
+      | 'STRING_URI'
+      | 'STRING_ENUM'
+      | 'STRING_WITH_OPTIONS'
+      | 'STRING_MULTI_LINE'
+      | 'STRING_PRODUCT_ID'
+      | 'STRING_GROUP_ID'
+      | 'OBJECT_CWE'
+      | 'OBJECT_CVSS_2'
+      | 'OBJECT_CVSS_3'
+      | 'ARRAY_REVISION_HISTORY'
   }
 }
 
@@ -65,9 +93,14 @@ export interface StringUiSchema extends CommonUiSchemaFields {
   metaInfo: {}
 }
 
+export interface NumberUiSchema extends CommonUiSchemaFields {
+  type: 'NUMBER'
+  metaInfo: {}
+}
+
 export type UiSchema =
   | ArrayUiSchema
   | ObjectUiSchema
   | RecursionUiSchema
   | StringUiSchema
-  | ({ type: 'UNKNOWN' } & CommonUiSchemaFields)
+  | NumberUiSchema

@@ -1,6 +1,7 @@
 import prettier from 'prettier'
 
 /** @typedef {import('./importUiMetaData/csaf_json_schema.json')} CSAFJSONSchema */
+/** @typedef {import('./importUiMetaData/cvss-v2.0.json')} CVSS2JSONSchema */
 
 import { readFile, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
@@ -10,6 +11,14 @@ import metaData from './importUiMetaData/metaData.js'
 const schema = JSON.parse(
   await readFile(
     new URL('importUiMetaData/csaf_json_schema.json', import.meta.url),
+    'utf-8'
+  )
+)
+
+/** @type {CVSS2JSONSchema} */
+const cvss2Schema = JSON.parse(
+  await readFile(
+    new URL('importUiMetaData/cvss-v2.0.json', import.meta.url),
     'utf-8'
   )
 )
@@ -25,10 +34,11 @@ const metaDataRecord =
 
 /**
  * @param {import('./importUiMetaData/types').Schema} subschema
+ * @param {import('./importUiMetaData/types').Defs} defs
  * @param {string[]} path
  * @returns {import('./importUiMetaData/types').UiSchema}
  */
-function convertSchema(subschema, path) {
+function convertSchema(subschema, defs, path) {
   const strPath = path.join('.')
 
   let key = path.at(-1) ?? ''
@@ -71,19 +81,6 @@ function convertSchema(subschema, path) {
   }
 
   if (
-    strPath ===
-    'properties.vulnerabilities.items.properties.scores.items.properties.cvss_v2'
-  ) {
-    return {
-      ...commonUiSchemaFields,
-      type: 'OBJECT',
-      metaInfo: {
-        propertyList: [],
-      },
-    }
-  }
-
-  if (
     'type' in subschema &&
     subschema.type === 'array' &&
     'type' in subschema.items &&
@@ -97,7 +94,10 @@ function convertSchema(subschema, path) {
     )
     const arrayType =
       /** @type {import('./importUiMetaData/types').ObjectUiSchema} */ (
-        convertSchema({ ...subschema.items, properties }, [...path, 'items'])
+        convertSchema({ ...subschema.items, properties }, defs, [
+          ...path,
+          'items',
+        ])
       )
     arrayType.metaInfo.propertyList.unshift({
       ...commonUiSchemaFields,
@@ -115,14 +115,26 @@ function convertSchema(subschema, path) {
   }
 
   if ('$ref' in subschema) {
-    const refName = subschema.$ref.replace(new RegExp('\\#/\\$defs/'), '')
-    const ref = defs[refName]
-    if (!ref) {
-      throw new Error(
-        'Ref with name `' + refName + '` not found (`' + strPath + '`)'
+    /** @type {import('./importUiMetaData/types').UiSchema} */
+    let resolvedSchema
+    if (subschema.$ref === 'https://www.first.org/cvss/cvss-v2.0.json') {
+      resolvedSchema = convertSchema(
+        /** @type {import('./importUiMetaData/types').Schema} */ (cvss2Schema),
+        /** @type {import('./importUiMetaData/types').Defs} */ (
+          cvss2Schema.$defs
+        ),
+        path
       )
+    } else {
+      const refName = subschema.$ref.replace(new RegExp('\\#/\\$defs/'), '')
+      const ref = defs[refName]
+      if (!ref) {
+        throw new Error(
+          'Ref with name `' + refName + '` not found (`' + strPath + '`)'
+        )
+      }
+      resolvedSchema = convertSchema(ref, defs, path)
     }
-    const resolvedSchema = convertSchema(ref, path)
     return {
       ...resolvedSchema,
       title: subschema.title ?? resolvedSchema.title,
@@ -146,7 +158,7 @@ function convertSchema(subschema, path) {
       type: 'OBJECT',
       metaInfo: {
         propertyList: propertyList.map(([key, value]) => {
-          return convertSchema(value, [...path, 'properties', key])
+          return convertSchema(value, defs, [...path, 'properties', key])
         }),
       },
     }
@@ -157,7 +169,7 @@ function convertSchema(subschema, path) {
       ...commonUiSchemaFields,
       type: 'ARRAY',
       metaInfo: {
-        arrayType: convertSchema(subschema.items, [...path, 'items']),
+        arrayType: convertSchema(subschema.items, defs, [...path, 'items']),
       },
     }
   }
@@ -188,7 +200,15 @@ function convertSchema(subschema, path) {
     }
   }
 
-  return { ...commonUiSchemaFields, type: 'UNKNOWN' }
+  if (subschema.type === 'number') {
+    return {
+      ...commonUiSchemaFields,
+      metaInfo: {},
+      type: 'NUMBER',
+    }
+  }
+
+  throw new Error('Unknown field encountered: ' + strPath)
 }
 
 const outputFile = fileURLToPath(
@@ -202,6 +222,7 @@ const prettierString = prettier.format(
     `export default /** @type {const} */ (${JSON.stringify(
       convertSchema(
         /** @type {import('./importUiMetaData/types').Schema} */ (schema),
+        defs,
         []
       )
     )})`,
@@ -211,5 +232,3 @@ const prettierString = prettier.format(
   }
 )
 await writeFile(outputFile, prettierString, 'utf8')
-
-console.log()

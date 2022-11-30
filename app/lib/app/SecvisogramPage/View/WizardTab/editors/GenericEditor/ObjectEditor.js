@@ -5,8 +5,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import SideBarContext from '../../../shared/context/SideBarContext.js'
 import SelectedPathContext from '../../../shared/context/SelectedPathContext.js'
+import SideBarContext from '../../../shared/context/SideBarContext.js'
 import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import { getErrorTextColor } from '../GenericEditor.js'
@@ -87,7 +87,7 @@ export default function ObjectEditor({
 
   const renderFieldsEditor = () => {
     return (
-      <div className="flex flex-col gap-4 p-4">
+      <div className="flex flex-col gap-4 p-4 overflow-auto shrink-0">
         {fieldProperties?.map((property) => (
           <GenericEditor
             key={property.key}
@@ -299,7 +299,8 @@ export function getObjectMenuPaths(property, instancePath = []) {
     property.metaInfo.propertyList?.filter(
       (p) => p.type === 'OBJECT' || p.type === 'ARRAY'
     ) ?? []
-  return menuProperties.flatMap((childProperty) => {
+  return (
+    menuProperties.flatMap((childProperty) => {
       return [
         ...(childProperty.type === 'OBJECT' || childProperty.type === 'ARRAY'
           ? [
@@ -317,13 +318,14 @@ export function getObjectMenuPaths(property, instancePath = []) {
           : []),
       ]
     }) ?? []
+  )
 }
 
 /**
  * @typedef {object} MenuNode
  * @property {boolean} isArray
  * @property {string} key
- * @property {'STRING' | 'ARRAY' | 'OBJECT' | 'RECURSION'} type
+ * @property {'STRING' | 'ARRAY' | 'OBJECT' | 'RECURSION' | 'NUMBER'} type
  * @property {string[]} instancePath
  * @property {import('../../shared/types').Property} property
  * @property {string} [title]
@@ -341,7 +343,8 @@ function getObjectMenuNodes(property, instancePath = []) {
       (p) => p.type === 'OBJECT' || p.type === 'ARRAY'
     ) ?? []
 
-  return menuProperties.map((childProperty) => {
+  return (
+    menuProperties.map((childProperty) => {
       return {
         title: childProperty.title,
         instancePath: [...instancePath, childProperty.key],
@@ -357,4 +360,5 @@ function getObjectMenuNodes(property, instancePath = []) {
           : [],
       }
     }) ?? []
+  )
 }
