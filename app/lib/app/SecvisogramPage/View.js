@@ -891,7 +891,15 @@ function View({
                       </button>
                     )}
                   </div>
-                  <div className="pr-5 text-gray-300">
+                  <button
+                    data-testid="show_all_errors_button"
+                    type="button"
+                    className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 mr-5 h-auto"
+                    onClick={async () => {
+                      sideBarData.setSideBarIsOpen(true)
+                      sideBarData.setSideBarSelectedPath([])
+                    }}
+                  >
                     {`Document is ${
                       errors.filter((e) => e.type === 'error').length === 0
                         ? 'valid'
@@ -923,7 +931,7 @@ function View({
                         </span>
                       )
                     })}
-                  </div>
+                  </button>
                 </div>
               )}
               <div
