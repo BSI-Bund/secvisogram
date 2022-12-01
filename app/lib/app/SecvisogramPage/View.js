@@ -912,18 +912,16 @@ function View({
                       },
                     ].map(({ type, color }) => {
                       const count = errors.filter((e) => e.type === type).length
-                      if (count) {
-                        return (
-                          <span key={'errors-' + type}>
-                            <FontAwesomeIcon
-                              icon={faCircle}
-                              className={color}
-                              size="xs"
-                            />
-                            {` ${count} ${type}${count > 1 ? 's' : ''} `}
-                          </span>
-                        )
-                      }
+                      return (
+                        <span key={'errors-' + type} className="px-1">
+                          <FontAwesomeIcon
+                            icon={faCircle}
+                            className={color}
+                            size="xs"
+                          />
+                          {` ${count} ${type}${count > 1 ? 's' : ''} `}
+                        </span>
+                      )
                     })}
                   </div>
                 </div>
