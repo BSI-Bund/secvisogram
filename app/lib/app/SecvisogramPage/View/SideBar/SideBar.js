@@ -15,9 +15,9 @@ export default function SideBar() {
 
   return (
     <>
-      <div className="flex h-full bg-gray-300 border-l border-gray-400 wizard-menu-shadow">
+      <div className="flex h-full bg-gray-200 border-l border-gray-400 wizard-menu-shadow">
         {sideBarData.sideBarIsOpen ? (
-          <div className="w-72 p-3 bg-gray-200 overflow-auto">
+          <div className="w-72 bg-gray-200 overflow-auto border-r border-gray-300">
             {sideBarData.sideBarContent === 'ERRORS' ? (
               <ErrorPanel selectedPath={sideBarData.sideBarSelectedPath} />
             ) : sideBarData.sideBarContent === 'DOCUMENTATION' ? (
@@ -34,10 +34,10 @@ export default function SideBar() {
               <button
                 data-testid={`sideBar-${targetString}-button`}
                 className={
-                  'p-3 w-full hover:bg-gray-200 ' +
+                  'p-3 w-full hover:bg-gray-300 ' +
                   (sideBarData.sideBarIsOpen &&
                   sideBarData.sideBarContent === targetString
-                    ? 'bg-gray-200'
+                    ? 'bg-gray-300'
                     : '')
                 }
                 onClick={() => {
@@ -52,10 +52,10 @@ export default function SideBar() {
         </div>
       </div>
       <div
-        className="mt-auto h-12 w-full col-start-2 col-end-2 bg-gray-300 border-l border-gray-400 wizard-menu-shadow"
+        className="mt-auto h-12 w-full col-start-2 col-end-2 border-l border-gray-400 wizard-menu-shadow"
         onClick={() => sideBarData.setSideBarIsOpen(!sideBarData.sideBarIsOpen)}
       >
-        <button className="w-full h-full bg-gray-200 hover:bg-gray-100">
+        <button className="w-full h-full bg-gray-200 hover:bg-gray-300">
           {sideBarData.sideBarIsOpen ? (
             <>
               <FontAwesomeIcon className="fa-xs" icon={faAngleDoubleRight} />{' '}
