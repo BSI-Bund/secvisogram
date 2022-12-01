@@ -1,5 +1,6 @@
 import React from 'react'
 import Attribute from './shared/Attribute.js'
+import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 
 /**
  * @param {{
@@ -9,10 +10,8 @@ import Attribute from './shared/Attribute.js'
  *  pattern?: string
  *  min: number
  *  max: number
- *  step: number
  *  readOnly?: boolean
  *  required?: boolean
- *  validationErrors: import('../../../../../shared/types').ValidationError[]
  *  instancePath: string[]
  *  value: unknown
  *  updateDoc(instancePath: string[], value: string): void
@@ -24,13 +23,13 @@ export default function NumberAttribute({
   pattern,
   min,
   max,
-  step,
   required = false,
   readOnly = false,
-  updateDoc,
   value,
   ...props
 }) {
+  const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
+
   return (
     <Attribute {...props}>
       <div className="max-w-md flex items-baseline justify-center">
@@ -43,7 +42,6 @@ export default function NumberAttribute({
             pattern={pattern}
             min={min}
             max={max}
-            step={step}
             required={required}
             readOnly={readOnly}
             onChange={(e) => {
@@ -52,6 +50,11 @@ export default function NumberAttribute({
                 props.instancePath,
                 Number.isNaN(float) ? '' : float.toString()
               )
+            }}
+            onBlur={(e) => {
+              if (!e.target.value) {
+                pruneEmpty()
+              }
             }}
           />
         </div>
