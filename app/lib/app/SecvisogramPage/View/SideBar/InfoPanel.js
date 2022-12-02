@@ -37,7 +37,7 @@ export default function InfoPanel({ selectedPath }) {
   }, [selectedPath])
 
   return (
-    <article className="prose" data-testid="infoPanel-content">
+    <article className="prose p-3" data-testid="infoPanel-content">
       <ReactMarkdown
         components={{
           h1: 'strong',

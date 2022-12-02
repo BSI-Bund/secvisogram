@@ -19,27 +19,32 @@ export default function ErrorPanel({ selectedPath }) {
 
   return (
     <>
-      {errorsUnderPath.map((err, i) => {
-        const color =
-          err.type === 'error'
-            ? 'border-red-600 bg-red-400'
-            : err.type === 'warning'
-            ? 'border-yellow-600 bg-yellow-400'
-            : err.type === 'info'
-            ? 'border-blue-600 bg-blue-400'
-            : ''
-        return (
-          <div
-            key={i}
-            className={'p-2 m-1 rounded border hover:cursor-pointer ' + color}
-            onClick={() =>
-              setSelectedPath(err.instancePath.split('/').slice(1))
-            }
-          >
-            <b>{err.instancePath}</b>: {err.message}
-          </div>
-        )
-      })}
+      <div className="w-full px-4 pt-2">
+        {selectedPath.length ? 'Context specific Errors:' : 'All errors:'}
+      </div>
+      <div className="p-3">
+        {errorsUnderPath.map((err, i) => {
+          const color =
+            err.type === 'error'
+              ? 'border-red-800 bg-red-600/75'
+              : err.type === 'warning'
+              ? 'border-yellow-800 bg-yellow-600/75'
+              : err.type === 'info'
+              ? 'border-blue-800 bg-blue-600/75'
+              : ''
+          return (
+            <div
+              key={i}
+              className={'p-2 m-1 rounded border hover:cursor-pointer ' + color}
+              onClick={() =>
+                setSelectedPath(err.instancePath.split('/').slice(1))
+              }
+            >
+              <b>{err.instancePath}</b>: {err.message}
+            </div>
+          )
+        })}
+      </div>
     </>
   )
 }
