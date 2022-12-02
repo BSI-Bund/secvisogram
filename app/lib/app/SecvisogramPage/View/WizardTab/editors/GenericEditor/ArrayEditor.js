@@ -1,7 +1,9 @@
 import {
   faCircle,
+  faEllipsisVertical,
   faInfoCircle,
   faPlus,
+  faTrash,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
@@ -10,6 +12,7 @@ import SelectedPathContext from '../../../shared/context/SelectedPathContext.js'
 import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import { getErrorTextColor } from '../GenericEditor.js'
+import _ from 'lodash'
 
 /**
  * @param {object} props
@@ -187,47 +190,83 @@ function Menu({ instancePath, level = 1, ...props }) {
               >
                 Item {i + 1}
               </button>
-              {recursionProperty ? (
-                <button
-                  data-testid={`menu_entry-/${[
-                    ...instancePath,
-                    String(i),
-                    recursionProperty.key,
-                  ].join('/')}-add_item_button`}
-                  onClick={() => {
-                    const subArray = childValue?.[recursionProperty.key]
-                    const sanitizedChildValue = Array.isArray(subArray)
-                      ? subArray
-                      : []
-                    const value =
-                      childProperty.type === 'OBJECT'
-                        ? {}
-                        : childProperty.type === 'ARRAY'
-                        ? []
-                        : childProperty.type === 'STRING'
-                        ? ''
-                        : null
-                    if (value !== null) {
-                      updateDoc(
-                        [...instancePath, String(i), recursionProperty.key],
-                        sanitizedChildValue.concat([value])
-                      )
-                      setSelectedPath([
+
+              <div>
+                <button className="w-9 h-9 peer text-slate-400 hover:text-slate-800">
+                  <FontAwesomeIcon icon={faEllipsisVertical} />
+                </button>
+
+                <div className="hidden peer-hover:flex hover:flex flex-col bg-white drop-shadow-md z-10 absolute">
+                  {recursionProperty ? (
+                    <button
+                      className="px-2 h-9 text-left text-slate-400 hover:text-slate-800 whitespace-nowrap align-middle"
+                      data-testid={`menu_entry-/${[
                         ...instancePath,
                         String(i),
                         recursionProperty.key,
-                        String(sanitizedChildValue.length),
-                      ])
+                      ].join('/')}-add_item_button`}
+                      onClick={() => {
+                        const subArray = childValue?.[recursionProperty.key]
+                        const sanitizedChildValue = Array.isArray(subArray)
+                          ? subArray
+                          : []
+                        const value =
+                          childProperty.type === 'OBJECT'
+                            ? {}
+                            : childProperty.type === 'ARRAY'
+                            ? []
+                            : childProperty.type === 'STRING'
+                            ? ''
+                            : null
+                        if (value !== null) {
+                          updateDoc(
+                            [...instancePath, String(i), recursionProperty.key],
+                            sanitizedChildValue.concat([value])
+                          )
+                          setSelectedPath([
+                            ...instancePath,
+                            String(i),
+                            recursionProperty.key,
+                            String(sanitizedChildValue.length),
+                          ])
+                        }
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faPlus} className="pr-2" /> Add sub
+                      item
+                    </button>
+                  ) : null}
+                  <button
+                    data-testid={
+                      [...instancePath, i].join('-') + '-deleteButton'
                     }
-                  }}
-                >
-                  <FontAwesomeIcon icon={faPlus} />
-                </button>
-              ) : null}
+                    type="button"
+                    className="px-2 h-9 text-left text-slate-400 hover:text-slate-800 whitespace-nowrap align-middle"
+                    onClick={() => {
+                      if (value !== null) {
+                        const arrayWithoutItem = _.get(
+                          doc,
+                          instancePath
+                        ).filter(
+                          (
+                            /** @type {any} */ item,
+                            /** @type {number} */ index
+                          ) => index !== i
+                        )
+                        updateDoc(instancePath, arrayWithoutItem)
+                        setSelectedPath(instancePath)
+                      }
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faTrash} className="pr-2" /> Delete
+                  </button>
+                </div>
+              </div>
+
               <button
                 data-testid={[...instancePath, i].join('-') + '-infoButton'}
                 type="button"
-                className="w-9 h-9 flex-none hover:underline"
+                className="w-9 h-9 flex-none text-slate-400 hover:text-slate-800"
                 onClick={() => {
                   setSideBarIsOpen(true)
                   setSideBarSelectedPath(instancePath.concat(i.toString()))

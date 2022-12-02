@@ -1,5 +1,6 @@
 import {
   faCircle,
+  faEllipsisVertical,
   faInfoCircle,
   faPlus,
 } from '@fortawesome/free-solid-svg-icons'
@@ -143,16 +144,6 @@ export default function ObjectEditor({
           const isSelected =
             selectedSubPath &&
             menuItem.instancePath.every((p, i) => selectedSubPath[i] === p)
-          const docuPathFromInstancePath = [
-            ...instancePath,
-            ...menuItem.instancePath,
-          ].filter((p) => Number.isNaN(Number(p)))
-          const isActiveInSidebar =
-            docuPathFromInstancePath.length ===
-              sideBarData.sideBarSelectedPath.length &&
-            docuPathFromInstancePath.every(
-              (p, i) => sideBarData.sideBarSelectedPath[i] === p
-            )
 
           return (
             <React.Fragment key={menuItem.instancePath.join('.')}>
@@ -180,7 +171,7 @@ export default function ObjectEditor({
                   </div>
                   <button
                     type="button"
-                    className="px-2 w-full text-left hover:underline whitespace-nowrap"
+                    className="px-2 w-full text-left hover:underline whitespace-nowrap align-middle"
                     data-testid={`menu_entry-/${instancePath
                       .concat(menuItem.instancePath)
                       .join('/')}`}
@@ -194,50 +185,66 @@ export default function ObjectEditor({
                     {menuItem.title}
                   </button>
                   {menuItem.property.type === 'ARRAY' ? (
-                    <button
-                      data-testid={`menu_entry-/${[
-                        ...instancePath,
-                        ...menuItem.instancePath,
-                      ].join('/')}-add_item_button`}
-                      onClick={() => {
-                        const menuItemValue = menuItem.instancePath.reduce(
-                          (value, pathSegment) => {
-                            return (value ?? {})[pathSegment]
-                          },
-                          /** @type {Record<string, any> | null} */ (
-                            sanitizedValue
-                          )
-                        )
-                        const sanitizedMenuItemValue = Array.isArray(
-                          menuItemValue
-                        )
-                          ? menuItemValue
-                          : []
-                        const childType =
-                          menuItem.property.metaInfo.arrayType?.type
-                        const newItem =
-                          childType === 'OBJECT'
-                            ? {}
-                            : childType === 'ARRAY'
-                            ? []
-                            : childType === 'STRING'
-                            ? ''
-                            : null
-                        if (newItem !== null) {
-                          updateDoc(
-                            [...instancePath, ...menuItem.instancePath],
-                            sanitizedMenuItemValue.concat([newItem])
-                          )
-                          setSelectedPath([
+                    <div>
+                      <button
+                        className="w-9 h-9 peer text-slate-400 hover:text-slate-800"
+                        data-testid={`menu_entry-/${[
+                          ...instancePath,
+                          ...menuItem.instancePath,
+                        ].join('/')}-hover_menu_button`}
+                      >
+                        <FontAwesomeIcon icon={faEllipsisVertical} />
+                      </button>
+
+                      <div className="hidden peer-hover:flex hover:flex flex-col bg-white drop-shadow-md z-10 absolute">
+                        <button
+                          className="px-2 h-9 text-slate-400 hover:text-slate-800 whitespace-nowrap align-middle"
+                          data-testid={`menu_entry-/${[
                             ...instancePath,
                             ...menuItem.instancePath,
-                            String(sanitizedMenuItemValue.length),
-                          ])
-                        }
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faPlus} />
-                    </button>
+                          ].join('/')}-add_item_button`}
+                          onClick={() => {
+                            const menuItemValue = menuItem.instancePath.reduce(
+                              (value, pathSegment) => {
+                                return (value ?? {})[pathSegment]
+                              },
+                              /** @type {Record<string, any> | null} */ (
+                                sanitizedValue
+                              )
+                            )
+                            const sanitizedMenuItemValue = Array.isArray(
+                              menuItemValue
+                            )
+                              ? menuItemValue
+                              : []
+                            const childType =
+                              menuItem.property.metaInfo.arrayType?.type
+                            const newItem =
+                              childType === 'OBJECT'
+                                ? {}
+                                : childType === 'ARRAY'
+                                ? []
+                                : childType === 'STRING'
+                                ? ''
+                                : null
+                            if (newItem !== null) {
+                              updateDoc(
+                                [...instancePath, ...menuItem.instancePath],
+                                sanitizedMenuItemValue.concat([newItem])
+                              )
+                              setSelectedPath([
+                                ...instancePath,
+                                ...menuItem.instancePath,
+                                String(sanitizedMenuItemValue.length),
+                              ])
+                            }
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faPlus} className="pr-2" />
+                          Add list item
+                        </button>
+                      </div>
+                    </div>
                   ) : null}
                   <button
                     data-testid={
@@ -245,12 +252,7 @@ export default function ObjectEditor({
                       '-infoButton'
                     }
                     type="button"
-                    className={
-                      'w-9 h-9 flex-none hover:text-slate-600 ' +
-                      `${
-                        isActiveInSidebar ? 'text-slate-600' : 'text-slate-400'
-                      }`
-                    }
+                    className="w-9 h-9 flex-none text-slate-400 hover:text-slate-800"
                     onClick={() => {
                       sideBarData.setSideBarIsOpen(true)
                       sideBarData.setSideBarSelectedPath([
@@ -259,7 +261,7 @@ export default function ObjectEditor({
                       ])
                     }}
                   >
-                    <FontAwesomeIcon icon={faInfoCircle} size="xs" />
+                    <FontAwesomeIcon icon={faInfoCircle} />
                   </button>
                 </div>
                 {renderMenuNodes(menuItem.children, level + 1)}
@@ -299,7 +301,8 @@ export function getObjectMenuPaths(property, instancePath = []) {
     property.metaInfo.propertyList?.filter(
       (p) => p.type === 'OBJECT' || p.type === 'ARRAY'
     ) ?? []
-  return menuProperties.flatMap((childProperty) => {
+  return (
+    menuProperties.flatMap((childProperty) => {
       return [
         ...(childProperty.type === 'OBJECT' || childProperty.type === 'ARRAY'
           ? [
@@ -317,6 +320,7 @@ export function getObjectMenuPaths(property, instancePath = []) {
           : []),
       ]
     }) ?? []
+  )
 }
 
 /**
@@ -341,7 +345,8 @@ function getObjectMenuNodes(property, instancePath = []) {
       (p) => p.type === 'OBJECT' || p.type === 'ARRAY'
     ) ?? []
 
-  return menuProperties.map((childProperty) => {
+  return (
+    menuProperties.map((childProperty) => {
       return {
         title: childProperty.title,
         instancePath: [...instancePath, childProperty.key],
@@ -357,4 +362,5 @@ function getObjectMenuNodes(property, instancePath = []) {
           : [],
       }
     }) ?? []
+  )
 }

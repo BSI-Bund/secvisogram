@@ -19,7 +19,7 @@ describe('SecvisogramPage / WizardTab', function () {
     infoPanelContent.should('contain.text', 'Acknowledgments - Usage')
   })
 
-  describe('can add new array items from object editor', function () {
+  describe('can add and remove new array items from object editor', function () {
     it('/product_tree/branches', function () {
       cy.intercept('/.well-known/appspecific/de.bsi.secvisogram.json', {
         statusCode: 404,
@@ -32,16 +32,23 @@ describe('SecvisogramPage / WizardTab', function () {
       cy.get(`[data-testid="menu_entry-/product_tree/branches"]`).click()
       cy.get(
         `[data-testid="menu_entry-/product_tree/branches-add_item_button"]`
-      ).click()
+      ).click({ force: true })
       cy.get(
         `[data-testid="menu_entry-/product_tree/branches/0/branches"]`
       ).should('have.class', 'menu_entry-selected')
       cy.get(
         `[data-testid="menu_entry-/product_tree/branches/0/branches-add_item_button"]`
-      ).click()
+      ).click({ force: true })
       cy.get(
         `[data-testid="menu_entry-/product_tree/branches/0/branches/0/branches"]`
       ).should('have.class', 'menu_entry-selected')
+
+      cy.get(`[data-testid="product_tree-branches-0-deleteButton"]`).click({
+        force: true,
+      })
+      cy.get(
+        `[data-testid="menu_entry-/product_tree/branches/0/branches/0/branches"]`
+      ).should('not.exist')
     })
   })
 

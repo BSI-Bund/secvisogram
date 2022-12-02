@@ -53,13 +53,13 @@ export default function Attribute({
         <button
           data-testid={instancePath.join('-') + '-infoButton'}
           type="button"
-          className="w-6 h-6 flex-none hover:bg-blue-300 m-1"
+          className="w-6 h-6 flex-none text-slate-400 hover:text-slate-800 m-1"
           onClick={() => {
             setSideBarIsOpen(true)
             setSideBarSelectedPath(instancePath)
           }}
         >
-          <FontAwesomeIcon icon={faInfoCircle} size="xs" />
+          <FontAwesomeIcon icon={faInfoCircle} />
         </button>
       </div>
       {children}
