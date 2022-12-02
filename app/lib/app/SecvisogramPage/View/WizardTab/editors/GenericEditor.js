@@ -1,6 +1,7 @@
 import React from 'react'
 import DocumentEditorContext from '../../shared/DocumentEditorContext.js'
 import ArrayEditor from './GenericEditor/ArrayEditor.js'
+import Attribute from './GenericEditor/Attributes/shared/Attribute.js'
 import CweAttribute from './GenericEditor/Attributes/CweAttribute.js'
 import DateAttribute from './GenericEditor/Attributes/DateAttribute.js'
 import DropdownAttribute from './GenericEditor/Attributes/DropdownAttribute.js'
@@ -40,8 +41,11 @@ export default function Editor({ parentProperty, property, instancePath }) {
   const { doc, collectIds } = React.useContext(DocumentEditorContext)
 
   const uiType = property.metaData?.uiType
-  const label = property.title || 'missing title'
-  const description = property.description || 'missing description'
+  const label = property.title || property.metaData?.title || 'missing title'
+  const description =
+    property.description ||
+    property.metaData?.description ||
+    'missing description'
   /** @type {unknown} */
   const value = instancePath.reduce((value, pathSegment) => {
     return (value ?? {})[pathSegment]
