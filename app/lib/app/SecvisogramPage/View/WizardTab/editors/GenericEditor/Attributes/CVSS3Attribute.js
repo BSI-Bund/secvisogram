@@ -128,6 +128,7 @@ export default function CVSSV3Attribute({
           'FUNCTIONAL',
           'HIGH',
           'NOT_DEFINED',
+          '',
         ])}
         {dropdownFor('remediationLevel', [
           'OFFICIAL_FIX',
@@ -135,12 +136,14 @@ export default function CVSSV3Attribute({
           'WORKAROUND',
           'UNAVAILABLE',
           'NOT_DEFINED',
+          '',
         ])}
         {dropdownFor('reportConfidence', [
           'UNKNOWN',
           'REASONABLE',
           'CONFIRMED',
           'NOT_DEFINED',
+          '',
         ])}
         <Attribute
           label={'TemporalScore'}
@@ -164,18 +167,21 @@ export default function CVSSV3Attribute({
           'MEDIUM',
           'HIGH',
           'NOT_DEFINED',
+          '',
         ])}
         {dropdownFor('integrityRequirement', [
           'LOW',
           'MEDIUM',
           'HIGH',
           'NOT_DEFINED',
+          '',
         ])}
         {dropdownFor('availabilityRequirement', [
           'LOW',
           'MEDIUM',
           'HIGH',
           'NOT_DEFINED',
+          '',
         ])}
         {dropdownFor('modifiedAttackVector', [
           'NETWORK',
@@ -183,41 +189,53 @@ export default function CVSSV3Attribute({
           'LOCAL',
           'PHYSICAL',
           'NOT_DEFINED',
+          '',
         ])}
         {dropdownFor('modifiedAttackComplexity', [
           'HIGH',
           'LOW',
           'NOT_DEFINED',
+          '',
         ])}
         {dropdownFor('modifiedPrivilegesRequired', [
           'NONE',
           'LOW',
           'HIGH',
           'NOT_DEFINED',
+          '',
         ])}
         {dropdownFor('modifiedUserInteraction', [
           'NONE',
           'REQUIRED',
           'NOT_DEFINED',
+          '',
         ])}
-        {dropdownFor('modifiedScope', ['UNCHANGED', 'CHANGED', 'NOT_DEFINED'])}
+        {dropdownFor('modifiedScope', [
+          'UNCHANGED',
+          'CHANGED',
+          'NOT_DEFINED',
+          '',
+        ])}
         {dropdownFor('modifiedConfidentialityImpact', [
           'NONE',
           'LOW',
           'HIGH',
           'NOT_DEFINED',
+          '',
         ])}
         {dropdownFor('modifiedIntegrityImpact', [
           'NONE',
           'LOW',
           'HIGH',
           'NOT_DEFINED',
+          '',
         ])}
         {dropdownFor('modifiedAvailabilityImpact', [
           'NONE',
           'LOW',
           'HIGH',
           'NOT_DEFINED',
+          '',
         ])}
         <Attribute
           label={'EnvironmentalScore'}
