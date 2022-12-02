@@ -17,7 +17,6 @@ export function vectorUpdateFromVectorString(vector) {
     .map((k) => {
       const [key, value] = k.split(':')
       const mapping = cvss2.mapping.find((m) => m[1] === key)
-      console.log({ mapping })
       if (!mapping) return null
       const valueMapping = new Map(
         Array.from(
