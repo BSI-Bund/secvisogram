@@ -108,15 +108,15 @@ export default function CVSSV3Attribute({
         {dropdownFor('integrityImpact', ['NONE', 'HIGH', 'LOW'])}
         {dropdownFor('availabilityImpact', ['NONE', 'HIGH', 'LOW'])}
         <Attribute
-          description={description}
-          instancePath={instancePath}
-          label={label}
+          label={'BaseScore'}
+          description={'The CVSS Base Score'}
+          instancePath={instancePath.concat(['baseScore'])}
         >
           {typeof value?.baseScore === 'number' ? String(value.baseScore) : ''}
         </Attribute>
         <TextAttribute
           label="BaseSeverity"
-          description=""
+          description="The CVSS Base Severity"
           readOnly
           minLength={1}
           instancePath={instancePath.concat(['baseSeverity'])}
@@ -143,9 +143,9 @@ export default function CVSSV3Attribute({
           'NOT_DEFINED',
         ])}
         <Attribute
-          description={description}
-          instancePath={instancePath}
-          label={label}
+          label={'TemporalScore'}
+          description={'The CVSS Temporal Severity'}
+          instancePath={instancePath.concat(['temporalScore'])}
         >
           {typeof value?.temporalScore === 'number'
             ? String(value.temporalScore)
@@ -220,9 +220,9 @@ export default function CVSSV3Attribute({
           'NOT_DEFINED',
         ])}
         <Attribute
-          description={description}
-          instancePath={instancePath}
-          label={label}
+          label={'EnvironmentalScore'}
+          description={'The CVSS Environmental Score'}
+          instancePath={instancePath.concat(['environmentalScore'])}
         >
           {typeof value?.environmentalScore === 'number'
             ? String(value.environmentalScore)
@@ -230,7 +230,7 @@ export default function CVSSV3Attribute({
         </Attribute>
         <TextAttribute
           label="EnvironmentalSeverity"
-          description=""
+          description="The CVSS Environmental Severity"
           readOnly
           minLength={1}
           instancePath={instancePath.concat(['environmentalSeverity'])}
