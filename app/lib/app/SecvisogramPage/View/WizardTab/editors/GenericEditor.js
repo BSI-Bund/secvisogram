@@ -84,6 +84,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           description={description}
           instancePath={instancePath}
           value={value || ''}
+          property={property}
         />
       )
     } else if (uiType === 'STRING_ENUM') {
@@ -95,6 +96,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           isEnum={true}
           instancePath={instancePath}
           value={value || ''}
+          property={property}
         />
       )
     } else if (uiType === 'STRING_WITH_OPTIONS') {
@@ -106,6 +108,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           isEnum={false}
           instancePath={instancePath}
           value={value || ''}
+          property={property}
         />
       )
     } else if (uiType === 'STRING_MULTI_LINE') {
@@ -117,6 +120,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           required={property.mandatory}
           instancePath={instancePath}
           value={value || ''}
+          property={property}
         />
       )
     } else if (uiType === 'STRING_PRODUCT_ID') {
@@ -127,6 +131,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           instancePath={instancePath}
           value={value || ''}
           onCollectIds={collectIds['productIds']}
+          property={property}
         />
       )
     } else if (uiType === 'STRING_GROUP_ID') {
@@ -137,6 +142,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           instancePath={instancePath}
           value={value || ''}
           onCollectIds={collectIds['groupIds']}
+          property={property}
         />
       )
     } else if (uiType === 'STRING_URI') {
@@ -150,6 +156,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           required={property.mandatory}
           instancePath={instancePath}
           value={value || ''}
+          property={property}
         />
       )
     } else {
@@ -162,6 +169,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           required={property.mandatory}
           instancePath={instancePath}
           value={value || ''}
+          property={property}
         />
       )
     }

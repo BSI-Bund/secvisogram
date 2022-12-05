@@ -30,6 +30,7 @@ import SideBar from './View/SideBar/SideBar.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
 import WizardTab from './View/WizardTab.js'
 import SelectedPathContext from './View/shared/context/SelectedPathContext.js'
+import RelevanceLevelContext from './View/shared/context/RelevanceLevelContext.js'
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -694,351 +695,406 @@ function View({
     /** @type {string[]} */ ([])
   )
 
+  /** @type {string[]} */
+  const relevanceLevels = [
+    'mandatory',
+    'want_to_have',
+    'best_practice',
+    'nice_to_know',
+    'optional',
+  ]
+
+  const [selectedRelevanceLevel, setSelectedRelevanceLevel] = React.useState(
+    relevanceLevels[4]
+  )
+
   return (
     <DocumentEditorContext.Provider value={documentEditor}>
       <SelectedPathContext.Provider value={{ selectedPath, setSelectedPath }}>
-        <SideBarContext.Provider value={sideBarData}>
-          {alert}
-          {newDocumentDialog}
-          {newExportDocumentDialog}
-          {versionSummaryDialog}
-          {aboutDialog}
-          <Hotkeys
-            keyName={getAllKeybindings()}
-            onKeyDown={keyDownHandler}
-            filter={() => {
-              return true
-            }}
-          >
-            <div
-              className="mx-auto w-full h-screen grid grid-cols-[1fr_auto] grid-rows-[53px_36px_minmax(0,1fr)]"
-              tabIndex={0}
+        <RelevanceLevelContext.Provider
+          value={{
+            selectedRelevanceLevel,
+            setSelectedRelevanceLevel,
+            relevanceLevels,
+          }}
+        >
+          <SideBarContext.Provider value={sideBarData}>
+            {alert}
+            {newDocumentDialog}
+            {newExportDocumentDialog}
+            {versionSummaryDialog}
+            {aboutDialog}
+            <Hotkeys
+              keyName={getAllKeybindings()}
+              onKeyDown={keyDownHandler}
+              filter={() => {
+                return true
+              }}
             >
-              <div className="col-span-2 flex justify-between bg-slate-700">
-                <div className="flex pl-5">
-                  <button {...tabButtonProps('WIZZARD')}>Wizard</button>
-                  <button {...tabButtonProps('EDITOR')}>Form Editor</button>
-                  <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
-                  <button {...tabButtonProps('PREVIEW')}>Preview</button>
-                  <button {...tabButtonProps('CSAF-JSON')}>
-                    CSAF Document
-                  </button>
-                  <button
-                    className="text-sm font-bold p-4 h-auto text-gray-300 hover:text-white"
-                    onClick={() => {
-                      setAboutDialog(
-                        <AboutDialog
-                          onClose={() => {
-                            setAboutDialog(null)
-                          }}
-                        />
-                      )
-                    }}
-                  >
-                    About
-                  </button>
-                </div>
-                {advisoryState?.type === 'ADVISORY' && (
-                  <div className="text-gray-400 p-4">
-                    Document:{' '}
-                    <span data-testid="document_tracking_id">
-                      {advisoryState.advisory.csaf.document?.title ||
-                        '<document without tracking-id>'}
-                    </span>
-                    <span data-testid="advisory_id" className="hidden">
-                      {advisoryState.advisory.advisoryId}
-                    </span>
-                    <span data-testid="advisory_revision" className="hidden">
-                      {advisoryState.advisory.revision}
-                    </span>
+              <div
+                className="mx-auto w-full h-screen grid grid-cols-[1fr_auto] grid-rows-[53px_36px_minmax(0,1fr)]"
+                tabIndex={0}
+              >
+                <div className="col-span-2 flex justify-between bg-slate-700">
+                  <div className="flex pl-5">
+                    <button {...tabButtonProps('WIZZARD')}>Wizard</button>
+                    <button {...tabButtonProps('EDITOR')}>Form Editor</button>
+                    <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
+                    <button {...tabButtonProps('PREVIEW')}>Preview</button>
+                    <button {...tabButtonProps('CSAF-JSON')}>
+                      CSAF Document
+                    </button>
+                    <button
+                      className="text-sm font-bold p-4 h-auto text-gray-300 hover:text-white"
+                      onClick={() => {
+                        setAboutDialog(
+                          <AboutDialog
+                            onClose={() => {
+                              setAboutDialog(null)
+                            }}
+                          />
+                        )
+                      }}
+                    >
+                      About
+                    </button>
                   </div>
-                )}
-                {appConfig.loginAvailable &&
-                  (userInfo ? (
-                    <div className="pr-5 flex text-white">
-                      <button {...tabButtonProps('DOCUMENTS')}>
-                        CSAF Documents
-                      </button>
-                      <div
-                        data-testid="user_info"
-                        className="dropdown relative hover:bg-slate-800 hover:text-white text-gray-300"
-                      >
-                        <div className="text-sm font-bold p-4 h-auto flex items-center">
-                          <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                          </svg>
-                          <div className="ml-4">
-                            {userInfo.preferredUsername}
-                          </div>
-                        </div>
+                  {advisoryState?.type === 'ADVISORY' && (
+                    <div className="text-gray-400 p-4">
+                      Document:{' '}
+                      <span data-testid="document_tracking_id">
+                        {advisoryState.advisory.csaf.document?.title ||
+                          '<document without tracking-id>'}
+                      </span>
+                      <span data-testid="advisory_id" className="hidden">
+                        {advisoryState.advisory.advisoryId}
+                      </span>
+                      <span data-testid="advisory_revision" className="hidden">
+                        {advisoryState.advisory.revision}
+                      </span>
+                    </div>
+                  )}
+                  {appConfig.loginAvailable &&
+                    (userInfo ? (
+                      <div className="pr-5 flex text-white">
+                        <button {...tabButtonProps('DOCUMENTS')}>
+                          CSAF Documents
+                        </button>
                         <div
-                          className="dropdown-content absolute bottom-0 right-0 z-10 bg-white text-black p-4 rounded-b shadow"
-                          style={{
-                            height: 133,
-                            marginBottom: -133,
-                          }}
+                          data-testid="user_info"
+                          className="dropdown relative hover:bg-slate-800 hover:text-white text-gray-300"
                         >
-                          <span className="w-full whitespace-nowrap text-ellipsis">
-                            <span className="text-sm font-bold">E-Mail:</span>{' '}
-                            <span className="text-sm">{userInfo.email}</span>
-                          </span>
-                          <br />
-                          <span className="w-full whitespace-nowrap text-ellipsis">
-                            <span className="text-sm font-bold">Groups:</span>{' '}
-                            <span className="text-sm">
-                              {userInfo.groups?.join(', ')}
-                            </span>
-                          </span>
-                          <hr className="my-2" />
-                          <div className="text-right">
-                            <button
-                              className="text-sm font-bold p-2 w-full h-auto bg-blue-400 hover:bg-blue-500 text-white"
-                              onClick={() => {
-                                window.location.href = appConfig.logoutUrl
-                              }}
+                          <div className="text-sm font-bold p-4 h-auto flex items-center">
+                            <svg
+                              className="w-6 h-6"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
                             >
-                              Logout
-                            </button>
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                            <div className="ml-4">
+                              {userInfo.preferredUsername}
+                            </div>
+                          </div>
+                          <div
+                            className="dropdown-content absolute bottom-0 right-0 z-10 bg-white text-black p-4 rounded-b shadow"
+                            style={{
+                              height: 133,
+                              marginBottom: -133,
+                            }}
+                          >
+                            <span className="w-full whitespace-nowrap text-ellipsis">
+                              <span className="text-sm font-bold">E-Mail:</span>{' '}
+                              <span className="text-sm">{userInfo.email}</span>
+                            </span>
+                            <br />
+                            <span className="w-full whitespace-nowrap text-ellipsis">
+                              <span className="text-sm font-bold">Groups:</span>{' '}
+                              <span className="text-sm">
+                                {userInfo.groups?.join(', ')}
+                              </span>
+                            </span>
+                            <hr className="my-2" />
+                            <div className="text-right">
+                              <button
+                                className="text-sm font-bold p-2 w-full h-auto bg-blue-400 hover:bg-blue-500 text-white"
+                                onClick={() => {
+                                  window.location.href = appConfig.logoutUrl
+                                }}
+                              >
+                                Logout
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ) : (
-                    <div className="pr-5 flex items-center text-white">
+                    ) : (
+                      <div className="pr-5 flex items-center text-white">
+                        <button
+                          className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 text-white"
+                          onClick={() => {
+                            window.location.href = appConfig.loginUrl
+                          }}
+                        >
+                          Login
+                        </button>
+                      </div>
+                    ))}
+                </div>
+                <div
+                  data-testid="number_of_validation_errors"
+                  className="hidden"
+                >
+                  {errors.length}
+                </div>
+                {activeTab !== 'DOCUMENTS' && (
+                  <div className="col-span-2 bg-slate-600 flex items-center justify-between">
+                    <div className="pl-5">
+                      {(appConfig.loginAvailable &&
+                        userInfo?.groups &&
+                        canCreateDocuments(userInfo.groups)) ||
+                      (appConfig.loginAvailable && !userInfo) ||
+                      !appConfig.loginAvailable ? (
+                        <button
+                          data-testid="new_document_button"
+                          className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
+                          onClick={onNewHandler}
+                        >
+                          New
+                        </button>
+                      ) : null}
+                      {userInfo &&
+                      ((advisoryState?.type === 'ADVISORY' &&
+                        advisoryState.advisory.changeable) ||
+                        (advisoryState?.type === 'NEW_ADVISORY' &&
+                          userInfo.groups &&
+                          canCreateDocuments(userInfo.groups))) ? (
+                        <button
+                          data-testid="save_button"
+                          type="button"
+                          className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
+                          onClick={onSaveHandler}
+                        >
+                          Save
+                        </button>
+                      ) : null}
                       <button
-                        className="text-sm font-bold p-4 h-auto bg-blue-400 hover:bg-blue-500 text-white"
-                        onClick={() => {
-                          window.location.href = appConfig.loginUrl
-                        }}
-                      >
-                        Login
-                      </button>
-                    </div>
-                  ))}
-              </div>
-              <div data-testid="number_of_validation_errors" className="hidden">
-                {errors.length}
-              </div>
-              {activeTab !== 'DOCUMENTS' && (
-                <div className="col-span-2 bg-slate-600 flex items-center justify-between">
-                  <div className="pl-5">
-                    {(appConfig.loginAvailable &&
-                      userInfo?.groups &&
-                      canCreateDocuments(userInfo.groups)) ||
-                    (appConfig.loginAvailable && !userInfo) ||
-                    !appConfig.loginAvailable ? (
-                      <button
-                        data-testid="new_document_button"
+                        data-testid="new_export_document_button"
                         className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
-                        onClick={onNewHandler}
+                        onClick={onExportHandler}
                       >
-                        New
+                        Export
                       </button>
-                    ) : null}
-                    {userInfo &&
-                    ((advisoryState?.type === 'ADVISORY' &&
-                      advisoryState.advisory.changeable) ||
-                      (advisoryState?.type === 'NEW_ADVISORY' &&
-                        userInfo.groups &&
-                        canCreateDocuments(userInfo.groups))) ? (
-                      <button
-                        data-testid="save_button"
-                        type="button"
-                        className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
-                        onClick={onSaveHandler}
-                      >
-                        Save
-                      </button>
+                      {activeTab === 'SOURCE' && (
+                        <button
+                          ref={sortButtonRef}
+                          data-testid="sort_document_button"
+                          type="button"
+                          className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
+                        >
+                          Sort document
+                        </button>
+                      )}
+                      {appConfig.loginAvailable && userInfo && (
+                        <button
+                          data-testid="validate_button"
+                          type="button"
+                          className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
+                          onClick={async () => {
+                            doValidate()
+                          }}
+                        >
+                          Validate
+                        </button>
+                      )}
+                    </div>
+                    {activeTab === 'WIZZARD' ? (
+                      <div>
+                        <span className="text-gray-300 mr-1">
+                          Active Editor Layers:
+                        </span>
+                        {relevanceLevels.map((relevanceLevel, idx) => {
+                          return (
+                            <button
+                              key={`button-${relevanceLevel}`}
+                              data-testid={`layer-button-${relevanceLevel}`}
+                              type="button"
+                              title={relevanceLevel.replaceAll('_', ' ')}
+                              className={
+                                'px-2 py-1 mx-1 text-gray-300 text-sm font-bold h-auto rounded-full border-2 border-gray-300 hover:bg-gray-400 hover:text-white' +
+                                (idx <=
+                                relevanceLevels.indexOf(selectedRelevanceLevel)
+                                  ? ' bg-gray-500'
+                                  : '')
+                              }
+                              onClick={() =>
+                                setSelectedRelevanceLevel(relevanceLevel)
+                              }
+                            >
+                              {idx + 1}
+                            </button>
+                          )
+                        })}
+                      </div>
                     ) : null}
                     <button
-                      data-testid="new_export_document_button"
-                      className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
-                      onClick={onExportHandler}
-                    >
-                      Export
-                    </button>
-                    {activeTab === 'SOURCE' && (
-                      <button
-                        ref={sortButtonRef}
-                        data-testid="sort_document_button"
-                        type="button"
-                        className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
-                      >
-                        Sort document
-                      </button>
-                    )}
-                    {appConfig.loginAvailable && userInfo && (
-                      <button
-                        data-testid="validate_button"
-                        type="button"
-                        className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
-                        onClick={async () => {
-                          doValidate()
-                        }}
-                      >
-                        Validate
-                      </button>
-                    )}
-                  </div>
-                  <button
                     data-testid="show_all_errors_button"
                     type="button"
                     className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 mr-5 h-auto"
                     onClick={async () => {
                       sideBarData.setSideBarIsOpen(true)
                       sideBarData.setSideBarSelectedPath([])
-                    }}
-                  >
-                    {`Document is ${
-                      errors.filter((e) => e.type === 'error').length === 0
-                        ? 'valid'
-                        : 'invalid: '
-                    }`}
-                    {[
-                      {
-                        type: 'error',
-                        color: 'text-red-600',
-                      },
-                      {
-                        type: 'warning',
-                        color: 'text-yellow-600',
-                      },
-                      {
-                        type: 'info',
-                        color: 'text-blue-600',
-                      },
-                    ].map(({ type, color }) => {
-                      const count = errors.filter((e) => e.type === type).length
-                      return (
-                        <span key={'errors-' + type} className="px-1">
-                          <FontAwesomeIcon
-                            icon={faCircle}
-                            className={color}
-                            size="xs"
-                          />
-                          {` ${count} ${type}${count > 1 ? 's' : ''} `}
-                        </span>
-                      )
-                    })}
-                  </button>
+                    }}>
+                      {`Document is ${
+                        errors.filter((e) => e.type === 'error').length === 0
+                          ? 'valid'
+                          : 'invalid: '
+                      }`}
+                      {[
+                        {
+                          type: 'error',
+                          color: 'text-red-600',
+                        },
+                        {
+                          type: 'warning',
+                          color: 'text-yellow-600',
+                        },
+                        {
+                          type: 'info',
+                          color: 'text-blue-600',
+                        },
+                      ].map(({ type, color }) => {
+                        const count = errors.filter(
+                          (e) => e.type === type
+                        ).length
+
+                          return (
+                            <span key={'errors-' + type}className="px-1">
+                              <FontAwesomeIcon
+                                icon={faCircle}
+                                className={color}
+                                size="xs"
+                              />
+                              {` ${count} ${type}${count > 1 ? 's' : ''} `}
+                            </span>
+                          )
+                        })}
+                      </button>
+                  </div>
+                )}
+                <div
+                  className="row-span-2 relative overflow-auto h-full bg-white"
+                  key={activeTab}
+                >
+                  {activeTab === 'WIZZARD' ? (
+                    <>
+                      <WizardTab />
+                    </>
+                  ) : activeTab === 'EDITOR' ? (
+                    <FormEditorTab
+                      formValues={formValues}
+                      validationErrors={errors}
+                      onUpdate={onUpdate}
+                      onDownload={onDownload}
+                      onCollectProductIds={onCollectProductIdsCallback}
+                      onCollectGroupIds={onCollectGroupIdsCallback}
+                    />
+                  ) : activeTab === 'SOURCE' ? (
+                    <JsonEditorTab
+                      originalValues={originalValues}
+                      formValues={formValues}
+                      validationErrors={errors}
+                      sortButtonRef={sortButtonRef}
+                      onChange={onReplaceDoc}
+                      onLockTab={onLockTab}
+                      onUnlockTab={onUnlockTab}
+                    />
+                  ) : activeTab === 'PREVIEW' ? (
+                    <PreviewTab
+                      previewResult={previewResult}
+                      onPreview={onPreviewCallback}
+                      formValues={formValues}
+                      validationErrors={errors}
+                      onExport={onExportHTML}
+                    />
+                  ) : activeTab === 'CSAF-JSON' ? (
+                    <CsafTab
+                      stripResult={stripResult}
+                      onStrip={onStripCallback}
+                      onExport={onExportCSAFCallback}
+                    />
+                  ) : activeTab === 'DOCUMENTS' ? (
+                    <DocumentsTab
+                      onOpenAdvisory={({ advisoryId }, callback) => {
+                        setLoading(true)
+                        return onLoadAdvisory({ advisoryId })
+                          .then((advisory) => {
+                            setAdvisoryState({ type: 'ADVISORY', advisory })
+                            callback()
+                          })
+                          .catch(handleError)
+                          .finally(() => {
+                            setLoading(false)
+                          })
+                      }}
+                    />
+                  ) : null}
                 </div>
-              )}
-              <div
-                className="row-span-2 relative overflow-auto h-full bg-white"
-                key={activeTab}
-              >
-                {activeTab === 'WIZZARD' ? (
-                  <>
-                    <WizardTab />
-                  </>
-                ) : activeTab === 'EDITOR' ? (
-                  <FormEditorTab
-                    formValues={formValues}
-                    validationErrors={errors}
-                    onUpdate={onUpdate}
-                    onDownload={onDownload}
-                    onCollectProductIds={onCollectProductIdsCallback}
-                    onCollectGroupIds={onCollectGroupIdsCallback}
-                  />
-                ) : activeTab === 'SOURCE' ? (
-                  <JsonEditorTab
-                    originalValues={originalValues}
-                    formValues={formValues}
-                    validationErrors={errors}
-                    sortButtonRef={sortButtonRef}
-                    onChange={onReplaceDoc}
-                    onLockTab={onLockTab}
-                    onUnlockTab={onUnlockTab}
-                  />
-                ) : activeTab === 'PREVIEW' ? (
-                  <PreviewTab
-                    previewResult={previewResult}
-                    onPreview={onPreviewCallback}
-                    formValues={formValues}
-                    validationErrors={errors}
-                    onExport={onExportHTML}
-                  />
-                ) : activeTab === 'CSAF-JSON' ? (
-                  <CsafTab
-                    stripResult={stripResult}
-                    onStrip={onStripCallback}
-                    onExport={onExportCSAFCallback}
-                  />
-                ) : activeTab === 'DOCUMENTS' ? (
-                  <DocumentsTab
-                    onOpenAdvisory={({ advisoryId }, callback) => {
-                      setLoading(true)
-                      return onLoadAdvisory({ advisoryId })
-                        .then((advisory) => {
-                          setAdvisoryState({ type: 'ADVISORY', advisory })
-                          callback()
-                        })
-                        .catch(handleError)
-                        .finally(() => {
-                          setLoading(false)
-                        })
-                    }}
-                  />
+                {activeTab === 'WIZZARD' || activeTab === 'SOURCE' ? (
+                  <SideBar />
                 ) : null}
               </div>
-              {activeTab === 'WIZZARD' || activeTab === 'SOURCE' ? (
-                <SideBar />
-              ) : null}
-            </div>
-          </Hotkeys>
-          {toast ? (
-            <div className="fixed right-0 top-0 p-2 w-full max-w-md">
-              <div
-                role="status"
-                className={
-                  (toast.color === 'green' ? 'bg-green-500' : 'bg-red-500') +
-                  ' p-4  text-white rounded shadow flex items-center gap-2'
-                }
-              >
-                <div className="grow" data-testid="error_toast_message">
-                  {toast.message}
-                </div>
-                <button
-                  className="w-6"
-                  type="button"
-                  onClick={() => {
-                    setToast(null)
-                  }}
+            </Hotkeys>
+            {toast ? (
+              <div className="fixed right-0 top-0 p-2 w-full max-w-md">
+                <div
+                  role="status"
+                  className={
+                    (toast.color === 'green' ? 'bg-green-500' : 'bg-red-500') +
+                    ' p-4  text-white rounded shadow flex items-center gap-2'
+                  }
                 >
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <div className="grow" data-testid="error_toast_message">
+                    {toast.message}
+                  </div>
+                  <button
+                    className="w-6"
+                    type="button"
+                    onClick={() => {
+                      setToast(null)
+                    }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
-            </div>
-          ) : null}
-          {isLoading ? (
-            <LoadingIndicator label="Loading data ..." />
-          ) : isSaving ? (
-            <LoadingIndicator label="Saving data ..." />
-          ) : null}
-        </SideBarContext.Provider>
+            ) : null}
+            {isLoading ? (
+              <LoadingIndicator label="Loading data ..." />
+            ) : isSaving ? (
+              <LoadingIndicator label="Saving data ..." />
+            ) : null}
+          </SideBarContext.Provider>
+        </RelevanceLevelContext.Provider>
       </SelectedPathContext.Provider>
     </DocumentEditorContext.Provider>
   )

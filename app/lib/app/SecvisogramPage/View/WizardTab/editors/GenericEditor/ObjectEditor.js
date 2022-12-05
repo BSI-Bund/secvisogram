@@ -11,6 +11,7 @@ import SideBarContext from '../../../shared/context/SideBarContext.js'
 import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import { getErrorTextColor } from '../GenericEditor.js'
+import RelevanceLevelContext from '../../../shared/context/RelevanceLevelContext.js'
 
 /**
  * @param {object} props
@@ -25,8 +26,10 @@ export default function ObjectEditor({
 }) {
   const { selectedPath, setSelectedPath } =
     React.useContext(SelectedPathContext)
-  const { doc, updateDoc } = React.useContext(DocumentEditorContext)
-  const { errors } = React.useContext(DocumentEditorContext)
+  const { doc, errors, updateDoc } = React.useContext(DocumentEditorContext)
+  const { selectedRelevanceLevel, relevanceLevels } = React.useContext(
+    RelevanceLevelContext
+  )
   const fieldProperties = property.metaInfo.propertyList?.filter(
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
   )
@@ -103,6 +106,8 @@ export default function ObjectEditor({
     )
   }
 
+  const category = doc.document?.category
+
   /**
    * @param {MenuNode[]} menuNodes
    * @param {number} [level]
@@ -136,6 +141,17 @@ export default function ObjectEditor({
           </li>
         ) : null}
         {menuNodes.map((menuItem, menuItemIndex) => {
+          const relevanceLevelForCategory = category
+            ? (menuItem.property.metaData?.relevanceLevels || {})[category] ||
+              ''
+            : ''
+          if (
+            category &&
+            relevanceLevels.indexOf(relevanceLevelForCategory) >
+              relevanceLevels.indexOf(selectedRelevanceLevel)
+          ) {
+            return null
+          }
           const childErrors = errors.filter((e) =>
             e.instancePath.startsWith(
               '/' + [...instancePath, ...menuItem.instancePath].join('/')

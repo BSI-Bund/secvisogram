@@ -33,11 +33,11 @@ type MetaData = Readonly<{
     | 'OBJECT_CVSS_3'
     | 'ARRAY_REVISION_HISTORY'
   relevanceLevels?: {
-    csafBase: RelevanceLevel
-    csafSecurityIncidentResponse: RelevanceLevel
-    csafInformationalAdvisory: RelevanceLevel
-    csafSecurityAdvisory: RelevanceLevel
-    csafVex: RelevanceLevel
+    csaf_base: RelevanceLevel
+    csaf_security_incident_response: RelevanceLevel
+    csaf_informational_advisory: RelevanceLevel
+    csaf_security_advisory: RelevanceLevel
+    csaf_vex: RelevanceLevel
   }
   userDocumentation?: {
     specification: string

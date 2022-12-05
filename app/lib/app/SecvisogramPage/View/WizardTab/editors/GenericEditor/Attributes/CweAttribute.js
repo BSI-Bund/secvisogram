@@ -69,6 +69,7 @@ export default function CweAttribute({
       label={label}
       description={description}
       instancePath={instancePath}
+      property={property}
     >
       <CwecId
         label={idProperties?.title || ''}
@@ -76,6 +77,7 @@ export default function CweAttribute({
         instancePath={/** @type string[] */ (idPath)}
         value={idValue}
         onChange={onChange}
+        property={property}
       />
       <CwecName
         label={nameProperties?.title || ''}
@@ -83,6 +85,7 @@ export default function CweAttribute({
         instancePath={/** @type string[] */ (namePath)}
         value={nameValue}
         onChange={onChange}
+        property={property}
       />
     </Attribute>
   )
@@ -112,9 +115,17 @@ function useCwecMatch(term) {
  *  instancePath: string[]
  *  value: unknown
  *  onChange({}): void
+ *  property: import('../../../shared/types').Property
  * }} props
  */
-function CwecId({ label, description, instancePath, value, onChange }) {
+function CwecId({
+  label,
+  description,
+  instancePath,
+  value,
+  onChange,
+  property,
+}) {
   const [inputValue, setInputValue] = React.useState(
     /** @type string */ (value)
   )
@@ -143,6 +154,7 @@ function CwecId({ label, description, instancePath, value, onChange }) {
       label={label}
       description={description}
       instancePath={instancePath}
+      property={property}
     >
       <div className="max-w-md flex">
         <div className="w-full">
@@ -186,9 +198,17 @@ function CwecId({ label, description, instancePath, value, onChange }) {
  *  instancePath: string[]
  *  value: unknown
  *  onChange({}): void
+ *  property: import('../../../shared/types').Property
  * }} props
  */
-function CwecName({ label, description, instancePath, value, onChange }) {
+function CwecName({
+  label,
+  description,
+  instancePath,
+  value,
+  onChange,
+  property,
+}) {
   const [inputValue, setInputValue] = React.useState(
     /** @type string */ (value)
   )
@@ -218,6 +238,7 @@ function CwecName({ label, description, instancePath, value, onChange }) {
       label={label}
       description={description}
       instancePath={instancePath}
+      property={property}
     >
       <div className="max-w-md flex">
         <div className="w-full">

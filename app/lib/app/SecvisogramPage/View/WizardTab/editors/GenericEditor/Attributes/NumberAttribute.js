@@ -16,6 +16,7 @@ import Attribute from './shared/Attribute.js'
  *  instancePath: string[]
  *  value: unknown
  *  updateDoc(instancePath: string[], value: string): void
+ *  property: import('../../../shared/types').Property
  * }} props
  */
 export default function NumberAttribute({
