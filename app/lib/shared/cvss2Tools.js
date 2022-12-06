@@ -54,7 +54,7 @@ export function vectorUpdateFromVectorString(vector) {
  */
 export function vectorGetVectorString(vector) {
   const vectorMapping = new Map(Object.entries(vector))
-  const f = cvss2.mapping
+  const vectorFields = cvss2.mapping
     .map((entry) => {
       /** @type {Map<string, { id: string }>} */
       const valueMapping = new Map(Object.entries(entry[2]))
@@ -73,7 +73,7 @@ export function vectorGetVectorString(vector) {
       (entry) => entry[1] !== undefined
     )
     .map((entry) => entry.join(':'))
-  return f.join('/')
+  return vectorFields.join('/')
 }
 
 /**
