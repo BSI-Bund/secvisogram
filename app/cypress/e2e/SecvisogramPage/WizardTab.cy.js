@@ -78,4 +78,41 @@ describe('SecvisogramPage / WizardTab', function () {
       ])
     })
   })
+
+  it('shows fields based on selected level', function () {
+    cy.intercept(
+      '/.well-known/appspecific/de.bsi.secvisogram.json',
+      getLoginEnabledConfig()
+    ).as('wellKnownAppConfig')
+
+    cy.visit('?tab=WIZZARD')
+    cy.wait('@wellKnownAppConfig')
+
+    cy.get(`[data-testid="menu_entry-/document"]`).click()
+
+    // without a selected document category all menu items should be displayed
+    cy.get(`[data-testid="layer-button-best_practice"]`).click()
+    cy.get(`[data-testid="menu_entry-/document/aggregate_severity"]`).should(
+      'exist'
+    )
+
+    const documentCategory = 'csaf_base'
+    cy.get('[data-testid="attribute-document-category"] input')
+      .clear()
+      .type(documentCategory)
+
+    // aggregate severity menu item should not be displayed for level best_practice
+    cy.get(`[data-testid="layer-button-best_practice"]`).click()
+    cy.get(`[data-testid="menu_entry-/document/aggregate_severity"]`).should(
+      'not.exist'
+    )
+
+    // the language attribute should not be displayed for level mandatory
+    cy.get(`[data-testid="layer-button-mandatory"]`).click()
+    cy.get(`[data-testid="attribute-document-lang"]`).should('not.exist')
+
+    // it should exist for level nice_to_know
+    cy.get(`[data-testid="layer-button-nice_to_know"]`).click()
+    cy.get(`[data-testid="attribute-document-lang"]`).should('exist')
+  })
 })
