@@ -179,6 +179,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
         description={description}
         instancePath={instancePath}
         label={label}
+        property={property}
       >
         {typeof value === 'number' ? String(value) : ''}
       </Attribute>
