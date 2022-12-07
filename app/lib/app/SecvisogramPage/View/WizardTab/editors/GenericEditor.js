@@ -184,12 +184,11 @@ export default function Editor({ parentProperty, property, instancePath }) {
         {typeof value === 'number' ? String(value) : ''}
       </Attribute>
     )
+  } else if (property.type === 'RECURSION') {
+    // type is handled in ArrayEditor
+    return null
   } else {
-    return (
-      <div className="bg-white">
-        <div>{property.fullName.join('.')}</div>
-        <div>{}</div>
-      </div>
-    )
+    console.log(`unknown type '${property.type}' for ${property.title}`)
+    return null
   }
 }
