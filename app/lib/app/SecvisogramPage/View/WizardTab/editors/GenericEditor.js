@@ -1,13 +1,15 @@
 import React from 'react'
 import DocumentEditorContext from '../../shared/DocumentEditorContext.js'
 import ArrayEditor from './GenericEditor/ArrayEditor.js'
-import ObjectEditor from './GenericEditor/ObjectEditor.js'
-import TextAttribute from './GenericEditor/Attributes/TextAttribute.js'
-import TextAreaAttribute from './GenericEditor/Attributes/TextAreaAttribute.js'
+import CweAttribute from './GenericEditor/Attributes/CweAttribute.js'
 import DateAttribute from './GenericEditor/Attributes/DateAttribute.js'
 import DropdownAttribute from './GenericEditor/Attributes/DropdownAttribute.js'
-import CweAttribute from './GenericEditor/Attributes/CweAttribute.js'
 import IdAttribute from './GenericEditor/Attributes/IdAttribute.js'
+import Attribute from './GenericEditor/Attributes/shared/Attribute.js'
+import TextAreaAttribute from './GenericEditor/Attributes/TextAreaAttribute.js'
+import TextAttribute from './GenericEditor/Attributes/TextAttribute.js'
+import CVSS2Editor from './GenericEditor/CVSS2Editor.js'
+import ObjectEditor from './GenericEditor/ObjectEditor.js'
 
 /**
  * utility function to get the color of circles identifying errors
@@ -40,6 +42,10 @@ export default function Editor({ parentProperty, property, instancePath }) {
   const uiType = property.metaData?.uiType
   const label = property.title || 'missing title'
   const description = property.description || 'missing description'
+  /** @type {unknown} */
+  const value = instancePath.reduce((value, pathSegment) => {
+    return (value ?? {})[pathSegment]
+  }, /** @type {Record<string, any> | null} */ (doc))
 
   if (property.type === 'ARRAY') {
     return <ArrayEditor property={property} instancePath={instancePath} />
@@ -53,6 +59,15 @@ export default function Editor({ parentProperty, property, instancePath }) {
           instancePath={instancePath}
         />
       )
+    } else if (uiType === 'OBJECT_CVSS_2') {
+      return (
+        <CVSS2Editor
+          property={property}
+          parentProperty={parentProperty}
+          instancePath={instancePath}
+          value={value}
+        />
+      )
     }
     return (
       <ObjectEditor
@@ -62,10 +77,6 @@ export default function Editor({ parentProperty, property, instancePath }) {
       />
     )
   } else if (property.type === 'STRING') {
-    const value = instancePath.reduce((value, pathSegment) => {
-      return (value ?? {})[pathSegment]
-    }, /** @type {Record<string, any> | null} */ (doc))
-
     if (uiType === 'STRING_DATETIME') {
       return (
         <DateAttribute
@@ -154,6 +165,16 @@ export default function Editor({ parentProperty, property, instancePath }) {
         />
       )
     }
+  } else if (property.type === 'NUMBER') {
+    return (
+      <Attribute
+        description={description}
+        instancePath={instancePath}
+        label={label}
+      >
+        {typeof value === 'number' ? String(value) : ''}
+      </Attribute>
+    )
   } else {
     return (
       <div className="bg-white">
