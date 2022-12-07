@@ -6,8 +6,28 @@ import * as cvss2 from '../../../csaf-validator-lib/lib/shared/cvss2.js'
 /** @typedef {keyof (typeof cvss2.mapping)[number][2]} CVSSValue */
 
 /**
+ * @typedef {object} VectorShape
+ * @property {unknown} [version]
+ * @property {unknown} [vectorString]
+ * @property {unknown} [accessVector]
+ * @property {unknown} [accessComplexity]
+ * @property {unknown} [authentication]
+ * @property {unknown} [confidentialityImpact]
+ * @property {unknown} [integrityImpact]
+ * @property {unknown} [availabilityImpact]
+ * @property {unknown} [exploitability]
+ * @property {unknown} [remediationLevel]
+ * @property {unknown} [reportConfidence]
+ * @property {unknown} [collateralDamagePotential]
+ * @property {unknown} [targetDistribution]
+ * @property {unknown} [confidentialityRequirement]
+ * @property {unknown} [integrityRequirement]
+ * @property {unknown} [availabilityRequirement]
+ */
+
+/**
  * @param {Vector} vector
- * @template {Record<string, string>} Vector
+ * @template {VectorShape} Vector
  */
 export function vectorUpdateFromVectorString(vector) {
   const { vectorString } = vector
@@ -49,7 +69,7 @@ export function vectorUpdateFromVectorString(vector) {
 }
 
 /**
- * @param {Record<string, string | undefined>} vector
+ * @param {VectorShape} vector
  * @returns {string}
  */
 export function vectorGetVectorString(vector) {
@@ -61,7 +81,7 @@ export function vectorGetVectorString(vector) {
       const vectorValue = vectorMapping.get(entry[0])
       return /** @type {const} */ ([
         entry[1],
-        vectorValue !== undefined
+        typeof vectorValue === 'string'
           ? valueMapping.get(vectorValue)?.id
           : undefined,
       ])
@@ -79,7 +99,7 @@ export function vectorGetVectorString(vector) {
 /**
  * @param {Vector} vector
  * @returns {Vector}
- * @template {Record<string, string | undefined>} Vector
+ * @template {VectorShape} Vector
  */
 export function vectorUpdateVectorString(vector) {
   const vectorString = vectorGetVectorString(vector)
@@ -92,7 +112,7 @@ export function vectorUpdateVectorString(vector) {
 /**
  * @param {Vector} vector
  * @returns {Vector}
- * @template {Record<string, string | undefined>} Vector
+ * @template {VectorShape} Vector
  */
 export function vectorUpdateBaseScore(vector) {
   let updatedVector = vector
@@ -110,7 +130,7 @@ export function vectorUpdateBaseScore(vector) {
 /**
  * @param {Vector} vector
  * @returns {Vector}
- * @template {Record<string, string | undefined>} Vector
+ * @template {VectorShape} Vector
  */
 export function vectorUpdateTemporalScore(vector) {
   let updatedVector = vector
@@ -128,7 +148,7 @@ export function vectorUpdateTemporalScore(vector) {
 /**
  * @param {Vector} vector
  * @returns {Vector}
- * @template {Record<string, string | undefined>} Vector
+ * @template {VectorShape} Vector
  */
 export function vectorUpdateEnvironmentalScore(vector) {
   let updatedVector = vector

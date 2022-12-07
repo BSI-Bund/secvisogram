@@ -14,19 +14,26 @@ import ObjectEditor from './ObjectEditor.js'
  * @param {object} props
  * @param {import('../../shared/types').Property | null} props.parentProperty
  * @param {import('../../shared/types').Property} props.property
+ * @param {unknown} props.value
  * @param {string[]} props.instancePath
  */
 export default function CVSS2Editor({
   instancePath,
   property,
   parentProperty,
+  ...props
 }) {
   const { doc, updateDoc, ...outerDocumentEditor } = React.useContext(
     DocumentEditorContext
   )
-  const value = instancePath.reduce((value, pathSegment) => {
-    return (value ?? {})[pathSegment]
-  }, /** @type {Record<string, any> | null} */ (doc))
+  /** @type {import('../../../../../../shared/cvss2Tools.js').VectorShape} */
+  const value = React.useMemo(
+    () =>
+      typeof props.value === 'object' && props.value !== null
+        ? props.value
+        : {},
+    [props.value]
+  )
 
   /** @type {React.ContextType<typeof DocumentEditorContext>} */
   const documentEditor = React.useMemo(
@@ -38,7 +45,7 @@ export default function CVSS2Editor({
         let updatedVector = set(
           updatedInstancePath.slice(instancePath.length),
           updatedValue
-        )(value ?? {})
+        )(value)
         updatedVector.version = '2.0'
 
         updatedVector =

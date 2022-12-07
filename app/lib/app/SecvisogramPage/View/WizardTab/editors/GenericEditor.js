@@ -65,6 +65,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           property={property}
           parentProperty={parentProperty}
           instancePath={instancePath}
+          value={value}
         />
       )
     }
