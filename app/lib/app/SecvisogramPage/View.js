@@ -918,7 +918,7 @@ function View({
                     {activeTab === 'WIZZARD' ? (
                       <div>
                         <span className="text-gray-300 mr-1">
-                          Active Editor Layers:
+                          Active Relevance Levels:
                         </span>
                         {relevanceLevels.map((relevanceLevel, idx) => {
                           return (
