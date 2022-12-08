@@ -702,6 +702,7 @@ function View({
     'best_practice',
     'nice_to_know',
     'optional',
+    'excluded',
   ]
 
   const [selectedRelevanceLevel, setSelectedRelevanceLevel] = React.useState(
@@ -920,38 +921,43 @@ function View({
                         <span className="text-gray-300 mr-1">
                           Active Relevance Levels:
                         </span>
-                        {relevanceLevels.map((relevanceLevel, idx) => {
-                          return (
-                            <button
-                              key={`button-${relevanceLevel}`}
-                              data-testid={`layer-button-${relevanceLevel}`}
-                              type="button"
-                              title={relevanceLevel.replaceAll('_', ' ')}
-                              className={
-                                'px-2 py-1 mx-1 text-gray-300 text-sm font-bold h-auto rounded-full border-2 border-gray-300 hover:bg-gray-400 hover:text-white' +
-                                (idx <=
-                                relevanceLevels.indexOf(selectedRelevanceLevel)
-                                  ? ' bg-gray-500'
-                                  : '')
-                              }
-                              onClick={() =>
-                                setSelectedRelevanceLevel(relevanceLevel)
-                              }
-                            >
-                              {idx + 1}
-                            </button>
-                          )
-                        })}
+                        {relevanceLevels
+                          .slice(0, 5) // do not show button for `excluded`
+                          .map((relevanceLevel, idx) => {
+                            return (
+                              <button
+                                key={`button-${relevanceLevel}`}
+                                data-testid={`layer-button-${relevanceLevel}`}
+                                type="button"
+                                title={relevanceLevel.replaceAll('_', ' ')}
+                                className={
+                                  'px-2 py-1 mx-1 text-gray-300 text-sm font-bold h-auto rounded-full border-2 border-gray-300 hover:bg-gray-400 hover:text-white' +
+                                  (idx <=
+                                  relevanceLevels.indexOf(
+                                    selectedRelevanceLevel
+                                  )
+                                    ? ' bg-gray-500'
+                                    : '')
+                                }
+                                onClick={() =>
+                                  setSelectedRelevanceLevel(relevanceLevel)
+                                }
+                              >
+                                {idx + 1}
+                              </button>
+                            )
+                          })}
                       </div>
                     ) : null}
                     <button
-                    data-testid="show_all_errors_button"
-                    type="button"
-                    className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 mr-5 h-auto"
-                    onClick={async () => {
-                      sideBarData.setSideBarIsOpen(true)
-                      sideBarData.setSideBarSelectedPath([])
-                    }}>
+                      data-testid="show_all_errors_button"
+                      type="button"
+                      className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 mr-5 h-auto"
+                      onClick={async () => {
+                        sideBarData.setSideBarIsOpen(true)
+                        sideBarData.setSideBarSelectedPath([])
+                      }}
+                    >
                       {`Document is ${
                         errors.filter((e) => e.type === 'error').length === 0
                           ? 'valid'
@@ -975,18 +981,18 @@ function View({
                           (e) => e.type === type
                         ).length
 
-                          return (
-                            <span key={'errors-' + type}className="px-1">
-                              <FontAwesomeIcon
-                                icon={faCircle}
-                                className={color}
-                                size="xs"
-                              />
-                              {` ${count} ${type}${count > 1 ? 's' : ''} `}
-                            </span>
-                          )
-                        })}
-                      </button>
+                        return (
+                          <span key={'errors-' + type} className="px-1">
+                            <FontAwesomeIcon
+                              icon={faCircle}
+                              className={color}
+                              size="xs"
+                            />
+                            {` ${count} ${type}${count > 1 ? 's' : ''} `}
+                          </span>
+                        )
+                      })}
+                    </button>
                   </div>
                 )}
                 <div
