@@ -78,7 +78,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           label={label}
           description={description}
           instancePath={instancePath}
-          value={value}
+          value={/** @type {{[key: string]: string | number }} */ (value)}
         />
       )
     }
