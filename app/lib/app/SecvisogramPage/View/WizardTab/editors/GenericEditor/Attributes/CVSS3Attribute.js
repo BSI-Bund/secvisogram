@@ -60,7 +60,7 @@ export default function CVSSV3Attribute({
         options={options}
         isEnum={true}
         instancePath={instancePath.concat([childName])}
-        value={value[childName] || ''}
+        value={(value || {})[childName] || ''}
       />
     )
   }
