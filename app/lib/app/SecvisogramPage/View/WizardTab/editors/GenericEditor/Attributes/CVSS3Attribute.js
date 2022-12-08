@@ -12,6 +12,7 @@ import CVSSVector from './CVSS3Attribute/CVSSVector.js'
  *  description: string
  *  instancePath: string[]
  *  value: {[key: string]: string | number }
+ *  property: import('../../../shared/types').Property
  * }} props
  */
 export default function CVSSV3Attribute({
@@ -19,6 +20,7 @@ export default function CVSSV3Attribute({
   description,
   instancePath,
   value,
+  property,
 }) {
   const { doc, updateDoc, ...outerDocumentEditor } = React.useContext(
     DocumentEditorContext
@@ -61,6 +63,7 @@ export default function CVSSV3Attribute({
         isEnum={true}
         instancePath={instancePath.concat([childName])}
         value={(value || {})[childName] || ''}
+        property={property}
       />
     )
   }
@@ -72,6 +75,7 @@ export default function CVSSV3Attribute({
           label={label}
           description={description}
           instancePath={instancePath}
+          property={property}
         >
           {dropdownFor('version', ['3.0', '3.1'])}
           <TextAttribute
@@ -82,6 +86,7 @@ export default function CVSSV3Attribute({
             required={true}
             instancePath={instancePath.concat(['vectorString'])}
             value={value?.vectorString || ''}
+            property={property}
           />
           {canBeUpgraded ? (
             <div className="mb-2">
@@ -112,6 +117,7 @@ export default function CVSSV3Attribute({
             label={'BaseScore'}
             description={'The CVSS Base Score'}
             instancePath={instancePath.concat(['baseScore'])}
+            property={property}
           >
             {typeof value?.baseScore === 'number'
               ? String(value.baseScore)
@@ -121,6 +127,7 @@ export default function CVSSV3Attribute({
             label={'BaseSeverity'}
             description={'The CVSS Base Severity'}
             instancePath={instancePath.concat(['baseSeverity'])}
+            property={property}
           >
             {value?.baseSeverity || ''}
           </Attribute>
@@ -151,6 +158,7 @@ export default function CVSSV3Attribute({
             label={'TemporalScore'}
             description={'The CVSS Temporal Score'}
             instancePath={instancePath.concat(['temporalScore'])}
+            property={property}
           >
             {typeof value?.temporalScore === 'number'
               ? String(value.temporalScore)
@@ -160,6 +168,7 @@ export default function CVSSV3Attribute({
             label={'TemporalSeverity'}
             description={'The CVSS Temporal Severity'}
             instancePath={instancePath.concat(['temporalSeverity'])}
+            property={property}
           >
             {value?.temporalSeverity || ''}
           </Attribute>
@@ -242,6 +251,7 @@ export default function CVSSV3Attribute({
             label={'EnvironmentalScore'}
             description={'The CVSS Environmental Score'}
             instancePath={instancePath.concat(['environmentalScore'])}
+            property={property}
           >
             {typeof value?.environmentalScore === 'number'
               ? String(value.environmentalScore)
@@ -251,6 +261,7 @@ export default function CVSSV3Attribute({
             label={'EnvironmentalSeverity'}
             description={'The CVSS Environmental Severity'}
             instancePath={instancePath.concat(['environmentalSeverity'])}
+            property={property}
           >
             {value?.environmentalSeverity || ''}
           </Attribute>
