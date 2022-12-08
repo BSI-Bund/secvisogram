@@ -931,7 +931,7 @@ function View({
                                 type="button"
                                 title={relevanceLevel.replaceAll('_', ' ')}
                                 className={
-                                  'px-2 py-1 mx-1 text-gray-300 text-sm font-bold h-auto rounded-full border-2 border-gray-300 hover:bg-gray-400 hover:text-white' +
+                                  'px-2 py-1 mx-1 text-gray-300 text-sm font-bold h-auto border-2 border-gray-300 hover:bg-gray-400 hover:text-white' +
                                   (idx <=
                                   relevanceLevels.indexOf(
                                     selectedRelevanceLevel
