@@ -114,14 +114,13 @@ export default function CVSSV3Attribute({
         >
           {typeof value?.baseScore === 'number' ? String(value.baseScore) : ''}
         </Attribute>
-        <TextAttribute
-          label="BaseSeverity"
-          description="The CVSS Base Severity"
-          readOnly
-          minLength={1}
+        <Attribute
+          label={'BaseSeverity'}
+          description={'The CVSS Base Severity'}
           instancePath={instancePath.concat(['baseSeverity'])}
-          value={value?.baseSeverity || ''}
-        />
+        >
+          {value?.baseSeverity || ''}
+        </Attribute>
         {dropdownFor('exploitCodeMaturity', [
           'UNPROVEN',
           'PROOF_OF_CONCEPT',
@@ -147,21 +146,20 @@ export default function CVSSV3Attribute({
         ])}
         <Attribute
           label={'TemporalScore'}
-          description={'The CVSS Temporal Severity'}
+          description={'The CVSS Temporal Score'}
           instancePath={instancePath.concat(['temporalScore'])}
         >
           {typeof value?.temporalScore === 'number'
             ? String(value.temporalScore)
             : ''}
         </Attribute>
-        <TextAttribute
-          label="TemporalSeverity"
-          description=""
-          readOnly
-          minLength={1}
+        <Attribute
+          label={'TemporalSeverity'}
+          description={'The CVSS Temporal Severity'}
           instancePath={instancePath.concat(['temporalSeverity'])}
-          value={value?.temporalSeverity || ''}
-        />
+        >
+          {value?.temporalSeverity || ''}
+        </Attribute>
         {dropdownFor('confidentialityRequirement', [
           'LOW',
           'MEDIUM',
@@ -246,14 +244,13 @@ export default function CVSSV3Attribute({
             ? String(value.environmentalScore)
             : ''}
         </Attribute>
-        <TextAttribute
-          label="EnvironmentalSeverity"
-          description="The CVSS Environmental Severity"
-          readOnly
-          minLength={1}
+        <Attribute
+          label={'EnvironmentalSeverity'}
+          description={'The CVSS Environmental Severity'}
           instancePath={instancePath.concat(['environmentalSeverity'])}
-          value={value?.environmentalSeverity || ''}
-        />
+        >
+          {value?.environmentalSeverity || ''}
+        </Attribute>
       </Attribute>
     </DocumentEditorContext.Provider>
   )
