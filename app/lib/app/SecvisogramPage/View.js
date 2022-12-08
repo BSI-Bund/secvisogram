@@ -30,7 +30,7 @@ import SideBar from './View/SideBar/SideBar.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
 import WizardTab from './View/WizardTab.js'
 import SelectedPathContext from './View/shared/context/SelectedPathContext.js'
-import RelevanceLevelContext from './View/shared/context/RelevanceLevelContext.js'
+import RelevanceLevelContext from './View/WizardTab/shared/context/RelevanceLevelContext.js'
 
 /**
  * Holds the editor-state and defines the main layout of the application.

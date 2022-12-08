@@ -11,7 +11,7 @@ import SideBarContext from '../../../shared/context/SideBarContext.js'
 import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import { getErrorTextColor } from '../GenericEditor.js'
-import RelevanceLevelContext from '../../../shared/context/RelevanceLevelContext.js'
+import RelevanceLevelContext from '../../shared/context/RelevanceLevelContext.js'
 
 /**
  * @param {object} props

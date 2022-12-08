@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import SideBarContext from '../../../../../shared/context/SideBarContext.js'
 import DocumentEditorContext from '../../../../../shared/DocumentEditorContext.js'
-import RelevanceLevelContext from '../../../../../shared/context/RelevanceLevelContext.js'
+import RelevanceLevelContext from '../../../../shared/context/RelevanceLevelContext.js'
 
 /**
  * Abstracts the base functionality for all input fields in the wizard.
