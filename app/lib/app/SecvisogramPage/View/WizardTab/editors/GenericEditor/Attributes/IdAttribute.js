@@ -36,6 +36,7 @@ function useMatch(term, entries) {
  *  instancePath: string[]
  *  value: unknown
  *  onCollectIds?(): Promise<void | {id: string, name: string}[]>
+ *  property: import('../../../shared/types').Property
  * }} props
  */
 export default function IdAttribute({ placeholder, onCollectIds, ...props }) {

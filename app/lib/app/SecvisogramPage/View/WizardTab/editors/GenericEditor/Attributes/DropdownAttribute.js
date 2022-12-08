@@ -12,6 +12,7 @@ import Attribute from './shared/Attribute.js'
  *  isEnum: boolean
  *  instancePath: string[]
  *  value: unknown
+ *  property: import('../../../shared/types').Property
  * }} props
  */
 export default function DropdownAttribute({

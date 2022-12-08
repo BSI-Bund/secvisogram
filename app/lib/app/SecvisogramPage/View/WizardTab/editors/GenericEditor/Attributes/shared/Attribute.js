@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import SideBarContext from '../../../../../shared/context/SideBarContext.js'
 import DocumentEditorContext from '../../../../../shared/DocumentEditorContext.js'
+import RelevanceLevelContext from '../../../../shared/context/RelevanceLevelContext.js'
 
 /**
  * Abstracts the base functionality for all input fields in the wizard.
@@ -15,6 +16,7 @@ import DocumentEditorContext from '../../../../../shared/DocumentEditorContext.j
  *  description: string
  *  instancePath: string[]
  *  children?: React.ReactNode | ((params: {}) => React.ReactNode)
+ *  property: import('../../../../shared/types').Property
  * }} props
  * @template V
  */
@@ -23,8 +25,12 @@ export default function Attribute({
   description,
   instancePath,
   children,
+  property,
 }) {
-  const { errors } = React.useContext(DocumentEditorContext)
+  const { errors, doc } = React.useContext(DocumentEditorContext)
+  const { selectedRelevanceLevel, relevanceLevels } = React.useContext(
+    RelevanceLevelContext
+  )
 
   const { setSideBarIsOpen, setSideBarSelectedPath } =
     React.useContext(SideBarContext)
@@ -39,7 +45,22 @@ export default function Attribute({
     [instancePath]
   )
 
-  return (
+  let showAttribute = true
+
+  const category = doc.document?.category
+  const relevanceLevelForCategory = category
+    ? (property.metaData?.relevanceLevels || {})[category] || ''
+    : ''
+
+  if (
+    category &&
+    relevanceLevels.indexOf(relevanceLevelForCategory) >
+      relevanceLevels.indexOf(selectedRelevanceLevel)
+  ) {
+    showAttribute = false
+  }
+
+  return showAttribute ? (
     <section
       className="mb-2"
       data-testid={`attribute-${instancePath.join('-')}`}
@@ -65,5 +86,5 @@ export default function Attribute({
       {children}
       <AttributeErrors validationErrors={localValidationErrors} />
     </section>
-  )
+  ) : null
 }
