@@ -7,6 +7,7 @@ interface Data {
     allowedStateChanges: string[]
     deletable: boolean
     canCreateVersion: boolean
+    currentReleaseDate: string
   }>
 }
 
