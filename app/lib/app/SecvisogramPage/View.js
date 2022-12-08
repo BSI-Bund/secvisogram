@@ -917,8 +917,8 @@ function View({
                       )}
                     </div>
                     {activeTab === 'WIZZARD' ? (
-                      <div>
-                        <span className="text-gray-300 mr-1">
+                      <div className="text-gray-300 font-bold text-sm h-9">
+                        <span className="mr-1 h-full">
                           Active Relevance Levels:
                         </span>
                         {relevanceLevels
@@ -931,12 +931,12 @@ function View({
                                 type="button"
                                 title={relevanceLevel.replaceAll('_', ' ')}
                                 className={
-                                  'px-2 py-1 mx-1 text-gray-300 text-sm font-bold h-auto border-2 border-gray-300 hover:bg-gray-400 hover:text-white' +
+                                  'px-3 mx-1 h-full hover:bg-slate-700 hover:text-white' +
                                   (idx <=
                                   relevanceLevels.indexOf(
                                     selectedRelevanceLevel
                                   )
-                                    ? ' bg-gray-500'
+                                    ? ' bg-slate-800 hover:bg-slate-800'
                                     : '')
                                 }
                                 onClick={() =>
