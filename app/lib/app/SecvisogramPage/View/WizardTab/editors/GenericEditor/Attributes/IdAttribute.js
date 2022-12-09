@@ -17,7 +17,6 @@ import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
  * @returns {any[] | null}
  */
 function useMatch(term, entries) {
-  console.log('term: ', term, 'entries: ', entries)
   const throttledTerm = useDebounce(term, 100)
   return React.useMemo(() => {
     return throttledTerm.trim() === ''

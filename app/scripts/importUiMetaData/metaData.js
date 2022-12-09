@@ -3923,6 +3923,9 @@ export default {
     },
   },
   '$.vulnerabilities.scores.cvss_v2': {
+    title: 'CVSS v2',
+    description:
+      'JSON Schema for Common Vulnerability Scoring System version 2.0',
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -4283,6 +4286,9 @@ export default {
     },
   },
   '$.vulnerabilities.scores.cvss_v3': {
+    title: 'CVSS v3',
+    description:
+      'JSON Schema for Common Vulnerability Scoring System version 3.0',
     userDocumentation: {
       specification:
         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',

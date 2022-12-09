@@ -43,6 +43,8 @@ type MetaData = Readonly<{
     specification: string
     usage: string
   }
+  title?: string
+  description?: string
   i18n?: {
     title: string
     description: string

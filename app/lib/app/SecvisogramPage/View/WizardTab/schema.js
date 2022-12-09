@@ -7761,6 +7761,9 @@ export default /** @type {const} */ ({
                             title:
                               'JSON Schema for Common Vulnerability Scoring System version 2.0',
                             metaData: {
+                              title: 'CVSS v2',
+                              description:
+                                'JSON Schema for Common Vulnerability Scoring System version 2.0',
                               userDocumentation: {
                                 specification:
                                   'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md',
@@ -8460,6 +8463,9 @@ export default /** @type {const} */ ({
                             key: 'cvss_v3',
                             fullName: ['vulnerabilities', 'scores', 'cvss_v3'],
                             metaData: {
+                              title: 'CVSS v3',
+                              description:
+                                'JSON Schema for Common Vulnerability Scoring System version 3.0',
                               userDocumentation: {
                                 specification:
                                   'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md',

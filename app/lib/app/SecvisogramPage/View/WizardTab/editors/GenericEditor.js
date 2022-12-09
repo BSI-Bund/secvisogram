@@ -1,15 +1,16 @@
 import React from 'react'
 import DocumentEditorContext from '../../shared/DocumentEditorContext.js'
 import ArrayEditor from './GenericEditor/ArrayEditor.js'
+import Attribute from './GenericEditor/Attributes/shared/Attribute.js'
 import CweAttribute from './GenericEditor/Attributes/CweAttribute.js'
 import DateAttribute from './GenericEditor/Attributes/DateAttribute.js'
 import DropdownAttribute from './GenericEditor/Attributes/DropdownAttribute.js'
 import IdAttribute from './GenericEditor/Attributes/IdAttribute.js'
-import Attribute from './GenericEditor/Attributes/shared/Attribute.js'
 import TextAreaAttribute from './GenericEditor/Attributes/TextAreaAttribute.js'
 import TextAttribute from './GenericEditor/Attributes/TextAttribute.js'
-import CVSS2Editor from './GenericEditor/CVSS2Editor.js'
 import ObjectEditor from './GenericEditor/ObjectEditor.js'
+import CVSS2Editor from './GenericEditor/CVSS2Editor.js'
+import CVSSV3Attribute from './GenericEditor/Attributes/CVSS3Attribute.js'
 
 /**
  * utility function to get the color of circles identifying errors
@@ -40,8 +41,11 @@ export default function Editor({ parentProperty, property, instancePath }) {
   const { doc, collectIds } = React.useContext(DocumentEditorContext)
 
   const uiType = property.metaData?.uiType
-  const label = property.title || 'missing title'
-  const description = property.description || 'missing description'
+  const label = property.title || property.metaData?.title || 'missing title'
+  const description =
+    property.description ||
+    property.metaData?.description ||
+    'missing description'
   /** @type {unknown} */
   const value = instancePath.reduce((value, pathSegment) => {
     return (value ?? {})[pathSegment]
@@ -66,6 +70,16 @@ export default function Editor({ parentProperty, property, instancePath }) {
           parentProperty={parentProperty}
           instancePath={instancePath}
           value={value}
+        />
+      )
+    } else if (uiType === 'OBJECT_CVSS_3') {
+      return (
+        <CVSSV3Attribute
+          label={label}
+          description={description}
+          instancePath={instancePath}
+          value={/** @type {{[key: string]: string | number }} */ (value)}
+          property={property}
         />
       )
     }

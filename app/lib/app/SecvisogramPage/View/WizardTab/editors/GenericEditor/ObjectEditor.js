@@ -198,7 +198,9 @@ export default function ObjectEditor({
                       ])
                     }}
                   >
-                    {menuItem.title}
+                    {menuItem.title ||
+                      menuItem.property.metaData?.title ||
+                      'missing title'}
                   </button>
                   {menuItem.property.type === 'ARRAY' ? (
                     <div>
