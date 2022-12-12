@@ -13,6 +13,7 @@ import CVSSVector from './CVSS3Attribute/CVSSVector.js'
  *  instancePath: string[]
  *  value: {[key: string]: string | number }
  *  property: import('../../../shared/types').Property
+ *  disabled: boolean
  * }} props
  */
 export default function CVSSV3Attribute({
@@ -21,6 +22,7 @@ export default function CVSSV3Attribute({
   instancePath,
   value,
   property,
+  disabled,
 }) {
   const { doc, updateDoc, ...outerDocumentEditor } = React.useContext(
     DocumentEditorContext
@@ -64,6 +66,7 @@ export default function CVSSV3Attribute({
         instancePath={instancePath.concat([childName])}
         value={(value || {})[childName] || ''}
         property={property}
+        disabled={disabled}
       />
     )
   }
@@ -76,6 +79,7 @@ export default function CVSSV3Attribute({
           description={description}
           instancePath={instancePath}
           property={property}
+          disabled={disabled}
         >
           {dropdownFor('version', ['3.0', '3.1'])}
           <TextAttribute
@@ -87,6 +91,7 @@ export default function CVSSV3Attribute({
             instancePath={instancePath.concat(['vectorString'])}
             value={value?.vectorString || ''}
             property={property}
+            disabled={disabled}
           />
           {canBeUpgraded ? (
             <div className="mb-2">
@@ -118,6 +123,7 @@ export default function CVSSV3Attribute({
             description={'The CVSS Base Score'}
             instancePath={instancePath.concat(['baseScore'])}
             property={property}
+            disabled={false}
           >
             {typeof value?.baseScore === 'number'
               ? String(value.baseScore)
@@ -128,6 +134,7 @@ export default function CVSSV3Attribute({
             description={'The CVSS Base Severity'}
             instancePath={instancePath.concat(['baseSeverity'])}
             property={property}
+            disabled={false}
           >
             {value?.baseSeverity || ''}
           </Attribute>
@@ -159,6 +166,7 @@ export default function CVSSV3Attribute({
             description={'The CVSS Temporal Score'}
             instancePath={instancePath.concat(['temporalScore'])}
             property={property}
+            disabled={false}
           >
             {typeof value?.temporalScore === 'number'
               ? String(value.temporalScore)
@@ -169,6 +177,7 @@ export default function CVSSV3Attribute({
             description={'The CVSS Temporal Severity'}
             instancePath={instancePath.concat(['temporalSeverity'])}
             property={property}
+            disabled={false}
           >
             {value?.temporalSeverity || ''}
           </Attribute>
@@ -252,6 +261,7 @@ export default function CVSSV3Attribute({
             description={'The CVSS Environmental Score'}
             instancePath={instancePath.concat(['environmentalScore'])}
             property={property}
+            disabled={false}
           >
             {typeof value?.environmentalScore === 'number'
               ? String(value.environmentalScore)
@@ -262,6 +272,7 @@ export default function CVSSV3Attribute({
             description={'The CVSS Environmental Severity'}
             instancePath={instancePath.concat(['environmentalSeverity'])}
             property={property}
+            disabled={false}
           >
             {value?.environmentalSeverity || ''}
           </Attribute>

@@ -14,6 +14,7 @@ import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
  *  instancePath: string[]
  *  value: unknown
  *  property: import('../../../shared/types').Property
+ *  disabled: boolean
  * }} props
  */
 export default function TextAttribute({
@@ -24,11 +25,12 @@ export default function TextAttribute({
   required = false,
   readOnly = false,
   value,
+  disabled,
   ...props
 }) {
   const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
   return (
-    <Attribute {...props}>
+    <Attribute disabled={disabled} {...props}>
       <div className="max-w-md flex items-baseline justify-center">
         <div className="w-full">
           <input
@@ -46,6 +48,7 @@ export default function TextAttribute({
                 pruneEmpty()
               }
             }}
+            disabled={disabled}
           />
         </div>
       </div>

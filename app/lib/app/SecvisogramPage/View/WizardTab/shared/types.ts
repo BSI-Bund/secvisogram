@@ -50,6 +50,10 @@ type MetaData = Readonly<{
     description: string
   }
   options?: ReadonlyArray<string>
+  disable?: {
+    ifStandaloneMode: boolean
+    ifServerMode: boolean
+  }
 }>
 
 type RelevanceLevel =

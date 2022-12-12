@@ -14,6 +14,7 @@ import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
  *  instancePath: string[]
  *  value: unknown
  *  property: import('../../../shared/types').Property
+ *  disabled: boolean
  * }} props
  */
 export default function TextAreaAttribute({
@@ -23,11 +24,12 @@ export default function TextAreaAttribute({
   required = false,
   readOnly = false,
   value,
+  disabled,
   ...props
 }) {
   const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
   return (
-    <Attribute {...props}>
+    <Attribute disabled={disabled} {...props}>
       <div className="max-w-md flex items-center justify-center">
         <div className="w-full">
           <textarea
@@ -44,6 +46,7 @@ export default function TextAreaAttribute({
                 pruneEmpty()
               }
             }}
+            disabled={disabled}
           />
         </div>
       </div>
