@@ -950,7 +950,6 @@ export default {
       csaf_vex: 'mandatory',
     },
     i18n: { title: 'VersionTitle', description: 'VersionDescription' },
-    uiType: 'STRING_MULTI_LINE',
     disable: {
       ifStandaloneMode: false,
       ifServerMode: true,

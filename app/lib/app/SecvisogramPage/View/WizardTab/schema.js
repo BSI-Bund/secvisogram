@@ -1701,7 +1701,6 @@ export default /** @type {const} */ ({
                               description:
                                 'Specifies a version string to denote clearly the evolution of the content of the document. Format must be either integer or semantic versioning.',
                               metaData: {
-                                uiType: 'STRING_MULTI_LINE',
                                 userDocumentation: {
                                   specification:
                                     'docs/user/document/tracking/revision_history/revision/number-spec.en.md',
