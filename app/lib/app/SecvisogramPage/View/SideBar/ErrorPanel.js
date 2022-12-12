@@ -13,9 +13,14 @@ export default function ErrorPanel({ selectedPath }) {
   const { errors } = React.useContext(DocumentEditorContext)
   const { setSelectedPath } = React.useContext(SelectedPathContext)
 
-  const errorsUnderPath = errors.filter((error) =>
-    error.instancePath.startsWith('/' + selectedPath.join('/'))
-  )
+  const errorsUnderPath = errors.filter((error) => {
+    const selectedPathAsString = '/' + selectedPath.join('/')
+    return (
+      error.instancePath === selectedPathAsString ||
+      (error.instancePath.startsWith(selectedPathAsString) &&
+        error.instancePath.slice(selectedPathAsString.length).includes('/'))
+    )
+  })
 
   return (
     <>
