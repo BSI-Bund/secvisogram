@@ -22,7 +22,7 @@ export default function ErrorPanel({ selectedPath }) {
       <div className="w-full px-4 pt-2">
         {selectedPath.length ? 'Context specific Errors:' : 'All errors:'}
       </div>
-      <div className="p-3">
+      <div className="p-3" data-testid="error-cards">
         {errorsUnderPath.map((err, i) => {
           const color =
             err.type === 'error'
@@ -36,6 +36,7 @@ export default function ErrorPanel({ selectedPath }) {
             <div
               key={i}
               className={'p-2 m-1 rounded border hover:cursor-pointer ' + color}
+              data-testid={`error_card-${err.instancePath}-${i}`}
               onClick={() =>
                 setSelectedPath(err.instancePath.split('/').slice(1))
               }

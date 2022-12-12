@@ -115,4 +115,31 @@ describe('SecvisogramPage / WizardTab', function () {
     cy.get(`[data-testid="layer-button-nice_to_know"]`).click()
     cy.get(`[data-testid="attribute-document-lang"]`).should('exist')
   })
+
+  it('shows errors in sidebar according to selected path', function () {
+    cy.intercept(
+      '/.well-known/appspecific/de.bsi.secvisogram.json',
+      getLoginEnabledConfig()
+    ).as('wellKnownAppConfig')
+
+    cy.visit('?tab=WIZZARD')
+    cy.wait('@wellKnownAppConfig')
+
+    cy.get(`[data-testid="document-publisher-infoButton"]`).click()
+
+    // there should be 3 error cards under /document/publisher for a default minimal document
+    cy.get(`[data-testid="error-cards"] div`).should('have.length', 3)
+
+    cy.get(`[data-testid="menu_entry-/document/publisher"]`).click()
+    cy.get(`[data-testid="document-publisher-name-infoButton"]`).click()
+
+    // there should be one error card for /document/publisher/name and none for the sibling namespace
+    cy.get(`[data-testid="error-cards"] div`).should('have.length', 1)
+    cy.get(`[data-testid="error_card-/document/publisher/name-0"]`).should(
+      'exist'
+    )
+    cy.get(`[data-testid="error_card-/document/publisher/namespace-1"]`).should(
+      'not.exist'
+    )
+  })
 })
