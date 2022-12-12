@@ -123,6 +123,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           value={value || ''}
           property={property}
           disabled={disabled}
+          disableClearable={true}
         />
       )
     } else if (uiType === 'STRING_WITH_OPTIONS') {
@@ -136,6 +137,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           value={value || ''}
           property={property}
           disabled={disabled}
+          disableClearable={true}
         />
       )
     } else if (uiType === 'STRING_MULTI_LINE') {

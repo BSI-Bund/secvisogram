@@ -55,8 +55,8 @@ export default function CVSSV3Attribute({
     [outerDocumentEditor, updateDoc, instancePath, doc, cvssVector]
   )
 
-  /** @type {(childName: string, options: string[]) => any} */
-  const dropdownFor = (childName, options) => {
+  /** @type {(childName: string, options: string[], disableClearable: boolean) => any} */
+  function dropdownFor(childName, options, disableClearable = true) {
     return (
       <DropdownAttribute
         label={childName.charAt(0).toUpperCase() + childName.substring(1)}
@@ -67,6 +67,7 @@ export default function CVSSV3Attribute({
         value={(value || {})[childName] || ''}
         property={property}
         disabled={disabled}
+        disableClearable={disableClearable}
       />
     )
   }
@@ -138,29 +139,33 @@ export default function CVSSV3Attribute({
           >
             {value?.baseSeverity || ''}
           </Attribute>
-          {dropdownFor('exploitCodeMaturity', [
-            'UNPROVEN',
-            'PROOF_OF_CONCEPT',
-            'FUNCTIONAL',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('remediationLevel', [
-            'OFFICIAL_FIX',
-            'TEMPORARY_FIX',
-            'WORKAROUND',
-            'UNAVAILABLE',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('reportConfidence', [
-            'UNKNOWN',
-            'REASONABLE',
-            'CONFIRMED',
-            'NOT_DEFINED',
-            '',
-          ])}
+          {dropdownFor(
+            'exploitCodeMaturity',
+            [
+              'UNPROVEN',
+              'PROOF_OF_CONCEPT',
+              'FUNCTIONAL',
+              'HIGH',
+              'NOT_DEFINED',
+            ],
+            false
+          )}
+          {dropdownFor(
+            'remediationLevel',
+            [
+              'OFFICIAL_FIX',
+              'TEMPORARY_FIX',
+              'WORKAROUND',
+              'UNAVAILABLE',
+              'NOT_DEFINED',
+            ],
+            false
+          )}
+          {dropdownFor(
+            'reportConfidence',
+            ['UNKNOWN', 'REASONABLE', 'CONFIRMED', 'NOT_DEFINED'],
+            false
+          )}
           <Attribute
             label={'TemporalScore'}
             description={'The CVSS Temporal Score'}
@@ -181,81 +186,61 @@ export default function CVSSV3Attribute({
           >
             {value?.temporalSeverity || ''}
           </Attribute>
-          {dropdownFor('confidentialityRequirement', [
-            'LOW',
-            'MEDIUM',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('integrityRequirement', [
-            'LOW',
-            'MEDIUM',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('availabilityRequirement', [
-            'LOW',
-            'MEDIUM',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedAttackVector', [
-            'NETWORK',
-            'ADJACENT_NETWORK',
-            'LOCAL',
-            'PHYSICAL',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedAttackComplexity', [
-            'HIGH',
-            'LOW',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedPrivilegesRequired', [
-            'NONE',
-            'LOW',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedUserInteraction', [
-            'NONE',
-            'REQUIRED',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedScope', [
-            'UNCHANGED',
-            'CHANGED',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedConfidentialityImpact', [
-            'NONE',
-            'LOW',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedIntegrityImpact', [
-            'NONE',
-            'LOW',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedAvailabilityImpact', [
-            'NONE',
-            'LOW',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
+          {dropdownFor(
+            'confidentialityRequirement',
+            ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'integrityRequirement',
+            ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'availabilityRequirement',
+            ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedAttackVector',
+            ['NETWORK', 'ADJACENT_NETWORK', 'LOCAL', 'PHYSICAL', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedAttackComplexity',
+            ['HIGH', 'LOW', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedPrivilegesRequired',
+            ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedUserInteraction',
+            ['NONE', 'REQUIRED', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedScope',
+            ['UNCHANGED', 'CHANGED', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedConfidentialityImpact',
+            ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedIntegrityImpact',
+            ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedAvailabilityImpact',
+            ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
           <Attribute
             label={'EnvironmentalScore'}
             description={'The CVSS Environmental Score'}
