@@ -5,6 +5,7 @@ import {
   faPlus,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { t } from 'i18next'
 import React from 'react'
 import SelectedPathContext from '../../../shared/context/SelectedPathContext.js'
 import SideBarContext from '../../../shared/context/SideBarContext.js'
@@ -198,9 +199,7 @@ export default function ObjectEditor({
                       ])
                     }}
                   >
-                    {menuItem.title ||
-                      menuItem.property.metaData?.title ||
-                      'missing title'}
+                    {t(`csaf.${menuItem.property.metaData?.i18n?.title}`)}
                   </button>
                   {menuItem.property.type === 'ARRAY' ? (
                     <div>
@@ -343,12 +342,8 @@ export function getObjectMenuPaths(property, instancePath = []) {
 
 /**
  * @typedef {object} MenuNode
- * @property {boolean} isArray
- * @property {string} key
- * @property {'STRING' | 'ARRAY' | 'OBJECT' | 'RECURSION' | 'NUMBER'} type
  * @property {string[]} instancePath
  * @property {import('../../shared/types').Property} property
- * @property {string} [title]
  * @property {MenuNode[]} children
  */
 
@@ -366,12 +361,8 @@ function getObjectMenuNodes(property, instancePath = []) {
   return (
     menuProperties.map((childProperty) => {
       return {
-        title: childProperty.title,
         instancePath: [...instancePath, childProperty.key],
-        isArray: childProperty.type === 'ARRAY',
-        type: childProperty.type,
         property: childProperty,
-        key: childProperty.key,
         children: property.addMenuItemsForChildObjects
           ? getObjectMenuNodes(childProperty, [
               ...instancePath,

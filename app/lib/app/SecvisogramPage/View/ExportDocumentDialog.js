@@ -73,7 +73,7 @@ export default /**
     >
       <>
         <header className="w-full flex items-center justify-between border-b p-2">
-          <h2 className="text-lg">Export Document</h2>
+          <h2 className="text-lg">{t('exportModal.title')}</h2>
           <button
             type="submit"
             name="cancel"

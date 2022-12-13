@@ -19,7 +19,7 @@ export default React.forwardRef(
           <>
             <form method="dialog" id={`new_document-close_form`} />
             <header className="w-full flex items-center justify-between border-b p-2">
-              <h2 className="text-lg">Create new document</h2>
+              <h2 className="text-lg">{t('newDocumentModal.title')}</h2>
               <button
                 type="submit"
                 name="cancel"

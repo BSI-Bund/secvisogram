@@ -821,12 +821,18 @@ function View({
                             }}
                           >
                             <span className="w-full whitespace-nowrap text-ellipsis">
-                              <span className="text-sm font-bold">E-Mail:</span>{' '}
+                              <span className="text-sm font-bold">
+                                {t('menu.eMail')}:
+                              </span>
+                              {':'}
                               <span className="text-sm">{userInfo.email}</span>
                             </span>
                             <br />
                             <span className="w-full whitespace-nowrap text-ellipsis">
-                              <span className="text-sm font-bold">Groups:</span>{' '}
+                              <span className="text-sm font-bold">
+                                {t('menu.groups')}
+                              </span>
+                              {':'}
                               <span className="text-sm">
                                 {userInfo.groups?.join(', ')}
                               </span>
@@ -853,7 +859,7 @@ function View({
                             window.location.href = appConfig.loginUrl
                           }}
                         >
-                          Login
+                          {t('menu.login')}
                         </button>
                       </div>
                     ))}

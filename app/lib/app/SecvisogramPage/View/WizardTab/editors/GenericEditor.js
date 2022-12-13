@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import React from 'react'
 import DocumentEditorContext from '../../shared/DocumentEditorContext.js'
 import ArrayEditor from './GenericEditor/ArrayEditor.js'
@@ -41,11 +42,9 @@ export default function Editor({ parentProperty, property, instancePath }) {
   const { doc, collectIds } = React.useContext(DocumentEditorContext)
 
   const uiType = property.metaData?.uiType
-  const label = property.title || property.metaData?.title || 'missing title'
-  const description =
-    property.description ||
-    property.metaData?.description ||
-    'missing description'
+  const label = t(`csaf.${property.metaData?.i18n?.title}`)
+  const description = t(`csaf.${property.metaData?.i18n?.description}`)
+
   /** @type {unknown} */
   const value = instancePath.reduce((value, pathSegment) => {
     return (value ?? {})[pathSegment]
