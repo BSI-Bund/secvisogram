@@ -31,6 +31,7 @@ import VersionSummaryDialog from './View/VersionSummaryDialog.js'
 import WizardTab from './View/WizardTab.js'
 import SelectedPathContext from './View/shared/context/SelectedPathContext.js'
 import RelevanceLevelContext from './View/WizardTab/shared/context/RelevanceLevelContext.js'
+import { useTranslation } from 'react-i18next'
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -190,7 +191,7 @@ function View({
   React.useEffect(() => {
     if (applicationError instanceof BackendUnavailableError) {
       setToast({
-        message: 'Backend not available, please try again later',
+        message: t('alert.backendNotAvailableTryAgain'),
       })
     } else {
       setToast(applicationError)
@@ -210,6 +211,8 @@ function View({
       }
     }
   }, [toast])
+
+  const { t } = useTranslation()
 
   /**
    * Callback to update the document. Dispatches an update-action to the
@@ -251,12 +254,12 @@ function View({
       .then((json) => {
         if (json.isValid) {
           setToast({
-            message: 'the document is valid!',
+            message: t('alert.theDocumentIsValid'),
             color: 'green',
           })
         } else {
           setToast({
-            message: 'The document is not valid!',
+            message: t('alert.theDocumentIsInvalid'),
           })
           const errors =
             /** @type {Array<import('./shared/types').TypedValidationError>} */ (
@@ -495,9 +498,9 @@ function View({
     if (formValues !== originalValues) {
       setAlert(
         <Alert
-          description="This will create a new CSAF document. All current content will be lost. Are you sure?"
-          confirmLabel="Yes, create new document"
-          cancelLabel="No, resume editing"
+          description={t('alert.createNewDocumentSure')}
+          confirmLabel={t('alert.yesCreate')}
+          cancelLabel={t('alert.noResume')}
           onCancel={() => {
             setAlert(null)
           }}
@@ -739,11 +742,17 @@ function View({
                 <div className="col-span-2 flex justify-between bg-slate-700">
                   <div className="flex pl-5">
                     <button {...tabButtonProps('WIZZARD')}>Wizard</button>
-                    <button {...tabButtonProps('EDITOR')}>Form Editor</button>
-                    <button {...tabButtonProps('SOURCE')}>JSON Editor</button>
-                    <button {...tabButtonProps('PREVIEW')}>Preview</button>
+                    <button {...tabButtonProps('EDITOR')}>
+                      {t('menu.formEditor')}
+                    </button>
+                    <button {...tabButtonProps('SOURCE')}>
+                      {t('menu.jsonEditor')}
+                    </button>
+                    <button {...tabButtonProps('PREVIEW')}>
+                      {t('menu.preview')}
+                    </button>
                     <button {...tabButtonProps('CSAF-JSON')}>
-                      CSAF Document
+                      {t('menu.csafDocument')}
                     </button>
                     <button
                       className="text-sm font-bold p-4 h-auto text-gray-300 hover:text-white"
@@ -757,7 +766,7 @@ function View({
                         )
                       }}
                     >
-                      About
+                      {t('menu.about')}
                     </button>
                   </div>
                   {advisoryState?.type === 'ADVISORY' && (
@@ -779,7 +788,7 @@ function View({
                     (userInfo ? (
                       <div className="pr-5 flex text-white">
                         <button {...tabButtonProps('DOCUMENTS')}>
-                          CSAF Documents
+                          {t('menu.csafDocuments')}
                         </button>
                         <div
                           data-testid="user_info"
@@ -830,7 +839,7 @@ function View({
                                   window.location.href = appConfig.logoutUrl
                                 }}
                               >
-                                Logout
+                                {t('menu.logout')}
                               </button>
                             </div>
                           </div>
@@ -868,7 +877,7 @@ function View({
                           className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
                           onClick={onNewHandler}
                         >
-                          New
+                          {t('menu.new')}
                         </button>
                       ) : null}
                       {userInfo &&
@@ -883,7 +892,7 @@ function View({
                           className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
                           onClick={onSaveHandler}
                         >
-                          Save
+                          {t('menu.save')}
                         </button>
                       ) : null}
                       <button
@@ -891,7 +900,7 @@ function View({
                         className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
                         onClick={onExportHandler}
                       >
-                        Export
+                        {t('menu.export')}
                       </button>
                       {activeTab === 'SOURCE' && (
                         <button
@@ -900,7 +909,7 @@ function View({
                           type="button"
                           className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 h-auto"
                         >
-                          Sort document
+                          {t('menu.sortDocument')}
                         </button>
                       )}
                       {appConfig.loginAvailable && userInfo && (
@@ -912,14 +921,14 @@ function View({
                             doValidate()
                           }}
                         >
-                          Validate
+                          {t('menu.validate')}
                         </button>
                       )}
                     </div>
                     {activeTab === 'WIZZARD' ? (
                       <div className="text-gray-300 font-bold text-sm h-9">
                         <span className="mr-1 h-full">
-                          Active Relevance Levels:
+                          {t('menu.activeRelevanceLevels')}
                         </span>
                         {relevanceLevels
                           .slice(0, 5) // do not show button for `excluded`
@@ -958,10 +967,10 @@ function View({
                         sideBarData.setSideBarSelectedPath([])
                       }}
                     >
-                      {`Document is ${
+                      {`${t('menu.documentIs')} ${
                         errors.filter((e) => e.type === 'error').length === 0
-                          ? 'valid'
-                          : 'invalid: '
+                          ? t('menu.valid')
+                          : t('menu.invalid')
                       }`}
                       {[
                         {
@@ -1095,9 +1104,9 @@ function View({
               </div>
             ) : null}
             {isLoading ? (
-              <LoadingIndicator label="Loading data ..." />
+              <LoadingIndicator label={t('menu.loadingData')} />
             ) : isSaving ? (
-              <LoadingIndicator label="Saving data ..." />
+              <LoadingIndicator label={t('menu.savingData')} />
             ) : null}
           </SideBarContext.Provider>
         </RelevanceLevelContext.Provider>

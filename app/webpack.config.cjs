@@ -57,6 +57,10 @@ module.exports = {
           from: '../docs/user',
           to: 'docs/user',
         },
+        {
+          from: 'locales',
+          to: 'locales',
+        },
       ],
     }),
     ...(process.env.NODE_ENV === 'production'

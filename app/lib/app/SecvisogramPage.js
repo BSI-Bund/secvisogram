@@ -10,18 +10,11 @@ import HistoryContext from './shared/context/HistoryContext.js'
 import createCore from './shared/Core.js'
 import downloadFile from './shared/download.js'
 import sitemap from './shared/sitemap.js'
+import { useTranslation } from 'react-i18next'
 
 /**
  * @typedef {import('./SecvisogramPage/shared/types').ValidationError} ValidationError
  */
-
-const alertSaveInvalid = {
-  label: 'Validation',
-  description:
-    'Open validation issues: Your document is not yet CSAF 2.0 compliant!',
-  cancelLabel: 'Resume editing (Recommended)',
-  confirmLabel: 'Save invalid document',
-}
 
 const core = createCore()
 
@@ -70,6 +63,8 @@ const SecvisogramPage = () => {
     isTabLocked: false,
   })
   const { handleError } = React.useContext(AppErrorContext)
+
+  const { t } = useTranslation()
 
   return (
     <View
@@ -128,7 +123,10 @@ const SecvisogramPage = () => {
               setState((state) => ({
                 ...state,
                 alert: {
-                  ...alertSaveInvalid,
+                  label: t('alert.saveInvalidTitle'),
+                  description: t('alert.saveInvalidDescription'),
+                  cancelLabel: t('alert.saveInvalidCancel'),
+                  confirmLabel: t('alert.saveInvalidConfirm'),
                   onConfirm() {
                     downloadFile(JSON.stringify(doc, null, 2), fileName)
                     setState({ ...state, alert: null })
@@ -277,7 +275,10 @@ const SecvisogramPage = () => {
                 setState((state) => ({
                   ...state,
                   alert: {
-                    ...alertSaveInvalid,
+                    label: t('alert.saveInvalidTitle'),
+                    description: t('alert.saveInvalidDescription'),
+                    cancelLabel: t('alert.saveInvalidCancel'),
+                    confirmLabel: t('alert.saveInvalidConfirm'),
                     onConfirm() {
                       core.document
                         .strip({ document })
@@ -312,7 +313,10 @@ const SecvisogramPage = () => {
             setState((state) => ({
               ...state,
               alert: {
-                ...alertSaveInvalid,
+                label: t('alert.saveInvalidTitle'),
+                description: t('alert.saveInvalidDescription'),
+                cancelLabel: t('alert.saveInvalidCancel'),
+                confirmLabel: t('alert.saveInvalidConfirm'),
                 onConfirm() {
                   downloadFile(html, fileName, 'text/html')
                   setState({ ...state, alert: null })
@@ -333,7 +337,7 @@ const SecvisogramPage = () => {
           .catch((error) => {
             throw {
               message:
-                'There was an error reaching the validation service. Please try again later. Error code: ' +
+                t('error.errorReachingValidationServiceWithCode') +
                 error.status,
             }
           })

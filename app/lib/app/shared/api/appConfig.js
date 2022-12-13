@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import ApiRequest from '../ApiRequest.js'
 
 export async function getAppConfig() {
@@ -9,7 +10,7 @@ export async function getAppConfig() {
       .send()
     return await response.json()
   } catch (error) {
-    console.info('Could not get config. Falling back to standalone mode.')
+    console.info(t('error.couldNotGetConfig'))
     return {
       loginAvailable: false,
     }

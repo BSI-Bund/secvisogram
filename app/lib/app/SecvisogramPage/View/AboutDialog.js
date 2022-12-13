@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
@@ -24,7 +25,7 @@ export default /**
       }}
     >
       <header className="w-full flex items-center justify-between border-b p-2">
-        <h2 className="text-lg">About Secvisogram</h2>
+        <h2 className="text-lg">{t('aboutModal.title')}</h2>
         <button
           type="submit"
           name="cancel"
@@ -49,7 +50,7 @@ export default /**
         </button>
       </header>
       <div className="border border-t-0 px-4 pb-4 pt-2">
-        Version:{' '}
+        {t('aboutModal.version')}{' '}
         <a
           href="https://github.com/secvisogram/secvisogram"
           className="underline"
@@ -58,7 +59,7 @@ export default /**
           <span>{secvisogramVersion}</span>
         </a>
         <br />
-        License:{' '}
+        {t('aboutModal.license')}{' '}
         <a
           href="https://github.com/secvisogram/secvisogram/blob/main/LICENSE.md"
           className="underline"
@@ -66,14 +67,14 @@ export default /**
           MIT
         </a>
         <br />
-        For usage instructions check the{' '}
+        {t('aboutModal.usageInstructions')}{' '}
         <a
           href="https://secvisogram.github.io/secvisogram-documentation/"
           target="_blank"
           rel="noreferrer"
           className="underline"
         >
-          CSAF Author Guide
+          {t('aboutModal.authorGuide')}
         </a>
       </div>
     </dialog>

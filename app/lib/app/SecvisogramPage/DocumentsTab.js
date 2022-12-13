@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import React from 'react'
 import {
   changeWorkflowState,
@@ -12,11 +13,11 @@ import DocumentsTabView from './DocumentsTab/View.js'
 const messageForStatus = (/** @type { number } */ status) => {
   switch (status) {
     case 422:
-      return 'The document is not valid and can therefore not be published.'
+      return t('error.documentInvalidCantPublish')
     case 503:
-      return 'There was an error reaching the validation service. Please try again later.'
+      return t('error.errorReachingValidationService')
     default:
-      return 'Encountered an error with status code: ' + status
+      return t('error.encounteredErrorWithCode') + status
   }
 }
 

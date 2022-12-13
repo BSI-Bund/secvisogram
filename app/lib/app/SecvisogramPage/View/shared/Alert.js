@@ -4,6 +4,7 @@ import {
   AlertDialogLabel,
   AlertDialogOverlay,
 } from '@reach/alert-dialog'
+import { t } from 'i18next'
 import React, { useState } from 'react'
 
 /**
@@ -16,7 +17,7 @@ import React, { useState } from 'react'
  * }} params
  */
 export const useAlert = ({
-  label = 'Please confirm',
+  label = t('alert.pleaseConfirm'),
   description,
   confirmLabel,
   cancelLabel,
@@ -58,7 +59,7 @@ export const useAlert = ({
  * }} params
  */
 const Alert = ({
-  label = 'Please confirm',
+  label = t('alert.pleaseConfirm'),
   description,
   confirmLabel,
   cancelLabel,
