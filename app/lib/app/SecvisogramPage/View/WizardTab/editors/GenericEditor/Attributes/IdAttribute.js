@@ -36,9 +36,15 @@ function useMatch(term, entries) {
  *  value: unknown
  *  onCollectIds?(): Promise<void | {id: string, name: string}[]>
  *  property: import('../../../shared/types').Property
+ *  disabled: boolean
  * }} props
  */
-export default function IdAttribute({ placeholder, onCollectIds, ...props }) {
+export default function IdAttribute({
+  placeholder,
+  onCollectIds,
+  disabled,
+  ...props
+}) {
   const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
 
   const [value, setValue] = React.useState(/** @type string */ (props.value))
@@ -72,7 +78,7 @@ export default function IdAttribute({ placeholder, onCollectIds, ...props }) {
   }, [props.value])
 
   return (
-    <Attribute {...props}>
+    <Attribute disabled={disabled} {...props}>
       <div className="max-w-md flex">
         <div className="w-full">
           <Combobox
@@ -92,6 +98,7 @@ export default function IdAttribute({ placeholder, onCollectIds, ...props }) {
               required={true}
               onChange={handleChange}
               onFocus={handleFocus}
+              disabled={disabled}
             />
             {results && (
               <ComboboxPopover className="shadow-popup">

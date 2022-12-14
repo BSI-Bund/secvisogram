@@ -40,6 +40,7 @@ const getChildProps = (
  *  label: string
  *  description: string
  *  instancePath: string[]
+ *  disabled: boolean
  *  property: import('../../../shared/types').Property
  * }} props
  */
@@ -48,6 +49,7 @@ export default function CweAttribute({
   description,
   property,
   instancePath,
+  disabled,
 }) {
   const { doc, updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
 
@@ -70,6 +72,7 @@ export default function CweAttribute({
       description={description}
       instancePath={instancePath}
       property={property}
+      disabled={disabled}
     >
       <CwecId
         label={idProperties?.title || ''}
@@ -78,6 +81,7 @@ export default function CweAttribute({
         value={idValue}
         onChange={onChange}
         property={property}
+        disabled={disabled}
       />
       <CwecName
         label={nameProperties?.title || ''}
@@ -86,6 +90,7 @@ export default function CweAttribute({
         value={nameValue}
         onChange={onChange}
         property={property}
+        disabled={disabled}
       />
     </Attribute>
   )
@@ -116,6 +121,7 @@ function useCwecMatch(term) {
  *  value: unknown
  *  onChange({}): void
  *  property: import('../../../shared/types').Property
+ *  disabled: boolean
  * }} props
  */
 function CwecId({
@@ -125,6 +131,7 @@ function CwecId({
   value,
   onChange,
   property,
+  disabled,
 }) {
   const [inputValue, setInputValue] = React.useState(
     /** @type string */ (value)
@@ -155,6 +162,7 @@ function CwecId({
       description={description}
       instancePath={instancePath}
       property={property}
+      disabled={disabled}
     >
       <div className="max-w-md flex">
         <div className="w-full">
@@ -166,6 +174,7 @@ function CwecId({
               placeholder="^CWE-[1-9]\d{0,5}$"
               required={true}
               onChange={handleChange}
+              disabled={disabled}
             />
             {results && (
               <ComboboxPopover className="shadow-popup">
@@ -199,6 +208,7 @@ function CwecId({
  *  value: unknown
  *  onChange({}): void
  *  property: import('../../../shared/types').Property
+ *  disabled: boolean
  * }} props
  */
 function CwecName({
@@ -208,6 +218,7 @@ function CwecName({
   value,
   onChange,
   property,
+  disabled,
 }) {
   const [inputValue, setInputValue] = React.useState(
     /** @type string */ (value)
@@ -239,6 +250,7 @@ function CwecName({
       description={description}
       instancePath={instancePath}
       property={property}
+      disabled={disabled}
     >
       <div className="max-w-md flex">
         <div className="w-full">
@@ -249,6 +261,7 @@ function CwecName({
               placeholder="Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') ..."
               required={true}
               onChange={handleChange}
+              disabled={disabled}
             />
             {results && (
               <ComboboxPopover className="shadow-popup">

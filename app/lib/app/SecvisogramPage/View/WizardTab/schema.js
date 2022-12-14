@@ -1701,7 +1701,6 @@ export default /** @type {const} */ ({
                               description:
                                 'Specifies a version string to denote clearly the evolution of the content of the document. Format must be either integer or semantic versioning.',
                               metaData: {
-                                uiType: 'STRING_MULTI_LINE',
                                 userDocumentation: {
                                   specification:
                                     'docs/user/document/tracking/revision_history/revision/number-spec.en.md',
@@ -7804,7 +7803,7 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafInformationalAdvisory: 'excluded',
+                                      csaf_informational_advisory: 'excluded',
                                     },
                                     i18n: {
                                       title: 'CvssV2VersionTitle',
@@ -7831,7 +7830,7 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafInformationalAdvisory: 'excluded',
+                                      csaf_informational_advisory: 'excluded',
                                     },
                                     i18n: {
                                       title: 'CvssV2VectorStringTitle',
@@ -7861,12 +7860,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'best_practice',
-                                      csafSecurityIncidentResponse:
+                                      csaf_base: 'best_practice',
+                                      csaf_security_incident_response:
                                         'best_practice',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'best_practice',
-                                      csafVex: 'best_practice',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'best_practice',
+                                      csaf_vex: 'best_practice',
                                     },
                                     i18n: {
                                       title: 'CvssV2AccessVectorTitle',
@@ -7899,12 +7898,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'best_practice',
-                                      csafSecurityIncidentResponse:
+                                      csaf_base: 'best_practice',
+                                      csaf_security_incident_response:
                                         'best_practice',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'best_practice',
-                                      csafVex: 'best_practice',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'best_practice',
+                                      csaf_vex: 'best_practice',
                                     },
                                     i18n: {
                                       title: 'CvssV2AccessComplexityTitle',
@@ -7933,12 +7932,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'best_practice',
-                                      csafSecurityIncidentResponse:
+                                      csaf_base: 'best_practice',
+                                      csaf_security_incident_response:
                                         'best_practice',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'best_practice',
-                                      csafVex: 'best_practice',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'best_practice',
+                                      csaf_vex: 'best_practice',
                                     },
                                     i18n: {
                                       title: 'CvssV2AuthenticationTitle',
@@ -7967,12 +7966,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'best_practice',
-                                      csafSecurityIncidentResponse:
+                                      csaf_base: 'best_practice',
+                                      csaf_security_incident_response:
                                         'best_practice',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'best_practice',
-                                      csafVex: 'best_practice',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'best_practice',
+                                      csaf_vex: 'best_practice',
                                     },
                                     i18n: {
                                       title: 'CvssV2ConfidentialityImpactTitle',
@@ -8001,12 +8000,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'best_practice',
-                                      csafSecurityIncidentResponse:
+                                      csaf_base: 'best_practice',
+                                      csaf_security_incident_response:
                                         'best_practice',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'best_practice',
-                                      csafVex: 'best_practice',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'best_practice',
+                                      csaf_vex: 'best_practice',
                                     },
                                     i18n: {
                                       title: 'CvssV2IntegrityImpactTitle',
@@ -8035,12 +8034,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'best_practice',
-                                      csafSecurityIncidentResponse:
+                                      csaf_base: 'best_practice',
+                                      csaf_security_incident_response:
                                         'best_practice',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'best_practice',
-                                      csafVex: 'best_practice',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'best_practice',
+                                      csaf_vex: 'best_practice',
                                     },
                                     i18n: {
                                       title: 'CvssV2AvailabilityImpactTitle',
@@ -8068,7 +8067,7 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafInformationalAdvisory: 'excluded',
+                                      csaf_informational_advisory: 'excluded',
                                     },
                                     i18n: {
                                       title: 'CvssV2BaseScoreTitle',
@@ -8095,12 +8094,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'nice_to_know',
-                                      csafSecurityIncidentResponse:
+                                      csaf_base: 'nice_to_know',
+                                      csaf_security_incident_response:
                                         'nice_to_know',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'nice_to_know',
-                                      csafVex: 'nice_to_know',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'nice_to_know',
+                                      csaf_vex: 'nice_to_know',
                                     },
                                     i18n: {
                                       title: 'CvssV2ExploitabilityTitle',
@@ -8135,12 +8134,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'want_to_have',
-                                      csafSecurityIncidentResponse:
+                                      csaf_base: 'want_to_have',
+                                      csaf_security_incident_response:
                                         'want_to_have',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'want_to_have',
-                                      csafVex: 'want_to_have',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'want_to_have',
+                                      csaf_vex: 'want_to_have',
                                     },
                                     i18n: {
                                       title: 'CvssV2RemediationLevelTitle',
@@ -8175,12 +8174,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'want_to_have',
-                                      csafSecurityIncidentResponse:
+                                      csaf_base: 'want_to_have',
+                                      csaf_security_incident_response:
                                         'want_to_have',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'want_to_have',
-                                      csafVex: 'want_to_have',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'want_to_have',
+                                      csaf_vex: 'want_to_have',
                                     },
                                     i18n: {
                                       title: 'CvssV2ReportConfidenceTitle',
@@ -8213,12 +8212,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'want_to_have',
-                                      csafSecurityIncidentResponse:
+                                      csaf_base: 'want_to_have',
+                                      csaf_security_incident_response:
                                         'want_to_have',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'want_to_have',
-                                      csafVex: 'want_to_have',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'want_to_have',
+                                      csaf_vex: 'want_to_have',
                                     },
                                     i18n: {
                                       title: 'CvssV2TemporalScoreTitle',
@@ -8246,11 +8245,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'optional',
-                                      csafSecurityIncidentResponse: 'optional',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'optional',
-                                      csafVex: 'optional',
+                                      csaf_base: 'optional',
+                                      csaf_security_incident_response:
+                                        'optional',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'optional',
+                                      csaf_vex: 'optional',
                                     },
                                     i18n: {
                                       title:
@@ -8287,11 +8287,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'optional',
-                                      csafSecurityIncidentResponse: 'optional',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'optional',
-                                      csafVex: 'optional',
+                                      csaf_base: 'optional',
+                                      csaf_security_incident_response:
+                                        'optional',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'optional',
+                                      csaf_vex: 'optional',
                                     },
                                     i18n: {
                                       title: 'CvssV2TargetDistributionTitle',
@@ -8326,11 +8327,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'optional',
-                                      csafSecurityIncidentResponse: 'optional',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'optional',
-                                      csafVex: 'optional',
+                                      csaf_base: 'optional',
+                                      csaf_security_incident_response:
+                                        'optional',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'optional',
+                                      csaf_vex: 'optional',
                                     },
                                     i18n: {
                                       title:
@@ -8365,11 +8367,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'optional',
-                                      csafSecurityIncidentResponse: 'optional',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'optional',
-                                      csafVex: 'optional',
+                                      csaf_base: 'optional',
+                                      csaf_security_incident_response:
+                                        'optional',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'optional',
+                                      csaf_vex: 'optional',
                                     },
                                     i18n: {
                                       title: 'CvssV2IntegrityRequirementTitle',
@@ -8403,11 +8406,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'optional',
-                                      csafSecurityIncidentResponse: 'optional',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'optional',
-                                      csafVex: 'optional',
+                                      csaf_base: 'optional',
+                                      csaf_security_incident_response:
+                                        'optional',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'optional',
+                                      csaf_vex: 'optional',
                                     },
                                     i18n: {
                                       title:
@@ -8441,11 +8445,12 @@ export default /** @type {const} */ ({
                                         'docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md',
                                     },
                                     relevanceLevels: {
-                                      csafBase: 'optional',
-                                      csafSecurityIncidentResponse: 'optional',
-                                      csafInformationalAdvisory: 'excluded',
-                                      csafSecurityAdvisory: 'optional',
-                                      csafVex: 'optional',
+                                      csaf_base: 'optional',
+                                      csaf_security_incident_response:
+                                        'optional',
+                                      csaf_informational_advisory: 'excluded',
+                                      csaf_security_advisory: 'optional',
+                                      csaf_vex: 'optional',
                                     },
                                     i18n: {
                                       title: 'CvssV2EnvironmentalScoreTitle',

@@ -7,22 +7,22 @@ import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
  * @param {{
  *  label: string
  *  description: string
- *  readOnly?: boolean
  *  required?: boolean
  *  instancePath: string[]
  *  value: unknown
- *   property: import('../../../shared/types').Property
+ *  property: import('../../../shared/types').Property
+ *  disabled: boolean
  * }} props
  */
 export default function DateAttribute({
   required = true,
-  readOnly = false,
   value,
+  disabled,
   ...props
 }) {
   const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
   return (
-    <Attribute {...props}>
+    <Attribute disabled={disabled} {...props}>
       <div className="max-w-md flex items-center justify-center">
         <div className="w-full">
           <DatePicker
@@ -36,7 +36,7 @@ export default function DateAttribute({
                 pruneEmpty()
               }
             }}
-            readOnly={readOnly}
+            readOnly={disabled}
           />
         </div>
       </div>
