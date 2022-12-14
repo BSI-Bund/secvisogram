@@ -6,7 +6,7 @@ i18next
   .use(Backend)
   .use(initReactI18next)
   .init({
-    debug: true,
+    debug: false,
     lng: 'en',
     fallbackLng: 'en',
     interpolation: {
