@@ -12,6 +12,7 @@ import ObjectEditor from './GenericEditor/ObjectEditor.js'
 import CVSS2Editor from './GenericEditor/CVSS2Editor.js'
 import CVSSV3Attribute from './GenericEditor/Attributes/CVSS3Attribute.js'
 import AppConfigContext from '../../../../shared/context/AppConfigContext.js'
+import UserInfoContext from '../../../../shared/context/UserInfoContext.js'
 
 /**
  * utility function to get the color of circles identifying errors
@@ -40,15 +41,17 @@ export function getErrorTextColor(errors) {
  */
 export default function Editor({ parentProperty, property, instancePath }) {
   const { loginAvailable } = React.useContext(AppConfigContext)
+  const userInfo = React.useContext(UserInfoContext)
 
   const { doc, collectIds } = React.useContext(DocumentEditorContext)
 
   const uiType = property.metaData?.uiType
   const label = property.title || property.metaData?.title || 'missing title'
 
-  const disabled = loginAvailable
-    ? property.metaData?.disable?.ifServerMode || false
-    : property.metaData?.disable?.ifStandaloneMode || false
+  const disabled =
+    loginAvailable && userInfo
+      ? property.metaData?.disable?.ifServerMode || false
+      : property.metaData?.disable?.ifStandaloneMode || false
 
   const description =
     property.description ||
