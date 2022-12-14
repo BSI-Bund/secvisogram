@@ -13,6 +13,7 @@ import CVSSVector from './CVSS3Attribute/CVSSVector.js'
  *  instancePath: string[]
  *  value: {[key: string]: string | number }
  *  property: import('../../../shared/types').Property
+ *  disabled: boolean
  * }} props
  */
 export default function CVSSV3Attribute({
@@ -21,6 +22,7 @@ export default function CVSSV3Attribute({
   instancePath,
   value,
   property,
+  disabled,
 }) {
   const { doc, updateDoc, ...outerDocumentEditor } = React.useContext(
     DocumentEditorContext
@@ -53,8 +55,8 @@ export default function CVSSV3Attribute({
     [outerDocumentEditor, updateDoc, instancePath, doc, cvssVector]
   )
 
-  /** @type {(childName: string, options: string[]) => any} */
-  const dropdownFor = (childName, options) => {
+  /** @type {(childName: string, options: string[], disableClearable: boolean) => any} */
+  function dropdownFor(childName, options, disableClearable = true) {
     return (
       <DropdownAttribute
         label={childName.charAt(0).toUpperCase() + childName.substring(1)}
@@ -64,6 +66,8 @@ export default function CVSSV3Attribute({
         instancePath={instancePath.concat([childName])}
         value={(value || {})[childName] || ''}
         property={property}
+        disabled={disabled}
+        disableClearable={disableClearable}
       />
     )
   }
@@ -76,6 +80,7 @@ export default function CVSSV3Attribute({
           description={description}
           instancePath={instancePath}
           property={property}
+          disabled={disabled}
         >
           {dropdownFor('version', ['3.0', '3.1'])}
           <TextAttribute
@@ -87,6 +92,7 @@ export default function CVSSV3Attribute({
             instancePath={instancePath.concat(['vectorString'])}
             value={value?.vectorString || ''}
             property={property}
+            disabled={disabled}
           />
           {canBeUpgraded ? (
             <div className="mb-2">
@@ -118,6 +124,7 @@ export default function CVSSV3Attribute({
             description={'The CVSS Base Score'}
             instancePath={instancePath.concat(['baseScore'])}
             property={property}
+            disabled={false}
           >
             {typeof value?.baseScore === 'number'
               ? String(value.baseScore)
@@ -128,37 +135,43 @@ export default function CVSSV3Attribute({
             description={'The CVSS Base Severity'}
             instancePath={instancePath.concat(['baseSeverity'])}
             property={property}
+            disabled={false}
           >
             {value?.baseSeverity || ''}
           </Attribute>
-          {dropdownFor('exploitCodeMaturity', [
-            'UNPROVEN',
-            'PROOF_OF_CONCEPT',
-            'FUNCTIONAL',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('remediationLevel', [
-            'OFFICIAL_FIX',
-            'TEMPORARY_FIX',
-            'WORKAROUND',
-            'UNAVAILABLE',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('reportConfidence', [
-            'UNKNOWN',
-            'REASONABLE',
-            'CONFIRMED',
-            'NOT_DEFINED',
-            '',
-          ])}
+          {dropdownFor(
+            'exploitCodeMaturity',
+            [
+              'UNPROVEN',
+              'PROOF_OF_CONCEPT',
+              'FUNCTIONAL',
+              'HIGH',
+              'NOT_DEFINED',
+            ],
+            false
+          )}
+          {dropdownFor(
+            'remediationLevel',
+            [
+              'OFFICIAL_FIX',
+              'TEMPORARY_FIX',
+              'WORKAROUND',
+              'UNAVAILABLE',
+              'NOT_DEFINED',
+            ],
+            false
+          )}
+          {dropdownFor(
+            'reportConfidence',
+            ['UNKNOWN', 'REASONABLE', 'CONFIRMED', 'NOT_DEFINED'],
+            false
+          )}
           <Attribute
             label={'TemporalScore'}
             description={'The CVSS Temporal Score'}
             instancePath={instancePath.concat(['temporalScore'])}
             property={property}
+            disabled={false}
           >
             {typeof value?.temporalScore === 'number'
               ? String(value.temporalScore)
@@ -169,89 +182,71 @@ export default function CVSSV3Attribute({
             description={'The CVSS Temporal Severity'}
             instancePath={instancePath.concat(['temporalSeverity'])}
             property={property}
+            disabled={false}
           >
             {value?.temporalSeverity || ''}
           </Attribute>
-          {dropdownFor('confidentialityRequirement', [
-            'LOW',
-            'MEDIUM',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('integrityRequirement', [
-            'LOW',
-            'MEDIUM',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('availabilityRequirement', [
-            'LOW',
-            'MEDIUM',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedAttackVector', [
-            'NETWORK',
-            'ADJACENT_NETWORK',
-            'LOCAL',
-            'PHYSICAL',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedAttackComplexity', [
-            'HIGH',
-            'LOW',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedPrivilegesRequired', [
-            'NONE',
-            'LOW',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedUserInteraction', [
-            'NONE',
-            'REQUIRED',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedScope', [
-            'UNCHANGED',
-            'CHANGED',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedConfidentialityImpact', [
-            'NONE',
-            'LOW',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedIntegrityImpact', [
-            'NONE',
-            'LOW',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
-          {dropdownFor('modifiedAvailabilityImpact', [
-            'NONE',
-            'LOW',
-            'HIGH',
-            'NOT_DEFINED',
-            '',
-          ])}
+          {dropdownFor(
+            'confidentialityRequirement',
+            ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'integrityRequirement',
+            ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'availabilityRequirement',
+            ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedAttackVector',
+            ['NETWORK', 'ADJACENT_NETWORK', 'LOCAL', 'PHYSICAL', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedAttackComplexity',
+            ['HIGH', 'LOW', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedPrivilegesRequired',
+            ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedUserInteraction',
+            ['NONE', 'REQUIRED', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedScope',
+            ['UNCHANGED', 'CHANGED', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedConfidentialityImpact',
+            ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedIntegrityImpact',
+            ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedAvailabilityImpact',
+            ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
           <Attribute
             label={'EnvironmentalScore'}
             description={'The CVSS Environmental Score'}
             instancePath={instancePath.concat(['environmentalScore'])}
             property={property}
+            disabled={false}
           >
             {typeof value?.environmentalScore === 'number'
               ? String(value.environmentalScore)
@@ -262,6 +257,7 @@ export default function CVSSV3Attribute({
             description={'The CVSS Environmental Severity'}
             instancePath={instancePath.concat(['environmentalSeverity'])}
             property={property}
+            disabled={false}
           >
             {value?.environmentalSeverity || ''}
           </Attribute>

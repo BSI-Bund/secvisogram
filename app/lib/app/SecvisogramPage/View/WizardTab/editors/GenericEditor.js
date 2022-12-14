@@ -12,6 +12,8 @@ import TextAttribute from './GenericEditor/Attributes/TextAttribute.js'
 import ObjectEditor from './GenericEditor/ObjectEditor.js'
 import CVSS2Editor from './GenericEditor/CVSS2Editor.js'
 import CVSSV3Attribute from './GenericEditor/Attributes/CVSS3Attribute.js'
+import AppConfigContext from '../../../../shared/context/AppConfigContext.js'
+import UserInfoContext from '../../../../shared/context/UserInfoContext.js'
 
 /**
  * utility function to get the color of circles identifying errors
@@ -39,9 +41,16 @@ export function getErrorTextColor(errors) {
  * @param {string[]} props.instancePath
  */
 export default function Editor({ parentProperty, property, instancePath }) {
+  const { loginAvailable } = React.useContext(AppConfigContext)
+  const userInfo = React.useContext(UserInfoContext)
+
   const { doc, collectIds } = React.useContext(DocumentEditorContext)
 
   const uiType = property.metaData?.uiType
+  const disabled =
+    loginAvailable && userInfo
+      ? property.metaData?.disable?.ifServerMode || false
+      : property.metaData?.disable?.ifStandaloneMode || false
   const label = t(`csaf.${property.metaData?.i18n?.title}`)
   const description = t(`csaf.${property.metaData?.i18n?.description}`)
 
@@ -60,6 +69,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           description={description}
           property={property}
           instancePath={instancePath}
+          disabled={disabled}
         />
       )
     } else if (uiType === 'OBJECT_CVSS_2') {
@@ -79,6 +89,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           instancePath={instancePath}
           value={/** @type {{[key: string]: string | number }} */ (value)}
           property={property}
+          disabled={disabled}
         />
       )
     }
@@ -98,6 +109,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           instancePath={instancePath}
           value={value || ''}
           property={property}
+          disabled={disabled}
         />
       )
     } else if (uiType === 'STRING_ENUM') {
@@ -110,6 +122,8 @@ export default function Editor({ parentProperty, property, instancePath }) {
           instancePath={instancePath}
           value={value || ''}
           property={property}
+          disabled={disabled}
+          disableClearable={true}
         />
       )
     } else if (uiType === 'STRING_WITH_OPTIONS') {
@@ -122,6 +136,8 @@ export default function Editor({ parentProperty, property, instancePath }) {
           instancePath={instancePath}
           value={value || ''}
           property={property}
+          disabled={disabled}
+          disableClearable={true}
         />
       )
     } else if (uiType === 'STRING_MULTI_LINE') {
@@ -134,6 +150,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           instancePath={instancePath}
           value={value || ''}
           property={property}
+          disabled={disabled}
         />
       )
     } else if (uiType === 'STRING_PRODUCT_ID') {
@@ -145,6 +162,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           value={value || ''}
           onCollectIds={collectIds['productIds']}
           property={property}
+          disabled={disabled}
         />
       )
     } else if (uiType === 'STRING_GROUP_ID') {
@@ -156,6 +174,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           value={value || ''}
           onCollectIds={collectIds['groupIds']}
           property={property}
+          disabled={disabled}
         />
       )
     } else if (uiType === 'STRING_URI') {
@@ -170,6 +189,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           instancePath={instancePath}
           value={value || ''}
           property={property}
+          disabled={disabled}
         />
       )
     } else {
@@ -183,6 +203,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
           instancePath={instancePath}
           value={value || ''}
           property={property}
+          disabled={disabled}
         />
       )
     }
@@ -193,6 +214,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
         instancePath={instancePath}
         label={label}
         property={property}
+        disabled={false}
       >
         {typeof value === 'number' ? String(value) : ''}
       </Attribute>

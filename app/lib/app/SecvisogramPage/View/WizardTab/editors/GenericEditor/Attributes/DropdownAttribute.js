@@ -13,22 +13,26 @@ import Attribute from './shared/Attribute.js'
  *  instancePath: string[]
  *  value: unknown
  *  property: import('../../../shared/types').Property
+ *  disabled: boolean
+ *  disableClearable: boolean
  * }} props
  */
 export default function DropdownAttribute({
   options,
   isEnum,
   value,
+  disabled,
+  disableClearable = true,
   ...props
 }) {
   const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
   const [inputValue, setInputValue] = React.useState(value)
   return (
-    <Attribute {...props}>
+    <Attribute disabled={disabled} {...props}>
       <div className="max-w-md flex">
         <div className="w-full">
           <Autocomplete
-            disableClearable
+            disableClearable={disableClearable}
             options={options}
             freeSolo={!isEnum}
             value={value}

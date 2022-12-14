@@ -14,9 +14,14 @@ export default function ErrorPanel({ selectedPath }) {
   const { errors } = React.useContext(DocumentEditorContext)
   const { setSelectedPath } = React.useContext(SelectedPathContext)
 
-  const errorsUnderPath = errors.filter((error) =>
-    error.instancePath.startsWith('/' + selectedPath.join('/'))
-  )
+  const errorsUnderPath = errors.filter((error) => {
+    const selectedPathAsString = '/' + selectedPath.join('/')
+    return (
+      error.instancePath === selectedPathAsString ||
+      (error.instancePath.startsWith(selectedPathAsString) &&
+        error.instancePath.slice(selectedPathAsString.length).includes('/'))
+    )
+  })
 
   return (
     <>
@@ -25,7 +30,7 @@ export default function ErrorPanel({ selectedPath }) {
           ? t('sidebar.contextSpecificErrors')
           : t('sidebar.allErrors')}
       </div>
-      <div className="p-3">
+      <div className="p-3" data-testid="error-cards">
         {errorsUnderPath.map((err, i) => {
           const color =
             err.type === 'error'
@@ -39,6 +44,7 @@ export default function ErrorPanel({ selectedPath }) {
             <div
               key={i}
               className={'p-2 m-1 rounded border hover:cursor-pointer ' + color}
+              data-testid={`error_card-${err.instancePath}-${i}`}
               onClick={() =>
                 setSelectedPath(err.instancePath.split('/').slice(1))
               }

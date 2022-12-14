@@ -17,6 +17,7 @@ import RelevanceLevelContext from '../../../../shared/context/RelevanceLevelCont
  *  instancePath: string[]
  *  children?: React.ReactNode | ((params: {}) => React.ReactNode)
  *  property: import('../../../../shared/types').Property
+ *  disabled: boolean
  * }} props
  * @template V
  */
@@ -26,6 +27,7 @@ export default function Attribute({
   instancePath,
   children,
   property,
+  disabled,
 }) {
   const { errors, doc } = React.useContext(DocumentEditorContext)
   const { selectedRelevanceLevel, relevanceLevels } = React.useContext(
@@ -62,7 +64,7 @@ export default function Attribute({
 
   return showAttribute ? (
     <section
-      className="mb-2"
+      className={'mb-2' + (disabled ? ' opacity-50' : '')}
       data-testid={`attribute-${instancePath.join('-')}`}
     >
       <div
