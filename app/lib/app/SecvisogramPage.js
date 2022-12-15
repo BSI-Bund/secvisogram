@@ -1,5 +1,5 @@
-import { t } from 'i18next'
 import React, { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import createFileName from '../shared/createFileName.js'
 import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
 import { loadAdvisory } from './SecvisogramPage/service.js'
@@ -26,6 +26,7 @@ const doc = core.document.newDocMin()
  */
 const SecvisogramPage = () => {
   const { pushState, location } = React.useContext(HistoryContext)
+  const { t } = useTranslation()
   const searchParams = new URL(location.href).searchParams
   const [
     { isLoading, isTabLocked, data, errors, alert, stripResult, previewResult },
@@ -71,7 +72,7 @@ const SecvisogramPage = () => {
       cancelLabel: t('alert.saveInvalidCancel'),
       confirmLabel: t('alert.saveInvalidConfirm'),
     }
-  }, [])
+  }, [t])
 
   return (
     <View
