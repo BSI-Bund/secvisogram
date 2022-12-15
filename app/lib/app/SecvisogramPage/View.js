@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { isEmpty, set } from 'lodash/fp.js'
@@ -31,7 +32,6 @@ import VersionSummaryDialog from './View/VersionSummaryDialog.js'
 import WizardTab from './View/WizardTab.js'
 import SelectedPathContext from './View/shared/context/SelectedPathContext.js'
 import RelevanceLevelContext from './View/WizardTab/shared/context/RelevanceLevelContext.js'
-import { useTranslation } from 'react-i18next'
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -188,15 +188,20 @@ function View({
   const debouncedChangedDoc = useDebounce(formValues.doc, 300)
 
   const [toast, setToast] = React.useState(applicationError)
+
+  const backendNotAvailableTryAgain = React.useMemo(
+    () => t('alert.backendNotAvailableTryAgain'),
+    []
+  )
   React.useEffect(() => {
     if (applicationError instanceof BackendUnavailableError) {
       setToast({
-        message: t('alert.backendNotAvailableTryAgain'),
+        message: backendNotAvailableTryAgain,
       })
     } else {
       setToast(applicationError)
     }
-  }, [applicationError])
+  }, [applicationError, backendNotAvailableTryAgain])
   React.useEffect(() => {
     /** @type {ReturnType<typeof setTimeout> | null} */
     let timeout = null
@@ -211,8 +216,6 @@ function View({
       }
     }
   }, [toast])
-
-  const { t } = useTranslation()
 
   /**
    * Callback to update the document. Dispatches an update-action to the
