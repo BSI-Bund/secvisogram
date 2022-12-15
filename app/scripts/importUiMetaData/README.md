@@ -135,3 +135,13 @@ Some fields need to be disabled depending on the current mode of the Editor.
   "ifServerMode": true
 }
 ```
+
+### `itemNameField`
+
+This field will be used as default name for items in a list.
+If no value is provided or the corresponding field is not filled with data yet,
+the fallback string `menu.defaultItemName` from the translation file will be used
+
+```json
+"itemNameField": ""
+```
