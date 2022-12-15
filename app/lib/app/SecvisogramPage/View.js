@@ -822,7 +822,7 @@ function View({
                           >
                             <span className="w-full whitespace-nowrap text-ellipsis">
                               <span className="text-sm font-bold">
-                                {t('menu.eMail')}:
+                                {t('menu.eMail')}
                               </span>
                               {': '}
                               <span className="text-sm">{userInfo.email}</span>
