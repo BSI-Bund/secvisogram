@@ -441,10 +441,6 @@ function View({
     onPreview(formValues.doc)
   }, [formValues.doc, onPreview])
 
-  const onExportCSAFCallback = React.useCallback(() => {
-    onExportCSAF(formValues.doc)
-  }, [formValues.doc, onExportCSAF])
-
   /**
    * @param {() => void} callback
    */
@@ -985,14 +981,11 @@ function View({
                     <PreviewTab
                       previewResult={previewResult}
                       onPreview={onPreviewCallback}
-                      formValues={formValues}
-                      onExport={onExportHTML}
                     />
                   ) : activeTab === 'CSAF-JSON' ? (
                     <CsafTab
                       stripResult={stripResult}
                       onStrip={onStripCallback}
-                      onExport={onExportCSAFCallback}
                     />
                   ) : activeTab === 'DOCUMENTS' ? (
                     <DocumentsTab
