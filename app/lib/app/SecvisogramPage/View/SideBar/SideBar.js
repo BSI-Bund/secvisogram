@@ -16,7 +16,7 @@ export default function SideBar() {
 
   return (
     <>
-      <div className="flex h-full bg-gray-200 border-l border-gray-400 wizard-menu-shadow">
+      <div className="flex h-full bg-gray-200 border-l border-gray-400 menu-shadow">
         {sideBarData.sideBarIsOpen ? (
           <div className="w-72 bg-gray-200 overflow-auto border-r border-gray-300">
             {sideBarData.sideBarContent === 'ERRORS' ? (
@@ -53,7 +53,7 @@ export default function SideBar() {
         </div>
       </div>
       <div
-        className="mt-auto h-12 w-full col-start-2 col-end-2 border-l border-gray-400 wizard-menu-shadow"
+        className="mt-auto h-12 w-full col-start-2 col-end-2 border-l border-gray-400 menu-shadow"
         onClick={() => sideBarData.setSideBarIsOpen(!sideBarData.sideBarIsOpen)}
       >
         <button className="w-full h-full bg-gray-200 hover:bg-gray-300">

@@ -1,15 +1,15 @@
-import { getObjectMenuPaths } from '../../../lib/app/SecvisogramPage/View/WizardTab/editors/GenericEditor/ObjectEditor.js'
-import schema from '../../../lib/app/SecvisogramPage/View/WizardTab/schema.js'
+import { getObjectMenuPaths } from '../../../lib/app/SecvisogramPage/View/FormEditor/editors/GenericEditor/ObjectEditor.js'
+import schema from '../../../lib/app/SecvisogramPage/View/FormEditor/schema.js'
 import { getLoginEnabledConfig } from '../../fixtures/appConfigData.js'
 
-describe('SecvisogramPage / WizardTab', function () {
+describe('SecvisogramPage / FormEditor Tab', function () {
   it('can display usage help', function () {
     cy.intercept(
       '/.well-known/appspecific/de.bsi.secvisogram.json',
       getLoginEnabledConfig()
     ).as('wellKnownAppConfig')
 
-    cy.visit('?tab=WIZZARD')
+    cy.visit('?tab=EDITOR')
     cy.wait('@wellKnownAppConfig')
 
     cy.get(`[data-testid="document-acknowledgments-infoButton"]`).click()
@@ -26,7 +26,7 @@ describe('SecvisogramPage / WizardTab', function () {
         body: {},
       }).as('wellKnownAppConfig')
 
-      cy.visit('?tab=WIZZARD')
+      cy.visit('?tab=EDITOR')
       cy.wait('@wellKnownAppConfig')
 
       cy.get(`[data-testid="menu_entry-/product_tree/branches"]`).click()
@@ -56,7 +56,7 @@ describe('SecvisogramPage / WizardTab', function () {
     it('can calculate the menu structure for the top level sidebar', function () {
       expect(
         getObjectMenuPaths(
-          /** @type {import('../../../lib/app/SecvisogramPage/View/WizardTab/schema.js').Property} */ (
+          /** @type {import('../../../lib/app/SecvisogramPage/View/FormEditor/schema.js').Property} */ (
             schema
           )
         )
@@ -85,7 +85,7 @@ describe('SecvisogramPage / WizardTab', function () {
       getLoginEnabledConfig()
     ).as('wellKnownAppConfig')
 
-    cy.visit('?tab=WIZZARD')
+    cy.visit('?tab=EDITOR')
     cy.wait('@wellKnownAppConfig')
 
     cy.get(`[data-testid="menu_entry-/document"]`).click()
@@ -122,7 +122,7 @@ describe('SecvisogramPage / WizardTab', function () {
       getLoginEnabledConfig()
     ).as('wellKnownAppConfig')
 
-    cy.visit('?tab=WIZZARD')
+    cy.visit('?tab=EDITOR')
     cy.wait('@wellKnownAppConfig')
 
     cy.get(`[data-testid="document-publisher-infoButton"]`).click()

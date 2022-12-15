@@ -24,9 +24,9 @@ import DocumentEditorContext from './View/shared/DocumentEditorContext.js'
 import useDebounce from './View/shared/useDebounce.js'
 import SideBar from './View/SideBar/SideBar.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
-import WizardTab from './View/WizardTab.js'
+import FormEditor from './View/FormEditorTab.js'
 import SelectedPathContext from './View/shared/context/SelectedPathContext.js'
-import RelevanceLevelContext from './View/WizardTab/shared/context/RelevanceLevelContext.js'
+import RelevanceLevelContext from './View/FormEditor/shared/context/RelevanceLevelContext.js'
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -968,7 +968,7 @@ function View({
                   key={activeTab}
                 >
                   {activeTab === 'EDITOR' ? (
-                    <WizardTab />
+                    <FormEditor />
                   ) : activeTab === 'SOURCE' ? (
                     <JsonEditorTab
                       originalValues={originalValues}

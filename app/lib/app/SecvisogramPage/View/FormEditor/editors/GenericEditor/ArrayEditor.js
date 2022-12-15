@@ -51,7 +51,7 @@ export default function ArrayEditor({ property, instancePath }) {
 
   return (
     <>
-      <div className="treeview border-l border-r border-solid bg-gray-50 border-gray-400 wizard-menu-shadow mr-2 min-w-[128px]">
+      <div className="treeview border-l border-r border-solid bg-gray-50 border-gray-400 menu-shadow mr-2 min-w-[128px]">
         <Menu
           value={sanitizedValue}
           instancePath={instancePath}

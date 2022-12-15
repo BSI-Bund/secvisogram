@@ -8,7 +8,7 @@ import DocumentEditorContext from '../../../../../shared/DocumentEditorContext.j
 import RelevanceLevelContext from '../../../../shared/context/RelevanceLevelContext.js'
 
 /**
- * Abstracts the base functionality for all input fields in the wizard.
+ * Abstracts the base functionality for all input fields in the editor.
  * It uses the data path to filter the associated validation errors.
  *
  * @param {{

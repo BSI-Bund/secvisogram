@@ -1,9 +1,9 @@
 import React from 'react'
-import { GenericEditor } from './WizardTab/editors.js'
-import schema from './WizardTab/schema.js'
+import { GenericEditor } from './FormEditor/editors.js'
+import schema from './FormEditor/schema.js'
 
-export default function WizardTab() {
-  const property = /** @type {import('./WizardTab/schema.js').Property} */ (
+export default function FormEditorTab() {
+  const property = /** @type {import('./FormEditor/schema.js').Property} */ (
     schema
   )
 
