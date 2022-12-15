@@ -824,7 +824,7 @@ function View({
                               <span className="text-sm font-bold">
                                 {t('menu.eMail')}:
                               </span>
-                              {':'}
+                              {': '}
                               <span className="text-sm">{userInfo.email}</span>
                             </span>
                             <br />
@@ -832,7 +832,7 @@ function View({
                               <span className="text-sm font-bold">
                                 {t('menu.groups')}
                               </span>
-                              {':'}
+                              {': '}
                               <span className="text-sm">
                                 {userInfo.groups?.join(', ')}
                               </span>
@@ -975,8 +975,8 @@ function View({
                     >
                       {`${t('menu.documentIs')} ${
                         errors.filter((e) => e.type === 'error').length === 0
-                          ? t('menu.valid')
-                          : t('menu.invalid')
+                          ? t('menu.valid') + ':'
+                          : t('menu.invalid') + ':'
                       }`}
                       {[
                         {

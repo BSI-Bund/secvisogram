@@ -18,7 +18,10 @@ export default function ErrorScreen({ error, resetErrorBoundary }) {
       <h1 className="text-lg font-bold text-red-600">
         {t('errorScreen.anErrorOccurred')}
       </h1>
-      <h2 className="pt-1 text-md font-bold">{t('errorScreen.details')}</h2>
+      <h2 className="pt-1 text-md font-bold">
+        {t('errorScreen.details')}
+        {': '}
+      </h2>
       <p className="font-mono">{error.message}</p>
       <button
         type="button"

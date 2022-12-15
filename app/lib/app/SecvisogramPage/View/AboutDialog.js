@@ -50,7 +50,8 @@ export default /**
         </button>
       </header>
       <div className="border border-t-0 px-4 pb-4 pt-2">
-        {t('aboutModal.version')}{' '}
+        {t('aboutModal.version')}
+        {': '}
         <a
           href="https://github.com/secvisogram/secvisogram"
           className="underline"
@@ -59,7 +60,8 @@ export default /**
           <span>{secvisogramVersion}</span>
         </a>
         <br />
-        {t('aboutModal.license')}{' '}
+        {t('aboutModal.license')}
+        {': '}
         <a
           href="https://github.com/secvisogram/secvisogram/blob/main/LICENSE.md"
           className="underline"

@@ -31,8 +31,8 @@
   },
   "aboutModal": {
     "title": "About Secvisogram",
-    "version": "Version:",
-    "license": "License:",
+    "version": "Version",
+    "license": "License",
     "usageInstructions": "For usage instructions check the",
     "authorGuide": "CSAF Author Guide"
   },
@@ -90,7 +90,7 @@
   "errorScreen": {
     "close": "Close",
     "anErrorOccurred": "anErrorOccurred:",
-    "details": "Details:"
+    "details": "Details"
   },
   "csaf": {
     "AcknowledgmentsItemsTitle": "Acknowledgment",

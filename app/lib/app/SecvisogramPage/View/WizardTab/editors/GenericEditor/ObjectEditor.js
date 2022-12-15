@@ -199,7 +199,10 @@ export default function ObjectEditor({
                       ])
                     }}
                   >
-                    {t(`csaf.${menuItem.property.metaData?.i18n?.title}`)}
+                    {t([
+                      `csaf.${menuItem.property.metaData?.i18n?.title}`,
+                      'missing title',
+                    ])}
                   </button>
                   {menuItem.property.type === 'ARRAY' ? (
                     <div>

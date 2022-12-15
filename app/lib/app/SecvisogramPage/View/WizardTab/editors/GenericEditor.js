@@ -51,8 +51,11 @@ export default function Editor({ parentProperty, property, instancePath }) {
     loginAvailable && userInfo
       ? property.metaData?.disable?.ifServerMode || false
       : property.metaData?.disable?.ifStandaloneMode || false
-  const label = t(`csaf.${property.metaData?.i18n?.title}`)
-  const description = t(`csaf.${property.metaData?.i18n?.description}`)
+  const label = t([`csaf.${property.metaData?.i18n?.title}`, 'missing title'])
+  const description = t([
+    `csaf.${property.metaData?.i18n?.description}`,
+    'missing description',
+  ])
 
   /** @type {unknown} */
   const value = instancePath.reduce((value, pathSegment) => {
