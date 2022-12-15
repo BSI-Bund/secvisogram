@@ -162,7 +162,11 @@ function Menu({ instancePath, level = 1, ...props }) {
         if (itemNameTranslationKey) {
           itemName = `${t(itemNameTranslationKey)} ${i + 1}`
         }
-        if (itemNameField && itemNameField in childValue) {
+        if (
+          itemNameField &&
+          itemNameField in childValue &&
+          childValue[itemNameField]
+        ) {
           itemName = childValue[itemNameField]
         }
         if (itemName.length > 20) {
