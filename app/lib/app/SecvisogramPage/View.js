@@ -917,50 +917,52 @@ function View({
                           })}
                       </div>
                     ) : null}
-                    <button
-                      data-testid="show_all_errors_button"
-                      type="button"
-                      className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 mr-5 h-auto"
-                      onClick={async () => {
-                        sideBarData.setSideBarIsOpen(true)
-                        sideBarData.setSideBarSelectedPath([])
-                      }}
-                    >
-                      {`${t('menu.documentIs')} ${
-                        errors.filter((e) => e.type === 'error').length === 0
-                          ? t('menu.valid') + ':'
-                          : t('menu.invalid') + ':'
-                      }`}
-                      {[
-                        {
-                          type: 'error',
-                          color: 'text-red-600',
-                        },
-                        {
-                          type: 'warning',
-                          color: 'text-yellow-600',
-                        },
-                        {
-                          type: 'info',
-                          color: 'text-blue-600',
-                        },
-                      ].map(({ type, color }) => {
-                        const count = errors.filter(
-                          (e) => e.type === type
-                        ).length
+                    {activeTab === 'EDITOR' || activeTab === 'SOURCE' ? (
+                      <button
+                        data-testid="show_all_errors_button"
+                        type="button"
+                        className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 mr-5 h-auto"
+                        onClick={async () => {
+                          sideBarData.setSideBarIsOpen(true)
+                          sideBarData.setSideBarSelectedPath([])
+                        }}
+                      >
+                        {`${t('menu.documentIs')} ${
+                          errors.filter((e) => e.type === 'error').length === 0
+                            ? t('menu.valid') + ':'
+                            : t('menu.invalid') + ':'
+                        }`}
+                        {[
+                          {
+                            type: 'error',
+                            color: 'text-red-600',
+                          },
+                          {
+                            type: 'warning',
+                            color: 'text-yellow-600',
+                          },
+                          {
+                            type: 'info',
+                            color: 'text-blue-600',
+                          },
+                        ].map(({ type, color }) => {
+                          const count = errors.filter(
+                            (e) => e.type === type
+                          ).length
 
-                        return (
-                          <span key={'errors-' + type} className="px-1">
-                            <FontAwesomeIcon
-                              icon={faCircle}
-                              className={color}
-                              size="xs"
-                            />
-                            {` ${count} ${type}${count > 1 ? 's' : ''} `}
-                          </span>
-                        )
-                      })}
-                    </button>
+                          return (
+                            <span key={'errors-' + type} className="px-1">
+                              <FontAwesomeIcon
+                                icon={faCircle}
+                                className={color}
+                                size="xs"
+                              />
+                              {` ${count} ${type}${count > 1 ? 's' : ''} `}
+                            </span>
+                          )
+                        })}
+                      </button>
+                    ) : null}
                   </div>
                 )}
                 <div
@@ -984,7 +986,6 @@ function View({
                       previewResult={previewResult}
                       onPreview={onPreviewCallback}
                       formValues={formValues}
-                      validationErrors={errors}
                       onExport={onExportHTML}
                     />
                   ) : activeTab === 'CSAF-JSON' ? (
