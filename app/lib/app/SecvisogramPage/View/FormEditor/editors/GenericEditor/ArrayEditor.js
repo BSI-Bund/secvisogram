@@ -19,8 +19,9 @@ import { useTranslation } from 'react-i18next'
  * @param {object} props
  * @param {import('../../shared/types').Property} props.property
  * @param {string[]} props.instancePath
+ * @param {boolean} props.enableLast
  */
-export default function ArrayEditor({ property, instancePath }) {
+export default function ArrayEditor({ property, instancePath, enableLast }) {
   const { doc } = React.useContext(DocumentEditorContext)
   const { selectedPath } = React.useContext(SelectedPathContext)
 
@@ -50,6 +51,9 @@ export default function ArrayEditor({ property, instancePath }) {
       )
     )
 
+  const enabled =
+    selectedSubPath?.[0] === String(value?.length - 1) && enableLast
+
   return (
     <>
       <div className="treeview border-l border-r border-solid bg-gray-50 border-gray-400 menu-shadow mr-2 min-w-[210px]">
@@ -65,6 +69,7 @@ export default function ArrayEditor({ property, instancePath }) {
           parentProperty={property}
           property={childProperty}
           instancePath={[...instancePath, ...selectedSubPath]}
+          enabled={enabled}
         />
       ) : null}
     </>

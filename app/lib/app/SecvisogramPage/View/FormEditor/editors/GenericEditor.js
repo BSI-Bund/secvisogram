@@ -39,18 +39,30 @@ export function getErrorTextColor(errors) {
  * @param {import('../shared/types').Property | null} props.parentProperty
  * @param {import('../shared/types').Property} props.property
  * @param {string[]} props.instancePath
+ * @param {boolean} props.enabled
  */
-export default function Editor({ parentProperty, property, instancePath }) {
+export default function Editor({
+  parentProperty,
+  property,
+  instancePath,
+  enabled,
+}) {
   const { loginAvailable } = React.useContext(AppConfigContext)
   const userInfo = React.useContext(UserInfoContext)
 
   const { doc, collectIds } = React.useContext(DocumentEditorContext)
 
   const uiType = property.metaData?.uiType
-  const disabled =
-    loginAvailable && userInfo
-      ? property.metaData?.disable?.ifServerMode || false
-      : property.metaData?.disable?.ifStandaloneMode || false
+  const enableLast = uiType === 'ARRAY_REVISION_HISTORY'
+  let disabled
+  if (enabled) {
+    disabled = false
+  } else {
+    disabled =
+      loginAvailable && userInfo
+        ? property.metaData?.disable?.ifServerMode || false
+        : property.metaData?.disable?.ifStandaloneMode || false
+  }
   const label = t([`csaf.${property.metaData?.i18n?.title}`, 'missing title'])
   const description = t([
     `csaf.${property.metaData?.i18n?.description}`,
@@ -63,7 +75,13 @@ export default function Editor({ parentProperty, property, instancePath }) {
   }, /** @type {Record<string, any> | null} */ (doc))
 
   if (property.type === 'ARRAY') {
-    return <ArrayEditor property={property} instancePath={instancePath} />
+    return (
+      <ArrayEditor
+        property={property}
+        instancePath={instancePath}
+        enableLast={enableLast}
+      />
+    )
   } else if (property.type === 'OBJECT') {
     if (uiType === 'OBJECT_CWE') {
       return (
@@ -101,6 +119,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
         parentProperty={parentProperty}
         property={property}
         instancePath={instancePath}
+        enabled={enabled}
       />
     )
   } else if (property.type === 'STRING') {
