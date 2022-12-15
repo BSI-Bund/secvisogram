@@ -76,6 +76,9 @@ export default /** @type {const} */ ({
                       title: 'AcknowledgmentsItemsTitle',
                       description: 'AcknowledgmentsItemsDescription',
                     },
+                    itemName: {
+                      itemNameTranslationKey: 'arrays.acknowledgmentsItemName',
+                    },
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -124,6 +127,9 @@ export default /** @type {const} */ ({
                                 title: 'AcknowledgmentsItemsNamesItemsTitle',
                                 description:
                                   'AcknowledgmentsItemsNamesItemsDescription',
+                              },
+                              itemName: {
+                                itemNameTranslationKey: 'arrays.namesItemName',
                               },
                             },
                             minLength: 1,
@@ -250,6 +256,9 @@ export default /** @type {const} */ ({
                                 title: 'AcknowledgmentsItemsUrlsItemsTitle',
                                 description:
                                   'AcknowledgmentsItemsUrlsItemsDescription',
+                              },
+                              itemName: {
+                                itemNameTranslationKey: 'arrays.urlsItemName',
                               },
                             },
                             metaInfo: {},
@@ -655,7 +664,10 @@ export default /** @type {const} */ ({
                       title: 'NotesItemsTitle',
                       description: 'NotesItemsDescription',
                     },
-                    itemNameField: 'title',
+                    itemName: {
+                      itemNameTranslationKey: 'arrays.notesItemName',
+                      itemNameField: 'title',
+                    },
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -1032,6 +1044,9 @@ export default /** @type {const} */ ({
                       title: 'ReferencesItemsTitle',
                       description: 'ReferencesItemsDescription',
                     },
+                    itemName: {
+                      itemNameTranslationKey: 'arrays.referencesItemName',
+                    },
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -1258,6 +1273,9 @@ export default /** @type {const} */ ({
                             title: 'DocumentTrackingAliasesItemsTitle',
                             description:
                               'DocumentTrackingAliasesItemsDescription',
+                          },
+                          itemName: {
+                            itemNameTranslationKey: 'arrays.aliasesItemName',
                           },
                         },
                         minLength: 1,
@@ -1606,6 +1624,10 @@ export default /** @type {const} */ ({
                             description:
                               'DocumentTrackingRevisionHistoryItemsDescription',
                           },
+                          itemName: {
+                            itemNameTranslationKey: 'arrays.revisionsItemName',
+                            itemNameField: 'number',
+                          },
                         },
                         type: 'OBJECT',
                         metaInfo: {
@@ -1917,7 +1939,10 @@ export default /** @type {const} */ ({
                       title: 'BranchesItemsTitle',
                       description: 'BranchesItemsDescription',
                     },
-                    itemNameField: 'name',
+                    itemName: {
+                      itemNameTranslationKey: 'arrays.branchesItemName',
+                      itemNameField: 'name',
+                    },
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -2268,6 +2293,10 @@ export default /** @type {const} */ ({
                                             description:
                                               'FullProductNameProductIdentificationHelperHashesItemsDescription',
                                           },
+                                          itemName: {
+                                            itemNameTranslationKey:
+                                              'arrays.hashesItemName',
+                                          },
                                         },
                                         type: 'OBJECT',
                                         metaInfo: {
@@ -2336,6 +2365,10 @@ export default /** @type {const} */ ({
                                                         'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle',
                                                       description:
                                                         'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription',
+                                                    },
+                                                    itemName: {
+                                                      itemNameTranslationKey:
+                                                        'arrays.fileHashesItemName',
                                                     },
                                                   },
                                                   type: 'OBJECT',
@@ -2563,6 +2596,10 @@ export default /** @type {const} */ ({
                                             description:
                                               'FullProductNameProductIdentificationHelperModelNumbersItemsDescription',
                                           },
+                                          itemName: {
+                                            itemNameTranslationKey:
+                                              'arrays.modelNumbersItemName',
+                                          },
                                         },
                                         minLength: 1,
                                         metaInfo: {},
@@ -2675,6 +2712,10 @@ export default /** @type {const} */ ({
                                             description:
                                               'FullProductNameProductIdentificationHelperSbomUrlsItemsDescription',
                                           },
+                                          itemName: {
+                                            itemNameTranslationKey:
+                                              'arrays.sbomItemName',
+                                          },
                                         },
                                         metaInfo: {},
                                         type: 'STRING',
@@ -2742,6 +2783,10 @@ export default /** @type {const} */ ({
                                               'FullProductNameProductIdentificationHelperSerialNumbersItemsTitle',
                                             description:
                                               'FullProductNameProductIdentificationHelperSerialNumbersItemsDescription',
+                                          },
+                                          itemName: {
+                                            itemNameTranslationKey:
+                                              'arrays.serialNumbersItemName',
                                           },
                                         },
                                         minLength: 1,
@@ -2812,6 +2857,10 @@ export default /** @type {const} */ ({
                                             description:
                                               'FullProductNameProductIdentificationHelperSkusItemsDescription',
                                           },
+                                          itemName: {
+                                            itemNameTranslationKey:
+                                              'arrays.skusItemName',
+                                          },
                                         },
                                         minLength: 1,
                                         metaInfo: {},
@@ -2880,6 +2929,10 @@ export default /** @type {const} */ ({
                                               'FullProductNameProductIdentificationHelperXGenericUrisItemsTitle',
                                             description:
                                               'FullProductNameProductIdentificationHelperXGenericUrisItemsDescription',
+                                          },
+                                          itemName: {
+                                            itemNameTranslationKey:
+                                              'arrays.genericUrisItemName',
                                           },
                                         },
                                         type: 'OBJECT',
@@ -3028,7 +3081,10 @@ export default /** @type {const} */ ({
                       description: 'FullProductNameDescription',
                     },
                     addMenuItemsForChildObjects: true,
-                    itemNameField: 'product_id',
+                    itemName: {
+                      itemNameTranslationKey: 'arrays.productsItemName',
+                      itemNameField: 'product_id',
+                    },
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -3236,7 +3292,10 @@ export default /** @type {const} */ ({
                                       description:
                                         'FullProductNameProductIdentificationHelperHashesItemsDescription',
                                     },
-                                    itemNameField: 'filename',
+                                    itemName: {
+                                      itemNameTranslationKey:
+                                        'arrays.hashesItemName',
+                                    },
                                   },
                                   type: 'OBJECT',
                                   metaInfo: {
@@ -3302,6 +3361,10 @@ export default /** @type {const} */ ({
                                                   'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle',
                                                 description:
                                                   'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription',
+                                              },
+                                              itemName: {
+                                                itemNameTranslationKey:
+                                                  'arrays.fileHashesItemName',
                                               },
                                             },
                                             type: 'OBJECT',
@@ -3517,6 +3580,10 @@ export default /** @type {const} */ ({
                                       description:
                                         'FullProductNameProductIdentificationHelperModelNumbersItemsDescription',
                                     },
+                                    itemName: {
+                                      itemNameTranslationKey:
+                                        'arrays.modelNumbersItemName',
+                                    },
                                   },
                                   minLength: 1,
                                   metaInfo: {},
@@ -3624,6 +3691,10 @@ export default /** @type {const} */ ({
                                       description:
                                         'FullProductNameProductIdentificationHelperSbomUrlsItemsDescription',
                                     },
+                                    itemName: {
+                                      itemNameTranslationKey:
+                                        'arrays.sbomUrlsItemName',
+                                    },
                                   },
                                   metaInfo: {},
                                   type: 'STRING',
@@ -3688,6 +3759,10 @@ export default /** @type {const} */ ({
                                         'FullProductNameProductIdentificationHelperSerialNumbersItemsTitle',
                                       description:
                                         'FullProductNameProductIdentificationHelperSerialNumbersItemsDescription',
+                                    },
+                                    itemName: {
+                                      itemNameTranslationKey:
+                                        'arrays.serialNumbersItemName',
                                     },
                                   },
                                   minLength: 1,
@@ -3755,6 +3830,10 @@ export default /** @type {const} */ ({
                                       description:
                                         'FullProductNameProductIdentificationHelperSkusItemsDescription',
                                     },
+                                    itemName: {
+                                      itemNameTranslationKey:
+                                        'arrays.skusItemName',
+                                    },
                                   },
                                   minLength: 1,
                                   metaInfo: {},
@@ -3820,6 +3899,10 @@ export default /** @type {const} */ ({
                                         'FullProductNameProductIdentificationHelperXGenericUrisItemsTitle',
                                       description:
                                         'FullProductNameProductIdentificationHelperXGenericUrisItemsDescription',
+                                    },
+                                    itemName: {
+                                      itemNameTranslationKey:
+                                        'arrays.genericUrisItemName',
                                     },
                                   },
                                   type: 'OBJECT',
@@ -3958,7 +4041,10 @@ export default /** @type {const} */ ({
                       title: 'ProductTreeProductGroupsItemsTitle',
                       description: 'ProductTreeProductGroupsItemsDescription',
                     },
-                    itemNameField: 'group_id',
+                    itemName: {
+                      itemNameTranslationKey: 'arrays.productGroupsItemName',
+                      itemNameField: 'group_id',
+                    },
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -4055,6 +4141,10 @@ export default /** @type {const} */ ({
                                 title: 'ProductIdTitle',
                                 description: 'ProductIdDescription',
                               },
+                              itemName: {
+                                itemNameTranslationKey:
+                                  'arrays.productsItemName',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -4145,6 +4235,9 @@ export default /** @type {const} */ ({
                     i18n: {
                       title: 'ProductTreeRelationshipsItemsTitle',
                       description: 'ProductTreeRelationshipsItemsDescription',
+                    },
+                    itemName: {
+                      itemNameTranslationKey: 'arrays.relationshipsItemName',
                     },
                     addMenuItemsForChildObjects: true,
                   },
@@ -4435,6 +4528,10 @@ export default /** @type {const} */ ({
                                             description:
                                               'FullProductNameProductIdentificationHelperHashesItemsDescription',
                                           },
+                                          itemName: {
+                                            itemNameTranslationKey:
+                                              'arrays.hashesItemName',
+                                          },
                                         },
                                         type: 'OBJECT',
                                         metaInfo: {
@@ -4503,6 +4600,10 @@ export default /** @type {const} */ ({
                                                         'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle',
                                                       description:
                                                         'FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription',
+                                                    },
+                                                    itemName: {
+                                                      itemNameTranslationKey:
+                                                        'arrays.fileHashesItemName',
                                                     },
                                                   },
                                                   type: 'OBJECT',
@@ -4730,6 +4831,10 @@ export default /** @type {const} */ ({
                                             description:
                                               'FullProductNameProductIdentificationHelperModelNumbersItemsDescription',
                                           },
+                                          itemName: {
+                                            itemNameTranslationKey:
+                                              'arrays.modelNumbersItemName',
+                                          },
                                         },
                                         minLength: 1,
                                         metaInfo: {},
@@ -4842,6 +4947,10 @@ export default /** @type {const} */ ({
                                             description:
                                               'FullProductNameProductIdentificationHelperSbomUrlsItemsDescription',
                                           },
+                                          itemName: {
+                                            itemNameTranslationKey:
+                                              'arrays.sbomUrlsItemName',
+                                          },
                                         },
                                         metaInfo: {},
                                         type: 'STRING',
@@ -4909,6 +5018,10 @@ export default /** @type {const} */ ({
                                               'FullProductNameProductIdentificationHelperSerialNumbersItemsTitle',
                                             description:
                                               'FullProductNameProductIdentificationHelperSerialNumbersItemsDescription',
+                                          },
+                                          itemName: {
+                                            itemNameTranslationKey:
+                                              'arrays.serialNumbersItemName',
                                           },
                                         },
                                         minLength: 1,
@@ -4979,6 +5092,10 @@ export default /** @type {const} */ ({
                                             description:
                                               'FullProductNameProductIdentificationHelperSkusItemsDescription',
                                           },
+                                          itemName: {
+                                            itemNameTranslationKey:
+                                              'arrays.skusItemName',
+                                          },
                                         },
                                         minLength: 1,
                                         metaInfo: {},
@@ -5047,6 +5164,10 @@ export default /** @type {const} */ ({
                                               'FullProductNameProductIdentificationHelperXGenericUrisItemsTitle',
                                             description:
                                               'FullProductNameProductIdentificationHelperXGenericUrisItemsDescription',
+                                          },
+                                          itemName: {
+                                            itemNameTranslationKey:
+                                              'arrays.genericUrisItemName',
                                           },
                                         },
                                         type: 'OBJECT',
@@ -5268,7 +5389,10 @@ export default /** @type {const} */ ({
                 title: 'VulnerabilitiesItemsTitle',
                 description: 'VulnerabilitiesItemsDescription',
               },
-              itemNameField: 'title',
+              itemName: {
+                itemNameTranslationKey: 'arrays.vulnerabilitiesItemName',
+                itemNameField: 'title',
+              },
             },
             type: 'OBJECT',
             metaInfo: {
@@ -5320,6 +5444,10 @@ export default /** @type {const} */ ({
                         i18n: {
                           title: 'AcknowledgmentsItemsTitle',
                           description: 'AcknowledgmentsItemsDescription',
+                        },
+                        itemName: {
+                          itemNameTranslationKey:
+                            'arrays.acknowledgmentsItemName',
                         },
                       },
                       type: 'OBJECT',
@@ -5382,6 +5510,10 @@ export default /** @type {const} */ ({
                                       'AcknowledgmentsItemsNamesItemsTitle',
                                     description:
                                       'AcknowledgmentsItemsNamesItemsDescription',
+                                  },
+                                  itemName: {
+                                    itemNameTranslationKey:
+                                      'arrays.namesItemName',
                                   },
                                 },
                                 minLength: 1,
@@ -5524,6 +5656,10 @@ export default /** @type {const} */ ({
                                     title: 'AcknowledgmentsItemsUrlsItemsTitle',
                                     description:
                                       'AcknowledgmentsItemsUrlsItemsDescription',
+                                  },
+                                  itemName: {
+                                    itemNameTranslationKey:
+                                      'arrays.urlsItemName',
                                   },
                                 },
                                 metaInfo: {},
@@ -5737,6 +5873,9 @@ export default /** @type {const} */ ({
                           description:
                             'VulnerabilitiesItemsFlagsItemsDescription',
                         },
+                        itemName: {
+                          itemNameTranslationKey: 'arrays.flagsItemName',
+                        },
                       },
                       type: 'OBJECT',
                       metaInfo: {
@@ -5820,6 +5959,10 @@ export default /** @type {const} */ ({
                                   i18n: {
                                     title: 'ProductGroupIdTitle',
                                     description: 'ProductGroupIdDescription',
+                                  },
+                                  itemName: {
+                                    itemNameTranslationKey:
+                                      'arrays.productGroupIdsItemName',
                                   },
                                 },
                                 minLength: 1,
@@ -5923,6 +6066,10 @@ export default /** @type {const} */ ({
                                     title: 'ProductIdTitle',
                                     description: 'ProductIdDescription',
                                   },
+                                  itemName: {
+                                    itemNameTranslationKey:
+                                      'arrays.productsItemName',
+                                  },
                                 },
                                 minLength: 1,
                                 examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -5982,6 +6129,9 @@ export default /** @type {const} */ ({
                           title: 'VulnerabilitiesItemsIdsItemsTitle',
                           description:
                             'VulnerabilitiesItemsIdsItemsDescription',
+                        },
+                        itemName: {
+                          itemNameTranslationKey: 'arrays.idsItemName',
                         },
                       },
                       type: 'OBJECT',
@@ -6102,6 +6252,9 @@ export default /** @type {const} */ ({
                           title: 'VulnerabilitiesItemsInvolvementsItemsTitle',
                           description:
                             'VulnerabilitiesItemsInvolvementsItemsDescription',
+                        },
+                        itemName: {
+                          itemNameTranslationKey: 'arrays.involvementsItemName',
                         },
                       },
                       type: 'OBJECT',
@@ -6314,7 +6467,10 @@ export default /** @type {const} */ ({
                           title: 'NotesItemsTitle',
                           description: 'NotesItemsDescription',
                         },
-                        itemNameField: 'title',
+                        itemName: {
+                          itemNameTranslationKey: 'arrays.notesItemName',
+                          itemNameField: 'title',
+                        },
                       },
                       type: 'OBJECT',
                       metaInfo: {
@@ -6547,6 +6703,10 @@ export default /** @type {const} */ ({
                                 title: 'ProductIdTitle',
                                 description: 'ProductIdDescription',
                               },
+                              itemName: {
+                                itemNameTranslationKey:
+                                  'arrays.productsItemName',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -6612,6 +6772,10 @@ export default /** @type {const} */ ({
                                 title: 'ProductIdTitle',
                                 description: 'ProductIdDescription',
                               },
+                              itemName: {
+                                itemNameTranslationKey:
+                                  'arrays.productsItemName',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -6675,6 +6839,10 @@ export default /** @type {const} */ ({
                               i18n: {
                                 title: 'ProductIdTitle',
                                 description: 'ProductIdDescription',
+                              },
+                              itemName: {
+                                itemNameTranslationKey:
+                                  'arrays.productsItemName',
                               },
                             },
                             minLength: 1,
@@ -6740,6 +6908,10 @@ export default /** @type {const} */ ({
                                 title: 'ProductIdTitle',
                                 description: 'ProductIdDescription',
                               },
+                              itemName: {
+                                itemNameTranslationKey:
+                                  'arrays.productsItemName',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -6803,6 +6975,10 @@ export default /** @type {const} */ ({
                               i18n: {
                                 title: 'ProductIdTitle',
                                 description: 'ProductIdDescription',
+                              },
+                              itemName: {
+                                itemNameTranslationKey:
+                                  'arrays.productsItemName',
                               },
                             },
                             minLength: 1,
@@ -6869,6 +7045,10 @@ export default /** @type {const} */ ({
                                 title: 'ProductIdTitle',
                                 description: 'ProductIdDescription',
                               },
+                              itemName: {
+                                itemNameTranslationKey:
+                                  'arrays.productsItemName',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -6934,6 +7114,10 @@ export default /** @type {const} */ ({
                                 title: 'ProductIdTitle',
                                 description: 'ProductIdDescription',
                               },
+                              itemName: {
+                                itemNameTranslationKey:
+                                  'arrays.productsItemName',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -6998,6 +7182,10 @@ export default /** @type {const} */ ({
                                 title: 'ProductIdTitle',
                                 description: 'ProductIdDescription',
                               },
+                              itemName: {
+                                itemNameTranslationKey:
+                                  'arrays.productsItemName',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -7055,6 +7243,9 @@ export default /** @type {const} */ ({
                         i18n: {
                           title: 'ReferencesItemsTitle',
                           description: 'ReferencesItemsDescription',
+                        },
+                        itemName: {
+                          itemNameTranslationKey: 'arrays.referencesItemName',
                         },
                       },
                       type: 'OBJECT',
@@ -7239,6 +7430,9 @@ export default /** @type {const} */ ({
                           description:
                             'VulnerabilitiesItemsRemediationsItemsDescription',
                         },
+                        itemName: {
+                          itemNameTranslationKey: 'arrays.remediationsItemName',
+                        },
                       },
                       type: 'OBJECT',
                       metaInfo: {
@@ -7415,6 +7609,10 @@ export default /** @type {const} */ ({
                                     description:
                                       'VulnerabilitiesItemsRemediationsItemsEntitlementsItemsDescription',
                                   },
+                                  itemName: {
+                                    itemNameTranslationKey:
+                                      'arrays.entitlementsItemName',
+                                  },
                                 },
                                 minLength: 1,
                                 metaInfo: {},
@@ -7474,6 +7672,10 @@ export default /** @type {const} */ ({
                                   i18n: {
                                     title: 'ProductGroupIdTitle',
                                     description: 'ProductGroupIdDescription',
+                                  },
+                                  itemName: {
+                                    itemNameTranslationKey:
+                                      'arrays.productGroupIdsItemName',
                                   },
                                 },
                                 minLength: 1,
@@ -7538,6 +7740,10 @@ export default /** @type {const} */ ({
                                   i18n: {
                                     title: 'ProductIdTitle',
                                     description: 'ProductIdDescription',
+                                  },
+                                  itemName: {
+                                    itemNameTranslationKey:
+                                      'arrays.productsItemName',
                                   },
                                 },
                                 minLength: 1,
@@ -7756,6 +7962,9 @@ export default /** @type {const} */ ({
                           title: 'VulnerabilitiesItemsScoresItemsTitle',
                           description:
                             'VulnerabilitiesItemsScoresItemsDescription',
+                        },
+                        itemName: {
+                          itemNameTranslationKey: 'arrays.scoresItemName',
                         },
                       },
                       type: 'OBJECT',
@@ -8553,6 +8762,10 @@ export default /** @type {const} */ ({
                                     title: 'ProductIdTitle',
                                     description: 'ProductIdDescription',
                                   },
+                                  itemName: {
+                                    itemNameTranslationKey:
+                                      'arrays.productsItemName',
+                                  },
                                 },
                                 minLength: 1,
                                 examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -8612,6 +8825,9 @@ export default /** @type {const} */ ({
                           title: 'VulnerabilitiesItemsThreatsItemsTitle',
                           description:
                             'VulnerabilitiesItemsThreatsItemsDescription',
+                        },
+                        itemName: {
+                          itemNameTranslationKey: 'arrays.threatsItemName',
                         },
                       },
                       type: 'OBJECT',
@@ -8772,6 +8988,10 @@ export default /** @type {const} */ ({
                                     title: 'ProductGroupIdTitle',
                                     description: 'ProductGroupIdDescription',
                                   },
+                                  itemName: {
+                                    itemNameTranslationKey:
+                                      'arrays.productGroupIdsItemName',
+                                  },
                                 },
                                 minLength: 1,
                                 examples: [
@@ -8838,6 +9058,10 @@ export default /** @type {const} */ ({
                                   i18n: {
                                     title: 'ProductIdTitle',
                                     description: 'ProductIdDescription',
+                                  },
+                                  itemName: {
+                                    itemNameTranslationKey:
+                                      'arrays.productsItemName',
                                   },
                                 },
                                 minLength: 1,

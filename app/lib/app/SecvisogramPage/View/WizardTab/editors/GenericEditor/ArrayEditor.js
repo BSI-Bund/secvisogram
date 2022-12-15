@@ -155,13 +155,18 @@ function Menu({ instancePath, level = 1, ...props }) {
         const indexErrors = errors.filter((e) =>
           e.instancePath.startsWith('/' + [...instancePath, i].join('/'))
         )
-        let itemName = `${t('menu.defaultItemName')} ${i + 1}`
-        const itemNameField = childProperty?.metaData?.itemNameField
+        let itemName = `${t('arrays.defaultItemName')} ${i + 1}`
+        const itemNameTranslationKey =
+          childProperty?.metaData?.itemName?.itemNameTranslationKey
+        const itemNameField = childProperty?.metaData?.itemName?.itemNameField
+        if (itemNameTranslationKey) {
+          itemName = `${t(itemNameTranslationKey)} ${i + 1}`
+        }
         if (itemNameField && itemNameField in childValue) {
           itemName = childValue[itemNameField]
         }
-        if (itemName.length > 12) {
-          itemName = itemName.slice(0, 9) + '...'
+        if (itemName.length > 20) {
+          itemName = itemName.slice(0, 17) + '...'
         }
         return (
           <li

@@ -136,12 +136,18 @@ Some fields need to be disabled depending on the current mode of the Editor.
 }
 ```
 
-### `itemNameField`
+### `itemName`
 
-This field will be used as default name for items in a list.
-If no value is provided or the corresponding field is not filled with data yet,
-the fallback string `menu.defaultItemName` from the translation file will be used
+For arrays an item name can be given that is shown in the list of items.
+This can either be a value of a field in a sub-object for arrays of objects or a translation string.
+For a field value use `itemNameField`, for a translation string use `itemNameTranslationKey`.
+`itemNameField` will take precedence.
+In case no data is provided, the fallback will be retrieved from the translation string `arrays.defaultItemName`.
+Translated strings (from `itemName` and `defaultItemName`) will automatically be completed with the item's index.
 
 ```json
-"itemNameField": ""
+"itemName": {
+  "itemNameTranslationKey": ""
+  "itemNameField": ""
+}
 ```
