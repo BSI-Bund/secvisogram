@@ -138,10 +138,10 @@ Some fields need to be disabled depending on the current mode of the Editor.
 
 ### `itemName`
 
-For arrays an item name can be given that is shown in the list of items.
-This can either be a value of a field in a sub-object for arrays of objects or a translation string.
-For a field value use `itemNameField`, for a translation string use `itemNameTranslationKey`.
-`itemNameField` will take precedence.
+An name can be given that is shown in the list of items for items in an array.
+This can be a translation string or a value of a field in a sub-object.
+For a translation string use `itemNameTranslationKey`, for a field value use `itemNameField`.
+The `itemNameTranslationKey` should be given but will be overwritten when a value is found in the `itemNameField`.
 In case no data is provided, the fallback will be retrieved from the translation string `arrays.defaultItemName`.
 Translated strings (from `itemName` and `defaultItemName`) will automatically be completed with the item's index.
 
