@@ -13,11 +13,6 @@ import { canCreateDocuments } from '../shared/permissions.js'
 import AboutDialog from './View/AboutDialog.js'
 import CsafTab from './View/CsafTab.js'
 import ExportDocumentDialog from './View/ExportDocumentDialog.js'
-import FormEditorTab from './View/FormEditorTab.js'
-import {
-  uniqueGroupId,
-  uniqueProductId,
-} from './View/FormEditorTab/shared/unique-id.js'
 import JsonEditorTab from './View/JsonEditorTab.js'
 import LoadingIndicator from './View/LoadingIndicator.js'
 import NewDocumentDialog from './View/NewDocumentDialog.js'
@@ -45,7 +40,6 @@ function View({
   defaultAdvisoryState = null,
   stripResult,
   previewResult,
-  generatorEngineData,
   DocumentsTab,
   onPrepareDocumentForTemplate,
   onLoadAdvisory,
@@ -126,10 +120,6 @@ function View({
         : state
     )
   }, [data])
-  React.useEffect(() => {
-    uniqueGroupId(true)
-    uniqueProductId(true)
-  }, [advisoryState])
 
   const [isLoading, setLoading] = React.useState(props.isLoading)
   React.useEffect(() => {
@@ -216,37 +206,6 @@ function View({
       }
     }
   }, [toast])
-
-  /**
-   * Callback to update the document. Dispatches an update-action to the
-   * reducer.
-   *
-   * @see {Reducer}
-   */
-  const onUpdate =
-    /** @type {((update: {}) => void) & ((instancePath: string, update: {}) => void)} */ (
-      React.useCallback(
-        (/** @type {any} */ newValue, /** @type {any?} */ update) => {
-          if (typeof newValue === 'string') {
-            dispatch({
-              type: 'CHANGE_FORM_DOC',
-              instancePath: newValue,
-              timestamp: new Date(),
-              update: update,
-              generatorEngineData,
-            })
-          } else {
-            dispatch({
-              type: 'CHANGE_FORM_DOC',
-              timestamp: new Date(),
-              update: newValue,
-              generatorEngineData,
-            })
-          }
-        },
-        [generatorEngineData]
-      )
-    )
 
   async function doValidate() {
     setLoading(true)
@@ -485,14 +444,6 @@ function View({
   const onExportCSAFCallback = React.useCallback(() => {
     onExportCSAF(formValues.doc)
   }, [formValues.doc, onExportCSAF])
-
-  const onCollectProductIdsCallback = React.useCallback(() => {
-    return onCollectProductIds(formValues.doc)
-  }, [formValues.doc, onCollectProductIds])
-
-  const onCollectGroupIdsCallback = React.useCallback(() => {
-    return onCollectGroupIds(formValues.doc)
-  }, [formValues.doc, onCollectGroupIds])
 
   /**
    * @param {() => void} callback
@@ -744,7 +695,6 @@ function View({
               >
                 <div className="col-span-2 flex justify-between bg-slate-700">
                   <div className="flex pl-5">
-                    <button {...tabButtonProps('WIZZARD')}>Wizard</button>
                     <button {...tabButtonProps('EDITOR')}>
                       {t('menu.formEditor')}
                     </button>
@@ -934,7 +884,7 @@ function View({
                         </button>
                       )}
                     </div>
-                    {activeTab === 'WIZZARD' ? (
+                    {activeTab === 'EDITOR' ? (
                       <div className="text-gray-300 font-bold text-sm h-9">
                         <span className="mr-1 h-full">
                           {t('menu.activeRelevanceLevels')}
@@ -1017,19 +967,8 @@ function View({
                   className="row-span-2 relative overflow-auto h-full bg-white"
                   key={activeTab}
                 >
-                  {activeTab === 'WIZZARD' ? (
-                    <>
-                      <WizardTab />
-                    </>
-                  ) : activeTab === 'EDITOR' ? (
-                    <FormEditorTab
-                      formValues={formValues}
-                      validationErrors={errors}
-                      onUpdate={onUpdate}
-                      onDownload={onDownload}
-                      onCollectProductIds={onCollectProductIdsCallback}
-                      onCollectGroupIds={onCollectGroupIdsCallback}
-                    />
+                  {activeTab === 'EDITOR' ? (
+                    <WizardTab />
                   ) : activeTab === 'SOURCE' ? (
                     <JsonEditorTab
                       originalValues={originalValues}
@@ -1071,7 +1010,7 @@ function View({
                     />
                   ) : null}
                 </div>
-                {activeTab === 'WIZZARD' || activeTab === 'SOURCE' ? (
+                {activeTab === 'EDITOR' || activeTab === 'SOURCE' ? (
                   <SideBar />
                 ) : null}
               </div>

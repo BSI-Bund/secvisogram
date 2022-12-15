@@ -11,17 +11,7 @@ export interface Props {
     doc: unknown
   } | null
   defaultAdvisoryState?: AdvisoryState | null
-  generatorEngineData: {
-    name: string
-    version: string
-  }
-  activeTab:
-    | 'WIZZARD'
-    | 'EDITOR'
-    | 'SOURCE'
-    | 'PREVIEW'
-    | 'CSAF-JSON'
-    | 'DOCUMENTS'
+  activeTab: 'EDITOR' | 'SOURCE' | 'PREVIEW' | 'CSAF-JSON' | 'DOCUMENTS'
   alert: {
     confirmLabel: string
     cancelLabel: string
@@ -51,13 +41,7 @@ export interface Props {
   onDownload(doc: {}): void
   onOpen(file: File): Promise<void | {}>
   onChangeTab(
-    tab:
-      | 'WIZZARD'
-      | 'EDITOR'
-      | 'SOURCE'
-      | 'PREVIEW'
-      | 'CSAF-JSON'
-      | 'DOCUMENTS',
+    tab: 'EDITOR' | 'SOURCE' | 'PREVIEW' | 'CSAF-JSON' | 'DOCUMENTS',
     document: {}
   ): void
   onValidate(document: {}): void
