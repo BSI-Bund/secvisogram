@@ -13,6 +13,7 @@ export default function FormEditorTab() {
         parentProperty={null}
         property={property}
         instancePath={[]}
+        enable_last_rev_hist_item={false}
       />
     </div>
   )

@@ -68,6 +68,7 @@ export default function CVSS2Editor({
         instancePath={instancePath}
         parentProperty={parentProperty}
         property={property}
+        enabled={false}
       />
     </DocumentEditorContext.Provider>
   )
