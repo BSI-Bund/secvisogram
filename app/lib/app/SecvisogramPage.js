@@ -1,4 +1,5 @@
-import React from 'react'
+import { t } from 'i18next'
+import React, { useMemo } from 'react'
 import createFileName from '../shared/createFileName.js'
 import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
 import { loadAdvisory } from './SecvisogramPage/service.js'
@@ -14,14 +15,6 @@ import sitemap from './shared/sitemap.js'
 /**
  * @typedef {import('./SecvisogramPage/shared/types').ValidationError} ValidationError
  */
-
-const alertSaveInvalid = {
-  label: 'Validation',
-  description:
-    'Open validation issues: Your document is not yet CSAF 2.0 compliant!',
-  cancelLabel: 'Resume editing (Recommended)',
-  confirmLabel: 'Save invalid document',
-}
 
 const core = createCore()
 
@@ -70,6 +63,15 @@ const SecvisogramPage = () => {
     isTabLocked: false,
   })
   const { handleError } = React.useContext(AppErrorContext)
+
+  const alertSaveInvalidTranslationStrings = useMemo(() => {
+    return {
+      label: t('alert.saveInvalidTitle'),
+      description: t('alert.saveInvalidDescription'),
+      cancelLabel: t('alert.saveInvalidCancel'),
+      confirmLabel: t('alert.saveInvalidConfirm'),
+    }
+  }, [])
 
   return (
     <View
@@ -128,7 +130,7 @@ const SecvisogramPage = () => {
               setState((state) => ({
                 ...state,
                 alert: {
-                  ...alertSaveInvalid,
+                  ...alertSaveInvalidTranslationStrings,
                   onConfirm() {
                     downloadFile(JSON.stringify(doc, null, 2), fileName)
                     setState({ ...state, alert: null })
@@ -277,7 +279,7 @@ const SecvisogramPage = () => {
                 setState((state) => ({
                   ...state,
                   alert: {
-                    ...alertSaveInvalid,
+                    ...alertSaveInvalidTranslationStrings,
                     onConfirm() {
                       core.document
                         .strip({ document })
@@ -303,37 +305,40 @@ const SecvisogramPage = () => {
             })
             .catch(handleError)
         },
-        [handleError]
+        [handleError, alertSaveInvalidTranslationStrings]
       )}
-      onExportHTML={React.useCallback((html, doc) => {
-        core.document.validate({ document: doc }).then(({ isValid }) => {
-          const fileName = createFileName(doc, isValid, 'html')
-          if (!isValid) {
-            setState((state) => ({
-              ...state,
-              alert: {
-                ...alertSaveInvalid,
-                onConfirm() {
-                  downloadFile(html, fileName, 'text/html')
-                  setState({ ...state, alert: null })
+      onExportHTML={React.useCallback(
+        (html, doc) => {
+          core.document.validate({ document: doc }).then(({ isValid }) => {
+            const fileName = createFileName(doc, isValid, 'html')
+            if (!isValid) {
+              setState((state) => ({
+                ...state,
+                alert: {
+                  ...alertSaveInvalidTranslationStrings,
+                  onConfirm() {
+                    downloadFile(html, fileName, 'text/html')
+                    setState({ ...state, alert: null })
+                  },
+                  onCancel() {
+                    setState({ ...state, alert: null })
+                  },
                 },
-                onCancel() {
-                  setState({ ...state, alert: null })
-                },
-              },
-            }))
-          } else {
-            downloadFile(html, fileName, 'text/html')
-          }
-        })
-      }, [])}
+              }))
+            } else {
+              downloadFile(html, fileName, 'text/html')
+            }
+          })
+        },
+        [alertSaveInvalidTranslationStrings]
+      )}
       onServiceValidate={({ validatorUrl, csaf }) => {
         return validationService
           .validateCSAF(validatorUrl, { csaf })
           .catch((error) => {
             throw {
               message:
-                'There was an error reaching the validation service. Please try again later. Error code: ' +
+                t('error.errorReachingValidationServiceWithCode') +
                 error.status,
             }
           })

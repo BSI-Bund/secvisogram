@@ -3,6 +3,7 @@ import {
   faExclamationTriangle,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { t } from 'i18next'
 import React from 'react'
 
 /**
@@ -37,7 +38,7 @@ export default function CsafTab({ stripResult, onStrip }) {
         <div className={'relative ' + (hasErrors ? 'h-4/5' : 'h-full')}>
           <section className="absolute top-0 right-0 bottom-0 left-0 h-full bg-white flex flex-col">
             {stripResult === null ? (
-              <div>Loading data ...</div>
+              <div>{t('menu.loadingData')}</div>
             ) : (
               <div className="h-full border overflow-auto">
                 <pre className="text-sm whitespace-pre-wrap p-3">

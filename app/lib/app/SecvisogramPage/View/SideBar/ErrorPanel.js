@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import React from 'react'
 import DocumentEditorContext from '../shared/DocumentEditorContext.js'
 import SelectedPathContext from '../shared/context/SelectedPathContext.js'
@@ -25,7 +26,9 @@ export default function ErrorPanel({ selectedPath }) {
   return (
     <>
       <div className="w-full px-4 pt-2">
-        {selectedPath.length ? 'Context specific Errors:' : 'All errors:'}
+        {selectedPath.length
+          ? t('sidebar.contextSpecificErrors')
+          : t('sidebar.allErrors')}
       </div>
       <div className="p-3" data-testid="error-cards">
         {errorsUnderPath.map((err, i) => {

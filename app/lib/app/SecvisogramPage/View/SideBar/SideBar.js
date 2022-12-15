@@ -5,6 +5,7 @@ import {
   faExclamationTriangle,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { t } from 'i18next'
 import React from 'react'
 import SideBarContext from '../shared/context/SideBarContext.js'
 import ErrorPanel from './ErrorPanel.js'
@@ -59,7 +60,7 @@ export default function SideBar() {
           {sideBarData.sideBarIsOpen ? (
             <>
               <FontAwesomeIcon className="fa-xs" icon={faAngleDoubleRight} />{' '}
-              collapse Sidebar
+              {t('sidebar.collapseSidebar')}
             </>
           ) : (
             <FontAwesomeIcon className="fa-xs" icon={faAngleDoubleLeft} />
