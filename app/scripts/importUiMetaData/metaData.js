@@ -370,6 +370,7 @@ export default {
       title: 'NotesItemsTitle',
       description: 'NotesItemsDescription',
     },
+    itemNameField: 'title',
   },
   '$.document.notes.audience': {
     userDocumentation: {
@@ -1052,6 +1053,7 @@ export default {
       title: 'BranchesItemsTitle',
       description: 'BranchesItemsDescription',
     },
+    itemNameField: 'name',
   },
   '$.product_tree.branches.branches': {
     userDocumentation: {
@@ -1574,6 +1576,7 @@ export default {
       description: 'FullProductNameDescription',
     },
     addMenuItemsForChildObjects: true,
+    itemNameField: 'product_id',
   },
   '$.product_tree.full_product_names.name': {
     userDocumentation: {
@@ -1676,6 +1679,7 @@ export default {
       description:
         'FullProductNameProductIdentificationHelperHashesItemsDescription',
     },
+    itemNameField: 'filename',
   },
   '$.product_tree.full_product_names.product_identification_helper.hashes.file_hashes':
     {
@@ -2044,6 +2048,7 @@ export default {
       title: 'ProductTreeProductGroupsItemsTitle',
       description: 'ProductTreeProductGroupsItemsDescription',
     },
+    itemNameField: 'group_id',
   },
   '$.product_tree.product_groups.group_id': {
     userDocumentation: {
@@ -2698,6 +2703,7 @@ export default {
       title: 'VulnerabilitiesItemsTitle',
       description: 'VulnerabilitiesItemsDescription',
     },
+    itemNameField: 'title',
   },
   '$.vulnerabilities.acknowledgments': {
     userDocumentation: {
@@ -3233,6 +3239,7 @@ export default {
       title: 'NotesItemsTitle',
       description: 'NotesItemsDescription',
     },
+    itemNameField: 'title',
   },
   '$.vulnerabilities.notes.audience': {
     userDocumentation: {

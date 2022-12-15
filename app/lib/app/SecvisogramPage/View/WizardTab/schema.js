@@ -655,6 +655,7 @@ export default /** @type {const} */ ({
                       title: 'NotesItemsTitle',
                       description: 'NotesItemsDescription',
                     },
+                    itemNameField: 'title',
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -1916,6 +1917,7 @@ export default /** @type {const} */ ({
                       title: 'BranchesItemsTitle',
                       description: 'BranchesItemsDescription',
                     },
+                    itemNameField: 'name',
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -3026,6 +3028,7 @@ export default /** @type {const} */ ({
                       description: 'FullProductNameDescription',
                     },
                     addMenuItemsForChildObjects: true,
+                    itemNameField: 'product_id',
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -3233,6 +3236,7 @@ export default /** @type {const} */ ({
                                       description:
                                         'FullProductNameProductIdentificationHelperHashesItemsDescription',
                                     },
+                                    itemNameField: 'filename',
                                   },
                                   type: 'OBJECT',
                                   metaInfo: {
@@ -3954,6 +3958,7 @@ export default /** @type {const} */ ({
                       title: 'ProductTreeProductGroupsItemsTitle',
                       description: 'ProductTreeProductGroupsItemsDescription',
                     },
+                    itemNameField: 'group_id',
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -5263,6 +5268,7 @@ export default /** @type {const} */ ({
                 title: 'VulnerabilitiesItemsTitle',
                 description: 'VulnerabilitiesItemsDescription',
               },
+              itemNameField: 'title',
             },
             type: 'OBJECT',
             metaInfo: {
@@ -6308,6 +6314,7 @@ export default /** @type {const} */ ({
                           title: 'NotesItemsTitle',
                           description: 'NotesItemsDescription',
                         },
+                        itemNameField: 'title',
                       },
                       type: 'OBJECT',
                       metaInfo: {
