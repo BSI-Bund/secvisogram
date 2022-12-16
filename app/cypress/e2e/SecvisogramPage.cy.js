@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import CVSSVector from '../../lib/app/SecvisogramPage/View/FormEditorTab/Vulnerabilities/Scores/CVSS3Editor/CVSSVector.js'
+import CVSSVector from '../../lib/app/SecvisogramPage/View/FormEditor/editors/GenericEditor/Attributes/CVSS3Attribute/CVSSVector.js'
 import ViewReducer from '../../lib/app/SecvisogramPage/View/Reducer.js'
 import docMax from '../../lib/app/shared/Core/doc-max.json'
 import docMin from '../../lib/app/shared/Core/doc-min.json'
@@ -92,30 +92,6 @@ describe('SecvisogramPage', () => {
                 ).length
               )
             )
-            for (const error of validationResponse.tests.flatMap(
-              (t) => t.errors
-            )) {
-              if (tab === 'EDITOR') {
-                cy.get(`[data-testid="attribute_error-${error.instancePath}"]`)
-              }
-              cy.get(
-                `.validation_error.validation_error-error .validation_error-message`
-              ).should('have.text', error.message)
-            }
-            for (const error of validationResponse.tests.flatMap(
-              (t) => t.warnings
-            )) {
-              cy.get(
-                `.validation_error.validation_error-warning .validation_error-message`
-              ).should('have.text', error.message)
-            }
-            for (const error of validationResponse.tests.flatMap(
-              (t) => t.infos
-            )) {
-              cy.get(
-                `.validation_error.validation_error-info .validation_error-message`
-              ).should('have.text', error.message)
-            }
           })
         }
       }
@@ -146,7 +122,8 @@ describe('SecvisogramPage', () => {
 
       cy.get(`[data-testid="new_document-create_document_button"]`).click()
       cy.get('[data-testid="new_document_dialog"]').should('not.exist')
-      cy.get('[data-testid="attribute-/document/title"] input').should(
+      cy.get(`[data-testid="menu_entry-/document"]`).click()
+      cy.get('[data-testid="attribute-document-title"] input').should(
         'have.value',
         sampleUploadDocument.document.title
       )
@@ -299,7 +276,8 @@ describe('SecvisogramPage', () => {
                 `[data-testid="new_document-create_document_button"]`
               ).click()
               cy.get('[data-testid="new_document_dialog"]').should('not.exist')
-              cy.get('[data-testid="attribute-/document/title"] input').should(
+              cy.get(`[data-testid="menu_entry-/document"]`).click()
+              cy.get('[data-testid="attribute-document-title"] input').should(
                 'have.value',
                 sampleUploadDocument.document.title
               )
