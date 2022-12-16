@@ -58,7 +58,7 @@ type MetaData = Readonly<{
 
 type RelevanceLevel =
   | 'mandatory'
-  | 'want_to_have'
   | 'best_practice'
+  | 'want_to_have'
   | 'nice_to_know'
   | 'optional'
