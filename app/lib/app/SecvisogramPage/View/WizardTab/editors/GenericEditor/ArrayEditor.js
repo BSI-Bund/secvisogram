@@ -13,6 +13,7 @@ import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import { getErrorTextColor } from '../GenericEditor.js'
 import _ from 'lodash'
+import { useTranslation } from 'react-i18next'
 
 /**
  * @param {object} props
@@ -119,6 +120,8 @@ function Menu({ instancePath, level = 1, ...props }) {
     React.useContext(SideBarContext)
   const { doc, updateDoc } = React.useContext(DocumentEditorContext)
 
+  const { t } = useTranslation()
+
   const value = instancePath.reduce((value, pathSegment) => {
     return (value ?? {})[pathSegment]
   }, /** @type {Record<string, any> | null} */ (doc))
@@ -152,6 +155,23 @@ function Menu({ instancePath, level = 1, ...props }) {
         const indexErrors = errors.filter((e) =>
           e.instancePath.startsWith('/' + [...instancePath, i].join('/'))
         )
+        let itemName = `${t('arrays.defaultItemName')} ${i + 1}`
+        const itemNameTranslationKey =
+          childProperty?.metaData?.itemName?.itemNameTranslationKey
+        const itemNameField = childProperty?.metaData?.itemName?.itemNameField
+        if (itemNameTranslationKey) {
+          itemName = `${t(itemNameTranslationKey)} ${i + 1}`
+        }
+        if (
+          itemNameField &&
+          itemNameField in childValue &&
+          childValue[itemNameField]
+        ) {
+          itemName = childValue[itemNameField]
+        }
+        if (itemName.length > 20) {
+          itemName = itemName.slice(0, 17) + '...'
+        }
         return (
           <li
             key={instancePath.concat([String(i)]).join('.')}
@@ -188,7 +208,7 @@ function Menu({ instancePath, level = 1, ...props }) {
                   setSelectedIndex(i)
                 }}
               >
-                Item {i + 1}
+                {itemName}
               </button>
 
               <div>

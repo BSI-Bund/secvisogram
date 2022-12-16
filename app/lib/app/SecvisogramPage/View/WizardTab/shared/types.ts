@@ -54,6 +54,10 @@ type MetaData = Readonly<{
     ifStandaloneMode: boolean
     ifServerMode: boolean
   }
+  itemName?: {
+    itemNameTranslationKey: string
+    itemNameField?: string
+  }
 }>
 
 type RelevanceLevel =
