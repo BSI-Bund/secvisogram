@@ -19,13 +19,13 @@ import RelevanceLevelContext from '../../shared/context/RelevanceLevelContext.js
  * @param {import('../../shared/types').Property | null} props.parentProperty
  * @param {import('../../shared/types').Property} props.property
  * @param {string[]} props.instancePath
- * @param {boolean} props.enabled
+ * @param {boolean} props.enable_last_rev_hist_item
  */
 export default function ObjectEditor({
   parentProperty,
   property,
   instancePath,
-  enabled,
+  enable_last_rev_hist_item,
 }) {
   const { selectedPath, setSelectedPath } =
     React.useContext(SelectedPathContext)
@@ -88,7 +88,7 @@ export default function ObjectEditor({
         instancePath={instancePath.concat(selectedSubPath)}
         parentProperty={resolveSubProperty(selectedSubPath.slice(0, -1))}
         property={selectedProperty}
-        enabled={enabled}
+        enable_last_rev_hist_item={enable_last_rev_hist_item}
       />
     )
   }
@@ -104,7 +104,7 @@ export default function ObjectEditor({
             instancePath={instancePath
               .concat(selectedSubPath ?? [])
               .concat([property.key])}
-            enabled={enabled}
+            enable_last_rev_hist_item={enable_last_rev_hist_item}
           />
         ))}
       </div>

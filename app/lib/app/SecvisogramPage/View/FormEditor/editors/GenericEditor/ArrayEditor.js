@@ -51,7 +51,7 @@ export default function ArrayEditor({ property, instancePath, enableLast }) {
       )
     )
 
-  const enabled =
+  const enable_last_rev_hist_item =
     selectedSubPath?.[0] === String(value?.length - 1) && enableLast
 
   return (
@@ -69,7 +69,7 @@ export default function ArrayEditor({ property, instancePath, enableLast }) {
           parentProperty={property}
           property={childProperty}
           instancePath={[...instancePath, ...selectedSubPath]}
-          enabled={enabled}
+          enable_last_rev_hist_item={enable_last_rev_hist_item}
         />
       ) : null}
     </>

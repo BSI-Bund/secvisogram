@@ -39,13 +39,13 @@ export function getErrorTextColor(errors) {
  * @param {import('../shared/types').Property | null} props.parentProperty
  * @param {import('../shared/types').Property} props.property
  * @param {string[]} props.instancePath
- * @param {boolean} props.enabled
+ * @param {boolean} props.enable_last_rev_hist_item
  */
 export default function Editor({
   parentProperty,
   property,
   instancePath,
-  enabled,
+  enable_last_rev_hist_item,
 }) {
   const { loginAvailable } = React.useContext(AppConfigContext)
   const userInfo = React.useContext(UserInfoContext)
@@ -54,8 +54,15 @@ export default function Editor({
 
   const uiType = property.metaData?.uiType
   const enableLast = uiType === 'ARRAY_REVISION_HISTORY'
+  const attributeName = React.useMemo(
+    () => instancePath.slice().pop() ?? '',
+    [instancePath]
+  )
   let disabled
-  if (enabled) {
+  if (
+    enable_last_rev_hist_item &&
+    ['legacy_version', 'summary'].includes(attributeName)
+  ) {
     disabled = false
   } else {
     disabled =
@@ -119,7 +126,7 @@ export default function Editor({
         parentProperty={parentProperty}
         property={property}
         instancePath={instancePath}
-        enabled={enabled}
+        enable_last_rev_hist_item={enable_last_rev_hist_item}
       />
     )
   } else if (property.type === 'STRING') {
