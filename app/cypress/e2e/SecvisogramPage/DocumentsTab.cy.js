@@ -60,7 +60,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
           const advisoryDetail = getGetAdvisoryDetailResponse({
             advisoryId: advisory.advisoryId,
           })
-          cy.setCookie("XSRF-TOKEN", "test-Value-123")
+          cy.setCookie('XSRF-TOKEN', 'test-Value-123')
           cy.intercept(
             {
               method: 'DELETE',
@@ -137,7 +137,8 @@ describe('SecvisogramPage / DocumentsTab', function () {
           cy.wait('@apiGetAdvisoryDetail')
           cy.get('[data-testid="loading_indicator"]').should('not.exist')
           cy.location('search').should('equal', '?tab=EDITOR')
-          cy.get('[data-testid="attribute-/document/title"] input').should(
+          cy.get(`[data-testid="menu_entry-/document"]`).click()
+          cy.get('[data-testid="attribute-document-title"] input').should(
             'have.value',
             /** @type {any} */ (advisoryDetail.csaf).document.title
           )
@@ -196,7 +197,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
                 new Date(proposedTime).toISOString()
               )
             }
-            cy.setCookie("XSRF-TOKEN", "test-Value-123")
+            cy.setCookie('XSRF-TOKEN', 'test-Value-123')
             cy.intercept(
               'PATCH',
               apiChangeWorkflowStateURL.pathname +
@@ -235,7 +236,10 @@ describe('SecvisogramPage / DocumentsTab', function () {
               .submit()
             cy.wait('@apiChangeWorkflowState')
             if (!advisory.isValid) {
-              cy.get('[data-testid="error_toast_message"]').should('contain', 'document is not valid')
+              cy.get('[data-testid="error_toast_message"]').should(
+                'contain',
+                'document is not valid'
+              )
             } else {
               cy.wait('@apiGetAdvisories')
             }
@@ -284,7 +288,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
             Cypress.config().baseUrl ?? undefined
           )
           createNewVersionURL.searchParams.set('revision', advisory.revision)
-          cy.setCookie("XSRF-TOKEN", "test-Value-123")
+          cy.setCookie('XSRF-TOKEN', 'test-Value-123')
           cy.intercept('PATCH', createNewVersionURL.href, { body: '' }).as(
             'apiCreateVersion'
           )

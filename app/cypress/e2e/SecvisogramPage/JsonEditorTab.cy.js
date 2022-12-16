@@ -27,11 +27,12 @@ describe('SecvisogramPage / JsonEditorTab', function () {
     // Wait for debounced value to be settled
     cy.wait(500)
     cy.get('[data-testid="tab_button-EDITOR"]').click()
-    cy.get('[data-testid="attribute-/document/title"] input').should(
+    cy.get(`[data-testid="menu_entry-/document"]`).click()
+    cy.get('[data-testid="attribute-document-title"] input').should(
       'have.value',
       newDocumentTitle
     )
-    cy.get('[data-testid="attribute-/document/title"] input').type(
+    cy.get('[data-testid="attribute-document-title"] input').type(
       ' (FORM EDITOR)'
     )
 
