@@ -254,4 +254,48 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       'not.exist'
     )
   })
+
+  it('enable fields that should be editable when not logged in', function () {
+    cy.intercept(
+      '/.well-known/appspecific/de.bsi.secvisogram.json',
+      getLoginEnabledConfig()
+    ).as('wellKnownAppConfig')
+
+    cy.visit('?tab=EDITOR')
+    cy.wait('@wellKnownAppConfig')
+
+    cy.get(`[data-testid="menu_entry-/document/tracking"]`).click()
+    cy.get(`[data-testid="menu_entry-/document/tracking/generator"]`).click()
+    cy.get(
+      `[data-testid="menu_entry-/document/tracking/generator/engine"]`
+    ).click()
+    cy.get(
+      `[data-testid="attribute-document-tracking-generator-engine-name"] input`
+    ).should('not.have.attr', 'disabled')
+  })
+
+  it('disable fields that should not be editable when logged in', function () {
+    for (const user of getUsers()) {
+      cy.intercept(
+        '/.well-known/appspecific/de.bsi.secvisogram.json',
+        getLoginEnabledConfig()
+      ).as('wellKnownAppConfig')
+      cy.intercept(getLoginEnabledConfig().userInfoUrl, getUserInfo(user)).as(
+        'apiGetUserInfo'
+      )
+
+      cy.visit('?tab=EDITOR')
+      cy.wait('@wellKnownAppConfig')
+      cy.wait('@apiGetUserInfo')
+
+      cy.get(`[data-testid="menu_entry-/document/tracking"]`).click()
+      cy.get(`[data-testid="menu_entry-/document/tracking/generator"]`).click()
+      cy.get(
+        `[data-testid="menu_entry-/document/tracking/generator/engine"]`
+      ).click()
+      cy.get(
+        `[data-testid="attribute-document-tracking-generator-engine-name"] input`
+      ).should('have.attr', 'disabled')
+    }
+  })
 })
