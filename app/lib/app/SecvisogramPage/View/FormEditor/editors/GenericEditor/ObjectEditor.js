@@ -92,7 +92,7 @@ export default function ObjectEditor({
 
   const renderFieldsEditor = () => {
     return (
-      <div className="flex flex-col gap-4 p-4 overflow-auto shrink-0">
+      <div className="flex flex-col gap-4 p-4 overflow-auto shrink-0 min-w-[340px] max-w-[400px]">
         {fieldProperties?.map((property) => (
           <GenericEditor
             key={property.key}
