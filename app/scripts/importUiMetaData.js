@@ -213,7 +213,7 @@ function convertSchema(subschema, defs, path) {
 
 const outputFile = fileURLToPath(
   new URL(
-    '../lib/app/SecvisogramPage/View/WizardTab/schema.js',
+    '../lib/app/SecvisogramPage/View/FormEditorTab/schema.js',
     import.meta.url
   )
 )

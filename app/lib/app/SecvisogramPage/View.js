@@ -13,11 +13,6 @@ import { canCreateDocuments } from '../shared/permissions.js'
 import AboutDialog from './View/AboutDialog.js'
 import CsafTab from './View/CsafTab.js'
 import ExportDocumentDialog from './View/ExportDocumentDialog.js'
-import FormEditorTab from './View/FormEditorTab.js'
-import {
-  uniqueGroupId,
-  uniqueProductId,
-} from './View/FormEditorTab/shared/unique-id.js'
 import JsonEditorTab from './View/JsonEditorTab.js'
 import LoadingIndicator from './View/LoadingIndicator.js'
 import NewDocumentDialog from './View/NewDocumentDialog.js'
@@ -29,9 +24,9 @@ import DocumentEditorContext from './View/shared/DocumentEditorContext.js'
 import useDebounce from './View/shared/useDebounce.js'
 import SideBar from './View/SideBar/SideBar.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
-import WizardTab from './View/WizardTab.js'
+import FormEditor from './View/FormEditorTab.js'
 import SelectedPathContext from './View/shared/context/SelectedPathContext.js'
-import RelevanceLevelContext from './View/WizardTab/shared/context/RelevanceLevelContext.js'
+import RelevanceLevelContext from './View/FormEditor/shared/context/RelevanceLevelContext.js'
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -45,7 +40,6 @@ function View({
   defaultAdvisoryState = null,
   stripResult,
   previewResult,
-  generatorEngineData,
   DocumentsTab,
   onPrepareDocumentForTemplate,
   onLoadAdvisory,
@@ -126,10 +120,6 @@ function View({
         : state
     )
   }, [data])
-  React.useEffect(() => {
-    uniqueGroupId(true)
-    uniqueProductId(true)
-  }, [advisoryState])
 
   const [isLoading, setLoading] = React.useState(props.isLoading)
   React.useEffect(() => {
@@ -216,37 +206,6 @@ function View({
       }
     }
   }, [toast])
-
-  /**
-   * Callback to update the document. Dispatches an update-action to the
-   * reducer.
-   *
-   * @see {Reducer}
-   */
-  const onUpdate =
-    /** @type {((update: {}) => void) & ((instancePath: string, update: {}) => void)} */ (
-      React.useCallback(
-        (/** @type {any} */ newValue, /** @type {any?} */ update) => {
-          if (typeof newValue === 'string') {
-            dispatch({
-              type: 'CHANGE_FORM_DOC',
-              instancePath: newValue,
-              timestamp: new Date(),
-              update: update,
-              generatorEngineData,
-            })
-          } else {
-            dispatch({
-              type: 'CHANGE_FORM_DOC',
-              timestamp: new Date(),
-              update: newValue,
-              generatorEngineData,
-            })
-          }
-        },
-        [generatorEngineData]
-      )
-    )
 
   async function doValidate() {
     setLoading(true)
@@ -481,18 +440,6 @@ function View({
   const onPreviewCallback = React.useCallback(() => {
     onPreview(formValues.doc)
   }, [formValues.doc, onPreview])
-
-  const onExportCSAFCallback = React.useCallback(() => {
-    onExportCSAF(formValues.doc)
-  }, [formValues.doc, onExportCSAF])
-
-  const onCollectProductIdsCallback = React.useCallback(() => {
-    return onCollectProductIds(formValues.doc)
-  }, [formValues.doc, onCollectProductIds])
-
-  const onCollectGroupIdsCallback = React.useCallback(() => {
-    return onCollectGroupIds(formValues.doc)
-  }, [formValues.doc, onCollectGroupIds])
 
   /**
    * @param {() => void} callback
@@ -744,7 +691,6 @@ function View({
               >
                 <div className="col-span-2 flex justify-between bg-slate-700">
                   <div className="flex pl-5">
-                    <button {...tabButtonProps('WIZZARD')}>Wizard</button>
                     <button {...tabButtonProps('EDITOR')}>
                       {t('menu.formEditor')}
                     </button>
@@ -934,7 +880,7 @@ function View({
                         </button>
                       )}
                     </div>
-                    {activeTab === 'WIZZARD' ? (
+                    {activeTab === 'EDITOR' ? (
                       <div className="text-gray-300 font-bold text-sm h-9">
                         <span className="mr-1 h-full">
                           {t('menu.activeRelevanceLevels')}
@@ -967,69 +913,60 @@ function View({
                           })}
                       </div>
                     ) : null}
-                    <button
-                      data-testid="show_all_errors_button"
-                      type="button"
-                      className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 mr-5 h-auto"
-                      onClick={async () => {
-                        sideBarData.setSideBarIsOpen(true)
-                        sideBarData.setSideBarSelectedPath([])
-                      }}
-                    >
-                      {`${t('menu.documentIs')} ${
-                        errors.filter((e) => e.type === 'error').length === 0
-                          ? t('menu.valid') + ':'
-                          : t('menu.invalid') + ':'
-                      }`}
-                      {[
-                        {
-                          type: 'error',
-                          color: 'text-red-600',
-                        },
-                        {
-                          type: 'warning',
-                          color: 'text-yellow-600',
-                        },
-                        {
-                          type: 'info',
-                          color: 'text-blue-600',
-                        },
-                      ].map(({ type, color }) => {
-                        const count = errors.filter(
-                          (e) => e.type === type
-                        ).length
+                    {activeTab === 'EDITOR' || activeTab === 'SOURCE' ? (
+                      <button
+                        data-testid="show_all_errors_button"
+                        type="button"
+                        className="text-gray-300 hover:bg-slate-700 hover:text-white text-sm font-bold p-2 mr-5 h-auto"
+                        onClick={async () => {
+                          sideBarData.setSideBarIsOpen(true)
+                          sideBarData.setSideBarSelectedPath([])
+                        }}
+                      >
+                        {`${t('menu.documentIs')} ${
+                          errors.filter((e) => e.type === 'error').length === 0
+                            ? t('menu.valid') + ':'
+                            : t('menu.invalid') + ':'
+                        }`}
+                        {[
+                          {
+                            type: 'error',
+                            color: 'text-red-600',
+                          },
+                          {
+                            type: 'warning',
+                            color: 'text-yellow-600',
+                          },
+                          {
+                            type: 'info',
+                            color: 'text-blue-600',
+                          },
+                        ].map(({ type, color }) => {
+                          const count = errors.filter(
+                            (e) => e.type === type
+                          ).length
 
-                        return (
-                          <span key={'errors-' + type} className="px-1">
-                            <FontAwesomeIcon
-                              icon={faCircle}
-                              className={color}
-                              size="xs"
-                            />
-                            {` ${count} ${type}${count > 1 ? 's' : ''} `}
-                          </span>
-                        )
-                      })}
-                    </button>
+                          return (
+                            <span key={'errors-' + type} className="px-1">
+                              <FontAwesomeIcon
+                                icon={faCircle}
+                                className={color}
+                                size="xs"
+                              />
+                              {` ${count} ${type}${count > 1 ? 's' : ''} `}
+                            </span>
+                          )
+                        })}
+                      </button>
+                    ) : null}
                   </div>
                 )}
                 <div
                   className="row-span-2 relative overflow-auto h-full bg-white"
                   key={activeTab}
                 >
-                  {activeTab === 'WIZZARD' ? (
-                    <>
-                      <WizardTab />
-                    </>
-                  ) : activeTab === 'EDITOR' ? (
-                    <FormEditorTab
-                      formValues={formValues}
-                      validationErrors={errors}
-                      onUpdate={onUpdate}
-                      onDownload={onDownload}
-                      onCollectProductIds={onCollectProductIdsCallback}
-                      onCollectGroupIds={onCollectGroupIdsCallback}
-                    />
+                  {activeTab === 'EDITOR' ? (
+                    <FormEditor />
                   ) : activeTab === 'SOURCE' ? (
                     <JsonEditorTab
                       originalValues={originalValues}
@@ -1044,15 +981,11 @@ function View({
                     <PreviewTab
                       previewResult={previewResult}
                       onPreview={onPreviewCallback}
-                      formValues={formValues}
-                      validationErrors={errors}
-                      onExport={onExportHTML}
                     />
                   ) : activeTab === 'CSAF-JSON' ? (
                     <CsafTab
                       stripResult={stripResult}
                       onStrip={onStripCallback}
-                      onExport={onExportCSAFCallback}
                     />
                   ) : activeTab === 'DOCUMENTS' ? (
                     <DocumentsTab
@@ -1071,7 +1004,7 @@ function View({
                     />
                   ) : null}
                 </div>
-                {activeTab === 'WIZZARD' || activeTab === 'SOURCE' ? (
+                {activeTab === 'EDITOR' || activeTab === 'SOURCE' ? (
                   <SideBar />
                 ) : null}
               </div>

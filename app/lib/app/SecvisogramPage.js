@@ -77,9 +77,7 @@ const SecvisogramPage = () => {
   return (
     <View
       activeTab={
-        searchParams.get('tab') === 'WIZZARD'
-          ? 'WIZZARD'
-          : searchParams.get('tab') === 'DOCUMENTS'
+        searchParams.get('tab') === 'DOCUMENTS'
           ? 'DOCUMENTS'
           : searchParams.get('tab') === 'EDITOR'
           ? 'EDITOR'
@@ -97,7 +95,6 @@ const SecvisogramPage = () => {
       stripResult={stripResult}
       previewResult={previewResult}
       data={data}
-      generatorEngineData={core.document.getGeneratorEngineData()}
       alert={alert}
       DocumentsTab={DocumentsTab}
       onLoadAdvisory={loadAdvisory}

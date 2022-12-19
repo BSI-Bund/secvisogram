@@ -300,7 +300,7 @@ export default function ObjectEditor({
       ) : (
         <>
           {parentProperty?.addMenuItemsForChildObjects ? null : (
-            <div className="treeview flex bg-gray-50 border-r border-l border-solid border-gray-400 wizard-menu-shadow mr-2">
+            <div className="treeview flex bg-gray-50 border-r border-l border-solid border-gray-400 menu-shadow mr-2">
               {renderMenuNodes(menuNodes)}
             </div>
           )}
