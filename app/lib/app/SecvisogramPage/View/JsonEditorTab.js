@@ -177,7 +177,7 @@ export default function JsonEditorTab({
       if (editor) {
         let result
         try {
-          result = jsonMap.parse(debouncedValue)
+          result = jsonMap.parse(editor.getModel()?.getValue() || '')
         } catch (/** @type {any} */ e) {
           return
         }
@@ -193,7 +193,7 @@ export default function JsonEditorTab({
         }
       }
     },
-    [editor, debouncedValue]
+    [editor]
   )
 
   const { selectedPath } = React.useContext(SelectedPathContext)
