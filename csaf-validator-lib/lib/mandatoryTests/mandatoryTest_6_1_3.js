@@ -60,31 +60,35 @@ function search(path, relationships, index, key, onCycle) {
     return onCycle({ key })
   }
 
-  const productRelationshipIndex = relationships.findIndex(
-    (r) => r.full_product_name?.product_id === relationship.product_reference
-  )
-  if (productRelationshipIndex !== -1) {
-    search(
-      [...path, index],
-      relationships,
-      productRelationshipIndex,
-      key ?? 'product_reference',
-      onCycle
+  if (typeof relationship.product_reference === 'string') {
+    const productRelationshipIndex = relationships.findIndex(
+      (r) => r.full_product_name?.product_id === relationship.product_reference
     )
+    if (productRelationshipIndex !== -1) {
+      search(
+        [...path, index],
+        relationships,
+        productRelationshipIndex,
+        key ?? 'product_reference',
+        onCycle
+      )
+    }
   }
 
-  const relatesToProductRelationshipIndex = relationships.findIndex(
-    (r) =>
-      r.full_product_name?.product_id ===
-      relationship.relates_to_product_reference
-  )
-  if (relatesToProductRelationshipIndex !== -1) {
-    search(
-      [...path, index],
-      relationships,
-      relatesToProductRelationshipIndex,
-      key ?? 'relates_to_product_reference',
-      onCycle
+  if (typeof relationship.relates_to_product_reference === 'string') {
+    const relatesToProductRelationshipIndex = relationships.findIndex(
+      (r) =>
+        r.full_product_name?.product_id ===
+        relationship.relates_to_product_reference
     )
+    if (relatesToProductRelationshipIndex !== -1) {
+      search(
+        [...path, index],
+        relationships,
+        relatesToProductRelationshipIndex,
+        key ?? 'relates_to_product_reference',
+        onCycle
+      )
+    }
   }
 }
