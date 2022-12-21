@@ -37,20 +37,12 @@ const getChildProps = (
  * Custom attribute for CWE.
  *
  * @param {{
- *  label: string
- *  description: string
  *  instancePath: string[]
  *  disabled: boolean
  *  property: import('../../../shared/types').Property
  * }} props
  */
-export default function CweAttribute({
-  label,
-  description,
-  property,
-  instancePath,
-  disabled,
-}) {
+export default function CweAttribute({ property, instancePath, disabled }) {
   const { doc, updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
 
   const idProperties = getChildProps(property, 'id')
@@ -67,13 +59,7 @@ export default function CweAttribute({
   }
 
   return (
-    <Attribute
-      label={label}
-      description={description}
-      instancePath={instancePath}
-      property={property}
-      disabled={disabled}
-    >
+    <div className="flex flex-col gap-4 p-4 overflow-auto shrink-0 min-w-[340px] max-w-[400px]">
       <CwecId
         label={idProperties?.title || ''}
         description={idProperties?.description || ''}
@@ -92,7 +78,7 @@ export default function CweAttribute({
         property={property}
         disabled={disabled}
       />
-    </Attribute>
+    </div>
   )
 }
 

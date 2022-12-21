@@ -62,14 +62,26 @@ export default function Editor({ parentProperty, property, instancePath }) {
     return (value ?? {})[pathSegment]
   }, /** @type {Record<string, any> | null} */ (doc))
 
+  /**
+   * helper function to wrap singleton input fields in a div with layout information
+   * @param {() => JSX.Element} componentFn
+   */
+  function wrapIfSingleton(componentFn) {
+    return parentProperty?.type === 'ARRAY' ? (
+      <div className="flex flex-col gap-4 p-4 overflow-auto shrink-0 min-w-[340px] max-w-[400px]">
+        {componentFn()}
+      </div>
+    ) : (
+      componentFn()
+    )
+  }
+
   if (property.type === 'ARRAY') {
     return <ArrayEditor property={property} instancePath={instancePath} />
   } else if (property.type === 'OBJECT') {
     if (uiType === 'OBJECT_CWE') {
       return (
         <CweAttribute
-          label={label}
-          description={description}
           property={property}
           instancePath={instancePath}
           disabled={disabled}
@@ -87,8 +99,6 @@ export default function Editor({ parentProperty, property, instancePath }) {
     } else if (uiType === 'OBJECT_CVSS_3') {
       return (
         <CVSSV3Attribute
-          label={label}
-          description={description}
           instancePath={instancePath}
           value={/** @type {{[key: string]: string | number }} */ (value)}
           property={property}
@@ -105,7 +115,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
     )
   } else if (property.type === 'STRING') {
     if (uiType === 'STRING_DATETIME') {
-      return (
+      return wrapIfSingleton(() => (
         <DateAttribute
           label={label}
           description={description}
@@ -114,9 +124,9 @@ export default function Editor({ parentProperty, property, instancePath }) {
           property={property}
           disabled={disabled}
         />
-      )
+      ))
     } else if (uiType === 'STRING_ENUM') {
-      return (
+      return wrapIfSingleton(() => (
         <DropdownAttribute
           label={label}
           description={description}
@@ -128,9 +138,9 @@ export default function Editor({ parentProperty, property, instancePath }) {
           disabled={disabled}
           disableClearable={true}
         />
-      )
+      ))
     } else if (uiType === 'STRING_WITH_OPTIONS') {
-      return (
+      return wrapIfSingleton(() => (
         <DropdownAttribute
           label={label}
           description={description}
@@ -142,9 +152,9 @@ export default function Editor({ parentProperty, property, instancePath }) {
           disabled={disabled}
           disableClearable={true}
         />
-      )
+      ))
     } else if (uiType === 'STRING_MULTI_LINE') {
-      return (
+      return wrapIfSingleton(() => (
         <TextAreaAttribute
           label={label}
           description={description}
@@ -155,9 +165,9 @@ export default function Editor({ parentProperty, property, instancePath }) {
           property={property}
           disabled={disabled}
         />
-      )
+      ))
     } else if (uiType === 'STRING_PRODUCT_ID') {
-      return (
+      return wrapIfSingleton(() => (
         <IdAttribute
           label={property.title || ''}
           description={description}
@@ -167,9 +177,9 @@ export default function Editor({ parentProperty, property, instancePath }) {
           property={property}
           disabled={disabled}
         />
-      )
+      ))
     } else if (uiType === 'STRING_GROUP_ID') {
-      return (
+      return wrapIfSingleton(() => (
         <IdAttribute
           label={property.title || ''}
           description={description}
@@ -179,9 +189,9 @@ export default function Editor({ parentProperty, property, instancePath }) {
           property={property}
           disabled={disabled}
         />
-      )
+      ))
     } else if (uiType === 'STRING_URI') {
-      return (
+      return wrapIfSingleton(() => (
         <TextAttribute
           label={label}
           description={description}
@@ -194,9 +204,9 @@ export default function Editor({ parentProperty, property, instancePath }) {
           property={property}
           disabled={disabled}
         />
-      )
+      ))
     } else {
-      return (
+      return wrapIfSingleton(() => (
         <TextAttribute
           label={label}
           description={description}
@@ -208,10 +218,10 @@ export default function Editor({ parentProperty, property, instancePath }) {
           property={property}
           disabled={disabled}
         />
-      )
+      ))
     }
   } else if (property.type === 'NUMBER') {
-    return (
+    return wrapIfSingleton(() => (
       <Attribute
         description={description}
         instancePath={instancePath}
@@ -221,7 +231,7 @@ export default function Editor({ parentProperty, property, instancePath }) {
       >
         {typeof value === 'number' ? String(value) : ''}
       </Attribute>
-    )
+    ))
   } else if (property.type === 'RECURSION') {
     // type is handled in ArrayEditor
     return null
