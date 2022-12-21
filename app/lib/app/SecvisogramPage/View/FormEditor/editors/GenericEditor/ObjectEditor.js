@@ -13,17 +13,21 @@ import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import { getErrorTextColor } from '../GenericEditor.js'
 import RelevanceLevelContext from '../../shared/context/RelevanceLevelContext.js'
+import AppConfigContext from '../../../../../shared/context/AppConfigContext.js'
+import UserInfoContext from '../../../../../shared/context/UserInfoContext.js'
 
 /**
  * @param {object} props
  * @param {import('../../shared/types').Property | null} props.parentProperty
  * @param {import('../../shared/types').Property} props.property
  * @param {string[]} props.instancePath
+ * @param {boolean} props.enable_last_rev_hist_item
  */
 export default function ObjectEditor({
   parentProperty,
   property,
   instancePath,
+  enable_last_rev_hist_item,
 }) {
   const { selectedPath, setSelectedPath } =
     React.useContext(SelectedPathContext)
@@ -31,6 +35,10 @@ export default function ObjectEditor({
   const { selectedRelevanceLevel, relevanceLevels } = React.useContext(
     RelevanceLevelContext
   )
+
+  const { loginAvailable } = React.useContext(AppConfigContext)
+  const userInfo = React.useContext(UserInfoContext)
+
   const fieldProperties = property.metaInfo.propertyList?.filter(
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
   )
@@ -86,6 +94,7 @@ export default function ObjectEditor({
         instancePath={instancePath.concat(selectedSubPath)}
         parentProperty={resolveSubProperty(selectedSubPath.slice(0, -1))}
         property={selectedProperty}
+        enable_last_rev_hist_item={enable_last_rev_hist_item}
       />
     )
   }
@@ -101,6 +110,7 @@ export default function ObjectEditor({
             instancePath={instancePath
               .concat(selectedSubPath ?? [])
               .concat([property.key])}
+            enable_last_rev_hist_item={enable_last_rev_hist_item}
           />
         ))}
       </div>
@@ -162,6 +172,12 @@ export default function ObjectEditor({
             selectedSubPath &&
             menuItem.instancePath.every((p, i) => selectedSubPath[i] === p)
 
+          const canAdd = !(
+            loginAvailable &&
+            userInfo &&
+            menuItem.property.metaData?.uiType === 'ARRAY_REVISION_HISTORY'
+          )
+
           return (
             <React.Fragment key={menuItem.instancePath.join('.')}>
               <li
@@ -204,7 +220,7 @@ export default function ObjectEditor({
                       'missing title',
                     ])}
                   </button>
-                  {menuItem.property.type === 'ARRAY' ? (
+                  {menuItem.property.type === 'ARRAY' && canAdd ? (
                     <div>
                       <button
                         className="w-9 h-9 peer text-slate-400 hover:text-slate-800"

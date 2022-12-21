@@ -68,6 +68,7 @@ export default function CVSS2Editor({
         instancePath={instancePath}
         parentProperty={parentProperty}
         property={property}
+        enable_last_rev_hist_item={false}
       />
     </DocumentEditorContext.Provider>
   )
