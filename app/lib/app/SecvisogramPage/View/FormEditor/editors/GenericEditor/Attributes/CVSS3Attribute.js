@@ -74,7 +74,7 @@ export default function CVSSV3Attribute({
 
   return (
     <DocumentEditorContext.Provider value={documentEditor}>
-      <div className="gap-4 p-4">
+      <div className="gap-4 p-4 overflow-auto">
         <Attribute
           label={label}
           description={description}
