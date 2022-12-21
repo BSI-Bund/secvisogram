@@ -921,6 +921,7 @@ function View({
                         onClick={async () => {
                           sideBarData.setSideBarIsOpen(true)
                           sideBarData.setSideBarSelectedPath([])
+                          sideBarData.setSideBarContent('ERRORS')
                         }}
                       >
                         {`${t('menu.documentIs')} ${
