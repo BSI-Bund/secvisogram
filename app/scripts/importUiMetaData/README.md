@@ -3,12 +3,24 @@
 ## About
 
 The Secvisogram editor generates its UI based on the input from
-'finalFileNameHere'.
+[schema.js](../../lib/app/SecvisogramPage/View/FormEditor/schema.js).
 This file contains information from two sources. The CSAF JSON Schema and
-additional properties from 'additionalMetadata.json' like the order of
+additional properties from [metaData.js](metaData.js) like the order of
 elements, paths to documentation or i18n translation strings.
 
+## Generating the schema file
+
+To merge the CSAF schema with metadata into the schema file required
+for generating the UI, use the [importUiMetaData.js](../importUiMetaData.js)
+script.
+
+```
+$ node importUiMetaData.js
+```
+
 ## Properties
+
+The following properties can be added in the metadata file.
 
 ### `addMenuItemsForChildObjects`
 
@@ -16,6 +28,7 @@ The UI can combine parent and child in one menu. This can make sense if
 there are many nested objects, each having only a few or no fields.
 
 Example:
+
 ```json
 "addMenuItemsForChildObjects": true
 ```
@@ -26,21 +39,32 @@ Some fields need additional logic that can not be derived from the CSAF schema.
 This field specifies the correct input component for the given json path.
 
 Available uiTypes:
-- STRING_DATETIME
-- STRING_URI
-- STRING_ENUM
-- STRING_WITH_OPTIONS
-- STRING_MULTI_LINE
-- STRING_PRODUCT_ID
-- STRING_GROUP_ID
-- OBJECT_CWE
-- OBJECT_CVSS_2
-- OBJECT_CVSS_3
-- ARRAY_REVISION_HISTORY
+
+| uiType                 | type of input values                                                                                                                       |
+| :--------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| STRING_DATETIME        | datetime values                                                                                                                            |
+| STRING_URI             | strings matching the URI pattern                                                                                                           |
+| STRING_ENUM            | strings with predefined values to select from<br/> the values are defined in the schema file                                               |
+| STRING_WITH_OPTIONS    | strings with predefined values to select from, still allowing other user input<br/> the can be added via the `options` property, see below |
+| STRING_MULTI_LINE      | strings that are potentially larger                                                                                                        |
+| STRING_PRODUCT_ID      | strings referencing a product ID<br/> allows selecting from matching product IDs in the frontend                                           |
+| STRING_GROUP_ID        | strings referencing a group ID<br/> allows selecting from matching group IDs in the frontend                                               |
+| OBJECT_CWE             | special type for CWE objects ensuring that ID and name match                                                                               |
+| OBJECT_CVSS_2          | special CVSS v2 object                                                                                                                     |
+| OBJECT_CVSS_3          | special CVSS v3.0 / v3.1object                                                                                                             |
+| ARRAY_REVISION_HISTORY | special type of array, disabling some input values when the revision history is managed in the backend                                     |
 
 The `importUiMetaData.js` script can detect `STRING_DATETIME`, `STRING_URI`
 and `STRING_ENUM` on its own. All other uiTypes must be provided in the
 `metaData.js` file.
+
+### `options`
+
+Provides values to select from for `uiType` `STRING_WITH_OPTIONS`.
+
+```json
+"options": ["option A", "option B", "option C"]
+```
 
 ### `propertyOrder`
 
@@ -50,6 +74,7 @@ order here. You can only specify a subset since all remaining fields will be
 displayed in the previous order at the end.
 
 If we have the following object:
+
 ```json
 {
   "field_a": "",
@@ -61,6 +86,7 @@ If we have the following object:
 ```
 
 You could change the order like so:
+
 ```json
 "propertyOrder": [
   "field_c",
@@ -69,8 +95,7 @@ You could change the order like so:
 ]
 ```
 
-This would result in the following order `field_c, field_a, field_b, field_d,
-field_e`
+This would result in the following order `field_c, field_a, field_b, field_d, field_e`
 
 ### `i18n`
 
@@ -102,6 +127,7 @@ The editor can disable input fields depending on the currently active editor
 levels and the selected document profile.
 
 Available profiles:
+
 - csaf_base
 - csaf_security_incident_response
 - csaf_informational_advisory
@@ -109,12 +135,15 @@ Available profiles:
 - csaf_vex
 
 Available relevance levels:
+
 - mandatory
 - best_practice
 - want_to_have
+- nice_to_know
 - optional
 
 Example:
+
 ```json
 "relevanceLevels": {
   "csaf_base": "optional",
@@ -138,7 +167,7 @@ Some fields need to be disabled depending on the current mode of the Editor.
 
 ### `itemName`
 
-An name can be given that is shown in the list of items for items in an array.
+A name can be given that is shown in the list of items for items in an array.
 This can be a translation string or a value of a field in a sub-object.
 For a translation string use `itemNameTranslationKey`, for a field value use `itemNameField`.
 The `itemNameTranslationKey` should be given but will be overwritten when a value is found in the `itemNameField`.
