@@ -14,6 +14,8 @@ import { GenericEditor } from '../../editors.js'
 import { getErrorTextColor } from '../GenericEditor.js'
 import _ from 'lodash'
 import { useTranslation } from 'react-i18next'
+import AppConfigContext from '../../../../../shared/context/AppConfigContext.js'
+import UserInfoContext from '../../../../../shared/context/UserInfoContext.js'
 
 /**
  * @param {object} props
@@ -125,6 +127,9 @@ function Menu({ instancePath, level = 1, ...props }) {
     React.useContext(SideBarContext)
   const { doc, updateDoc } = React.useContext(DocumentEditorContext)
 
+  const { loginAvailable } = React.useContext(AppConfigContext)
+  const userInfo = React.useContext(UserInfoContext)
+
   const { t } = useTranslation()
 
   const value = instancePath.reduce((value, pathSegment) => {
@@ -153,6 +158,12 @@ function Menu({ instancePath, level = 1, ...props }) {
   const setSelectedIndex = (index) => {
     setSelectedPath(instancePath.concat([String(index)]))
   }
+
+  const deletable = !(
+    loginAvailable &&
+    userInfo &&
+    property.metaData?.uiType === 'ARRAY_REVISION_HISTORY'
+  )
 
   return (
     <ul>
@@ -216,77 +227,86 @@ function Menu({ instancePath, level = 1, ...props }) {
                 {itemName}
               </button>
 
-              <div>
-                <button className="w-9 h-9 peer text-slate-400 hover:text-slate-800">
-                  <FontAwesomeIcon icon={faEllipsisVertical} />
-                </button>
-
-                <div className="hidden peer-hover:flex hover:flex flex-col bg-white drop-shadow-md z-10 absolute">
-                  {recursionProperty ? (
-                    <button
-                      className="px-2 h-9 text-left text-slate-400 hover:text-slate-800 whitespace-nowrap align-middle"
-                      data-testid={`menu_entry-/${[
-                        ...instancePath,
-                        String(i),
-                        recursionProperty.key,
-                      ].join('/')}-add_item_button`}
-                      onClick={() => {
-                        const subArray = childValue?.[recursionProperty.key]
-                        const sanitizedChildValue = Array.isArray(subArray)
-                          ? subArray
-                          : []
-                        const value =
-                          childProperty.type === 'OBJECT'
-                            ? {}
-                            : childProperty.type === 'ARRAY'
-                            ? []
-                            : childProperty.type === 'STRING'
-                            ? ''
-                            : null
-                        if (value !== null) {
-                          updateDoc(
-                            [...instancePath, String(i), recursionProperty.key],
-                            sanitizedChildValue.concat([value])
-                          )
-                          setSelectedPath([
-                            ...instancePath,
-                            String(i),
-                            recursionProperty.key,
-                            String(sanitizedChildValue.length),
-                          ])
-                        }
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faPlus} className="pr-2" /> Add sub
-                      item
-                    </button>
-                  ) : null}
-                  <button
-                    data-testid={
-                      [...instancePath, i].join('-') + '-deleteButton'
-                    }
-                    type="button"
-                    className="px-2 h-9 text-left text-slate-400 hover:text-slate-800 whitespace-nowrap align-middle"
-                    onClick={() => {
-                      if (value !== null) {
-                        const arrayWithoutItem = _.get(
-                          doc,
-                          instancePath
-                        ).filter(
-                          (
-                            /** @type {any} */ item,
-                            /** @type {number} */ index
-                          ) => index !== i
-                        )
-                        updateDoc(instancePath, arrayWithoutItem)
-                        setSelectedPath(instancePath)
-                      }
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faTrash} className="pr-2" /> Delete
+              {recursionProperty || deletable ? (
+                <div>
+                  <button className="w-9 h-9 peer text-slate-400 hover:text-slate-800">
+                    <FontAwesomeIcon icon={faEllipsisVertical} />
                   </button>
+
+                  <div className="hidden peer-hover:flex hover:flex flex-col bg-white drop-shadow-md z-10 absolute">
+                    {recursionProperty ? (
+                      <button
+                        className="px-2 h-9 text-left text-slate-400 hover:text-slate-800 whitespace-nowrap align-middle"
+                        data-testid={`menu_entry-/${[
+                          ...instancePath,
+                          String(i),
+                          recursionProperty.key,
+                        ].join('/')}-add_item_button`}
+                        onClick={() => {
+                          const subArray = childValue?.[recursionProperty.key]
+                          const sanitizedChildValue = Array.isArray(subArray)
+                            ? subArray
+                            : []
+                          const value =
+                            childProperty.type === 'OBJECT'
+                              ? {}
+                              : childProperty.type === 'ARRAY'
+                              ? []
+                              : childProperty.type === 'STRING'
+                              ? ''
+                              : null
+                          if (value !== null) {
+                            updateDoc(
+                              [
+                                ...instancePath,
+                                String(i),
+                                recursionProperty.key,
+                              ],
+                              sanitizedChildValue.concat([value])
+                            )
+                            setSelectedPath([
+                              ...instancePath,
+                              String(i),
+                              recursionProperty.key,
+                              String(sanitizedChildValue.length),
+                            ])
+                          }
+                        }}
+                      >
+                        <FontAwesomeIcon icon={faPlus} className="pr-2" /> Add
+                        sub item
+                      </button>
+                    ) : null}
+                    {deletable ? (
+                      <button
+                        data-testid={
+                          [...instancePath, i].join('-') + '-deleteButton'
+                        }
+                        type="button"
+                        className="px-2 h-9 text-left text-slate-400 hover:text-slate-800 whitespace-nowrap align-middle"
+                        onClick={() => {
+                          if (value !== null) {
+                            const arrayWithoutItem = _.get(
+                              doc,
+                              instancePath
+                            ).filter(
+                              (
+                                /** @type {any} */ item,
+                                /** @type {number} */ index
+                              ) => index !== i
+                            )
+                            updateDoc(instancePath, arrayWithoutItem)
+                            setSelectedPath(instancePath)
+                          }
+                        }}
+                      >
+                        <FontAwesomeIcon icon={faTrash} className="pr-2" />{' '}
+                        Delete
+                      </button>
+                    ) : null}
+                  </div>
                 </div>
-              </div>
+              ) : null}
 
               <button
                 data-testid={[...instancePath, i].join('-') + '-infoButton'}

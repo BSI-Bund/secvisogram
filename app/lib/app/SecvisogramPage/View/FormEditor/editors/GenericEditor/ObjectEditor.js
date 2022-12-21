@@ -13,6 +13,8 @@ import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import { getErrorTextColor } from '../GenericEditor.js'
 import RelevanceLevelContext from '../../shared/context/RelevanceLevelContext.js'
+import AppConfigContext from '../../../../../shared/context/AppConfigContext.js'
+import UserInfoContext from '../../../../../shared/context/UserInfoContext.js'
 
 /**
  * @param {object} props
@@ -33,6 +35,10 @@ export default function ObjectEditor({
   const { selectedRelevanceLevel, relevanceLevels } = React.useContext(
     RelevanceLevelContext
   )
+
+  const { loginAvailable } = React.useContext(AppConfigContext)
+  const userInfo = React.useContext(UserInfoContext)
+
   const fieldProperties = property.metaInfo.propertyList?.filter(
     (p) => !['OBJECT', 'ARRAY'].includes(p.type)
   )
@@ -166,6 +172,12 @@ export default function ObjectEditor({
             selectedSubPath &&
             menuItem.instancePath.every((p, i) => selectedSubPath[i] === p)
 
+          const canAdd = !(
+            loginAvailable &&
+            userInfo &&
+            menuItem.property.metaData?.uiType === 'ARRAY_REVISION_HISTORY'
+          )
+
           return (
             <React.Fragment key={menuItem.instancePath.join('.')}>
               <li
@@ -208,7 +220,7 @@ export default function ObjectEditor({
                       'missing title',
                     ])}
                   </button>
-                  {menuItem.property.type === 'ARRAY' ? (
+                  {menuItem.property.type === 'ARRAY' && canAdd ? (
                     <div>
                       <button
                         className="w-9 h-9 peer text-slate-400 hover:text-slate-800"
