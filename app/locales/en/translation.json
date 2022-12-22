@@ -93,7 +93,7 @@
     "submit": "Submit"
   },
   "sidebar": {
-    "contextSpecificErrors": "Context specific Errors:",
+    "contextSpecificErrors": "Context specific Errors",
     "allErrors": "All errors:",
     "collapseSidebar": "collapse Sidebar"
   },

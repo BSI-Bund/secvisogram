@@ -14,8 +14,8 @@ export default function ErrorPanel({ selectedPath }) {
   const { errors } = React.useContext(DocumentEditorContext)
   const { setSelectedPath } = React.useContext(SelectedPathContext)
 
+  const selectedPathAsString = '/' + selectedPath.join('/')
   const errorsUnderPath = errors.filter((error) => {
-    const selectedPathAsString = '/' + selectedPath.join('/')
     return (
       error.instancePath === selectedPathAsString ||
       (error.instancePath.startsWith(selectedPathAsString) &&
@@ -27,7 +27,7 @@ export default function ErrorPanel({ selectedPath }) {
     <>
       <div className="w-full px-4 pt-2">
         {selectedPath.length
-          ? t('sidebar.contextSpecificErrors')
+          ? t('sidebar.contextSpecificErrors') + ` (${selectedPathAsString}):`
           : t('sidebar.allErrors')}
       </div>
       <div className="p-3" data-testid="error-cards">
