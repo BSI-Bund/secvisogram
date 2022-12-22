@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import { compile } from 'json-pointer'
 import React from 'react'
 import AttributeErrors from './AttributeErrors.js'
@@ -70,7 +71,14 @@ export default function Attribute({
       <div
         className="mb-0.5 text-xs font-bold"
         id={jsonInstancePath}
-        title={attributeName + ': ' + description}
+        title={
+          attributeName +
+          ': ' +
+          description +
+          (property.examples
+            ? '\n\n' + t('menu.examples') + ':\n' + property.examples.join(', ')
+            : '')
+        }
       >
         <label>{label}</label>
         <button
