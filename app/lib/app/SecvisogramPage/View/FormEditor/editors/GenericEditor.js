@@ -58,7 +58,7 @@ export default function Editor({
     () => instancePath.slice().pop() ?? '',
     [instancePath]
   )
-  let disabled
+  /** @type {boolean} */ let disabled
   if (
     enable_last_rev_hist_item &&
     ['legacy_version', 'summary'].includes(attributeName)

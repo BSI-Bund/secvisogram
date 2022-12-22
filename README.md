@@ -126,15 +126,17 @@ CVSS 3 input fields are completed with the data from a possibly copied vector st
 
 A special input field is the "CWE" attribute. Here you can search the CWE catalog (XML file) by entering a value in the "id" or "name" field. For this purpose, a list with the first ten entries matching the input opens under the respective input field, from which a suitable entry can be selected and accepted.
 
-Input errors are displayed directly alongside the respective form field. A global issue counter and validity symbol indicates the current overall validation status. Clicking _Show errors_ reveals a panel with all validation issues and allows to inspect and directly jump to the respective fields.
+Input errors are displayed directly alongside the respective form field. Issue counters and symbols on the top right indicate the current validation status. Clicking on this indicator reveals the sidebar with all validation issues and allows to inspect and directly jump to the respective fields.
 
 _Opening & Saving Files_
 You can open and save your CSAF JSON document at any time using the respective _Open_ and _Save_ buttons. If your document fails the validation checks, a confirmation dialog will appear.
 
 The _CSAF Document_ tab offers functionality to extract the standard-valid subset of your current document.
 
+When running with the [CSAF CMS Server](https://github.com/secvisogram/csaf-cms-backend), saving documents on the server and loading documents from the server is also possible for logged-in users. These users will see the corresponding `CSAF Documents` Tab on the top right.
+
 _Identifying & Solving Validation issues_
-Use the `Show errors`-link in the Form Editor view to reveal a linked list of validation issues. Here you can click on any validation issue and directly jump to the affected form elements.
+Opening the error view in the sidebar will reveal a linked list of validation issues. Here you can click on any validation issue and directly jump to the affected form elements.
 
 [(back to top)](#bsi-secvisogram-csaf-20-web-editor)
 
@@ -142,13 +144,18 @@ Use the `Show errors`-link in the Form Editor view to reveal a linked list of va
 
 The _JSON Editor_ view uses the Monaco editor to edit the JSON representation of the current CSAF document. Please note that only valid JSON content is accepted for further processing.
 
+Hovering over a field will display validation issues. You can also click on errors in the sidebar to jump to the affected elements.
+Setting the conent displayed in the sidebar is also possible by right-clicking on a field and setting the sidebar context.
+
+Note that multiline strings are not supported in JSON value fields and will break this navigation. To add line breaks type `\n` instead.
+
 [(back to top)](#bsi-secvisogram-csaf-20-web-editor)
 
 ### Preview (HTML view)
 
 This view does not include any editing functionality. It displays a rendered HTML template view of the current CSAF document as shown in the editor views.
 
-Use the toggle button to switch between the Rendered web view and the HTML source view. You can export this HTML document via _Export Preview_ as a standalone HTML document or print the rendered document via _Print Preview_.
+Use the toggle button to switch between the Rendered web view and the HTML source view. You can export this HTML document as a standalone HTML document or rendered PDF by selecting the matching option in the export dialog.
 
 [(back to top)](#bsi-secvisogram-csaf-20-web-editor)
 

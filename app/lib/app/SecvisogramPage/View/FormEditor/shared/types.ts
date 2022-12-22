@@ -6,6 +6,7 @@ export type Property = Readonly<{
   description?: string
   mandatory?: boolean
   enum?: ReadonlyArray<string>
+  examples?: ReadonlyArray<string>
   pattern?: string
   minLength?: number
   addMenuItemsForChildObjects?: boolean
