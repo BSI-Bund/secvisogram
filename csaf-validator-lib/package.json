@@ -11,7 +11,7 @@
     "ajv-formats": "^2.1.1",
     "bcp47": "^1.1.2",
     "cvss2js": "^1.1.0",
-    "json-pointer": "^0.6.1",
+    "json-pointer": "^0.6.2",
     "lodash": "^4.17.21",
     "packageurl-js": "^0.0.5",
     "semver": "^7.3.5",
