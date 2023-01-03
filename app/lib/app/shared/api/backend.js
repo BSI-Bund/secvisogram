@@ -1,5 +1,5 @@
 import ApiRequest from '../ApiRequest.js'
-import CsrfApiRequest from "../CsrfApiRequest.js"
+import CsrfApiRequest from '../CsrfApiRequest.js'
 
 /**
  * @param {object} params
@@ -164,4 +164,9 @@ export async function callAboutInfo() {
   return await new ApiRequest(new Request('/api/v1/about'))
     .setContentType('text/html')
     .send()
+}
+
+export async function getAboutInfo() {
+  const res = await new CsrfApiRequest(new Request('/api/v1/about/')).send()
+  return await res.json()
 }

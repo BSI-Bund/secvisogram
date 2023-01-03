@@ -8,7 +8,8 @@ const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 export default /**
  * @param { object } props
  * @param { () => void } props.onClose
- */ ({ onClose }) => {
+ * @param { string } props.backendVersion
+ */ ({ onClose, backendVersion }) => {
   /** @type {React.MutableRefObject<HTMLDialogElement | null>} */
   const ref = React.useRef(null)
   React.useEffect(() => {
@@ -59,6 +60,14 @@ export default /**
           <FontAwesomeIcon className="mx-1" icon={faCodeBranch} />
           <span>{secvisogramVersion}</span>
         </a>
+        {backendVersion ? (
+          <>
+            <br />
+            {t('aboutModal.backendVersion')}
+            {': '}
+            <span>{backendVersion}</span>
+          </>
+        ) : null}
         <br />
         {t('aboutModal.license')}
         {': '}

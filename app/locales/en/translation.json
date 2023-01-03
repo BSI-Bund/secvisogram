@@ -64,6 +64,7 @@
   "aboutModal": {
     "title": "About Secvisogram",
     "version": "Version",
+    "backendVersion": "Backend Version",
     "license": "License",
     "usageInstructions": "For usage instructions check the",
     "authorGuide": "CSAF Author Guide"

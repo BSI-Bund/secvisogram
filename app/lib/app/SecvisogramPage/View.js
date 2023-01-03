@@ -62,6 +62,7 @@ function View({
   onServiceValidate,
   onGetTemplates,
   onGetTemplateContent,
+  backendVersion,
   ...props
 }) {
   const appConfig = React.useContext(AppConfigContext)
@@ -711,6 +712,7 @@ function View({
                             onClose={() => {
                               setAboutDialog(null)
                             }}
+                            backendVersion={backendVersion}
                           />
                         )
                       }}
