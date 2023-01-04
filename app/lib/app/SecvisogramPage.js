@@ -77,7 +77,12 @@ const SecvisogramPage = () => {
   const [backendVersion, setBackendVersion] = React.useState('')
 
   React.useEffect(() => {
-    backend.getAboutInfo().then((info) => setBackendVersion(info.version))
+    backend
+      .getAboutInfo()
+      .then((info) => setBackendVersion(info.version))
+      .catch(() => {
+        setBackendVersion('unknown')
+      })
   }, [])
 
   return (
