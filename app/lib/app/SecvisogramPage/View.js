@@ -62,7 +62,7 @@ function View({
   onServiceValidate,
   onGetTemplates,
   onGetTemplateContent,
-  backendVersion,
+  onGetBackendInfo,
   ...props
 }) {
   const appConfig = React.useContext(AppConfigContext)
@@ -662,6 +662,19 @@ function View({
   const [selectedRelevanceLevel, setSelectedRelevanceLevel] = React.useState(
     relevanceLevels[4]
   )
+
+  const [backendVersion, setBackendVersion] = React.useState('')
+
+  React.useEffect(() => {
+    if (appConfig.loginAvailable && userInfo) {
+      onGetBackendInfo()
+        .then((info) => setBackendVersion(info.version))
+        .catch((err) => {
+          console.log('Error fetching backend info:', err)
+          setBackendVersion('unknown')
+        })
+    }
+  }, [onGetBackendInfo, appConfig.loginAvailable, userInfo])
 
   return (
     <DocumentEditorContext.Provider value={documentEditor}>

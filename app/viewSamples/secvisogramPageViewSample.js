@@ -149,7 +149,7 @@ const props = {
   onCreateAdvisory: async () => ({ id: 'my-id', revision: '1-123' }),
   onGetTemplates: async () => [],
   onGetTemplateContent: async () => ({}),
-  backendVersion: 'testBackendVersion',
+  onGetBackendInfo: async () => ({ version: 'testBackendVersion' }),
 }
 
 export const basic = { props }

@@ -74,17 +74,6 @@ const SecvisogramPage = () => {
     }
   }, [t])
 
-  const [backendVersion, setBackendVersion] = React.useState('')
-
-  React.useEffect(() => {
-    backend
-      .getAboutInfo()
-      .then((info) => setBackendVersion(info.version))
-      .catch(() => {
-        setBackendVersion('unknown')
-      })
-  }, [])
-
   return (
     <View
       activeTab={
@@ -366,7 +355,7 @@ const SecvisogramPage = () => {
           .send()
           .then((templateContentRes) => templateContentRes.json())
       }}
-      backendVersion={backendVersion}
+      onGetBackendInfo={backend.getAboutInfo}
     />
   )
 }
