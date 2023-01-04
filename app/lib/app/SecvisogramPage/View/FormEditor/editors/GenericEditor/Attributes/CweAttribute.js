@@ -7,7 +7,7 @@ import {
 } from '@reach/combobox'
 import { matchSorter } from 'match-sorter'
 import React from 'react'
-import cwec_4_3 from '../../../../../../shared/Core/cwec_4.3.json'
+import cwec from '../../../../../../../../../csaf-validator-lib/lib/shared/cwec.js'
 import useDebounce from '../../../../shared/useDebounce.js'
 import Attribute from './shared/Attribute.js'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
@@ -92,7 +92,7 @@ function useCwecMatch(term) {
     () =>
       throttledTerm.trim() === ''
         ? null
-        : matchSorter(cwec_4_3.weaknesses, throttledTerm, {
+        : matchSorter(cwec.weaknesses, throttledTerm, {
             keys: [(item) => `${item.id}, ${item.name}`],
           }),
     [throttledTerm]
@@ -133,7 +133,7 @@ function CwecId({
   /** @param {string} id  */
   const handleSelect = (id) => {
     setTerm('')
-    const name = cwec_4_3.weaknesses.find((w) => w.id === id)?.name
+    const name = cwec.weaknesses.find((w) => w.id === id)?.name
     onChange({ id: id, name: name })
   }
 
@@ -221,7 +221,7 @@ function CwecName({
   /** @param {string} name  */
   const handleSelect = (name) => {
     setTerm('')
-    const id = cwec_4_3.weaknesses.find((w) => w.name === name)?.id
+    const id = cwec.weaknesses.find((w) => w.name === name)?.id
     onChange({ id: id, name: name })
   }
 
