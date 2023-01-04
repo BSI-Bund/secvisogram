@@ -65,7 +65,12 @@ export default /**
             <br />
             {t('aboutModal.backendVersion')}
             {': '}
-            <span>{backendVersion}</span>
+            <a
+              href="https://github.com/secvisogram/csaf-cms-backend/"
+              className="underline"
+            >
+              {backendVersion}
+            </a>
           </>
         ) : null}
         <br />
