@@ -8,7 +8,8 @@ const secvisogramVersion = SECVISOGRAM_VERSION // eslint-disable-line
 export default /**
  * @param { object } props
  * @param { () => void } props.onClose
- */ ({ onClose }) => {
+ * @param { string } props.backendVersion
+ */ ({ onClose, backendVersion }) => {
   /** @type {React.MutableRefObject<HTMLDialogElement | null>} */
   const ref = React.useRef(null)
   React.useEffect(() => {
@@ -59,6 +60,19 @@ export default /**
           <FontAwesomeIcon className="mx-1" icon={faCodeBranch} />
           <span>{secvisogramVersion}</span>
         </a>
+        {backendVersion ? (
+          <>
+            <br />
+            {t('aboutModal.backendVersion')}
+            {': '}
+            <a
+              href="https://github.com/secvisogram/csaf-cms-backend/"
+              className="underline"
+            >
+              {backendVersion}
+            </a>
+          </>
+        ) : null}
         <br />
         {t('aboutModal.license')}
         {': '}

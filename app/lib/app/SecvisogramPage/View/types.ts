@@ -77,4 +77,5 @@ export interface Props {
     Array<{ templateId: string; templateDescription: string }>
   >
   onGetTemplateContent(params: { templateId: string }): Promise<{}>
+  onGetBackendInfo(): Promise<{ version: string }>
 }

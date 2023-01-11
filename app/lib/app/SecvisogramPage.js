@@ -355,6 +355,7 @@ const SecvisogramPage = () => {
           .send()
           .then((templateContentRes) => templateContentRes.json())
       }}
+      onGetBackendInfo={backend.getAboutInfo}
     />
   )
 }
