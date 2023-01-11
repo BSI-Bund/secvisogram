@@ -405,8 +405,19 @@ function View({
   }
 
   const onExportHandler = () => {
+    openExportDialogPreselected('CSAFJSON')
+  }
+
+  const openExportDialogPreselected = (
+    /** @type {'CSAFJSON'
+    | 'CSAFJSONSTRIPPED'
+    | 'HTMLDOCUMENT'
+    | 'PDFDOCUMENT'
+    | 'MARKDOWN'} */ preselected
+  ) => {
     setNewExportDocumentDialog(
       <ExportDocumentDialog
+        defaultSource={preselected}
         originalValues={originalValues}
         advisoryState={advisoryState}
         formValues={formValues}
@@ -571,6 +582,14 @@ function View({
       // ctrl+N could not be overwritten
       //https://stackoverflow.com/questions/38838302/any-way-to-override-ctrln-to-open-a-new-window-in-chrome
       onNewHandler()
+    } else if (keyName === appConfig.keyBindings.keyExportStripped) {
+      openExportDialogPreselected('CSAFJSONSTRIPPED')
+    } else if (keyName === appConfig.keyBindings.keyExportNotStripped) {
+      openExportDialogPreselected('CSAFJSON')
+    } else if (keyName === appConfig.keyBindings.keyExportHtml) {
+      openExportDialogPreselected('HTMLDOCUMENT')
+    } else if (keyName === appConfig.keyBindings.keyExportPdf) {
+      openExportDialogPreselected('PDFDOCUMENT')
     }
   }
 

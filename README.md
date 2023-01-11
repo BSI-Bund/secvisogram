@@ -82,8 +82,12 @@ The following hotkeys are available by default:
 
 - New / Open: CTRL + O
 - Save: CTRL + S
-- Export: CTRL + E
 - Validate: CTRL + ALT + V
+- Export: CTRL + ALT + E
+- Export (CSAF JSON): CTRL + E
+- Export (CSAF JSON not stripped): CTRL + SHIFT + E
+- Export (HTML Document): CTRL + P
+- Export (PDF Document): CTRL + ALT + P
 
 These can be overwritten if needed by providing an alternative keybinding in
 `.well-known/appspecific/de.bsi.secvisogram.json`.
