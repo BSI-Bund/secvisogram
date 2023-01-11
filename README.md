@@ -88,6 +88,11 @@ The following hotkeys are available by default:
 - Export (CSAF JSON not stripped): CTRL + SHIFT + E
 - Export (HTML Document): CTRL + P
 - Export (PDF Document): CTRL + ALT + P
+- Switch To FormEditor Tab: CTRL + 1
+- Switch To JsonEditor Tab: CTRL + 2
+- Switch To Preview Tab: CTRL + 3
+- Switch To CSAF Document Tab: CTRL + 4
+
 
 These can be overwritten if needed by providing an alternative keybinding in
 `.well-known/appspecific/de.bsi.secvisogram.json`.

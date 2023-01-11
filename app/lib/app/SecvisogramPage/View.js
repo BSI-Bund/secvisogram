@@ -590,6 +590,14 @@ function View({
       openExportDialogPreselected('HTMLDOCUMENT')
     } else if (keyName === appConfig.keyBindings.keyExportPdf) {
       openExportDialogPreselected('PDFDOCUMENT')
+    } else if (keyName === appConfig.keyBindings.keyFormEditorTab) {
+      onChangeTab('EDITOR', formValues.doc)
+    } else if (keyName === appConfig.keyBindings.keyJsonEditorTab) {
+      onChangeTab('SOURCE', formValues.doc)
+    } else if (keyName === appConfig.keyBindings.keyPreviewTab) {
+      onChangeTab('PREVIEW', formValues.doc)
+    } else if (keyName === appConfig.keyBindings.keyCsafDocumentTab) {
+      onChangeTab('CSAF-JSON', formValues.doc)
     }
   }
 

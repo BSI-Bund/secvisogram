@@ -22,6 +22,10 @@ import React from 'react'
  * @property {string} keyExportNotStripped
  * @property {string} keyExportHtml
  * @property {string} keyExportPdf
+ * @property {string} keyFormEditorTab
+ * @property {string} keyJsonEditorTab
+ * @property {string} keyPreviewTab
+ * @property {string} keyCsafDocumentTab
  */
 
 /** @type {AppConfigContext} */
@@ -40,6 +44,10 @@ const defaultValue = {
     keyExportNotStripped: 'ctrl+shift+e',
     keyExportHtml: 'ctrl+p',
     keyExportPdf: 'ctrl+alt+p',
+    keyFormEditorTab: 'ctrl+1',
+    keyJsonEditorTab: 'ctrl+2',
+    keyPreviewTab: 'ctrl+3',
+    keyCsafDocumentTab: 'ctrl+4',
   },
 }
 
