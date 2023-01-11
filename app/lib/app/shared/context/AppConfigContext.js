@@ -26,6 +26,11 @@ import React from 'react'
  * @property {string} keyJsonEditorTab
  * @property {string} keyPreviewTab
  * @property {string} keyCsafDocumentTab
+ * @property {string} keyRelevanceLevelMandatory
+ * @property {string} keyRelevanceLevelBestPractice
+ * @property {string} keyRelevanceLevelWantToHave
+ * @property {string} keyRelevanceLevelNiceToKnow
+ * @property {string} keyRelevanceLevelOptional
  */
 
 /** @type {AppConfigContext} */
@@ -48,6 +53,11 @@ const defaultValue = {
     keyJsonEditorTab: 'ctrl+2',
     keyPreviewTab: 'ctrl+3',
     keyCsafDocumentTab: 'ctrl+4',
+    keyRelevanceLevelMandatory: 'ctrl+shift+1',
+    keyRelevanceLevelBestPractice: 'ctrl+shift+2',
+    keyRelevanceLevelWantToHave: 'ctrl+shift+3',
+    keyRelevanceLevelNiceToKnow: 'ctrl+shift+4',
+    keyRelevanceLevelOptional: 'ctrl+shift+5',
   },
 }
 

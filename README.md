@@ -92,6 +92,11 @@ The following hotkeys are available by default:
 - Switch To JsonEditor Tab: CTRL + 2
 - Switch To Preview Tab: CTRL + 3
 - Switch To CSAF Document Tab: CTRL + 4
+- Select Relevance Level "mandatory" (only in FormEditor Tab): CTRL + SHIFT + 1
+- Select Relevance Level "best practice" (only in FormEditor Tab): CTRL + SHIFT + 2
+- Select Relevance Level "want to have" (only in FormEditor Tab): CTRL + SHIFT + 3
+- Select Relevance Level "nice to know" (only in FormEditor Tab): CTRL + SHIFT + 4
+- Select Relevance Level "optional" (only in FormEditor Tab): CTRL + SHIFT + 5
 
 
 These can be overwritten if needed by providing an alternative keybinding in

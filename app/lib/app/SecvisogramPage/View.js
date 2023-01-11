@@ -598,6 +598,31 @@ function View({
       onChangeTab('PREVIEW', formValues.doc)
     } else if (keyName === appConfig.keyBindings.keyCsafDocumentTab) {
       onChangeTab('CSAF-JSON', formValues.doc)
+    } else if (
+      activeTab === 'EDITOR' &&
+      keyName === appConfig.keyBindings.keyRelevanceLevelMandatory
+    ) {
+      setSelectedRelevanceLevel(relevanceLevels[0])
+    } else if (
+      activeTab === 'EDITOR' &&
+      keyName === appConfig.keyBindings.keyRelevanceLevelBestPractice
+    ) {
+      setSelectedRelevanceLevel(relevanceLevels[1])
+    } else if (
+      activeTab === 'EDITOR' &&
+      keyName === appConfig.keyBindings.keyRelevanceLevelWantToHave
+    ) {
+      setSelectedRelevanceLevel(relevanceLevels[2])
+    } else if (
+      activeTab === 'EDITOR' &&
+      keyName === appConfig.keyBindings.keyRelevanceLevelNiceToKnow
+    ) {
+      setSelectedRelevanceLevel(relevanceLevels[3])
+    } else if (
+      activeTab === 'EDITOR' &&
+      keyName === appConfig.keyBindings.keyRelevanceLevelOptional
+    ) {
+      setSelectedRelevanceLevel(relevanceLevels[4])
     }
   }
 
