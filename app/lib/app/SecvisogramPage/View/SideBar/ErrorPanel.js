@@ -17,15 +17,17 @@ export default function ErrorPanel({ sideBarSelectedPath }) {
 
   const selectedPathAsString = '/' + selectedPath.join('/')
   const sideBarSelectedPathAsString = '/' + sideBarSelectedPath.join('/')
-  const errorsUnderPath = errors.filter((error) => {
-    return (
-      error.instancePath === sideBarSelectedPathAsString ||
-      (error.instancePath.startsWith(sideBarSelectedPathAsString) &&
-        error.instancePath
-          .slice(sideBarSelectedPathAsString.length)
-          .includes('/'))
-    )
-  })
+  const errorsUnderPath = sideBarSelectedPath.length
+    ? errors.filter((error) => {
+        return (
+          error.instancePath === sideBarSelectedPathAsString ||
+          (error.instancePath.startsWith(sideBarSelectedPathAsString) &&
+            error.instancePath
+              .slice(sideBarSelectedPathAsString.length)
+              .includes('/'))
+        )
+      })
+    : errors
 
   return (
     <>
