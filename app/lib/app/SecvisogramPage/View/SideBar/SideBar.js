@@ -20,7 +20,9 @@ export default function SideBar() {
         {sideBarData.sideBarIsOpen ? (
           <div className="w-72 bg-gray-200 overflow-auto border-r border-gray-300">
             {sideBarData.sideBarContent === 'ERRORS' ? (
-              <ErrorPanel selectedPath={sideBarData.sideBarSelectedPath} />
+              <ErrorPanel
+                sideBarSelectedPath={sideBarData.sideBarSelectedPath}
+              />
             ) : sideBarData.sideBarContent === 'DOCUMENTATION' ? (
               <InfoPanel selectedPath={sideBarData.sideBarSelectedPath} />
             ) : null}

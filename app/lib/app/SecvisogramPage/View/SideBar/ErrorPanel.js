@@ -7,27 +7,32 @@ import SelectedPathContext from '../shared/context/SelectedPathContext.js'
  * Defines the content of the sideBar displaying errors for a selected path
  *
  * @param {{
- *   selectedPath: string[]
+ *   sideBarSelectedPath: string[]
  * }} props
  */
-export default function ErrorPanel({ selectedPath }) {
+export default function ErrorPanel({ sideBarSelectedPath }) {
   const { errors } = React.useContext(DocumentEditorContext)
-  const { setSelectedPath } = React.useContext(SelectedPathContext)
+  const { selectedPath, setSelectedPath } =
+    React.useContext(SelectedPathContext)
 
   const selectedPathAsString = '/' + selectedPath.join('/')
+  const sideBarSelectedPathAsString = '/' + sideBarSelectedPath.join('/')
   const errorsUnderPath = errors.filter((error) => {
     return (
-      error.instancePath === selectedPathAsString ||
-      (error.instancePath.startsWith(selectedPathAsString) &&
-        error.instancePath.slice(selectedPathAsString.length).includes('/'))
+      error.instancePath === sideBarSelectedPathAsString ||
+      (error.instancePath.startsWith(sideBarSelectedPathAsString) &&
+        error.instancePath
+          .slice(sideBarSelectedPathAsString.length)
+          .includes('/'))
     )
   })
 
   return (
     <>
       <div className="w-full px-4 pt-2">
-        {selectedPath.length
-          ? t('sidebar.contextSpecificErrors') + ` (${selectedPathAsString}):`
+        {sideBarSelectedPath.length
+          ? t('sidebar.contextSpecificErrors') +
+            ` (${sideBarSelectedPathAsString}):`
           : t('sidebar.allErrors')}
       </div>
       <div className="p-3" data-testid="error-cards">
@@ -40,10 +45,18 @@ export default function ErrorPanel({ selectedPath }) {
               : err.type === 'info'
               ? 'border-blue-800 bg-blue-600/75'
               : ''
+          const highlight =
+            selectedPathAsString === err.instancePath
+              ? ' border-black border-2'
+              : ''
           return (
             <div
               key={i}
-              className={'p-2 m-1 rounded border hover:cursor-pointer ' + color}
+              className={
+                'p-2 m-1 rounded border hover:cursor-pointer ' +
+                color +
+                highlight
+              }
               data-testid={`error_card-${err.instancePath}-${i}`}
               onClick={() =>
                 setSelectedPath(err.instancePath.split('/').slice(1))
