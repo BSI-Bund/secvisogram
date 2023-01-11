@@ -97,7 +97,7 @@ The following hotkeys are available by default:
 - Select Relevance Level "want to have" (only in FormEditor Tab): CTRL + SHIFT + 3
 - Select Relevance Level "nice to know" (only in FormEditor Tab): CTRL + SHIFT + 4
 - Select Relevance Level "optional" (only in FormEditor Tab): CTRL + SHIFT + 5
-
+- Jump to next Error: f8 (can be changed for FormEditor tab but f8 is fixed in Json Editor)
 
 These can be overwritten if needed by providing an alternative keybinding in
 `.well-known/appspecific/de.bsi.secvisogram.json`.

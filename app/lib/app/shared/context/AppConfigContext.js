@@ -31,6 +31,7 @@ import React from 'react'
  * @property {string} keyRelevanceLevelWantToHave
  * @property {string} keyRelevanceLevelNiceToKnow
  * @property {string} keyRelevanceLevelOptional
+ * @property {string} keyNextError
  */
 
 /** @type {AppConfigContext} */
@@ -58,6 +59,7 @@ const defaultValue = {
     keyRelevanceLevelWantToHave: 'ctrl+shift+3',
     keyRelevanceLevelNiceToKnow: 'ctrl+shift+4',
     keyRelevanceLevelOptional: 'ctrl+shift+5',
+    keyNextError: 'f8',
   },
 }
 

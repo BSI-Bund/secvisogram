@@ -623,6 +623,40 @@ function View({
       keyName === appConfig.keyBindings.keyRelevanceLevelOptional
     ) {
       setSelectedRelevanceLevel(relevanceLevels[4])
+    } else if (
+      activeTab === 'EDITOR' &&
+      keyName === appConfig.keyBindings.keyNextError
+    ) {
+      goToNextError()
+    }
+  }
+
+  /**
+   * Move on to the next error based on currently selected path
+   * Opens the sidebar with the error panel if not already open
+   */
+  function goToNextError() {
+    if (errors.length) {
+      const selectedPathAsString = '/' + selectedPath.join('/')
+      const currentlySelectedErrorsIndex = errors.findIndex(
+        (e) => e.instancePath === '/' + selectedPath.join('/')
+      )
+      const numErrorsForPath = errors.filter(
+        (e) => e.instancePath === selectedPathAsString
+      ).length
+      let indexOfNextError = currentlySelectedErrorsIndex + numErrorsForPath
+      if (
+        currentlySelectedErrorsIndex < 0 ||
+        indexOfNextError >= errors.length
+      ) {
+        indexOfNextError = 0
+      }
+      const nextSelectedPath = errors[indexOfNextError].instancePath
+        .split('/')
+        .slice(1)
+      setSelectedPath(nextSelectedPath)
+      setSideBarIsOpen(true)
+      setSideBarContent('ERRORS')
     }
   }
 
