@@ -80,24 +80,26 @@ Please refer to [`DEVELOPMENT.md`](DEVELOPMENT.md) for a detailed description on
 
 The following hotkeys are available by default:
 
-- New / Open: CTRL + O
-- Save: CTRL + S
-- Validate: CTRL + ALT + V
-- Export: CTRL + ALT + E
-- Export (CSAF JSON): CTRL + E
-- Export (CSAF JSON not stripped): CTRL + SHIFT + E
-- Export (HTML Document): CTRL + P
-- Export (PDF Document): CTRL + ALT + P
-- Switch To FormEditor Tab: CTRL + 1
-- Switch To JsonEditor Tab: CTRL + 2
-- Switch To Preview Tab: CTRL + 3
-- Switch To CSAF Document Tab: CTRL + 4
-- Select Relevance Level "mandatory" (only in FormEditor Tab): CTRL + SHIFT + 1
-- Select Relevance Level "best practice" (only in FormEditor Tab): CTRL + SHIFT + 2
-- Select Relevance Level "want to have" (only in FormEditor Tab): CTRL + SHIFT + 3
-- Select Relevance Level "nice to know" (only in FormEditor Tab): CTRL + SHIFT + 4
-- Select Relevance Level "optional" (only in FormEditor Tab): CTRL + SHIFT + 5
-- Jump to next Error: f8 (can be changed for FormEditor tab but f8 is fixed in Json Editor)
+| shortcut         | effect                                 | comment                                   |
+|------------------|----------------------------------------|-------------------------------------------|
+| CTRL + O         | New / Open                             | Opens dialog                              |
+| CTRL + S         | Save                                   | Opens dialog                              |
+| CTRL + ALT + V   | Validate                               |                                           |
+| CTRL + ALT + E   | Open export dialog                     |                                           |
+| CTRL + E         | Open export dialog                     | `CSAF json (stripped)` preselected        |
+| CTRL + SHIFT + E | Open export dialog                     | `CSAF json` preselected                   |
+| CTRL + P         | Open export dialog                     | `HTML` preselected                        |
+| CTRL + ALT + P   | Open export dialog                     | `PDF` preselected                         |
+| CTRL + 1         | Switch to `FormEditor` tab             |                                           |
+| CTRL + 2         | Switch to `JsonEditor` tab             |                                           |
+| CTRL + 3         | Switch to `Preview` tab                |                                           |
+| CTRL + 4         | Switch to `CSAF Document` tab          |                                           |
+| CTRL + SHIFT + 1 | Select relevance level "mandatory"     | Only in `FormEditor` tab                  |
+| CTRL + SHIFT + 2 | Select relevance level "best practice" | Only in `FormEditor` tab                  |
+| CTRL + SHIFT + 3 | Select relevance level "want to have"  | Only in `FormEditor` tab                  |
+| CTRL + SHIFT + 4 | Select relevance level "nice to have"  | Only in `FormEditor` tab                  |
+| CTRL + SHIFT + 5 | Select relevance level "optional"      | Only in `FormEditor` tab                  |
+| f8               | Jump to next error                     | `f8` is the fixed key in the `JsonEditor` |
 
 These can be overwritten if needed by providing an alternative keybinding in
 `.well-known/appspecific/de.bsi.secvisogram.json`.
