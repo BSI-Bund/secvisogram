@@ -273,8 +273,8 @@ function Menu({ instancePath, level = 1, ...props }) {
                           }
                         }}
                       >
-                        <FontAwesomeIcon icon={faPlus} className="pr-2" /> Add
-                        sub item
+                        <FontAwesomeIcon icon={faPlus} className="pr-2" />
+                        {t('menu.addSubItem')}
                       </button>
                     ) : null}
                     {deletable ? (
@@ -301,7 +301,7 @@ function Menu({ instancePath, level = 1, ...props }) {
                         }}
                       >
                         <FontAwesomeIcon icon={faTrash} className="pr-2" />{' '}
-                        Delete
+                        {t('menu.delete')}
                       </button>
                     ) : null}
                   </div>

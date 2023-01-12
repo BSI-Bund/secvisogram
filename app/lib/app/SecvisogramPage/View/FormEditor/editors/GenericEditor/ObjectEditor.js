@@ -277,7 +277,7 @@ export default function ObjectEditor({
                           }}
                         >
                           <FontAwesomeIcon icon={faPlus} className="pr-2" />
-                          Add list item
+                          {t('menu.addListItem')}
                         </button>
                       </div>
                     </div>
