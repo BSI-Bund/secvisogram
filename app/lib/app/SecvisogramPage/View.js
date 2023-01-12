@@ -405,8 +405,19 @@ function View({
   }
 
   const onExportHandler = () => {
+    openExportDialogPreselected('CSAFJSON')
+  }
+
+  const openExportDialogPreselected = (
+    /** @type {'CSAFJSON'
+    | 'CSAFJSONSTRIPPED'
+    | 'HTMLDOCUMENT'
+    | 'PDFDOCUMENT'
+    | 'MARKDOWN'} */ preselected
+  ) => {
     setNewExportDocumentDialog(
       <ExportDocumentDialog
+        defaultSource={preselected}
         originalValues={originalValues}
         advisoryState={advisoryState}
         formValues={formValues}
@@ -571,6 +582,66 @@ function View({
       // ctrl+N could not be overwritten
       //https://stackoverflow.com/questions/38838302/any-way-to-override-ctrln-to-open-a-new-window-in-chrome
       onNewHandler()
+    } else if (keyName === appConfig.keyBindings.keyExportStripped) {
+      openExportDialogPreselected('CSAFJSONSTRIPPED')
+    } else if (keyName === appConfig.keyBindings.keyExportNotStripped) {
+      openExportDialogPreselected('CSAFJSON')
+    } else if (keyName === appConfig.keyBindings.keyExportHtml) {
+      openExportDialogPreselected('HTMLDOCUMENT')
+    } else if (keyName === appConfig.keyBindings.keyExportPdf) {
+      openExportDialogPreselected('PDFDOCUMENT')
+    } else if (keyName === appConfig.keyBindings.keyFormEditorTab) {
+      onChangeTab('EDITOR', formValues.doc)
+    } else if (keyName === appConfig.keyBindings.keyJsonEditorTab) {
+      onChangeTab('SOURCE', formValues.doc)
+    } else if (keyName === appConfig.keyBindings.keyPreviewTab) {
+      onChangeTab('PREVIEW', formValues.doc)
+    } else if (keyName === appConfig.keyBindings.keyCsafDocumentTab) {
+      onChangeTab('CSAF-JSON', formValues.doc)
+    } else if (activeTab === 'EDITOR') {
+      for (const [levelIdx, configKeyName] of [
+        appConfig.keyBindings.keyRelevanceLevelMandatory,
+        appConfig.keyBindings.keyRelevanceLevelBestPractice,
+        appConfig.keyBindings.keyRelevanceLevelWantToHave,
+        appConfig.keyBindings.keyRelevanceLevelNiceToKnow,
+        appConfig.keyBindings.keyRelevanceLevelOptional,
+      ].entries()) {
+        if (keyName === configKeyName) {
+          setSelectedRelevanceLevel(relevanceLevels[levelIdx])
+        }
+      }
+    }
+    if (keyName === appConfig.keyBindings.keyNextError) {
+      goToNextError()
+    }
+  }
+
+  /**
+   * Move on to the next error based on currently selected path
+   * Opens the sidebar with the error panel if not already open
+   */
+  function goToNextError() {
+    if (errors.length) {
+      const selectedPathAsString = '/' + selectedPath.join('/')
+      const currentlySelectedErrorsIndex = errors.findIndex(
+        (e) => e.instancePath === '/' + selectedPath.join('/')
+      )
+      const numErrorsForPath = errors.filter(
+        (e) => e.instancePath === selectedPathAsString
+      ).length
+      let indexOfNextError = currentlySelectedErrorsIndex + numErrorsForPath
+      if (
+        currentlySelectedErrorsIndex < 0 ||
+        indexOfNextError >= errors.length
+      ) {
+        indexOfNextError = 0
+      }
+      const nextSelectedPath = errors[indexOfNextError].instancePath
+        .split('/')
+        .slice(1)
+      setSelectedPath(nextSelectedPath)
+      setSideBarIsOpen(true)
+      setSideBarContent('ERRORS')
     }
   }
 
