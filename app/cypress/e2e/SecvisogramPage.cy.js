@@ -196,7 +196,7 @@ describe('SecvisogramPage', () => {
               ...doc.document,
               tracking: {
                 ...Object.fromEntries(
-                  Object.entries(doc.document.tracking).filter(
+                  Object.entries(doc.document.tracking || {}).filter(
                     ([key]) => key !== 'generator'
                   )
                 ),

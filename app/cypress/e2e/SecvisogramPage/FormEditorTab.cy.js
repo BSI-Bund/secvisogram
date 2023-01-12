@@ -202,19 +202,11 @@ describe('SecvisogramPage / FormEditor Tab', function () {
 
     cy.get(`[data-testid="menu_entry-/document"]`).click()
 
-    // without a selected document category all menu items should be displayed
+    // with default category csaf_base publisher should be displayed
     cy.get(`[data-testid="layer-button-best_practice"]`).click()
-    cy.get(`[data-testid="menu_entry-/document/aggregate_severity"]`).should(
-      'exist'
-    )
+    cy.get(`[data-testid="menu_entry-/document/publisher"]`).should('exist')
 
-    const documentCategory = 'csaf_base'
-    cy.get('[data-testid="attribute-document-category"] input')
-      .clear()
-      .type(documentCategory)
-
-    // aggregate severity menu item should not be displayed for level best_practice
-    cy.get(`[data-testid="layer-button-best_practice"]`).click()
+    // aggregate severity menu should not be displayed for level best_practice
     cy.get(`[data-testid="menu_entry-/document/aggregate_severity"]`).should(
       'not.exist'
     )
@@ -237,21 +229,21 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.visit('?tab=EDITOR')
     cy.wait('@wellKnownAppConfig')
 
-    cy.get(`[data-testid="document-publisher-infoButton"]`).click()
+    cy.get(`[data-testid="document-tracking-infoButton"]`).click()
 
-    // there should be 3 error cards under /document/publisher for a default minimal document
-    cy.get(`[data-testid="error-cards"] div`).should('have.length', 3)
+    // there should be 6 error cards under /document/tracking for the default minimal document
+    cy.get(`[data-testid="error-cards"] div`).should('have.length', 6)
 
-    cy.get(`[data-testid="menu_entry-/document/publisher"]`).click()
-    cy.get(`[data-testid="document-publisher-name-infoButton"]`).click()
+    cy.get(`[data-testid="menu_entry-/document/tracking"]`).click()
+    cy.get('[data-testid="attribute-document-tracking-version"] input')
+      .clear()
+      .type('doesNotMatchRegex')
+    cy.get(`[data-testid="document-tracking-version-infoButton"]`).click()
 
-    // there should be one error card for /document/publisher/name and none for the sibling namespace
+    // there should be one error card for /document/tracking/version when it does not match the expected regex
     cy.get(`[data-testid="error-cards"] div`).should('have.length', 1)
-    cy.get(`[data-testid="error_card-/document/publisher/name-0"]`).should(
+    cy.get(`[data-testid="error_card-/document/tracking/version-0"]`).should(
       'exist'
-    )
-    cy.get(`[data-testid="error_card-/document/publisher/namespace-1"]`).should(
-      'not.exist'
     )
   })
 

@@ -12,7 +12,7 @@ describe('SecvisogramPage / JsonEditorTab', function () {
     cy.window().should((/** @type {any} */ win) => {
       expect(Boolean(win.MONACO_EDITOR)).to.be.true
       const doc = JSON.parse(win.MONACO_EDITOR.getModel().getValue())
-      expect(typeof doc.document.title).to.equal('string')
+      expect(typeof doc.document.category).to.equal('string')
     })
 
     const newDocumentTitle = 'MY NEW TITLE'
@@ -55,7 +55,7 @@ describe('SecvisogramPage / JsonEditorTab', function () {
     cy.window().should((/** @type {any} */ win) => {
       expect(Boolean(win.MONACO_EDITOR)).to.be.true
       const doc = JSON.parse(win.MONACO_EDITOR.getModel().getValue())
-      expect(typeof doc.document.title).to.equal('string')
+      expect(typeof doc.document.category).to.equal('string')
     })
 
     cy.window().should((/** @type {any} */ win) => {
