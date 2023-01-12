@@ -157,12 +157,12 @@ export default function Editor({
           label={label}
           description={description}
           options={/** @type {string[]} */ (property.enum || [])}
-          isEnum={true}
+          isEnum={false}
           instancePath={instancePath}
           value={value || ''}
           property={property}
           disabled={disabled}
-          disableClearable={true}
+          disableClearable={false}
         />
       ))
     } else if (uiType === 'STRING_WITH_OPTIONS') {
@@ -176,7 +176,7 @@ export default function Editor({
           value={value || ''}
           property={property}
           disabled={disabled}
-          disableClearable={true}
+          disableClearable={false}
         />
       ))
     } else if (uiType === 'STRING_MULTI_LINE') {
