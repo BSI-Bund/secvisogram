@@ -524,11 +524,12 @@ function View({
             : 'hover:bg-slate-800 hover:text-white text-gray-300',
         ].join(' '),
         onClick() {
+          onReplaceDoc(pruneEmpty(formValues.doc))
           onChangeTab(tab, formValues.doc)
         },
       }
     },
-    [activeTab, onChangeTab, formValues.doc, isTabLocked]
+    [activeTab, onReplaceDoc, onChangeTab, formValues.doc, isTabLocked]
   )
 
   const getSummaryAndLegacyVersion = () => {
