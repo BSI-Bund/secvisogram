@@ -54,12 +54,7 @@ export default function DropdownAttribute({
               }
             }}
             renderInput={(params) => (
-              <TextField
-                {...params}
-                error={!value}
-                margin="dense"
-                variant="outlined"
-              />
+              <TextField {...params} margin="dense" variant="outlined" />
             )}
           />
         </div>
