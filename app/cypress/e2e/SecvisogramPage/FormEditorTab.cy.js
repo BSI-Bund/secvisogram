@@ -290,4 +290,36 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       ).should('have.attr', 'disabled')
     }
   })
+
+  it('correctly display errors when adding and deleting elements from arrays', function () {
+    for (const user of getUsers()) {
+      cy.intercept(
+        '/.well-known/appspecific/de.bsi.secvisogram.json',
+        getLoginEnabledConfig()
+      ).as('wellKnownAppConfig')
+      cy.intercept(getLoginEnabledConfig().userInfoUrl, getUserInfo(user)).as(
+        'apiGetUserInfo'
+      )
+
+      cy.visit('?tab=EDITOR')
+      cy.wait('@wellKnownAppConfig')
+      cy.wait('@apiGetUserInfo')
+
+      cy.get(
+        '[data-testid="error_indicator-object/vulnerabilities"] svg'
+      ).should('have.class', 'text-green-600')
+      cy.get(
+        '[data-testid="menu_entry-/vulnerabilities-add_item_button"]'
+      ).click({ force: true })
+      cy.get(
+        '[data-testid="error_indicator-object/vulnerabilities"] svg'
+      ).should('have.class', 'text-red-600')
+      cy.get('[data-testid="vulnerabilities-0-deleteButton"]').click({
+        force: true,
+      })
+      cy.get(
+        '[data-testid="error_indicator-object/vulnerabilities"] svg'
+      ).should('have.class', 'text-green-600')
+    }
+  })
 })

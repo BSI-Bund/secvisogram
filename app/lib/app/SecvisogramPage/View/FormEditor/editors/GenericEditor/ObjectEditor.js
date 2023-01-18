@@ -195,7 +195,12 @@ export default function ObjectEditor({
                     `${isSelected ? 'font-bold' : ''}` + ' flex w-full'
                   }
                 >
-                  <div className="grid place-items-center px-2">
+                  <div
+                    className="grid place-items-center px-2"
+                    data-testid={`error_indicator-object/${instancePath
+                      .concat(menuItem.instancePath)
+                      .join('/')}`}
+                  >
                     <FontAwesomeIcon
                       icon={faCircle}
                       className={getErrorTextColor(childErrors)}
