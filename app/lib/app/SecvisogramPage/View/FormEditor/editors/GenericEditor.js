@@ -185,7 +185,6 @@ export default function Editor({
           label={label}
           description={description}
           minLength={property.minLength || 0}
-          required={property.mandatory}
           instancePath={instancePath}
           value={value || ''}
           property={property}
