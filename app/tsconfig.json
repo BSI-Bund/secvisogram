@@ -70,12 +70,5 @@
   },
   "references": [{ "path": "../csaf-validator-lib" }],
   "include": ["**/*.js", "**/*.ts", "**/*.json"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "postcss.config.js",
-    "vendor/ace-builds",
-    "build",
-    "coverage"
-  ]
+  "exclude": ["node_modules", "dist", "postcss.config.js", "build", "coverage"]
 }
