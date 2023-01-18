@@ -158,7 +158,6 @@ function CwecId({
               className="border border-gray-400 py-1 px-2 w-full shadow-inner rounded"
               pattern="^CWE-[1-9]\d{0,5}$"
               placeholder="^CWE-[1-9]\d{0,5}$"
-              required={true}
               onChange={handleChange}
               disabled={disabled}
             />
@@ -245,7 +244,6 @@ function CwecName({
               value={inputValue}
               className="border border-gray-400 py-1 px-2 w-full shadow-inner rounded"
               placeholder="Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') ..."
-              required={true}
               onChange={handleChange}
               disabled={disabled}
             />
