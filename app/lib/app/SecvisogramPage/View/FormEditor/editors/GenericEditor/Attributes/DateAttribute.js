@@ -15,7 +15,7 @@ import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
  * }} props
  */
 export default function DateAttribute({
-  required = true,
+  required = false,
   value,
   disabled,
   ...props

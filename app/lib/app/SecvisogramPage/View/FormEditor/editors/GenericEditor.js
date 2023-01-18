@@ -185,7 +185,6 @@ export default function Editor({
           label={label}
           description={description}
           minLength={property.minLength || 0}
-          required={property.mandatory}
           instancePath={instancePath}
           value={value || ''}
           property={property}
@@ -224,7 +223,6 @@ export default function Editor({
           minLength={property.minLength || 0}
           type={'url'}
           pattern={property.pattern}
-          required={property.mandatory}
           instancePath={instancePath}
           value={value || ''}
           property={property}
@@ -238,7 +236,6 @@ export default function Editor({
           description={description}
           minLength={property.minLength || 0}
           pattern={property.pattern}
-          required={property.mandatory}
           instancePath={instancePath}
           value={value || ''}
           property={property}

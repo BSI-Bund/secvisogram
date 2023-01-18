@@ -95,7 +95,6 @@ export default function IdAttribute({
               value={value}
               className="border border-gray-400 py-1 px-2 w-full shadow-inner rounded"
               placeholder={placeholder}
-              required={true}
               onChange={handleChange}
               onFocus={handleFocus}
               disabled={disabled}
