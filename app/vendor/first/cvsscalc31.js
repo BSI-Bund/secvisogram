@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 /* Copyright (c) 2019, FIRST.ORG, INC.
  * All rights reserved.
  *

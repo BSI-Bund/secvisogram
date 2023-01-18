@@ -74,10 +74,8 @@
     "node_modules",
     "dist",
     "postcss.config.js",
-    "vendor",
+    "vendor/ace-builds",
     "build",
-
-    // This is workaround which can be removed once the new csaf-validator-lib is included
-    "cypress/support"
+    "coverage"
   ]
 }
