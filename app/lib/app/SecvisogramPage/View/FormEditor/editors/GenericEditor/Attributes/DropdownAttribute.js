@@ -3,6 +3,7 @@ import { Autocomplete } from '@material-ui/lab'
 import React from 'react'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 import Attribute from './shared/Attribute.js'
+import pruneEmpty from '../../../../../../shared/pruneEmpty.js'
 
 /**
  * @param {{
@@ -25,7 +26,7 @@ export default function DropdownAttribute({
   disableClearable = true,
   ...props
 }) {
-  const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
+  const { doc, updateDoc, replaceDoc } = React.useContext(DocumentEditorContext)
   const [inputValue, setInputValue] = React.useState(value)
   return (
     <Attribute disabled={disabled} {...props}>
@@ -50,7 +51,7 @@ export default function DropdownAttribute({
                   /** @type {string} */ (inputValue)
                 )
               if (!inputValue) {
-                pruneEmpty()
+                replaceDoc(pruneEmpty(doc))
               }
             }}
             renderInput={(params) => (

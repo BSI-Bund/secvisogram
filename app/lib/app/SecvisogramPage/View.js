@@ -1,7 +1,7 @@
 import { t } from 'i18next'
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { isEmpty, set } from 'lodash/fp.js'
+import { set } from 'lodash/fp.js'
 import React from 'react'
 import Hotkeys from 'react-hot-keys'
 import * as semver from 'semver'
@@ -27,6 +27,7 @@ import VersionSummaryDialog from './View/VersionSummaryDialog.js'
 import FormEditor from './View/FormEditorTab.js'
 import SelectedPathContext from './View/shared/context/SelectedPathContext.js'
 import RelevanceLevelContext from './View/FormEditor/shared/context/RelevanceLevelContext.js'
+import pruneEmpty from '../shared/pruneEmpty.js'
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -655,26 +656,6 @@ function View({
       : ''
   }
 
-  /** @type {({}) => {}} */
-  const pruneEmpty = React.useCallback((obj) => {
-    if (typeof obj === 'string' || typeof obj === 'number') return obj
-    if (Array.isArray(obj)) return obj.map((item) => pruneEmpty(item))
-    return {
-      ...Object.fromEntries(
-        Object.entries(obj)
-          .map(([key, value]) => [key, pruneEmpty(value)])
-          .filter((keyValue) => {
-            const value = keyValue[1]
-            return !(
-              value === '' ||
-              value === null ||
-              (typeof value === 'object' && isEmpty(value))
-            )
-          })
-      ),
-    }
-  }, [])
-
   const documentEditor = React.useMemo(
     /**
      * @returns {React.ContextType<typeof DocumentEditorContext>}
@@ -684,7 +665,7 @@ function View({
       updateDoc(instancePath, value) {
         onReplaceDoc(set(instancePath, value, formValues.doc))
       },
-      pruneEmpty: () => onReplaceDoc(pruneEmpty(formValues.doc)),
+      replaceDoc: onReplaceDoc,
       collectIds: {
         productIds: () => onCollectProductIds(formValues.doc),
         groupIds: () => onCollectGroupIds(formValues.doc),
@@ -695,7 +676,6 @@ function View({
       formValues.doc,
       errors,
       onReplaceDoc,
-      pruneEmpty,
       onCollectProductIds,
       onCollectGroupIds,
     ]

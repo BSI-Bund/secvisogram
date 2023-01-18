@@ -12,6 +12,7 @@ import useDebounce from '../../../../shared/useDebounce.js'
 import Attribute from './shared/Attribute.js'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 import { isEmpty } from 'lodash/fp.js'
+import pruneEmpty from '../../../../../../shared/pruneEmpty.js'
 
 /**
  * helper function getting path and value for a child
@@ -43,7 +44,7 @@ const getChildProps = (
  * }} props
  */
 export default function CweAttribute({ property, instancePath, disabled }) {
-  const { doc, updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
+  const { doc, updateDoc, replaceDoc } = React.useContext(DocumentEditorContext)
 
   const idProperties = getChildProps(property, 'id')
   const nameProperties = getChildProps(property, 'name')
@@ -54,7 +55,7 @@ export default function CweAttribute({ property, instancePath, disabled }) {
   const onChange = (/** @type {{id: string, name: string}} */ newCwe) => {
     updateDoc(instancePath, newCwe)
     if (isEmpty(newCwe)) {
-      pruneEmpty()
+      replaceDoc(pruneEmpty(doc))
     }
   }
 

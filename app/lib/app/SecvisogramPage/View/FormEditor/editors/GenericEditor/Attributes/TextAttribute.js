@@ -1,6 +1,7 @@
 import React from 'react'
 import Attribute from './shared/Attribute.js'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
+import pruneEmpty from '../../../../../../shared/pruneEmpty.js'
 
 /**
  * @param {Pick<React.HTMLProps<HTMLInputElement>, 'type'> &{
@@ -28,7 +29,7 @@ export default function TextAttribute({
   disabled,
   ...props
 }) {
-  const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
+  const { doc, updateDoc, replaceDoc } = React.useContext(DocumentEditorContext)
   return (
     <Attribute disabled={disabled} {...props}>
       <div className="max-w-md flex items-baseline justify-center">
@@ -45,7 +46,7 @@ export default function TextAttribute({
             onChange={(e) => updateDoc(props.instancePath, e.target.value)}
             onBlur={(e) => {
               if (!e.target.value) {
-                pruneEmpty()
+                replaceDoc(pruneEmpty(doc))
               }
             }}
             disabled={disabled}
