@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import createFileName from '../../lib/shared/createFileName'
+import pruneEmpty from '../../lib/app/shared/pruneEmpty.js'
 
 describe('Unit Test Functions', function () {
   context('createFileName.js', function () {
@@ -102,6 +103,28 @@ describe('Unit Test Functions', function () {
         'json'
       )
       expect(fileName).to.eq('file_name_1+2-3_invalid.json')
+    })
+  })
+
+  context('pruneEmpty.js', function () {
+    const testData = [
+      [{}, {}],
+      [{ a: 1 }, { a: 1 }],
+      [{ a: 'bcd' }, { a: 'bcd' }],
+      [{ a: '' }, {}],
+      [{ a: {} }, {}],
+      [{ a: { b: { c: {} } } }, {}],
+      [{ a: { b: { c: { d: 123 } } } }, { a: { b: { c: { d: 123 } } } }],
+      // special cases for arrays with elements identified as empty
+      [{ a: [{}] }, { a: [{}] }],
+      [{ a: [''] }, { a: [''] }],
+    ]
+    testData.forEach((data) => {
+      const input = data[0]
+      const expectedOutput = data[1]
+      it('should prune the input to expected output', function () {
+        expect(pruneEmpty(input)).to.deep.eq(expectedOutput)
+      })
     })
   })
 })

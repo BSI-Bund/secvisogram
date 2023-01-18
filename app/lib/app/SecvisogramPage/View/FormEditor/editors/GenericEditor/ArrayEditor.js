@@ -16,6 +16,8 @@ import _ from 'lodash'
 import { useTranslation } from 'react-i18next'
 import AppConfigContext from '../../../../../shared/context/AppConfigContext.js'
 import UserInfoContext from '../../../../../shared/context/UserInfoContext.js'
+import { set } from 'lodash/fp.js'
+import pruneEmpty from '../../../../../shared/pruneEmpty.js'
 
 /**
  * @param {object} props
@@ -120,12 +122,13 @@ function getArrayMenuStructure(
 function Menu({ instancePath, level = 1, ...props }) {
   const { property } = props
 
-  const { errors } = React.useContext(DocumentEditorContext)
   const { selectedPath, setSelectedPath } =
     React.useContext(SelectedPathContext)
   const { setSideBarIsOpen, setSideBarSelectedPath } =
     React.useContext(SideBarContext)
-  const { doc, updateDoc } = React.useContext(DocumentEditorContext)
+  const { doc, errors, updateDoc, replaceDoc } = React.useContext(
+    DocumentEditorContext
+  )
 
   const { loginAvailable } = React.useContext(AppConfigContext)
   const userInfo = React.useContext(UserInfoContext)
@@ -273,8 +276,8 @@ function Menu({ instancePath, level = 1, ...props }) {
                           }
                         }}
                       >
-                        <FontAwesomeIcon icon={faPlus} className="pr-2" /> Add
-                        sub item
+                        <FontAwesomeIcon icon={faPlus} className="pr-2" />
+                        {t('menu.addSubItem')}
                       </button>
                     ) : null}
                     {deletable ? (
@@ -295,13 +298,17 @@ function Menu({ instancePath, level = 1, ...props }) {
                                 /** @type {number} */ index
                               ) => index !== i
                             )
-                            updateDoc(instancePath, arrayWithoutItem)
+                            replaceDoc(
+                              pruneEmpty(
+                                set(instancePath, arrayWithoutItem, doc)
+                              )
+                            )
                             setSelectedPath(instancePath)
                           }
                         }}
                       >
                         <FontAwesomeIcon icon={faTrash} className="pr-2" />{' '}
-                        Delete
+                        {t('menu.delete')}
                       </button>
                     ) : null}
                   </div>

@@ -24,6 +24,8 @@
     "savingData": "Saving data ...",
     "cancel": "Cancel",
     "delete": "Delete",
+    "addListItem": "Add list item",
+    "addSubItem": "Add sub item",
     "create": "Create",
     "reallyDeleteAdvisory": "Really delete this advisory? This action cannot be undone.",
     "uploadFromFilesystem": "Upload from filesystem",

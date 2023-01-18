@@ -2,6 +2,7 @@ import React from 'react'
 import DatePicker from './DateAttribute/DatePicker.js'
 import Attribute from './shared/Attribute.js'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
+import pruneEmpty from '../../../../../../shared/pruneEmpty.js'
 
 /**
  * @param {{
@@ -20,7 +21,7 @@ export default function DateAttribute({
   disabled,
   ...props
 }) {
-  const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
+  const { doc, updateDoc, replaceDoc } = React.useContext(DocumentEditorContext)
   return (
     <Attribute disabled={disabled} {...props}>
       <div className="max-w-md flex items-center justify-center">
@@ -33,7 +34,7 @@ export default function DateAttribute({
             }
             onBlur={(e) => {
               if (!e.target.value) {
-                pruneEmpty()
+                replaceDoc(pruneEmpty(doc))
               }
             }}
             readOnly={disabled}

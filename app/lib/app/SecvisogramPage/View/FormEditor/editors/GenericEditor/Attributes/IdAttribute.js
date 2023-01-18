@@ -10,6 +10,7 @@ import React from 'react'
 import useDebounce from '../../../../shared/useDebounce.js'
 import Attribute from './shared/Attribute.js'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
+import pruneEmpty from '../../../../../../shared/pruneEmpty.js'
 
 /**
  * @param {string} term
@@ -45,7 +46,7 @@ export default function IdAttribute({
   disabled,
   ...props
 }) {
-  const { updateDoc, pruneEmpty } = React.useContext(DocumentEditorContext)
+  const { doc, updateDoc, replaceDoc } = React.useContext(DocumentEditorContext)
 
   const [value, setValue] = React.useState(/** @type string */ (props.value))
   const [term, setTerm] = React.useState(/** @type string */ (props.value))
@@ -87,7 +88,7 @@ export default function IdAttribute({
               setTerm('')
               updateDoc(props.instancePath, id)
               if (!id) {
-                pruneEmpty()
+                replaceDoc(pruneEmpty(doc))
               }
             }}
           >
