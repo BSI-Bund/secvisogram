@@ -220,6 +220,23 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.get(`[data-testid="attribute-document-lang"]`).should('exist')
   })
 
+  it('hides "Fields" button when no input fields are shown', function () {
+    cy.intercept(
+      '/.well-known/appspecific/de.bsi.secvisogram.json',
+      getLoginEnabledConfig()
+    ).as('wellKnownAppConfig')
+
+    cy.visit('?tab=EDITOR')
+    cy.wait('@wellKnownAppConfig')
+
+    cy.get(`[data-testid="menu_entry-/document/distribution"]`).click()
+    cy.get(`[data-testid="document/distribution-fieldButton"]`).should('exist')
+    cy.get(`[data-testid="layer-button-want_to_have"]`).click()
+    cy.get(`[data-testid="document/distribution-fieldButton"]`).should(
+      'not.exist'
+    )
+  })
+
   it('selects the closest relevant path if the selected becomes irrelevant', function () {
     cy.intercept(
       '/.well-known/appspecific/de.bsi.secvisogram.json',
