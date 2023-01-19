@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default React.createContext({
-  /** @type {{document?: {category?: 'csaf_base' | 'csaf_security_incident_response' | 'csaf_informational_advisory' | 'csaf_security_advisory' }}} */
+  /** @type {{document?: {category?: import('../../../shared/types.js').DocumentCategory }}} */
   doc: {},
   /** @type {(instancePath: string[], value: unknown) => void} */
   updateDoc: () => {},

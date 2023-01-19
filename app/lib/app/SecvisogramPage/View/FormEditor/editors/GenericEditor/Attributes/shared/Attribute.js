@@ -1,12 +1,13 @@
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { t } from 'i18next'
 import { compile } from 'json-pointer'
 import React from 'react'
-import AttributeErrors from './AttributeErrors.js'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import isPropertyRelevant from '../../../../../../shared/isPropertyRelevant.js'
 import SideBarContext from '../../../../../shared/context/SideBarContext.js'
 import DocumentEditorContext from '../../../../../shared/DocumentEditorContext.js'
 import RelevanceLevelContext from '../../../../shared/context/RelevanceLevelContext.js'
+import AttributeErrors from './AttributeErrors.js'
 
 /**
  * Abstracts the base functionality for all input fields in the editor.
@@ -51,14 +52,15 @@ export default function Attribute({
   let showAttribute = true
 
   const category = doc.document?.category
-  const relevanceLevelForCategory = category
-    ? (property.metaData?.relevanceLevels || {})[category] || ''
-    : ''
 
   if (
     category &&
-    relevanceLevels.indexOf(relevanceLevelForCategory) >
-      relevanceLevels.indexOf(selectedRelevanceLevel)
+    !isPropertyRelevant({
+      relevanceLevels,
+      category,
+      selectedRelevanceLevel,
+      property,
+    })
   ) {
     showAttribute = false
   }
