@@ -220,6 +220,24 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.get(`[data-testid="attribute-document-lang"]`).should('exist')
   })
 
+  it('selects the closest relevant path if the selected becomes irrelevant', function () {
+    cy.intercept(
+      '/.well-known/appspecific/de.bsi.secvisogram.json',
+      getLoginEnabledConfig()
+    ).as('wellKnownAppConfig')
+
+    cy.visit('?tab=EDITOR')
+    cy.wait('@wellKnownAppConfig')
+
+    cy.get(`[data-testid="menu_entry-/document"]`).click()
+    cy.get(`[data-testid="menu_entry-/document/tracking"]`).click()
+    cy.get(`[data-testid="menu_entry-/document/tracking/generator"]`).click()
+    cy.get(`[data-testid="layer-button-best_practice"]`).click()
+    cy.get(
+      `[data-testid="menu_entry-/document/tracking/generator/engine"]`
+    ).should('not.exist')
+  })
+
   it('shows errors in sidebar according to selected path', function () {
     cy.intercept(
       '/.well-known/appspecific/de.bsi.secvisogram.json',
