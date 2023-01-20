@@ -1,7 +1,7 @@
 /**
  * @param {object} params
  * @param {string[]} params.relevanceLevels
- * @param {import("../../shared/types").DocumentCategory} params.category
+ * @param {import('../../shared/types').DocumentCategory | undefined} params.category
  * @param {import('./isPropertyRelevant/types').Property} params.property
  * @param {string} params.selectedRelevanceLevel
  */
@@ -11,14 +11,16 @@ export default function ({
   property,
   selectedRelevanceLevel,
 }) {
+  if (!category) {
+    return true
+  }
+
   const relevanceLevelForCategory = category
     ? (property.metaData?.relevanceLevels || {})[category] || ''
     : ''
 
-  const notRelevant =
-    category &&
-    relevanceLevels.indexOf(relevanceLevelForCategory) >
-      relevanceLevels.indexOf(selectedRelevanceLevel)
-
-  return !notRelevant
+  return (
+    relevanceLevels.indexOf(relevanceLevelForCategory) <=
+    relevanceLevels.indexOf(selectedRelevanceLevel)
+  )
 }

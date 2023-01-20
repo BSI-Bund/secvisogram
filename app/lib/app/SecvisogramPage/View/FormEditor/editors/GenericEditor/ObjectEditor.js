@@ -154,7 +154,6 @@ export default function ObjectEditor({
         ) : null}
         {menuNodes.map((menuItem, menuItemIndex) => {
           if (
-            category &&
             !isPropertyRelevant({
               relevanceLevels,
               property: menuItem.property,

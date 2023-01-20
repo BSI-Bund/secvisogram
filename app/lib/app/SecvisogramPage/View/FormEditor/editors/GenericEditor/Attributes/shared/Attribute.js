@@ -54,7 +54,6 @@ export default function Attribute({
   const category = doc.document?.category
 
   if (
-    category &&
     !isPropertyRelevant({
       relevanceLevels,
       category,
