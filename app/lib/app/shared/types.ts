@@ -3,3 +3,4 @@ export type DocumentCategory =
   | 'csaf_security_incident_response'
   | 'csaf_informational_advisory'
   | 'csaf_security_advisory'
+  | 'csaf_vex'
