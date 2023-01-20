@@ -79,6 +79,13 @@ export default /** @type {const} */ ({
                     itemName: {
                       itemNameTranslationKey: 'arrays.acknowledgmentsItemName',
                     },
+                    relevanceLevels: {
+                      csaf_base: 'optional',
+                      csaf_security_incident_response: 'optional',
+                      csaf_informational_advisory: 'optional',
+                      csaf_security_advisory: 'best_practice',
+                      csaf_vex: 'want_to_have',
+                    },
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -130,6 +137,13 @@ export default /** @type {const} */ ({
                               },
                               itemName: {
                                 itemNameTranslationKey: 'arrays.namesItemName',
+                              },
+                              relevanceLevels: {
+                                csaf_base: 'want_to_have',
+                                csaf_security_incident_response: 'want_to_have',
+                                csaf_informational_advisory: 'want_to_have',
+                                csaf_security_advisory: 'best_practice',
+                                csaf_vex: 'want_to_have',
                               },
                             },
                             minLength: 1,
@@ -259,6 +273,13 @@ export default /** @type {const} */ ({
                               },
                               itemName: {
                                 itemNameTranslationKey: 'arrays.urlsItemName',
+                              },
+                              relevanceLevels: {
+                                csaf_base: 'nice_to_know',
+                                csaf_security_incident_response: 'nice_to_know',
+                                csaf_informational_advisory: 'nice_to_know',
+                                csaf_security_advisory: 'nice_to_know',
+                                csaf_vex: 'nice_to_know',
                               },
                             },
                             metaInfo: {},
@@ -668,6 +689,13 @@ export default /** @type {const} */ ({
                       itemNameTranslationKey: 'arrays.notesItemName',
                       itemNameField: 'title',
                     },
+                    relevanceLevels: {
+                      csaf_base: 'want_to_have',
+                      csaf_security_incident_response: 'mandatory',
+                      csaf_informational_advisory: 'mandatory',
+                      csaf_security_advisory: 'best_practice',
+                      csaf_vex: 'want_to_have',
+                    },
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -1047,6 +1075,13 @@ export default /** @type {const} */ ({
                     itemName: {
                       itemNameTranslationKey: 'arrays.referencesItemName',
                     },
+                    relevanceLevels: {
+                      csaf_base: 'want_to_have',
+                      csaf_security_incident_response: 'mandatory',
+                      csaf_informational_advisory: 'mandatory',
+                      csaf_security_advisory: 'best_practice',
+                      csaf_vex: 'best_practice',
+                    },
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -1276,6 +1311,13 @@ export default /** @type {const} */ ({
                           },
                           itemName: {
                             itemNameTranslationKey: 'arrays.aliasesItemName',
+                          },
+                          relevanceLevels: {
+                            csaf_base: 'optional',
+                            csaf_security_incident_response: 'nice_to_know',
+                            csaf_informational_advisory: 'nice_to_know',
+                            csaf_security_advisory: 'nice_to_know',
+                            csaf_vex: 'nice_to_know',
                           },
                         },
                         minLength: 1,
@@ -1627,6 +1669,13 @@ export default /** @type {const} */ ({
                           itemName: {
                             itemNameTranslationKey: 'arrays.revisionsItemName',
                             itemNameField: 'number',
+                          },
+                          relevanceLevels: {
+                            csaf_base: 'mandatory',
+                            csaf_security_incident_response: 'mandatory',
+                            csaf_informational_advisory: 'mandatory',
+                            csaf_security_advisory: 'mandatory',
+                            csaf_vex: 'mandatory',
                           },
                         },
                         type: 'OBJECT',
@@ -2297,6 +2346,16 @@ export default /** @type {const} */ ({
                                             itemNameTranslationKey:
                                               'arrays.hashesItemName',
                                           },
+                                          relevanceLevels: {
+                                            csaf_base: 'nice_to_know',
+                                            csaf_security_incident_response:
+                                              'nice_to_know',
+                                            csaf_informational_advisory:
+                                              'nice_to_know',
+                                            csaf_security_advisory:
+                                              'nice_to_know',
+                                            csaf_vex: 'nice_to_know',
+                                          },
                                         },
                                         type: 'OBJECT',
                                         metaInfo: {
@@ -2369,6 +2428,16 @@ export default /** @type {const} */ ({
                                                     itemName: {
                                                       itemNameTranslationKey:
                                                         'arrays.fileHashesItemName',
+                                                    },
+                                                    relevanceLevels: {
+                                                      csaf_base: 'mandatory',
+                                                      csaf_security_incident_response:
+                                                        'mandatory',
+                                                      csaf_informational_advisory:
+                                                        'mandatory',
+                                                      csaf_security_advisory:
+                                                        'mandatory',
+                                                      csaf_vex: 'mandatory',
                                                     },
                                                   },
                                                   type: 'OBJECT',
@@ -2600,6 +2669,16 @@ export default /** @type {const} */ ({
                                             itemNameTranslationKey:
                                               'arrays.modelNumbersItemName',
                                           },
+                                          relevanceLevels: {
+                                            csaf_base: 'nice_to_know',
+                                            csaf_security_incident_response:
+                                              'nice_to_know',
+                                            csaf_informational_advisory:
+                                              'nice_to_know',
+                                            csaf_security_advisory:
+                                              'nice_to_know',
+                                            csaf_vex: 'nice_to_know',
+                                          },
                                         },
                                         minLength: 1,
                                         metaInfo: {},
@@ -2716,6 +2795,16 @@ export default /** @type {const} */ ({
                                             itemNameTranslationKey:
                                               'arrays.sbomItemName',
                                           },
+                                          relevanceLevels: {
+                                            csaf_base: 'nice_to_know',
+                                            csaf_security_incident_response:
+                                              'nice_to_know',
+                                            csaf_informational_advisory:
+                                              'nice_to_know',
+                                            csaf_security_advisory:
+                                              'nice_to_know',
+                                            csaf_vex: 'nice_to_know',
+                                          },
                                         },
                                         metaInfo: {},
                                         type: 'STRING',
@@ -2787,6 +2876,16 @@ export default /** @type {const} */ ({
                                           itemName: {
                                             itemNameTranslationKey:
                                               'arrays.serialNumbersItemName',
+                                          },
+                                          relevanceLevels: {
+                                            csaf_base: 'nice_to_know',
+                                            csaf_security_incident_response:
+                                              'nice_to_know',
+                                            csaf_informational_advisory:
+                                              'nice_to_know',
+                                            csaf_security_advisory:
+                                              'nice_to_know',
+                                            csaf_vex: 'nice_to_know',
                                           },
                                         },
                                         minLength: 1,
@@ -2861,6 +2960,16 @@ export default /** @type {const} */ ({
                                             itemNameTranslationKey:
                                               'arrays.skusItemName',
                                           },
+                                          relevanceLevels: {
+                                            csaf_base: 'nice_to_know',
+                                            csaf_security_incident_response:
+                                              'nice_to_know',
+                                            csaf_informational_advisory:
+                                              'nice_to_know',
+                                            csaf_security_advisory:
+                                              'nice_to_know',
+                                            csaf_vex: 'nice_to_know',
+                                          },
                                         },
                                         minLength: 1,
                                         metaInfo: {},
@@ -2933,6 +3042,16 @@ export default /** @type {const} */ ({
                                           itemName: {
                                             itemNameTranslationKey:
                                               'arrays.genericUrisItemName',
+                                          },
+                                          relevanceLevels: {
+                                            csaf_base: 'nice_to_know',
+                                            csaf_security_incident_response:
+                                              'nice_to_know',
+                                            csaf_informational_advisory:
+                                              'nice_to_know',
+                                            csaf_security_advisory:
+                                              'nice_to_know',
+                                            csaf_vex: 'want_to_have',
                                           },
                                         },
                                         type: 'OBJECT',
@@ -3084,6 +3203,13 @@ export default /** @type {const} */ ({
                     itemName: {
                       itemNameTranslationKey: 'arrays.productsItemName',
                       itemNameField: 'product_id',
+                    },
+                    relevanceLevels: {
+                      csaf_base: 'nice_to_know',
+                      csaf_security_incident_response: 'nice_to_know',
+                      csaf_informational_advisory: 'nice_to_know',
+                      csaf_security_advisory: 'nice_to_know',
+                      csaf_vex: 'nice_to_know',
                     },
                   },
                   type: 'OBJECT',
@@ -3296,6 +3422,15 @@ export default /** @type {const} */ ({
                                       itemNameTranslationKey:
                                         'arrays.hashesItemName',
                                     },
+                                    relevanceLevels: {
+                                      csaf_base: 'nice_to_know',
+                                      csaf_security_incident_response:
+                                        'nice_to_know',
+                                      csaf_informational_advisory:
+                                        'nice_to_know',
+                                      csaf_security_advisory: 'nice_to_know',
+                                      csaf_vex: 'nice_to_know',
+                                    },
                                   },
                                   type: 'OBJECT',
                                   metaInfo: {
@@ -3365,6 +3500,16 @@ export default /** @type {const} */ ({
                                               itemName: {
                                                 itemNameTranslationKey:
                                                   'arrays.fileHashesItemName',
+                                              },
+                                              relevanceLevels: {
+                                                csaf_base: 'mandatory',
+                                                csaf_security_incident_response:
+                                                  'mandatory',
+                                                csaf_informational_advisory:
+                                                  'mandatory',
+                                                csaf_security_advisory:
+                                                  'mandatory',
+                                                csaf_vex: 'mandatory',
                                               },
                                             },
                                             type: 'OBJECT',
@@ -3584,6 +3729,15 @@ export default /** @type {const} */ ({
                                       itemNameTranslationKey:
                                         'arrays.modelNumbersItemName',
                                     },
+                                    relevanceLevels: {
+                                      csaf_base: 'nice_to_know',
+                                      csaf_security_incident_response:
+                                        'nice_to_know',
+                                      csaf_informational_advisory:
+                                        'nice_to_know',
+                                      csaf_security_advisory: 'nice_to_know',
+                                      csaf_vex: 'nice_to_know',
+                                    },
                                   },
                                   minLength: 1,
                                   metaInfo: {},
@@ -3695,6 +3849,15 @@ export default /** @type {const} */ ({
                                       itemNameTranslationKey:
                                         'arrays.sbomUrlsItemName',
                                     },
+                                    relevanceLevels: {
+                                      csaf_base: 'nice_to_know',
+                                      csaf_security_incident_response:
+                                        'nice_to_know',
+                                      csaf_informational_advisory:
+                                        'nice_to_know',
+                                      csaf_security_advisory: 'nice_to_know',
+                                      csaf_vex: 'nice_to_know',
+                                    },
                                   },
                                   metaInfo: {},
                                   type: 'STRING',
@@ -3763,6 +3926,15 @@ export default /** @type {const} */ ({
                                     itemName: {
                                       itemNameTranslationKey:
                                         'arrays.serialNumbersItemName',
+                                    },
+                                    relevanceLevels: {
+                                      csaf_base: 'nice_to_know',
+                                      csaf_security_incident_response:
+                                        'nice_to_know',
+                                      csaf_informational_advisory:
+                                        'nice_to_know',
+                                      csaf_security_advisory: 'nice_to_know',
+                                      csaf_vex: 'nice_to_know',
                                     },
                                   },
                                   minLength: 1,
@@ -3834,6 +4006,15 @@ export default /** @type {const} */ ({
                                       itemNameTranslationKey:
                                         'arrays.skusItemName',
                                     },
+                                    relevanceLevels: {
+                                      csaf_base: 'nice_to_know',
+                                      csaf_security_incident_response:
+                                        'nice_to_know',
+                                      csaf_informational_advisory:
+                                        'nice_to_know',
+                                      csaf_security_advisory: 'nice_to_know',
+                                      csaf_vex: 'nice_to_know',
+                                    },
                                   },
                                   minLength: 1,
                                   metaInfo: {},
@@ -3903,6 +4084,15 @@ export default /** @type {const} */ ({
                                     itemName: {
                                       itemNameTranslationKey:
                                         'arrays.genericUrisItemName',
+                                    },
+                                    relevanceLevels: {
+                                      csaf_base: 'nice_to_know',
+                                      csaf_security_incident_response:
+                                        'nice_to_know',
+                                      csaf_informational_advisory:
+                                        'nice_to_know',
+                                      csaf_security_advisory: 'nice_to_know',
+                                      csaf_vex: 'want_to_have',
                                     },
                                   },
                                   type: 'OBJECT',
@@ -4045,6 +4235,13 @@ export default /** @type {const} */ ({
                       itemNameTranslationKey: 'arrays.productGroupsItemName',
                       itemNameField: 'group_id',
                     },
+                    relevanceLevels: {
+                      csaf_base: 'optional',
+                      csaf_security_incident_response: 'optional',
+                      csaf_informational_advisory: 'optional',
+                      csaf_security_advisory: 'nice_to_know',
+                      csaf_vex: 'optional',
+                    },
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -4145,6 +4342,13 @@ export default /** @type {const} */ ({
                                 itemNameTranslationKey:
                                   'arrays.productsItemName',
                               },
+                              relevanceLevels: {
+                                csaf_base: 'mandatory',
+                                csaf_security_incident_response: 'mandatory',
+                                csaf_informational_advisory: 'mandatory',
+                                csaf_security_advisory: 'mandatory',
+                                csaf_vex: 'mandatory',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -4240,6 +4444,13 @@ export default /** @type {const} */ ({
                       itemNameTranslationKey: 'arrays.relationshipsItemName',
                     },
                     addMenuItemsForChildObjects: true,
+                    relevanceLevels: {
+                      csaf_base: 'optional',
+                      csaf_security_incident_response: 'optional',
+                      csaf_informational_advisory: 'optional',
+                      csaf_security_advisory: 'want_to_have',
+                      csaf_vex: 'want_to_have',
+                    },
                   },
                   type: 'OBJECT',
                   metaInfo: {
@@ -4532,6 +4743,16 @@ export default /** @type {const} */ ({
                                             itemNameTranslationKey:
                                               'arrays.hashesItemName',
                                           },
+                                          relevanceLevels: {
+                                            csaf_base: 'nice_to_know',
+                                            csaf_security_incident_response:
+                                              'nice_to_know',
+                                            csaf_informational_advisory:
+                                              'nice_to_know',
+                                            csaf_security_advisory:
+                                              'nice_to_know',
+                                            csaf_vex: 'nice_to_know',
+                                          },
                                         },
                                         type: 'OBJECT',
                                         metaInfo: {
@@ -4604,6 +4825,16 @@ export default /** @type {const} */ ({
                                                     itemName: {
                                                       itemNameTranslationKey:
                                                         'arrays.fileHashesItemName',
+                                                    },
+                                                    relevanceLevels: {
+                                                      csaf_base: 'mandatory',
+                                                      csaf_security_incident_response:
+                                                        'mandatory',
+                                                      csaf_informational_advisory:
+                                                        'mandatory',
+                                                      csaf_security_advisory:
+                                                        'mandatory',
+                                                      csaf_vex: 'mandatory',
                                                     },
                                                   },
                                                   type: 'OBJECT',
@@ -4835,6 +5066,16 @@ export default /** @type {const} */ ({
                                             itemNameTranslationKey:
                                               'arrays.modelNumbersItemName',
                                           },
+                                          relevanceLevels: {
+                                            csaf_base: 'nice_to_know',
+                                            csaf_security_incident_response:
+                                              'nice_to_know',
+                                            csaf_informational_advisory:
+                                              'nice_to_know',
+                                            csaf_security_advisory:
+                                              'nice_to_know',
+                                            csaf_vex: 'nice_to_know',
+                                          },
                                         },
                                         minLength: 1,
                                         metaInfo: {},
@@ -4951,6 +5192,16 @@ export default /** @type {const} */ ({
                                             itemNameTranslationKey:
                                               'arrays.sbomUrlsItemName',
                                           },
+                                          relevanceLevels: {
+                                            csaf_base: 'nice_to_know',
+                                            csaf_security_incident_response:
+                                              'nice_to_know',
+                                            csaf_informational_advisory:
+                                              'nice_to_know',
+                                            csaf_security_advisory:
+                                              'nice_to_know',
+                                            csaf_vex: 'nice_to_know',
+                                          },
                                         },
                                         metaInfo: {},
                                         type: 'STRING',
@@ -5022,6 +5273,16 @@ export default /** @type {const} */ ({
                                           itemName: {
                                             itemNameTranslationKey:
                                               'arrays.serialNumbersItemName',
+                                          },
+                                          relevanceLevels: {
+                                            csaf_base: 'nice_to_know',
+                                            csaf_security_incident_response:
+                                              'nice_to_know',
+                                            csaf_informational_advisory:
+                                              'nice_to_know',
+                                            csaf_security_advisory:
+                                              'nice_to_know',
+                                            csaf_vex: 'nice_to_know',
                                           },
                                         },
                                         minLength: 1,
@@ -5096,6 +5357,16 @@ export default /** @type {const} */ ({
                                             itemNameTranslationKey:
                                               'arrays.skusItemName',
                                           },
+                                          relevanceLevels: {
+                                            csaf_base: 'nice_to_know',
+                                            csaf_security_incident_response:
+                                              'nice_to_know',
+                                            csaf_informational_advisory:
+                                              'nice_to_know',
+                                            csaf_security_advisory:
+                                              'nice_to_know',
+                                            csaf_vex: 'nice_to_know',
+                                          },
                                         },
                                         minLength: 1,
                                         metaInfo: {},
@@ -5168,6 +5439,16 @@ export default /** @type {const} */ ({
                                           itemName: {
                                             itemNameTranslationKey:
                                               'arrays.genericUrisItemName',
+                                          },
+                                          relevanceLevels: {
+                                            csaf_base: 'nice_to_know',
+                                            csaf_security_incident_response:
+                                              'nice_to_know',
+                                            csaf_informational_advisory:
+                                              'nice_to_know',
+                                            csaf_security_advisory:
+                                              'nice_to_know',
+                                            csaf_vex: 'want_to_have',
                                           },
                                         },
                                         type: 'OBJECT',
@@ -5392,6 +5673,13 @@ export default /** @type {const} */ ({
                 itemNameTranslationKey: 'arrays.vulnerabilitiesItemName',
                 itemNameField: 'title',
               },
+              relevanceLevels: {
+                csaf_base: 'want_to_have',
+                csaf_security_incident_response: 'nice_to_know',
+                csaf_informational_advisory: 'excluded',
+                csaf_security_advisory: 'mandatory',
+                csaf_vex: 'mandatory',
+              },
             },
             type: 'OBJECT',
             metaInfo: {
@@ -5444,6 +5732,13 @@ export default /** @type {const} */ ({
                         itemName: {
                           itemNameTranslationKey:
                             'arrays.acknowledgmentsItemName',
+                        },
+                        relevanceLevels: {
+                          csaf_base: 'optional',
+                          csaf_security_incident_response: 'optional',
+                          csaf_informational_advisory: 'excluded',
+                          csaf_security_advisory: 'want_to_have',
+                          csaf_vex: 'want_to_have',
                         },
                       },
                       type: 'OBJECT',
@@ -5507,6 +5802,14 @@ export default /** @type {const} */ ({
                                   itemName: {
                                     itemNameTranslationKey:
                                       'arrays.namesItemName',
+                                  },
+                                  relevanceLevels: {
+                                    csaf_base: 'want_to_have',
+                                    csaf_security_incident_response:
+                                      'want_to_have',
+                                    csaf_informational_advisory: 'excluded',
+                                    csaf_security_advisory: 'best_practice',
+                                    csaf_vex: 'want_to_have',
                                   },
                                 },
                                 minLength: 1,
@@ -5650,6 +5953,14 @@ export default /** @type {const} */ ({
                                   itemName: {
                                     itemNameTranslationKey:
                                       'arrays.urlsItemName',
+                                  },
+                                  relevanceLevels: {
+                                    csaf_base: 'nice_to_know',
+                                    csaf_security_incident_response:
+                                      'nice_to_know',
+                                    csaf_informational_advisory: 'excluded',
+                                    csaf_security_advisory: 'nice_to_know',
+                                    csaf_vex: 'nice_to_know',
                                   },
                                 },
                                 metaInfo: {},
@@ -5865,6 +6176,13 @@ export default /** @type {const} */ ({
                         itemName: {
                           itemNameTranslationKey: 'arrays.flagsItemName',
                         },
+                        relevanceLevels: {
+                          csaf_base: 'optional',
+                          csaf_security_incident_response: 'optional',
+                          csaf_informational_advisory: 'excluded',
+                          csaf_security_advisory: 'optional',
+                          csaf_vex: 'mandatory',
+                        },
                       },
                       type: 'OBJECT',
                       metaInfo: {
@@ -5953,6 +6271,14 @@ export default /** @type {const} */ ({
                                   itemName: {
                                     itemNameTranslationKey:
                                       'arrays.productGroupIdsItemName',
+                                  },
+                                  relevanceLevels: {
+                                    csaf_base: 'mandatory',
+                                    csaf_security_incident_response:
+                                      'mandatory',
+                                    csaf_informational_advisory: 'excluded',
+                                    csaf_security_advisory: 'mandatory',
+                                    csaf_vex: 'mandatory',
                                   },
                                 },
                                 minLength: 1,
@@ -6061,6 +6387,14 @@ export default /** @type {const} */ ({
                                     itemNameTranslationKey:
                                       'arrays.productsItemName',
                                   },
+                                  relevanceLevels: {
+                                    csaf_base: 'mandatory',
+                                    csaf_security_incident_response:
+                                      'mandatory',
+                                    csaf_informational_advisory: 'excluded',
+                                    csaf_security_advisory: 'mandatory',
+                                    csaf_vex: 'mandatory',
+                                  },
                                 },
                                 minLength: 1,
                                 examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -6121,6 +6455,13 @@ export default /** @type {const} */ ({
                         },
                         itemName: {
                           itemNameTranslationKey: 'arrays.idsItemName',
+                        },
+                        relevanceLevels: {
+                          csaf_base: 'optional',
+                          csaf_security_incident_response: 'nice_to_know',
+                          csaf_informational_advisory: 'excluded',
+                          csaf_security_advisory: 'nice_to_know',
+                          csaf_vex: 'mandatory',
                         },
                       },
                       type: 'OBJECT',
@@ -6241,6 +6582,13 @@ export default /** @type {const} */ ({
                         },
                         itemName: {
                           itemNameTranslationKey: 'arrays.involvementsItemName',
+                        },
+                        relevanceLevels: {
+                          csaf_base: 'optional',
+                          csaf_security_incident_response: 'nice_to_know',
+                          csaf_informational_advisory: 'excluded',
+                          csaf_security_advisory: 'nice_to_know',
+                          csaf_vex: 'nice_to_know',
                         },
                       },
                       type: 'OBJECT',
@@ -6453,6 +6801,13 @@ export default /** @type {const} */ ({
                         itemName: {
                           itemNameTranslationKey: 'arrays.notesItemName',
                           itemNameField: 'title',
+                        },
+                        relevanceLevels: {
+                          csaf_base: 'want_to_have',
+                          csaf_security_incident_response: 'want_to_have',
+                          csaf_informational_advisory: 'excluded',
+                          csaf_security_advisory: 'mandatory',
+                          csaf_vex: 'mandatory',
                         },
                       },
                       type: 'OBJECT',
@@ -6688,6 +7043,13 @@ export default /** @type {const} */ ({
                                 itemNameTranslationKey:
                                   'arrays.productsItemName',
                               },
+                              relevanceLevels: {
+                                csaf_base: 'nice_to_know',
+                                csaf_security_incident_response: 'nice_to_know',
+                                csaf_informational_advisory: 'excluded',
+                                csaf_security_advisory: 'nice_to_know',
+                                csaf_vex: 'optional',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -6753,6 +7115,13 @@ export default /** @type {const} */ ({
                               itemName: {
                                 itemNameTranslationKey:
                                   'arrays.productsItemName',
+                              },
+                              relevanceLevels: {
+                                csaf_base: 'nice_to_know',
+                                csaf_security_incident_response: 'nice_to_know',
+                                csaf_informational_advisory: 'excluded',
+                                csaf_security_advisory: 'nice_to_know',
+                                csaf_vex: 'optional',
                               },
                             },
                             minLength: 1,
@@ -6820,6 +7189,13 @@ export default /** @type {const} */ ({
                                 itemNameTranslationKey:
                                   'arrays.productsItemName',
                               },
+                              relevanceLevels: {
+                                csaf_base: 'want_to_have',
+                                csaf_security_incident_response: 'nice_to_know',
+                                csaf_informational_advisory: 'excluded',
+                                csaf_security_advisory: 'best_practice',
+                                csaf_vex: 'mandatory',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -6885,6 +7261,13 @@ export default /** @type {const} */ ({
                               itemName: {
                                 itemNameTranslationKey:
                                   'arrays.productsItemName',
+                              },
+                              relevanceLevels: {
+                                csaf_base: 'want_to_have',
+                                csaf_security_incident_response: 'nice_to_know',
+                                csaf_informational_advisory: 'excluded',
+                                csaf_security_advisory: 'best_practice',
+                                csaf_vex: 'mandatory',
                               },
                             },
                             minLength: 1,
@@ -6952,6 +7335,13 @@ export default /** @type {const} */ ({
                                 itemNameTranslationKey:
                                   'arrays.productsItemName',
                               },
+                              relevanceLevels: {
+                                csaf_base: 'nice_to_know',
+                                csaf_security_incident_response: 'nice_to_know',
+                                csaf_informational_advisory: 'excluded',
+                                csaf_security_advisory: 'nice_to_know',
+                                csaf_vex: 'mandatory',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -7017,6 +7407,13 @@ export default /** @type {const} */ ({
                               itemName: {
                                 itemNameTranslationKey:
                                   'arrays.productsItemName',
+                              },
+                              relevanceLevels: {
+                                csaf_base: 'nice_to_know',
+                                csaf_security_incident_response: 'nice_to_know',
+                                csaf_informational_advisory: 'excluded',
+                                csaf_security_advisory: 'nice_to_know',
+                                csaf_vex: 'optional',
                               },
                             },
                             minLength: 1,
@@ -7084,6 +7481,13 @@ export default /** @type {const} */ ({
                                 itemNameTranslationKey:
                                   'arrays.productsItemName',
                               },
+                              relevanceLevels: {
+                                csaf_base: 'want_to_have',
+                                csaf_security_incident_response: 'nice_to_know',
+                                csaf_informational_advisory: 'excluded',
+                                csaf_security_advisory: 'want_to_have',
+                                csaf_vex: 'nice_to_know',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -7150,6 +7554,13 @@ export default /** @type {const} */ ({
                                 itemNameTranslationKey:
                                   'arrays.productsItemName',
                               },
+                              relevanceLevels: {
+                                csaf_base: 'nice_to_know',
+                                csaf_security_incident_response: 'nice_to_know',
+                                csaf_informational_advisory: 'excluded',
+                                csaf_security_advisory: 'nice_to_know',
+                                csaf_vex: 'mandatory',
+                              },
                             },
                             minLength: 1,
                             examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -7207,6 +7618,13 @@ export default /** @type {const} */ ({
                         },
                         itemName: {
                           itemNameTranslationKey: 'arrays.referencesItemName',
+                        },
+                        relevanceLevels: {
+                          csaf_base: 'nice_to_know',
+                          csaf_security_incident_response: 'want_to_have',
+                          csaf_informational_advisory: 'excluded',
+                          csaf_security_advisory: 'best_practice',
+                          csaf_vex: 'best_practice',
                         },
                       },
                       type: 'OBJECT',
@@ -7392,6 +7810,13 @@ export default /** @type {const} */ ({
                         itemName: {
                           itemNameTranslationKey: 'arrays.remediationsItemName',
                         },
+                        relevanceLevels: {
+                          csaf_base: 'want_to_have',
+                          csaf_security_incident_response: 'want_to_have',
+                          csaf_informational_advisory: 'excluded',
+                          csaf_security_advisory: 'best_practice',
+                          csaf_vex: 'mandatory',
+                        },
                       },
                       type: 'OBJECT',
                       metaInfo: {
@@ -7569,6 +7994,13 @@ export default /** @type {const} */ ({
                                     itemNameTranslationKey:
                                       'arrays.entitlementsItemName',
                                   },
+                                  relevanceLevels: {
+                                    csaf_base: 'optional',
+                                    csaf_security_incident_response: 'optional',
+                                    csaf_informational_advisory: 'excluded',
+                                    csaf_security_advisory: 'nice_to_know',
+                                    csaf_vex: 'nice_to_know',
+                                  },
                                 },
                                 minLength: 1,
                                 metaInfo: {},
@@ -7633,6 +8065,14 @@ export default /** @type {const} */ ({
                                   itemName: {
                                     itemNameTranslationKey:
                                       'arrays.productGroupIdsItemName',
+                                  },
+                                  relevanceLevels: {
+                                    csaf_base: 'mandatory',
+                                    csaf_security_incident_response:
+                                      'mandatory',
+                                    csaf_informational_advisory: 'excluded',
+                                    csaf_security_advisory: 'mandatory',
+                                    csaf_vex: 'mandatory',
                                   },
                                 },
                                 minLength: 1,
@@ -7702,6 +8142,14 @@ export default /** @type {const} */ ({
                                   itemName: {
                                     itemNameTranslationKey:
                                       'arrays.productsItemName',
+                                  },
+                                  relevanceLevels: {
+                                    csaf_base: 'mandatory',
+                                    csaf_security_incident_response:
+                                      'mandatory',
+                                    csaf_informational_advisory: 'excluded',
+                                    csaf_security_advisory: 'mandatory',
+                                    csaf_vex: 'mandatory',
                                   },
                                 },
                                 minLength: 1,
@@ -7921,6 +8369,13 @@ export default /** @type {const} */ ({
                         },
                         itemName: {
                           itemNameTranslationKey: 'arrays.scoresItemName',
+                        },
+                        relevanceLevels: {
+                          csaf_base: 'nice_to_know',
+                          csaf_security_incident_response: 'nice_to_know',
+                          csaf_informational_advisory: 'excluded',
+                          csaf_security_advisory: 'best_practice',
+                          csaf_vex: 'mandatory',
                         },
                       },
                       type: 'OBJECT',
@@ -8734,6 +9189,14 @@ export default /** @type {const} */ ({
                                     itemNameTranslationKey:
                                       'arrays.productsItemName',
                                   },
+                                  relevanceLevels: {
+                                    csaf_base: 'mandatory',
+                                    csaf_security_incident_response:
+                                      'mandatory',
+                                    csaf_informational_advisory: 'mandatory',
+                                    csaf_security_advisory: 'mandatory',
+                                    csaf_vex: 'mandatory',
+                                  },
                                 },
                                 minLength: 1,
                                 examples: ['CSAFPID-0004', 'CSAFPID-0008'],
@@ -8794,6 +9257,13 @@ export default /** @type {const} */ ({
                         },
                         itemName: {
                           itemNameTranslationKey: 'arrays.threatsItemName',
+                        },
+                        relevanceLevels: {
+                          csaf_base: 'optional',
+                          csaf_security_incident_response: 'nice_to_know',
+                          csaf_informational_advisory: 'excluded',
+                          csaf_security_advisory: 'nice_to_know',
+                          csaf_vex: 'mandatory',
                         },
                       },
                       type: 'OBJECT',
@@ -8956,6 +9426,14 @@ export default /** @type {const} */ ({
                                     itemNameTranslationKey:
                                       'arrays.productGroupIdsItemName',
                                   },
+                                  relevanceLevels: {
+                                    csaf_base: 'nice_to_know',
+                                    csaf_security_incident_response:
+                                      'nice_to_know',
+                                    csaf_informational_advisory: 'excluded',
+                                    csaf_security_advisory: 'best_practice',
+                                    csaf_vex: 'mandatory',
+                                  },
                                 },
                                 minLength: 1,
                                 examples: [
@@ -9024,6 +9502,14 @@ export default /** @type {const} */ ({
                                   itemName: {
                                     itemNameTranslationKey:
                                       'arrays.productsItemName',
+                                  },
+                                  relevanceLevels: {
+                                    csaf_base: 'want_to_have',
+                                    csaf_security_incident_response:
+                                      'want_to_have',
+                                    csaf_informational_advisory: 'excluded',
+                                    csaf_security_advisory: 'best_practice',
+                                    csaf_vex: 'mandatory',
                                   },
                                 },
                                 minLength: 1,

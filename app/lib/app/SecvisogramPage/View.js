@@ -1149,10 +1149,11 @@ function View({
      */
     const resolveSubProperty = (path) =>
       path.reduce((property, pathSegment) => {
-        return (
-          property?.metaInfo.propertyList?.find((p) => p.key === pathSegment) ??
-          null
-        )
+        return property?.type === 'ARRAY'
+          ? property?.metaInfo.arrayType ?? null
+          : property?.metaInfo.propertyList?.find(
+              (p) => p.key === pathSegment
+            ) ?? null
       }, /** @type {typeof property | null} */ (property))
 
     for (let i = path.length; i >= 0; --i) {
