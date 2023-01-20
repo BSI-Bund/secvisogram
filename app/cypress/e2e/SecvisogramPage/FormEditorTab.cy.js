@@ -238,6 +238,28 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     ).should('not.exist')
   })
 
+  it('selects the closest relevant path if the selected becomes irrelevant when deep down', function () {
+    cy.intercept(
+      '/.well-known/appspecific/de.bsi.secvisogram.json',
+      getLoginEnabledConfig()
+    ).as('wellKnownAppConfig')
+
+    cy.visit('?tab=EDITOR')
+    cy.wait('@wellKnownAppConfig')
+
+    cy.get(`[data-testid="menu_entry-/vulnerabilities-add_item_button"]`).click(
+      { force: true }
+    )
+    cy.get(
+      `[data-testid="menu_entry-/vulnerabilities/0/scores-add_item_button"]`
+    ).click({ force: true })
+    cy.get(
+      `[data-testid="menu_entry-/vulnerabilities/0/scores/0/cvss_v3"]`
+    ).click()
+    cy.get(`[data-testid="layer-button-mandatory"]`).click()
+    cy.get(`[data-testid="vulnerabilities-0-infoButton"]`).should('not.exist')
+  })
+
   it('shows errors in sidebar according to selected path', function () {
     cy.intercept(
       '/.well-known/appspecific/de.bsi.secvisogram.json',
