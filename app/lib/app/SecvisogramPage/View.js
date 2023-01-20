@@ -1139,39 +1139,32 @@ function View({
     const documentCategory = formValues.doc.document.category
     const path = selectedPath
 
-    const property = /** @type {import('./shared/types.js').Property} */ (
-      schema
-    )
+    let property =
+      /** @type {import('./shared/types.js').Property | undefined} */ (schema)
 
-    /**
-     * @param {string[]} path
-     * @returns
-     */
-    const resolveSubProperty = (path) =>
-      path.reduce((property, pathSegment) => {
-        return property?.type === 'ARRAY'
-          ? property?.metaInfo.arrayType ?? null
-          : property?.metaInfo.propertyList?.find(
-              (p) => p.key === pathSegment
-            ) ?? null
-      }, /** @type {typeof property | null} */ (property))
-
-    for (let i = path.length; i >= 0; --i) {
-      const subPath = path.slice(0, i)
-      const subProperty = resolveSubProperty(subPath)
-      if (!subProperty) break
+    /** @type {string[]} */
+    let pathToSet = []
+    for (let i = 0; i < path.length; ++i) {
+      const pathSegment = path[i]
+      property =
+        property?.type === 'ARRAY'
+          ? property?.metaInfo.arrayType
+          : property?.metaInfo.propertyList?.find((p) => p.key === pathSegment)
       if (
+        property &&
         isPropertyRelevant({
           relevanceLevels,
           category: documentCategory,
-          property: subProperty,
+          property,
           selectedRelevanceLevel: level,
         })
       ) {
-        setSelectedPath(subPath)
+        pathToSet = path.slice(0, i + 1)
+      } else {
         break
       }
     }
+    setSelectedPath(pathToSet)
   }
 }
 
