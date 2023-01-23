@@ -1,6 +1,6 @@
-import { t } from 'i18next'
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { t } from 'i18next'
 import { set } from 'lodash/fp.js'
 import React from 'react'
 import Hotkeys from 'react-hot-keys'
@@ -10,24 +10,26 @@ import AppConfigContext from '../shared/context/AppConfigContext.js'
 import AppErrorContext from '../shared/context/AppErrorContext.js'
 import UserInfoContext from '../shared/context/UserInfoContext.js'
 import { canCreateDocuments } from '../shared/permissions.js'
+import pruneEmpty from '../shared/pruneEmpty.js'
+import isPropertyRelevant from './shared/isPropertyRelevant.js'
 import AboutDialog from './View/AboutDialog.js'
 import CsafTab from './View/CsafTab.js'
 import ExportDocumentDialog from './View/ExportDocumentDialog.js'
+import schema from './View/FormEditor/schema.js'
+import RelevanceLevelContext from './View/FormEditor/shared/context/RelevanceLevelContext.js'
+import FormEditor from './View/FormEditorTab.js'
 import JsonEditorTab from './View/JsonEditorTab.js'
 import LoadingIndicator from './View/LoadingIndicator.js'
 import NewDocumentDialog from './View/NewDocumentDialog.js'
 import PreviewTab from './View/PreviewTab.js'
 import Reducer from './View/Reducer.js'
 import Alert from './View/shared/Alert.js'
+import SelectedPathContext from './View/shared/context/SelectedPathContext.js'
 import SideBarContext from './View/shared/context/SideBarContext.js'
 import DocumentEditorContext from './View/shared/DocumentEditorContext.js'
 import useDebounce from './View/shared/useDebounce.js'
 import SideBar from './View/SideBar/SideBar.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
-import FormEditor from './View/FormEditorTab.js'
-import SelectedPathContext from './View/shared/context/SelectedPathContext.js'
-import RelevanceLevelContext from './View/FormEditor/shared/context/RelevanceLevelContext.js'
-import pruneEmpty from '../shared/pruneEmpty.js'
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -711,9 +713,13 @@ function View({
     'excluded',
   ]
 
-  const [selectedRelevanceLevel, setSelectedRelevanceLevel] = React.useState(
+  const [selectedRelevanceLevel, _setSelectedRelevanceLevel] = React.useState(
     relevanceLevels[4]
   )
+  const setSelectedRelevanceLevel = (/** @type {string} */ level) => {
+    selectClosestRelevantPath(level)
+    _setSelectedRelevanceLevel(level)
+  }
 
   const [backendVersion, setBackendVersion] = React.useState('')
 
@@ -734,7 +740,6 @@ function View({
         <RelevanceLevelContext.Provider
           value={{
             selectedRelevanceLevel,
-            setSelectedRelevanceLevel,
             relevanceLevels,
           }}
         >
@@ -1123,6 +1128,44 @@ function View({
       </SelectedPathContext.Provider>
     </DocumentEditorContext.Provider>
   )
+
+  /**
+   * This searches the tree up from the current selected path for a relevant
+   * path based on the given level and selects it.
+   *
+   * @param {string} level
+   */
+  function selectClosestRelevantPath(level) {
+    const documentCategory = formValues.doc.document.category
+    const path = selectedPath
+
+    let property =
+      /** @type {import('./shared/types.js').Property | undefined} */ (schema)
+
+    /** @type {string[]} */
+    let pathToSet = []
+    for (let i = 0; i < path.length; ++i) {
+      const pathSegment = path[i]
+      property =
+        property?.type === 'ARRAY'
+          ? property?.metaInfo.arrayType
+          : property?.metaInfo.propertyList?.find((p) => p.key === pathSegment)
+      if (
+        property &&
+        isPropertyRelevant({
+          relevanceLevels,
+          category: documentCategory,
+          property,
+          selectedRelevanceLevel: level,
+        })
+      ) {
+        pathToSet = path.slice(0, i + 1)
+      } else {
+        break
+      }
+    }
+    setSelectedPath(pathToSet)
+  }
 }
 
 export default View

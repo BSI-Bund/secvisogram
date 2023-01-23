@@ -2,6 +2,7 @@
 
 import createFileName from '../../lib/shared/createFileName'
 import pruneEmpty from '../../lib/app/shared/pruneEmpty.js'
+import isPropertyRelevant from '../../lib/app/SecvisogramPage/shared/isPropertyRelevant.js'
 
 describe('Unit Test Functions', function () {
   context('createFileName.js', function () {
@@ -124,6 +125,84 @@ describe('Unit Test Functions', function () {
       const expectedOutput = data[1]
       it('should prune the input to expected output', function () {
         expect(pruneEmpty(input)).to.deep.eq(expectedOutput)
+      })
+    })
+  })
+
+  context('isPropertyRelevant.js', function () {
+    const relevanceLevels = [
+      'mandatory',
+      'best_practice',
+      'want_to_have',
+      'nice_to_know',
+      'optional',
+      'excluded',
+    ]
+    const property = {
+      metaData: {
+        relevanceLevels: {
+          csaf_base: 'mandatory',
+          csaf_security_incident_response: 'best_practice',
+          csaf_informational_advisory: 'want_to_have',
+          csaf_security_advisory: 'nice_to_know',
+          csaf_vex: 'optional',
+        },
+      },
+    }
+
+    const testData = [
+      [
+        {
+          relevanceLevels,
+          category: 'csaf_base',
+          property,
+          selectedRelevanceLevel: 'mandatory',
+        },
+        true,
+      ],
+      [
+        {
+          relevanceLevels,
+          category: 'csaf_base',
+          property,
+          selectedRelevanceLevel: 'optional',
+        },
+        true,
+      ],
+      [
+        {
+          relevanceLevels,
+          category: 'csaf_security_incident_response',
+          property,
+          selectedRelevanceLevel: 'mandatory',
+        },
+        false,
+      ],
+      [
+        {
+          relevanceLevels,
+          category: 'csaf_security_incident_response',
+          property,
+          selectedRelevanceLevel: 'best_practice',
+        },
+        true,
+      ],
+      [
+        {
+          relevanceLevels,
+          category: undefined,
+          property,
+          selectedRelevanceLevel: 'mandatory',
+        },
+        true,
+      ],
+    ]
+    testData.forEach((data) => {
+      const input = data[0]
+      const expectedOutput = data[1]
+      it('should correctly identify if field is relevant', function () {
+        // @ts-ignore
+        expect(isPropertyRelevant(input)).to.eq(expectedOutput)
       })
     })
   })

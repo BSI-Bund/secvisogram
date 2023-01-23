@@ -165,11 +165,21 @@ function convertSchema(subschema, defs, path) {
   }
 
   if (subschema.type === 'array') {
+    const convertedSchema = convertSchema(subschema.items, defs, [
+      ...path,
+      'items',
+    ])
     return {
       ...commonUiSchemaFields,
       type: 'ARRAY',
       metaInfo: {
-        arrayType: convertSchema(subschema.items, defs, [...path, 'items']),
+        arrayType: {
+          ...convertedSchema,
+          metaData: {
+            ...convertedSchema.metaData,
+            relevanceLevels: commonUiSchemaFields.metaData?.relevanceLevels,
+          },
+        },
       },
     }
   }

@@ -7,14 +7,15 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { t } from 'i18next'
 import React from 'react'
+import AppConfigContext from '../../../../../shared/context/AppConfigContext.js'
+import UserInfoContext from '../../../../../shared/context/UserInfoContext.js'
+import isPropertyRelevant from '../../../../shared/isPropertyRelevant.js'
 import SelectedPathContext from '../../../shared/context/SelectedPathContext.js'
 import SideBarContext from '../../../shared/context/SideBarContext.js'
 import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
-import { getErrorTextColor } from '../GenericEditor.js'
 import RelevanceLevelContext from '../../shared/context/RelevanceLevelContext.js'
-import AppConfigContext from '../../../../../shared/context/AppConfigContext.js'
-import UserInfoContext from '../../../../../shared/context/UserInfoContext.js'
+import { getErrorTextColor } from '../GenericEditor.js'
 
 /**
  * @param {object} props
@@ -152,14 +153,13 @@ export default function ObjectEditor({
           </li>
         ) : null}
         {menuNodes.map((menuItem, menuItemIndex) => {
-          const relevanceLevelForCategory = category
-            ? (menuItem.property.metaData?.relevanceLevels || {})[category] ||
-              ''
-            : ''
           if (
-            category &&
-            relevanceLevels.indexOf(relevanceLevelForCategory) >
-              relevanceLevels.indexOf(selectedRelevanceLevel)
+            !isPropertyRelevant({
+              relevanceLevels,
+              property: menuItem.property,
+              category,
+              selectedRelevanceLevel,
+            })
           ) {
             return null
           }
