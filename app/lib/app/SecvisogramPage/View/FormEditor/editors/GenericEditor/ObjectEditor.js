@@ -128,7 +128,17 @@ export default function ObjectEditor({
   const renderMenuNodes = (menuNodes, level = 0) => {
     return (
       <ul>
-        {level === 0 && fieldProperties?.length ? (
+        {level === 0 &&
+        fieldProperties?.length &&
+        fieldProperties?.some(
+          (p) =>
+            isPropertyRelevant({
+              relevanceLevels,
+              property: p,
+              category,
+              selectedRelevanceLevel,
+            })
+        ) ? (
           <li
             className={
               (!selectedMenuPath.length ? 'font-bold' : '') +
@@ -144,6 +154,7 @@ export default function ObjectEditor({
             </div>
             <button
               className="italic text-left w-full px-2 h-9 hover:underline"
+              data-testid={`${instancePath.join('/')}-fieldButton`}
               onClick={() => {
                 setSelectedPath(instancePath)
               }}
