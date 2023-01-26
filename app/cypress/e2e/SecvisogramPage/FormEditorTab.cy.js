@@ -200,23 +200,23 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.visit('?tab=EDITOR')
     cy.wait('@wellKnownAppConfig')
 
-    cy.get(`[data-testid="menu_entry-/document"]`).click()
-
-    // with default category csaf_base publisher should be displayed
+    // with default category csaf_security_advisory publisher should be displayed
     cy.get(`[data-testid="layer-button-best_practice"]`).click()
     cy.get(`[data-testid="menu_entry-/document/publisher"]`).should('exist')
 
-    // aggregate severity menu should not be displayed for level best_practice
-    cy.get(`[data-testid="menu_entry-/document/aggregate_severity"]`).should(
+    // relationships menu should not be displayed for level best_practice
+    cy.get(`[data-testid="menu_entry-/product_tree/relationships"]`).should(
       'not.exist'
     )
+
+    cy.get(`[data-testid="menu_entry-/document"]`).click()
 
     // the language attribute should not be displayed for level mandatory
     cy.get(`[data-testid="layer-button-mandatory"]`).click()
     cy.get(`[data-testid="attribute-document-lang"]`).should('not.exist')
 
-    // it should exist for level nice_to_know
-    cy.get(`[data-testid="layer-button-nice_to_know"]`).click()
+    // it should exist for level want_to_have
+    cy.get(`[data-testid="layer-button-want_to_have"]`).click()
     cy.get(`[data-testid="attribute-document-lang"]`).should('exist')
   })
 
@@ -229,6 +229,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.visit('?tab=EDITOR')
     cy.wait('@wellKnownAppConfig')
 
+    cy.get(`[data-testid="layer-button-optional"]`).click()
     cy.get(`[data-testid="menu_entry-/document/distribution"]`).click()
     cy.get(`[data-testid="document/distribution-fieldButton"]`).should('exist')
     cy.get(`[data-testid="layer-button-want_to_have"]`).click()
@@ -246,7 +247,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.visit('?tab=EDITOR')
     cy.wait('@wellKnownAppConfig')
 
-    cy.get(`[data-testid="menu_entry-/document"]`).click()
+    cy.get(`[data-testid="layer-button-optional"]`).click()
     cy.get(`[data-testid="menu_entry-/document/tracking"]`).click()
     cy.get(`[data-testid="menu_entry-/document/tracking/generator"]`).click()
     cy.get(`[data-testid="layer-button-best_practice"]`).click()
@@ -274,7 +275,9 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       `[data-testid="menu_entry-/vulnerabilities/0/scores/0/cvss_v3"]`
     ).click()
     cy.get(`[data-testid="layer-button-mandatory"]`).click()
-    cy.get(`[data-testid="vulnerabilities-0-infoButton"]`).should('not.exist')
+    cy.get(`[data-testid="vulnerabilities-0-scores-infoButton"]`).should(
+      'not.exist'
+    )
   })
 
   it('shows errors in sidebar according to selected path', function () {
@@ -313,6 +316,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.visit('?tab=EDITOR')
     cy.wait('@wellKnownAppConfig')
 
+    cy.get(`[data-testid="layer-button-optional"]`).click()
     cy.get(`[data-testid="menu_entry-/document/tracking"]`).click()
     cy.get(`[data-testid="menu_entry-/document/tracking/generator"]`).click()
     cy.get(
@@ -337,6 +341,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       cy.wait('@wellKnownAppConfig')
       cy.wait('@apiGetUserInfo')
 
+      cy.get(`[data-testid="layer-button-optional"]`).click()
       cy.get(`[data-testid="menu_entry-/document/tracking"]`).click()
       cy.get(`[data-testid="menu_entry-/document/tracking/generator"]`).click()
       cy.get(
