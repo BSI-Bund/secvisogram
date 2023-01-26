@@ -714,7 +714,7 @@ function View({
   ]
 
   const [selectedRelevanceLevel, _setSelectedRelevanceLevel] = React.useState(
-    relevanceLevels[4]
+    relevanceLevels[2]
   )
   const setSelectedRelevanceLevel = (/** @type {string} */ level) => {
     selectClosestRelevantPath(level)
