@@ -3,12 +3,15 @@
 <!-- TOC depthfrom:2 depthto:3 -->
 - [About The Project](#about-the-project)
 - [Getting started](#getting-started)
+  - [Deploying to Production](#deploying-to-production)
+  - [Configure keybindings](#configure-keybindings)
 - [How to use](#how-to-use)
   - [Basic concepts](#basic-concepts)
   - [Form Editor](#form-editor)
   - [JSON Editor](#json-editor)
   - [Preview HTML view](#preview-html-view)
   - [CSAF Document JSON view](#csaf-document-json-view)
+- [Documentation](#documentation)
 - [Contributing](#contributing)
   - [Developer Guide, Architecture and Technical Design](#developer-guide-architecture-and-technical-design)
   - [Custom Preview Templates](#custom-preview-templates)
@@ -81,7 +84,7 @@ Please refer to [`DEVELOPMENT.md`](DEVELOPMENT.md) for a detailed description on
 The following hotkeys are available by default:
 
 | shortcut         | effect                                 | comment                                   |
-|------------------|----------------------------------------|-------------------------------------------|
+| ---------------- | -------------------------------------- | ----------------------------------------- |
 | CTRL + O         | New / Open                             | Opens dialog                              |
 | CTRL + S         | Save                                   | Opens dialog                              |
 | CTRL + ALT + V   | Validate                               |                                           |
@@ -128,6 +131,9 @@ To start a new document after saving, click the "New" button. Alternatively, cli
 
 When leaving a view without saving, e.g. reloading the application, a warning is displayed, and the user must confirm prior to leaving the page.
 
+The `document/tracking/engine` data of new documents will be prefilled with `name` and `version` of Secvisogram.
+When running with the [CSAF CMS Server](https://github.com/secvisogram/csaf-cms-backend), the backend will manage these fields along with the tracking id, and revision history.
+
 [(back to top)](#bsi-secvisogram-csaf-20-web-editor)
 
 ### Form Editor
@@ -153,6 +159,9 @@ When running with the [CSAF CMS Server](https://github.com/secvisogram/csaf-cms-
 
 _Identifying & Solving Validation issues_
 Opening the error view in the sidebar will reveal a linked list of validation issues. Here you can click on any validation issue and directly jump to the affected form elements.
+
+The Form Editor's interface and behavior can be configured by adjusting field [metadata](app/scripts/importUiMetaData/metaData.js).
+For more detail, see the corresponding [readme](app/scripts/importUiMetaData/README.md).
 
 [(back to top)](#bsi-secvisogram-csaf-20-web-editor)
 
