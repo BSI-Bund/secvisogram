@@ -162,11 +162,10 @@ export async function getAdvisories() {
 
 export async function callAboutInfo() {
   return await new ApiRequest(new Request('/api/v1/about'))
-    .setContentType('text/html')
+    .setContentType('application/json')
     .send()
 }
 
 export async function getAboutInfo() {
-  const res = await new CsrfApiRequest(new Request('/api/v1/about/')).send()
-  return await res.json()
+  return callAboutInfo().then((r) => r.json())
 }
