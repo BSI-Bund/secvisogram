@@ -1732,7 +1732,6 @@ export default /** @type {const} */ ({
                               description:
                                 'Contains the version string used in an existing document with the same content.',
                               metaData: {
-                                uiType: 'STRING_MULTI_LINE',
                                 userDocumentation: {
                                   specification:
                                     'docs/user/document/tracking/revision_history/revision/legacy_version-spec.en.md',

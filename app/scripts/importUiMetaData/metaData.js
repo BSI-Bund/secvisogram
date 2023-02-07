@@ -952,7 +952,6 @@ export default {
       description:
         'DocumentTrackingRevisionHistoryItemsLegacyVersionDescription',
     },
-    uiType: 'STRING_MULTI_LINE',
     disable: {
       ifStandaloneMode: false,
       ifServerMode: true,
