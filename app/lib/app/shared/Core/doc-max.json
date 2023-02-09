@@ -61,6 +61,7 @@
       "revision_history": [
         {
           "date": "",
+          "legacy_version": "",
           "number": "",
           "summary": ""
         }
@@ -91,6 +92,7 @@
                 "filename": ""
               }
             ],
+            "model_numbers": [""],
             "purl": "",
             "sbom_urls": [""],
             "serial_numbers": [""],
@@ -122,6 +124,7 @@
               "filename": ""
             }
           ],
+          "model_numbers": [""],
           "purl": "",
           "sbom_urls": [""],
           "serial_numbers": [""],
@@ -138,7 +141,7 @@
     "product_groups": [
       {
         "group_id": "",
-        "product_ids": [""],
+        "product_ids": ["", ""],
         "summary": ""
       }
     ],
@@ -161,6 +164,7 @@
                 "filename": ""
               }
             ],
+            "model_numbers": [""],
             "purl": "",
             "sbom_urls": [""],
             "serial_numbers": [""],
@@ -194,10 +198,20 @@
         "name": ""
       },
       "discovery_date": "",
-      "id": {
-        "system_name": "",
-        "text": ""
-      },
+      "flags": [
+        {
+          "date": "",
+          "group_ids": [""],
+          "label": "",
+          "product_ids": [""]
+        }
+      ],
+      "ids": [
+        {
+          "system_name": "",
+          "text": ""
+        }
+      ],
       "involvements": [
         {
           "date": "",
