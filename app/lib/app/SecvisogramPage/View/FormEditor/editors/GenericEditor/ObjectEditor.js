@@ -16,6 +16,32 @@ import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import RelevanceLevelContext from '../../shared/context/RelevanceLevelContext.js'
 import { getErrorTextColor } from '../GenericEditor.js'
+import { uniqueGroupId, uniqueProductId } from '../../shared/unique-id.js'
+
+/**
+ * @param {import('../../shared/types').Property} property
+ */
+function getPrefilledObject(property) {
+  const uiType = property.metaData?.uiType
+  if (uiType === 'WITH_GENERATED_PRODUCT_ID') {
+    return { product_id: uniqueProductId() }
+  } else if (uiType === 'WITH_GENERATED_GROUP_ID') {
+    return { group_id: uniqueGroupId() }
+  }
+  let ret = {}
+
+  property.metaInfo.arrayType?.metaInfo.propertyList?.forEach((p) => {
+    if (p.metaData?.uiType === 'WITH_GENERATED_PRODUCT_ID') {
+      // @ts-ignore
+      ret[p.key] = { product_id: uniqueProductId() }
+    } else if (p.metaData?.uiType === 'WITH_GENERATED_GROUP_ID') {
+      // @ts-ignore
+      ret[p.key] = { group_id: uniqueGroupId() }
+    }
+  })
+
+  return ret
+}
 
 /**
  * @param {object} props
@@ -130,14 +156,13 @@ export default function ObjectEditor({
       <ul>
         {level === 0 &&
         fieldProperties?.length &&
-        fieldProperties?.some(
-          (p) =>
-            isPropertyRelevant({
-              relevanceLevels,
-              property: p,
-              category,
-              selectedRelevanceLevel,
-            })
+        fieldProperties?.some((p) =>
+          isPropertyRelevant({
+            relevanceLevels,
+            property: p,
+            category,
+            selectedRelevanceLevel,
+          })
         ) ? (
           <li
             className={
@@ -273,7 +298,7 @@ export default function ObjectEditor({
                               menuItem.property.metaInfo.arrayType?.type
                             const newItem =
                               childType === 'OBJECT'
-                                ? {}
+                                ? getPrefilledObject(menuItem.property)
                                 : childType === 'ARRAY'
                                 ? []
                                 : childType === 'STRING'

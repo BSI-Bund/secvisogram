@@ -18,6 +18,7 @@ import AppConfigContext from '../../../../../shared/context/AppConfigContext.js'
 import UserInfoContext from '../../../../../shared/context/UserInfoContext.js'
 import { set } from 'lodash/fp.js'
 import pruneEmpty from '../../../../../shared/pruneEmpty.js'
+import { uniqueGroupId, uniqueProductId } from '../../shared/unique-id.js'
 
 /**
  * @param {object} props
@@ -252,7 +253,13 @@ function Menu({ instancePath, level = 1, ...props }) {
                             : []
                           const value =
                             childProperty.type === 'OBJECT'
-                              ? {}
+                              ? property.metaData?.uiType ===
+                                'WITH_GENERATED_PRODUCT_ID'
+                                ? { product_id: uniqueProductId() }
+                                : property.metaData?.uiType ===
+                                  'WITH_GENERATED_GROUP_ID'
+                                ? { group_id: uniqueGroupId() }
+                                : {}
                               : childProperty.type === 'ARRAY'
                               ? []
                               : childProperty.type === 'STRING'

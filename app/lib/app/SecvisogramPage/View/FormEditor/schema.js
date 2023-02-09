@@ -2124,6 +2124,7 @@ export default /** @type {const} */ ({
                             title: 'FullProductNameTitle',
                             description: 'FullProductNameDescription',
                           },
+                          uiType: 'WITH_GENERATED_PRODUCT_ID',
                         },
                         type: 'OBJECT',
                         metaInfo: {
@@ -3178,6 +3179,7 @@ export default /** @type {const} */ ({
                   title: 'ProductTreeFullProductNamesTitle',
                   description: 'ProductTreeFullProductNamesDescription',
                 },
+                uiType: 'WITH_GENERATED_PRODUCT_ID',
               },
               type: 'ARRAY',
               metaInfo: {
@@ -4210,6 +4212,7 @@ export default /** @type {const} */ ({
                   title: 'ProductTreeProductGroupsTitle',
                   description: 'ProductTreeProductGroupsDescription',
                 },
+                uiType: 'WITH_GENERATED_GROUP_ID',
               },
               type: 'ARRAY',
               metaInfo: {
@@ -4521,6 +4524,7 @@ export default /** @type {const} */ ({
                             description: 'FullProductNameDescription',
                           },
                           addMenuItemsForChildObjects: true,
+                          uiType: 'WITH_GENERATED_PRODUCT_ID',
                         },
                         type: 'OBJECT',
                         metaInfo: {
