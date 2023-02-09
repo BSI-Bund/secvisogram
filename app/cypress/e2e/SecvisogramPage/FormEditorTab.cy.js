@@ -384,4 +384,43 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       ).should('have.class', 'text-green-600')
     }
   })
+
+  it('prefills product IDs', function () {
+    for (const user of getUsers()) {
+      cy.intercept(
+        '/.well-known/appspecific/de.bsi.secvisogram.json',
+        getLoginEnabledConfig()
+      ).as('wellKnownAppConfig')
+      cy.intercept(getLoginEnabledConfig().userInfoUrl, getUserInfo(user)).as(
+        'apiGetUserInfo'
+      )
+
+      cy.visit('?tab=EDITOR')
+      cy.wait('@wellKnownAppConfig')
+      cy.wait('@apiGetUserInfo')
+
+      // check if branch full product name is filled with a generated product ID
+      cy.get(
+        '[data-testid="menu_entry-/product_tree/branches-add_item_button"]'
+      ).click({ force: true })
+      cy.get(
+        '[data-testid="menu_entry-/product_tree/branches/0/product"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-product_tree-branches-0-product-product_id"] input'
+      ).should('have.value', 'CSAFPID-0001')
+
+      // check if a new relationship gets assigned the next generated product ID
+      cy.get(`[data-testid="layer-button-optional"]`).click()
+      cy.get(
+        `[data-testid="menu_entry-/product_tree/relationships-add_item_button"]`
+      ).click({ force: true })
+      cy.get(
+        `[data-testid="menu_entry-/product_tree/relationships/0/full_product_name"]`
+      ).click()
+      cy.get(
+        '[data-testid="attribute-product_tree-relationships-0-full_product_name-product_id"] input'
+      ).should('have.value', 'CSAFPID-0002')
+    }
+  })
 })
