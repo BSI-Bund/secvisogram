@@ -20,7 +20,7 @@ import pruneEmpty from '../../../../../../shared/pruneEmpty.js'
  */
 export default function TextAreaAttribute({
   placeholder,
-  rows = 2,
+  rows = 4,
   minLength,
   required = false,
   readOnly = false,
@@ -31,10 +31,10 @@ export default function TextAreaAttribute({
   const { doc, updateDoc, replaceDoc } = React.useContext(DocumentEditorContext)
   return (
     <Attribute disabled={disabled} {...props}>
-      <div className="max-w-md flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <div className="w-full">
           <textarea
-            className="border border-gray-400 py-1 px-2 w-full shadow-inner rounded"
+            className="border border-gray-400 py-1 px-2 w-full shadow-inner rounded resize"
             value={/** @type {string} */ (value)}
             rows={rows}
             placeholder={placeholder}

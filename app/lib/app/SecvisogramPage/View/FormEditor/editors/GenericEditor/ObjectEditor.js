@@ -102,7 +102,7 @@ export default function ObjectEditor({
 
   const renderFieldsEditor = () => {
     return (
-      <div className="flex flex-col gap-4 p-4 overflow-auto shrink-0 min-w-[340px] max-w-[400px]">
+      <div className="flex flex-col gap-4 p-4 overflow-auto shrink-0 min-w-[340px]">
         {fieldProperties?.map((property) => (
           <GenericEditor
             key={property.key}
@@ -130,14 +130,13 @@ export default function ObjectEditor({
       <ul>
         {level === 0 &&
         fieldProperties?.length &&
-        fieldProperties?.some(
-          (p) =>
-            isPropertyRelevant({
-              relevanceLevels,
-              property: p,
-              category,
-              selectedRelevanceLevel,
-            })
+        fieldProperties?.some((p) =>
+          isPropertyRelevant({
+            relevanceLevels,
+            property: p,
+            category,
+            selectedRelevanceLevel,
+          })
         ) ? (
           <li
             className={
