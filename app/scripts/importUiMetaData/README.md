@@ -53,7 +53,7 @@ Available uiTypes:
 | STRING_GROUP_ID           | strings referencing a group ID<br/> allows selecting from matching group IDs in the frontend                                               |
 | OBJECT_CWE                | special type for CWE objects ensuring that ID and name match                                                                               |
 | OBJECT_CVSS_2             | special CVSS v2 object                                                                                                                     |
-| OBJECT_CVSS_3             | special CVSS v3.0 / v3.1object                                                                                                             |
+| OBJECT_CVSS_3             | special CVSS v3.0 / v3.1 object                                                                                                             |
 | ARRAY_REVISION_HISTORY    | special type of array, disabling some input values when the revision history is managed in the backend                                     |
 
 The `importUiMetaData.js` script can detect `STRING_DATETIME`, `STRING_URI`
