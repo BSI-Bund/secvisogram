@@ -431,4 +431,28 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       ).should('have.value', 'CSAFPID-0003')
     }
   })
+
+  it('prefills group IDs', function () {
+    for (const user of getUsers()) {
+      cy.intercept(
+        '/.well-known/appspecific/de.bsi.secvisogram.json',
+        getLoginEnabledConfig()
+      ).as('wellKnownAppConfig')
+      cy.intercept(getLoginEnabledConfig().userInfoUrl, getUserInfo(user)).as(
+        'apiGetUserInfo'
+      )
+
+      cy.visit('?tab=EDITOR')
+      cy.wait('@wellKnownAppConfig')
+      cy.wait('@apiGetUserInfo')
+
+      cy.get('[data-testid="layer-button-optional"]').click()
+      cy.get(
+        '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
+      ).click({ force: true })
+      cy.get(
+        '[data-testid="attribute-product_tree-product_groups-0-group_id"] input'
+      ).should('have.value', 'CSAFGID-0001')
+    }
+  })
 })
