@@ -421,6 +421,14 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       cy.get(
         '[data-testid="attribute-product_tree-relationships-0-full_product_name-product_id"] input'
       ).should('have.value', 'CSAFPID-0002')
+
+      // check if a full product name gets assigned the next generated product ID
+      cy.get(
+        `[data-testid="menu_entry-/product_tree/full_product_names-add_item_button"]`
+      ).click({ force: true })
+      cy.get(
+        '[data-testid="attribute-product_tree-full_product_names-0-product_id"] input'
+      ).should('have.value', 'CSAFPID-0003')
     }
   })
 })
