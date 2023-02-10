@@ -16,32 +16,7 @@ import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import RelevanceLevelContext from '../../shared/context/RelevanceLevelContext.js'
 import { getErrorTextColor } from '../GenericEditor.js'
-import { uniqueGroupId, uniqueProductId } from '../../shared/unique-id.js'
-
-/**
- * @param {import('../../shared/types').Property} property
- */
-function getPrefilledObject(property) {
-  const uiType = property.metaData?.uiType
-  if (uiType === 'WITH_GENERATED_PRODUCT_ID') {
-    return { product_id: uniqueProductId() }
-  } else if (uiType === 'WITH_GENERATED_GROUP_ID') {
-    return { group_id: uniqueGroupId() }
-  }
-  let ret = {}
-
-  property.metaInfo.arrayType?.metaInfo.propertyList?.forEach((p) => {
-    if (p.metaData?.uiType === 'WITH_GENERATED_PRODUCT_ID') {
-      // @ts-ignore
-      ret[p.key] = { product_id: uniqueProductId() }
-    } else if (p.metaData?.uiType === 'WITH_GENERATED_GROUP_ID') {
-      // @ts-ignore
-      ret[p.key] = { group_id: uniqueGroupId() }
-    }
-  })
-
-  return ret
-}
+import getChildItem from './shared/getChildItem.js'
 
 /**
  * @param {object} props
@@ -295,15 +270,11 @@ export default function ObjectEditor({
                               ? menuItemValue
                               : []
                             const childType =
-                              menuItem.property.metaInfo.arrayType?.type
-                            const newItem =
-                              childType === 'OBJECT'
-                                ? getPrefilledObject(menuItem.property)
-                                : childType === 'ARRAY'
-                                ? []
-                                : childType === 'STRING'
-                                ? ''
-                                : null
+                              menuItem.property.metaInfo.arrayType?.type || ''
+                            const newItem = getChildItem(
+                              menuItem.property,
+                              childType
+                            )
                             if (newItem !== null) {
                               updateDoc(
                                 [...instancePath, ...menuItem.instancePath],
