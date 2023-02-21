@@ -406,6 +406,14 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       cy.get(
         '[data-testid="menu_entry-/product_tree/branches/0/product"]'
       ).click()
+      // should be empty first
+      cy.get(
+        '[data-testid="attribute-product_tree-branches-0-product-product_id"] input'
+      ).should('be.empty')
+      // and filled with a value after clicking the generate button
+      cy.get(
+        '[data-testid="product_tree-branches-0-product-product_id-generateButton"]'
+      ).click()
       cy.get(
         '[data-testid="attribute-product_tree-branches-0-product-product_id"] input'
       ).should('have.value', 'CSAFPID-0001')
@@ -418,6 +426,18 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       cy.get(
         `[data-testid="menu_entry-/product_tree/relationships/0/full_product_name"]`
       ).click()
+      // should be empty first
+      cy.get(
+        '[data-testid="attribute-product_tree-relationships-0-full_product_name-product_id"] input'
+      ).should('be.empty')
+      // and filled with the next value after clicking the generate button
+      cy.get(
+        '[data-testid="product_tree-relationships-0-full_product_name-product_id-generateButton"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-product_tree-relationships-0-full_product_name-product_id"] input'
+      ).should('have.value', 'CSAFPID-0002')
+
       cy.get(
         '[data-testid="attribute-product_tree-relationships-0-full_product_name-product_id"] input'
       ).should('have.value', 'CSAFPID-0002')
@@ -426,6 +446,14 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       cy.get(
         `[data-testid="menu_entry-/product_tree/full_product_names-add_item_button"]`
       ).click({ force: true })
+      // should be empty first
+      cy.get(
+        '[data-testid="attribute-product_tree-full_product_names-0-product_id"] input'
+      ).should('be.empty')
+      // and filled with the next value after clicking the generate button
+      cy.get(
+        '[data-testid="product_tree-full_product_names-0-product_id-generateButton"]'
+      ).click()
       cy.get(
         '[data-testid="attribute-product_tree-full_product_names-0-product_id"] input'
       ).should('have.value', 'CSAFPID-0003')
