@@ -14,6 +14,7 @@ import CVSS2Editor from './GenericEditor/CVSS2Editor.js'
 import CVSSV3Attribute from './GenericEditor/Attributes/CVSS3Attribute.js'
 import AppConfigContext from '../../../../shared/context/AppConfigContext.js'
 import UserInfoContext from '../../../../shared/context/UserInfoContext.js'
+import { uniqueProductId } from '../shared/unique-id.js'
 
 /**
  * utility function to get the color of circles identifying errors
@@ -189,6 +190,21 @@ export default function Editor({
           value={value || ''}
           property={property}
           disabled={disabled}
+        />
+      ))
+    } else if (uiType === 'STRING_GENERATE_PRODUCT_ID') {
+      return wrapIfSingleton(() => (
+        <TextAttribute
+          label={label}
+          description={description}
+          minLength={property.minLength || 0}
+          type={'url'}
+          pattern={property.pattern}
+          instancePath={instancePath}
+          value={value || ''}
+          property={property}
+          disabled={disabled}
+          generateFn={uniqueProductId}
         />
       ))
     } else if (uiType === 'STRING_PRODUCT_ID') {
