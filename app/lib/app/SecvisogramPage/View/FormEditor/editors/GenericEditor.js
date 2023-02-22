@@ -198,7 +198,6 @@ export default function Editor({
           label={label}
           description={description}
           minLength={property.minLength || 0}
-          type={'url'}
           pattern={property.pattern}
           instancePath={instancePath}
           value={value || ''}
