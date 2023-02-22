@@ -4540,6 +4540,7 @@ export default /** @type {const} */ ({
                               description:
                                 'The value should be the product’s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.',
                               metaData: {
+                                uiType: 'STRING_RELATIONSHIP_FULL_PRODUCT_NAME',
                                 userDocumentation: {
                                   specification:
                                     'docs/user/types/full_product_name/name-spec.en.md',
