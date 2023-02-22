@@ -1,4 +1,4 @@
-import { uniqueGroupId } from '../../../shared/unique-id.js'
+import { uniqueGroupId } from '../../../shared/fillFieldFunctions.js'
 
 /**
  * @param {import('../../../shared/types').Property} property
