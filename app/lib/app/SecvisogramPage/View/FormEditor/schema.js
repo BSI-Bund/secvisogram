@@ -4524,7 +4524,6 @@ export default /** @type {const} */ ({
                             description: 'FullProductNameDescription',
                           },
                           addMenuItemsForChildObjects: true,
-                          uiType: 'WITH_GENERATED_PRODUCT_ID',
                         },
                         type: 'OBJECT',
                         metaInfo: {
