@@ -3201,7 +3201,7 @@ export default /** @type {const} */ ({
                     addMenuItemsForChildObjects: true,
                     itemName: {
                       itemNameTranslationKey: 'arrays.productsItemName',
-                      itemNameField: 'product_id',
+                      itemNameField: 'name',
                     },
                     relevanceLevels: {
                       csaf_base: 'nice_to_know',

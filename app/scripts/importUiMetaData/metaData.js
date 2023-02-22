@@ -1623,7 +1623,7 @@ export default {
     addMenuItemsForChildObjects: true,
     itemName: {
       itemNameTranslationKey: 'arrays.productsItemName',
-      itemNameField: 'product_id',
+      itemNameField: 'name',
     },
   },
   '$.product_tree.full_product_names.name': {
