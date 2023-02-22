@@ -1,4 +1,4 @@
-import { faInfoCircle, faPencil } from '@fortawesome/free-solid-svg-icons'
+import { faInfoCircle, faMagic } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { t } from 'i18next'
 import { compile } from 'json-pointer'
@@ -109,7 +109,7 @@ export default function Attribute({
               updateDoc(instancePath, generateFn())
             }}
           >
-            <FontAwesomeIcon icon={faPencil} />
+            <FontAwesomeIcon icon={faMagic} />
           </button>
         ) : null}
       </div>
