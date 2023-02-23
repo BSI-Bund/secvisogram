@@ -3,6 +3,12 @@
 import createFileName from '../../lib/shared/createFileName'
 import pruneEmpty from '../../lib/app/shared/pruneEmpty.js'
 import isPropertyRelevant from '../../lib/app/SecvisogramPage/shared/isPropertyRelevant.js'
+import {
+  uniqueProductId,
+  uniqueGroupId,
+  getBranchName,
+  getRelationshipName,
+} from '../../lib/app/SecvisogramPage/View/FormEditor/shared/fillFieldFunctions.js'
 
 describe('Unit Test Functions', function () {
   context('createFileName.js', function () {
@@ -203,6 +209,143 @@ describe('Unit Test Functions', function () {
       it('should correctly identify if field is relevant', function () {
         // @ts-ignore
         expect(isPropertyRelevant(input)).to.eq(expectedOutput)
+      })
+    })
+  })
+
+  context('fillFieldFunctions.js', function () {
+    context('uniqueProductId', function () {
+      it('should produce continuous product IDs', function () {
+        expect(uniqueProductId(false)).to.eq('CSAFPID-0001')
+        expect(uniqueProductId(false)).to.eq('CSAFPID-0002')
+        expect(uniqueProductId(false)).to.eq('CSAFPID-0003')
+      })
+      it('should reset the counter', function () {
+        expect(uniqueProductId(true)).to.eq('CSAFPID-0000')
+        expect(uniqueProductId(true)).to.eq('CSAFPID-0000')
+        expect(uniqueProductId(true)).to.eq('CSAFPID-0000')
+      })
+    })
+
+    context('uniqueGroupId', function () {
+      it('should produce continuous group IDs', function () {
+        expect(uniqueGroupId(false)).to.eq('CSAFGID-0001')
+        expect(uniqueGroupId(false)).to.eq('CSAFGID-0002')
+        expect(uniqueGroupId(false)).to.eq('CSAFGID-0003')
+      })
+      it('should reset the counter', function () {
+        expect(uniqueGroupId(true)).to.eq('CSAFGID-0000')
+        expect(uniqueGroupId(true)).to.eq('CSAFGID-0000')
+        expect(uniqueGroupId(true)).to.eq('CSAFGID-0000')
+      })
+    })
+
+    context('getBranchName', function () {
+      it('should get the branch name from parent items', function () {
+        const doc = {
+          product_tree: {
+            branches: [
+              {
+                name: 'X',
+                branches: [
+                  {
+                    name: 'Y',
+                    branches: [
+                      {
+                        name: 'Z',
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                name: 'A',
+                branches: [
+                  {
+                    name: 'B',
+                  },
+                  {
+                    name: 'O',
+                    branches: {
+                      name: 'P',
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        }
+
+        expect(
+          getBranchName(doc, [
+            'product_tree',
+            'branches',
+            '0',
+            'branches',
+            '0',
+            'branches',
+            '0',
+            'product',
+          ])
+        ).to.eq('X Y Z')
+        expect(
+          getBranchName(doc, [
+            'product_tree',
+            'branches',
+            '1',
+            'branches',
+            '0',
+            'product',
+          ])
+        ).to.eq('A B')
+        expect(
+          getBranchName(doc, [
+            'product_tree',
+            'branches',
+            '1',
+            'branches',
+            '1',
+            'branches',
+            '0',
+            'product',
+          ])
+        ).to.eq('A O P')
+      })
+    })
+
+    context('getRelationshipName', function () {
+      const doc = {
+        product_tree: {
+          relationships: [
+            {
+              product_reference: 'CSAFPID-0001',
+              category: 'default_component_of',
+              relates_to_product_reference: 'CSAFPID-0002',
+            },
+          ],
+        },
+      }
+
+      async function getProducts() {
+        return [
+          { id: 'CSAFPID-0001', name: 'product 1' },
+          { id: 'CSAFPID-0002', name: 'product 2' },
+        ]
+      }
+
+      /** @type {string} */
+      let result
+      before(async () => {
+        result =
+          (await getRelationshipName(
+            doc,
+            ['product_tree', 'relationships', '0'],
+            getProducts
+          )) || ''
+      })
+
+      it('should get relationship name from relationship and product data', function () {
+        expect(result).to.eq('product 1 default component of product 2')
       })
     })
   })
