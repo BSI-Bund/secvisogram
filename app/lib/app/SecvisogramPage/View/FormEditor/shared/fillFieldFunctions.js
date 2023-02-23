@@ -20,6 +20,29 @@ const uniqueGroupId = (function () {
 })()
 
 /**
+ * function to generate a name for a branch item based on the parent branch items
+ *
+ * @param {Record<string, any>} doc
+ * @param {string[]} instancePath
+ * @return {string}
+ */
+const getBranchName = function (doc, instancePath) {
+  /** @type {string[]} */
+  let acc = []
+
+  instancePath.slice().reduce((value, pathSegment) => {
+    if (value) {
+      if ('name' in value) {
+        acc.push(value['name'])
+      }
+      return value[pathSegment]
+    }
+  }, doc)
+
+  return acc.join(' ')
+}
+
+/**
  * function to generate a name for a relationship based on the products it is composed of and the category
  *
  * @param {Record<string, any>} doc
@@ -63,4 +86,4 @@ const getRelationshipName = async function (
   throw Error('Could not find relationship to generate name from.')
 }
 
-export { uniqueProductId, uniqueGroupId, getRelationshipName }
+export { uniqueProductId, uniqueGroupId, getBranchName, getRelationshipName }

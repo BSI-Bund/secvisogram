@@ -15,6 +15,7 @@ import CVSSV3Attribute from './GenericEditor/Attributes/CVSS3Attribute.js'
 import AppConfigContext from '../../../../shared/context/AppConfigContext.js'
 import UserInfoContext from '../../../../shared/context/UserInfoContext.js'
 import {
+  getBranchName,
   getRelationshipName,
   uniqueProductId,
 } from '../shared/fillFieldFunctions.js'
@@ -196,6 +197,22 @@ export default function Editor({
           value={value || ''}
           property={property}
           disabled={disabled}
+        />
+      ))
+    } else if (uiType === 'STRING_BRANCH_FULL_PRODUCT_NAME') {
+      return wrapIfSingleton(() => (
+        <TextAttribute
+          label={label}
+          description={description}
+          minLength={property.minLength || 0}
+          pattern={property.pattern}
+          instancePath={instancePath}
+          value={value || ''}
+          property={property}
+          disabled={disabled}
+          fillFunction={() => {
+            updateDoc(instancePath, getBranchName(doc, instancePath))
+          }}
         />
       ))
     } else if (uiType === 'STRING_RELATIONSHIP_FULL_PRODUCT_NAME') {

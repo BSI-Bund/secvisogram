@@ -51,6 +51,7 @@ Available uiTypes:
 | STRING_PRODUCT_ID                     | strings referencing a product ID<br/> allows selecting from matching product IDs in the frontend                                                 |
 | WITH_GENERATED_GROUP_ID               | objects with a unique `group_id` prefilled                                                                                                       |
 | STRING_GROUP_ID                       | strings referencing a group ID<br/> allows selecting from matching group IDs in the frontend                                                     |
+| STRING_BRANCH_FULL_PRODUCT_NAME       | string with the option to generate a name from the corresponding branch<br/> specific to product_tree/branches/product/name                      |
 | STRING_RELATIONSHIP_FULL_PRODUCT_NAME | string with the option to generate a name from the corresponding relationship<br/> specific to product_tree/relationships/full_product_name/name |
 | OBJECT_CWE                            | special type for CWE objects ensuring that ID and name match                                                                                     |
 | OBJECT_CVSS_2                         | special CVSS v2 object                                                                                                                           |

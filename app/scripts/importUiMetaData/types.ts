@@ -64,6 +64,7 @@ export interface CommonUiSchemaFields {
       | 'STRING_PRODUCT_ID'
       | 'WITH_GENERATED_GROUP_ID'
       | 'STRING_GROUP_ID'
+      | 'STRING_BRANCH_FULL_PRODUCT_NAME'
       | 'STRING_RELATIONSHIP_FULL_PRODUCT_NAME'
       | 'OBJECT_CWE'
       | 'OBJECT_CVSS_2'
