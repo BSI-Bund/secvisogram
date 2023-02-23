@@ -16,6 +16,7 @@ import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import RelevanceLevelContext from '../../shared/context/RelevanceLevelContext.js'
 import { getErrorTextColor } from '../GenericEditor.js'
+import getChildItem from './shared/getChildItem.js'
 
 /**
  * @param {object} props
@@ -269,15 +270,11 @@ export default function ObjectEditor({
                               ? menuItemValue
                               : []
                             const childType =
-                              menuItem.property.metaInfo.arrayType?.type
-                            const newItem =
-                              childType === 'OBJECT'
-                                ? {}
-                                : childType === 'ARRAY'
-                                ? []
-                                : childType === 'STRING'
-                                ? ''
-                                : null
+                              menuItem.property.metaInfo.arrayType?.type || ''
+                            const newItem = getChildItem(
+                              menuItem.property,
+                              childType
+                            )
                             if (newItem !== null) {
                               updateDoc(
                                 [...instancePath, ...menuItem.instancePath],

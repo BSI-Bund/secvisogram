@@ -1162,6 +1162,7 @@ export default {
       csaf_vex: 'mandatory',
     },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_GENERATE_PRODUCT_ID',
   },
   '$.product_tree.branches.product.product_identification_helper': {
     userDocumentation: {
@@ -1656,6 +1657,7 @@ export default {
       csaf_vex: 'mandatory',
     },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_GENERATE_PRODUCT_ID',
   },
   '$.product_tree.full_product_names.product_identification_helper': {
     userDocumentation: {
@@ -2105,6 +2107,7 @@ export default {
       title: 'ProductTreeProductGroupsTitle',
       description: 'ProductTreeProductGroupsDescription',
     },
+    uiType: 'WITH_GENERATED_GROUP_ID',
   },
   '$.product_tree.product_groups[]': {
     userDocumentation: {
@@ -2292,6 +2295,7 @@ export default {
       csaf_vex: 'mandatory',
     },
     i18n: { title: 'ProductIdTitle', description: 'ProductIdDescription' },
+    uiType: 'STRING_GENERATE_PRODUCT_ID',
   },
   '$.product_tree.relationships.full_product_name.product_identification_helper':
     {

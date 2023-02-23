@@ -18,6 +18,7 @@ import AppConfigContext from '../../../../../shared/context/AppConfigContext.js'
 import UserInfoContext from '../../../../../shared/context/UserInfoContext.js'
 import { set } from 'lodash/fp.js'
 import pruneEmpty from '../../../../../shared/pruneEmpty.js'
+import getChildItem from './shared/getChildItem.js'
 
 /**
  * @param {object} props
@@ -250,14 +251,10 @@ function Menu({ instancePath, level = 1, ...props }) {
                           const sanitizedChildValue = Array.isArray(subArray)
                             ? subArray
                             : []
-                          const value =
-                            childProperty.type === 'OBJECT'
-                              ? {}
-                              : childProperty.type === 'ARRAY'
-                              ? []
-                              : childProperty.type === 'STRING'
-                              ? ''
-                              : null
+                          const value = getChildItem(
+                            property,
+                            childProperty.type
+                          )
                           if (value !== null) {
                             updateDoc(
                               [
