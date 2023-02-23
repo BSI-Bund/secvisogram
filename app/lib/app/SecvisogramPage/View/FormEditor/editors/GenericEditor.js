@@ -103,6 +103,20 @@ export default function Editor({
     )
   }
 
+  const fillFunction =
+    uiType === 'STRING_BRANCH_FULL_PRODUCT_NAME'
+      ? () => {
+          updateDoc(instancePath, getBranchName(doc, instancePath))
+        }
+      : uiType === 'STRING_RELATIONSHIP_FULL_PRODUCT_NAME'
+      ? () => {
+          getRelationshipName(doc, instancePath, collectIds['productIds']).then(
+            (r) => updateDoc(instancePath, r),
+            handleError
+          )
+        }
+      : undefined
+
   if (property.type === 'ARRAY') {
     return (
       <ArrayEditor
@@ -199,42 +213,6 @@ export default function Editor({
           disabled={disabled}
         />
       ))
-    } else if (uiType === 'STRING_BRANCH_FULL_PRODUCT_NAME') {
-      return wrapIfSingleton(() => (
-        <TextAttribute
-          label={label}
-          description={description}
-          minLength={property.minLength || 0}
-          pattern={property.pattern}
-          instancePath={instancePath}
-          value={value || ''}
-          property={property}
-          disabled={disabled}
-          fillFunction={() => {
-            updateDoc(instancePath, getBranchName(doc, instancePath))
-          }}
-        />
-      ))
-    } else if (uiType === 'STRING_RELATIONSHIP_FULL_PRODUCT_NAME') {
-      return wrapIfSingleton(() => (
-        <TextAttribute
-          label={label}
-          description={description}
-          minLength={property.minLength || 0}
-          pattern={property.pattern}
-          instancePath={instancePath}
-          value={value || ''}
-          property={property}
-          disabled={disabled}
-          fillFunction={() => {
-            getRelationshipName(
-              doc,
-              instancePath,
-              collectIds['productIds']
-            ).then((r) => updateDoc(instancePath, r), handleError)
-          }}
-        />
-      ))
     } else if (uiType === 'STRING_GENERATE_PRODUCT_ID') {
       return wrapIfSingleton(() => (
         <TextAttribute
@@ -298,6 +276,7 @@ export default function Editor({
           value={value || ''}
           property={property}
           disabled={disabled}
+          fillFunction={fillFunction}
         />
       ))
     }
