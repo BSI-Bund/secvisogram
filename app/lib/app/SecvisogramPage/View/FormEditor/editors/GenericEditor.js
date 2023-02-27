@@ -104,7 +104,9 @@ export default function Editor({
   }
 
   const fillFunction =
-    uiType === 'STRING_BRANCH_FULL_PRODUCT_NAME'
+    uiType === 'STRING_GENERATE_PRODUCT_ID'
+      ? () => updateDoc(instancePath, uniqueProductId())
+      : uiType === 'STRING_BRANCH_FULL_PRODUCT_NAME'
       ? () => {
           updateDoc(instancePath, getBranchName(doc, instancePath))
         }
@@ -211,20 +213,6 @@ export default function Editor({
           value={value || ''}
           property={property}
           disabled={disabled}
-        />
-      ))
-    } else if (uiType === 'STRING_GENERATE_PRODUCT_ID') {
-      return wrapIfSingleton(() => (
-        <TextAttribute
-          label={label}
-          description={description}
-          minLength={property.minLength || 0}
-          pattern={property.pattern}
-          instancePath={instancePath}
-          value={value || ''}
-          property={property}
-          disabled={disabled}
-          fillFunction={() => updateDoc(instancePath, uniqueProductId())}
         />
       ))
     } else if (uiType === 'STRING_PRODUCT_ID') {
