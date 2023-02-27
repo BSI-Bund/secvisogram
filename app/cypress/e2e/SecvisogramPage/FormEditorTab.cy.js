@@ -483,4 +483,54 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       ).should('have.value', 'CSAFGID-0001')
     }
   })
+
+  it('should reset product ID counter', function () {
+    cy.visit('?tab=EDITOR')
+
+    // fill two product IDs
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches-add_item_button"]'
+    ).click({ force: true })
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches/0/product"]'
+    ).click()
+    cy.get(
+      '[data-testid="product_tree-branches-0-product-product_id-generateButton"]'
+    ).click()
+    cy.get(
+      '[data-testid="attribute-product_tree-branches-0-product-product_id"] input'
+    ).should('have.value', 'CSAFPID-0001')
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches-add_item_button"]'
+    ).click({ force: true })
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches/1/product"]'
+    ).click()
+    cy.get(
+      '[data-testid="product_tree-branches-1-product-product_id-generateButton"]'
+    ).click()
+    cy.get(
+      '[data-testid="attribute-product_tree-branches-1-product-product_id"] input'
+    ).should('have.value', 'CSAFPID-0002')
+
+    // create new document
+    cy.get('[data-testid="new_document_button"]').click()
+    cy.get('[data-testid="new_document-templates-select"]').select('Minimal')
+    cy.get('[data-testid="new_document-create_document_button"]').click()
+    cy.get('[data-testid="alert-confirm_button"]').click()
+
+    // counter should be reset
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches-add_item_button"]'
+    ).click({ force: true })
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches/0/product"]'
+    ).click()
+    cy.get(
+      '[data-testid="product_tree-branches-0-product-product_id-generateButton"]'
+    ).click()
+    cy.get(
+      '[data-testid="attribute-product_tree-branches-0-product-product_id"] input'
+    ).should('have.value', 'CSAFPID-0001')
+  })
 })
