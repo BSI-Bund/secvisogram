@@ -532,5 +532,56 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.get(
       '[data-testid="attribute-product_tree-branches-0-product-product_id"] input'
     ).should('have.value', 'CSAFPID-0001')
+
+    // create new document but cancel
+    cy.get('[data-testid="new_document_button"]').click()
+    cy.get('[data-testid="new_document-cancel_button"]').click()
+
+    // counter should not be reset
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches-add_item_button"]'
+    ).click({ force: true })
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches/1/product"]'
+    ).click()
+    cy.get(
+      '[data-testid="product_tree-branches-1-product-product_id-generateButton"]'
+    ).click()
+    cy.get(
+      '[data-testid="attribute-product_tree-branches-1-product-product_id"] input'
+    ).should('have.value', 'CSAFPID-0002')
   })
+})
+
+it('should reset group ID counter', function () {
+  cy.visit('?tab=EDITOR')
+
+  // add two group IDs
+  cy.get('[data-testid="layer-button-optional"]').click()
+  cy.get(
+    '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
+  ).click({ force: true })
+  cy.get(
+    '[data-testid="attribute-product_tree-product_groups-0-group_id"] input'
+  ).should('have.value', 'CSAFGID-0001')
+  cy.get(
+    '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
+  ).click({ force: true })
+  cy.get(
+    '[data-testid="attribute-product_tree-product_groups-1-group_id"] input'
+  ).should('have.value', 'CSAFGID-0002')
+
+  // create new document
+  cy.get('[data-testid="new_document_button"]').click()
+  cy.get('[data-testid="new_document-templates-select"]').select('Minimal')
+  cy.get('[data-testid="new_document-create_document_button"]').click()
+  cy.get('[data-testid="alert-confirm_button"]').click()
+
+  // counter should be reset
+  cy.get(
+    '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
+  ).click({ force: true })
+  cy.get(
+    '[data-testid="attribute-product_tree-product_groups-0-group_id"] input'
+  ).should('have.value', 'CSAFGID-0001')
 })
