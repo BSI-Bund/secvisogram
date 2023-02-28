@@ -324,8 +324,6 @@ function View({
   }
 
   const onNewHandler = () => {
-    uniqueProductId(true)
-    uniqueGroupId(true)
     if (!appConfig.loginAvailable || (appConfig.loginAvailable && !userInfo)) {
       onGetDocMin().then((minimalTemplate) =>
         onGetDocMax().then((allFieldsTemplate) => {
@@ -477,6 +475,8 @@ function View({
           }}
           onConfirm={() => {
             setAlert(null)
+            uniqueProductId(true)
+            uniqueGroupId(true)
             callback()
           }}
         />
