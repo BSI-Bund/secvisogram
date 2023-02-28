@@ -14,7 +14,12 @@ import CVSS2Editor from './GenericEditor/CVSS2Editor.js'
 import CVSSV3Attribute from './GenericEditor/Attributes/CVSS3Attribute.js'
 import AppConfigContext from '../../../../shared/context/AppConfigContext.js'
 import UserInfoContext from '../../../../shared/context/UserInfoContext.js'
-import { uniqueProductId } from '../shared/unique-id.js'
+import {
+  getBranchName,
+  getRelationshipName,
+  uniqueProductId,
+} from '../shared/fillFieldFunctions.js'
+import AppErrorContext from '../../../../shared/context/AppErrorContext.js'
 
 /**
  * utility function to get the color of circles identifying errors
@@ -51,7 +56,9 @@ export default function Editor({
   const { loginAvailable } = React.useContext(AppConfigContext)
   const userInfo = React.useContext(UserInfoContext)
 
-  const { doc, collectIds } = React.useContext(DocumentEditorContext)
+  const { doc, updateDoc, collectIds } = React.useContext(DocumentEditorContext)
+
+  const { handleError } = React.useContext(AppErrorContext)
 
   const uiType = property.metaData?.uiType
   const enableLast = uiType === 'ARRAY_REVISION_HISTORY'
@@ -95,6 +102,22 @@ export default function Editor({
       componentFn()
     )
   }
+
+  const fillFunction =
+    uiType === 'STRING_GENERATE_PRODUCT_ID'
+      ? () => updateDoc(instancePath, uniqueProductId())
+      : uiType === 'STRING_BRANCH_FULL_PRODUCT_NAME'
+      ? () => {
+          updateDoc(instancePath, getBranchName(doc, instancePath))
+        }
+      : uiType === 'STRING_RELATIONSHIP_FULL_PRODUCT_NAME'
+      ? () => {
+          getRelationshipName(doc, instancePath, collectIds['productIds']).then(
+            (r) => updateDoc(instancePath, r),
+            handleError
+          )
+        }
+      : undefined
 
   if (property.type === 'ARRAY') {
     return (
@@ -192,20 +215,6 @@ export default function Editor({
           disabled={disabled}
         />
       ))
-    } else if (uiType === 'STRING_GENERATE_PRODUCT_ID') {
-      return wrapIfSingleton(() => (
-        <TextAttribute
-          label={label}
-          description={description}
-          minLength={property.minLength || 0}
-          pattern={property.pattern}
-          instancePath={instancePath}
-          value={value || ''}
-          property={property}
-          disabled={disabled}
-          generateFn={uniqueProductId}
-        />
-      ))
     } else if (uiType === 'STRING_PRODUCT_ID') {
       return wrapIfSingleton(() => (
         <IdAttribute
@@ -255,6 +264,7 @@ export default function Editor({
           value={value || ''}
           property={property}
           disabled={disabled}
+          fillFunction={fillFunction}
         />
       ))
     }

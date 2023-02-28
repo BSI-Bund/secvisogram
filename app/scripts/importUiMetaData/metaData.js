@@ -1148,6 +1148,7 @@ export default {
       title: 'FullProductNameNameTitle',
       description: 'FullProductNameNameDescription',
     },
+    uiType: 'STRING_BRANCH_FULL_PRODUCT_NAME',
   },
   '$.product_tree.branches.product.product_id': {
     userDocumentation: {
@@ -2281,6 +2282,7 @@ export default {
       title: 'FullProductNameNameTitle',
       description: 'FullProductNameNameDescription',
     },
+    uiType: 'STRING_RELATIONSHIP_FULL_PRODUCT_NAME',
   },
   '$.product_tree.relationships.full_product_name.product_id': {
     userDocumentation: {

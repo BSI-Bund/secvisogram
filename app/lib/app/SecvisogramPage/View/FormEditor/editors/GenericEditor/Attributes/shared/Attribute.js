@@ -20,7 +20,7 @@ import AttributeErrors from './AttributeErrors.js'
  *  children?: React.ReactNode | ((params: {}) => React.ReactNode)
  *  property: import('../../../../shared/types').Property
  *  disabled: boolean
- *  generateFn?: () => unknown
+ *  fillFunction?: () => void
  * }} props
  * @template V
  */
@@ -31,9 +31,9 @@ export default function Attribute({
   children,
   property,
   disabled,
-  generateFn,
+  fillFunction: fillFunction,
 }) {
-  const { errors, doc, updateDoc } = React.useContext(DocumentEditorContext)
+  const { errors, doc } = React.useContext(DocumentEditorContext)
   const { selectedRelevanceLevel, relevanceLevels } = React.useContext(
     RelevanceLevelContext
   )
@@ -99,15 +99,13 @@ export default function Attribute({
         >
           <FontAwesomeIcon icon={faInfoCircle} />
         </button>
-        {generateFn ? (
+        {fillFunction ? (
           <button
             title="generate value"
             data-testid={instancePath.join('-') + '-generateButton'}
             type="button"
             className="w-6 h-6 flex-none text-slate-400 hover:text-slate-800 m-1"
-            onClick={() => {
-              updateDoc(instancePath, generateFn())
-            }}
+            onClick={fillFunction}
           >
             <FontAwesomeIcon icon={faMagic} />
           </button>

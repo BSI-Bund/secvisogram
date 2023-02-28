@@ -16,7 +16,7 @@ import pruneEmpty from '../../../../../../shared/pruneEmpty.js'
  *  value: unknown
  *  property: import('../../../shared/types').Property
  *  disabled: boolean
- *  generateFn?: () => unknown
+ *  fillFunction?: () => void
  * }} props
  */
 export default function TextAttribute({
