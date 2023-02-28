@@ -45,7 +45,7 @@ Available uiTypes:
 | STRING_DATETIME                       | datetime values                                                                                                                                  |
 | STRING_URI                            | strings matching the URI pattern                                                                                                                 |
 | STRING_ENUM                           | strings with predefined values to select from<br/> the values are defined in the schema file                                                     |
-| STRING_WITH_OPTIONS                   | strings with predefined values to select from, still allowing other user input<br/> the can be added via the `options` property, see below       |
+| STRING_WITH_OPTIONS                   | strings with predefined values to select from, still allowing other user input<br/> the values can be added via the `options` property, see below |
 | STRING_MULTI_LINE                     | strings that are potentially larger                                                                                                              |
 | STRING_GENERATE_PRODUCT_ID            | strings with the option to generate a unique product id as value via button                                                                      |
 | STRING_PRODUCT_ID                     | strings referencing a product ID<br/> allows selecting from matching product IDs in the frontend                                                 |
