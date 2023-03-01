@@ -385,133 +385,80 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     }
   })
 
-  it('prefills product IDs', function () {
-    for (const user of getUsers()) {
-      cy.intercept(
-        '/.well-known/appspecific/de.bsi.secvisogram.json',
-        getLoginEnabledConfig()
-      ).as('wellKnownAppConfig')
-      cy.intercept(getLoginEnabledConfig().userInfoUrl, getUserInfo(user)).as(
-        'apiGetUserInfo'
-      )
-
-      cy.visit('?tab=EDITOR')
-      cy.wait('@wellKnownAppConfig')
-      cy.wait('@apiGetUserInfo')
-
-      // check if branch full product name is filled with a generated product ID
-      cy.get(
-        '[data-testid="menu_entry-/product_tree/branches-add_item_button"]'
-      ).click({ force: true })
-      cy.get(
-        '[data-testid="menu_entry-/product_tree/branches/0/product"]'
-      ).click()
-      // should be empty first
-      cy.get(
-        '[data-testid="attribute-product_tree-branches-0-product-product_id"] input'
-      ).should('be.empty')
-      // and filled with a value after clicking the generate button
-      cy.get(
-        '[data-testid="product_tree-branches-0-product-product_id-generateButton"]'
-      ).click()
-      cy.get(
-        '[data-testid="attribute-product_tree-branches-0-product-product_id"] input'
-      ).should('have.value', 'CSAFPID-0001')
-
-      // check if a new relationship gets assigned the next generated product ID
-      cy.get(`[data-testid="layer-button-optional"]`).click()
-      cy.get(
-        `[data-testid="menu_entry-/product_tree/relationships-add_item_button"]`
-      ).click({ force: true })
-      cy.get(
-        `[data-testid="menu_entry-/product_tree/relationships/0/full_product_name"]`
-      ).click()
-      // should be empty first
-      cy.get(
-        '[data-testid="attribute-product_tree-relationships-0-full_product_name-product_id"] input'
-      ).should('be.empty')
-      // and filled with the next value after clicking the generate button
-      cy.get(
-        '[data-testid="product_tree-relationships-0-full_product_name-product_id-generateButton"]'
-      ).click()
-      cy.get(
-        '[data-testid="attribute-product_tree-relationships-0-full_product_name-product_id"] input'
-      ).should('have.value', 'CSAFPID-0002')
-
-      cy.get(
-        '[data-testid="attribute-product_tree-relationships-0-full_product_name-product_id"] input'
-      ).should('have.value', 'CSAFPID-0002')
-
-      // check if a full product name gets assigned the next generated product ID
-      cy.get(
-        `[data-testid="menu_entry-/product_tree/full_product_names-add_item_button"]`
-      ).click({ force: true })
-      // should be empty first
-      cy.get(
-        '[data-testid="attribute-product_tree-full_product_names-0-product_id"] input'
-      ).should('be.empty')
-      // and filled with the next value after clicking the generate button
-      cy.get(
-        '[data-testid="product_tree-full_product_names-0-product_id-generateButton"]'
-      ).click()
-      cy.get(
-        '[data-testid="attribute-product_tree-full_product_names-0-product_id"] input'
-      ).should('have.value', 'CSAFPID-0003')
-    }
-  })
-
-  it('prefills group IDs', function () {
-    for (const user of getUsers()) {
-      cy.intercept(
-        '/.well-known/appspecific/de.bsi.secvisogram.json',
-        getLoginEnabledConfig()
-      ).as('wellKnownAppConfig')
-      cy.intercept(getLoginEnabledConfig().userInfoUrl, getUserInfo(user)).as(
-        'apiGetUserInfo'
-      )
-
-      cy.visit('?tab=EDITOR')
-      cy.wait('@wellKnownAppConfig')
-      cy.wait('@apiGetUserInfo')
-
-      cy.get('[data-testid="layer-button-optional"]').click()
-      cy.get(
-        '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
-      ).click({ force: true })
-      cy.get(
-        '[data-testid="attribute-product_tree-product_groups-0-group_id"] input'
-      ).should('have.value', 'CSAFGID-0001')
-    }
-  })
-
-  it('should reset product ID counter', function () {
+  it('prefills product and group IDs', function () {
     cy.visit('?tab=EDITOR')
 
-    // fill two product IDs
+    // set relevance level to optional to enable editing groups
+    cy.get('[data-testid="layer-button-optional"]').click()
+
+    // check if branch full product name is filled with a generated product ID
     cy.get(
       '[data-testid="menu_entry-/product_tree/branches-add_item_button"]'
     ).click({ force: true })
     cy.get(
       '[data-testid="menu_entry-/product_tree/branches/0/product"]'
     ).click()
+    // should be empty first
+    cy.get(
+      '[data-testid="attribute-product_tree-branches-0-product-product_id"] input'
+    ).should('be.empty')
+    // and filled with a value after clicking the generate button
     cy.get(
       '[data-testid="product_tree-branches-0-product-product_id-generateButton"]'
     ).click()
     cy.get(
       '[data-testid="attribute-product_tree-branches-0-product-product_id"] input'
     ).should('have.value', 'CSAFPID-0001')
+
+    // check if a new relationship gets assigned the next generated product ID
+    cy.get(`[data-testid="layer-button-optional"]`).click()
     cy.get(
-      '[data-testid="menu_entry-/product_tree/branches-add_item_button"]'
+      `[data-testid="menu_entry-/product_tree/relationships-add_item_button"]`
     ).click({ force: true })
     cy.get(
-      '[data-testid="menu_entry-/product_tree/branches/1/product"]'
+      `[data-testid="menu_entry-/product_tree/relationships/0/full_product_name"]`
+    ).click()
+    // should be empty first
+    cy.get(
+      '[data-testid="attribute-product_tree-relationships-0-full_product_name-product_id"] input'
+    ).should('be.empty')
+    // and filled with the next value after clicking the generate button
+    cy.get(
+      '[data-testid="product_tree-relationships-0-full_product_name-product_id-generateButton"]'
     ).click()
     cy.get(
-      '[data-testid="product_tree-branches-1-product-product_id-generateButton"]'
-    ).click()
-    cy.get(
-      '[data-testid="attribute-product_tree-branches-1-product-product_id"] input'
+      '[data-testid="attribute-product_tree-relationships-0-full_product_name-product_id"] input'
     ).should('have.value', 'CSAFPID-0002')
+
+    // check if a full product name gets assigned the next generated product ID
+    cy.get(
+      `[data-testid="menu_entry-/product_tree/full_product_names-add_item_button"]`
+    ).click({ force: true })
+    // should be empty first
+    cy.get(
+      '[data-testid="attribute-product_tree-full_product_names-0-product_id"] input'
+    ).should('be.empty')
+    // and filled with the next value after clicking the generate button
+    cy.get(
+      '[data-testid="product_tree-full_product_names-0-product_id-generateButton"]'
+    ).click()
+    cy.get(
+      '[data-testid="attribute-product_tree-full_product_names-0-product_id"] input'
+    ).should('have.value', 'CSAFPID-0003')
+
+    // check if two group IDs are prefilled with sequential values
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
+    ).click({ force: true })
+    cy.get(
+      '[data-testid="attribute-product_tree-product_groups-0-group_id"] input'
+    ).should('have.value', 'CSAFGID-0001')
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
+    ).click({ force: true })
+    cy.get(
+      '[data-testid="attribute-product_tree-product_groups-1-group_id"] input'
+    ).should('have.value', 'CSAFGID-0002')
 
     // create new document
     cy.get('[data-testid="new_document_button"]').click()
@@ -519,7 +466,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.get('[data-testid="new_document-create_document_button"]').click()
     cy.get('[data-testid="alert-confirm_button"]').click()
 
-    // counter should be reset
+    // product ID counter should be reset
     cy.get(
       '[data-testid="menu_entry-/product_tree/branches-add_item_button"]'
     ).click({ force: true })
@@ -533,11 +480,19 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       '[data-testid="attribute-product_tree-branches-0-product-product_id"] input'
     ).should('have.value', 'CSAFPID-0001')
 
+    // group ID counter should be reset
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
+    ).click({ force: true })
+    cy.get(
+      '[data-testid="attribute-product_tree-product_groups-0-group_id"] input'
+    ).should('have.value', 'CSAFGID-0001')
+
     // create new document but cancel
     cy.get('[data-testid="new_document_button"]').click()
     cy.get('[data-testid="new_document-cancel_button"]').click()
 
-    // counter should not be reset
+    // product ID counter should not be reset
     cy.get(
       '[data-testid="menu_entry-/product_tree/branches-add_item_button"]'
     ).click({ force: true })
@@ -550,38 +505,13 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.get(
       '[data-testid="attribute-product_tree-branches-1-product-product_id"] input'
     ).should('have.value', 'CSAFPID-0002')
+
+    // group ID counter should not be reset
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
+    ).click({ force: true })
+    cy.get(
+      '[data-testid="attribute-product_tree-product_groups-1-group_id"] input'
+    ).should('have.value', 'CSAFGID-0002')
   })
-})
-
-it('should reset group ID counter', function () {
-  cy.visit('?tab=EDITOR')
-
-  // add two group IDs
-  cy.get('[data-testid="layer-button-optional"]').click()
-  cy.get(
-    '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
-  ).click({ force: true })
-  cy.get(
-    '[data-testid="attribute-product_tree-product_groups-0-group_id"] input'
-  ).should('have.value', 'CSAFGID-0001')
-  cy.get(
-    '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
-  ).click({ force: true })
-  cy.get(
-    '[data-testid="attribute-product_tree-product_groups-1-group_id"] input'
-  ).should('have.value', 'CSAFGID-0002')
-
-  // create new document
-  cy.get('[data-testid="new_document_button"]').click()
-  cy.get('[data-testid="new_document-templates-select"]').select('Minimal')
-  cy.get('[data-testid="new_document-create_document_button"]').click()
-  cy.get('[data-testid="alert-confirm_button"]').click()
-
-  // counter should be reset
-  cy.get(
-    '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
-  ).click({ force: true })
-  cy.get(
-    '[data-testid="attribute-product_tree-product_groups-0-group_id"] input'
-  ).should('have.value', 'CSAFGID-0001')
 })
