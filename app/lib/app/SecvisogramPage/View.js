@@ -30,6 +30,10 @@ import DocumentEditorContext from './View/shared/DocumentEditorContext.js'
 import useDebounce from './View/shared/useDebounce.js'
 import SideBar from './View/SideBar/SideBar.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
+import {
+  uniqueGroupId,
+  uniqueProductId,
+} from './View/FormEditor/shared/fillFieldFunctions.js'
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -471,6 +475,8 @@ function View({
           }}
           onConfirm={() => {
             setAlert(null)
+            uniqueProductId(true)
+            uniqueGroupId(true)
             callback()
           }}
         />
