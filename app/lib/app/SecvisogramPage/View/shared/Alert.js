@@ -92,6 +92,7 @@ const Alert = ({
               {confirmLabel}
             </button>
             <button
+              data-testid="alert-refute_button"
               type="button"
               className="ml-4 py-1 px-3 rounded shadow border border-gray-500 bg-gray-500 text-white hover:text-gray-500 hover:bg-white"
               ref={cancelRef}

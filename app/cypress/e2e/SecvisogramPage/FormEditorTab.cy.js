@@ -513,5 +513,33 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.get(
       '[data-testid="attribute-product_tree-product_groups-1-group_id"] input'
     ).should('have.value', 'CSAFGID-0002')
+
+    // create new document but cancel on confirm
+    cy.get('[data-testid="new_document_button"]').click()
+    cy.get('[data-testid="new_document-templates-select"]').select('Minimal')
+    cy.get('[data-testid="new_document-create_document_button"]').click()
+    cy.get('[data-testid="alert-refute_button"]').click()
+
+    // product ID counter should not be reset
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches-add_item_button"]'
+    ).click({ force: true })
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches/2/product"]'
+    ).click()
+    cy.get(
+      '[data-testid="product_tree-branches-2-product-product_id-generateButton"]'
+    ).click()
+    cy.get(
+      '[data-testid="attribute-product_tree-branches-2-product-product_id"] input'
+    ).should('have.value', 'CSAFPID-0003')
+
+    // group ID counter should be reset
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/product_groups-add_item_button"]'
+    ).click({ force: true })
+    cy.get(
+      '[data-testid="attribute-product_tree-product_groups-2-group_id"] input'
+    ).should('have.value', 'CSAFGID-0003')
   })
 })
