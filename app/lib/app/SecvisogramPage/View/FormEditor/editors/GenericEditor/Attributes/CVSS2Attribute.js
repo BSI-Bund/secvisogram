@@ -59,7 +59,7 @@ export default function CVSSV2Attribute({
   )
 
   /** @type {(childName: string, options: string[], disableClearable: boolean) => any} */
-  function dropdownFor(childName, options, disableClearable = true) {
+  function dropdownFor(childName, options, disableClearable = false) {
     const childValue = /** @type {string} */ ((value || {})[childName]) || ''
     return cvssDropdown(
       instancePath,
@@ -75,7 +75,7 @@ export default function CVSSV2Attribute({
   return (
     <DocumentEditorContext.Provider value={documentEditor}>
       <div className="flex flex-col gap-4 p-4 overflow-auto shrink-0 min-w-[340px]">
-        {dropdownFor('version', ['2.0'])}
+        {dropdownFor('version', ['2.0'], true)}
         <TextAttribute
           label="VectorString"
           description=""
@@ -85,6 +85,7 @@ export default function CVSSV2Attribute({
           value={value?.vectorString || ''}
           property={property}
           disabled={disabled}
+          required={true}
         />
         <Collapsible startCollapsed={true} title="base inputs">
           {dropdownFor('accessVector', [
