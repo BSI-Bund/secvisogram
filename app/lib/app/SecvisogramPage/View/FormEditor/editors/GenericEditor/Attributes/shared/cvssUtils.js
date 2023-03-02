@@ -39,14 +39,16 @@ function cvssDropdown(
 }
 
 function getSeverityColors(/** @type {number} */ score) {
-  if (score >= 0.1 && score <= 3.9) {
-    return 'border-green-800 bg-green-600/75'
+  if (score >= 0.0 && score <= 0.1) {
+    return 'bg-[#53aa33]'
+  } else if (score >= 0.1 && score <= 3.9) {
+    return 'bg-[#ffcb0d]'
   } else if (score >= 4.0 && score <= 6.9) {
-    return 'border-yellow-800 bg-yellow-600/75'
+    return 'bg-[#f9a009]'
   } else if (score >= 7.0 && score <= 8.9) {
-    return 'border-red-200 bg-red-100/75'
+    return 'bg-[#df3d03]'
   } else if (score >= 9.0) {
-    return 'border-red-800 bg-red-600/75'
+    return 'bg-[#cc0500]'
   } else {
     return ''
   }

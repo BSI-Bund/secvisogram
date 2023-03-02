@@ -250,17 +250,19 @@ export default class CVSSVector {
       version: this._data.version,
       vectorString:
         (result.success ? result.vectorString : this._data.vectorString) ?? '',
-      baseScore: result.success ? Number(result.baseMetricScore) : 0,
+      baseScore: result.success ? Number(result.baseMetricScore) : undefined,
       baseSeverity: result.success
         ? /** @type {string} */ (result.baseSeverity).toUpperCase()
         : '',
-      temporalScore: result.success ? Number(result.temporalMetricScore) : 0,
+      temporalScore: result.success
+        ? Number(result.temporalMetricScore)
+        : undefined,
       temporalSeverity: result.success
         ? /** @type {string} */ (result.temporalSeverity).toUpperCase()
         : '',
       environmentalScore: result.success
         ? Number(result.environmentalMetricScore)
-        : 0,
+        : undefined,
       environmentalSeverity: result.success
         ? /** @type {string} */ (result.environmentalSeverity).toUpperCase()
         : '',
