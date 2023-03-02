@@ -1,7 +1,11 @@
 # Secvisogram Documentation
 
 This repository contains documentation for secvisogram comprising specification and usage details.
-The documentation is integrated via git subtree in the secvisogram repository and published via GitHub pages at .
+The documentation is integrated via git subtree in the secvisogram repository and published via GitHub pages at
+[https://secvisogram.github.io/secvisogram-documentation/](https://secvisogram.github.io/secvisogram-documentation/)
+
+The directory `best_practices` contains documents in different langauges with guidelines on how to create a good advisory.
+
 Additionally, an author guide is generated as PDF document.
 
 ## Generating the Author Guide
