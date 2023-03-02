@@ -1,11 +1,11 @@
 import React from 'react'
-import DropdownAttribute from './DropdownAttribute.js'
 import Collapsible from './shared/Collapsible.js'
 import TextAttribute from './TextAttribute.js'
 import Attribute from './shared/Attribute.js'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 import DefaultButton from '../../../../shared/DefaultButton.js'
 import CVSSVector from './CVSS3Attribute/CVSSVector.js'
+import { cvssDropdown, getSeverityColors } from './shared/cvssUtils.js'
 
 /**
  * @param {{
@@ -54,62 +54,45 @@ export default function CVSSV3Attribute({
 
   /** @type {(childName: string, options: string[], disableClearable: boolean) => any} */
   function dropdownFor(childName, options, disableClearable = true) {
-    return (
-      <DropdownAttribute
-        label={childName.charAt(0).toUpperCase() + childName.substring(1)}
-        description=""
-        options={options}
-        isEnum={true}
-        instancePath={instancePath.concat([childName])}
-        value={(value || {})[childName] || ''}
-        property={property}
-        disabled={disabled}
-        disableClearable={disableClearable}
-      />
+    const childValue = /** @type {string} */ ((value || {})[childName]) || ''
+    return cvssDropdown(
+      instancePath,
+      childName,
+      childValue,
+      options,
+      property,
+      disabled,
+      disableClearable
     )
-  }
-
-  function getSeverityColors(severity) {
-    if ('LOW' === severity) {
-      return 'border-green-800 bg-green-600/75'
-    } else if ('MEDIUM' === severity) {
-      return 'border-yellow-800 bg-yellow-600/75'
-    } else if ('HIGH' === severity) {
-      return 'border-red-200 bg-red-100/75'
-    } else if ('CRITICAL' === severity) {
-      return 'border-red-800 bg-red-600/75'
-    } else {
-      return ''
-    }
   }
 
   return (
     <DocumentEditorContext.Provider value={documentEditor}>
       <div className="flex flex-col gap-4 p-4 overflow-auto shrink-0 min-w-[340px]">
+        {dropdownFor('version', ['3.0', '3.1'])}
+        <TextAttribute
+          label="VectorString"
+          description=""
+          pattern="^CVSS:3.[01]/((AV:[NALP]|AC:[LH]|PR:[UNLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])/)*(AV:[NALP]|AC:[LH]|PR:[UNLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])$"
+          minLength={1}
+          instancePath={instancePath.concat(['vectorString'])}
+          value={value?.vectorString || ''}
+          property={property}
+          disabled={disabled}
+        />
+        {canBeUpgraded ? (
+          <div className="mb-2">
+            <DefaultButton
+              onClick={() => {
+                const updatedCVSSMetrics = cvssVector.set('version', '3.1')
+                updateDoc(instancePath, updatedCVSSMetrics.data)
+              }}
+            >
+              Upgrade to CVSS 3.1
+            </DefaultButton>
+          </div>
+        ) : null}
         <Collapsible startCollapsed={true} title="base inputs">
-          {dropdownFor('version', ['3.0', '3.1'])}
-          <TextAttribute
-            label="VectorString"
-            description=""
-            pattern="^CVSS:3.[01]/((AV:[NALP]|AC:[LH]|PR:[UNLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])/)*(AV:[NALP]|AC:[LH]|PR:[UNLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])$"
-            minLength={1}
-            instancePath={instancePath.concat(['vectorString'])}
-            value={value?.vectorString || ''}
-            property={property}
-            disabled={disabled}
-          />
-          {canBeUpgraded ? (
-            <div className="mb-2">
-              <DefaultButton
-                onClick={() => {
-                  const updatedCVSSMetrics = cvssVector.set('version', '3.1')
-                  updateDoc(instancePath, updatedCVSSMetrics.data)
-                }}
-              >
-                Upgrade to CVSS 3.1
-              </DefaultButton>
-            </div>
-          ) : null}
           {dropdownFor('attackVector', [
             'NETWORK',
             'ADJACENT_NETWORK',
@@ -126,7 +109,7 @@ export default function CVSSV3Attribute({
         </Collapsible>
         <div
           className={`p-2 rounded border ${getSeverityColors(
-            value?.baseSeverity
+            /** @type {number} */ (value?.baseScore)
           )}`}
         >
           <Attribute
@@ -143,7 +126,7 @@ export default function CVSSV3Attribute({
         </div>
         <div
           className={`p-2 rounded border ${getSeverityColors(
-            value?.baseSeverity
+            /** @type {number} */ (value?.baseScore)
           )}`}
         >
           <Attribute
@@ -187,7 +170,7 @@ export default function CVSSV3Attribute({
         </Collapsible>
         <div
           className={`p-2 rounded border ${getSeverityColors(
-            value?.temporalSeverity
+            /** @type {number} */ (value?.temporalScore)
           )}`}
         >
           <Attribute
@@ -204,7 +187,7 @@ export default function CVSSV3Attribute({
         </div>
         <div
           className={`p-2 rounded border ${getSeverityColors(
-            value?.temporalSeverity
+            /** @type {number} */ (value?.temporalScore)
           )}`}
         >
           <Attribute
@@ -276,7 +259,7 @@ export default function CVSSV3Attribute({
         </Collapsible>
         <div
           className={`p-2 rounded border ${getSeverityColors(
-            value?.environmentalSeverity
+            /** @type {number} */ (value?.environmentalScore)
           )}`}
         >
           <Attribute
@@ -293,7 +276,7 @@ export default function CVSSV3Attribute({
         </div>
         <div
           className={`p-2 rounded border ${getSeverityColors(
-            value?.environmentalSeverity
+            /** @type {number} */ (value?.environmentalScore)
           )}`}
         >
           <Attribute
