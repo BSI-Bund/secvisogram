@@ -93,21 +93,7 @@ export default function CVSSV3Attribute({
             </DefaultButton>
           </div>
         ) : null}
-        <Collapsible startCollapsed={true} title="base inputs">
-          {dropdownFor('attackVector', [
-            'NETWORK',
-            'ADJACENT_NETWORK',
-            'LOCAL',
-            'PHYSICAL',
-          ])}
-          {dropdownFor('attackComplexity', ['HIGH', 'LOW'])}
-          {dropdownFor('privilegesRequired', ['NONE', 'HIGH', 'LOW'])}
-          {dropdownFor('userInteraction', ['NONE', 'REQUIRED'])}
-          {dropdownFor('scope', ['UNCHANGED', 'CHANGED'])}
-          {dropdownFor('confidentialityImpact', ['NONE', 'HIGH', 'LOW'])}
-          {dropdownFor('integrityImpact', ['NONE', 'HIGH', 'LOW'])}
-          {dropdownFor('availabilityImpact', ['NONE', 'HIGH', 'LOW'])}
-        </Collapsible>
+
         <div
           className={`p-2 rounded border ${getSeverityColors(
             /** @type {number} */ (value?.baseScore)
@@ -140,35 +126,22 @@ export default function CVSSV3Attribute({
             {value?.baseSeverity || ''}
           </Attribute>
         </div>
-        <Collapsible startCollapsed={true} title="temporal inputs">
-          {dropdownFor(
-            'exploitCodeMaturity',
-            [
-              'UNPROVEN',
-              'PROOF_OF_CONCEPT',
-              'FUNCTIONAL',
-              'HIGH',
-              'NOT_DEFINED',
-            ],
-            false
-          )}
-          {dropdownFor(
-            'remediationLevel',
-            [
-              'OFFICIAL_FIX',
-              'TEMPORARY_FIX',
-              'WORKAROUND',
-              'UNAVAILABLE',
-              'NOT_DEFINED',
-            ],
-            false
-          )}
-          {dropdownFor(
-            'reportConfidence',
-            ['UNKNOWN', 'REASONABLE', 'CONFIRMED', 'NOT_DEFINED'],
-            false
-          )}
+        <Collapsible startCollapsed={true} title="base inputs">
+          {dropdownFor('attackVector', [
+            'NETWORK',
+            'ADJACENT_NETWORK',
+            'LOCAL',
+            'PHYSICAL',
+          ])}
+          {dropdownFor('attackComplexity', ['HIGH', 'LOW'])}
+          {dropdownFor('privilegesRequired', ['NONE', 'HIGH', 'LOW'])}
+          {dropdownFor('userInteraction', ['NONE', 'REQUIRED'])}
+          {dropdownFor('scope', ['UNCHANGED', 'CHANGED'])}
+          {dropdownFor('confidentialityImpact', ['NONE', 'HIGH', 'LOW'])}
+          {dropdownFor('integrityImpact', ['NONE', 'HIGH', 'LOW'])}
+          {dropdownFor('availabilityImpact', ['NONE', 'HIGH', 'LOW'])}
         </Collapsible>
+
         <div
           className={`p-2 rounded border ${getSeverityColors(
             /** @type {number} */ (value?.temporalScore)
@@ -199,6 +172,68 @@ export default function CVSSV3Attribute({
             disabled={false}
           >
             {value?.temporalSeverity || ''}
+          </Attribute>
+        </div>
+        <Collapsible startCollapsed={true} title="temporal inputs">
+          {dropdownFor(
+            'exploitCodeMaturity',
+            [
+              'UNPROVEN',
+              'PROOF_OF_CONCEPT',
+              'FUNCTIONAL',
+              'HIGH',
+              'NOT_DEFINED',
+            ],
+            false
+          )}
+          {dropdownFor(
+            'remediationLevel',
+            [
+              'OFFICIAL_FIX',
+              'TEMPORARY_FIX',
+              'WORKAROUND',
+              'UNAVAILABLE',
+              'NOT_DEFINED',
+            ],
+            false
+          )}
+          {dropdownFor(
+            'reportConfidence',
+            ['UNKNOWN', 'REASONABLE', 'CONFIRMED', 'NOT_DEFINED'],
+            false
+          )}
+        </Collapsible>
+
+        <div
+          className={`p-2 rounded border ${getSeverityColors(
+            /** @type {number} */ (value?.environmentalScore)
+          )}`}
+        >
+          <Attribute
+            label={'EnvironmentalScore'}
+            description={'The CVSS Environmental Score'}
+            instancePath={instancePath.concat(['environmentalScore'])}
+            property={property}
+            disabled={false}
+          >
+            {typeof value?.environmentalScore === 'number'
+              ? String(value.environmentalScore)
+              : ''}
+          </Attribute>
+        </div>
+        <div
+          className={`p-2 rounded border ${getSeverityColors(
+            /** @type {number} */ (value?.environmentalScore)
+          )}`}
+        >
+          <Attribute
+            label={'EnvironmentalSeverity'}
+            description={'The CVSS Environmental Severity'}
+            instancePath={instancePath.concat(['environmentalSeverity'])}
+            property={property}
+            disabled={false}
+          >
+            {value?.environmentalSeverity || ''}
           </Attribute>
         </div>
         <Collapsible startCollapsed={true} title="environmental inputs">
@@ -258,38 +293,6 @@ export default function CVSSV3Attribute({
             false
           )}
         </Collapsible>
-        <div
-          className={`p-2 rounded border ${getSeverityColors(
-            /** @type {number} */ (value?.environmentalScore)
-          )}`}
-        >
-          <Attribute
-            label={'EnvironmentalScore'}
-            description={'The CVSS Environmental Score'}
-            instancePath={instancePath.concat(['environmentalScore'])}
-            property={property}
-            disabled={false}
-          >
-            {typeof value?.environmentalScore === 'number'
-              ? String(value.environmentalScore)
-              : ''}
-          </Attribute>
-        </div>
-        <div
-          className={`p-2 rounded border ${getSeverityColors(
-            /** @type {number} */ (value?.environmentalScore)
-          )}`}
-        >
-          <Attribute
-            label={'EnvironmentalSeverity'}
-            description={'The CVSS Environmental Severity'}
-            instancePath={instancePath.concat(['environmentalSeverity'])}
-            property={property}
-            disabled={false}
-          >
-            {value?.environmentalSeverity || ''}
-          </Attribute>
-        </div>
       </div>
     </DocumentEditorContext.Provider>
   )

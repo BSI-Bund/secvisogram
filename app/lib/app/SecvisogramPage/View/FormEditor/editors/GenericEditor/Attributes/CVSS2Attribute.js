@@ -87,22 +87,6 @@ export default function CVSSV2Attribute({
           disabled={disabled}
           required={true}
         />
-        <Collapsible startCollapsed={true} title="base inputs">
-          {dropdownFor('accessVector', [
-            'NETWORK',
-            'ADJACENT_NETWORK',
-            'LOCAL',
-          ])}
-          {dropdownFor('accessComplexity', ['HIGH', 'MEDIUM', 'LOW'])}
-          {dropdownFor('authentication', ['MULTIPLE', 'SINGLE', 'NONE'])}
-          {dropdownFor('confidentialityImpact', [
-            'NONE',
-            'PARTIAL',
-            'COMPLETE',
-          ])}
-          {dropdownFor('integrityImpact', ['NONE', 'PARTIAL', 'COMPLETE'])}
-          {dropdownFor('availabilityImpact', ['NONE', 'PARTIAL', 'COMPLETE'])}
-        </Collapsible>
         <div
           className={`p-2 rounded border ${getSeverityColors(
             /** @type {number} */ (value?.baseScore)
@@ -120,7 +104,40 @@ export default function CVSSV2Attribute({
               : ''}
           </Attribute>
         </div>
+        <Collapsible startCollapsed={true} title="base inputs">
+          {dropdownFor('accessVector', [
+            'NETWORK',
+            'ADJACENT_NETWORK',
+            'LOCAL',
+          ])}
+          {dropdownFor('accessComplexity', ['HIGH', 'MEDIUM', 'LOW'])}
+          {dropdownFor('authentication', ['MULTIPLE', 'SINGLE', 'NONE'])}
+          {dropdownFor('confidentialityImpact', [
+            'NONE',
+            'PARTIAL',
+            'COMPLETE',
+          ])}
+          {dropdownFor('integrityImpact', ['NONE', 'PARTIAL', 'COMPLETE'])}
+          {dropdownFor('availabilityImpact', ['NONE', 'PARTIAL', 'COMPLETE'])}
+        </Collapsible>
 
+        <div
+          className={`p-2 rounded border ${getSeverityColors(
+            /** @type {number} */ (value?.temporalScore)
+          )}`}
+        >
+          <Attribute
+            label={'TemporalScore'}
+            description={'The CVSS Temporal Score'}
+            instancePath={instancePath.concat(['temporalScore'])}
+            property={property}
+            disabled={false}
+          >
+            {typeof value?.temporalScore === 'number'
+              ? String(value.temporalScore)
+              : ''}
+          </Attribute>
+        </div>
         <Collapsible startCollapsed={true} title="temporal inputs">
           {dropdownFor('exploitability', [
             'UNPROVEN',
@@ -143,24 +160,24 @@ export default function CVSSV2Attribute({
             'NOT_DEFINED',
           ])}
         </Collapsible>
+
         <div
           className={`p-2 rounded border ${getSeverityColors(
-            /** @type {number} */ (value?.temporalScore)
+            /** @type {number} */ (value?.environmentalScore)
           )}`}
         >
           <Attribute
-            label={'TemporalScore'}
-            description={'The CVSS Temporal Score'}
-            instancePath={instancePath.concat(['temporalScore'])}
+            label={'EnvironmentalScore'}
+            description={'The CVSS Environmental Score'}
+            instancePath={instancePath.concat(['environmentalScore'])}
             property={property}
             disabled={false}
           >
-            {typeof value?.temporalScore === 'number'
-              ? String(value.temporalScore)
+            {typeof value?.environmentalScore === 'number'
+              ? String(value.environmentalScore)
               : ''}
           </Attribute>
         </div>
-
         <Collapsible startCollapsed={true} title="environmental inputs">
           {dropdownFor(
             'collateralDamagePotential',
@@ -188,23 +205,6 @@ export default function CVSSV2Attribute({
             false
           )}
         </Collapsible>
-        <div
-          className={`p-2 rounded border ${getSeverityColors(
-            /** @type {number} */ (value?.environmentalScore)
-          )}`}
-        >
-          <Attribute
-            label={'EnvironmentalScore'}
-            description={'The CVSS Environmental Score'}
-            instancePath={instancePath.concat(['environmentalScore'])}
-            property={property}
-            disabled={false}
-          >
-            {typeof value?.environmentalScore === 'number'
-              ? String(value.environmentalScore)
-              : ''}
-          </Attribute>
-        </div>
       </div>
     </DocumentEditorContext.Provider>
   )
