@@ -12,6 +12,7 @@ import {
   vectorUpdateVectorString,
 } from '../../../../../../../shared/cvss2Tools.js'
 import { set } from 'lodash/fp.js'
+import { t } from 'i18next'
 
 /**
  * @param {{
@@ -104,7 +105,7 @@ export default function CVSSV2Attribute({
               : ''}
           </Attribute>
         </div>
-        <Collapsible startCollapsed={true} title="base inputs">
+        <Collapsible startCollapsed={true} title={t('cvssEditor.baseInputs')}>
           {dropdownFor('accessVector', [
             'NETWORK',
             'ADJACENT_NETWORK',
@@ -138,7 +139,10 @@ export default function CVSSV2Attribute({
               : ''}
           </Attribute>
         </div>
-        <Collapsible startCollapsed={true} title="temporal inputs">
+        <Collapsible
+          startCollapsed={true}
+          title={t('cvssEditor.temporalInputs')}
+        >
           {dropdownFor('exploitability', [
             'UNPROVEN',
             'PROOF_OF_CONCEPT',
@@ -178,7 +182,10 @@ export default function CVSSV2Attribute({
               : ''}
           </Attribute>
         </div>
-        <Collapsible startCollapsed={true} title="environmental inputs">
+        <Collapsible
+          startCollapsed={true}
+          title={t('cvssEditor.environmentalInputs')}
+        >
           {dropdownFor(
             'collateralDamagePotential',
             ['NONE', 'LOW', 'LOW_MEDIUM', 'MEDIUM_HIGH', 'HIGH', 'NOT_DEFINED'],

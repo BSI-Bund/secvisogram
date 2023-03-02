@@ -538,5 +538,10 @@
     "CvssV3EnvironmentalScoreDescription": "The environmental score assigned according to CVSS",
     "CvssV3EnvironmentalSeverityTitle": "The Environmental Severity",
     "CvssV3EnvironmentalSeverityDescription": "This metric reflects the environmental severity of a vulnerability."
+  },
+  "cvssEditor": {
+    "baseInputs": "base inputs",
+    "temporalInputs": "temporal inputs",
+    "environmentalInputs": "environmental inputs"
   }
 }

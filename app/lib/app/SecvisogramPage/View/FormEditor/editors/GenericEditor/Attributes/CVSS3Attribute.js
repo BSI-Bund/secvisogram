@@ -6,6 +6,7 @@ import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 import DefaultButton from '../../../../shared/DefaultButton.js'
 import CVSSVector from './CVSS3Attribute/CVSSVector.js'
 import { cvssDropdown, getSeverityColors } from './shared/cvssUtils.js'
+import { t } from 'i18next'
 
 /**
  * @param {{
@@ -126,7 +127,7 @@ export default function CVSSV3Attribute({
             {value?.baseSeverity || ''}
           </Attribute>
         </div>
-        <Collapsible startCollapsed={true} title="base inputs">
+        <Collapsible startCollapsed={true} title={t('cvssEditor.baseInputs')}>
           {dropdownFor('attackVector', [
             'NETWORK',
             'ADJACENT_NETWORK',
@@ -174,7 +175,10 @@ export default function CVSSV3Attribute({
             {value?.temporalSeverity || ''}
           </Attribute>
         </div>
-        <Collapsible startCollapsed={true} title="temporal inputs">
+        <Collapsible
+          startCollapsed={true}
+          title={t('cvssEditor.temporalInputs')}
+        >
           {dropdownFor(
             'exploitCodeMaturity',
             [
@@ -236,7 +240,10 @@ export default function CVSSV3Attribute({
             {value?.environmentalSeverity || ''}
           </Attribute>
         </div>
-        <Collapsible startCollapsed={true} title="environmental inputs">
+        <Collapsible
+          startCollapsed={true}
+          title={t('cvssEditor.environmentalInputs')}
+        >
           {dropdownFor(
             'confidentialityRequirement',
             ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
