@@ -1,5 +1,6 @@
 import React from 'react'
 import Collapsible from './shared/Collapsible.js'
+import CvssScore from './shared/cvssScore.js'
 import TextAttribute from './TextAttribute.js'
 import Attribute from './shared/Attribute.js'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
@@ -88,23 +89,7 @@ export default function CVSSV2Attribute({
           disabled={disabled}
           required={true}
         />
-        <div
-          className={`p-2 rounded border ${getSeverityColors(
-            /** @type {number} */ (value?.baseScore)
-          )}`}
-        >
-          <Attribute
-            label={'BaseScore'}
-            description={'The CVSS Base Score'}
-            instancePath={instancePath.concat(['baseScore'])}
-            property={property}
-            disabled={false}
-          >
-            {typeof value?.baseScore === 'number'
-              ? String(value.baseScore)
-              : ''}
-          </Attribute>
-        </div>
+        <CvssScore score={value?.baseScore} severity={undefined}></CvssScore>
         <Collapsible startCollapsed={true} title={t('cvssEditor.baseInputs')}>
           {dropdownFor('accessVector', [
             'NETWORK',
@@ -122,23 +107,10 @@ export default function CVSSV2Attribute({
           {dropdownFor('availabilityImpact', ['NONE', 'PARTIAL', 'COMPLETE'])}
         </Collapsible>
 
-        <div
-          className={`p-2 rounded border ${getSeverityColors(
-            /** @type {number} */ (value?.temporalScore)
-          )}`}
-        >
-          <Attribute
-            label={'TemporalScore'}
-            description={'The CVSS Temporal Score'}
-            instancePath={instancePath.concat(['temporalScore'])}
-            property={property}
-            disabled={false}
-          >
-            {typeof value?.temporalScore === 'number'
-              ? String(value.temporalScore)
-              : ''}
-          </Attribute>
-        </div>
+        <CvssScore
+          score={value?.temporalScore}
+          severity={undefined}
+        ></CvssScore>
         <Collapsible
           startCollapsed={true}
           title={t('cvssEditor.temporalInputs')}
@@ -165,23 +137,10 @@ export default function CVSSV2Attribute({
           ])}
         </Collapsible>
 
-        <div
-          className={`p-2 rounded border ${getSeverityColors(
-            /** @type {number} */ (value?.environmentalScore)
-          )}`}
-        >
-          <Attribute
-            label={'EnvironmentalScore'}
-            description={'The CVSS Environmental Score'}
-            instancePath={instancePath.concat(['environmentalScore'])}
-            property={property}
-            disabled={false}
-          >
-            {typeof value?.environmentalScore === 'number'
-              ? String(value.environmentalScore)
-              : ''}
-          </Attribute>
-        </div>
+        <CvssScore
+          score={value?.environmentalScore}
+          severity={undefined}
+        ></CvssScore>
         <Collapsible
           startCollapsed={true}
           title={t('cvssEditor.environmentalInputs')}

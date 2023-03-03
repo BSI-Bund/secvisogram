@@ -1,5 +1,6 @@
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { t } from 'i18next'
 
 /**
  *
@@ -14,15 +15,27 @@ export default function Collapsible({ startCollapsed, title, children }) {
   const [isCollapsed, setIsCollapsed] = React.useState(startCollapsed)
 
   return (
-    <div className="flex flex-col">
+    <div>
       <button
-        className="border border-gray-400 py-1 px-2 hover:bg-gray-200 rounded"
+        className="border border-gray-400 py-1 px-2 bg-gray-50 hover:bg-gray-200 rounded w-full"
         onClick={() => setIsCollapsed(!isCollapsed)}
       >
-        {isCollapsed ? t('menu.collapsibleShow') : t('menu.collapsibleHide')}{' '}
-        {title}
+        <div className="flex justify-between ...">
+          <div>{title}</div>
+          <div>
+            {isCollapsed ? (
+              <FontAwesomeIcon icon={faPlus} />
+            ) : (
+              <FontAwesomeIcon icon={faMinus} />
+            )}
+          </div>
+        </div>
       </button>
-      {!isCollapsed ? <div>{children}</div> : null}
+      {!isCollapsed ? (
+        <div className="flex flex-col border-x border-b border-gray-400 rounded-b p-4 -mt-1 w-full">
+          {children}
+        </div>
+      ) : null}
     </div>
   )
 }
