@@ -13,9 +13,9 @@ import React from 'react'
 export default function CvssScore({ score, severity }) {
   return (
     <div
-      className={`p-2 rounded border w-32 ${getSeverityColors(
-        /** @type {number} */ (score)
-      )}`}
+      className={`p-2 rounded border ${
+        score ? 'w-32' : 'w-80'
+      } ${getSeverityColors(/** @type {number} */ (score))}`}
     >
       {typeof score === 'number' ? (
         <>
