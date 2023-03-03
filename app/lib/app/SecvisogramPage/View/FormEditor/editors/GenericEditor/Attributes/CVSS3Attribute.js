@@ -2,11 +2,10 @@ import React from 'react'
 import Collapsible from './shared/Collapsible.js'
 import CvssScore from './shared/cvssScore.js'
 import TextAttribute from './TextAttribute.js'
-import Attribute from './shared/Attribute.js'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 import DefaultButton from '../../../../shared/DefaultButton.js'
 import CVSSVector from './CVSS3Attribute/CVSSVector.js'
-import { cvssDropdown, getSeverityColors } from './shared/cvssUtils.js'
+import { cvssDropdown } from './shared/cvssUtils.js'
 import { t } from 'i18next'
 
 /**
