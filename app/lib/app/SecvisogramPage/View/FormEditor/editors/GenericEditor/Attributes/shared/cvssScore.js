@@ -20,7 +20,7 @@ export default function CvssScore({ score, severity }) {
       {typeof score === 'number' ? (
         <>
           <p className="text-center text-2xl">
-            <b>{score}</b>
+            <b>{score?.toFixed(1)}</b>
           </p>
           {severity ? <p className="text-center">({severity})</p> : null}
         </>
