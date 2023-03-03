@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import { getSeverityColors } from './cvssUtils.js'
 import React from 'react'
 
@@ -25,7 +26,7 @@ export default function CvssScore({ score, severity }) {
         </>
       ) : (
         <p className="text-center">
-          Select values for all metrics to generate a score
+          {t('cvssEditor.selectValuesToGenerateScore')}
         </p>
       )}
     </div>

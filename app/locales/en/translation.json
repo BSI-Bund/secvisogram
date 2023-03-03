@@ -30,9 +30,7 @@
     "reallyDeleteAdvisory": "Really delete this advisory? This action cannot be undone.",
     "uploadFromFilesystem": "Upload from filesystem",
     "useTemplate": "Use a template",
-    "examples": "Examples",
-    "collapsibleHide": "hide",
-    "collapsibleShow": "show"
+    "examples": "Examples"
   },
   "arrays": {
     "defaultItemName": "Item",
@@ -542,6 +540,7 @@
   "cvssEditor": {
     "baseInputs": "base inputs",
     "temporalInputs": "temporal inputs",
-    "environmentalInputs": "environmental inputs"
+    "environmentalInputs": "environmental inputs",
+    "selectValuesToGenerateScore": "Select values for all metrics to generate a score"
   }
 }
