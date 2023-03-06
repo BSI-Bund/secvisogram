@@ -1,10 +1,12 @@
 import React from 'react'
-import DropdownAttribute from './DropdownAttribute.js'
+import Collapsible from './shared/Collapsible.js'
+import CvssScore from './shared/cvssScore.js'
 import TextAttribute from './TextAttribute.js'
-import Attribute from './shared/Attribute.js'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 import DefaultButton from '../../../../shared/DefaultButton.js'
 import CVSSVector from './CVSS3Attribute/CVSSVector.js'
+import { cvssDropdown } from './shared/cvssUtils.js'
+import { t } from 'i18next'
 
 /**
  * @param {{
@@ -52,35 +54,33 @@ export default function CVSSV3Attribute({
   )
 
   /** @type {(childName: string, options: string[], disableClearable: boolean) => any} */
-  function dropdownFor(childName, options, disableClearable = true) {
-    return (
-      <DropdownAttribute
-        label={childName.charAt(0).toUpperCase() + childName.substring(1)}
-        description=""
-        options={options}
-        isEnum={true}
-        instancePath={instancePath.concat([childName])}
-        value={(value || {})[childName] || ''}
-        property={property}
-        disabled={disabled}
-        disableClearable={disableClearable}
-      />
+  function dropdownFor(childName, options, disableClearable = false) {
+    const childValue = /** @type {string} */ ((value || {})[childName]) || ''
+    return cvssDropdown(
+      instancePath,
+      childName,
+      childValue,
+      options,
+      property,
+      disabled,
+      disableClearable
     )
   }
 
   return (
     <DocumentEditorContext.Provider value={documentEditor}>
-      <div className="flex flex-col gap-4 p-4 overflow-auto shrink-0 min-w-[340px] max-w-[400px]">
-        {dropdownFor('version', ['3.0', '3.1'])}
+      <div className="flex flex-col gap-4 p-4 overflow-auto shrink-0 min-w-[340px]">
+        {dropdownFor('version', ['3.0', '3.1'], true)}
         <TextAttribute
           label="VectorString"
           description=""
-          pattern="^CVSS:3.[01]/((AV:[NALP]|AC:[LH]|PR:[UNLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])/)*(AV:[NALP]|AC:[LH]|PR:[UNLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])$"
+          pattern="^CVSS:3.[01]/((AV:[NALP]|AC:[LH]|PR:[NLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])/)*(AV:[NALP]|AC:[LH]|PR:[NLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])$"
           minLength={1}
           instancePath={instancePath.concat(['vectorString'])}
           value={value?.vectorString || ''}
           property={property}
           disabled={disabled}
+          required={true}
         />
         {canBeUpgraded ? (
           <div className="mb-2">
@@ -94,153 +94,128 @@ export default function CVSSV3Attribute({
             </DefaultButton>
           </div>
         ) : null}
-        {dropdownFor('attackVector', [
-          'NETWORK',
-          'ADJACENT_NETWORK',
-          'LOCAL',
-          'PHYSICAL',
-        ])}
-        {dropdownFor('attackComplexity', ['HIGH', 'LOW'])}
-        {dropdownFor('privilegesRequired', ['NONE', 'HIGH', 'LOW'])}
-        {dropdownFor('userInteraction', ['NONE', 'REQUIRED'])}
-        {dropdownFor('scope', ['UNCHANGED', 'CHANGED'])}
-        {dropdownFor('confidentialityImpact', ['NONE', 'HIGH', 'LOW'])}
-        {dropdownFor('integrityImpact', ['NONE', 'HIGH', 'LOW'])}
-        {dropdownFor('availabilityImpact', ['NONE', 'HIGH', 'LOW'])}
-        <Attribute
-          label={'BaseScore'}
-          description={'The CVSS Base Score'}
-          instancePath={instancePath.concat(['baseScore'])}
-          property={property}
-          disabled={false}
+
+        <CvssScore
+          score={value?.baseScore}
+          severity={value?.baseSeverity}
+        ></CvssScore>
+        <Collapsible startCollapsed={true} title={t('cvssEditor.baseInputs')}>
+          {dropdownFor('attackVector', [
+            'NETWORK',
+            'ADJACENT_NETWORK',
+            'LOCAL',
+            'PHYSICAL',
+          ])}
+          {dropdownFor('attackComplexity', ['HIGH', 'LOW'])}
+          {dropdownFor('privilegesRequired', ['NONE', 'HIGH', 'LOW'])}
+          {dropdownFor('userInteraction', ['NONE', 'REQUIRED'])}
+          {dropdownFor('scope', ['UNCHANGED', 'CHANGED'])}
+          {dropdownFor('confidentialityImpact', ['NONE', 'HIGH', 'LOW'])}
+          {dropdownFor('integrityImpact', ['NONE', 'HIGH', 'LOW'])}
+          {dropdownFor('availabilityImpact', ['NONE', 'HIGH', 'LOW'])}
+        </Collapsible>
+
+        <CvssScore
+          score={value?.temporalScore}
+          severity={value?.temporalSeverity}
+        ></CvssScore>
+        <Collapsible
+          startCollapsed={true}
+          title={t('cvssEditor.temporalInputs')}
         >
-          {typeof value?.baseScore === 'number' ? String(value.baseScore) : ''}
-        </Attribute>
-        <Attribute
-          label={'BaseSeverity'}
-          description={'The CVSS Base Severity'}
-          instancePath={instancePath.concat(['baseSeverity'])}
-          property={property}
-          disabled={false}
+          {dropdownFor(
+            'exploitCodeMaturity',
+            [
+              'UNPROVEN',
+              'PROOF_OF_CONCEPT',
+              'FUNCTIONAL',
+              'HIGH',
+              'NOT_DEFINED',
+            ],
+            false
+          )}
+          {dropdownFor(
+            'remediationLevel',
+            [
+              'OFFICIAL_FIX',
+              'TEMPORARY_FIX',
+              'WORKAROUND',
+              'UNAVAILABLE',
+              'NOT_DEFINED',
+            ],
+            false
+          )}
+          {dropdownFor(
+            'reportConfidence',
+            ['UNKNOWN', 'REASONABLE', 'CONFIRMED', 'NOT_DEFINED'],
+            false
+          )}
+        </Collapsible>
+
+        <CvssScore
+          score={value?.environmentalScore}
+          severity={value?.environmentalSeverity}
+        ></CvssScore>
+        <Collapsible
+          startCollapsed={true}
+          title={t('cvssEditor.environmentalInputs')}
         >
-          {value?.baseSeverity || ''}
-        </Attribute>
-        {dropdownFor(
-          'exploitCodeMaturity',
-          ['UNPROVEN', 'PROOF_OF_CONCEPT', 'FUNCTIONAL', 'HIGH', 'NOT_DEFINED'],
-          false
-        )}
-        {dropdownFor(
-          'remediationLevel',
-          [
-            'OFFICIAL_FIX',
-            'TEMPORARY_FIX',
-            'WORKAROUND',
-            'UNAVAILABLE',
-            'NOT_DEFINED',
-          ],
-          false
-        )}
-        {dropdownFor(
-          'reportConfidence',
-          ['UNKNOWN', 'REASONABLE', 'CONFIRMED', 'NOT_DEFINED'],
-          false
-        )}
-        <Attribute
-          label={'TemporalScore'}
-          description={'The CVSS Temporal Score'}
-          instancePath={instancePath.concat(['temporalScore'])}
-          property={property}
-          disabled={false}
-        >
-          {typeof value?.temporalScore === 'number'
-            ? String(value.temporalScore)
-            : ''}
-        </Attribute>
-        <Attribute
-          label={'TemporalSeverity'}
-          description={'The CVSS Temporal Severity'}
-          instancePath={instancePath.concat(['temporalSeverity'])}
-          property={property}
-          disabled={false}
-        >
-          {value?.temporalSeverity || ''}
-        </Attribute>
-        {dropdownFor(
-          'confidentialityRequirement',
-          ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
-          false
-        )}
-        {dropdownFor(
-          'integrityRequirement',
-          ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
-          false
-        )}
-        {dropdownFor(
-          'availabilityRequirement',
-          ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
-          false
-        )}
-        {dropdownFor(
-          'modifiedAttackVector',
-          ['NETWORK', 'ADJACENT_NETWORK', 'LOCAL', 'PHYSICAL', 'NOT_DEFINED'],
-          false
-        )}
-        {dropdownFor(
-          'modifiedAttackComplexity',
-          ['HIGH', 'LOW', 'NOT_DEFINED'],
-          false
-        )}
-        {dropdownFor(
-          'modifiedPrivilegesRequired',
-          ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
-          false
-        )}
-        {dropdownFor(
-          'modifiedUserInteraction',
-          ['NONE', 'REQUIRED', 'NOT_DEFINED'],
-          false
-        )}
-        {dropdownFor(
-          'modifiedScope',
-          ['UNCHANGED', 'CHANGED', 'NOT_DEFINED'],
-          false
-        )}
-        {dropdownFor(
-          'modifiedConfidentialityImpact',
-          ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
-          false
-        )}
-        {dropdownFor(
-          'modifiedIntegrityImpact',
-          ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
-          false
-        )}
-        {dropdownFor(
-          'modifiedAvailabilityImpact',
-          ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
-          false
-        )}
-        <Attribute
-          label={'EnvironmentalScore'}
-          description={'The CVSS Environmental Score'}
-          instancePath={instancePath.concat(['environmentalScore'])}
-          property={property}
-          disabled={false}
-        >
-          {typeof value?.environmentalScore === 'number'
-            ? String(value.environmentalScore)
-            : ''}
-        </Attribute>
-        <Attribute
-          label={'EnvironmentalSeverity'}
-          description={'The CVSS Environmental Severity'}
-          instancePath={instancePath.concat(['environmentalSeverity'])}
-          property={property}
-          disabled={false}
-        >
-          {value?.environmentalSeverity || ''}
-        </Attribute>
+          {dropdownFor(
+            'confidentialityRequirement',
+            ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'integrityRequirement',
+            ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'availabilityRequirement',
+            ['LOW', 'MEDIUM', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedAttackVector',
+            ['NETWORK', 'ADJACENT_NETWORK', 'LOCAL', 'PHYSICAL', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedAttackComplexity',
+            ['HIGH', 'LOW', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedPrivilegesRequired',
+            ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedUserInteraction',
+            ['NONE', 'REQUIRED', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedScope',
+            ['UNCHANGED', 'CHANGED', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedConfidentialityImpact',
+            ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedIntegrityImpact',
+            ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+          {dropdownFor(
+            'modifiedAvailabilityImpact',
+            ['NONE', 'LOW', 'HIGH', 'NOT_DEFINED'],
+            false
+          )}
+        </Collapsible>
       </div>
     </DocumentEditorContext.Provider>
   )

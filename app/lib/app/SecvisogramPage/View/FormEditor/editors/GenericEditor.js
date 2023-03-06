@@ -10,7 +10,6 @@ import IdAttribute from './GenericEditor/Attributes/IdAttribute.js'
 import TextAreaAttribute from './GenericEditor/Attributes/TextAreaAttribute.js'
 import TextAttribute from './GenericEditor/Attributes/TextAttribute.js'
 import ObjectEditor from './GenericEditor/ObjectEditor.js'
-import CVSS2Editor from './GenericEditor/CVSS2Editor.js'
 import CVSSV3Attribute from './GenericEditor/Attributes/CVSS3Attribute.js'
 import AppConfigContext from '../../../../shared/context/AppConfigContext.js'
 import UserInfoContext from '../../../../shared/context/UserInfoContext.js'
@@ -20,6 +19,7 @@ import {
   uniqueProductId,
 } from '../shared/fillFieldFunctions.js'
 import AppErrorContext from '../../../../shared/context/AppErrorContext.js'
+import CVSSV2Attribute from './GenericEditor/Attributes/CVSS2Attribute.js'
 
 /**
  * utility function to get the color of circles identifying errors
@@ -138,11 +138,11 @@ export default function Editor({
       )
     } else if (uiType === 'OBJECT_CVSS_2') {
       return (
-        <CVSS2Editor
-          property={property}
-          parentProperty={parentProperty}
+        <CVSSV2Attribute
           instancePath={instancePath}
-          value={value}
+          value={/** @type {{[key: string]: string | number }} */ (value)}
+          property={property}
+          disabled={disabled}
         />
       )
     } else if (uiType === 'OBJECT_CVSS_3') {
