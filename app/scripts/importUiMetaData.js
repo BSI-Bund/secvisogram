@@ -191,6 +191,7 @@ function convertSchema(subschema, defs, path) {
         minLength: subschema.minLength,
         examples: subschema.examples,
         pattern: subschema.pattern,
+        default: subschema.default,
         uniqueItems: subschema.uniqueItems,
         enum: subschema.enum,
       },

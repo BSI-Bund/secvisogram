@@ -119,6 +119,10 @@ export default function Editor({
         }
       : undefined
 
+  const fillDefaultFunction = () => {
+    if (property.default) updateDoc(instancePath, property.default)
+  }
+
   if (property.type === 'ARRAY') {
     return (
       <ArrayEditor
@@ -187,6 +191,7 @@ export default function Editor({
           property={property}
           disabled={disabled}
           disableClearable={false}
+          fillDefaultFunction={fillDefaultFunction}
         />
       ))
     } else if (uiType === 'STRING_WITH_OPTIONS') {
@@ -247,10 +252,12 @@ export default function Editor({
           minLength={property.minLength || 0}
           type={'url'}
           pattern={property.pattern}
+          placeholder={property.default}
           instancePath={instancePath}
           value={value || ''}
           property={property}
           disabled={disabled}
+          fillDefaultFunction={fillDefaultFunction}
         />
       ))
     } else {
@@ -260,11 +267,13 @@ export default function Editor({
           description={description}
           minLength={property.minLength || 0}
           pattern={property.pattern}
+          placeholder={property.default}
           instancePath={instancePath}
           value={value || ''}
           property={property}
           disabled={disabled}
           fillFunction={fillFunction}
+          fillDefaultFunction={fillDefaultFunction}
         />
       ))
     }

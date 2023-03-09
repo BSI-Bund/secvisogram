@@ -1,4 +1,8 @@
-import { faInfoCircle, faMagic } from '@fortawesome/free-solid-svg-icons'
+import {
+  faInfoCircle,
+  faMagic,
+  faLightbulb,
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { t } from 'i18next'
 import { compile } from 'json-pointer'
@@ -21,6 +25,7 @@ import AttributeErrors from './AttributeErrors.js'
  *  property: import('../../../../shared/types').Property
  *  disabled: boolean
  *  fillFunction?: () => void
+ *  fillDefaultFunction?: () => void
  * }} props
  * @template V
  */
@@ -31,7 +36,8 @@ export default function Attribute({
   children,
   property,
   disabled,
-  fillFunction: fillFunction,
+  fillFunction,
+  fillDefaultFunction,
 }) {
   const { errors, doc } = React.useContext(DocumentEditorContext)
   const { selectedRelevanceLevel, relevanceLevels } = React.useContext(
@@ -99,6 +105,17 @@ export default function Attribute({
         >
           <FontAwesomeIcon icon={faInfoCircle} />
         </button>
+        {property.default ? (
+          <button
+            title="use default value"
+            data-testid={instancePath.join('-') + '-defaultButton'}
+            type="button"
+            className="w-6 h-6 flex-none text-slate-400 hover:text-slate-800 m-1"
+            onClick={fillDefaultFunction}
+          >
+            <FontAwesomeIcon icon={faLightbulb} />
+          </button>
+        ) : null}
         {fillFunction ? (
           <button
             title="generate value"

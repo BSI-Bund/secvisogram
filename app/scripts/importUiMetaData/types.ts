@@ -37,6 +37,7 @@ export interface StringSchema extends CommonSchemaFields {
   type: 'string'
   format?: string
   pattern?: string
+  default?: string
   uniqueItems?: boolean
   examples?: string[]
   minLength?: number

@@ -40,6 +40,7 @@ export type Property = Readonly<{
   description?: string
   mandatory?: boolean
   enum?: ReadonlyArray<string>
+  default?: string
   examples?: ReadonlyArray<string>
   pattern?: string
   minLength?: number
