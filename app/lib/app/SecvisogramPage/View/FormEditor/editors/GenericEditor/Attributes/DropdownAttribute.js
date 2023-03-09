@@ -16,6 +16,7 @@ import pruneEmpty from '../../../../../../shared/pruneEmpty.js'
  *  property: import('../../../shared/types').Property
  *  disabled: boolean
  *  disableClearable: boolean
+ *  fillDefaultFunction?: () => void
  * }} props
  */
 export default function DropdownAttribute({
