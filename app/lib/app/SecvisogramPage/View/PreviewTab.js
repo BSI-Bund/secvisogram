@@ -33,6 +33,9 @@ export default function PreviewTab({ onPreview, previewResult }) {
     if (!iframeRef.current?.contentDocument) return
     iframeRef.current.contentDocument.open()
     iframeRef.current.contentDocument.write(html)
+    iframeRef.current.contentDocument.addEventListener('focus', () => {
+      iframeRef.current?.blur()
+    })
     iframeRef.current.contentDocument.close()
   }, [html, showRendered])
 
