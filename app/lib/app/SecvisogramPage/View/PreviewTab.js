@@ -33,6 +33,9 @@ export default function PreviewTab({ onPreview, previewResult }) {
     if (!iframeRef.current?.contentDocument) return
     iframeRef.current.contentDocument.open()
     iframeRef.current.contentDocument.write(html)
+    iframeRef.current.contentDocument.addEventListener('focus', () => {
+      iframeRef.current?.blur()
+    })
     iframeRef.current.contentDocument.close()
   }, [html, showRendered])
 
@@ -53,7 +56,6 @@ export default function PreviewTab({ onPreview, previewResult }) {
               className="advisory w-full border h-full"
               ref={iframeRef}
             />
-            <div className="absolute top-0 right-0 bottom-0 left-0"></div>
           </div>
         ) : (
           <div className="relative h-full">
