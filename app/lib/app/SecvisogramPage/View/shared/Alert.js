@@ -4,6 +4,7 @@ import {
   AlertDialogLabel,
   AlertDialogOverlay,
 } from '@reach/alert-dialog'
+import { t } from 'i18next'
 import React, { useState } from 'react'
 
 /**
@@ -16,7 +17,7 @@ import React, { useState } from 'react'
  * }} params
  */
 export const useAlert = ({
-  label = 'Please confirm',
+  label = t('alert.pleaseConfirm'),
   description,
   confirmLabel,
   cancelLabel,
@@ -58,7 +59,7 @@ export const useAlert = ({
  * }} params
  */
 const Alert = ({
-  label = 'Please confirm',
+  label = t('alert.pleaseConfirm'),
   description,
   confirmLabel,
   cancelLabel,
@@ -91,6 +92,7 @@ const Alert = ({
               {confirmLabel}
             </button>
             <button
+              data-testid="alert-refute_button"
               type="button"
               className="ml-4 py-1 px-3 rounded shadow border border-gray-500 bg-gray-500 text-white hover:text-gray-500 hover:bg-white"
               ref={cancelRef}

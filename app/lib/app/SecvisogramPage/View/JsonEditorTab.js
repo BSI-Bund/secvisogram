@@ -1,15 +1,13 @@
-import {
-  faCheckCircle,
-  faExclamationTriangle,
-  faWindowClose,
-} from '@fortawesome/free-solid-svg-icons'
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as jsonMap from 'json-source-map'
 import React from 'react'
 import MonacoEditor from 'react-monaco-editor'
 import sortObjectKeys from '../../shared/sortObjectKeys.js'
 import editorSchema from './JsonEditorTab/editorSchema.js'
+import SideBarContext from './shared/context/SideBarContext.js'
 import useDebounce from './shared/useDebounce.js'
+import SelectedPathContext from './shared/context/SelectedPathContext.js'
 
 /**
  * @param {{
@@ -32,6 +30,7 @@ export default function JsonEditorTab({
   onUnlockTab,
 }) {
   const { doc } = formValues
+  const sideBarData = React.useContext(SideBarContext)
 
   const [editor, setEditor] = React.useState(
     /** @type {import ("react-monaco-editor").monaco.editor.IStandaloneCodeEditor | null} */ (
@@ -106,10 +105,6 @@ export default function JsonEditorTab({
   const [showErrors, setShowErrors] = React.useState(false)
   const debouncedValue = useDebounce(value)
 
-  const toggleShowErrors = () => {
-    setShowErrors(!showErrors)
-  }
-
   /**
    * Locks the tab navigation if there are any parse errors.
    */
@@ -177,31 +172,77 @@ export default function JsonEditorTab({
     }
   }, [errors, monaco, editor, debouncedValue])
 
-  const setCursor = (/** @type {string} */ jsonPath) => {
-    if (editor) {
-      let result
-      try {
-        result = jsonMap.parse(debouncedValue)
-      } catch (/** @type {any} */ e) {
-        return
-      }
+  const setCursor = React.useCallback(
+    (/** @type {string} */ jsonPath) => {
+      if (editor) {
+        let result
+        try {
+          result = jsonMap.parse(editor.getModel()?.getValue() || '')
+        } catch (/** @type {any} */ e) {
+          return
+        }
 
-      let positionData = result.pointers[jsonPath]
-      if (positionData) {
-        editor.setPosition({
-          lineNumber: positionData.value.line + 1,
-          column: positionData.value.column + 2,
-        })
-        editor.revealLine(positionData.value.line + 1)
-        editor.focus()
+        let positionData = result.pointers[jsonPath]
+        if (positionData) {
+          editor.setPosition({
+            lineNumber: positionData.value.line + 1,
+            column: positionData.value.column + 2,
+          })
+          editor.revealLine(positionData.value.line + 1)
+          editor.focus()
+        }
       }
-    }
-  }
+    },
+    [editor]
+  )
+
+  const { selectedPath } = React.useContext(SelectedPathContext)
+
+  React.useEffect(
+    () => setCursor('/' + selectedPath.join('/')),
+    [setCursor, selectedPath]
+  )
 
   const editorDidMount = (
     /** @type {any } */ editor,
     /** @type {any} */ monaco
   ) => {
+    editor.addAction({
+      id: 'set-sidebar-context',
+      label: 'Set Sidebar Context',
+      precondition: null,
+      keybindingContext: null,
+      contextMenuGroupId: 'navigation',
+      contextMenuOrder: 1.5,
+      run: function (/** @type {any} */ ed) {
+        const currentCursorPosition = ed.getPosition()
+        let docMap
+        try {
+          docMap = jsonMap.parse(ed.getModel().getValue())
+        } catch (/** @type {any} */ e) {
+          return
+        }
+
+        const relevantPath = Object.entries(docMap.pointers).find((entry) => {
+          return (
+            currentCursorPosition.lineNumber - 1 === entry[1].key?.line &&
+            currentCursorPosition.column - 1 >= entry[1].key.column &&
+            currentCursorPosition.column - 1 <= entry[1].keyEnd.column
+          )
+        })
+
+        if (!relevantPath) return
+
+        const pathSegments = relevantPath[0].split('/')
+        const pathSegmentsWithoutIndex = pathSegments
+          .filter((partOfPath) => Number.isNaN(Number.parseInt(partOfPath)))
+          .filter((partOfPath) => Boolean(partOfPath)) // remove empty strings
+
+        sideBarData.setSideBarSelectedPath(pathSegmentsWithoutIndex)
+        sideBarData.setSideBarIsOpen(true)
+      },
+    })
+
     /** @type {any} */
     const win = window
     if (win.Cypress) {
@@ -236,7 +277,7 @@ export default function JsonEditorTab({
   }
   return (
     <>
-      <div className="json-editor flex h-full mr-3 bg-white">
+      <div className="json-editor flex h-full bg-white">
         <div className=" w-full">
           <div className={'relative ' + (showErrors ? 'h-4/5' : 'h-full')}>
             <MonacoEditor
@@ -262,7 +303,7 @@ export default function JsonEditorTab({
                   Validation <br /> Errors:
                 </h2>
               </div>
-              <div className="mx-2 flex-grow overflow-auto h-full">
+              <div className="mx-2 grow overflow-auto h-full">
                 {errors.map((error, i) => (
                   <div key={i}>
                     <a
@@ -296,42 +337,6 @@ export default function JsonEditorTab({
                 <FontAwesomeIcon className="mr-1" icon={faWindowClose} />
               </button>
             </div>
-          </div>
-        </div>
-        <div className="pl-3 pr-6 py-6 w-72 flex flex-col justify-between">
-          <div className="flex flex-col" />
-          <div>
-            <h2 className="mb-4 text-xl font-bold">Validation Status</h2>
-            {errors.length === 0 ? (
-              <>
-                <div className="mb-4 flex justify-end">
-                  <FontAwesomeIcon
-                    className="text-6xl text-green-500"
-                    icon={faCheckCircle}
-                  />
-                </div>
-                <div className="h-9" />
-              </>
-            ) : (
-              <>
-                <div className="mb-4 flex justify-between">
-                  <span className="text-6xl text-red-500 font-bold">
-                    {errors.length}
-                  </span>
-                  <FontAwesomeIcon
-                    className="text-6xl text-red-500"
-                    icon={faExclamationTriangle}
-                  />
-                </div>
-                <button
-                  type="button"
-                  className="py-1 px-3 h-9 underline text-gray-500"
-                  onClick={toggleShowErrors}
-                >
-                  {showErrors ? 'Hide errors' : 'Show errors'}
-                </button>
-              </>
-            )}
           </div>
         </div>
       </div>

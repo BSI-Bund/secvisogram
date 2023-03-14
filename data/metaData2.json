@@ -1,0 +1,4475 @@
+{
+  "$": {
+    "menuDepth": 2
+  },
+  "$.document": {
+    "user_documentation": {
+      "specification": "docs/user/document-spec.en.md",
+      "usage": { "generic": "docs/user/document-usage.en.md" }
+    },
+    "field_title": "DocumentTitle",
+    "field_description": "DocumentDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.acknowledgments": {
+    "user_documentation": {
+      "specification": "docs/user/document/acknowledgments-spec.en.md",
+      "usage": { "generic": "docs/user/document/acknowledgments-usage.en.md" }
+    },
+    "field_title": "DocumentAcknowledgmentsTitle",
+    "field_description": "DocumentAcknowledgmentsDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "optional",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.document.acknowledgments[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsTitle",
+    "field_description": "AcknowledgmentsItemsDescription"
+  },
+  "$.document.acknowledgments[].names": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment/names-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment/names-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsNamesTitle",
+    "field_description": "AcknowledgmentsItemsNamesDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "want_to_have",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.document.acknowledgments[].names[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment/names/name-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsNamesItemsTitle",
+    "field_description": "AcknowledgmentsItemsNamesItemsDescription",
+    "string_is_multiline": false
+  },
+  "$.document.acknowledgments[].organization": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment/organization-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsOrganizationTitle",
+    "field_description": "AcknowledgmentsItemsOrganizationDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.document.acknowledgments[].summary": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment/summary-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsSummaryTitle",
+    "field_description": "AcknowledgmentsItemsSummaryDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.document.acknowledgments[].urls": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment/urls-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsUrlsTitle",
+    "field_description": "AcknowledgmentsItemsUrlsDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.document.acknowledgments[].urls[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment/urls/url-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsUrlsItemsTitle",
+    "field_description": "AcknowledgmentsItemsUrlsItemsDescription"
+  },
+  "$.document.aggregate_severity": {
+    "user_documentation": {
+      "specification": "docs/user/document/aggregate_severity-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/aggregate_severity-usage.en.md"
+      }
+    },
+    "field_title": "DocumentAggregateSeverityTitle",
+    "field_description": "DocumentAggregateSeverityDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "want_to_have",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.document.aggregate_severity.namespace": {
+    "user_documentation": {
+      "specification": "docs/user/document/aggregate_severity/namespace-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/aggregate_severity/namespace-usage.en.md"
+      }
+    },
+    "field_title": "DocumentAggregateSeverityNamespaceTitle",
+    "field_description": "DocumentAggregateSeverityNamespaceDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.document.aggregate_severity.text": {
+    "user_documentation": {
+      "specification": "docs/user/document/aggregate_severity/text-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/aggregate_severity/text-usage.en.md"
+      }
+    },
+    "field_title": "DocumentAggregateSeverityTextTitle",
+    "field_description": "DocumentAggregateSeverityTextDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "want_to_have",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.document.category": {
+    "user_documentation": {
+      "specification": "docs/user/document/category-spec.en.md",
+      "usage": { "generic": "docs/user/document/category-usage.en.md" }
+    },
+    "field_title": "DocumentCategoryTitle",
+    "field_description": "DocumentCategoryDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.csaf_version": {
+    "user_documentation": {
+      "specification": "docs/user/document/csaf_version-spec.en.md",
+      "usage": { "generic": "docs/user/document/csaf_version-usage.en.md" }
+    },
+    "field_title": "DocumentCsafVersionTitle",
+    "field_description": "DocumentCsafVersionDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.distribution": {
+    "user_documentation": {
+      "specification": "docs/user/document/distribution-spec.en.md",
+      "usage": { "generic": "docs/user/document/distribution-usage.en.md" }
+    },
+    "field_title": "DocumentDistributionTitle",
+    "field_description": "DocumentDistributionDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "best_practice",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.document.distribution.text": {
+    "user_documentation": {
+      "specification": "docs/user/document/distribution/text-spec.en.md",
+      "usage": { "generic": "docs/user/document/distribution/text-usage.en.md" }
+    },
+    "field_title": "DocumentDistributionTextTitle",
+    "field_description": "DocumentDistributionTextDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.document.distribution.tlp": {
+    "user_documentation": {
+      "specification": "docs/user/document/distribution/tlp-spec.en.md",
+      "usage": { "generic": "docs/user/document/distribution/tlp-usage.en.md" }
+    },
+    "field_title": "DocumentDistributionTlpTitle",
+    "field_description": "DocumentDistributionTlpDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "want_to_have",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.document.distribution.tlp.label": {
+    "user_documentation": {
+      "specification": "docs/user/document/distribution/tlp/label-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/distribution/tlp/label-usage.en.md"
+      }
+    },
+    "field_title": "DocumentDistributionTlpLabelTitle",
+    "field_description": "DocumentDistributionTlpLabelDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.distribution.tlp.url": {
+    "user_documentation": {
+      "specification": "docs/user/document/distribution/tlp/url-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/distribution/tlp/url-usage.en.md"
+      }
+    },
+    "field_title": "DocumentDistributionTlpUrlTitle",
+    "field_description": "DocumentDistributionTlpUrlDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.document.lang": {
+    "user_documentation": {
+      "specification": "docs/user/document/lang-spec.en.md",
+      "usage": { "generic": "docs/user/document/lang-usage.en.md" }
+    },
+    "field_title": "DocumentLangTitle",
+    "field_description": "DocumentLangDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.document.notes": {
+    "user_documentation": {
+      "specification": "docs/user/document/notes-spec.en.md",
+      "usage": { "generic": "docs/user/document/notes-usage.en.md" }
+    },
+    "field_title": "DocumentNotesTitle",
+    "field_description": "DocumentNotesDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.document.notes[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/notes/note-spec.en.md",
+      "usage": { "generic": "docs/user/types/notes/note-usage.en.md" }
+    },
+    "field_title": "NotesItemsTitle",
+    "field_description": "NotesItemsDescription"
+  },
+  "$.document.notes[].audience": {
+    "user_documentation": {
+      "specification": "docs/user/types/notes/note/audience-spec.en.md",
+      "usage": { "generic": "docs/user/types/notes/note/audience-usage.en.md" }
+    },
+    "field_title": "NotesItemsAudienceTitle",
+    "field_description": "NotesItemsAudienceDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.document.notes[].category": {
+    "user_documentation": {
+      "specification": "docs/user/types/notes/note/category-spec.en.md",
+      "usage": { "generic": "docs/user/types/notes/note/category-usage.en.md" }
+    },
+    "field_title": "NotesItemsCategoryTitle",
+    "field_description": "NotesItemsCategoryDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.notes[].text": {
+    "user_documentation": {
+      "specification": "docs/user/types/notes/note/text-spec.en.md",
+      "usage": { "generic": "docs/user/types/notes/note/text-usage.en.md" }
+    },
+    "field_title": "NotesItemsTextTitle",
+    "field_description": "NotesItemsTextDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.notes[].title": {
+    "user_documentation": {
+      "specification": "docs/user/types/notes/note/title-spec.en.md",
+      "usage": { "generic": "docs/user/types/notes/note/title-usage.en.md" }
+    },
+    "field_title": "NotesItemsTitleTitle",
+    "field_description": "NotesItemsTitleDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "best_practice",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.document.publisher": {
+    "user_documentation": {
+      "specification": "docs/user/document/publisher-spec.en.md",
+      "usage": { "generic": "docs/user/document/publisher-usage.en.md" }
+    },
+    "field_title": "DocumentPublisherTitle",
+    "field_description": "DocumentPublisherDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.publisher.category": {
+    "user_documentation": {
+      "specification": "docs/user/document/publisher/category-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/publisher/category-usage.en.md"
+      }
+    },
+    "field_title": "DocumentPublisherCategoryTitle",
+    "field_description": "DocumentPublisherCategoryDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.publisher.contact_details": {
+    "user_documentation": {
+      "specification": "docs/user/document/publisher/contact_details-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/publisher/contact_details-usage.en.md"
+      }
+    },
+    "field_title": "DocumentPublisherContactDetailsTitle",
+    "field_description": "DocumentPublisherContactDetailsDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "want_to_have",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.document.publisher.issuing_authority": {
+    "user_documentation": {
+      "specification": "docs/user/document/publisher/issuing_authority-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/publisher/issuing_authority-usage.en.md"
+      }
+    },
+    "field_title": "DocumentPublisherIssuingAuthorityTitle",
+    "field_description": "DocumentPublisherIssuingAuthorityDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.document.publisher.name": {
+    "user_documentation": {
+      "specification": "docs/user/document/publisher/name-spec.en.md",
+      "usage": { "generic": "docs/user/document/publisher/name-usage.en.md" }
+    },
+    "field_title": "DocumentPublisherNameTitle",
+    "field_description": "DocumentPublisherNameDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.publisher.namespace": {
+    "user_documentation": {
+      "specification": "docs/user/document/publisher/namespace-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/publisher/namespace-usage.en.md"
+      }
+    },
+    "field_title": "DocumentPublisherNamespaceTitle",
+    "field_description": "DocumentPublisherNamespaceDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.references": {
+    "user_documentation": {
+      "specification": "docs/user/document/references-spec.en.md",
+      "usage": { "generic": "docs/user/document/references-usage.en.md" }
+    },
+    "field_title": "DocumentReferencesTitle",
+    "field_description": "DocumentReferencesDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.document.references[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/references/reference-spec.en.md",
+      "usage": { "generic": "docs/user/types/references/reference-usage.en.md" }
+    },
+    "field_title": "ReferencesItemsTitle",
+    "field_description": "ReferencesItemsDescription"
+  },
+  "$.document.references[].category": {
+    "user_documentation": {
+      "specification": "docs/user/types/references/reference/category-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/references/reference/category-usage.en.md"
+      }
+    },
+    "field_title": "ReferencesItemsCategoryTitle",
+    "field_description": "ReferencesItemsCategoryDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.document.references[].summary": {
+    "user_documentation": {
+      "specification": "docs/user/types/references/reference/summary-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/references/reference/summary-usage.en.md"
+      }
+    },
+    "field_title": "ReferencesItemsSummaryTitle",
+    "field_description": "ReferencesItemsSummaryDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.references[].url": {
+    "user_documentation": {
+      "specification": "docs/user/types/references/reference/url-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/references/reference/url-usage.en.md"
+      }
+    },
+    "field_title": "ReferencesItemsUrlTitle",
+    "field_description": "ReferencesItemsUrlDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.source_lang": {
+    "user_documentation": {
+      "specification": "docs/user/document/source_lang-spec.en.md",
+      "usage": { "generic": "docs/user/document/source_lang-usage.en.md" }
+    },
+    "field_title": "DocumentSourceLangTitle",
+    "field_description": "DocumentSourceLangDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.document.title": {
+    "user_documentation": {
+      "specification": "docs/user/document/title-spec.en.md",
+      "usage": { "generic": "docs/user/document/title-usage.en.md" }
+    },
+    "field_title": "DocumentTitleTitle",
+    "field_description": "DocumentTitleDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.tracking": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking-spec.en.md",
+      "usage": { "generic": "docs/user/document/tracking-usage.en.md" }
+    },
+    "field_title": "DocumentTrackingTitle",
+    "field_description": "DocumentTrackingDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.tracking.aliases": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/aliases-spec.en.md",
+      "usage": { "generic": "docs/user/document/tracking/aliases-usage.en.md" }
+    },
+    "field_title": "DocumentTrackingAliasesTitle",
+    "field_description": "DocumentTrackingAliasesDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.document.tracking.aliases[]": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/aliases/alias-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/aliases/alias-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingAliasesItemsTitle",
+    "field_description": "DocumentTrackingAliasesItemsDescription",
+    "string_is_multiline": false
+  },
+  "$.document.tracking.current_release_date": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/current_release_date-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/current_release_date-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingCurrentReleaseDateTitle",
+    "field_description": "DocumentTrackingCurrentReleaseDateDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.tracking.generator": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/generator-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/generator-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingGeneratorTitle",
+    "field_description": "DocumentTrackingGeneratorDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.document.tracking.generator.date": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/generator/date-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/generator/date-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingGeneratorDateTitle",
+    "field_description": "DocumentTrackingGeneratorDateDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.document.tracking.generator.engine": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/generator/engine-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/generator/engine-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingGeneratorEngineTitle",
+    "field_description": "DocumentTrackingGeneratorEngineDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.tracking.generator.engine.name": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/generator/engine/name-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/generator/engine/name-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingGeneratorEngineNameTitle",
+    "field_description": "DocumentTrackingGeneratorEngineNameDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.tracking.generator.engine.version": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/generator/engine/version-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/generator/engine/version-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingGeneratorEngineVersionTitle",
+    "field_description": "DocumentTrackingGeneratorEngineVersionDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "want_to_have",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.document.tracking.id": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/id-spec.en.md",
+      "usage": { "generic": "docs/user/document/tracking/id-usage.en.md" }
+    },
+    "field_title": "DocumentTrackingIdTitle",
+    "field_description": "DocumentTrackingIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.tracking.initial_release_date": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/initial_release_date-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/initial_release_date-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingInitialReleaseDateTitle",
+    "field_description": "DocumentTrackingInitialReleaseDateDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.tracking.revision_history": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/revision_history-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/revision_history-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingRevisionHistoryTitle",
+    "field_description": "DocumentTrackingRevisionHistoryDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.tracking.revision_history[]": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/revision_history/revision-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/revision_history/revision-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingRevisionHistoryItemsTitle",
+    "field_description": "DocumentTrackingRevisionHistoryItemsDescription"
+  },
+  "$.document.tracking.revision_history[].date": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/revision_history/revision/date-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/revision_history/revision/date-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingRevisionHistoryItemsDateTitle",
+    "field_description": "DocumentTrackingRevisionHistoryItemsDateDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.tracking.revision_history[].legacy_version": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/revision_history/revision/legacy_version-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/revision_history/revision/legacy_version-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingRevisionHistoryItemsLegacyVersionTitle",
+    "field_description": "DocumentTrackingRevisionHistoryItemsLegacyVersionDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "optional",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.document.tracking.revision_history[].number": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/revision_history/revision/number-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/revision_history/revision/number-usage.en.md"
+      }
+    },
+    "field_title": "VersionTitle",
+    "field_description": "VersionDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.tracking.revision_history[].summary": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/revision_history/revision/summary-spec.en.md",
+      "usage": {
+        "generic": "docs/user/document/tracking/revision_history/revision/summary-usage.en.md"
+      }
+    },
+    "field_title": "DocumentTrackingRevisionHistoryItemsSummaryTitle",
+    "field_description": "DocumentTrackingRevisionHistoryItemsSummaryDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.tracking.status": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/status-spec.en.md",
+      "usage": { "generic": "docs/user/document/tracking/status-usage.en.md" }
+    },
+    "field_title": "DocumentTrackingStatusTitle",
+    "field_description": "DocumentTrackingStatusDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.document.tracking.version": {
+    "user_documentation": {
+      "specification": "docs/user/document/tracking/version-spec.en.md",
+      "usage": { "generic": "docs/user/document/tracking/version-usage.en.md" }
+    },
+    "field_title": "VersionTitle",
+    "field_description": "VersionDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree-spec.en.md",
+      "usage": { "generic": "docs/user/product_tree-usage.en.md" }
+    },
+    "field_title": "ProductTreeTitle",
+    "field_description": "ProductTreeDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "want_to_have",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.branches": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/branches-spec.en.md",
+      "usage": { "generic": "docs/user/product_tree/branches-usage.en.md" }
+    },
+    "field_title": "BranchesTitle",
+    "field_description": "BranchesDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "want_to_have",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.product_tree.branches[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/branches/branch-spec.en.md",
+      "usage": { "generic": "docs/user/types/branches/branch-usage.en.md" }
+    },
+    "field_title": "BranchesItemsTitle",
+    "field_description": "BranchesItemsDescription"
+  },
+  "$.product_tree.branches[].branches": {
+    "user_documentation": {
+      "specification": "docs/user/types/branches-spec.en.md",
+      "usage": { "generic": "docs/user/types/branches-usage.en.md" }
+    },
+    "field_title": "BranchesTitle",
+    "field_description": "BranchesDescription"
+  },
+  "$.product_tree.branches[].category": {
+    "user_documentation": {
+      "specification": "docs/user/types/branches/branch/category-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/branches/branch/category-usage.en.md"
+      }
+    },
+    "field_title": "BranchesItemsCategoryTitle",
+    "field_description": "BranchesItemsCategoryDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.branches[].name": {
+    "user_documentation": {
+      "specification": "docs/user/types/branches/branch/name-spec.en.md",
+      "usage": { "generic": "docs/user/types/branches/branch/name-usage.en.md" }
+    },
+    "field_title": "BranchesItemsNameTitle",
+    "field_description": "BranchesItemsNameDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.branches[].product": {
+    "user_documentation": {
+      "specification": "docs/user/types/branches/branch/product-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/branches/branch/product-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameTitle",
+    "field_description": "FullProductNameDescription"
+  },
+  "$.product_tree.branches[].product.name": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/name-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/name-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameNameTitle",
+    "field_description": "FullProductNameNameDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.branches[].product.product_id": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_id-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/product_id-usage.en.md",
+        "specific": "docs/user/types/full_product_name/product_id-usage.en.md"
+      }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperTitle",
+    "field_description": "FullProductNameProductIdentificationHelperDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "want_to_have",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.cpe": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperCpeTitle",
+    "field_description": "FullProductNameProductIdentificationHelperCpeDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.hashes": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.hashes[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsDescription"
+  },
+  "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription"
+  },
+  "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].algorithm": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.hashes[].file_hashes[].value": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.hashes[].filename": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFilenameTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.model_numbers": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperModelNumbersTitle",
+    "field_description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.model_numbers[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperModelNumbersItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
+    "string_is_multiline": false
+  },
+  "$.product_tree.branches[].product.product_identification_helper.purl": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperPurlTitle",
+    "field_description": "FullProductNameProductIdentificationHelperPurlDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.sbom_urls": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSbomUrlsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.sbom_urls[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSbomUrlsItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription"
+  },
+  "$.product_tree.branches[].product.product_identification_helper.serial_numbers": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSerialNumbersTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.serial_numbers[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSerialNumbersItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
+    "string_is_multiline": false
+  },
+  "$.product_tree.branches[].product.product_identification_helper.skus": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSkusTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSkusDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.skus[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSkusItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
+    "string_is_multiline": false
+  },
+  "$.product_tree.branches[].product.product_identification_helper.x_generic_uris": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperXGenericUrisTitle",
+    "field_description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.x_generic_uris[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription"
+  },
+  "$.product_tree.branches[].product.product_identification_helper.x_generic_uris[].namespace": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceTitle",
+    "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.branches[].product.product_identification_helper.x_generic_uris[].uri": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle",
+    "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.full_product_names": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/full_product_names-spec.en.md",
+      "usage": {
+        "generic": "docs/user/product_tree/full_product_names-usage.en.md"
+      }
+    },
+    "field_title": "ProductTreeFullProductNamesTitle",
+    "field_description": "ProductTreeFullProductNamesDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.full_product_names[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name-spec.en.md",
+      "usage": { "generic": "docs/user/types/full_product_name-usage.en.md" }
+    },
+    "field_title": "FullProductNameTitle",
+    "field_description": "FullProductNameDescription"
+  },
+  "$.product_tree.full_product_names[].name": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/name-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/name-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameNameTitle",
+    "field_description": "FullProductNameNameDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.full_product_names[].product_id": {
+    "user_documentation": {
+      "specification": "docs/user/types/product_id-spec.en.md",
+      "usage": { "generic": "docs/user/types/product_id-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperTitle",
+    "field_description": "FullProductNameProductIdentificationHelperDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "want_to_have",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.cpe": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperCpeTitle",
+    "field_description": "FullProductNameProductIdentificationHelperCpeDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.hashes": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.hashes[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsDescription"
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription"
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].algorithm": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.hashes[].file_hashes[].value": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.hashes[].filename": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFilenameTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.model_numbers": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperModelNumbersTitle",
+    "field_description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.model_numbers[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperModelNumbersItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
+    "string_is_multiline": false
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.purl": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperPurlTitle",
+    "field_description": "FullProductNameProductIdentificationHelperPurlDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.sbom_urls": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSbomUrlsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.sbom_urls[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSbomUrlsItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription"
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.serial_numbers": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSerialNumbersTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.serial_numbers[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSerialNumbersItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
+    "string_is_multiline": false
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.skus": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSkusTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSkusDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.skus[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSkusItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
+    "string_is_multiline": false
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperXGenericUrisTitle",
+    "field_description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription"
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[].namespace": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceTitle",
+    "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.full_product_names[].product_identification_helper.x_generic_uris[].uri": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle",
+    "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.product_groups": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/product_groups-spec.en.md",
+      "usage": {
+        "generic": "docs/user/product_tree/product_groups-usage.en.md"
+      }
+    },
+    "field_title": "ProductTreeProductGroupsTitle",
+    "field_description": "ProductTreeProductGroupsDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "optional",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.product_tree.product_groups[]": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/product_groups/product_group-spec.en.md",
+      "usage": {
+        "generic": "docs/user/product_tree/product_groups/product_group-usage.en.md"
+      }
+    },
+    "field_title": "ProductTreeProductGroupsItemsTitle",
+    "field_description": "ProductTreeProductGroupsItemsDescription"
+  },
+  "$.product_tree.product_groups[].group_id": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/product_groups/product_group/group_id-spec.en.md",
+      "usage": {
+        "generic": "docs/user/product_tree/product_groups/product_group/group_id-usage.en.md"
+      }
+    },
+    "field_title": "ProductGroupIdTitle",
+    "field_description": "ProductGroupIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.product_groups[].product_ids": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/product_groups/product_group/product_ids-spec.en.md",
+      "usage": {
+        "generic": "docs/user/product_tree/product_groups/product_group/product_ids-usage.en.md"
+      }
+    },
+    "field_title": "ProductTreeProductGroupsItemsProductIdsTitle",
+    "field_description": "ProductTreeProductGroupsItemsProductIdsDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.product_groups[].product_ids[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/product_id-spec.en.md",
+      "usage": { "generic": "docs/user/types/product_id-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false
+  },
+  "$.product_tree.product_groups[].summary": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/product_groups/product_group/summary-spec.en.md",
+      "usage": {
+        "generic": "docs/user/product_tree/product_groups/product_group/summary-usage.en.md"
+      }
+    },
+    "field_title": "ProductTreeProductGroupsItemsSummaryTitle",
+    "field_description": "ProductTreeProductGroupsItemsSummaryDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "want_to_have",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.product_tree.relationships": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/relationships-spec.en.md",
+      "usage": { "generic": "docs/user/product_tree/relationships-usage.en.md" }
+    },
+    "field_title": "ProductTreeRelationshipsTitle",
+    "field_description": "ProductTreeRelationshipsDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "optional",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.product_tree.relationships[]": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/relationships/relationship-spec.en.md",
+      "usage": {
+        "generic": "docs/user/product_tree/relationships/relationship-usage.en.md"
+      }
+    },
+    "field_title": "ProductTreeRelationshipsItemsTitle",
+    "field_description": "ProductTreeRelationshipsItemsDescription"
+  },
+  "$.product_tree.relationships[].category": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/relationships/relationship/category-spec.en.md",
+      "usage": {
+        "generic": "docs/user/product_tree/relationships/relationship/category-usage.en.md"
+      }
+    },
+    "field_title": "ProductTreeRelationshipsItemsCategoryTitle",
+    "field_description": "ProductTreeRelationshipsItemsCategoryDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/relationships/relationship/full_product_name-spec.en.md",
+      "usage": {
+        "generic": "docs/user/product_tree/relationships/relationship/full_product_name-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameTitle",
+    "field_description": "FullProductNameDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.name": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/name-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/name-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameNameTitle",
+    "field_description": "FullProductNameNameDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_id": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_id-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_id-usage.en.md"
+      }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperTitle",
+    "field_description": "FullProductNameProductIdentificationHelperDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "want_to_have",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.cpe": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/cpe-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/cpe-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperCpeTitle",
+    "field_description": "FullProductNameProductIdentificationHelperCpeDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsDescription"
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsDescription"
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].algorithm": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/algorithm-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsAlgorithmDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].file_hashes[].value": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/file_hashes/file_hash/value-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFileHashesItemsValueDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.hashes[].filename": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/hashes/hash/filename-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperHashesItemsFilenameTitle",
+    "field_description": "FullProductNameProductIdentificationHelperHashesItemsFilenameDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.model_numbers": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperModelNumbersTitle",
+    "field_description": "FullProductNameProductIdentificationHelperModelNumbersDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.model_numbers[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/model_numbers/model_number-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperModelNumbersItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperModelNumbersItemsDescription",
+    "string_is_multiline": false
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.purl": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/purl-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/purl-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperPurlTitle",
+    "field_description": "FullProductNameProductIdentificationHelperPurlDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.sbom_urls": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSbomUrlsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSbomUrlsDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.sbom_urls[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/sbom_urls/sbom_url-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSbomUrlsItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSbomUrlsItemsDescription"
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSerialNumbersTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSerialNumbersDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.serial_numbers[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/serial_numbers/serial_number-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSerialNumbersItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSerialNumbersItemsDescription",
+    "string_is_multiline": false
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.skus": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/skus-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/skus-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSkusTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSkusDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.skus[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/skus/sku-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/skus/sku-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperSkusItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperSkusItemsDescription",
+    "string_is_multiline": false
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperXGenericUrisTitle",
+    "field_description": "FullProductNameProductIdentificationHelperXGenericUrisDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "nice_to_know",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsTitle",
+    "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsDescription"
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].namespace": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/namespace-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceTitle",
+    "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsNamespaceDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.relationships[].full_product_name.product_identification_helper.x_generic_uris[].uri": {
+    "user_documentation": {
+      "specification": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/full_product_name/product_identification_helper/x_generic_uris/x_generic_uri/uri-usage.en.md"
+      }
+    },
+    "field_title": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriTitle",
+    "field_description": "FullProductNameProductIdentificationHelperXGenericUrisItemsUriDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.relationships[].product_reference": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/relationships/relationship/product_reference-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/product_id-usage.en.md",
+        "specific": "docs/user/product_tree/relationships/relationship/product_reference-usage.en.md"
+      }
+    },
+    "field_title": "ProductTreeRelationshipsItemsProductReferenceTitle",
+    "field_description": "ProductTreeRelationshipsItemsProductReferenceDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.product_tree.relationships[].relates_to_product_reference": {
+    "user_documentation": {
+      "specification": "docs/user/product_tree/relationships/relationship/relates_to_product_reference-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/product_id-usage.en.md",
+        "specific": "docs/user/product_tree/relationships/relationship/relates_to_product_reference-usage.en.md"
+      }
+    },
+    "field_title": "ProductTreeRelationshipsItemsRelatesToProductReferenceTitle",
+    "field_description": "ProductTreeRelationshipsItemsRelatesToProductReferenceDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities-spec.en.md",
+      "usage": { "generic": "docs/user/vulnerabilities-usage.en.md" }
+    },
+    "field_title": "VulnerabilitiesTitle",
+    "field_description": "VulnerabilitiesDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[]": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsTitle",
+    "field_description": "VulnerabilitiesItemsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].acknowledgments": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/acknowledgments-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/acknowledgments-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsAcknowledgmentsTitle",
+    "field_description": "VulnerabilitiesItemsAcknowledgmentsDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.vulnerabilities[].acknowledgments[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsTitle",
+    "field_description": "AcknowledgmentsItemsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].acknowledgments[].names": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment/names-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment/names-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsNamesTitle",
+    "field_description": "AcknowledgmentsItemsNamesDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.vulnerabilities[].acknowledgments[].names[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment/names/name-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment/names/name-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsNamesItemsTitle",
+    "field_description": "AcknowledgmentsItemsNamesItemsDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].acknowledgments[].organization": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment/organization-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment/organization-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsOrganizationTitle",
+    "field_description": "AcknowledgmentsItemsOrganizationDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].acknowledgments[].summary": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment/summary-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment/summary-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsSummaryTitle",
+    "field_description": "AcknowledgmentsItemsSummaryDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].acknowledgments[].urls": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment/urls-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment/urls-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsUrlsTitle",
+    "field_description": "AcknowledgmentsItemsUrlsDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].acknowledgments[].urls[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/acknowledgments/acknowledgment/urls/url-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/acknowledgments/acknowledgment/urls/url-usage.en.md"
+      }
+    },
+    "field_title": "AcknowledgmentsItemsUrlsItemsTitle",
+    "field_description": "AcknowledgmentsItemsUrlsItemsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].cve": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/cve-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/cve-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsCveTitle",
+    "field_description": "VulnerabilitiesItemsCveDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].cwe": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/cwe-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/cwe-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsCweTitle",
+    "field_description": "VulnerabilitiesItemsCweDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.vulnerabilities[].cwe.id": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/cwe/id-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/cwe/id-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsCweIdTitle",
+    "field_description": "VulnerabilitiesItemsCweIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].cwe.name": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/cwe/name-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/cwe/name-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsCweNameTitle",
+    "field_description": "VulnerabilitiesItemsCweNameDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].discovery_date": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/discovery_date-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/discovery_date-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsDiscoveryDateTitle",
+    "field_description": "VulnerabilitiesItemsDiscoveryDateDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].flags": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/flags-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/flags-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsFlagsTitle",
+    "field_description": "VulnerabilitiesItemsFlagsDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional"
+    }
+  },
+  "$.vulnerabilities[].flags[]": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/flags/flag-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/flags/flag-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsFlagsItemsTitle",
+    "field_description": "VulnerabilitiesItemsFlagsItemsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].flags[].date": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/flags/flag/date-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/flags/flag/date-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsFlagsItemsDateTitle",
+    "field_description": "VulnerabilitiesItemsFlagsItemsDateDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].flags[].group_ids": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/flags/flag/group_ids-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/flags/flag/group_ids-usage.en.md"
+      }
+    },
+    "field_title": "ProductGroupsTitle",
+    "field_description": "ProductGroupsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].flags[].group_ids[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/product_group_id-spec.en.md",
+      "usage": { "generic": "docs/user/types/product_group_id-spec.en.md" }
+    },
+    "field_title": "ProductGroupIdTitle",
+    "field_description": "ProductGroupIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].flags[].label": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/flags/flag/label-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/flags/flag/label-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsFlagsItemsLabelTitle",
+    "field_description": "VulnerabilitiesItemsFlagsItemsLabelDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].flags[].product_ids": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/flags/flag/product_ids-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/flags/flag/product_ids-usage.en.md"
+      }
+    },
+    "field_title": "ProductsTitle",
+    "field_description": "ProductsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].flags[].product_ids[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/product_id-spec.en.md",
+      "usage": { "generic": "docs/user/types/product_id-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].ids": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/ids-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/ids-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsIdsTitle",
+    "field_description": "VulnerabilitiesItemsIdsDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].ids[]": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/ids/id-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/ids/id-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsIdsItemsTitle",
+    "field_description": "VulnerabilitiesItemsIdsItemsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].ids[].system_name": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/ids/id/system_name-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/ids/id/system_name-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsIdsItemsSystemNameTitle",
+    "field_description": "VulnerabilitiesItemsIdsItemsSystemNameDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].ids[].text": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/ids/id/text-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/ids/id/text-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsIdsItemsTextTitle",
+    "field_description": "VulnerabilitiesItemsIdsItemsTextDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].involvements": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/involvements-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/involvements-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsInvolvementsTitle",
+    "field_description": "VulnerabilitiesItemsInvolvementsDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].involvements[]": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsInvolvementsItemsTitle",
+    "field_description": "VulnerabilitiesItemsInvolvementsItemsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].involvements[].date": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement/date-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement/date-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsInvolvementsItemsDateTitle",
+    "field_description": "VulnerabilitiesItemsInvolvementsItemsDateDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].involvements[].party": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement/party-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement/party-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsInvolvementsItemsPartyTitle",
+    "field_description": "VulnerabilitiesItemsInvolvementsItemsPartyDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].involvements[].status": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement/status-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement/status-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsInvolvementsItemsStatusTitle",
+    "field_description": "VulnerabilitiesItemsInvolvementsItemsStatusDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].involvements[].summary": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/involvements/involvement/summary-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/involvements/involvement/summary-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsInvolvementsItemsSummaryTitle",
+    "field_description": "VulnerabilitiesItemsInvolvementsItemsSummaryDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].notes": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/notes-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/notes-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsNotesTitle",
+    "field_description": "VulnerabilitiesItemsNotesDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].notes[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/notes/note-spec.en.md",
+      "usage": { "generic": "docs/user/types/notes/note-usage.en.md" }
+    },
+    "field_title": "NotesItemsTitle",
+    "field_description": "NotesItemsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].notes[].audience": {
+    "user_documentation": {
+      "specification": "docs/user/types/notes/note/audience-spec.en.md",
+      "usage": { "generic": "docs/user/types/notes/note/audience-usage.en.md" }
+    },
+    "field_title": "NotesItemsAudienceTitle",
+    "field_description": "NotesItemsAudienceDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].notes[].category": {
+    "user_documentation": {
+      "specification": "docs/user/types/notes/note/category-spec.en.md",
+      "usage": { "generic": "docs/user/types/notes/note/category-usage.en.md" }
+    },
+    "field_title": "NotesItemsCategoryTitle",
+    "field_description": "NotesItemsCategoryDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].notes[].text": {
+    "user_documentation": {
+      "specification": "docs/user/types/notes/note/text-spec.en.md",
+      "usage": { "generic": "docs/user/types/notes/note/text-usage.en.md" }
+    },
+    "field_title": "NotesItemsTextTitle",
+    "field_description": "NotesItemsTextDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].notes[].title": {
+    "user_documentation": {
+      "specification": "docs/user/types/notes/note/title-spec.en.md",
+      "usage": { "generic": "docs/user/types/notes/note/title-usage.en.md" }
+    },
+    "field_title": "NotesItemsTitleTitle",
+    "field_description": "NotesItemsTitleDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].product_status": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/product_status-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/product_status-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsProductStatusTitle",
+    "field_description": "VulnerabilitiesItemsProductStatusDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].product_status.first_affected": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/product_status/first_affected-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/product_status/first_affected-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsProductStatusFirstAffectedTitle",
+    "field_description": "VulnerabilitiesItemsProductStatusFirstAffectedDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].product_status.first_affected[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/products-spec.en.md",
+      "usage": { "generic": "docs/user/types/products-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].product_status.first_fixed": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/product_status/first_fixed-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/product_status/first_fixed-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsProductStatusFirstFixedTitle",
+    "field_description": "VulnerabilitiesItemsProductStatusFirstFixedDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].product_status.first_fixed[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/products-spec.en.md",
+      "usage": { "generic": "docs/user/types/products-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].product_status.fixed": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/product_status/fixed-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/product_status/fixed-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsProductStatusFixedTitle",
+    "field_description": "VulnerabilitiesItemsProductStatusFixedDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].product_status.fixed[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/products-spec.en.md",
+      "usage": { "generic": "docs/user/types/products-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].product_status.known_affected": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/product_status/known_affected-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/product_status/known_affected-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsProductStatusKnownAffectedTitle",
+    "field_description": "VulnerabilitiesItemsProductStatusKnownAffectedDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].product_status.known_affected[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/products-spec.en.md",
+      "usage": { "generic": "docs/user/types/products-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].product_status.known_not_affected": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/product_status/known_not_affected-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsProductStatusKnownNotAffectedTitle",
+    "field_description": "VulnerabilitiesItemsProductStatusKnownNotAffectedDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].product_status.known_not_affected[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/products-spec.en.md",
+      "usage": { "generic": "docs/user/types/products-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].product_status.last_affected": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/product_status/last_affected-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/product_status/last_affected-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsProductStatusLastAffectedTitle",
+    "field_description": "VulnerabilitiesItemsProductStatusLastAffectedDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].product_status.last_affected[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/products-spec.en.md",
+      "usage": { "generic": "docs/user/types/products-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].product_status.recommended": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/product_status/recommended-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/product_status/recommended-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsProductStatusRecommendedTitle",
+    "field_description": "VulnerabilitiesItemsProductStatusRecommendedDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].product_status.recommended[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/products-spec.en.md",
+      "usage": { "generic": "docs/user/types/products-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].product_status.under_investigation": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/product_status/under_investigation-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/product_status/under_investigation-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsProductStatusUnderInvestigationTitle",
+    "field_description": "VulnerabilitiesItemsProductStatusUnderInvestigationDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].product_status.under_investigation[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/products-spec.en.md",
+      "usage": { "generic": "docs/user/types/products-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].references": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/references-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/references-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsReferencesTitle",
+    "field_description": "VulnerabilitiesItemsReferencesDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].references[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/references/reference-spec.en.md",
+      "usage": { "generic": "docs/user/types/references/reference-usage.en.md" }
+    },
+    "field_title": "ReferencesItemsTitle",
+    "field_description": "ReferencesItemsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].references[].category": {
+    "user_documentation": {
+      "specification": "docs/user/types/references/reference/category-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/references/reference/category-usage.en.md"
+      }
+    },
+    "field_title": "ReferencesItemsCategoryTitle",
+    "field_description": "ReferencesItemsCategoryDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.vulnerabilities[].references[].summary": {
+    "user_documentation": {
+      "specification": "docs/user/types/references/reference/summary-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/references/reference/summary-usage.en.md"
+      }
+    },
+    "field_title": "ReferencesItemsSummaryTitle",
+    "field_description": "ReferencesItemsSummaryDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].references[].url": {
+    "user_documentation": {
+      "specification": "docs/user/types/references/reference/url-spec.en.md",
+      "usage": {
+        "generic": "docs/user/types/references/reference/url-usage.en.md"
+      }
+    },
+    "field_title": "ReferencesItemsUrlTitle",
+    "field_description": "ReferencesItemsUrlDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].release_date": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/release_date-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/release_date-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsReleaseDateTitle",
+    "field_description": "VulnerabilitiesItemsReleaseDateDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].remediations": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsRemediationsTitle",
+    "field_description": "VulnerabilitiesItemsRemediationsDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].remediations[]": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsRemediationsItemsTitle",
+    "field_description": "VulnerabilitiesItemsRemediationsItemsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].remediations[].category": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/category-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/category-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsRemediationsItemsCategoryTitle",
+    "field_description": "VulnerabilitiesItemsRemediationsItemsCategoryDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].remediations[].date": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/date-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/date-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsRemediationsItemsDateTitle",
+    "field_description": "VulnerabilitiesItemsRemediationsItemsDateDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.vulnerabilities[].remediations[].details": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/details-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/details-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsRemediationsItemsDetailsTitle",
+    "field_description": "VulnerabilitiesItemsRemediationsItemsDetailsDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].remediations[].entitlements": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsRemediationsItemsEntitlementsTitle",
+    "field_description": "VulnerabilitiesItemsRemediationsItemsEntitlementsDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].remediations[].entitlements[]": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/entitlements/entitlement-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsRemediationsItemsEntitlementsItemsTitle",
+    "field_description": "VulnerabilitiesItemsRemediationsItemsEntitlementsItemsDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].remediations[].group_ids": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/group_ids-usage.en.md"
+      }
+    },
+    "field_title": "ProductGroupsTitle",
+    "field_description": "ProductGroupsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].remediations[].group_ids[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/product_group_id-spec.en.md",
+      "usage": { "generic": "docs/user/types/product_group_id-usage.en.md" }
+    },
+    "field_title": "ProductGroupIdTitle",
+    "field_description": "ProductGroupIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].remediations[].product_ids": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/product_ids-usage.en.md"
+      }
+    },
+    "field_title": "ProductsTitle",
+    "field_description": "ProductsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].remediations[].product_ids[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/product_id-spec.en.md",
+      "usage": { "generic": "docs/user/types/product_id-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].remediations[].restart_required": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsRemediationsItemsRestartRequiredTitle",
+    "field_description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].remediations[].restart_required.category": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/category-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/category-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsRemediationsItemsRestartRequiredCategoryTitle",
+    "field_description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredCategoryDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].remediations[].restart_required.details": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/details-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/restart_required/details-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsTitle",
+    "field_description": "VulnerabilitiesItemsRemediationsItemsRestartRequiredDetailsDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].remediations[].url": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/remediations/remediation/url-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/remediations/remediation/url-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsRemediationsItemsUrlTitle",
+    "field_description": "VulnerabilitiesItemsRemediationsItemsUrlDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsScoresTitle",
+    "field_description": "VulnerabilitiesItemsScoresDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[]": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsScoresItemsTitle",
+    "field_description": "VulnerabilitiesItemsScoresItemsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2Title",
+    "field_description": "CvssV2Description",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.version": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2VersionTitle",
+    "field_description": "CvssV2VersionDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.vectorString": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2VectorStringTitle",
+    "field_description": "CvssV2VectorStringDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.accessVector": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2AccessVectorTitle",
+    "field_description": "CvssV2AccessVectorDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.accessComplexity": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2AccessComplexityTitle",
+    "field_description": "CvssV2AccessComplexityDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.authentication": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2AuthenticationTitle",
+    "field_description": "CvssV2AuthenticationDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.confidentialityImpact": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2ConfidentialityImpactTitle",
+    "field_description": "CvssV2ConfidentialityImpactDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.integrityImpact": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2IntegrityImpactTitle",
+    "field_description": "CvssV2IntegrityImpactDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.availabilityImpact": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2AvailabilityImpactTitle",
+    "field_description": "CvssV2AvailabilityImpactDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.baseScore": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2BaseScoreTitle",
+    "field_description": "CvssV2BaseScoreDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.exploitability": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2ExploitabilityTitle",
+    "field_description": "CvssV2ExploitabilityDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.remediationLevel": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2RemediationLevelTitle",
+    "field_description": "CvssV2RemediationLevelDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.reportConfidence": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2ReportConfidenceTitle",
+    "field_description": "CvssV2ReportConfidenceDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.temporalScore": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2TemporalScoreTitle",
+    "field_description": "CvssV2TemporalScoreDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.collateralDamagePotential": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2CollateralDamagePotentialTitle",
+    "field_description": "CvssV2CollateralDamagePotentialDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.targetDistribution": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2TargetDistributionTitle",
+    "field_description": "CvssV2TargetDistributionDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.confidentialityRequirement": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2ConfidentialityRequirementTitle",
+    "field_description": "CvssV2ConfidentialityRequirementDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.integrityRequirement": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2IntegrityRequirementTitle",
+    "field_description": "CvssV2IntegrityRequirementDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.availabilityRequirement": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2AvailabilityRequirementTitle",
+    "field_description": "CvssV2AvailabilityRequirementDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v2.environmentalScore": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v2-usage.en.md"
+      }
+    },
+    "field_title": "CvssV2EnvironmentalScoreTitle",
+    "field_description": "CvssV2EnvironmentalScoreDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3Title",
+    "field_description": "CvssV3Description",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.version": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3VersionTitle",
+    "field_description": "CvssV3VersionDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.vectorString": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3VectorStringTitle",
+    "field_description": "CvssV3VectorStringDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.attackVector": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3AttackVectorTitle",
+    "field_description": "CvssV3AttackVectorDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.attackComplexity": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3AttackComplexityTitle",
+    "field_description": "CvssV3AttackComplexityDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.privilegesRequired": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3PrivilegesRequiredTitle",
+    "field_description": "CvssV3PrivilegesRequiredDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.userInteraction": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3UserInteractionTitle",
+    "field_description": "CvssV3UserInteractionDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.scope": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ScopeTitle",
+    "field_description": "CvssV3ScopeDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.confidentialityImpact": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ConfidentialityImpactTitle",
+    "field_description": "CvssV3ConfidentialityImpactDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.integrityImpact": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3IntegrityImpactTitle",
+    "field_description": "CvssV3IntegrityImpactDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.availabilityImpact": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3AvailabilityImpactTitle",
+    "field_description": "CvssV3AvailabilityImpactDescription",
+    "relevance_levels": {
+      "csaf_base": "best_practice",
+      "csaf_security_incident_response": "best_practice",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.baseScore": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3BaseScoreTitle",
+    "field_description": "CvssV3BaseScoreDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.baseSeverity": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3BaseSeverityTitle",
+    "field_description": "CvssV3BaseSeverityDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.exploitCodeMaturity": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ExploitCodeMaturityTitle",
+    "field_description": "CvssV3ExploitCodeMaturityDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know",
+      "csaf_vex": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.remediationLevel": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3RemediationLevelTitle",
+    "field_description": "CvssV3RemediationLevelDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.reportConfidence": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ReportConfidenceTitle",
+    "field_description": "CvssV3ReportConfidenceDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.temporalScore": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3TemporalScoreTitle",
+    "field_description": "CvssV3TemporalScoreDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.temporalSeverity": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3TemporalSeverityTitle",
+    "field_description": "CvssV3TemporalSeverityDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "want_to_have",
+      "csaf_vex": "want_to_have"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.confidentialityRequirement": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ConfidentialityRequirementTitle",
+    "field_description": "CvssV3ConfidentialityRequirementDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.integrityRequirement": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3IntegrityRequirementTitle",
+    "field_description": "CvssV3IntegrityRequirementDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.availabilityRequirement": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3AvailabilityRequirementTitle",
+    "field_description": "CvssV3AvailabilityRequirementDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.modifiedAttackVector": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ModifiedAttackVectorTitle",
+    "field_description": "CvssV3ModifiedAttackVectorDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.modifiedAttackComplexity": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ModifiedAttackComplexityTitle",
+    "field_description": "CvssV3ModifiedAttackComplexityDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.modifiedPrivilegesRequired": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ModifiedPrivilegesRequiredTitle",
+    "field_description": "CvssV3ModifiedPrivilegesRequiredDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.modifiedUserInteraction": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ModifiedUserInteractionTitle",
+    "field_description": "CvssV3ModifiedUserInteractionDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.modifiedScope": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ModifiedScopeTitle",
+    "field_description": "CvssV3ModifiedScopeDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.modifiedConfidentialityImpact": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ModifiedConfidentialityImpactTitle",
+    "field_description": "CvssV3ModifiedConfidentialityImpactDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.modifiedIntegrityImpact": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ModifiedIntegrityImpactTitle",
+    "field_description": "CvssV3ModifiedIntegrityImpactDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.modifiedAvailabilityImpact": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3ModifiedAvailabilityImpactTitle",
+    "field_description": "CvssV3ModifiedAvailabilityImpactDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.environmentalScore": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3EnvironmentalScoreTitle",
+    "field_description": "CvssV3EnvironmentalScoreDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].cvss_v3.environmentalSeverity": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/cvss_v3-usage.en.md"
+      }
+    },
+    "field_title": "CvssV3EnvironmentalSeverityTitle",
+    "field_description": "CvssV3EnvironmentalSeverityDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "optional",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "optional",
+      "csaf_vex": "optional"
+    }
+  },
+  "$.vulnerabilities[].scores[].products": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/scores/score/products-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/scores/score/products-usage.en.md"
+      }
+    },
+    "field_title": "ProductsTitle",
+    "field_description": "ProductsDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].scores[].products[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/product_id-spec.en.md",
+      "usage": { "generic": "docs/user/types/product_id-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].threats": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/threats-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/threats-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsThreatsTitle",
+    "field_description": "VulnerabilitiesItemsThreatsDescription",
+    "relevance_levels": {
+      "csaf_base": "optional",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "nice_to_know"
+    }
+  },
+  "$.vulnerabilities[].threats[]": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/threats/threat-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/threats/threat-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsThreatsItemsTitle",
+    "field_description": "VulnerabilitiesItemsThreatsItemsDescription",
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].threats[].category": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/category-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/category-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsThreatsItemsCategoryTitle",
+    "field_description": "VulnerabilitiesItemsThreatsItemsCategoryDescription",
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].threats[].date": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/date-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/date-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsThreatsItemsDateTitle",
+    "field_description": "VulnerabilitiesItemsThreatsItemsDateDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].threats[].details": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/details-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/details-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsThreatsItemsDetailsTitle",
+    "field_description": "VulnerabilitiesItemsThreatsItemsDetailsDescription",
+    "string_is_multiline": true,
+    "relevance_levels": {
+      "csaf_base": "mandatory",
+      "csaf_security_incident_response": "mandatory",
+      "csaf_informational_advisory": "mandatory",
+      "csaf_security_advisory": "mandatory",
+      "csaf_vex": "mandatory"
+    }
+  },
+  "$.vulnerabilities[].threats[].group_ids": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/group_ids-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/group_ids-usage.en.md"
+      }
+    },
+    "field_title": "ProductGroupsTitle",
+    "field_description": "ProductGroupsDescription",
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "nice_to_know",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].threats[].group_ids[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/product_group_id-spec.en.md",
+      "usage": { "generic": "docs/user/types/product_group_id-spec.en.md" }
+    },
+    "field_title": "ProductGroupIdTitle",
+    "field_description": "ProductGroupIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].threats[].product_ids": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/threats/threat/product_ids-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/threats/threat/product_ids-usage.en.md"
+      }
+    },
+    "field_title": "ProductsTitle",
+    "field_description": "ProductsDescription",
+    "relevance_levels": {
+      "csaf_base": "want_to_have",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice"
+    }
+  },
+  "$.vulnerabilities[].threats[].product_ids[]": {
+    "user_documentation": {
+      "specification": "docs/user/types/product_id-spec.en.md",
+      "usage": { "generic": "docs/user/types/product_id-usage.en.md" }
+    },
+    "field_title": "ProductIdTitle",
+    "field_description": "ProductIdDescription",
+    "string_is_multiline": false,
+    "relevance_levels": { "csaf_informational_advisory": "excluded" }
+  },
+  "$.vulnerabilities[].title": {
+    "user_documentation": {
+      "specification": "docs/user/vulnerabilities/vulnerability/title-spec.en.md",
+      "usage": {
+        "generic": "docs/user/vulnerabilities/vulnerability/title-usage.en.md"
+      }
+    },
+    "field_title": "VulnerabilitiesItemsTitleTitle",
+    "field_description": "VulnerabilitiesItemsTitleDescription",
+    "string_is_multiline": false,
+    "relevance_levels": {
+      "csaf_base": "nice_to_know",
+      "csaf_security_incident_response": "want_to_have",
+      "csaf_informational_advisory": "excluded",
+      "csaf_security_advisory": "best_practice",
+      "csaf_vex": "want_to_have"
+    }
+  }
+}

@@ -135,8 +135,22 @@ export const tests = [
           keyBindings: {
             keySave: 'ctrl+s',
             keyValidate: 'ctrl+alt+v',
-            keyExport: 'ctrl+e',
+            keyExport: 'ctrl+alt+e',
             keyNew: 'ctrl+o',
+            keyExportStripped: 'ctrl+e',
+            keyExportNotStripped: 'ctrl+shift+e',
+            keyExportHtml: 'ctrl+p',
+            keyExportPdf: 'ctrl+alt+p',
+            keyFormEditorTab: 'ctrl+1',
+            keyJsonEditorTab: 'ctrl+2',
+            keyPreviewTab: 'ctrl+3',
+            keyCsafDocumentTab: 'ctrl+4',
+            keyRelevanceLevelMandatory: 'ctrl+shift+1',
+            keyRelevanceLevelBestPractice: 'ctrl+shift+2',
+            keyRelevanceLevelWantToHave: 'ctrl+shift+3',
+            keyRelevanceLevelNiceToKnow: 'ctrl+shift+4',
+            keyRelevanceLevelOptional: 'ctrl+shift+5',
+            keyNextError: 'f8',
           },
         }}
       >

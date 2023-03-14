@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import React from 'react'
 import createFileName from '../../../shared/createFileName.js'
 import * as api from '../../shared/api.js'
@@ -32,11 +33,9 @@ export default /**
 
   const exportText =
     advisoryState?.type === 'NEW_ADVISORY'
-      ? 'This is a unsaved file. You will only export from local.'
+      ? t('exportModal.unsavedFileExportOnlyLocal')
       : formValues !== originalValues
-      ? 'There are unsaved changes. Please select if you want to\n' +
-        'export your current local state of the saved version on the\n' +
-        'server.'
+      ? t('exportModal.unsavedChangesSelectExportLocation')
       : ''
   const isSelectorVisible =
     advisoryState?.type === 'ADVISORY' && formValues !== originalValues
@@ -74,7 +73,7 @@ export default /**
     >
       <>
         <header className="w-full flex items-center justify-between border-b p-2">
-          <h2 className="text-lg">Export Document</h2>
+          <h2 className="text-lg">{t('exportModal.title')}</h2>
           <button
             type="submit"
             name="cancel"
@@ -146,7 +145,9 @@ export default /**
                 onChange={() => setSource('CSAFJSON')}
               />
 
-              <span className="inline-block ml-3">CSAF json</span>
+              <span className="inline-block ml-3">
+                {t('exportModal.exportOptionJson')}
+              </span>
             </label>
           </div>
           <div>
@@ -168,7 +169,9 @@ export default /**
                 checked={source === 'CSAFJSONSTRIPPED'}
                 onChange={() => setSource('CSAFJSONSTRIPPED')}
               />
-              <span className="inline-block ml-3">CSAF json (stripped)</span>
+              <span className="inline-block ml-3">
+                {t('exportModal.exportOptionJsonStripped')}
+              </span>
             </label>
           </div>
           <div>
@@ -190,7 +193,9 @@ export default /**
                 checked={source === 'HTMLDOCUMENT'}
                 onChange={() => setSource('HTMLDOCUMENT')}
               />
-              <span className="inline-block ml-3">HTML</span>
+              <span className="inline-block ml-3">
+                {t('exportModal.exportOptionHtml')}
+              </span>
             </label>
           </div>
           <div>
@@ -212,7 +217,9 @@ export default /**
                 checked={source === 'PDFDOCUMENT'}
                 onChange={() => setSource('PDFDOCUMENT')}
               />
-              <span className="inline-block ml-3">PDF</span>
+              <span className="inline-block ml-3">
+                {t('exportModal.exportOptionPdf')}
+              </span>
             </label>
           </div>
           {!isLocal ? (
@@ -235,7 +242,9 @@ export default /**
                   checked={source === 'MARKDOWN'}
                   onChange={() => setSource('MARKDOWN')}
                 />
-                <span className="inline-block ml-3">Markdown</span>
+                <span className="inline-block ml-3">
+                  {t('exportModal.exportOptionMarkdown')}
+                </span>
               </label>
             </div>
           ) : null}
@@ -252,7 +261,7 @@ export default /**
               ref.current?.close()
             }}
           >
-            Cancel
+            {t('menu.cancel')}
           </button>
           {isLocal ? (
             <button
@@ -301,7 +310,7 @@ export default /**
                 }
               }}
             >
-              Export
+              {t('exportModal.export')}
             </button>
           ) : advisoryState?.type === 'ADVISORY' ? (
             source === 'CSAFJSONSTRIPPED' ? (
@@ -318,7 +327,7 @@ export default /**
                     .catch(handleError)
                 }}
               >
-                Export
+                {t('exportModal.export')}
               </button>
             ) : (
               <a
@@ -348,7 +357,7 @@ export default /**
                   ref.current?.close()
                 }}
               >
-                Export
+                {t('exportModal.export')}
               </a>
             )
           ) : null}

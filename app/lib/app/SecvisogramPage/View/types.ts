@@ -11,10 +11,6 @@ export interface Props {
     doc: unknown
   } | null
   defaultAdvisoryState?: AdvisoryState | null
-  generatorEngineData: {
-    name: string
-    version: string
-  }
   activeTab: 'EDITOR' | 'SOURCE' | 'PREVIEW' | 'CSAF-JSON' | 'DOCUMENTS'
   alert: {
     confirmLabel: string
@@ -81,4 +77,5 @@ export interface Props {
     Array<{ templateId: string; templateDescription: string }>
   >
   onGetTemplateContent(params: { templateId: string }): Promise<{}>
+  onGetBackendInfo(): Promise<{ version: string }>
 }

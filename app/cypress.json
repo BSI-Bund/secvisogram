@@ -1,5 +1,0 @@
-{
-  "video": false,
-  "baseUrl": "http://localhost:8080",
-  "pluginsFile": "cypress/plugins/index.cjs"
-}

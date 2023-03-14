@@ -14,6 +14,7 @@
     - [Module `extended.js`](#module-extendedjs)
     - [Module `full.js`](#module-fulljs)
     - [Module `validate.js`](#module-validatejs)
+    - [Module `validateStrict.js`](#module-validatestrictjs)
     - [Module `strip.js`](#module-stripjs)
     - [Module `cwe.js`](#module-cwejs)
 - [Testing](#testing)
@@ -40,6 +41,12 @@ subtree in your repository. After that you can reference the modules from within
 - install dependencies
   ```sh
   cd csaf-validator-lib && npm ci --prod
+  ```
+
+- This repository includes git submodules. Make sure to initialize and update 
+  the submodules before you start working with the repository.
+  ```sh
+  git submodule update --init --recursive
   ```
 
 - For test 6.3.8 an installation of hunspell as well as all languages that 
@@ -75,7 +82,7 @@ automatically recognize them.
 - example usage
 
   ```js
-  import validate from '../csaf-validator-lib/validate.js'
+  import validateStrict from '../csaf-validator-lib/validateStrict.js'
   import * as mandatory from '../csaf-validator-lib/mandatoryTests.js'
   import { optionalTest_6_2_1 } from '../csaf-validator-lib/optionalTests.js'
   import { csaf_2_0_strict } from './schemaTests.js'
@@ -87,16 +94,23 @@ automatically recognize them.
     optionalTest_6_2_1,
   ]
 
-  const result = await validate(tests, document)
+  const result = await validateStrict(tests, document)
   ```
 
 [(back to top)](#bsi-csaf-validator-lib)
 
 ### Strict Mode
 
-In the default setting, the library checks whether the test that should be executed was defined in the library. Otherwise, it throws an error.
-To extend the library, that check can be turned off. In such case, **the calling function is responsible for checking** whether the test function passed to the `csaf-validator-lib` is benign. **Calling arbitrary** functions (especially those resulting from user input) may result in a **code execution vulnerability**. Therefore, the check of the test function to determine whether it is benign **MUST be done before calling** it.
-To proceed this dangerous path, set `strict = false`.
+The library has two validate functions, `validate` and `validateStrict`.
+`validateStrict` checks whether the test that should be executed was defined in
+the library. Otherwise, it throws an error. To extend the library you can use
+the `validate` function instead. In such case, **the calling function is 
+responsible for checking** whether the test function passed to the
+`csaf-validator-lib` is benign. **Calling arbitrary** functions (especially
+those resulting from user input) may result in a **code execution
+vulnerability**. Therefore, the check of the test function to determine whether
+it is benign **MUST be done before calling** it.
+To proceed this dangerous path, use the `validate` function.
 
 [(back to top)](#bsi-csaf-validator-lib)
 
@@ -256,20 +270,13 @@ This module exports all tests included in `extended.js` and all informative test
 
 #### Module `validate.js`
 
-This function validates the given document against the given tests. The `strict` option (default `true`) throws an error if an unknown test function was passed. See [Strict Mode](#strict-mode) for more details.
+This function validates the given document against the given tests.
 
-```typescript
-type ValidateFn = (
-  tests: DocumentTest[],
-  document: any,
-  options?: { strict?: boolean }
-) => Promise<{
-  tests: Array<{ name: string } & Result>
-  isValid: boolean
-}>
+#### Module `validateStrict.js`
 
-export default ValidateFn
-```
+This function validates the given document against the given tests. It throws 
+an error if an unknown test function was passed. See [Strict Mode](#strict-mode)
+for more details.
 
 [(back to top)](#bsi-csaf-validator-lib)
 

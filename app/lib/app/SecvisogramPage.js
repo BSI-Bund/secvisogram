@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import createFileName from '../shared/createFileName.js'
 import DocumentsTab from './SecvisogramPage/DocumentsTab.js'
 import { loadAdvisory } from './SecvisogramPage/service.js'
@@ -15,14 +16,6 @@ import sitemap from './shared/sitemap.js'
  * @typedef {import('./SecvisogramPage/shared/types').ValidationError} ValidationError
  */
 
-const alertSaveInvalid = {
-  label: 'Validation',
-  description:
-    'Open validation issues: Your document is yet not CSAF 2.0 compliant!',
-  cancelLabel: 'Resume editing (Recommended)',
-  confirmLabel: 'Save invalid document',
-}
-
 const core = createCore()
 
 const doc = core.document.newDocMin()
@@ -33,6 +26,7 @@ const doc = core.document.newDocMin()
  */
 const SecvisogramPage = () => {
   const { pushState, location } = React.useContext(HistoryContext)
+  const { t } = useTranslation()
   const searchParams = new URL(location.href).searchParams
   const [
     { isLoading, isTabLocked, data, errors, alert, stripResult, previewResult },
@@ -71,6 +65,15 @@ const SecvisogramPage = () => {
   })
   const { handleError } = React.useContext(AppErrorContext)
 
+  const alertSaveInvalidTranslationStrings = useMemo(() => {
+    return {
+      label: t('alert.saveInvalidTitle'),
+      description: t('alert.saveInvalidDescription'),
+      cancelLabel: t('alert.saveInvalidCancel'),
+      confirmLabel: t('alert.saveInvalidConfirm'),
+    }
+  }, [t])
+
   return (
     <View
       activeTab={
@@ -92,7 +95,6 @@ const SecvisogramPage = () => {
       stripResult={stripResult}
       previewResult={previewResult}
       data={data}
-      generatorEngineData={core.document.getGeneratorEngineData()}
       alert={alert}
       DocumentsTab={DocumentsTab}
       onLoadAdvisory={loadAdvisory}
@@ -126,7 +128,7 @@ const SecvisogramPage = () => {
               setState((state) => ({
                 ...state,
                 alert: {
-                  ...alertSaveInvalid,
+                  ...alertSaveInvalidTranslationStrings,
                   onConfirm() {
                     downloadFile(JSON.stringify(doc, null, 2), fileName)
                     setState({ ...state, alert: null })
@@ -275,7 +277,7 @@ const SecvisogramPage = () => {
                 setState((state) => ({
                   ...state,
                   alert: {
-                    ...alertSaveInvalid,
+                    ...alertSaveInvalidTranslationStrings,
                     onConfirm() {
                       core.document
                         .strip({ document })
@@ -301,37 +303,40 @@ const SecvisogramPage = () => {
             })
             .catch(handleError)
         },
-        [handleError]
+        [handleError, alertSaveInvalidTranslationStrings]
       )}
-      onExportHTML={React.useCallback((html, doc) => {
-        core.document.validate({ document: doc }).then(({ isValid }) => {
-          const fileName = createFileName(doc, isValid, 'html')
-          if (!isValid) {
-            setState((state) => ({
-              ...state,
-              alert: {
-                ...alertSaveInvalid,
-                onConfirm() {
-                  downloadFile(html, fileName, 'text/html')
-                  setState({ ...state, alert: null })
+      onExportHTML={React.useCallback(
+        (html, doc) => {
+          core.document.validate({ document: doc }).then(({ isValid }) => {
+            const fileName = createFileName(doc, isValid, 'html')
+            if (!isValid) {
+              setState((state) => ({
+                ...state,
+                alert: {
+                  ...alertSaveInvalidTranslationStrings,
+                  onConfirm() {
+                    downloadFile(html, fileName, 'text/html')
+                    setState({ ...state, alert: null })
+                  },
+                  onCancel() {
+                    setState({ ...state, alert: null })
+                  },
                 },
-                onCancel() {
-                  setState({ ...state, alert: null })
-                },
-              },
-            }))
-          } else {
-            downloadFile(html, fileName, 'text/html')
-          }
-        })
-      }, [])}
+              }))
+            } else {
+              downloadFile(html, fileName, 'text/html')
+            }
+          })
+        },
+        [alertSaveInvalidTranslationStrings]
+      )}
       onServiceValidate={({ validatorUrl, csaf }) => {
         return validationService
           .validateCSAF(validatorUrl, { csaf })
           .catch((error) => {
             throw {
               message:
-                'There was an error reaching the validation service. Please try again later. Error code: ' +
+                t('error.errorReachingValidationServiceWithCode') +
                 error.status,
             }
           })
@@ -350,6 +355,7 @@ const SecvisogramPage = () => {
           .send()
           .then((templateContentRes) => templateContentRes.json())
       }}
+      onGetBackendInfo={backend.getAboutInfo}
     />
   )
 }

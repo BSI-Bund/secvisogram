@@ -6,3 +6,5 @@
 /public/.well-known/appspecific/de.bsi.secvisogram.json
 
 /cypress/downloads
+/coverage
+/.nyc_output

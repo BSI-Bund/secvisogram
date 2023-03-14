@@ -1,8 +1,6 @@
 module.exports = {
-  purge: ['./lib/**/*'],
-  variants: {
-    extend: {
-      margin: ['first'],
-    },
-  },
+  content: ['./lib/**/*'],
+  plugins: [
+    require('@tailwindcss/typography')
+  ],
 }

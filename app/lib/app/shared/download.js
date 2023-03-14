@@ -1,3 +1,5 @@
+import { t } from 'i18next'
+
 /**
  * @param {string} content
  * @param {string} fileName
@@ -16,6 +18,6 @@ export default function downloadFile(
     element.href = dataURI
     element.click()
   } catch (/** @type {any} */ e) {
-    alert('An error occurred while serializing the download:\n\n' + e.message)
+    alert(t('error.errorSerializingDownload') + e.message)
   }
 }

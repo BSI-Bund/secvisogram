@@ -1,5 +1,5 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin').default
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { GitRevisionPlugin } = require('git-revision-webpack-plugin')
 const Webpack = require('webpack')
@@ -52,6 +52,14 @@ module.exports = {
         {
           from: 'vendor/first',
           to: 'vendor/first',
+        },
+        {
+          from: '../docs/user',
+          to: 'docs/user',
+        },
+        {
+          from: 'locales',
+          to: 'locales',
         },
       ],
     }),

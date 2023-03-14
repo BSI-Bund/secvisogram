@@ -8,6 +8,7 @@ const props = {
   data: {
     advisoryId: 'my-advisory',
     allowedStateChanges: ['Draft', 'RfPublication'],
+    currentReleaseDate: "2022-09-22T22:00:00.000Z"
   },
   onClose() {},
 }

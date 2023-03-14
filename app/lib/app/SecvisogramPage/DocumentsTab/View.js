@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import React from 'react'
 import AppErrorContext from '../../shared/context/AppErrorContext.js'
 import HistoryContext from '../../shared/context/HistoryContext.js'
@@ -82,7 +83,7 @@ export default function DocumentsTabView({
       )}
       <div className="bg-white h-full">
         {isLoading ? (
-          <LoadingIndicator label="Loading ..." />
+          <LoadingIndicator label={t('menu.loading')} />
         ) : (
           <>
             <div className="pt-4 mx-auto w-full max-w-4xl">
@@ -154,6 +155,8 @@ export default function DocumentsTabView({
                                   advisoryId: advisory.advisoryId,
                                   allowedStateChanges:
                                     advisory.allowedStateChanges,
+                                  currentReleaseDate:
+                                    advisory.currentReleaseDate,
                                 },
                                 onSubmit({
                                   workflowState,
@@ -214,10 +217,9 @@ export default function DocumentsTabView({
                               data-testid={`advisory-${advisory.advisoryId}-list_entry-delete_button`}
                               onClick={() => {
                                 setAlert({
-                                  description:
-                                    'Really delete this advisory? This action cannot be undone.',
-                                  cancelLabel: 'Cancel',
-                                  confirmLabel: 'Delete',
+                                  description: t('menu.reallyDeleteAdvisory'),
+                                  cancelLabel: t('menu.cancel'),
+                                  confirmLabel: t('menu.delete'),
                                   onCancel() {
                                     setAlert(null)
                                   },

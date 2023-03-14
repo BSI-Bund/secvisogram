@@ -1,6 +1,7 @@
+import { t } from 'i18next'
 import ApiRequest from './ApiRequest.js'
 import { callAboutInfo } from './api/backend.js'
-import BackendUnavailableError from "./BackendUnavailableError.js";
+import BackendUnavailableError from './BackendUnavailableError.js'
 
 export default class CsrfApiRequest extends ApiRequest {
   /**
@@ -41,7 +42,7 @@ export default class CsrfApiRequest extends ApiRequest {
       .filter((c) => c)
       .map((s) => {
         const m = s.match(regex)
-        if (!m) throw new Error('Failed to parse cookies')
+        if (!m) throw new Error(t('error.failedToParseCookies'))
         return /** @type {const} */ ([m[1], m[2]])
       })
       .find(([name]) => name === 'XSRF-TOKEN')

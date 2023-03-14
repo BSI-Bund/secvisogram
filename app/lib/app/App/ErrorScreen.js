@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 /**
  * This component represents the general fallback error-screen if an error
@@ -10,10 +11,17 @@ import React from 'react'
  * }} props
  */
 export default function ErrorScreen({ error, resetErrorBoundary }) {
+  const { t } = useTranslation()
+
   return (
     <div className="mt-4 py-2 px-3 mx-auto w-full max-w-lg border border-red-600 bg-red-200">
-      <h1 className="text-lg font-bold text-red-600">An error occured!</h1>
-      <h2 className="pt-1 text-md font-bold">Details:</h2>
+      <h1 className="text-lg font-bold text-red-600">
+        {t('errorScreen.anErrorOccurred')}
+      </h1>
+      <h2 className="pt-1 text-md font-bold">
+        {t('errorScreen.details')}
+        {': '}
+      </h2>
       <p className="font-mono">{error.message}</p>
       <button
         type="button"
@@ -22,7 +30,7 @@ export default function ErrorScreen({ error, resetErrorBoundary }) {
           resetErrorBoundary()
         }}
       >
-        Close
+        {t('errorScreen.close')}
       </button>
     </div>
   )

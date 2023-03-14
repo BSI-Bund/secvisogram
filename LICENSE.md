@@ -26,15 +26,21 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
     in /app
 -->
 
-- [@babel/runtime@7.12.5](https://github.com/babel/babel) - MIT
-- [@babel/runtime@7.16.3](https://github.com/babel/babel) - MIT
+- [@babel/runtime@7.21.0](https://github.com/babel/babel) - MIT
 - [@emotion/hash@0.8.0](https://github.com/emotion-js/emotion.git#master) - MIT
-- [@fortawesome/fontawesome-common-types@0.2.36](https://github.com/FortAwesome/Font-Awesome) - MIT
-- [@fortawesome/fontawesome-svg-core@1.2.36](https://github.com/FortAwesome/Font-Awesome) - MIT
-- [@fortawesome/free-solid-svg-icons@5.15.4](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
-- [@fortawesome/react-fontawesome@0.1.17](https://github.com/FortAwesome/react-fontawesome) - MIT
-- [@material-ui/core@4.12.3](https://github.com/mui-org/material-ui) - MIT
-- [@material-ui/lab@4.0.0-alpha.60](https://github.com/mui-org/material-ui) - MIT
+- [@fortawesome/fontawesome-common-types@6.3.0](https://github.com/FortAwesome/Font-Awesome) - MIT
+- [@fortawesome/fontawesome-svg-core@6.3.0](https://github.com/FortAwesome/Font-Awesome) - MIT
+- [@fortawesome/free-regular-svg-icons@6.3.0](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
+- [@fortawesome/free-solid-svg-icons@6.3.0](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
+- [@fortawesome/react-fontawesome@0.2.0](https://github.com/FortAwesome/react-fontawesome) - MIT
+- [@jridgewell/gen-mapping@0.3.2](https://github.com/jridgewell/gen-mapping) - MIT
+- [@jridgewell/resolve-uri@3.1.0](https://github.com/jridgewell/resolve-uri) - MIT
+- [@jridgewell/set-array@1.1.2](https://github.com/jridgewell/set-array) - MIT
+- [@jridgewell/source-map@0.3.2](https://github.com/jridgewell/source-map) - MIT
+- [@jridgewell/sourcemap-codec@1.4.14](https://github.com/jridgewell/sourcemap-codec) - MIT
+- [@jridgewell/trace-mapping@0.3.17](https://github.com/jridgewell/trace-mapping) - MIT
+- [@material-ui/core@4.12.4](https://github.com/mui-org/material-ui) - MIT
+- [@material-ui/lab@4.0.0-alpha.61](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/styles@4.11.5](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/system@4.12.2](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/types@5.1.0](https://github.com/mui-org/material-ui) - MIT
@@ -49,15 +55,20 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [@reach/portal@0.16.2](https://github.com/reach/reach-ui) - MIT
 - [@reach/rect@0.16.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/utils@0.16.0](https://github.com/reach/reach-ui) - MIT
-- [@types/eslint-scope@3.7.1](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/eslint@7.28.2](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/estree@0.0.50](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/json-schema@7.0.9](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/node@14.18.12](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/prop-types@15.7.4](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/react-transition-group@4.4.2](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/react@17.0.49](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/debug@4.1.7](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/eslint-scope@3.7.4](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/eslint@8.21.1](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/estree@0.0.51](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/hast@2.3.4](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/json-schema@7.0.11](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/mdast@3.0.10](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/ms@0.7.31](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/node@18.14.6](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/prop-types@15.7.5](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/react-transition-group@4.4.5](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/react@17.0.53](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/scheduler@0.16.2](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/unist@2.0.6](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@webassemblyjs/ast@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
 - [@webassemblyjs/floating-point-hex-parser@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
 - [@webassemblyjs/helper-api-error@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
@@ -76,30 +87,36 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [@xtuc/ieee754@1.2.0](https://github.com/feross/ieee754) - BSD-3-Clause
 - [@xtuc/long@4.2.2](https://github.com/dcodeIO/long.js) - Apache-2.0
 - [acorn-import-assertions@1.8.0](https://github.com/xtuc/acorn-import-assertions) - MIT
-- [acorn@8.7.0](https://github.com/acornjs/acorn) - MIT
+- [acorn@8.8.2](https://github.com/acornjs/acorn) - MIT
 - [ajv-formats@2.1.1](https://github.com/ajv-validator/ajv-formats) - MIT
 - [ajv-keywords@3.5.2](https://github.com/epoberezkin/ajv-keywords) - MIT
 - [ajv@6.12.6](https://github.com/ajv-validator/ajv) - MIT
-- [ajv@8.10.0](https://github.com/ajv-validator/ajv) - MIT
+- [ajv@8.12.0](https://github.com/ajv-validator/ajv) - MIT
+- [bail@2.0.2](https://github.com/wooorm/bail) - MIT
 - [bcp47@1.1.2](https://github.com/gagle/node-bcp47) - MIT
 - [big.js@5.2.2](https://github.com/MikeMcl/big.js) - MIT
-- [browserslist@4.19.1](https://github.com/browserslist/browserslist) - MIT
+- [browserslist@4.21.5](https://github.com/browserslist/browserslist) - MIT
 - [buffer-from@1.1.2](https://github.com/LinusU/buffer-from) - MIT
-- [caniuse-lite@1.0.30001300](https://github.com/browserslist/caniuse-lite) - CC-BY-4.0
+- [caniuse-lite@1.0.30001460](https://github.com/browserslist/caniuse-lite) - CC-BY-4.0
+- [character-entities@2.0.2](https://github.com/wooorm/character-entities) - MIT
 - [chrome-trace-event@1.0.3](https://github.com/samccone/chrome-trace-event) - MIT
-- [clsx@1.1.1](https://github.com/lukeed/clsx) - MIT
+- [clsx@1.2.1](https://github.com/lukeed/clsx) - MIT
+- [comma-separated-tokens@2.0.3](https://github.com/wooorm/comma-separated-tokens) - MIT
 - [commander@2.20.3](https://github.com/tj/commander.js) - MIT
+- [cross-fetch@3.1.5](https://github.com/lquixada/cross-fetch) - MIT
 - [css-vendor@2.0.8](https://github.com/cssinjs/css-vendor) - MIT
-- [csstype@2.6.17](https://github.com/frenic/csstype) - MIT
-- [csstype@3.0.8](https://github.com/frenic/csstype) - MIT
-- [csstype@3.0.9](https://github.com/frenic/csstype) - MIT
-- [csstype@3.1.0](https://github.com/frenic/csstype) - MIT
+- [csstype@2.6.21](https://github.com/frenic/csstype) - MIT
+- [csstype@3.1.1](https://github.com/frenic/csstype) - MIT
 - [cvss2js@1.1.0](https://github.com/sparticvs/cvss2js) - MIT
+- [debug@4.3.4](https://github.com/debug-js/debug) - MIT
+- [decode-named-character-reference@1.0.2](https://github.com/wooorm/decode-named-character-reference) - MIT
+- [dequal@2.0.3](https://github.com/lukeed/dequal) - MIT
 - [detect-node-es@1.1.0](https://github.com/thekashey/detect-node) - MIT
+- [diff@5.1.0](https://github.com/kpdecker/jsdiff) - BSD-3-Clause
 - [dom-helpers@5.2.1](https://github.com/react-bootstrap/dom-helpers) - MIT
-- [electron-to-chromium@1.4.46](https://github.com/kilian/electron-to-chromium) - ISC
+- [electron-to-chromium@1.4.320](https://github.com/kilian/electron-to-chromium) - ISC
 - [emojis-list@3.0.0](https://github.com/kikobeats/emojis-list) - MIT
-- [enhanced-resolve@5.8.3](https://github.com/webpack/enhanced-resolve) - MIT
+- [enhanced-resolve@5.12.0](https://github.com/webpack/enhanced-resolve) - MIT
 - [es-module-lexer@0.9.3](https://github.com/guybedford/es-module-lexer) - MIT
 - [escalade@3.1.1](https://github.com/lukeed/escalade) - MIT
 - [eslint-scope@5.1.1](https://github.com/eslint/eslint-scope) - BSD-2-Clause
@@ -107,93 +124,157 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [estraverse@4.3.0](https://github.com/estools/estraverse) - BSD-2-Clause
 - [estraverse@5.3.0](https://github.com/estools/estraverse) - BSD-2-Clause
 - [events@3.3.0](https://github.com/Gozala/events) - MIT
+- [extend@3.0.2](https://github.com/justmoon/node-extend) - MIT
 - [fast-deep-equal@3.1.3](https://github.com/epoberezkin/fast-deep-equal) - MIT
 - [fast-json-stable-stringify@2.1.0](https://github.com/epoberezkin/fast-json-stable-stringify) - MIT
-- [focus-lock@0.9.2](https://github.com/theKashey/focus-lock) - MIT
-- [foreach@2.0.5](https://github.com/manuelstofer/foreach) - MIT
+- [focus-lock@0.11.6](https://github.com/theKashey/focus-lock) - MIT
+- [foreach@2.0.6](https://github.com/manuelstofer/foreach) - MIT
 - [get-nonce@1.0.1](https://github.com/theKashey/get-nonce) - MIT
 - [glob-to-regexp@0.4.1](https://github.com/fitzgen/glob-to-regexp) - BSD-2-Clause
-- [graceful-fs@4.2.9](https://github.com/isaacs/node-graceful-fs) - ISC
+- [graceful-fs@4.2.10](https://github.com/isaacs/node-graceful-fs) - ISC
 - [has-flag@4.0.0](https://github.com/sindresorhus/has-flag) - MIT
+- [hast-util-whitespace@2.0.1](https://github.com/syntax-tree/hast-util-whitespace) - MIT
 - [hoist-non-react-statics@3.3.2](https://github.com/mridgway/hoist-non-react-statics) - BSD-3-Clause
+- [hotkeys-js@3.10.1](https://github.com/jaywcjlove/hotkeys) - MIT
+- [html-parse-stringify@3.0.1](https://github.com/henrikjoreteg/html-parse-stringify) - MIT
 - [hyphenate-style-name@1.0.4](https://github.com/rexxars/hyphenate-style-name) - BSD-3-Clause
+- [i18next-http-backend@1.4.5](https://github.com/i18next/i18next-http-backend) - MIT
+- [i18next@21.10.0](https://github.com/i18next/i18next) - MIT
 - [immutability-helper@3.1.1](https://github.com/kolodny/immutability-helper) - MIT
+- [inline-style-parser@0.1.1](https://github.com/remarkablemark/inline-style-parser) - MIT
 - [invariant@2.2.4](https://github.com/zertosh/invariant) - MIT
+- [is-buffer@2.0.5](https://github.com/feross/is-buffer) - MIT
 - [is-in-browser@1.1.3](https://github.com/tuxsudo/is-in-browser) - MIT
-- [jest-worker@27.3.1](https://github.com/facebook/jest) - MIT
+- [is-plain-obj@4.1.0](https://github.com/sindresorhus/is-plain-obj) - MIT
+- [jest-worker@27.5.1](https://github.com/facebook/jest) - MIT
 - [js-tokens@4.0.0](https://github.com/lydell/js-tokens) - MIT
-- [json-parse-better-errors@1.0.2](https://github.com/zkat/json-parse-better-errors) - MIT
+- [json-parse-even-better-errors@2.3.1](https://github.com/npm/json-parse-even-better-errors) - MIT
 - [json-pointer@0.6.2](https://github.com/manuelstofer/json-pointer) - MIT
 - [json-schema-traverse@0.4.1](https://github.com/epoberezkin/json-schema-traverse) - MIT
 - [json-schema-traverse@1.0.0](https://github.com/epoberezkin/json-schema-traverse) - MIT
 - [json-source-map@0.6.1](https://github.com/epoberezkin/json-source-map) - MIT
-- [json5@2.2.0](https://github.com/json5/json5) - MIT
-- [jss-plugin-camel-case@10.9.2](https://github.com/cssinjs/jss) - MIT
-- [jss-plugin-default-unit@10.9.2](https://github.com/cssinjs/jss) - MIT
-- [jss-plugin-global@10.9.2](https://github.com/cssinjs/jss) - MIT
-- [jss-plugin-nested@10.9.2](https://github.com/cssinjs/jss) - MIT
-- [jss-plugin-props-sort@10.9.2](https://github.com/cssinjs/jss) - MIT
-- [jss-plugin-rule-value-function@10.9.2](https://github.com/cssinjs/jss) - MIT
-- [jss-plugin-vendor-prefixer@10.9.2](https://github.com/cssinjs/jss) - MIT
-- [jss@10.9.2](https://github.com/cssinjs/jss) - MIT
-- [loader-runner@4.2.0](https://github.com/webpack/loader-runner) - MIT
-- [loader-utils@2.0.2](https://github.com/webpack/loader-utils) - MIT
+- [json5@2.2.3](https://github.com/json5/json5) - MIT
+- [jss-plugin-camel-case@10.10.0](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-default-unit@10.10.0](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-global@10.10.0](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-nested@10.10.0](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-props-sort@10.10.0](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-rule-value-function@10.10.0](https://github.com/cssinjs/jss) - MIT
+- [jss-plugin-vendor-prefixer@10.10.0](https://github.com/cssinjs/jss) - MIT
+- [jss@10.10.0](https://github.com/cssinjs/jss) - MIT
+- [kleur@4.1.5](https://github.com/lukeed/kleur) - MIT
+- [loader-runner@4.3.0](https://github.com/webpack/loader-runner) - MIT
+- [loader-utils@2.0.4](https://github.com/webpack/loader-utils) - MIT
 - [lodash@4.17.21](https://github.com/lodash/lodash) - MIT
 - [loose-envify@1.4.0](https://github.com/zertosh/loose-envify) - MIT
 - [lru-cache@6.0.0](https://github.com/isaacs/node-lru-cache) - ISC
 - [match-sorter@6.3.1](https://github.com/kentcdodds/match-sorter) - MIT
+- [mdast-util-definitions@5.1.2](https://github.com/syntax-tree/mdast-util-definitions) - MIT
+- [mdast-util-from-markdown@1.3.0](https://github.com/syntax-tree/mdast-util-from-markdown) - MIT
+- [mdast-util-to-hast@12.3.0](https://github.com/syntax-tree/mdast-util-to-hast) - MIT
+- [mdast-util-to-string@3.1.1](https://github.com/syntax-tree/mdast-util-to-string) - MIT
 - [merge-stream@2.0.0](https://github.com/grncdr/merge-stream) - MIT
-- [mime-db@1.51.0](https://github.com/jshttp/mime-db) - MIT
-- [mime-types@2.1.34](https://github.com/jshttp/mime-types) - MIT
-- [minimist@1.2.5](https://github.com/substack/minimist) - MIT
+- [micromark-core-commonmark@1.0.6](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-factory-destination@1.0.0](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-factory-label@1.0.2](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-factory-space@1.0.0](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-factory-title@1.0.2](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-factory-whitespace@1.0.0](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-character@1.1.0](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-chunked@1.0.0](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-classify-character@1.0.0](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-combine-extensions@1.0.0](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-decode-numeric-character-reference@1.0.0](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-decode-string@1.0.2](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-encode@1.0.1](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-html-tag-name@1.1.0](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-normalize-identifier@1.0.0](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-resolve-all@1.0.0](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-sanitize-uri@1.1.0](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-subtokenize@1.0.2](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-symbol@1.0.1](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark-util-types@1.0.2](https://github.com/micromark/micromark.git#main) - MIT
+- [micromark@3.1.0](https://github.com/micromark/micromark.git#main) - MIT
+- [mime-db@1.52.0](https://github.com/jshttp/mime-db) - MIT
+- [mime-types@2.1.35](https://github.com/jshttp/mime-types) - MIT
 - [monaco-editor-webpack-plugin@7.0.1](https://github.com/microsoft/monaco-editor) - MIT
 - [monaco-editor@0.33.0](https://github.com/microsoft/monaco-editor) - MIT
+- [mri@1.2.0](https://github.com/lukeed/mri) - MIT
+- [ms@2.1.2](https://github.com/zeit/ms) - MIT
 - [mustache@4.2.0](https://github.com/janl/mustache.js) - MIT
 - [neo-async@2.6.2](https://github.com/suguru03/neo-async) - MIT
-- [node-releases@2.0.1](https://github.com/chicoxyzzy/node-releases) - MIT
+- [node-fetch@2.6.7](https://github.com/bitinn/node-fetch) - MIT
+- [node-releases@2.0.10](https://github.com/chicoxyzzy/node-releases) - MIT
 - [object-assign@4.1.1](https://github.com/sindresorhus/object-assign) - MIT
 - [packageurl-js@0.0.5](https://github.com/package-url/packageurl-js) - MIT
 - [picocolors@1.0.0](https://github.com/alexeyraspopov/picocolors) - ISC
 - [popper.js@1.16.1-lts](https://github.com/FezVrasta/popper.js) - MIT
 - [prop-types@15.8.1](https://github.com/facebook/prop-types) - MIT
-- [punycode@2.1.1](https://github.com/bestiejs/punycode.js) - MIT
+- [property-information@6.2.0](https://github.com/wooorm/property-information) - MIT
+- [punycode@2.3.0](https://github.com/mathiasbynens/punycode.js) - MIT
 - [randombytes@2.1.0](https://github.com/crypto-browserify/randombytes) - MIT
-- [react-clientside-effect@1.2.5](https://github.com/thekashey/react-clientside-effect) - MIT
+- [react-clientside-effect@1.2.6](https://github.com/thekashey/react-clientside-effect) - MIT
 - [react-dom@17.0.2](https://github.com/facebook/react) - MIT
 - [react-error-boundary@3.1.4](https://github.com/bvaughn/react-error-boundary) - MIT
-- [react-focus-lock@2.6.0](https://github.com/theKashey/react-focus-lock) - MIT
+- [react-focus-lock@2.9.4](https://github.com/theKashey/react-focus-lock) - MIT
+- [react-hot-keys@2.7.2](https://github.com/jaywcjlove/react-hotkeys) - MIT
+- [react-i18next@11.18.6](https://github.com/i18next/react-i18next) - MIT
 - [react-is@16.13.1](https://github.com/facebook/react) - MIT
+- [react-is@17.0.2](https://github.com/facebook/react) - MIT
+- [react-is@18.2.0](https://github.com/facebook/react) - MIT
+- [react-markdown@8.0.5](https://github.com/remarkjs/react-markdown) - MIT
 - [react-monaco-editor@0.48.0](https://github.com/react-monaco-editor/react-monaco-editor) - MIT
-- [react-remove-scroll-bar@2.3.3](https://github.com/theKashey/react-remove-scroll-bar) - MIT
+- [react-remove-scroll-bar@2.3.4](https://github.com/theKashey/react-remove-scroll-bar) - MIT
 - [react-remove-scroll@2.5.5](https://github.com/theKashey/react-remove-scroll) - MIT
 - [react-style-singleton@2.2.1](undefined) - MIT
-- [react-transition-group@4.4.2](https://github.com/reactjs/react-transition-group) - BSD-3-Clause
+- [react-transition-group@4.4.5](https://github.com/reactjs/react-transition-group) - BSD-3-Clause
 - [react@17.0.2](https://github.com/facebook/react) - MIT
-- [regenerator-runtime@0.13.7](https://github.com/facebook/regenerator.git#master) - MIT
+- [regenerator-runtime@0.13.11](https://github.com/facebook/regenerator.git#main) - MIT
+- [remark-parse@10.0.1](https://github.com/remarkjs/remark.git#main) - MIT
+- [remark-rehype@10.1.0](https://github.com/remarkjs/remark-rehype) - MIT
 - [remove-accents@0.4.2](https://github.com/tyxla/remove-accents) - MIT
 - [require-from-string@2.0.2](https://github.com/floatdrop/require-from-string) - MIT
+- [sade@1.8.1](https://github.com/lukeed/sade) - MIT
 - [safe-buffer@5.2.1](https://github.com/feross/safe-buffer) - MIT
 - [scheduler@0.20.2](https://github.com/facebook/react) - MIT
 - [schema-utils@3.1.1](https://github.com/webpack/schema-utils) - MIT
-- [semver@7.3.5](https://github.com/npm/node-semver) - ISC
-- [serialize-javascript@6.0.0](https://github.com/yahoo/serialize-javascript) - BSD-3-Clause
+- [semver@7.3.8](https://github.com/npm/node-semver) - ISC
+- [serialize-javascript@6.0.1](https://github.com/yahoo/serialize-javascript) - BSD-3-Clause
 - [shallowequal@1.1.0](https://github.com/dashed/shallowequal) - MIT
-- [source-map-support@0.5.20](https://github.com/evanw/node-source-map-support) - MIT
+- [source-map-support@0.5.21](https://github.com/evanw/node-source-map-support) - MIT
 - [source-map@0.6.1](https://github.com/mozilla/source-map) - BSD-3-Clause
-- [source-map@0.7.3](https://github.com/mozilla/source-map) - BSD-3-Clause
+- [space-separated-tokens@2.0.2](https://github.com/wooorm/space-separated-tokens) - MIT
+- [style-to-object@0.4.1](https://github.com/remarkablemark/style-to-object) - MIT
 - [supports-color@8.1.1](https://github.com/chalk/supports-color) - MIT
 - [tabbable@4.0.0](https://github.com/davidtheclark/tabbable) - MIT
-- [tapable@2.2.0](https://github.com/webpack/tapable) - MIT
-- [terser-webpack-plugin@5.2.5](https://github.com/webpack-contrib/terser-webpack-plugin) - MIT
-- [terser@5.9.0](https://github.com/terser/terser) - BSD-2-Clause
+- [tapable@2.2.1](https://github.com/webpack/tapable) - MIT
+- [terser-webpack-plugin@5.3.6](https://github.com/webpack-contrib/terser-webpack-plugin) - MIT
+- [terser@5.16.5](https://github.com/terser/terser) - BSD-2-Clause
 - [tiny-warning@1.0.3](https://github.com/alexreardon/tiny-warning) - MIT
-- [tslib@2.3.1](https://github.com/Microsoft/tslib) - 0BSD
-- [uri-js@4.4.0](https://github.com/garycourt/uri-js) - BSD-2-Clause
+- [tr46@0.0.3](https://github.com/Sebmaster/tr46.js) - MIT
+- [trim-lines@3.0.1](https://github.com/wooorm/trim-lines) - MIT
+- [trough@2.1.0](https://github.com/wooorm/trough) - MIT
+- [tslib@2.5.0](https://github.com/Microsoft/tslib) - 0BSD
+- [unified@10.1.2](https://github.com/unifiedjs/unified) - MIT
+- [unist-util-generated@2.0.1](https://github.com/syntax-tree/unist-util-generated) - MIT
+- [unist-util-is@5.2.1](https://github.com/syntax-tree/unist-util-is) - MIT
+- [unist-util-position@4.0.4](https://github.com/syntax-tree/unist-util-position) - MIT
+- [unist-util-stringify-position@3.0.3](https://github.com/syntax-tree/unist-util-stringify-position) - MIT
+- [unist-util-visit-parents@5.1.3](https://github.com/syntax-tree/unist-util-visit-parents) - MIT
+- [unist-util-visit@4.1.2](https://github.com/syntax-tree/unist-util-visit) - MIT
+- [update-browserslist-db@1.0.10](https://github.com/browserslist/update-db) - MIT
+- [uri-js@4.4.1](https://github.com/garycourt/uri-js) - BSD-2-Clause
 - [use-callback-ref@1.3.0](https://github.com/theKashey/use-callback-ref) - MIT
 - [use-sidecar@1.1.2](https://github.com/theKashey/use-sidecar) - MIT
-- [watchpack@2.3.1](https://github.com/webpack/watchpack) - MIT
+- [uvu@0.5.6](https://github.com/lukeed/uvu) - MIT
+- [vfile-message@3.1.4](https://github.com/vfile/vfile-message) - MIT
+- [vfile@5.3.7](https://github.com/vfile/vfile) - MIT
+- [void-elements@3.1.0](https://github.com/pugjs/void-elements) - MIT
+- [watchpack@2.4.0](https://github.com/webpack/watchpack) - MIT
+- [webidl-conversions@3.0.1](https://github.com/jsdom/webidl-conversions) - BSD-2-Clause
 - [webpack-sources@3.2.3](https://github.com/webpack/webpack-sources) - MIT
-- [webpack@5.66.0](https://github.com/webpack/webpack) - MIT
+- [webpack@5.75.0](https://github.com/webpack/webpack) - MIT
+- [whatwg-url@5.0.0](https://github.com/jsdom/whatwg-url) - MIT
 - [yallist@4.0.0](https://github.com/isaacs/yallist) - ISC
 
 ### [@webassemblyjs/leb128](https://github.com/xtuc/webassemblyjs)
@@ -663,7 +744,7 @@ exhaustive, and do not form part of our licenses.
      such as asking that all changes be marked or described.
      Although not required by our licenses, you are encouraged to
      respect those requests where reasonable. More_considerations
-     for the public: 
+     for the public:
 	wiki.creativecommons.org/Considerations_for_licensees
 
 =======================================================================
@@ -1008,6 +1089,40 @@ public licenses.
 
 Creative Commons may be contacted at creativecommons.org.
 
+### [diff](https://github.com/kpdecker/jsdiff)
+
+Software License Agreement (BSD License)
+
+Copyright (c) 2009-2015, Kevin Decker <kpdecker@gmail.com>
+
+All rights reserved.
+
+Redistribution and use of this software in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above
+  copyright notice, this list of conditions and the
+  following disclaimer.
+
+* Redistributions in binary form must reproduce the above
+  copyright notice, this list of conditions and the
+  following disclaimer in the documentation and/or other
+  materials provided with the distribution.
+
+* Neither the name of Kevin Decker nor the names of its
+  contributors may be used to endorse or promote products
+  derived from this software without specific prior
+  written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 ### [electron-to-chromium](https://github.com/kilian/electron-to-chromium)
 
 Copyright 2018 Kilian Valkhof
@@ -1081,7 +1196,7 @@ Font Awesome Free is free, open source, and GPL friendly. You can use it for com
 
 In the Font Awesome Free download, the [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/) applies to all icons packaged as .svg and .js files types.
 
-### [glob-to-regexp@](https://github.com/fitzgen/glob-to-regexp)
+### [glob-to-regexp](https://github.com/fitzgen/glob-to-regexp)
 
 Copyright (c) 2013, Nick Fitzgerald
 
@@ -1139,147 +1254,6 @@ Redistribution and use in source and binary forms, with or without modification,
   this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-### [indefinite-observable](https://github.com/material-motion/indefinite-observable-js)
-
-Apache License
-Version 2.0, January 2004
-http://www.apache.org/licenses/
-
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
-
-   1. Definitions.
-
-      "License" shall mean the terms and conditions for use, reproduction, and distribution as defined by Sections 1 through 9 of this document.
-
-      "Licensor" shall mean the copyright owner or entity authorized by the copyright owner that is granting the License.
-
-      "Legal Entity" shall mean the union of the acting entity and all other entities that control, are controlled by, or are under common control with that entity. For the purposes of this definition, "control" means (i) the power, direct or indirect, to cause the direction or management of such entity, whether by contract or otherwise, or (ii) ownership of fifty percent (50%) or more of the outstanding shares, or (iii) beneficial ownership of such entity.
-
-      "You" (or "Your") shall mean an individual or Legal Entity exercising permissions granted by this License.
-
-      "Source" form shall mean the preferred form for making modifications, including but not limited to software source code, documentation source, and configuration files.
-
-      "Object" form shall mean any form resulting from mechanical transformation or translation of a Source form, including but       not limited to compiled object code, generated documentation, and conversions to other media types.
-
-      "Work" shall mean the work of authorship, whether in Source or Object form, made available under the License, as indicated by a copyright notice that is included in or attached to the work (an example is provided in the Appendix below).
-
-      "Derivative Works" shall mean any work, whether in Source or Object form, that is based on (or derived from) the Work and for which the editorial revisions, annotations, elaborations, or other modifications represent, as a whole, an original work of authorship. For the purposes of this License, Derivative Works shall not include works that remain separable from, or merely link (or bind by name) to the interfaces of, the Work and Derivative Works thereof.
-
-      "Contribution" shall mean any work of authorship, including the original version of the Work and any modifications or additions
-      to that Work or Derivative Works thereof, that is intentionally submitted to Licensor for inclusion in the Work by the copyright owner or by an individual or Legal Entity authorized to submit on behalf of the copyright owner. For the purposes of this definition, "submitted" means any form of electronic, verbal, or written communication sent to the Licensor or its representatives, including but not limited to communication on electronic mailing lists, source code control systems, and issue tracking systems that are managed by, or on behalf of, the Licensor for the purpose of discussing and improving the Work, but excluding communication that is conspicuously marked or otherwise designated in writing by the copyright owner as "Not a Contribution."
-
-      "Contributor" shall mean Licensor and any individual or Legal Entity on behalf of whom a Contribution has been received by Licensor and subsequently incorporated within the Work.
-
-   2. Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.
-
-   3. Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.
-
-   4. Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:
-
-      (a) You must give any other recipients of the Work or
-          Derivative Works a copy of this License; and
-
-      (b) You must cause any modified files to carry prominent notices
-          stating that You changed the files; and
-
-      (c) You must retain, in the Source form of any Derivative Works
-          that You distribute, all copyright, patent, trademark, and
-          attribution notices from the Source form of the Work,
-          excluding those notices that do not pertain to any part of
-          the Derivative Works; and
-
-      (d) If the Work includes a "NOTICE" text file as part of its
-          distribution, then any Derivative Works that You distribute must
-          include a readable copy of the attribution notices contained
-          within such NOTICE file, excluding those notices that do not
-          pertain to any part of the Derivative Works, in at least one
-          of the following places: within a NOTICE text file distributed
-          as part of the Derivative Works; within the Source form or
-          documentation, if provided along with the Derivative Works; or,
-          within a display generated by the Derivative Works, if and
-          wherever such third-party notices normally appear. The contents
-          of the NOTICE file are for informational purposes only and
-          do not modify the License. You may add Your own attribution
-          notices within Derivative Works that You distribute, alongside
-          or as an addendum to the NOTICE text from the Work, provided
-          that such additional attribution notices cannot be construed
-          as modifying the License.
-
-      You may add Your own copyright statement to Your modifications and
-      may provide additional or different license terms and conditions
-      for use, reproduction, or distribution of Your modifications, or
-      for any such Derivative Works as a whole, provided Your use,
-      reproduction, and distribution of the Work otherwise complies with
-      the conditions stated in this License.
-
-   5. Submission of Contributions. Unless You explicitly state otherwise,
-      any Contribution intentionally submitted for inclusion in the Work
-      by You to the Licensor shall be under the terms and conditions of
-      this License, without any additional terms or conditions.
-      Notwithstanding the above, nothing herein shall supersede or modify
-      the terms of any separate license agreement you may have executed
-      with Licensor regarding such Contributions.
-
-   6. Trademarks. This License does not grant permission to use the trade
-      names, trademarks, service marks, or product names of the Licensor,
-      except as required for reasonable and customary use in describing the
-      origin of the Work and reproducing the content of the NOTICE file.
-
-   7. Disclaimer of Warranty. Unless required by applicable law or
-      agreed to in writing, Licensor provides the Work (and each
-      Contributor provides its Contributions) on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-      implied, including, without limitation, any warranties or conditions
-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-      PARTICULAR PURPOSE. You are solely responsible for determining the
-      appropriateness of using or redistributing the Work and assume any
-      risks associated with Your exercise of permissions under this License.
-
-   8. Limitation of Liability. In no event and under no legal theory,
-      whether in tort (including negligence), contract, or otherwise,
-      unless required by applicable law (such as deliberate and grossly
-      negligent acts) or agreed to in writing, shall any Contributor be
-      liable to You for damages, including any direct, indirect, special,
-      incidental, or consequential damages of any character arising as a
-      result of this License or out of the use or inability to use the
-      Work (including but not limited to damages for loss of goodwill,
-      work stoppage, computer failure or malfunction, or any and all
-      other commercial damages or losses), even if such Contributor
-      has been advised of the possibility of such damages.
-
-   9. Accepting Warranty or Additional Liability. While redistributing
-      the Work or Derivative Works thereof, You may choose to offer,
-      and charge a fee for, acceptance of support, warranty, indemnity,
-      or other liability obligations and/or rights consistent with this
-      License. However, in accepting such obligations, You may act only
-      on Your own behalf and on Your sole responsibility, not on behalf
-      of any other Contributor, and only if You agree to indemnify,
-      defend, and hold each Contributor harmless for any liability
-      incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.
 
 ### [lru-cache](https://github.com/isaacs/node-lru-cache)
 
@@ -1353,6 +1327,98 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
+### [serialize-javascript](https://github.com/yahoo/serialize-javascript)
+
+Copyright 2014 Yahoo! Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+    * Neither the name of the Yahoo! Inc. nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL YAHOO! INC. BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+### [source-map](https://github.com/mozilla/source-map)
+
+Copyright (c) 2009-2011, Mozilla Foundation and contributors
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the names of the Mozilla Foundation nor the names of project
+  contributors may be used to endorse or promote products derived from this
+  software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+### [terser](https://github.com/terser/terser)
+
+Terser is released under the BSD license:
+
+Copyright 2012-2018 (c) Mihai Bazon <mihai.bazon@gmail.com>
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+    * Redistributions of source code must retain the above
+      copyright notice, this list of conditions and the following
+      disclaimer.
+
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials
+      provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER “AS IS” AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
+THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+
 ### [tslib](https://github.com/Microsoft/tslib)
 
 Copyright (c) Microsoft Corporation.
@@ -1375,6 +1441,18 @@ THIS SOFTWARE IS PROVIDED BY GARY COURT "AS IS" AND ANY EXPRESS OR IMPLIED WARRA
 
 The views and conclusions contained in the software and documentation are those of the authors and should not be interpreted as representing official policies, either expressed or implied, of Gary Court.
 
+### [webidl-conversions](https://github.com/jsdom/webidl-conversions)
+
+Copyright (c) 2014, Domenic Denicola
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ### [yallist](https://github.com/isaacs/yallist)
 

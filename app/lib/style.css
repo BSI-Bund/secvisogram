@@ -1,6 +1,11 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.menu-shadow {
+  -webkit-box-shadow: 0 0 3px 0 rgba(172, 172, 172, 0.75);
+  box-shadow: 0 0 3px 0 rgba(172, 172, 172, 0.75);
+}
 
 dialog::backdrop {
   @apply bg-black opacity-50;
@@ -155,4 +160,53 @@ textarea:invalid {
 
 .advisory p {
   @apply whitespace-pre-wrap;
+}
+
+.treeview ul {
+  list-style: none;
+  @apply ml-8;
+}
+
+.treeview > ul {
+  margin-left: 0;
+}
+
+.treeview ul li {
+  position: relative;
+}
+
+.treeview ul li:before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: -18px;
+  border-left: 1px solid #a2a5b5;
+  width: 1px;
+  height: 100%;
+}
+
+.treeview ul li:last-child:before {
+  top: 0;
+  height: 18px;
+}
+
+.treeview ul li:after {
+  content: '';
+  position: absolute;
+  border-top: 1px solid #a2a5b5;
+  top: 18px;
+  left: -18px;
+  width: 15px;
+}
+
+.treeview > ul > li:before {
+  content: unset;
+}
+
+.treeview > ul > li:last-child:before {
+  content: unset;
+}
+
+.treeview > ul > li:after {
+  content: unset;
 }

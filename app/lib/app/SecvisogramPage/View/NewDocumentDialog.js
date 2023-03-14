@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import React from 'react'
 
 export default React.forwardRef(
@@ -18,7 +19,7 @@ export default React.forwardRef(
           <>
             <form method="dialog" id={`new_document-close_form`} />
             <header className="w-full flex items-center justify-between border-b p-2">
-              <h2 className="text-lg">Create new document</h2>
+              <h2 className="text-lg">{t('newDocumentModal.title')}</h2>
               <button
                 type="submit"
                 name="cancel"
@@ -78,7 +79,7 @@ export default React.forwardRef(
                       }}
                     />
                     <span className="inline-block ml-3">
-                      Upload from filesystem
+                      {t('menu.uploadFromFilesystem')}
                     </span>
                   </label>
                   {source === 'FILESYSTEM' ? (
@@ -112,7 +113,9 @@ export default React.forwardRef(
                         setSource('TEMPLATE')
                       }}
                     />
-                    <span className="inline-block ml-3">Use a template</span>
+                    <span className="inline-block ml-3">
+                      {t('menu.useTemplate')}
+                    </span>
                   </label>
                   {source === 'TEMPLATE' ? (
                     <div className="border border-t-0 border-blue-400 rounded-b px-4 pb-4">
@@ -144,7 +147,7 @@ export default React.forwardRef(
                 type="submit"
                 form={`new_document-close_form`}
               >
-                Cancel
+                {t('menu.cancel')}
               </button>
               <button
                 data-testid="new_document-create_document_button"
@@ -152,7 +155,7 @@ export default React.forwardRef(
                 type="submit"
                 form={`new_document-form`}
               >
-                Create
+                {t('menu.create')}
               </button>
             </footer>
           </>
