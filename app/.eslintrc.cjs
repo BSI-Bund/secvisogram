@@ -5,7 +5,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 2022,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
@@ -26,6 +26,9 @@ module.exports = {
     ace: true,
     CVSS: true,
     CVSS31: true,
+    cy: true,
+    expect: true,
+    Cypress: true,
   },
   rules: {
     'no-unused-params': 0,

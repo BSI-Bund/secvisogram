@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/secvisogram/secvisogram/main/data/metadataSchema.json",
+  "title": "Field Metadata for CSAF Documents",
+  "description": "JSON schema for documentation (specification and usage) on fields of CSAF documents.",
+  "type": "object",
+  "$defs": {
+    "relevance_levels_t": {
+      "title": "Relevance Levels",
+      "description": "Defines the possible relevance levels of a field.",
+      "type": "string",
+      "enum": [
+        "mandatory",
+        "best_practice",
+        "want_to_have",
+        "nice_to_know",
+        "optional",
+        "excluded"
+      ]
+    },
+    "documentation_file_path_t": {
+      "title": "File Path",
+      "description": "Defines the path to a documentation file on the file system.",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^docs/user(/.+)+-(spec|usage)(-csaf_(base|security_incident_response|informational_advisory|security_advisory|vex))?\\.[a-z]{2,3}\\.md$"
+    }
+  },
+  "required": ["field_metadata"],
+  "properties": {
+    "field_metadata": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "user_documentation",
+          "field_description",
+          "field_title"
+        ],
+        "properties": {
+          "path": {
+            "title": "JSON Path",
+            "description": "Defines the JSON path of the field this item holds metadata for.",
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\\$(\\.(([A-Za-z_])+|(cvss_v[23]))(\\[\\])?)+$"
+          },
+          "relevance_levels": {
+            "title": "Relevance Levels",
+            "description": "Relevance levels of the field for each profile.",
+            "type": "object",
+            "properties": {
+              "csaf_base": {
+                "title": "CSAF Base Relevance Levels",
+                "description": "Contains the relevance level of the current field for the profile CSAF Base.",
+                "$ref": "#/$defs/relevance_levels_t"
+              },
+              "csaf_informational_advisory": {
+                "title": "CSAF Informational Advisory Relevance Levels",
+                "description": "Contains the relevance level of the current field for the profile CSAF Informational Advisory.",
+                "$ref": "#/$defs/relevance_levels_t"
+              },
+              "csaf_security_advisory": {
+                "title": "CSAF Security Advisory Relevance Levels",
+                "description": "Contains the relevance level of the current field for the profile CSAF Security Advisory.",
+                "$ref": "#/$defs/relevance_levels_t"
+              },
+              "csaf_security_incident_response": {
+                "title": "CSAF Security Incident Relevance Levels",
+                "description": "Contains the relevance level of the current field for the profile CSAF Security Incident.",
+                "$ref": "#/$defs/relevance_levels_t"
+              },
+              "csaf_vex": {
+                "title": "CSAF VEX Relevance Levels",
+                "description": "Contains the relevance level of the current field for the profile CSAF VEX.",
+                "$ref": "#/$defs/relevance_levels_t"
+              }
+            },
+            "additionalProperties": false
+          },
+          "field_description": {
+            "title": "Field Description",
+            "description": "The key for looking up the description text of this field in a translation file.",
+            "type": "string",
+            "minLength": 1
+          },
+          "field_title": {
+            "title": "Field Title",
+            "description": "The key for looking up the title of this field in a translation file.",
+            "type": "string",
+            "minLength": 1
+          },
+          "user_documentation": {
+            "title": "User Documentation Links",
+            "description": "Container for user documentation files of the field.",
+            "type": "object",
+            "required": [
+              "specification",
+              "usage"
+            ],
+            "properties": {
+              "specification": {
+                "title": "Specification Link",
+                "description": "Contains a link to a markdown file with the specification of this field.",
+                "$ref": "#/$defs/documentation_file_path_t"
+              },
+              "usage": {
+                "title": "Usage Links",
+                "description": "Container for links to usage markdown files.",
+                "type": "object",
+                "required": [
+                  "generic"
+                ],
+                "properties": {
+                  "generic": {
+                    "title": "Generic User Documentation",
+                    "description": "A link to a markdown file with the usage documentation of this field that applies in all contexts.",
+                    "$ref": "#/$defs/documentation_file_path_t"
+                  },
+                  "specific": {
+                    "title": "Specific User Documentation",
+                    "description": "A link to a markdown file with the usage documentation of this field that applies only in a specific context.",
+                    "$ref": "#/$defs/documentation_file_path_t"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "additionalProperties": false
+            },
+            "additionalProperties": false
+          },
+          "string_is_multiline": {
+            "title": "Multiline String",
+            "description": "Defines whether the field content may be multiline string or is a shorter string.",
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
