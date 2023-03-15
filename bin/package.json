@@ -16,7 +16,7 @@
   "author": "eXXcellent solutions GmbH",
   "license": "MIT",
   "dependencies": {
-    "json-pointer": "^0.6.1",
+    "json-pointer": "^0.6.2",
     "xml2js": "^0.4.23",
     "yargs": "^17.3.1"
   },
