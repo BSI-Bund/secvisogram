@@ -211,6 +211,67 @@ describe('SecvisogramPage', () => {
     }
   })
 
+  describe('can create a minimal new document from URL in standalone mode', function () {
+    const testDocURL = 'http://localhost:22222/test.json'
+    it(`in form editor`, function () {
+      cy.intercept(testDocURL, {
+        statusCode: 200,
+        body: JSON.stringify(sampleUploadDocument),
+      }).as('testJson')
+
+      cy.visit('?tab=EDITOR')
+
+      cy.get('[data-testid="new_document_button"]').click()
+
+      cy.get(`[data-testid="new_document-url_button"]`).click()
+      cy.get(`[data-testid="new_document-url_input"]`).type(testDocURL)
+
+      cy.get(`[data-testid="new_document-create_document_button"]`).click()
+      cy.wait('@testJson')
+      cy.get('[data-testid="new_document_dialog"]').should('not.exist')
+      cy.get(`[data-testid="menu_entry-/document"]`).click()
+      cy.get('[data-testid="attribute-document-title"] input').should(
+        'have.value',
+        sampleUploadDocument.document.title
+      )
+    })
+    it(`with error from a URL with CORS restrictions`, function () {
+      cy.intercept(testDocURL, {
+        forceNetworkError: true,
+      }).as('testJson')
+
+      cy.visit('?tab=EDITOR')
+
+      cy.get('[data-testid="new_document_button"]').click()
+
+      cy.get(`[data-testid="new_document-url_button"]`).click()
+      cy.get(`[data-testid="new_document-url_input"]`).type(testDocURL)
+
+      cy.get(`[data-testid="new_document-create_document_button"]`).click()
+      cy.wait('@testJson')
+      cy.contains(
+        'Failed to load from URL. The server may be unreachable or the resource cannot be accessed due to CORS restrictions.'
+      )
+    })
+    it(`with error due to invalid JSON file`, function () {
+      cy.intercept(testDocURL, {
+        statusCode: 200,
+        body: JSON.stringify(sampleUploadDocument).replaceAll('}', '"'),
+      }).as('testJson')
+
+      cy.visit('?tab=EDITOR')
+
+      cy.get('[data-testid="new_document_button"]').click()
+
+      cy.get(`[data-testid="new_document-url_button"]`).click()
+      cy.get(`[data-testid="new_document-url_input"]`).type(testDocURL)
+
+      cy.get(`[data-testid="new_document-create_document_button"]`).click()
+      cy.wait('@testJson')
+      cy.contains('Failed to parse JSON file.')
+    })
+  })
+
   describe('can create a new document in connected mode', function () {
     for (const user of getUsers()) {
       for (const mode of /** @type {const} */ (['TEMPLATE', 'FILESYSTEM'])) {

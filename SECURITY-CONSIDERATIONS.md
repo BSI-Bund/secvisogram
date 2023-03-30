@@ -25,11 +25,12 @@ This document describes the Security Considerations made during the development 
 
 > Injection flaws, such as SQL, NoSQL, OS, and LDAP injection, occur when untrusted data is sent to an interpreter as part of a command or query. The attacker's hostile data can trick the interpreter into executing unintended commands or accessing data without proper authorization.
 
-Secvisogram is a client-only application and does not store/retrieve any dynamic, server-side content.
+Secvisogram is a client-only application and does not store/retrieve any dynamic, server-side content, except when being asked for.
 
-The user can make modifications or process input in one of only three ways:
+The user can make modifications or process input in one of only four ways:
 
-- by opening a JSON File,
+- by opening a local JSON File,
+- by loading a JSON File from a URL
 - by using the JSON Editor file to provide JSON content, or
 - by using the Form Editor functionality to edit the content directly.
 
@@ -53,7 +54,7 @@ Secvisogram is a public, stateless, client-side browser application requiring no
 
 > Many web applications and APIs do not properly protect sensitive data, such as financial, healthcare, and PII. Attackers may steal or modify such weakly protected data to conduct credit card fraud, identity theft, or other crimes. Sensitive data may be compromised without extra protection, such as encryption at rest or in transit, and requires special precautions when exchanged with the browser.
 
-Secvisogram is a pure client-side, browser-only application. No content data is transferred over the network. The user can load & save local files. Secvisogram cannot ensure the integrity and proper handling of the files generated and stored by the user on his local system.
+Secvisogram is a pure client-side, browser-only application. No content data is transferred over the network with the exception of loading a JSON file from an URL. The user can load & save local files. Secvisogram cannot ensure the integrity and proper handling of files created and stored by the user on his local system, nor of files loaded from a URL.
 
 This consideration implies that the Secvisogram program is trustworthy and not tampered. Therefore, Secvisogram should be hosted on a reliable endpoint properly secured by TLS transports.
 
