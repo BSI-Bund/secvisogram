@@ -1,25 +1,25 @@
 import { t } from 'i18next'
 import React from 'react'
-import DocumentEditorContext from '../../shared/DocumentEditorContext.js'
-import ArrayEditor from './GenericEditor/ArrayEditor.js'
-import Attribute from './GenericEditor/Attributes/shared/Attribute.js'
-import CweAttribute from './GenericEditor/Attributes/CweAttribute.js'
-import DateAttribute from './GenericEditor/Attributes/DateAttribute.js'
-import DropdownAttribute from './GenericEditor/Attributes/DropdownAttribute.js'
-import IdAttribute from './GenericEditor/Attributes/IdAttribute.js'
-import TextAreaAttribute from './GenericEditor/Attributes/TextAreaAttribute.js'
-import TextAttribute from './GenericEditor/Attributes/TextAttribute.js'
-import ObjectEditor from './GenericEditor/ObjectEditor.js'
-import CVSSV3Attribute from './GenericEditor/Attributes/CVSS3Attribute.js'
 import AppConfigContext from '../../../../shared/context/AppConfigContext.js'
+import AppErrorContext from '../../../../shared/context/AppErrorContext.js'
 import UserInfoContext from '../../../../shared/context/UserInfoContext.js'
+import DocumentEditorContext from '../../shared/DocumentEditorContext.js'
 import {
   getBranchName,
   getRelationshipName,
   uniqueProductId,
 } from '../shared/fillFieldFunctions.js'
-import AppErrorContext from '../../../../shared/context/AppErrorContext.js'
+import ArrayEditor from './GenericEditor/ArrayEditor.js'
 import CVSSV2Attribute from './GenericEditor/Attributes/CVSS2Attribute.js'
+import CVSSV3Attribute from './GenericEditor/Attributes/CVSS3Attribute.js'
+import CweAttribute from './GenericEditor/Attributes/CweAttribute.js'
+import DateAttribute from './GenericEditor/Attributes/DateAttribute.js'
+import DropdownAttribute from './GenericEditor/Attributes/DropdownAttribute.js'
+import IdAttribute from './GenericEditor/Attributes/IdAttribute.js'
+import Attribute from './GenericEditor/Attributes/shared/Attribute.js'
+import TextAreaAttribute from './GenericEditor/Attributes/TextAreaAttribute.js'
+import TextAttribute from './GenericEditor/Attributes/TextAttribute.js'
+import ObjectEditor from './GenericEditor/ObjectEditor.js'
 
 /**
  * utility function to get the color of circles identifying errors
@@ -108,7 +108,8 @@ export default function Editor({
       ? () => updateDoc(instancePath, uniqueProductId())
       : uiType === 'STRING_BRANCH_FULL_PRODUCT_NAME'
       ? () => {
-          updateDoc(instancePath, getBranchName(doc, instancePath))
+          // update the field but remove the field itself from the instancePath otherwise the old value will be appended
+          updateDoc(instancePath, getBranchName(doc, instancePath.slice(0, -1)))
         }
       : uiType === 'STRING_RELATIONSHIP_FULL_PRODUCT_NAME'
       ? () => {

@@ -542,4 +542,69 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       '[data-testid="attribute-product_tree-product_groups-2-group_id"] input'
     ).should('have.value', 'CSAFGID-0003')
   })
+
+  it('fill full product name', function () {
+    cy.visit('?tab=EDITOR')
+
+    // check if branch full product name is filled with a generated name
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches-add_item_button"]'
+    ).click({ force: true })
+    cy.get('[data-testid="product_tree/branches/0-fieldButton"]').click()
+    cy.get('[data-testid="attribute-product_tree-branches-0-name"] input')
+      .clear()
+      .type('Vendor A')
+    // now create a sub element
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches/0/branches-add_item_button"]'
+    ).click({ force: true })
+    cy.get(
+      '[data-testid="product_tree/branches/0/branches/0-fieldButton"]'
+    ).click()
+    cy.get(
+      '[data-testid="attribute-product_tree-branches-0-branches-0-name"] input'
+    )
+      .clear()
+      .type('Product ABC')
+    // full product name should be empty first
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches/0/branches/0/product"]'
+    ).click()
+    cy.get(
+      '[data-testid="attribute-product_tree-branches-0-branches-0-product-name"] input'
+    ).should('be.empty')
+    // and filled with a value after clicking the generate button
+    cy.get(
+      '[data-testid="product_tree-branches-0-branches-0-product-name-generateButton"]'
+    ).click()
+    cy.get(
+      '[data-testid="attribute-product_tree-branches-0-branches-0-product-name"] input'
+    ).should('have.value', 'Vendor A Product ABC')
+    // just regenerating should be still the same
+    cy.get(
+      '[data-testid="product_tree-branches-0-branches-0-product-name-generateButton"]'
+    ).click()
+    cy.get(
+      '[data-testid="attribute-product_tree-branches-0-branches-0-product-name"] input'
+    ).should('have.value', 'Vendor A Product ABC')
+    // change the value
+    cy.get(
+      '[data-testid="product_tree/branches/0/branches/0-fieldButton"]'
+    ).click()
+    cy.get(
+      '[data-testid="attribute-product_tree-branches-0-branches-0-name"] input'
+    )
+      .clear()
+      .type('Product DEF')
+    // and regenerate it should recompute the value
+    cy.get(
+      '[data-testid="menu_entry-/product_tree/branches/0/branches/0/product"]'
+    ).click()
+    cy.get(
+      '[data-testid="product_tree-branches-0-branches-0-product-name-generateButton"]'
+    ).click()
+    cy.get(
+      '[data-testid="attribute-product_tree-branches-0-branches-0-product-name"] input'
+    ).should('have.value', 'Vendor A Product DEF')
+  })
 })
