@@ -1,6 +1,8 @@
 name: 'Validate Docs Metadata'
 
-on: [pull_request]
+on:
+  push:
+    branches: [ main update-gh-actions-deprecation ]
 
 jobs:
   verify-json-validation:
