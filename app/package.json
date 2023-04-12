@@ -88,10 +88,10 @@
     "postcss-loader": "^6.2.1",
     "raw-loader": "^4.0.2",
     "tailwindcss": "^3.2.1",
-    "webpack": "^5.66.0",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.7.3",
-    "xml2js": "^0.4.23"
+    "webpack": "^5.78.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.2",
+    "xml2js": "^0.5.0"
   },
   "engines": {
     "node": ">=14.15.0",
