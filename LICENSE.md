@@ -28,10 +28,10 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 
 - [@babel/runtime@7.21.0](https://github.com/babel/babel) - MIT
 - [@emotion/hash@0.8.0](https://github.com/emotion-js/emotion.git#master) - MIT
-- [@fortawesome/fontawesome-common-types@6.3.0](https://github.com/FortAwesome/Font-Awesome) - MIT
-- [@fortawesome/fontawesome-svg-core@6.3.0](https://github.com/FortAwesome/Font-Awesome) - MIT
-- [@fortawesome/free-regular-svg-icons@6.3.0](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
-- [@fortawesome/free-solid-svg-icons@6.3.0](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
+- [@fortawesome/fontawesome-common-types@6.4.0](https://github.com/FortAwesome/Font-Awesome) - MIT
+- [@fortawesome/fontawesome-svg-core@6.4.0](https://github.com/FortAwesome/Font-Awesome) - MIT
+- [@fortawesome/free-regular-svg-icons@6.4.0](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
+- [@fortawesome/free-solid-svg-icons@6.4.0](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
 - [@fortawesome/react-fontawesome@0.2.0](https://github.com/FortAwesome/react-fontawesome) - MIT
 - [@jridgewell/gen-mapping@0.3.2](https://github.com/jridgewell/gen-mapping) - MIT
 - [@jridgewell/resolve-uri@3.1.0](https://github.com/jridgewell/resolve-uri) - MIT
@@ -143,7 +143,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [html-parse-stringify@3.0.1](https://github.com/henrikjoreteg/html-parse-stringify) - MIT
 - [hyphenate-style-name@1.0.4](https://github.com/rexxars/hyphenate-style-name) - BSD-3-Clause
 - [i18next-http-backend@2.2.0](https://github.com/i18next/i18next-http-backend) - MIT
-- [i18next@22.4.13](https://github.com/i18next/i18next) - MIT
+- [i18next@22.4.14](https://github.com/i18next/i18next) - MIT
 - [immutability-helper@3.1.1](https://github.com/kolodny/immutability-helper) - MIT
 - [inline-style-parser@0.1.1](https://github.com/remarkablemark/inline-style-parser) - MIT
 - [invariant@2.2.4](https://github.com/zertosh/invariant) - MIT
@@ -219,14 +219,14 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [randombytes@2.1.0](https://github.com/crypto-browserify/randombytes) - MIT
 - [react-clientside-effect@1.2.6](https://github.com/thekashey/react-clientside-effect) - MIT
 - [react-dom@17.0.2](https://github.com/facebook/react) - MIT
-- [react-error-boundary@3.1.4](https://github.com/bvaughn/react-error-boundary) - MIT
+- [react-error-boundary@4.0.3](https://github.com/bvaughn/react-error-boundary) - MIT
 - [react-focus-lock@2.5.2](https://github.com/theKashey/react-focus-lock) - MIT
 - [react-hot-keys@2.7.2](https://github.com/jaywcjlove/react-hotkeys) - MIT
 - [react-i18next@11.18.6](https://github.com/i18next/react-i18next) - MIT
 - [react-is@16.13.1](https://github.com/facebook/react) - MIT
 - [react-is@17.0.2](https://github.com/facebook/react) - MIT
 - [react-is@18.2.0](https://github.com/facebook/react) - MIT
-- [react-markdown@8.0.5](https://github.com/remarkjs/react-markdown) - MIT
+- [react-markdown@8.0.6](https://github.com/remarkjs/react-markdown) - MIT
 - [react-monaco-editor@0.52.0](https://github.com/react-monaco-editor/react-monaco-editor) - MIT
 - [react-remove-scroll-bar@2.3.4](https://github.com/theKashey/react-remove-scroll-bar) - MIT
 - [react-remove-scroll@2.4.3](https://github.com/theKashey/react-remove-scroll) - MIT
