@@ -1,5 +1,5 @@
 import codeCoverageTasks from '@cypress/code-coverage/task.js'
-import wp from '@cypress/webpack-preprocessor'
+import webpack from '@cypress/webpack-preprocessor'
 import { defineConfig } from 'cypress'
 import { rm } from 'fs/promises'
 
@@ -14,19 +14,13 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       on(
         'file:preprocessor',
-        wp({
+        webpack({
           webpackOptions: {
             module: {
               rules: [
                 {
                   test: /.js$/,
-                  exclude: /node_modules/,
-                  use: {
-                    loader: 'babel-loader',
-                    options: {
-                      presets: [['@babel/preset-env', { targets: 'defaults' }]],
-                    },
-                  },
+                  use: 'babel-loader',
                 },
               ],
             },
