@@ -40,14 +40,14 @@ describe('SecvisogramPage', () => {
               getLoginEnabledConfig().userInfoUrl,
               getUserInfo(user)
             ).as('apiGetUserInfo')
-            cy.intercept('/api/v1/advisories/', getGetAdvisoriesResponse()).as(
+            cy.intercept('/api/v1/advisories', getGetAdvisoriesResponse()).as(
               'apiGetAdvisories'
             )
             const advisoryDetail = getGetAdvisoryDetailResponse({
               advisoryId,
             })
             cy.intercept(
-              `/api/v1/advisories/${advisory.advisoryId}/`,
+              `/api/v1/advisories/${advisory.advisoryId}`,
               advisoryDetail
             ).as('apiGetAdvisoryDetail')
             const validationResponse = getValidationResponse({
@@ -353,7 +353,7 @@ describe('SecvisogramPage', () => {
             ).as('apiCreateAdvisory')
             cy.intercept(
               'GET',
-              `/api/v1/advisories/${createAdvisoryResponse.id}/`,
+              `/api/v1/advisories/${createAdvisoryResponse.id}`,
               getGetAdvisoryDetailResponse({
                 advisoryId: createAdvisoryResponse.id,
               })
@@ -406,7 +406,7 @@ describe('SecvisogramPage', () => {
               getLoginEnabledConfig().userInfoUrl,
               getUserInfo(user)
             ).as('apiGetUserInfo')
-            cy.intercept('/api/v1/advisories/', getGetAdvisoriesResponse()).as(
+            cy.intercept('/api/v1/advisories', getGetAdvisoriesResponse()).as(
               'apiGetAdvisories'
             )
 
@@ -414,7 +414,7 @@ describe('SecvisogramPage', () => {
               advisoryId: advisory.advisoryId,
             })
             cy.intercept(
-              `/api/v1/advisories/${advisory.advisoryId}/`,
+              `/api/v1/advisories/${advisory.advisoryId}`,
               advisoryDetail
             ).as('apiGetAdvisoryDetail')
 

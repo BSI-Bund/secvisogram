@@ -15,7 +15,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
       '/.well-known/appspecific/de.bsi.secvisogram.json',
       getLoginEnabledConfig()
     ).as('wellKnownAppConfig')
-    cy.intercept('/api/v1/advisories/', getGetAdvisoriesResponse()).as(
+    cy.intercept('/api/v1/advisories', getGetAdvisoriesResponse()).as(
       'apiGetAdvisories'
     )
   })
@@ -54,7 +54,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
             getUserInfo(user)
           ).as('apiGetUserInfo')
           cy.intercept(
-            '/api/v1/advisories/',
+            '/api/v1/advisories',
             getGetAdvisoriesResponse(user.user)
           ).as('apiGetAdvisories')
           const advisoryDetail = getGetAdvisoryDetailResponse({
@@ -64,12 +64,12 @@ describe('SecvisogramPage / DocumentsTab', function () {
           cy.intercept(
             {
               method: 'DELETE',
-              url: `/api/v1/advisories/${advisory.advisoryId}/?revision=${advisoryDetail.revision}`,
+              url: `/api/v1/advisories/${advisory.advisoryId}?revision=${advisoryDetail.revision}`,
             },
             { statusCode: 204 }
           ).as('apiDeleteAdvisory')
           cy.intercept(
-            `/api/v1/advisories/${advisory.advisoryId}/`,
+            `/api/v1/advisories/${advisory.advisoryId}`,
             advisoryDetail
           ).as('apiGetAdvisoryDetail')
 
@@ -80,7 +80,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
 
           // Pretend to have the advisory removed
           cy.intercept(
-            '/api/v1/advisories/',
+            '/api/v1/advisories',
             getGetAdvisoriesResponse().filter(
               (a) => a.advisoryId !== advisory.advisoryId
             )
@@ -122,7 +122,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
             advisoryId: advisory.advisoryId,
           })
           cy.intercept(
-            `/api/v1/advisories/${advisory.advisoryId}/`,
+            `/api/v1/advisories/${advisory.advisoryId}`,
             advisoryDetail
           ).as('apiGetAdvisoryDetail')
 
@@ -161,7 +161,7 @@ describe('SecvisogramPage / DocumentsTab', function () {
               getUserInfo(user)
             ).as('apiGetUserInfo')
             cy.intercept(
-              `/api/v1/advisories/${advisory.advisoryId}/`,
+              `/api/v1/advisories/${advisory.advisoryId}`,
               getGetAdvisoryDetailResponse({
                 advisoryId: advisory.advisoryId,
               })
@@ -263,11 +263,11 @@ describe('SecvisogramPage / DocumentsTab', function () {
             getUserInfo(user)
           ).as('apiGetUserInfo')
           cy.intercept(
-            '/api/v1/advisories/',
+            '/api/v1/advisories',
             getGetAdvisoriesResponse(user.user)
           ).as('apiGetAdvisories')
           cy.intercept(
-            `/api/v1/advisories/${advisory.advisoryId}/`,
+            `/api/v1/advisories/${advisory.advisoryId}`,
             getGetAdvisoryDetailResponse({
               advisoryId: advisory.advisoryId,
             })
