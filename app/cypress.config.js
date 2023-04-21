@@ -19,7 +19,7 @@ export default defineConfig({
             module: {
               rules: [
                 {
-                  test: /.js$/,
+                  test: /\.m?js$/,
                   use: 'babel-loader',
                 },
               ],
