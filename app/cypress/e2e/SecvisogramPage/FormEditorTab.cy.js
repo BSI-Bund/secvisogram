@@ -32,7 +32,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
           ).as('apiGetUserInfo')
           cy.intercept(
             'GET',
-            '/api/v1/advisories/',
+            '/api/v1/advisories',
             getGetAdvisoriesResponse()
           ).as('apiGetAdvisories')
 
@@ -42,7 +42,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
           })
           cy.intercept(
             'GET',
-            `/api/v1/advisories/${advisory.advisoryId}/`,
+            `/api/v1/advisories/${advisory.advisoryId}`,
             advisoryDetail
           ).as('apiGetAdvisoryDetail')
 
@@ -71,7 +71,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
             cy.setCookie('XSRF-TOKEN', 'test-Value-123')
             cy.intercept(
               'PATCH',
-              `/api/v1/advisories/${advisory.advisoryId}/?revision=${advisoryDetail.revision}`,
+              `/api/v1/advisories/${advisory.advisoryId}?revision=${advisoryDetail.revision}`,
               {}
             ).as('apiUpdateAdvisory')
             cy.get('[data-testid="save_button"]').click()
