@@ -1,5 +1,5 @@
 import codeCoverageTasks from '@cypress/code-coverage/task.js'
-import webpack from '@cypress/webpack-preprocessor'
+import webpackPreprocessor from '@cypress/webpack-preprocessor'
 import { defineConfig } from 'cypress'
 import { rm } from 'fs/promises'
 
@@ -12,22 +12,27 @@ export default defineConfig({
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
     setupNodeEvents(on, config) {
+      codeCoverageTasks(on, config)
+
       on(
         'file:preprocessor',
-        webpack({
+        webpackPreprocessor({
           webpackOptions: {
+            mode: 'development',
             module: {
               rules: [
                 {
-                  test: /\.m?js$/,
+                  test: /\.jsx?$/,
+                  exclude: [/node_modules/],
                   use: 'babel-loader',
                 },
+                { test: /\.html$/, use: 'raw-loader' },
               ],
             },
           },
         })
-      ),
-        codeCoverageTasks(on, config)
+      )
+
       on('task', {
         /**
          * @param {string} path
