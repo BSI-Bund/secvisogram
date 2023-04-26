@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Check main package-lock.json
-        run: test `grep "resolved" package-lock.json | grep -v "https://registry.npmjs.org/" | wc -l` -eq 0 
+        run: test `grep "resolved" package-lock.json | grep -v "https://registry.npmjs.org/" | wc -l` -eq 0
       - name: Check app package-lock.json
         run: test `grep "resolved" app/package-lock.json | grep -v "https://registry.npmjs.org/" | wc -l` -eq 0
       - name: Check bin package-lock.json
