@@ -16,16 +16,17 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm run test-report
-      - name: Test Report
-        uses: phoenix-actions/test-reporting@v8
-        id: test-report
+      - run: npm run test-coverage-lcov
+      - name: Save PR number
+        env:
+          PR_NUMBER: ${{ github.event.number }}
+        run: |
+          echo $PR_NUMBER > ./pr_number
+      - uses: actions/upload-artifact@v3
         if: success() || failure()
         with:
-          name: Mocha Tests
-          path: test-results.json
-          reporter: mocha-json
-      - run: npm run test-coverage-lcov
-      - name: c8 coverage report
-        uses: romeovs/lcov-reporter-action@v0.2.16
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: test-results
+          path: |
+            test-results.json
+            coverage
+            pr_number

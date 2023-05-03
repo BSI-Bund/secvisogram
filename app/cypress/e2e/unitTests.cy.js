@@ -1,14 +1,14 @@
 /// <reference types="cypress" />
 
-import createFileName from '../../lib/shared/createFileName'
-import pruneEmpty from '../../lib/app/shared/pruneEmpty.js'
 import isPropertyRelevant from '../../lib/app/SecvisogramPage/shared/isPropertyRelevant.js'
 import {
-  uniqueProductId,
-  uniqueGroupId,
   getBranchName,
   getRelationshipName,
+  uniqueGroupId,
+  uniqueProductId,
 } from '../../lib/app/SecvisogramPage/View/FormEditor/shared/fillFieldFunctions.js'
+import pruneEmpty from '../../lib/app/shared/pruneEmpty.js'
+import createFileName from '../../lib/shared/createFileName.js'
 
 describe('Unit Test Functions', function () {
   context('createFileName.js', function () {

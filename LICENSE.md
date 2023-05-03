@@ -28,10 +28,10 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 
 - [@babel/runtime@7.21.0](https://github.com/babel/babel) - MIT
 - [@emotion/hash@0.8.0](https://github.com/emotion-js/emotion.git#master) - MIT
-- [@fortawesome/fontawesome-common-types@6.3.0](https://github.com/FortAwesome/Font-Awesome) - MIT
-- [@fortawesome/fontawesome-svg-core@6.3.0](https://github.com/FortAwesome/Font-Awesome) - MIT
-- [@fortawesome/free-regular-svg-icons@6.3.0](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
-- [@fortawesome/free-solid-svg-icons@6.3.0](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
+- [@fortawesome/fontawesome-common-types@6.4.0](https://github.com/FortAwesome/Font-Awesome) - MIT
+- [@fortawesome/fontawesome-svg-core@6.4.0](https://github.com/FortAwesome/Font-Awesome) - MIT
+- [@fortawesome/free-regular-svg-icons@6.4.0](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
+- [@fortawesome/free-solid-svg-icons@6.4.0](https://github.com/FortAwesome/Font-Awesome) - (CC-BY-4.0 AND MIT)
 - [@fortawesome/react-fontawesome@0.2.0](https://github.com/FortAwesome/react-fontawesome) - MIT
 - [@jridgewell/gen-mapping@0.3.2](https://github.com/jridgewell/gen-mapping) - MIT
 - [@jridgewell/resolve-uri@3.1.0](https://github.com/jridgewell/resolve-uri) - MIT
@@ -46,23 +46,20 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [@material-ui/types@5.1.0](https://github.com/mui-org/material-ui) - MIT
 - [@material-ui/utils@4.11.3](https://github.com/mui-org/material-ui) - MIT
 - [@reach/alert-dialog@0.18.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/auto-id@0.16.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/auto-id@0.18.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/combobox@0.16.5](https://github.com/reach/reach-ui) - MIT
-- [@reach/descendants@0.16.1](https://github.com/reach/reach-ui) - MIT
+- [@reach/combobox@0.18.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/descendants@0.18.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/dialog@0.18.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/observe-rect@1.2.0](https://github.com/reach/observe-rect) - MIT
 - [@reach/polymorphic@0.18.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/popover@0.16.2](https://github.com/reach/reach-ui) - MIT
-- [@reach/portal@0.16.2](https://github.com/reach/reach-ui) - MIT
+- [@reach/popover@0.18.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/portal@0.18.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/rect@0.16.0](https://github.com/reach/reach-ui) - MIT
-- [@reach/utils@0.16.0](https://github.com/reach/reach-ui) - MIT
+- [@reach/rect@0.18.0](https://github.com/reach/reach-ui) - MIT
 - [@reach/utils@0.18.0](https://github.com/reach/reach-ui) - MIT
 - [@types/debug@4.1.7](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/eslint-scope@3.7.4](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/eslint@8.21.1](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@types/estree@0.0.51](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
+- [@types/estree@1.0.1](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/hast@2.3.4](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/json-schema@7.0.11](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/mdast@3.0.10](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
@@ -73,21 +70,21 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [@types/react@17.0.53](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/scheduler@0.16.2](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
 - [@types/unist@2.0.6](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT
-- [@webassemblyjs/ast@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/floating-point-hex-parser@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/helper-api-error@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/helper-buffer@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/helper-numbers@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/helper-wasm-bytecode@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/helper-wasm-section@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/ieee754@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/leb128@1.11.1](https://github.com/xtuc/webassemblyjs) - Apache-2.0
-- [@webassemblyjs/utf8@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/wasm-edit@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/wasm-gen@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/wasm-opt@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/wasm-parser@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
-- [@webassemblyjs/wast-printer@1.11.1](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/ast@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/floating-point-hex-parser@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/helper-api-error@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/helper-buffer@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/helper-numbers@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/helper-wasm-bytecode@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/helper-wasm-section@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/ieee754@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/leb128@1.11.5](https://github.com/xtuc/webassemblyjs) - Apache-2.0
+- [@webassemblyjs/utf8@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/wasm-edit@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/wasm-gen@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/wasm-opt@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/wasm-parser@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
+- [@webassemblyjs/wast-printer@1.11.5](https://github.com/xtuc/webassemblyjs) - MIT
 - [@xtuc/ieee754@1.2.0](https://github.com/feross/ieee754) - BSD-3-Clause
 - [@xtuc/long@4.2.2](https://github.com/dcodeIO/long.js) - Apache-2.0
 - [acorn-import-assertions@1.8.0](https://github.com/xtuc/acorn-import-assertions) - MIT
@@ -120,8 +117,8 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [dom-helpers@5.2.1](https://github.com/react-bootstrap/dom-helpers) - MIT
 - [electron-to-chromium@1.4.320](https://github.com/kilian/electron-to-chromium) - ISC
 - [emojis-list@3.0.0](https://github.com/kikobeats/emojis-list) - MIT
-- [enhanced-resolve@5.12.0](https://github.com/webpack/enhanced-resolve) - MIT
-- [es-module-lexer@0.9.3](https://github.com/guybedford/es-module-lexer) - MIT
+- [enhanced-resolve@5.13.0](https://github.com/webpack/enhanced-resolve) - MIT
+- [es-module-lexer@1.2.1](https://github.com/guybedford/es-module-lexer) - MIT
 - [escalade@3.1.1](https://github.com/lukeed/escalade) - MIT
 - [eslint-scope@5.1.1](https://github.com/eslint/eslint-scope) - BSD-2-Clause
 - [esrecurse@4.3.0](https://github.com/estools/esrecurse) - BSD-2-Clause
@@ -143,7 +140,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [html-parse-stringify@3.0.1](https://github.com/henrikjoreteg/html-parse-stringify) - MIT
 - [hyphenate-style-name@1.0.4](https://github.com/rexxars/hyphenate-style-name) - BSD-3-Clause
 - [i18next-http-backend@2.2.0](https://github.com/i18next/i18next-http-backend) - MIT
-- [i18next@22.4.13](https://github.com/i18next/i18next) - MIT
+- [i18next@22.4.14](https://github.com/i18next/i18next) - MIT
 - [immutability-helper@3.1.1](https://github.com/kolodny/immutability-helper) - MIT
 - [inline-style-parser@0.1.1](https://github.com/remarkablemark/inline-style-parser) - MIT
 - [invariant@2.2.4](https://github.com/zertosh/invariant) - MIT
@@ -219,14 +216,14 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [randombytes@2.1.0](https://github.com/crypto-browserify/randombytes) - MIT
 - [react-clientside-effect@1.2.6](https://github.com/thekashey/react-clientside-effect) - MIT
 - [react-dom@17.0.2](https://github.com/facebook/react) - MIT
-- [react-error-boundary@3.1.4](https://github.com/bvaughn/react-error-boundary) - MIT
+- [react-error-boundary@4.0.3](https://github.com/bvaughn/react-error-boundary) - MIT
 - [react-focus-lock@2.5.2](https://github.com/theKashey/react-focus-lock) - MIT
 - [react-hot-keys@2.7.2](https://github.com/jaywcjlove/react-hotkeys) - MIT
 - [react-i18next@11.18.6](https://github.com/i18next/react-i18next) - MIT
 - [react-is@16.13.1](https://github.com/facebook/react) - MIT
 - [react-is@17.0.2](https://github.com/facebook/react) - MIT
 - [react-is@18.2.0](https://github.com/facebook/react) - MIT
-- [react-markdown@8.0.5](https://github.com/remarkjs/react-markdown) - MIT
+- [react-markdown@8.0.6](https://github.com/remarkjs/react-markdown) - MIT
 - [react-monaco-editor@0.52.0](https://github.com/react-monaco-editor/react-monaco-editor) - MIT
 - [react-remove-scroll-bar@2.3.4](https://github.com/theKashey/react-remove-scroll-bar) - MIT
 - [react-remove-scroll@2.4.3](https://github.com/theKashey/react-remove-scroll) - MIT
@@ -241,7 +238,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [sade@1.8.1](https://github.com/lukeed/sade) - MIT
 - [safe-buffer@5.2.1](https://github.com/feross/safe-buffer) - MIT
 - [scheduler@0.20.2](https://github.com/facebook/react) - MIT
-- [schema-utils@3.1.1](https://github.com/webpack/schema-utils) - MIT
+- [schema-utils@3.1.2](https://github.com/webpack/schema-utils) - MIT
 - [semver@7.3.8](https://github.com/npm/node-semver) - ISC
 - [serialize-javascript@6.0.1](https://github.com/yahoo/serialize-javascript) - BSD-3-Clause
 - [shallowequal@1.1.0](https://github.com/dashed/shallowequal) - MIT
@@ -250,9 +247,9 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [space-separated-tokens@2.0.2](https://github.com/wooorm/space-separated-tokens) - MIT
 - [style-to-object@0.4.1](https://github.com/remarkablemark/style-to-object) - MIT
 - [supports-color@8.1.1](https://github.com/chalk/supports-color) - MIT
-- [tabbable@4.0.0](https://github.com/davidtheclark/tabbable) - MIT
+- [tabbable@5.3.3](https://github.com/focus-trap/tabbable) - MIT
 - [tapable@2.2.1](https://github.com/webpack/tapable) - MIT
-- [terser-webpack-plugin@5.3.6](https://github.com/webpack-contrib/terser-webpack-plugin) - MIT
+- [terser-webpack-plugin@5.3.7](https://github.com/webpack-contrib/terser-webpack-plugin) - MIT
 - [terser@5.16.5](https://github.com/terser/terser) - BSD-2-Clause
 - [tiny-invariant@1.3.1](https://github.com/alexreardon/tiny-invariant) - MIT
 - [tiny-warning@1.0.3](https://github.com/alexreardon/tiny-warning) - MIT
@@ -279,7 +276,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [watchpack@2.4.0](https://github.com/webpack/watchpack) - MIT
 - [webidl-conversions@3.0.1](https://github.com/jsdom/webidl-conversions) - BSD-2-Clause
 - [webpack-sources@3.2.3](https://github.com/webpack/webpack-sources) - MIT
-- [webpack@5.75.0](https://github.com/webpack/webpack) - MIT
+- [webpack@5.80.0](https://github.com/webpack/webpack) - MIT
 - [whatwg-url@5.0.0](https://github.com/jsdom/whatwg-url) - MIT
 - [yallist@4.0.0](https://github.com/isaacs/yallist) - ISC
 
