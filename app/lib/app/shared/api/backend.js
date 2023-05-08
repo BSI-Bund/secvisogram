@@ -33,7 +33,7 @@ export async function updateAdvisory({
   legacyVersion,
 }) {
   const apiURL = new URL(
-    `/api/v1/advisories/${advisoryId}/`,
+    `/api/v1/advisories/${advisoryId}`,
     window.location.href
   )
   apiURL.searchParams.set('revision', revision)
@@ -53,7 +53,7 @@ export async function updateAdvisory({
 export async function getAdvisoryDetail({ advisoryId }) {
   return (
     await new CsrfApiRequest(
-      new Request(`/api/v1/advisories/${advisoryId}/`)
+      new Request(`/api/v1/advisories/${advisoryId}`)
     ).send()
   ).json()
 }
@@ -144,7 +144,7 @@ export async function getTemplateContent({ templateId }) {
  */
 export async function deleteAdvisory({ advisoryId, revision }) {
   const deleteURL = new URL(
-    `/api/v1/advisories/${advisoryId}/`,
+    `/api/v1/advisories/${advisoryId}`,
     window.location.href
   )
   deleteURL.searchParams.set('revision', revision)
@@ -154,7 +154,7 @@ export async function deleteAdvisory({ advisoryId, revision }) {
 }
 
 export async function getAdvisories() {
-  const res = await new CsrfApiRequest(new Request('/api/v1/advisories/'))
+  const res = await new CsrfApiRequest(new Request('/api/v1/advisories'))
     .setContentType('application/json')
     .send()
   return await res.json()

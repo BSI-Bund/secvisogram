@@ -51,12 +51,15 @@ export default React.forwardRef(
                 const templateId = /** @type {string} */ (
                   formData.get('templateId')
                 )
+                const url = /** @type {string} */ (formData.get('url'))
                 const file = /** @type {File} */ (formData.get('file'))
-                onSubmit(
-                  source === 'FILESYSTEM'
-                    ? { source: 'FILESYSTEM', file }
-                    : { source: 'TEMPLATE', templateId }
-                )
+                if (source === 'FILESYSTEM') {
+                  onSubmit({ source: 'FILESYSTEM', file })
+                } else if (source === 'TEMPLATE') {
+                  onSubmit({ source: 'TEMPLATE', templateId })
+                } else {
+                  onSubmit({ source: 'URL', url })
+                }
               }}
             >
               <div className="p-4 flex flex-col gap-2">
@@ -135,6 +138,41 @@ export default React.forwardRef(
                           </option>
                         ))}
                       </select>
+                    </div>
+                  ) : null}
+                </div>
+                <div>
+                  <label
+                    className={`block p-4 border cursor-pointer${
+                      source === 'URL'
+                        ? ' border-blue-400 border-b-0 rounded-t'
+                        : ' rounded hover:shadow'
+                    }`}
+                  >
+                    <input
+                      data-testid="new_document-url_button"
+                      type="radio"
+                      name="source"
+                      value="URL"
+                      checked={source === 'URL'}
+                      onChange={() => {
+                        setSource('URL')
+                      }}
+                    />
+                    <span className="inline-block ml-3">
+                      {t('menu.loadFromURL')}
+                    </span>
+                  </label>
+                  {source === 'URL' ? (
+                    <div className="border border-t-0 border-blue-400 rounded-b px-4 pb-4">
+                      <input
+                        data-testid="new_document-url_input"
+                        className="border border-gray-400 py-1 px-2 w-full shadow-inner rounded"
+                        name="url"
+                        type="url"
+                        placeholder={t('newDocumentModal.enterURL')}
+                        required={source === 'URL'}
+                      />
                     </div>
                   ) : null}
                 </div>

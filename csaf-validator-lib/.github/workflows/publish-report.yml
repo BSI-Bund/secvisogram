@@ -1,0 +1,33 @@
+name: 'Test Report'
+on:
+  workflow_run:
+    workflows: ['Run Tests']
+    types:
+      - completed
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download workflow artifact
+      uses: dawidd6/action-download-artifact@v2.27.0
+      with:
+        workflow: run-tests.yml
+        name: test-results
+        run_id: ${{ github.event.workflow_run.id }}
+    - name: Set pr number env
+      run: |
+        PR_NUMBER=$(cat pr_number)
+        echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+    - name: Test Report
+      uses: phoenix-actions/test-reporting@v12
+      id: test-report
+      with:
+        artifact: test-results
+        name: Mocha Tests
+        path: test-results.json
+        reporter: mocha-json
+    - name: c8 coverage report
+      uses: Nef10/lcov-reporter-action@v0.4.0
+      with:
+        pr-number: ${{ env.PR_NUMBER }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}

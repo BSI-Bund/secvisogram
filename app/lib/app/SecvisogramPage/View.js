@@ -9,6 +9,7 @@ import BackendUnavailableError from '../shared/BackendUnavailableError.js'
 import AppConfigContext from '../shared/context/AppConfigContext.js'
 import AppErrorContext from '../shared/context/AppErrorContext.js'
 import UserInfoContext from '../shared/context/UserInfoContext.js'
+import externalJsonToFile from '../shared/externalJsonToFile.js'
 import { canCreateDocuments } from '../shared/permissions.js'
 import pruneEmpty from '../shared/pruneEmpty.js'
 import isPropertyRelevant from './shared/isPropertyRelevant.js'
@@ -17,6 +18,10 @@ import CsafTab from './View/CsafTab.js'
 import ExportDocumentDialog from './View/ExportDocumentDialog.js'
 import schema from './View/FormEditor/schema.js'
 import RelevanceLevelContext from './View/FormEditor/shared/context/RelevanceLevelContext.js'
+import {
+  uniqueGroupId,
+  uniqueProductId,
+} from './View/FormEditor/shared/fillFieldFunctions.js'
 import FormEditor from './View/FormEditorTab.js'
 import JsonEditorTab from './View/JsonEditorTab.js'
 import LoadingIndicator from './View/LoadingIndicator.js'
@@ -30,10 +35,6 @@ import DocumentEditorContext from './View/shared/DocumentEditorContext.js'
 import useDebounce from './View/shared/useDebounce.js'
 import SideBar from './View/SideBar/SideBar.js'
 import VersionSummaryDialog from './View/VersionSummaryDialog.js'
-import {
-  uniqueGroupId,
-  uniqueProductId,
-} from './View/FormEditor/shared/fillFieldFunctions.js'
 
 /**
  * Holds the editor-state and defines the main layout of the application.
@@ -354,14 +355,30 @@ function View({
               }}
               onSubmit={(params) => {
                 confirmDocumentReplacement(() => {
-                  if (params.source === 'TEMPLATE') {
-                    setAdvisoryState({
-                      type: 'NEW_ADVISORY',
-                      csaf:
-                        templates.get(params.templateId)?.templateContent ?? {},
-                    })
-                  } else {
-                    onOpen(params.file)
+                  switch (params.source) {
+                    case 'TEMPLATE':
+                      setAdvisoryState({
+                        type: 'NEW_ADVISORY',
+                        csaf:
+                          templates.get(params.templateId)?.templateContent ??
+                          {},
+                      })
+                      break
+                    case 'FILESYSTEM':
+                      onOpen(params.file)
+                      break
+                    case 'URL':
+                      externalJsonToFile(params.url)
+                        .then(onOpen)
+                        .catch((err) =>
+                          handleError({
+                            message:
+                              err.name == 'SyntaxError'
+                                ? t('error.invalidJSON')
+                                : t('error.failedToLoadFromURL'),
+                          })
+                        )
+                      break
                   }
                 })
               }}
@@ -380,23 +397,38 @@ function View({
               data={{ templates }}
               onSubmit={(params) => {
                 confirmDocumentReplacement(() => {
-                  if (params.source === 'TEMPLATE') {
-                    setLoading(true)
-                    onGetTemplateContent({
-                      templateId: params.templateId,
-                    })
-                      .then((templateContent) => {
-                        setAdvisoryState({
-                          type: 'NEW_ADVISORY',
-                          csaf: templateContent,
+                  switch (params.source) {
+                    case 'TEMPLATE':
+                      setLoading(true)
+                      onGetTemplateContent({
+                        templateId: params.templateId,
+                      })
+                        .then((templateContent) => {
+                          setAdvisoryState({
+                            type: 'NEW_ADVISORY',
+                            csaf: templateContent,
+                          })
                         })
-                      })
-                      .catch(handleError)
-                      .finally(() => {
-                        setLoading(false)
-                      })
-                  } else {
-                    onOpen(params.file)
+                        .catch(handleError)
+                        .finally(() => {
+                          setLoading(false)
+                        })
+                      break
+                    case 'FILESYSTEM':
+                      onOpen(params.file)
+                      break
+                    case 'URL':
+                      externalJsonToFile(params.url)
+                        .then(onOpen)
+                        .catch((err) =>
+                          handleError({
+                            message:
+                              err.name == 'SyntaxError'
+                                ? t('error.invalidJSON')
+                                : t('error.failedToLoadFromURL'),
+                          })
+                        )
+                      break
                   }
                 })
               }}
