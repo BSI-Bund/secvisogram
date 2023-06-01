@@ -1,9 +1,6 @@
+import { t } from 'i18next'
+import { set } from 'lodash/fp.js'
 import React from 'react'
-import Collapsible from './shared/Collapsible.js'
-import CvssScore from './shared/cvssScore.js'
-import TextAttribute from './TextAttribute.js'
-import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
-import { cvssDropdown } from './shared/cvssUtils.js'
 import {
   vectorUpdateBaseScore,
   vectorUpdateEnvironmentalScore,
@@ -11,8 +8,11 @@ import {
   vectorUpdateTemporalScore,
   vectorUpdateVectorString,
 } from '../../../../../../../shared/cvss2Tools.js'
-import { set } from 'lodash/fp.js'
-import { t } from 'i18next'
+import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
+import TextAttribute from './TextAttribute.js'
+import Collapsible from './shared/Collapsible.js'
+import CvssScore from './shared/cvssScore.js'
+import { cvssDropdown } from './shared/cvssUtils.js'
 
 /**
  * @param {{
@@ -59,7 +59,7 @@ export default function CVSSV2Attribute({
     [outerDocumentEditor, updateDoc, instancePath, value, doc]
   )
 
-  /** @type {(childName: string, options: string[], disableClearable: boolean) => any} */
+  /** @type {(childName: string, options: string[], disableClearable?: boolean) => any} */
   function dropdownFor(childName, options, disableClearable = false) {
     const childValue = /** @type {string} */ ((value || {})[childName]) || ''
     return cvssDropdown(
