@@ -104,7 +104,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [clsx@1.2.1](https://github.com/lukeed/clsx) - MIT
 - [comma-separated-tokens@2.0.3](https://github.com/wooorm/comma-separated-tokens) - MIT
 - [commander@2.20.3](https://github.com/tj/commander.js) - MIT
-- [cross-fetch@3.1.5](https://github.com/lquixada/cross-fetch) - MIT
+- [cross-fetch@3.1.6](https://github.com/lquixada/cross-fetch) - MIT
 - [css-vendor@2.0.8](https://github.com/cssinjs/css-vendor) - MIT
 - [csstype@2.6.21](https://github.com/frenic/csstype) - MIT
 - [csstype@3.1.1](https://github.com/frenic/csstype) - MIT
@@ -139,8 +139,8 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [hotkeys-js@3.10.1](https://github.com/jaywcjlove/hotkeys) - MIT
 - [html-parse-stringify@3.0.1](https://github.com/henrikjoreteg/html-parse-stringify) - MIT
 - [hyphenate-style-name@1.0.4](https://github.com/rexxars/hyphenate-style-name) - BSD-3-Clause
-- [i18next-http-backend@2.2.0](https://github.com/i18next/i18next-http-backend) - MIT
-- [i18next@22.4.15](https://github.com/i18next/i18next) - MIT
+- [i18next-http-backend@2.2.1](https://github.com/i18next/i18next-http-backend) - MIT
+- [i18next@22.5.0](https://github.com/i18next/i18next) - MIT
 - [immutability-helper@3.1.1](https://github.com/kolodny/immutability-helper) - MIT
 - [inline-style-parser@0.1.1](https://github.com/remarkablemark/inline-style-parser) - MIT
 - [invariant@2.2.4](https://github.com/zertosh/invariant) - MIT
@@ -204,7 +204,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [ms@2.1.2](https://github.com/zeit/ms) - MIT
 - [mustache@4.2.0](https://github.com/janl/mustache.js) - MIT
 - [neo-async@2.6.2](https://github.com/suguru03/neo-async) - MIT
-- [node-fetch@2.6.7](https://github.com/bitinn/node-fetch) - MIT
+- [node-fetch@2.6.11](https://github.com/bitinn/node-fetch) - MIT
 - [node-releases@2.0.10](https://github.com/chicoxyzzy/node-releases) - MIT
 - [object-assign@4.1.1](https://github.com/sindresorhus/object-assign) - MIT
 - [packageurl-js@1.0.2](https://github.com/package-url/packageurl-js) - MIT
@@ -216,10 +216,10 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [randombytes@2.1.0](https://github.com/crypto-browserify/randombytes) - MIT
 - [react-clientside-effect@1.2.6](https://github.com/thekashey/react-clientside-effect) - MIT
 - [react-dom@17.0.2](https://github.com/facebook/react) - MIT
-- [react-error-boundary@4.0.4](https://github.com/bvaughn/react-error-boundary) - MIT
+- [react-error-boundary@4.0.9](https://github.com/bvaughn/react-error-boundary) - MIT
 - [react-focus-lock@2.5.2](https://github.com/theKashey/react-focus-lock) - MIT
 - [react-hot-keys@2.7.2](https://github.com/jaywcjlove/react-hotkeys) - MIT
-- [react-i18next@12.2.2](https://github.com/i18next/react-i18next) - MIT
+- [react-i18next@12.3.1](https://github.com/i18next/react-i18next) - MIT
 - [react-is@16.13.1](https://github.com/facebook/react) - MIT
 - [react-is@17.0.2](https://github.com/facebook/react) - MIT
 - [react-is@18.2.0](https://github.com/facebook/react) - MIT

@@ -1,12 +1,12 @@
+import { t } from 'i18next'
 import React from 'react'
+import DefaultButton from '../../../../shared/DefaultButton.js'
+import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
+import CVSSVector from './CVSS3Attribute/CVSSVector.js'
+import TextAttribute from './TextAttribute.js'
 import Collapsible from './shared/Collapsible.js'
 import CvssScore from './shared/cvssScore.js'
-import TextAttribute from './TextAttribute.js'
-import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
-import DefaultButton from '../../../../shared/DefaultButton.js'
-import CVSSVector from './CVSS3Attribute/CVSSVector.js'
 import { cvssDropdown } from './shared/cvssUtils.js'
-import { t } from 'i18next'
 
 /**
  * @param {{
@@ -53,7 +53,7 @@ export default function CVSSV3Attribute({
     [outerDocumentEditor, updateDoc, instancePath, doc, cvssVector]
   )
 
-  /** @type {(childName: string, options: string[], disableClearable: boolean) => any} */
+  /** @type {(childName: string, options: string[], disableClearable?: boolean) => any} */
   function dropdownFor(childName, options, disableClearable = false) {
     const childValue = /** @type {string} */ ((value || {})[childName]) || ''
     return cvssDropdown(
