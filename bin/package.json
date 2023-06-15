@@ -1,6 +1,5 @@
 {
   "name": "bin",
-  "version": "1.0.0",
   "description": "Various CLI tools for developing Secvisogram.",
   "main": "index.js",
   "scripts": {
