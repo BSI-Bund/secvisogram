@@ -34,7 +34,9 @@ export default function mandatoryTest_6_1_16(doc) {
         doc.document.tracking.revision_history
           .slice()
           .sort(
-            (a, z) => new Date(z.date).getTime() - new Date(a.date).getTime()
+            (a, z) =>
+              new Date(z.date).getTime() - new Date(a.date).getTime() ||
+              docUtils.compareVersions(a.number, z.number)
           )[0].number
       ) !== normalizeVersion(doc.document.tracking.version)
     ) {
