@@ -29,7 +29,7 @@
     "ajv-formats": "^2.1.1",
     "bcp47": "^1.1.2",
     "cvss2js": "^1.1.0",
-    "i18next": "^22.5.1",
+    "i18next": "^23.2.3",
     "i18next-http-backend": "^2.2.1",
     "immutability-helper": "^3.1.1",
     "json-pointer": "^0.6.2",
@@ -46,7 +46,7 @@
     "react-i18next": "^12.3.1",
     "react-markdown": "^8.0.7",
     "react-monaco-editor": "^0.52.0",
-    "semver": "^7.3.5",
+    "semver": "^7.5.3",
     "shallowequal": "^1.1.0"
   },
   "devDependencies": {
