@@ -1,4 +1,5 @@
 import React from 'react'
+import { parseMarkdown } from './PreviewTab/markdownParser.js'
 import HTMLTemplate from './shared/HTMLTemplate.js'
 
 /**
@@ -23,7 +24,8 @@ export default function PreviewTab({ onPreview, previewResult }) {
   const iframeRef = React.useRef(null)
   const [showRendered, setShowRendered] = React.useState(true)
   const html = React.useMemo(() => {
-    return HTMLTemplate({ document: previewResult?.doc ?? {} })
+    const markdownParsedDoc = parseMarkdown(previewResult?.doc ?? {})
+    return HTMLTemplate({ document: markdownParsedDoc })
   }, [previewResult?.doc])
 
   /**
