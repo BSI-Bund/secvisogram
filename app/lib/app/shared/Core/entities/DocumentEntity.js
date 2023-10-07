@@ -263,6 +263,28 @@ export default class DocumentEntity {
       }
     }
 
+    templateDoc.secureHref = () => {
+      return function (
+        /** @type {string} */ text,
+        /** @type {function} */ render
+      ) {
+        const href = render(text)
+        let isValid = false
+
+        const validStarts = ['#', 'mailto', 'tel', 'http', 'ftp']
+        const validMimeTypes = ['image/png;base64', 'image/jpeg;base64'].map((x) =>
+          x.replaceAll('/', '&#x2F;')
+        )
+        validStarts.forEach((x) => (isValid = isValid || href.startsWith(x)))
+        validMimeTypes.forEach(
+          (mimeType) =>
+            (isValid = isValid || href.startsWith(`data:${mimeType}`))
+        )
+
+        return isValid ? `href="${href}"` : ''
+      }
+    }
+
     return { document: templateDoc }
   }
 }
