@@ -1,3 +1,4 @@
+import { faClock } from '@fortawesome/free-solid-svg-icons'
 import { t } from 'i18next'
 import React from 'react'
 import AppConfigContext from '../../../../shared/context/AppConfigContext.js'
@@ -6,6 +7,9 @@ import UserInfoContext from '../../../../shared/context/UserInfoContext.js'
 import DocumentEditorContext from '../../shared/DocumentEditorContext.js'
 import {
   getBranchName,
+  getCurrentDateRounded,
+  getCurrentReleaseDate,
+  getInitialReleaseDate,
   getRelationshipName,
   uniqueProductId,
 } from '../shared/fillFieldFunctions.js'
@@ -112,17 +116,24 @@ export default function Editor({
           updateDoc(instancePath, getBranchName(doc, instancePath.slice(0, -1)))
         }
       : uiType === 'STRING_RELATIONSHIP_FULL_PRODUCT_NAME'
-      ? () => {
+      ? () =>
           getRelationshipName(doc, instancePath, collectIds['productIds']).then(
             (r) => updateDoc(instancePath, r),
             handleError
           )
-        }
+      : property.key === 'date'
+      ? () => updateDoc(instancePath, getCurrentDateRounded())
+      : property.key === 'current_release_date'
+      ? () => updateDoc(instancePath, getCurrentReleaseDate(doc))
+      : property.key === 'initial_release_date'
+      ? () => updateDoc(instancePath, getInitialReleaseDate(doc))
       : undefined
 
   const fillDefaultFunction = () => {
     if (property.default) updateDoc(instancePath, property.default)
   }
+
+  const fillFunctionIcon = property.key === 'date' ? faClock : undefined
 
   if (property.type === 'ARRAY') {
     return (
@@ -178,6 +189,8 @@ export default function Editor({
           value={value || ''}
           property={property}
           disabled={disabled}
+          fillFunction={fillFunction}
+          fillFunctionIcon={fillFunctionIcon}
         />
       ))
     } else if (uiType === 'STRING_ENUM') {

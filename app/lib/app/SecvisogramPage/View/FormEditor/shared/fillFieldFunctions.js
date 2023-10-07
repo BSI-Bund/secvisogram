@@ -86,4 +86,52 @@ const getRelationshipName = async function (
   throw Error('Could not find relationship to generate name from.')
 }
 
-export { uniqueProductId, uniqueGroupId, getBranchName, getRelationshipName }
+/**
+ * function to get the current Date rounded to the next full hour
+ *
+ * @return string|undefined
+ */
+const getCurrentDateRounded = function () {
+  const p = 60 * 60 * 1000 // milliseconds in an hour
+  const roundedDate = new Date(Math.ceil(new Date().getTime() / p) * p)
+  return roundedDate.toISOString()
+}
+
+/**
+ * function to extract current release date from revision history
+ *
+ * @param {Record<string, any>} doc
+ * @return string|undefined
+ */
+const getCurrentReleaseDate = function (doc) {
+  /** @type {{date: string, number: string}[]} */
+  const revisionHistory = doc?.document?.tracking?.revision_history
+  return revisionHistory
+    ?.map((x) => x.date)
+    .sort()
+    .reverse()?.[0]
+}
+
+/**
+ * function to extract initial release date from revision history
+ *
+ * @param {Record<string, any>} doc
+ * @return string|undefined
+ */
+const getInitialReleaseDate = function (doc) {
+  /** @type {{date: string, number: string}[]} */
+  const revisionHistory = doc?.document?.tracking?.revision_history
+  return revisionHistory?.filter(
+    (x) => x.number === '1' || x.number === '1.0.0'
+  )?.[0]?.date
+}
+
+export {
+  uniqueProductId,
+  uniqueGroupId,
+  getBranchName,
+  getRelationshipName,
+  getCurrentDateRounded,
+  getCurrentReleaseDate,
+  getInitialReleaseDate,
+}
