@@ -105,7 +105,7 @@ Nested lists can be created by indenting the nested elements below another eleme
      - Second nested list item
 
 ## Check Lists
-To create a task list, prefix the list items with a dash and a space followed by [ ]. To mark a task as done, use [x].
+To create a task list, prefix the list items with a dash and a space followed by `[ ]`. To mark a task as done, use `[x]`.
 **Example**:
 ```markdown
 - [ ] Task 1
