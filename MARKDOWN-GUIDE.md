@@ -61,7 +61,7 @@ exit
 
 ## Links
 Inline links can be created by enclosing the text in square brackets `[ ]` and the URL in round brackets `( )`.
-**Beispiel:**
+**Example:**
 `The document was created using the [Secvisogram](https://secvisogram.github.io/) Software.`
 **Output:**
 The document was created using the [Secvisogram](https://secvisogram.github.io/) Software.
