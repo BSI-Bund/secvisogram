@@ -35,6 +35,7 @@ const markdownFields = [
 const modifyNestedValues = (object, key, modifierFunction) => {
   if (key.indexOf('.*') !== -1) {
     const keyParts = key.split('.*')
+    // get nested key without leading `.`
     const newKey = key.substring(keyParts[0].length + 2).replace(/^\./, '')
     const elem = get(object, keyParts[0])
 
