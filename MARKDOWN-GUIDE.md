@@ -2,7 +2,7 @@
 This guide gives a quick overview over all markdown options that are available within Secvisogram.
 
 ## Headings
-To create a heading, up to six number signs (#) can be added before the heading text. The number of  number signs (#) used determines the hierarchy level and the font size of the heading.
+To create a heading, up to six number signs (`#`) can be added before the heading text. The number of number signs (`#`) used determines the hierarchy level and the font size of the heading.
 ```
 # A first-level heading
 ## A second-level heading
