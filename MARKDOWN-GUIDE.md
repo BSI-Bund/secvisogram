@@ -21,12 +21,14 @@ To create a heading, up to six number signs (`#`) can be added before the headin
 ## Quoting Text
 Text can be quoted with the following symbol: `>`.
 
-**Example:**
+*Example:*
 ```
 not quoted text
 > quoted text
 ```
-**Output:**
+
+*Output:*
+
 not quoted text
 > quoted text
 
@@ -34,15 +36,19 @@ quoted text will be indented and displayed in another font color.
 
 ## Quoting Code
 Code can be quoted within one line by using simple backticks. The text within the backticks will not be formatted.
-**Example:**
+
+*Example:*
 ```
 Use the command `ssh user@host` to establish a connection.
 ```
-**Output:**
+
+*Output:*
+
 Use the command `ssh user@host` to establish a connection.
 
 To format Code or text in its own paragraph, three backticks can be used.
-**Example:**
+
+*Example:*
 ````
 Example commands:
 ```
@@ -51,7 +57,9 @@ cp /etc/secrets.txt ~
 exit
 ```
 ````
-**Output:**
+
+*Output:*
+
 Example commands:
 ```
 ssh user@host
@@ -61,58 +69,70 @@ exit
 
 ## Links
 Inline links can be created by enclosing the text in square brackets `[ ]` and the URL in round brackets `( )`.
-**Example:**
+
+*Example:*
+
 `The document was created using the [Secvisogram](https://secvisogram.github.io/) software.`
-**Output:**
+
+*Output:*
+
 The document was created using the [Secvisogram](https://secvisogram.github.io/) software.
 
 ## Lists
 Unordered lists can be created by prefixing a line or lines of text with `-`, `*`, or `+`.
-**Example:**
+
+*Example:*
 ```markdown
 - George Washington
 * John Adams
 + Thomas Jefferson
 ```
-**Output:**
+
+*Output:*
 - George Washington
 * John Adams
 + Thomas Jefferson
 
 To create an ordered list, a number has to be prefixed to the line.
-**Example:**
+
+*Example:*
 ```markdown
 1. George Washington
 1. John Adams
 1. Thomas Jefferson
 ```
-**Output:**
+
+*Output:*
 1. George Washington
 1. John Adams
 1. Thomas Jefferson
 
 ### Nested Lists
 Nested lists can be created by indenting the nested elements below another element.
-**Example:**
+
+*Example:*
 ```markdown
 1. First list item
    - First nested list item
      - Second nested list item
 ```
-**Output:**
+
+*Output:*
 1. First list item
    - First nested list item
      - Second nested list item
 
 ## Check Lists
 To create a task list, prefix the list items with a dash and a space followed by `[ ]`. To mark a task as done, use `[x]`.
-**Example**:
+
+*Example:*:
 ```markdown
 - [ ] Task 1
 - [x] Task 2
 - [ ] Task 3
 ```
-**Output:**
+
+*Output:*
 - [ ] Task 1
 - [x] Task 2
 - [ ] Task 3
