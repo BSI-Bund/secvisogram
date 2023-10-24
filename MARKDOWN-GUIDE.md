@@ -62,9 +62,9 @@ exit
 ## Links
 Inline links can be created by enclosing the text in square brackets `[ ]` and the URL in round brackets `( )`.
 **Example:**
-`The document was created using the [Secvisogram](https://secvisogram.github.io/) Software.`
+`The document was created using the [Secvisogram](https://secvisogram.github.io/) software.`
 **Output:**
-The document was created using the [Secvisogram](https://secvisogram.github.io/) Software.
+The document was created using the [Secvisogram](https://secvisogram.github.io/) software.
 
 ## Lists
 Unordered lists can be created by prefixing a line or lines of text with `-`, `*`, or `+`.
