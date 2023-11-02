@@ -1,3 +1,5 @@
+import { compareZonedDateTimes } from '../shared/dateHelper.js'
+
 /**
  * @param {unknown} doc
  */
@@ -12,8 +14,11 @@ export default function mandatoryTest_6_1_21(doc) {
       new Set(
         doc.document.tracking.revision_history
           .slice()
-          .sort(
-            (a, z) => new Date(a.date).getTime() - new Date(z.date).getTime()
+          .sort((a, z) =>
+            compareZonedDateTimes(
+              /** @type {string} */ (a.date),
+              /** @type {string} */ (z.date)
+            )
           )
           .map((e) =>
             // By using `parseInt` here we can deal with numeric and semantic versions
