@@ -1,4 +1,6 @@
 import semver from 'semver'
+import { compareZonedDateTimes } from '../shared/dateHelper.js'
+import * as docUtils from './shared/docUtils.js'
 
 const { gt, valid } = semver
 
@@ -16,7 +18,9 @@ export default function mandatoryTest_6_1_14(doc) {
         doc.document.tracking.revision_history
           .slice()
           .sort(
-            (a, z) => new Date(a.date).getTime() - new Date(z.date).getTime()
+            (a, z) =>
+              compareZonedDateTimes(a.date, z.date) ||
+              docUtils.compareVersions(z.number, a.number)
           )
           .map((e) => valid(e.number) ?? `${e.number}.0.0`)
       ).keys()

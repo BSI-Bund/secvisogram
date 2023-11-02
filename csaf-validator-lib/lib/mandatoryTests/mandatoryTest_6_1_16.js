@@ -1,3 +1,4 @@
+import { compareZonedDateTimes } from '../shared/dateHelper.js'
 import * as docUtils from './shared/docUtils.js'
 
 const {
@@ -35,8 +36,10 @@ export default function mandatoryTest_6_1_16(doc) {
           .slice()
           .sort(
             (a, z) =>
-              new Date(z.date).getTime() - new Date(a.date).getTime() ||
-              docUtils.compareVersions(a.number, z.number)
+              compareZonedDateTimes(
+                /** @type {string} */ (z.date),
+                /** @type {string} */ (a.date)
+              ) || docUtils.compareVersions(a.number, z.number)
           )[0].number
       ) !== normalizeVersion(doc.document.tracking.version)
     ) {
