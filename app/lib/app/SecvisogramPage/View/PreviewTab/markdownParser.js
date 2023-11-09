@@ -33,19 +33,23 @@ const markdownFields = [
  * @returns {void}
  */
 const modifyNestedValues = (object, key, modifierFunction) => {
+  // check if key includes nested array
   if (key.indexOf('.*') !== -1) {
     const keyParts = key.split('.*')
     // get nested key without leading `.`
     const newKey = key.substring(keyParts[0].length + 2).replace(/^\./, '')
+    // get arraylike object
     const elem = get(object, keyParts[0])
 
     if (newKey) {
+      // call function recursively for all array entries
       for (const x of elem ?? []) {
         if (x instanceof Object) {
           modifyNestedValues(x, newKey, modifierFunction)
         }
       }
     } else if (elem) {
+      // apply modifierfunction to all array entries
       set(
         object,
         keyParts[0],
@@ -53,6 +57,7 @@ const modifyNestedValues = (object, key, modifierFunction) => {
       )
     }
   } else {
+    // apply modifierfunction to nested value
     const prevValue = get(object, key)
     if (prevValue) {
       set(object, key, modifierFunction(prevValue))
