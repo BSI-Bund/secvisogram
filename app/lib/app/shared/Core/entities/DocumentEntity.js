@@ -272,14 +272,22 @@ export default class DocumentEntity {
         let isValid = false
 
         const validStarts = ['#', 'mailto', 'tel', 'http', 'ftp']
-        const validMimeTypes = ['image/png;base64', 'image/jpeg;base64'].map((x) =>
-          x.replaceAll('/', '&#x2F;')
-        )
+        const validMimeTypes = [
+          'image/png;base64,',
+          'image/jpeg;base64,',
+          'image/gif;base64,',
+        ].map((x) => x.replaceAll('/', '&#x2F;'))
         validStarts.forEach((x) => (isValid = isValid || href.startsWith(x)))
-        validMimeTypes.forEach(
-          (mimeType) =>
-            (isValid = isValid || href.startsWith(`data:${mimeType}`))
-        )
+        const isBase64 = (/** @type {string} */ value) =>
+          /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$/.test(
+            value
+          )
+        validMimeTypes.forEach((mimeType) => {
+          const isValidDataHref =
+            href.startsWith(`data:${mimeType}`) &&
+            isBase64(href.split(',')[1]?.replaceAll('&#x3D;', '='))
+          isValid = isValid || isValidDataHref
+        })
 
         return isValid ? `href="${href}"` : ''
       }

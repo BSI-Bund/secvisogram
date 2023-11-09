@@ -5,80 +5,129 @@ export default [
   {
     title: '# href (valid)',
     valid: true,
+    url: '#example.com',
     content: {
       document: {
         ...minimalDoc.document,
-        acknowledgments: [{ urls: ['#test.org'] }],
+        acknowledgments: [{ urls: ['#example.com'] }],
       },
     },
   },
   {
     title: 'http href (valid)',
     valid: true,
+    url: 'http://example.com',
     content: {
       document: {
         ...minimalDoc.document,
-        acknowledgments: [{ urls: ['http://test.org'] }],
+        acknowledgments: [{ urls: ['http://example.com'] }],
       },
     },
   },
   {
     title: 'https href (valid)',
     valid: true,
+    url: 'https://example.com',
     content: {
       document: {
         ...minimalDoc.document,
-        acknowledgments: [{ urls: ['https://test.org'] }],
+        acknowledgments: [{ urls: ['https://example.com'] }],
       },
     },
   },
   {
     title: 'mailto href (valid)',
     valid: true,
+    url: 'mailto:user@example.com',
     content: {
       document: {
         ...minimalDoc.document,
-        acknowledgments: [{ urls: ['mailto://user@test.org'] }],
+        acknowledgments: [{ urls: ['mailto:user@example.com'] }],
+      },
+    },
+  },
+  {
+    title: 'mailto href with slashes (valid)',
+    valid: true,
+    url: 'mailto://user@example.com',
+    content: {
+      document: {
+        ...minimalDoc.document,
+        acknowledgments: [{ urls: ['mailto://user@example.com'] }],
       },
     },
   },
   {
     title: 'tel href (valid)',
     valid: true,
+    url: 'tel:\\+493023125000',
     content: {
       document: {
         ...minimalDoc.document,
-        acknowledgments: [{ urls: ['tel://+4934587913248test.org'] }],
+        acknowledgments: [{ urls: ['tel:+493023125000'] }],
+      },
+    },
+  },
+  {
+    title: 'tel href with slashes (valid)',
+    valid: true,
+    url: 'tel://\\+493023125000',
+    content: {
+      document: {
+        ...minimalDoc.document,
+        acknowledgments: [{ urls: ['tel://+493023125000'] }],
       },
     },
   },
   {
     title: 'ftp href (valid)',
     valid: true,
+    url: 'ftp://example.com',
     content: {
       document: {
         ...minimalDoc.document,
-        acknowledgments: [{ urls: ['ftp://test.org'] }],
+        acknowledgments: [{ urls: ['ftp://example.com'] }],
       },
     },
   },
   {
     title: 'data href (MIME-type png) (valid)',
     valid: true,
+    url: 'data:image/png;base64,dGVzdA==',
     content: {
       document: {
         ...minimalDoc.document,
-        acknowledgments: [{ urls: ['data:image/png;base64,iVBORwtest.org0KGgoAAAANSUhEUgAAA'] }],
+        acknowledgments: [
+          {
+            urls: ['data:image/png;base64,dGVzdA=='],
+          },
+        ],
       },
     },
   },
   {
     title: 'data href (MIME-type jpeg) (valid)',
     valid: true,
+    url: 'data:image/jpeg;base64,dGVzdA==',
     content: {
       document: {
         ...minimalDoc.document,
-        acknowledgments: [{ urls: ['data:image/jpeg;base64,iVBORw0KGgoAtest.orgAAANSUhEUgAAA'] }],
+        acknowledgments: [
+          {
+            urls: ['data:image/jpeg;base64,dGVzdA=='],
+          },
+        ],
+      },
+    },
+  },
+  {
+    title: 'data href (MIME-type gif) (valid)',
+    valid: true,
+    url: 'data:image/gif;base64,dGVzdA==',
+    content: {
+      document: {
+        ...minimalDoc.document,
+        acknowledgments: [{ urls: ['data:image/gif;base64,dGVzdA=='] }],
       },
     },
   },
@@ -87,40 +136,59 @@ export default [
   {
     title: 'sftp href (invalid)',
     valid: false,
+    url: 'sftp://example.com',
     content: {
       document: {
         ...minimalDoc.document,
-        acknowledgments: [{ urls: ['sftp://test.org'] }],
+        acknowledgments: [{ urls: ['sftp://example.com'] }],
       },
     },
   },
   {
     title: 'ws href (invalid)',
     valid: false,
+    url: 'ws://example.com',
     content: {
       document: {
         ...minimalDoc.document,
-        acknowledgments: [{ urls: ['ws://test.org'] }],
+        acknowledgments: [{ urls: ['ws://example.com'] }],
       },
     },
   },
   {
     title: 'wss href (invalid)',
     valid: false,
+    url: 'wss://example.com',
     content: {
       document: {
         ...minimalDoc.document,
-        acknowledgments: [{ urls: ['wss://test.org'] }],
+        acknowledgments: [{ urls: ['wss://example.com'] }],
       },
     },
   },
   {
-    title: 'data href (MIME-type gif) (invalid)',
+    title: 'data href (MIME-type svg) (invalid)',
     valid: false,
+    url: 'data:image/svg\\+xml;base64,dGVzdA==',
     content: {
       document: {
         ...minimalDoc.document,
-        acknowledgments: [{ urls: ['data:image/gif;base64,iVBORw0Ktest.orgGgoAAAANSUhEUgAAA'] }],
+        acknowledgments: [{ urls: ['data:image/svg+xml;base64,dGVzdA=='] }],
+      },
+    },
+  },
+  {
+    title: 'data href (MIME-type png) with invalid base64 (invalid)',
+    valid: false,
+    url: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA',
+    content: {
+      document: {
+        ...minimalDoc.document,
+        acknowledgments: [
+          {
+            urls: ['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA'],
+          },
+        ],
       },
     },
   },
