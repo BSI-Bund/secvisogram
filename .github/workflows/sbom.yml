@@ -15,7 +15,7 @@ jobs:
         with:
           path: .
           format: spdx-json
-          artifact-name: sbom.secvisogram_spdx.json
+          artifact-name: sbom.secvisogram.spdx.json
 
   cyclonedx:
     name: "CycloneDX SBOM generation"
