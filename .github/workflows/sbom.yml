@@ -27,4 +27,4 @@ jobs:
         with:
           path: .
           format: cyclonedx-json
-          artifact-name: sbom.secvisogram_cyclonedx.json
+          artifact-name: sbom.secvisogram.cdx.json
