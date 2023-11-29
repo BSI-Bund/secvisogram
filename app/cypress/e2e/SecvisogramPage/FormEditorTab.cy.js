@@ -815,16 +815,16 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="date"]'
       )
-        .type('2020-02-01')
+        .type('2019-12-31')
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="time"]'
       )
-        .type('13:41')
+        .type('12:01')
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-number"] input'
       )
         .clear()
-        .type('1.0.0')
+        .type('0.9.0')
 
       // create second revision history item
       cy.get(
@@ -836,13 +836,34 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-1-date"] input[type="date"]'
       )
-        .type('2021-02-01')
+        .type('2020-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-1-date"] input[type="time"]'
       )
-        .type('13:15')
+        .type('13:41')
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-1-number"] input'
+      )
+        .clear()
+        .type('1.0.0')
+
+      // create third revision history item
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history-add_item_button"]'
+      ).click({ force: true })
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history/2"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-2-date"] input[type="date"]'
+      )
+        .type('2021-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-2-date"] input[type="time"]'
+      )
+        .type('13:15')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-2-number"] input'
       )
         .clear()
         .type('1.5.0')
