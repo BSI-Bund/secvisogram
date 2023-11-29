@@ -611,7 +611,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
   describe('fill functions for revision history', function () {
     it('fill date of revision', function () {
       cy.visit('?tab=EDITOR')
-      const now = new Date(2020, 0, 1, 10, 30)
+      const now = new Date(2020, 1, 1, 10, 30)
       cy.clock(now)
 
       // create new revision history item
@@ -637,7 +637,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       ).click()
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="date"]'
-      ).should('have.value', '2020-01-01')
+      ).should('have.value', '2020-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="time"]'
       ).should('have.value', '11:00')
@@ -648,7 +648,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       ).click()
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="date"]'
-      ).should('have.value', '2020-01-01')
+      ).should('have.value', '2020-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="time"]'
       ).should('have.value', '11:00')
@@ -687,7 +687,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="date"]'
       )
-        .type('2020-01-01')
+        .type('2020-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="time"]'
       )
@@ -708,7 +708,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       ).click()
       cy.get(
         '[data-testid="attribute-document-tracking-current_release_date"] input[type="date"]'
-      ).should('have.value', '2020-01-01')
+      ).should('have.value', '2020-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-current_release_date"] input[type="time"]'
       ).should('have.value', '13:41')
@@ -719,7 +719,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       ).click()
       cy.get(
         '[data-testid="attribute-document-tracking-current_release_date"] input[type="date"]'
-      ).should('have.value', '2020-01-01')
+      ).should('have.value', '2020-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-current_release_date"] input[type="time"]'
       ).should('have.value', '13:41')
@@ -758,7 +758,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="date"]'
       )
-        .type('2020-01-01')
+        .type('2020-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="time"]'
       )
@@ -784,7 +784,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       ).click()
       cy.get(
         '[data-testid="attribute-document-tracking-initial_release_date"] input[type="date"]'
-      ).should('have.value', '2020-01-01')
+      ).should('have.value', '2020-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-initial_release_date"] input[type="time"]'
       ).should('have.value', '13:41')
@@ -795,7 +795,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       ).click()
       cy.get(
         '[data-testid="attribute-document-tracking-initial_release_date"] input[type="date"]'
-      ).should('have.value', '2020-01-01')
+      ).should('have.value', '2020-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-initial_release_date"] input[type="time"]'
       ).should('have.value', '13:41')
@@ -815,7 +815,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="date"]'
       )
-        .type('2020-01-01')
+        .type('2020-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="time"]'
       )
@@ -836,7 +836,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-1-date"] input[type="date"]'
       )
-        .type('2021-01-01')
+        .type('2021-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-revision_history-1-date"] input[type="time"]'
       )
@@ -854,7 +854,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       ).click()
       cy.get(
         '[data-testid="attribute-document-tracking-initial_release_date"] input[type="date"]'
-      ).should('have.value', '2020-01-01')
+      ).should('have.value', '2020-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-initial_release_date"] input[type="time"]'
       ).should('have.value', '13:41')
@@ -865,7 +865,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       ).click()
       cy.get(
         '[data-testid="attribute-document-tracking-current_release_date"] input[type="date"]'
-      ).should('have.value', '2021-01-01')
+      ).should('have.value', '2021-02-01')
       cy.get(
         '[data-testid="attribute-document-tracking-current_release_date"] input[type="time"]'
       ).should('have.value', '13:15')
