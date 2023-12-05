@@ -80,7 +80,7 @@ const ACKNOWLEDGEMENT = `
 
 const REFERENCE = `
 {{#.}}
-  <li>{{summary}} {{#category}} ({{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}){{/category}}{{#url}}{{> url}}{{/url}}</li>
+  <li>{{{summary}}} {{#category}} ({{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}){{/category}}{{#url}}{{> url}}{{/url}}</li>
 {{/.}}`
 
 const URL = `
@@ -106,3 +106,4 @@ export default function HTMLTemplate({ document }) {
     reference: REFERENCE,
     url: URL,
   })
+}
