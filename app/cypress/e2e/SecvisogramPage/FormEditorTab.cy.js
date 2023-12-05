@@ -607,4 +607,289 @@ describe('SecvisogramPage / FormEditor Tab', function () {
       '[data-testid="attribute-product_tree-branches-0-branches-0-product-name"] input'
     ).should('have.value', 'Vendor A Product DEF')
   })
+
+  describe('fill functions for revision history', function () {
+    it('fill date of revision', function () {
+      cy.visit('?tab=EDITOR')
+      const now = new Date(2020, 1, 1, 10, 30)
+      cy.clock(now)
+
+      // create new revision history item
+      cy.get('[data-testid="menu_entry-/document/tracking"]').click()
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history-add_item_button"]'
+      ).click({ force: true })
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history/0"]'
+      ).click()
+
+      // values should be empty first
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="date"]'
+      ).should('be.empty')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="time"]'
+      ).should('be.empty')
+
+      // and filled with a value after clicking the generate button
+      cy.get(
+        '[data-testid="document-tracking-revision_history-0-date-generateButton"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="date"]'
+      ).should('have.value', '2020-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="time"]'
+      ).should('have.value', '11:00')
+
+      // just regenerating should be still the same
+      cy.get(
+        '[data-testid="document-tracking-revision_history-0-date-generateButton"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="date"]'
+      ).should('have.value', '2020-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="time"]'
+      ).should('have.value', '11:00')
+    })
+
+    it('fill current release date', function () {
+      cy.visit('?tab=EDITOR')
+
+      // input should be empty first
+      cy.get('[data-testid="menu_entry-/document/tracking"]').click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-current_release_date"] input[type="date"]'
+      ).should('be.empty')
+      cy.get(
+        '[data-testid="attribute-document-tracking-current_release_date"] input[type="time"]'
+      ).should('be.empty')
+
+      // generate button should do nothing without revision history entries
+      cy.get(
+        '[data-testid="document-tracking-current_release_date-generateButton"]'
+      )
+      cy.get(
+        '[data-testid="attribute-document-tracking-current_release_date"] input[type="date"]'
+      ).should('be.empty')
+      cy.get(
+        '[data-testid="attribute-document-tracking-current_release_date"] input[type="time"]'
+      ).should('be.empty')
+
+      // create new revision history item
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history-add_item_button"]'
+      ).click({ force: true })
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history/0"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="date"]'
+      )
+        .type('2020-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="time"]'
+      )
+        .type('13:41')
+
+      // current release should still be empty
+      cy.get('[data-testid="document/tracking-fieldButton"]').click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-current_release_date"] input[type="date"]'
+      ).should('be.empty')
+      cy.get(
+        '[data-testid="attribute-document-tracking-current_release_date"] input[type="time"]'
+      ).should('be.empty')
+
+      // generate button should enter correct date and time
+      cy.get(
+        '[data-testid="document-tracking-current_release_date-generateButton"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-current_release_date"] input[type="date"]'
+      ).should('have.value', '2020-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-current_release_date"] input[type="time"]'
+      ).should('have.value', '13:41')
+
+      // just regenerating should be still the same
+      cy.get(
+        '[data-testid="document-tracking-current_release_date-generateButton"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-current_release_date"] input[type="date"]'
+      ).should('have.value', '2020-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-current_release_date"] input[type="time"]'
+      ).should('have.value', '13:41')
+    })
+
+    it('fill initial release date', function () {
+      cy.visit('?tab=EDITOR')
+
+      // input should be empty first
+      cy.get('[data-testid="menu_entry-/document/tracking"]').click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-initial_release_date"] input[type="date"]'
+      ).should('be.empty')
+      cy.get(
+        '[data-testid="attribute-document-tracking-initial_release_date"] input[type="time"]'
+      ).should('be.empty')
+
+      // generate button should do nothing without revision history entries
+      cy.get(
+        '[data-testid="document-tracking-initial_release_date-generateButton"]'
+      )
+      cy.get(
+        '[data-testid="attribute-document-tracking-initial_release_date"] input[type="date"]'
+      ).should('be.empty')
+      cy.get(
+        '[data-testid="attribute-document-tracking-initial_release_date"] input[type="time"]'
+      ).should('be.empty')
+
+      // create new revision history item
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history-add_item_button"]'
+      ).click({ force: true })
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history/0"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="date"]'
+      )
+        .type('2020-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="time"]'
+      )
+        .type('13:41')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-number"] input'
+      )
+        .clear()
+        .type('1.0.0')
+
+      // current release should still be empty
+      cy.get('[data-testid="document/tracking-fieldButton"]').click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-initial_release_date"] input[type="date"]'
+      ).should('be.empty')
+      cy.get(
+        '[data-testid="attribute-document-tracking-initial_release_date"] input[type="time"]'
+      ).should('be.empty')
+
+      // generate button should enter correct date and time
+      cy.get(
+        '[data-testid="document-tracking-initial_release_date-generateButton"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-initial_release_date"] input[type="date"]'
+      ).should('have.value', '2020-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-initial_release_date"] input[type="time"]'
+      ).should('have.value', '13:41')
+
+      // just regenerating should be still the same
+      cy.get(
+        '[data-testid="document-tracking-initial_release_date-generateButton"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-initial_release_date"] input[type="date"]'
+      ).should('have.value', '2020-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-initial_release_date"] input[type="time"]'
+      ).should('have.value', '13:41')
+    })
+
+    it('fill release dates with more than one revision history entry', function () {
+      cy.visit('?tab=EDITOR')
+
+      // create first revision history item
+      cy.get('[data-testid="menu_entry-/document/tracking"]').click()
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history-add_item_button"]'
+      ).click({ force: true })
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history/0"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="date"]'
+      )
+        .type('2019-12-31')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-date"] input[type="time"]'
+      )
+        .type('12:01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-0-number"] input'
+      )
+        .clear()
+        .type('0.9.0')
+
+      // create second revision history item
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history-add_item_button"]'
+      ).click({ force: true })
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history/1"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-1-date"] input[type="date"]'
+      )
+        .type('2020-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-1-date"] input[type="time"]'
+      )
+        .type('13:41')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-1-number"] input'
+      )
+        .clear()
+        .type('1.0.0')
+
+      // create third revision history item
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history-add_item_button"]'
+      ).click({ force: true })
+      cy.get(
+        '[data-testid="menu_entry-/document/tracking/revision_history/2"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-2-date"] input[type="date"]'
+      )
+        .type('2021-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-2-date"] input[type="time"]'
+      )
+        .type('13:15')
+      cy.get(
+        '[data-testid="attribute-document-tracking-revision_history-2-number"] input'
+      )
+        .clear()
+        .type('1.5.0')
+
+      // initial release generate button should enter date and time of version 1.0.0
+      cy.get('[data-testid="document/tracking-fieldButton"]').click()
+      cy.get(
+        '[data-testid="document-tracking-initial_release_date-generateButton"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-initial_release_date"] input[type="date"]'
+      ).should('have.value', '2020-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-initial_release_date"] input[type="time"]'
+      ).should('have.value', '13:41')
+
+      // current release generate button should enter date and time of version 1.5.0
+      cy.get(
+        '[data-testid="document-tracking-current_release_date-generateButton"]'
+      ).click()
+      cy.get(
+        '[data-testid="attribute-document-tracking-current_release_date"] input[type="date"]'
+      ).should('have.value', '2021-02-01')
+      cy.get(
+        '[data-testid="attribute-document-tracking-current_release_date"] input[type="time"]'
+      ).should('have.value', '13:15')
+    })
+  })
 })
