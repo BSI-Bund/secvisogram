@@ -35,8 +35,8 @@ const REMEDIATION = `
    <li>{{name}}</li>
   {{/group_ids}}
   </ul>
-{{/group_ids.length}}        
-{{#url}}<p><a href={{.}}>{{.}}</a></p>{{/url}}
+{{/group_ids.length}}
+<p>{{#url}}{{> url }}{{/url}}</p>
 {{#entitlements}}
   <p>{{.}}</p>
 {{/entitlements}}
@@ -75,13 +75,19 @@ const DOCUMENT_NOTE = `
 {{#text}}<p>{{text}}</p>{{/text}}`
 const ACKNOWLEDGEMENT = `
 {{#.}}
-  <li>{{#removeTrailingComma}}{{#names}}{{.}}, {{/names}}{{/removeTrailingComma}}{{#organization}}{{#names.length}} from {{/names.length}}{{.}} {{/organization}}{{#summary}} for {{.}}{{/summary}}{{#urls.length}} (see: {{#removeTrailingComma}}{{#urls}}<a href={{.}}>{{.}}</a>, {{/urls}}{{/removeTrailingComma}}){{/urls.length}}</li>  
+  <li>{{#removeTrailingComma}}{{#names}}{{.}}, {{/names}}{{/removeTrailingComma}}{{#organization}}{{#names.length}} from {{/names.length}}{{.}} {{/organization}}{{#summary}} for {{.}}{{/summary}}{{#urls.length}} (see: {{#removeTrailingComma}}{{#urls}}{{> url}}, {{/urls}}{{/removeTrailingComma}}){{/urls.length}}</li>
 {{/.}}`
 
 const REFERENCE = `
 {{#.}}
-  <li>{{summary}} {{#category}} ({{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}){{/category}}{{#url}}: <a href={{.}}>{{.}}</a>{{/url}}</li>
+  <li>{{summary}} {{#category}} ({{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}){{/category}}{{#url}}{{> url}}{{/url}}</li>
 {{/.}}`
+
+const URL = `
+{{#.}}
+  <a {{#secureHref}}{{.}}{{/secureHref}}>{{.}}</a>
+{{/.}}
+`
 
 /**
  * Encapsulates the rendering of the mustache template.
@@ -98,5 +104,6 @@ export default function HTMLTemplate({ document }) {
     document_note: DOCUMENT_NOTE,
     acknowledgment: ACKNOWLEDGEMENT,
     reference: REFERENCE,
+    url: URL,
   })
 }
