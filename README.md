@@ -134,6 +134,9 @@ When leaving a view without saving, e.g. reloading the application, a warning is
 The `document/tracking/engine` data of new documents will be prefilled with `name` and `version` of Secvisogram.
 When running with the [CSAF CMS Server](https://github.com/secvisogram/csaf-cms-backend), the backend will manage these fields along with the tracking id, and revision history.
 
+Some fields allow the usage of markdown to format text.
+Further information can be found in the [Markdown Guide](MARKDOWN-GUIDE.md)
+
 [(back to top)](#bsi-secvisogram-csaf-20-web-editor)
 
 ### Form Editor

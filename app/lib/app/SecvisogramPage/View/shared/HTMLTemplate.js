@@ -19,7 +19,7 @@ const PRODUCT_STATUS_ROW = `
 
 const REMEDIATION = `
 <h5>{{#replaceUnderscores}}{{#upperCase}}{{category}}{{/upperCase}}{{/replaceUnderscores}}{{#date}} ({{.}}){{/date}}</h5>
-<p>{{details}}</p>
+<p>{{{details}}}</p>
 {{#product_ids.length}}
   <h6>For products:</h6>
   <ul>
@@ -38,16 +38,16 @@ const REMEDIATION = `
 {{/group_ids.length}}
 <p>{{#url}}{{> url }}{{/url}}</p>
 {{#entitlements}}
-  <p>{{.}}</p>
+  <p>{{{.}}}</p>
 {{/entitlements}}
 {{#restart_required}}
   Restart required: <b>{{category}}</b>
-  <p>{{details}}</p>
+  <p>{{{details}}}</p>
 {{/restart_required}}`
 
 const THREAT = `
 <h5>{{#replaceUnderscores}}{{#upperCase}}{{category}}{{/upperCase}}{{/replaceUnderscores}}{{#date}} ({{.}}){{/date}}</h5>
-<p>{{details}}</p>
+<p>{{{details}}}</p>
 {{#product_ids.length}}
   <h6>For products:</h6>
   <ul>
@@ -67,12 +67,12 @@ const THREAT = `
 
 const VULNERABILITY_NOTE = `
 {{#title}}<b>{{.}}</b>{{/title}}{{#audience}} ({{.}}){{/audience}}
-{{#text}}<p>{{text}}</p>{{/text}}`
+{{#text}}<p>{{{text}}}</p>{{/text}}`
 
 const DOCUMENT_NOTE = `
 {{#title}}<h2>{{.}}</h2>{{/title}}
 {{#audience}}<small>{{.}}</small>{{/audience}}
-{{#text}}<p>{{text}}</p>{{/text}}`
+{{#text}}<p>{{{text}}}</p>{{/text}}`
 const ACKNOWLEDGEMENT = `
 {{#.}}
   <li>{{#removeTrailingComma}}{{#names}}{{.}}, {{/names}}{{/removeTrailingComma}}{{#organization}}{{#names.length}} from {{/names.length}}{{.}} {{/organization}}{{#summary}} for {{.}}{{/summary}}{{#urls.length}} (see: {{#removeTrailingComma}}{{#urls}}{{> url}}, {{/urls}}{{/removeTrailingComma}}){{/urls.length}}</li>
@@ -80,7 +80,7 @@ const ACKNOWLEDGEMENT = `
 
 const REFERENCE = `
 {{#.}}
-  <li>{{summary}} {{#category}} ({{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}){{/category}}{{#url}}{{> url}}{{/url}}</li>
+  <li>{{{summary}}} {{#category}} ({{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}){{/category}}{{#url}}{{> url}}{{/url}}</li>
 {{/.}}`
 
 const URL = `
