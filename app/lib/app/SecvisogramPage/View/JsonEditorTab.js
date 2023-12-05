@@ -75,21 +75,13 @@ export default function JsonEditorTab({
   }, [sortButtonRef, editor])
 
   /**
-   * The initial value of the state used to prevent a re-render of the ace editor
-   * when the document changes from outside.
-   */
-  const initialValue = React.useMemo(
-    () => JSON.stringify(originalValues.doc, null, 2),
-    [originalValues.doc]
-  )
-  /**
    * Updates the editor value if the document was changed outside (e.g. created from template)
    */
   React.useEffect(() => {
     if (!initialMountRef.current && editor) {
-      editor.getModel()?.setValue(initialValue)
+      editor.getModel()?.setValue(JSON.stringify(originalValues.doc, null, 2))
     }
-  }, [initialValue, editor])
+  }, [originalValues.doc, editor])
 
   const [{ value, parseError }, setState] = React.useState(() => ({
     value: JSON.stringify(doc, null, 2),
