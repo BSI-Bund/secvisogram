@@ -33,12 +33,12 @@ Secvisogram aims to make it easier for vendors and other security advisory issui
 
 ## Getting started
 
-Assure that you have **Node 16 (LTS) and npm 8 or newer** installed.
+Assure that you have **Node 20 (LTS) and npm 9 or newer** installed.
 [Nodesource](https://github.com/nodesource/distributions/blob/master/README.md) provides binary distributions for various Linux distributions.
 
       $ node --version ; npm --version
-      v16.14.0
-      8.3.1
+      v20.9.0
+      9.9.2
 
 Check out the repository and navigate to the working directory.
 
