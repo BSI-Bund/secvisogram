@@ -801,13 +801,13 @@ const extendProductStatus = (refs, extendedScoreIds, productIds) => {
 const addFlags = (extendedProductStatusList, vulnerability, productGroups) => {
   extendedProductStatusList?.forEach((/** @type {any} */ eps) => {
     const groups = productGroups
-      .filter((group) => group.product_ids?.includes(eps.id))
+      ?.filter((group) => group.product_ids?.includes(eps.id))
       .map((group) => group.group_id)
     eps.flags = vulnerability.flags
       ?.filter(
         (f) =>
           f.product_ids?.includes(eps.id) ||
-          f.group_ids?.some((id) => groups.includes(id))
+          f.group_ids?.some((id) => groups?.includes(id))
       )
       .map((f) => f.label)
       .join(', ')
