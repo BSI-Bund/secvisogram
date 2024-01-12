@@ -13,6 +13,9 @@ import pruneEmpty from '../../../../../../shared/pruneEmpty.js'
  *  value: unknown
  *  property: import('../../../shared/types').Property
  *  disabled: boolean
+ *  fillFunction?: () => void
+ *  fillDefaultFunction?: () => void
+ *  fillFunctionIcon?: import('@fortawesome/fontawesome-svg-core').IconProp
  * }} props
  */
 export default function DateAttribute({

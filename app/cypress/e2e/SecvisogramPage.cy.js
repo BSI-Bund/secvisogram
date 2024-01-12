@@ -567,7 +567,7 @@ describe('SecvisogramPage', () => {
 
         state = ViewReducer(state, {
           type: 'CHANGE_FORM_DOC',
-          update: { foo: { $set: 42 } },
+          update: { foo: 42 },
           timestamp,
           generatorEngineData,
         })
@@ -599,7 +599,7 @@ describe('SecvisogramPage', () => {
           type: 'CHANGE_FORM_DOC',
           instancePath: '/foobar/test',
           timestamp,
-          update: { $set: 42 },
+          update: 42,
           generatorEngineData,
         })
 
@@ -817,6 +817,20 @@ describe('SecvisogramPage', () => {
           .updateVectorStringTo31()
 
         expect(vector.canBeUpgraded).to.be.false
+      })
+    })
+
+    describe('style tests', () => {
+      it('sidebar expands the right way', () => {
+        cy.visit('?tab=SOURCE')
+        cy.get('body')
+          .invoke('prop', 'scrollWidth')
+          .then((initialWidth) => {
+            cy.get('[data-testid="sideBar-ERRORS-button"]').click()
+            cy.get('body')
+              .invoke('prop', 'scrollWidth')
+              .should('eq', initialWidth)
+          })
       })
     })
   })

@@ -26,6 +26,7 @@ import AttributeErrors from './AttributeErrors.js'
  *  disabled: boolean
  *  fillFunction?: () => void
  *  fillDefaultFunction?: () => void
+ *  fillFunctionIcon?: import('@fortawesome/fontawesome-svg-core').IconProp
  * }} props
  * @template V
  */
@@ -38,6 +39,7 @@ export default function Attribute({
   disabled,
   fillFunction,
   fillDefaultFunction,
+  fillFunctionIcon,
 }) {
   const { errors, doc } = React.useContext(DocumentEditorContext)
   const { selectedRelevanceLevel, relevanceLevels } = React.useContext(
@@ -124,7 +126,7 @@ export default function Attribute({
             className="w-6 h-6 flex-none text-slate-400 hover:text-slate-800 m-1"
             onClick={fillFunction}
           >
-            <FontAwesomeIcon icon={faMagic} />
+            <FontAwesomeIcon icon={fillFunctionIcon ?? faMagic} />
           </button>
         ) : null}
       </div>

@@ -8,7 +8,7 @@ yargs(process.argv.slice(2))
   .command(
     'generate-html-template',
     '',
-    (command) =>
+    (/** @type {import('yargs').Argv} */ command) =>
       command
         .option('csaf20Schema', { alias: 'csaf', type: 'string' })
         .option('cvss31Schema', { alias: 'cvss-3.1', type: 'string' })
@@ -18,21 +18,21 @@ yargs(process.argv.slice(2))
   .command(
     'generate-icann-list',
     '',
-    (command) =>
+    (/** @type {import('yargs').Argv} */ command) =>
       command.option('registry', { type: 'string' }).demandOption('registry'),
     generateICANNList
   )
   .command(
     'parse-language-tag-extension-list',
     '',
-    (command) =>
+    (/** @type {import('yargs').Argv} */ command) =>
       command.option('registry', { type: 'string' }).demandOption('registry'),
     parseLanguageTagExtensionList
   )
   .command(
     'generate-preview-templating-table',
     '',
-    (command) =>
+    (/** @type {import('yargs').Argv} */ command) =>
       command
         .option('csaf20Schema', { alias: 'csaf', type: 'string' })
         .option('cvss31Schema', { alias: 'cvss-3.1', type: 'string' })

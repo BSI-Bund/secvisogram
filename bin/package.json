@@ -1,6 +1,5 @@
 {
   "name": "bin",
-  "version": "1.0.0",
   "description": "Various CLI tools for developing Secvisogram.",
   "main": "index.js",
   "scripts": {
@@ -17,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "json-pointer": "^0.6.1",
-    "xml2js": "^0.4.23",
+    "xml2js": "^0.5.0",
     "yargs": "^17.3.1"
   },
   "devDependencies": {

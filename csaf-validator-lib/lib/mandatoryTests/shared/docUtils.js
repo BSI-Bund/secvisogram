@@ -1,3 +1,5 @@
+import semver from 'semver'
+
 /**
  * @typedef {Object} FullProductName
  * @property {string} name
@@ -145,5 +147,19 @@ const traverseBranches = (branches, entries, instancePath) => {
         entries,
         `${branchInstancePath}/branches`
       )
+  }
+}
+
+/**
+ * Return positive number if v2 is gte v1 and negative number otherwise
+ * @param {string} v1
+ * @param {string} v2
+ * @returns {number}
+ */
+export const compareVersions = (v1, v2) => {
+  if (semver.valid(v1) && semver.valid(v2)) {
+    return semver.gte(v2, v1) ? 1 : -1
+  } else {
+    return parseInt(v2) - parseInt(v1)
   }
 }

@@ -1,7 +1,6 @@
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { t } from 'i18next'
-import { set } from 'lodash/fp.js'
 import React from 'react'
 import Hotkeys from 'react-hot-keys'
 import * as semver from 'semver'
@@ -49,6 +48,7 @@ function View({
   stripResult,
   previewResult,
   DocumentsTab,
+  generatorEngineData,
   onPrepareDocumentForTemplate,
   onLoadAdvisory,
   onUpdateAdvisory,
@@ -473,6 +473,25 @@ function View({
   }
 
   /**
+   * Callback to update the document. Dispatches an update-action to the
+   * reducer.
+   *
+   * @see {Reducer}
+   */
+  const onUpdateDoc = React.useCallback(
+    (/** @type {string[]} */ instancePath, /** @type {any?} */ update) => {
+      dispatch({
+        type: 'CHANGE_FORM_DOC',
+        timestamp: new Date(),
+        generatorEngineData: generatorEngineData,
+        update: update,
+        instancePath: '/' + instancePath.join('/'),
+      })
+    },
+    [generatorEngineData]
+  )
+
+  /**
    * Is used to replace the complete document in the json editor.
    *
    * @see {JsonEditorTab}
@@ -702,9 +721,7 @@ function View({
      */
     () => ({
       doc: formValues.doc,
-      updateDoc(instancePath, value) {
-        onReplaceDoc(set(instancePath, value, formValues.doc))
-      },
+      updateDoc: onUpdateDoc,
       replaceDoc: onReplaceDoc,
       collectIds: {
         productIds: () => onCollectProductIds(formValues.doc),
@@ -715,6 +732,7 @@ function View({
     [
       formValues.doc,
       errors,
+      onUpdateDoc,
       onReplaceDoc,
       onCollectProductIds,
       onCollectGroupIds,
@@ -1073,7 +1091,7 @@ function View({
                   </div>
                 )}
                 <div
-                  className="row-span-2 relative overflow-auto h-full bg-white"
+                  className="row-span-2 overflow-auto relative h-full bg-white"
                   key={activeTab}
                 >
                   {activeTab === 'EDITOR' ? (

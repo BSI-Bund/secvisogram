@@ -2,6 +2,7 @@
   "name": "secvisogram",
   "private": true,
   "description": "Secvisogram build infrastructure",
+  "version": "2.3.3",
   "scripts": {
     "dev": "cd app && npm run dev",
     "build": "cd app && npm run build",
@@ -24,7 +25,7 @@
   "author": "eXXcellent solutions GmbH",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^2.5.1",
-    "typescript": "^4.7.4"
+    "prettier": "^2.8.8",
+    "typescript": "^4.9.5"
   }
 }

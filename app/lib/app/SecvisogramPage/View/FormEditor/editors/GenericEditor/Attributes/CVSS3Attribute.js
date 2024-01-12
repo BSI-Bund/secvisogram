@@ -1,12 +1,12 @@
+import { t } from 'i18next'
 import React from 'react'
+import DefaultButton from '../../../../shared/DefaultButton.js'
+import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
+import CVSSVector from './CVSS3Attribute/CVSSVector.js'
+import TextAttribute from './TextAttribute.js'
 import Collapsible from './shared/Collapsible.js'
 import CvssScore from './shared/cvssScore.js'
-import TextAttribute from './TextAttribute.js'
-import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
-import DefaultButton from '../../../../shared/DefaultButton.js'
-import CVSSVector from './CVSS3Attribute/CVSSVector.js'
 import { cvssDropdown } from './shared/cvssUtils.js'
-import { t } from 'i18next'
 
 /**
  * @param {{
@@ -53,7 +53,7 @@ export default function CVSSV3Attribute({
     [outerDocumentEditor, updateDoc, instancePath, doc, cvssVector]
   )
 
-  /** @type {(childName: string, options: string[], disableClearable: boolean) => any} */
+  /** @type {(childName: string, options: string[], disableClearable?: boolean) => any} */
   function dropdownFor(childName, options, disableClearable = false) {
     const childValue = /** @type {string} */ ((value || {})[childName]) || ''
     return cvssDropdown(
@@ -74,7 +74,7 @@ export default function CVSSV3Attribute({
         <TextAttribute
           label="VectorString"
           description=""
-          pattern="^CVSS:3.[01]/((AV:[NALP]|AC:[LH]|PR:[NLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])/)*(AV:[NALP]|AC:[LH]|PR:[NLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XUNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])$"
+          pattern="^CVSS:3.[01]/((AV:[NALP]|AC:[LH]|PR:[NLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])/)*(AV:[NALP]|AC:[LH]|PR:[NLH]|UI:[NR]|S:[UC]|[CIA]:[NLH]|E:[XUPFH]|RL:[XOTWU]|RC:[XURC]|[CIA]R:[XLMH]|MAV:[XNALP]|MAC:[XLH]|MPR:[XNLH]|MUI:[XNR]|MS:[XUC]|M[CIA]:[XNLH])$"
           minLength={1}
           instancePath={instancePath.concat(['vectorString'])}
           value={value?.vectorString || ''}

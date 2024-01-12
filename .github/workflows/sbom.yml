@@ -1,0 +1,30 @@
+name: "SBOM generation"
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  spdx:
+    name: "SPDX SBOM generation"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: anchore/sbom-action@v0
+        with:
+          path: .
+          format: spdx-json
+          artifact-name: sbom.secvisogram.spdx.json
+
+  cyclonedx:
+    name: "CycloneDX SBOM generation"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: anchore/sbom-action@v0
+        with:
+          path: .
+          format: cyclonedx-json
+          artifact-name: sbom.secvisogram.cdx.json
