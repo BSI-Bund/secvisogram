@@ -810,7 +810,6 @@ const addFlags = (extendedProductStatusList, vulnerability, productGroups) => {
           f.group_ids?.some((id) => groups?.includes(id))
       )
       .map((f) => f.label)
-      .join(', ')
   })
 }
 
