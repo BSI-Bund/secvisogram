@@ -263,9 +263,11 @@ export default function JsonEditorTab({
     }))
   }
 
+  /** @type {import ("react-monaco-editor").monaco.editor.IStandaloneEditorConstructionOptions} */
   const options = {
     selectOnLineNumbers: true,
     automaticLayout: true,
+    fixedOverflowWidgets: true,
   }
   return (
     <>
