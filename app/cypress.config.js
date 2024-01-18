@@ -41,6 +41,16 @@ export default defineConfig({
           await rm(path, { recursive: true, force: true })
           return null
         },
+
+        /**
+         * Allows console logs during cypress testing
+         *
+         * @param {any} message
+         */
+        async log(message) {
+          console.log(message)
+          return null
+        }
       })
       return config
     },

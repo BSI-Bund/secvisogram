@@ -166,7 +166,9 @@
     <h5>Known not affected</h5>
     <ul>
       {{#product_status.known_not_affected}}
-        <li>{{name}}</li>
+        <li>
+          {{name}}{{#flags.length}} ({{#removeTrailingComma}}{{#flags}}{{#replaceUnderscores}}{{.}}{{/replaceUnderscores}}, {{/flags}}{{/removeTrailingComma}}){{/flags.length}}
+        </li>
       {{/product_status.known_not_affected}}
     </ul>
     {{/product_status.known_not_affected.length}}
