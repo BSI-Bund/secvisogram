@@ -29,8 +29,21 @@ This JavaScript library is intended to include logic that can be shared across a
 
 ## Getting Started
 
-Currently, there is no npm package. You can include this library as a
-subtree in your repository. After that you can reference the modules from within your JavaScript application.
+Add the library to your project by using one of the following methods.
+After that you can reference the modules from within your JavaScript application.
+
+### Using the official npm package
+
+There is an [official package](https://www.npmjs.com/package/@secvisogram/csaf-validator-lib) in the npm registry.
+
+You can add it to your project using the following command:
+```sh
+npm install @secvisogram/csaf-validator-lib
+```
+
+### Using a git subtree
+
+You can also include this library as a subtree in your repository.
 
 - include as git subtree
 
