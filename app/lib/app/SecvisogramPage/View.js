@@ -18,8 +18,8 @@ import ExportDocumentDialog from './View/ExportDocumentDialog.js'
 import schema from './View/FormEditor/schema.js'
 import RelevanceLevelContext from './View/FormEditor/shared/context/RelevanceLevelContext.js'
 import {
-  uniqueGroupId,
-  uniqueProductId,
+  useUniqueGroupId,
+  useUniqueProductId,
 } from './View/FormEditor/shared/fillFieldFunctions.js'
 import FormEditor from './View/FormEditorTab.js'
 import JsonEditorTab from './View/JsonEditorTab.js'
@@ -85,6 +85,8 @@ function View({
   const newDocumentDialogRef = React.useRef(
     /** @type {HTMLDialogElement | null} */ (null)
   )
+  const { resetProductIdCounter } = useUniqueProductId()
+  const { resetGroupIdCounter } = useUniqueGroupId()
 
   React.useEffect(() => {
     if (newDocumentDialog) {
@@ -526,8 +528,8 @@ function View({
           }}
           onConfirm={() => {
             setAlert(null)
-            uniqueProductId(true)
-            uniqueGroupId(true)
+            resetProductIdCounter()
+            resetGroupIdCounter()
             callback()
           }}
         />
