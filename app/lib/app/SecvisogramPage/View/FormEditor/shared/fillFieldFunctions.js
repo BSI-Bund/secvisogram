@@ -44,7 +44,7 @@ const getNextIdForPrefix = (prefix, idKey, doc) => {
     })
     .filter((id) => !!id)
 
-  const maxId = max(numberIds) || 0
+  const maxId = Math.max(max(numberIds) || 0, 0)
   return maxId + 1
 }
 
@@ -59,15 +59,16 @@ function useUniqueId(
   const [scanTrigger, setScanTrigger] = useState(false)
 
   const scanDoc = useCallback(() => {
-      counters[idKey] = getNextIdForPrefix(prefix, idKey, doc)
+    counters[idKey] = getNextIdForPrefix(prefix, idKey, doc)
   }, [prefix, idKey, doc])
 
+  // enable rescan trigger on reset
   const resetCounter = () => {
     counters[idKey] = 0
     setScanTrigger(true)
   }
 
-  // rescan document after reset
+  // rescan document after it changed if scan trigger is set
   useEffect(() => {
     if (scanTrigger) {
       scanDoc()
@@ -77,11 +78,12 @@ function useUniqueId(
 
   // scan document if idKey hasn't been scanned before
   useEffect(() => {
-    if (counters[idKey] === undefined || counters[idKey] === 0) {
+    if (counters[idKey] === undefined || counters[idKey] <= 0) {
       scanDoc()
     }
   }, [idKey, scanDoc])
 
+  // return current counter value and increment it for next usage
   const uniqueId = () => {
     const id = counters[idKey]
     counters[idKey] = id + 1 // increment counter
@@ -114,7 +116,7 @@ function useUniqueGroupId() {
  * @param {string[]} instancePath
  * @return {string}
  */
-const getBranchName = function (doc, instancePath) {
+const getBranchName = function(doc, instancePath) {
   /** @type {string[]} */
   let acc = []
 
@@ -138,7 +140,7 @@ const getBranchName = function (doc, instancePath) {
  * @param {() => Promise<void | { id: string; name: string; }[]>} collectProductIds
  * @return {Promise<string | undefined>}
  */
-const getRelationshipName = async function (
+const getRelationshipName = async function(
   doc,
   instancePath,
   collectProductIds
@@ -179,7 +181,7 @@ const getRelationshipName = async function (
  *
  * @return string|undefined
  */
-const getCurrentDateRounded = function () {
+const getCurrentDateRounded = function() {
   const p = 60 * 60 * 1000 // milliseconds in an hour
   const roundedDate = new Date(Math.ceil(new Date().getTime() / p) * p)
   return roundedDate.toISOString()
@@ -191,7 +193,7 @@ const getCurrentDateRounded = function () {
  * @param {Record<string, any>} doc
  * @return string|undefined
  */
-const getCurrentReleaseDate = function (doc) {
+const getCurrentReleaseDate = function(doc) {
   /** @type {{date: string, number: string}[]} */
   const revisionHistory = doc?.document?.tracking?.revision_history
   return revisionHistory
@@ -206,7 +208,7 @@ const getCurrentReleaseDate = function (doc) {
  * @param {Record<string, any>} doc
  * @return string|undefined
  */
-const getInitialReleaseDate = function (doc) {
+const getInitialReleaseDate = function(doc) {
   /** @type {{date: string, number: string}[]} */
   const revisionHistory = doc?.document?.tracking?.revision_history
   return revisionHistory?.filter(
