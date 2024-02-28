@@ -11,7 +11,7 @@ import {
   getCurrentReleaseDate,
   getInitialReleaseDate,
   getRelationshipName,
-  uniqueProductId,
+  useUniqueProductId,
 } from '../shared/fillFieldFunctions.js'
 import ArrayEditor from './GenericEditor/ArrayEditor.js'
 import CVSSV2Attribute from './GenericEditor/Attributes/CVSS2Attribute.js'
@@ -61,6 +61,7 @@ export default function Editor({
   const userInfo = React.useContext(UserInfoContext)
 
   const { doc, updateDoc, collectIds } = React.useContext(DocumentEditorContext)
+  const { uniqueProductId } = useUniqueProductId()
 
   const { handleError } = React.useContext(AppErrorContext)
 

@@ -16,7 +16,7 @@ import DocumentEditorContext from '../../../shared/DocumentEditorContext.js'
 import { GenericEditor } from '../../editors.js'
 import RelevanceLevelContext from '../../shared/context/RelevanceLevelContext.js'
 import { getErrorTextColor } from '../GenericEditor.js'
-import getChildItem from './shared/getChildItem.js'
+import useChildItem from './shared/getChildItem.js'
 
 /**
  * @param {object} props
@@ -37,6 +37,7 @@ export default function ObjectEditor({
   const { selectedRelevanceLevel, relevanceLevels } = React.useContext(
     RelevanceLevelContext
   )
+  const { getChildItem } = useChildItem()
 
   const { loginAvailable } = React.useContext(AppConfigContext)
   const userInfo = React.useContext(UserInfoContext)
