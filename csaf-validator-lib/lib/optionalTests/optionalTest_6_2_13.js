@@ -16,9 +16,11 @@ export default function optionalTest_6_2_13(doc) {
   const checkObjectKeysSorting = (collator, prefix, obj) => {
     if (typeof obj !== 'object' || obj == null) return
     if (Array.isArray(obj)) {
+      // check sorting for elements inside the array but not the array itself
       obj.forEach((e, i) => {
         checkObjectKeysSorting(collator, prefix + '/' + i, e)
       })
+      return
     }
 
     const keys = /** @type {Array<keyof obj>} */ (Object.keys(obj))
