@@ -285,7 +285,10 @@ export default /** @type {const} */ ({
       name: "Incorrect Access of Indexable Resource ('Range Error')",
     },
     { id: 'CWE-1187', name: 'DEPRECATED: Use of Uninitialized Resource' },
-    { id: 'CWE-1188', name: 'Insecure Default Initialization of Resource' },
+    {
+      id: 'CWE-1188',
+      name: 'Initialization of a Resource with an Insecure Default',
+    },
     {
       id: 'CWE-1189',
       name: 'Improper Isolation of Shared Resources on System-on-a-Chip (SoC)',
@@ -710,6 +713,7 @@ export default /** @type {const} */ ({
       id: 'CWE-141',
       name: 'Improper Neutralization of Parameter/Argument Delimiters',
     },
+    { id: 'CWE-1419', name: 'Incorrect Initialization of Resource' },
     { id: 'CWE-142', name: 'Improper Neutralization of Value Delimiters' },
     { id: 'CWE-143', name: 'Improper Neutralization of Record Delimiters' },
     { id: 'CWE-144', name: 'Improper Neutralization of Line Delimiters' },

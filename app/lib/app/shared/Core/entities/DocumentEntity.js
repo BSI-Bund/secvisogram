@@ -223,7 +223,11 @@ export default class DocumentEntity {
     if (vulnerabilities) {
       for (let i = 0; i < vulnerabilities.length; ++i) {
         const vulnerability = vulnerabilities[i]
-        addProductStatusPreviewAttributes(vulnerability, productIds)
+        addProductStatusPreviewAttributes(
+          vulnerability,
+          productIds,
+          document.product_tree?.product_groups
+        )
         addRemediationsPreviewAttributes(vulnerability, productIds, groupIds)
         addThreatsPreviewAttributes(vulnerability, productIds, groupIds)
         addVulnerabilityNotesPreviewAttributes(vulnerability)
@@ -655,10 +659,21 @@ const extendProductGroup = (productGroup, extProductIds) => {
 /**
  * Add the full product name to all products in product status
  *
- * @param {{scores: [], product_status: any}} vulnerability
+ * @param {{scores: [],
+ *          product_status: any,
+ *          flags?: {
+ *            label: string;
+ *            product_ids?: string[]
+ *          }[]
+ *        }} vulnerability
  * @param {*} productIds
+ * @param {*} productGroups
  */
-const addProductStatusPreviewAttributes = (vulnerability, productIds) => {
+const addProductStatusPreviewAttributes = (
+  vulnerability,
+  productIds,
+  productGroups
+) => {
   const extendedScoreIds = createExtendedScoreIds(
     vulnerability.scores,
     productIds
@@ -685,6 +700,7 @@ const addProductStatusPreviewAttributes = (vulnerability, productIds) => {
       extendedScoreIds,
       productIds
     )
+    addFlags(productStatus.known_not_affected, vulnerability, productGroups)
     productStatus.recommended = extendProductStatus(
       productStatus.recommended,
       extendedScoreIds,
@@ -764,6 +780,37 @@ const extendProductStatus = (refs, extendedScoreIds, productIds) => {
     }
   }
   return extendedProductStatus
+}
+
+/**
+ * Add flags information to product status
+ *
+ * @param {{id: string;
+ *          name: string;
+ *        }[]} extendedProductStatusList
+ * @param {{flags?: {
+ *            label: string;
+ *            product_ids?: string[];
+ *            group_ids?: string[];
+ *          }[];
+ *        }} vulnerability
+ * @param {{group_id: string;
+ *          product_ids?: string[];
+ *        }[]} productGroups
+ */
+const addFlags = (extendedProductStatusList, vulnerability, productGroups) => {
+  extendedProductStatusList?.forEach((/** @type {any} */ eps) => {
+    const groups = productGroups
+      ?.filter((group) => group.product_ids?.includes(eps.id))
+      .map((group) => group.group_id)
+    eps.flags = vulnerability.flags
+      ?.filter(
+        (f) =>
+          f.product_ids?.includes(eps.id) ||
+          f.group_ids?.some((id) => groups?.includes(id))
+      )
+      .map((f) => f.label)
+  })
 }
 
 /**

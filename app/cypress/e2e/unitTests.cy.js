@@ -1,14 +1,17 @@
 /// <reference types="cypress" />
 
+import { expect } from 'chai'
 import isPropertyRelevant from '../../lib/app/SecvisogramPage/shared/isPropertyRelevant.js'
 import {
   getBranchName,
+  getNextIdForPrefix,
   getRelationshipName,
-  uniqueGroupId,
-  uniqueProductId,
+  GROUP_PREFIX,
+  PRODUCT_PREFIX,
 } from '../../lib/app/SecvisogramPage/View/FormEditor/shared/fillFieldFunctions.js'
 import pruneEmpty from '../../lib/app/shared/pruneEmpty.js'
 import createFileName from '../../lib/shared/createFileName.js'
+import { testDocuments } from '../fixtures/vulnerabilityFlagsTests.js'
 
 describe('Unit Test Functions', function () {
   context('createFileName.js', function () {
@@ -214,29 +217,14 @@ describe('Unit Test Functions', function () {
   })
 
   context('fillFieldFunctions.js', function () {
-    context('uniqueProductId', function () {
-      it('should produce continuous product IDs', function () {
-        expect(uniqueProductId(false)).to.eq('CSAFPID-0001')
-        expect(uniqueProductId(false)).to.eq('CSAFPID-0002')
-        expect(uniqueProductId(false)).to.eq('CSAFPID-0003')
+    context('getNextIdForPrefix', function () {
+      it('should return next product id', function () {
+        const nextProductId = getNextIdForPrefix(PRODUCT_PREFIX, 'product_id', testDocuments.baseTestDocument)
+        expect(nextProductId).to.eq(3)
       })
-      it('should reset the counter', function () {
-        expect(uniqueProductId(true)).to.eq('CSAFPID-0000')
-        expect(uniqueProductId(true)).to.eq('CSAFPID-0000')
-        expect(uniqueProductId(true)).to.eq('CSAFPID-0000')
-      })
-    })
-
-    context('uniqueGroupId', function () {
-      it('should produce continuous group IDs', function () {
-        expect(uniqueGroupId(false)).to.eq('CSAFGID-0001')
-        expect(uniqueGroupId(false)).to.eq('CSAFGID-0002')
-        expect(uniqueGroupId(false)).to.eq('CSAFGID-0003')
-      })
-      it('should reset the counter', function () {
-        expect(uniqueGroupId(true)).to.eq('CSAFGID-0000')
-        expect(uniqueGroupId(true)).to.eq('CSAFGID-0000')
-        expect(uniqueGroupId(true)).to.eq('CSAFGID-0000')
+      it('should return next group id', function () {
+        const nextGroupId = getNextIdForPrefix(GROUP_PREFIX, 'group_id', testDocuments.productGroupsDocument)
+        expect(nextGroupId).to.eq(2)
       })
     })
 

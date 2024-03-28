@@ -18,7 +18,7 @@ import AppConfigContext from '../../../../../shared/context/AppConfigContext.js'
 import UserInfoContext from '../../../../../shared/context/UserInfoContext.js'
 import { set } from 'lodash/fp.js'
 import pruneEmpty from '../../../../../shared/pruneEmpty.js'
-import getChildItem from './shared/getChildItem.js'
+import useChildItem from './shared/getChildItem.js'
 
 /**
  * @param {object} props
@@ -130,6 +130,7 @@ function Menu({ instancePath, level = 1, ...props }) {
   const { doc, errors, updateDoc, replaceDoc } = React.useContext(
     DocumentEditorContext
   )
+  const { getChildItem } = useChildItem()
 
   const { loginAvailable } = React.useContext(AppConfigContext)
   const userInfo = React.useContext(UserInfoContext)

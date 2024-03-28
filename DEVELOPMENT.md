@@ -37,7 +37,7 @@ This document gives an overview on how to develop Secvisogram, the general techn
 
 - Git
 - VSCode
-- Node.js (version 16 LTS)
+- Node.js (version 20 LTS)
 - Firefox stable
 
 Secvisogram recommends using Visual Studio Code as the source code IDE. A `.vscode`-profile is included in this project. It lists recommended extensions, improving the development experience.

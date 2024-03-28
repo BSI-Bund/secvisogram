@@ -1,7 +1,7 @@
 import { expect } from 'chai'
-import HTMLTemplate from '../../../lib/app/SecvisogramPage/View/shared/HTMLTemplate.js'
-import DocumentEntity from '../../../lib/app/shared/Core/entities/DocumentEntity.js'
-import secureHrefTests from '../../fixtures/secureHrefTests.js'
+import DocumentEntity from '../../../../lib/app/shared/Core/entities/DocumentEntity.js'
+import HTMLTemplate from '../../../../lib/app/SecvisogramPage/View/shared/HTMLTemplate.js'
+import secureHrefTests from '../../../fixtures/secureHrefTests.js'
 
 describe('secureHrefTests', () => {
   secureHrefTests.forEach((test, i) => {
