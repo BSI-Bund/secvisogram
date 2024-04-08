@@ -13,7 +13,7 @@ jobs:
           submodules: recursive
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
       - run: npm ci
       - run: npm run test-report
       - run: npm run test-coverage-lcov
