@@ -9,7 +9,7 @@ jobs:
     name: "SPDX SBOM generation"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: anchore/sbom-action@v0
         with:
@@ -21,7 +21,7 @@ jobs:
     name: "CycloneDX SBOM generation"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: anchore/sbom-action@v0
         with:
