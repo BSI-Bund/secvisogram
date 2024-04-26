@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
-      - run: npx eslint --max-warnings 0
+      - run: cd app && npx eslint --max-warnings 0
       - run: npm run-script build
   test:
     runs-on: ubuntu-latest
