@@ -304,7 +304,7 @@ export default /** @type {const} */ ({
     },
     {
       id: 'CWE-1192',
-      name: 'System-on-Chip (SoC) Using Components without Unique, Immutable Identifiers',
+      name: 'Improper Identifier for IP Block used in System-On-Chip (SOC)',
     },
     {
       id: 'CWE-1193',
@@ -569,7 +569,10 @@ export default /** @type {const} */ ({
       id: 'CWE-1301',
       name: 'Insufficient or Incomplete Data Removal within Hardware Component',
     },
-    { id: 'CWE-1302', name: 'Missing Security Identifier' },
+    {
+      id: 'CWE-1302',
+      name: 'Missing Source Identifier in Entity Transactions on a System-On-Chip (SOC)',
+    },
     {
       id: 'CWE-1303',
       name: 'Non-Transparent Sharing of Microarchitectural Resources',
@@ -715,6 +718,22 @@ export default /** @type {const} */ ({
     },
     { id: 'CWE-1419', name: 'Incorrect Initialization of Resource' },
     { id: 'CWE-142', name: 'Improper Neutralization of Value Delimiters' },
+    {
+      id: 'CWE-1420',
+      name: 'Exposure of Sensitive Information during Transient Execution',
+    },
+    {
+      id: 'CWE-1421',
+      name: 'Exposure of Sensitive Information in Shared Microarchitectural Structures during Transient Execution',
+    },
+    {
+      id: 'CWE-1422',
+      name: 'Exposure of Sensitive Information caused by Incorrect Data Forwarding during Transient Execution',
+    },
+    {
+      id: 'CWE-1423',
+      name: 'Exposure of Sensitive Information caused by Shared Microarchitectural Predictor State that Influences Transient Execution',
+    },
     { id: 'CWE-143', name: 'Improper Neutralization of Record Delimiters' },
     { id: 'CWE-144', name: 'Improper Neutralization of Line Delimiters' },
     { id: 'CWE-145', name: 'Improper Neutralization of Section Delimiters' },
