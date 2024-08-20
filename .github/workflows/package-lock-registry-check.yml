@@ -7,6 +7,10 @@ on:
   pull_request:
     paths: '**/package-lock.json'
 
+permissions:
+  contents: read
+  actions: read
+
 jobs:
   checker:
     name: Package checker
