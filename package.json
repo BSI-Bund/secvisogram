@@ -2,7 +2,7 @@
   "name": "secvisogram",
   "private": true,
   "description": "Secvisogram build infrastructure",
-  "version": "2.5.11",
+  "version": "2.5.12",
   "scripts": {
     "dev": "cd app && npm run dev",
     "build": "cd app && npm run build",
