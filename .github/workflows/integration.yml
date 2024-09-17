@@ -3,6 +3,10 @@ name: Secvisogram CI
 on:
   - pull_request
 
+permissions:
+  contents: read
+  actions: read
+
 jobs:
   build:
     runs-on: ubuntu-latest

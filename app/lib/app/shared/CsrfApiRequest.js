@@ -1,3 +1,4 @@
+/* eslint-disable react/no-is-mounted */
 import { t } from 'i18next'
 import ApiRequest from './ApiRequest.js'
 import { callAboutInfo } from './api/backend.js'

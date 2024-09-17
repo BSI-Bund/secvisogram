@@ -1,3 +1,4 @@
+/* eslint-disable react/no-is-mounted */
 import { cloneDeep } from 'lodash'
 
 /**

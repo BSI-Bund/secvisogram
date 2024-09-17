@@ -1,3 +1,4 @@
+/* eslint-disable react/no-is-mounted */
 /** @type {Array<[string, string, { [key: string]: string }]>} */
 const vectorStringMapping = [
   // BASE SCORE
