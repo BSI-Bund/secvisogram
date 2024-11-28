@@ -16,11 +16,11 @@ export default function mandatoryTest_6_1_13(doc) {
         /** @type {any} */ fullProductName,
         /** @type {number} */ fullProductNameIndex
       ) => {
-        checkProductIdentificationHelperPURL(fullProductName, () => {
+        checkProductIdentificationHelperPURL(fullProductName, (errorMessage) => {
           isValid = false
           errors.push({
             instancePath: `/product_tree/full_product_names/${fullProductNameIndex}/product_identification_helper/purl`,
-            message: `invalid purl`,
+            message: `invalid purl: ${errorMessage}`,
           })
         })
       }
@@ -35,11 +35,11 @@ export default function mandatoryTest_6_1_13(doc) {
       ) => {
         checkProductIdentificationHelperPURL(
           relationship.full_product_name,
-          () => {
+          (errorMessage) => {
             isValid = false
             errors.push({
               instancePath: `/product_tree/relationships/${relationshipIndex}/full_product_name/product_identification_helper/purl`,
-              message: `invalid purl`,
+              message: `invalid purl: ${errorMessage}`,
             })
           }
         )
@@ -48,7 +48,7 @@ export default function mandatoryTest_6_1_13(doc) {
   }
 
   if (doc.product_tree) {
-    checkBranchesForInvalidPURLs(doc.product_tree, ({ branchIndexes }) => {
+    checkBranchesForInvalidPURLs(doc.product_tree, ({ branchIndexes, errorMessage }) => {
       isValid = false
       const branchPathPart = branchIndexes.reduce(
         (str, index) => `${str}/branches/${index}`,
@@ -56,7 +56,7 @@ export default function mandatoryTest_6_1_13(doc) {
       )
       errors.push({
         instancePath: `${branchPathPart}/product/product_identification_helper/purl`,
-        message: `invalid purl`,
+        message: `invalid purl: ${errorMessage}`,
       })
     })
   }
@@ -67,7 +67,7 @@ export default function mandatoryTest_6_1_13(doc) {
 /**
  *
  * @param {any} parent
- * @param {(error: { branchIndexes: number[] }) => void} onError
+ * @param {(error: { branchIndexes: number[], errorMessage: string }) => void} onError
  * @param {number[]} [branchIndexes]
  */
 const checkBranchesForInvalidPURLs = (parent, onError, branchIndexes = []) => {
@@ -76,9 +76,10 @@ const checkBranchesForInvalidPURLs = (parent, onError, branchIndexes = []) => {
       (/** @type {any} */ branch, /** @type {number} */ branchIndex) => {
         const currentBranchIndexes = branchIndexes.concat([branchIndex])
 
-        checkProductIdentificationHelperPURL(branch.product, () => {
+        checkProductIdentificationHelperPURL(branch.product, (errorMessage) => {
           onError({
             branchIndexes: currentBranchIndexes,
+            errorMessage,
           })
         })
         checkBranchesForInvalidPURLs(branch, onError, currentBranchIndexes)
@@ -89,7 +90,7 @@ const checkBranchesForInvalidPURLs = (parent, onError, branchIndexes = []) => {
 
 /**
  * @param {any} productALike
- * @param {() => void} onError
+ * @param {(errorMessage: string) => void} onError
  * @returns
  */
 const checkProductIdentificationHelperPURL = (productALike, onError) => {
@@ -98,6 +99,7 @@ const checkProductIdentificationHelperPURL = (productALike, onError) => {
   try {
     PackageURL.fromString(productALike?.product_identification_helper?.purl)
   } catch (e) {
-    onError()
+    const errorObject = /** @type {{message: string}} */ (e)
+    onError(errorObject?.message ?? "Unknown purl error")
   }
 }
