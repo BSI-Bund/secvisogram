@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 
 spawn('mocha', ['tests', ...process.argv.slice(2)], {
   stdio: 'inherit',
+  shell: true,
   env: {
     ...process.env,
     DICPATH: fileURLToPath(new URL('../tests/dicts', import.meta.url)),
