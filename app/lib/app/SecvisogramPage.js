@@ -1,3 +1,4 @@
+import * as core from '#lib/core/v2_0.js'
 import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import createFileName from '../shared/createFileName.js'
@@ -8,7 +9,6 @@ import { backend, validationService } from './shared/api.js'
 import ApiRequest from './shared/ApiRequest.js'
 import AppErrorContext from './shared/context/AppErrorContext.js'
 import HistoryContext from './shared/context/HistoryContext.js'
-import createCore from './shared/Core.js'
 import downloadFile from './shared/download.js'
 import sitemap from './shared/sitemap.js'
 
@@ -16,9 +16,7 @@ import sitemap from './shared/sitemap.js'
  * @typedef {import('./SecvisogramPage/shared/types').ValidationError} ValidationError
  */
 
-const core = createCore()
-
-const doc = core.document.newDocMin()
+const doc = core.newDocMin()
 
 /**
  * Holds the application-state and provides memoized callbacks for the view
@@ -110,7 +108,7 @@ const SecvisogramPage = () => {
       data={data}
       alert={alert}
       DocumentsTab={DocumentsTab}
-      generatorEngineData={core.document.getGeneratorEngineData()}
+      generatorEngineData={core.getGeneratorEngineData()}
       onLoadAdvisory={loadAdvisory}
       onUpdateAdvisory={({
         advisoryId,
@@ -134,7 +132,7 @@ const SecvisogramPage = () => {
         setState((state) => ({ ...state, isTabLocked: false }))
       }, [])}
       onDownload={(doc) => {
-        core.document
+        core
           .validate({ document: doc })
           .then(({ isValid }) => {
             const fileName = createFileName(doc, isValid, 'json')
@@ -187,7 +185,7 @@ const SecvisogramPage = () => {
       onChangeTab={(tab, document) => {
         if (isTabLocked) return
         setState((state) => ({ ...state, isLoading: true }))
-        core.document
+        core
           .validate({ document })
           .then((result) => {
             setState((state) => ({
@@ -201,7 +199,7 @@ const SecvisogramPage = () => {
       }}
       onValidate={React.useCallback(
         (doc) => {
-          core.document
+          core
             .validate({ document: doc })
             .then((result) => {
               setState((state) => ({
@@ -216,7 +214,7 @@ const SecvisogramPage = () => {
       onCollectProductIds={React.useCallback(
         async (document) => {
           try {
-            const ids = await core.document.collectProductIds({ document })
+            const ids = await core.collectProductIds({ document })
             return ids
           } catch (/** @type {any} */ error) {
             return handleError(error)
@@ -227,7 +225,7 @@ const SecvisogramPage = () => {
       onCollectGroupIds={React.useCallback(
         async (document) => {
           try {
-            const ids = await core.document.collectGroupIds({ document })
+            const ids = await core.collectGroupIds({ document })
             return ids
           } catch (/** @type {any} */ error) {
             return handleError(error)
@@ -236,17 +234,17 @@ const SecvisogramPage = () => {
         [handleError]
       )}
       onGetDocMin={async () => {
-        return core.document.newDocMin()
+        return core.newDocMin()
       }}
       onGetDocMax={async () => {
-        return core.document.newDocMax()
+        return core.newDocMax()
       }}
       onCreateAdvisory={({ csaf, summary, legacyVersion }) => {
         return backend.createAdvisory({ csaf, summary, legacyVersion })
       }}
       onStrip={React.useCallback(
         (document) => {
-          core.document
+          core
             .strip({ document })
             .then(({ document: doc, strippedPaths }) => {
               setState((state) => ({
@@ -263,7 +261,7 @@ const SecvisogramPage = () => {
       )}
       onPreview={React.useCallback(
         (document) => {
-          core.document
+          core
             .preview({ document })
             .then(({ document: doc }) => {
               setState((state) => ({
@@ -278,12 +276,12 @@ const SecvisogramPage = () => {
         [handleError]
       )}
       onPrepareDocumentForTemplate={React.useCallback(
-        (document) => core.document.preview({ document }),
+        (document) => core.preview({ document }),
         []
       )}
       onExportCSAF={React.useCallback(
         (document) => {
-          core.document
+          core
             .validate({ document: document })
             .then(({ isValid }) => {
               const fileName = createFileName(document, isValid, 'json')
@@ -293,7 +291,7 @@ const SecvisogramPage = () => {
                   alert: {
                     ...alertSaveInvalidTranslationStrings,
                     onConfirm() {
-                      core.document
+                      core
                         .strip({ document })
                         .then(({ document: doc }) => {
                           setState({ ...state, alert: null })
@@ -307,7 +305,7 @@ const SecvisogramPage = () => {
                   },
                 }))
               } else {
-                core.document
+                core
                   .strip({ document })
                   .then(({ document: doc }) => {
                     downloadFile(JSON.stringify(doc, null, 2), fileName)
@@ -321,7 +319,7 @@ const SecvisogramPage = () => {
       )}
       onExportHTML={React.useCallback(
         (html, doc) => {
-          core.document.validate({ document: doc }).then(({ isValid }) => {
+          core.validate({ document: doc }).then(({ isValid }) => {
             const fileName = createFileName(doc, isValid, 'html')
             if (!isValid) {
               setState((state) => ({
