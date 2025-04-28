@@ -200,7 +200,7 @@ You can use this view and the embedded _Export CSAF_ button to always quickly ex
 
 ### Templates
 
-The secvisogram provides some very basic templates. You can use your own templates by saving them as json files on your filesystem and load using the "Upload from filesystem" in the "Create new document" dialog of the editor.
+Secvisogram provides some very basic templates. You can use your own templates by saving them as JSON files on your filesystem and load using the "Upload from filesystem" in the "Create new document" dialog of the editor.
 
 ## Documentation
 
