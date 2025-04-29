@@ -131,7 +131,7 @@ export default {
       properties: {
         name: {
           description:
-            'The value should be the product\u00e2\u20ac\u2122s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.',
+            'The value should be the product\u2019s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.',
           examples: [
             'Cisco AnyConnect Secure Mobility Client 2.3.185',
             'Microsoft Host Integration Server 2006 Service Pack 1',
@@ -243,14 +243,21 @@ export default {
               type: 'array',
               uniqueItems: true,
             },
-            purl: {
-              description:
-                'The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification.',
-              format: 'uri',
-              minLength: 7,
-              pattern: '^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*\\/.+',
-              title: 'package URL representation',
-              type: 'string',
+            purls: {
+              description: 'Contains a list of package URLs (purl).',
+              items: {
+                description:
+                  'The package URL (purl) attribute refers to a method for reliably identifying and locating software packages external to this specification.',
+                format: 'uri',
+                minLength: 7,
+                pattern: '^pkg:[A-Za-z\\.\\-\\+][A-Za-z0-9\\.\\-\\+]*\\/.+',
+                title: 'package URL representation',
+                type: 'string',
+              },
+              minItems: 1,
+              title: 'List of package URLs',
+              type: 'array',
+              uniqueItems: true,
             },
             sbom_urls: {
               description:
@@ -519,7 +526,7 @@ export default {
         aggregate_severity: {
           additionalProperties: false,
           description:
-            "Is a vehicle that is provided by the document producer to convey the urgency and criticality with which the one or more vulnerabilities reported should be addressed. It is a document-level metric and applied to the document as a whole \u00e2\u20ac\u201d not any specific vulnerability. The range of values in this field is defined according to the document producer's policies and procedures.",
+            "Is a vehicle that is provided by the document producer to convey the urgency and criticality with which the one or more vulnerabilities reported should be addressed. It is a document-level metric and applied to the document as a whole \u2014 not any specific vulnerability. The range of values in this field is defined according to the document producer's policies and procedures.",
           properties: {
             namespace: {
               description: 'Points to the namespace so referenced.',
