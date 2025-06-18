@@ -89,9 +89,9 @@ module.exports = {
         directory: path.join(__dirname, 'public/.well-known/appspecific'),
       },
     ],
-    proxy: {
-      '/api': 'http://localhost:4180',
-      '/oauth2': 'http://localhost:4180',
-    },
+    proxy: [
+      { context: ['/api'], target: 'http://localhost:4180' },
+      { context: ['/oauth2'], target: 'http://localhost:4180' },
+    ],
   },
 }
