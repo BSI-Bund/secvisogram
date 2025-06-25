@@ -1,5 +1,4 @@
 export {
-  informativeTest_6_3_2,
   informativeTest_6_3_3,
   informativeTest_6_3_5,
   informativeTest_6_3_6,
@@ -11,3 +10,4 @@ export {
 } from '../informativeTests.js'
 export { informativeTest_6_3_1 } from './informativeTests/informativeTest_6_3_1.js'
 export { informativeTest_6_3_4 } from './informativeTests/informativeTest_6_3_4.js'
+export { informativeTest_6_3_2 } from './informativeTests/informativeTest_6_3_2.js'
