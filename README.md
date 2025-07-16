@@ -311,17 +311,17 @@ The following tests are not yet implemented and therefore missing:
 
 **Mandatory Tests**
 
+- Mandatory Test 6.1.6
 - Mandatory Test 6.1.14
 - Mandatory Test 6.1.16
+- Mandatory Test 6.1.26
 - Mandatory Test 6.1.27.12
 - Mandatory Test 6.1.27.13
-- Mandatory Test 6.1.27.14
 - Mandatory Test 6.1.27.15
 - Mandatory Test 6.1.27.16
 - Mandatory Test 6.1.27.17
 - Mandatory Test 6.1.27.18
 - Mandatory Test 6.1.27.19
-- Mandatory Test 6.1.36
 - Mandatory Test 6.1.42
 - Mandatory Test 6.1.43
 - Mandatory Test 6.1.44
@@ -339,32 +339,34 @@ The following tests are not yet implemented and therefore missing:
 
 **Recommended Tests**
 
-- Recommeded Test 6.2.21
-- Recommeded Test 6.2.22
-- Recommeded Test 6.2.23
-- Recommeded Test 6.2.24
-- Recommeded Test 6.2.25
-- Recommeded Test 6.2.26
-- Recommeded Test 6.2.27
-- Recommeded Test 6.2.28
-- Recommeded Test 6.2.29
-- Recommeded Test 6.2.30
-- Recommeded Test 6.2.31
-- Recommeded Test 6.2.32
-- Recommeded Test 6.2.33
-- Recommeded Test 6.2.34
-- Recommeded Test 6.2.35
-- Recommeded Test 6.2.36
-- Recommeded Test 6.2.37
-- Recommeded Test 6.2.38
-- Recommeded Test 6.2.39
-- Recommeded Test 6.2.40
-- Recommeded Test 6.2.41
-- Recommeded Test 6.2.42
-- Recommeded Test 6.2.43
-- Recommeded Test 6.2.44
-- Recommeded Test 6.2.45
-- Recommeded Test 6.2.46
+- Recommended Test 6.2.11
+- Recommended Test 6.2.19
+- Recommended Test 6.2.20
+- Recommended Test 6.2.21
+- Recommended Test 6.2.23
+- Recommended Test 6.2.24
+- Recommended Test 6.2.25
+- Recommended Test 6.2.26
+- Recommended Test 6.2.27
+- Recommended Test 6.2.28
+- Recommended Test 6.2.29
+- Recommended Test 6.2.30
+- Recommended Test 6.2.31
+- Recommended Test 6.2.32
+- Recommended Test 6.2.33
+- Recommended Test 6.2.34
+- Recommended Test 6.2.35
+- Recommended Test 6.2.36
+- Recommended Test 6.2.37
+- Recommended Test 6.2.38
+- Recommended Test 6.2.39
+- Recommended Test 6.2.40
+- Recommended Test 6.2.41
+- Recommended Test 6.2.42
+- Recommended Test 6.2.43
+- Recommended Test 6.2.44
+- Recommended Test 6.2.45
+- Recommended Test 6.2.46
 
 **Informative Tests**
 
@@ -392,7 +394,6 @@ export const mandatoryTest_6_1_2: DocumentTest
 export const mandatoryTest_6_1_3: DocumentTest
 export const mandatoryTest_6_1_4: DocumentTest
 export const mandatoryTest_6_1_5: DocumentTest
-export const mandatoryTest_6_1_6: DocumentTest
 export const mandatoryTest_6_1_7: DocumentTest
 export const mandatoryTest_6_1_8: DocumentTest
 export const mandatoryTest_6_1_9: DocumentTest
@@ -410,7 +411,6 @@ export const mandatoryTest_6_1_22: DocumentTest
 export const mandatoryTest_6_1_23: DocumentTest
 export const mandatoryTest_6_1_24: DocumentTest
 export const mandatoryTest_6_1_25: DocumentTest
-export const mandatoryTest_6_1_26: DocumentTest
 export const mandatoryTest_6_1_27_1: DocumentTest
 export const mandatoryTest_6_1_27_2: DocumentTest
 export const mandatoryTest_6_1_27_3: DocumentTest
@@ -422,6 +422,7 @@ export const mandatoryTest_6_1_27_8: DocumentTest
 export const mandatoryTest_6_1_27_9: DocumentTest
 export const mandatoryTest_6_1_27_10: DocumentTest
 export const mandatoryTest_6_1_27_11: DocumentTest
+export const mandatoryTest_6_1_27_14: DocumentTest
 export const mandatoryTest_6_1_28: DocumentTest
 export const mandatoryTest_6_1_29: DocumentTest
 export const mandatoryTest_6_1_30: DocumentTest
@@ -430,6 +431,7 @@ export const mandatoryTest_6_1_32: DocumentTest
 export const mandatoryTest_6_1_33: DocumentTest
 export const mandatoryTest_6_1_34: DocumentTest
 export const mandatoryTest_6_1_35: DocumentTest
+export const mandatoryTest_6_1_36: DocumentTest
 export const mandatoryTest_6_1_37: DocumentTest
 export const mandatoryTest_6_1_38: DocumentTest
 export const mandatoryTest_6_1_39: DocumentTest
@@ -452,7 +454,6 @@ export const recommendedTest_6_2_7: DocumentTest
 export const recommendedTest_6_2_8: DocumentTest
 export const recommendedTest_6_2_9: DocumentTest
 export const recommendedTest_6_2_10: DocumentTest
-export const recommendedTest_6_2_11: DocumentTest
 export const recommendedTest_6_2_12: DocumentTest
 export const recommendedTest_6_2_13: DocumentTest
 export const recommendedTest_6_2_14: DocumentTest
@@ -460,8 +461,6 @@ export const recommendedTest_6_2_15: DocumentTest
 export const recommendedTest_6_2_16: DocumentTest
 export const recommendedTest_6_2_17: DocumentTest
 export const recommendedTest_6_2_18: DocumentTest
-export const recommendedTest_6_2_19: DocumentTest
-export const recommendedTest_6_2_20: DocumentTest
 export const recommendedTest_6_2_22: DocumentTest
 ```
 
