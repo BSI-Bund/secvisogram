@@ -25,7 +25,7 @@ export default /** @type {const} */ ({
     { id: 'CWE-1038', name: 'Insecure Automated Optimizations' },
     {
       id: 'CWE-1039',
-      name: 'Automated Recognition Mechanism with Inadequate Detection or Handling of Adversarial Input Perturbations',
+      name: 'Inadequate Detection or Handling of Adversarial Input Perturbations in Automated Recognition Mechanism',
     },
     {
       id: 'CWE-104',
@@ -528,7 +528,7 @@ export default /** @type {const} */ ({
       name: 'Improper Validation of Unsafe Equivalence in Input',
     },
     { id: 'CWE-129', name: 'Improper Validation of Array Index' },
-    { id: 'CWE-1290', name: 'Incorrect Decoding of Security Identifiers ' },
+    { id: 'CWE-1290', name: 'Incorrect Decoding of Security Identifiers' },
     {
       id: 'CWE-1291',
       name: 'Public Key Re-Use for Signing both Debug and Production Code',
@@ -739,7 +739,16 @@ export default /** @type {const} */ ({
       id: 'CWE-1427',
       name: 'Improper Neutralization of Input Used for LLM Prompting',
     },
+    { id: 'CWE-1428', name: 'Reliance on HTTP instead of HTTPS' },
+    {
+      id: 'CWE-1429',
+      name: 'Missing Security-Relevant Feedback for Unexecuted Operations in Hardware Interface',
+    },
     { id: 'CWE-143', name: 'Improper Neutralization of Record Delimiters' },
+    {
+      id: 'CWE-1431',
+      name: 'Driving Intermediate Cryptographic State/Results to Hardware Module Outputs',
+    },
     { id: 'CWE-144', name: 'Improper Neutralization of Line Delimiters' },
     { id: 'CWE-145', name: 'Improper Neutralization of Section Delimiters' },
     {
@@ -1005,7 +1014,7 @@ export default /** @type {const} */ ({
     { id: 'CWE-28', name: "Path Traversal: '..\\filedir'" },
     {
       id: 'CWE-280',
-      name: 'Improper Handling of Insufficient Permissions or Privileges ',
+      name: 'Improper Handling of Insufficient Permissions or Privileges',
     },
     { id: 'CWE-281', name: 'Improper Preservation of Permissions' },
     { id: 'CWE-282', name: 'Improper Ownership Management' },
@@ -1606,7 +1615,7 @@ export default /** @type {const} */ ({
       id: 'CWE-6',
       name: 'J2EE Misconfiguration: Insufficient Session-ID Length',
     },
-    { id: 'CWE-600', name: 'Uncaught Exception in Servlet ' },
+    { id: 'CWE-600', name: 'Uncaught Exception in Servlet' },
     {
       id: 'CWE-601',
       name: "URL Redirection to Untrusted Site ('Open Redirect')",
