@@ -66,11 +66,7 @@ const Alert = ({
   onCancel,
   onConfirm,
 }) => {
-  const [open, setOpen] = React.useState(true)
-
-  const handleClose = () => {
-    setOpen(false)
-  }
+  const [open] = React.useState(true)
 
   /** @type {React.MutableRefObject<HTMLButtonElement | null>} */
   const defaultButtonRef = useRef(null)
@@ -89,7 +85,7 @@ const Alert = ({
         maxWidth={false}
         disableRestoreFocus
         open={open}
-        onClose={handleClose}
+        onClose={onCancel}
       >
         <DialogTitle>{label}</DialogTitle>
         <DialogContent data-testid="alert">
