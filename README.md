@@ -315,15 +315,11 @@ The following tests are not yet implemented and therefore missing:
 - Mandatory Test 6.1.14
 - Mandatory Test 6.1.16
 - Mandatory Test 6.1.26
-- Mandatory Test 6.1.27.12
 - Mandatory Test 6.1.27.13
-- Mandatory Test 6.1.27.15
 - Mandatory Test 6.1.27.16
-- Mandatory Test 6.1.27.17
 - Mandatory Test 6.1.27.18
 - Mandatory Test 6.1.27.19
 - Mandatory Test 6.1.42
-- Mandatory Test 6.1.43
 - Mandatory Test 6.1.44
 - Mandatory Test 6.1.45
 - Mandatory Test 6.1.46
@@ -422,7 +418,10 @@ export const mandatoryTest_6_1_27_8: DocumentTest
 export const mandatoryTest_6_1_27_9: DocumentTest
 export const mandatoryTest_6_1_27_10: DocumentTest
 export const mandatoryTest_6_1_27_11: DocumentTest
+export const mandatoryTest_6_1_27_12: DocumentTest
 export const mandatoryTest_6_1_27_14: DocumentTest
+export const mandatoryTest_6_1_27_15: DocumentTest
+export const mandatoryTest_6_1_27_17: DocumentTest
 export const mandatoryTest_6_1_28: DocumentTest
 export const mandatoryTest_6_1_29: DocumentTest
 export const mandatoryTest_6_1_30: DocumentTest
@@ -437,6 +436,7 @@ export const mandatoryTest_6_1_38: DocumentTest
 export const mandatoryTest_6_1_39: DocumentTest
 export const mandatoryTest_6_1_40: DocumentTest
 export const mandatoryTest_6_1_41: DocumentTest
+export const mandatoryTest_6_1_43: DocumentTest
 ```
 
 [(back to top)](#bsi-csaf-validator-lib)
@@ -547,7 +547,7 @@ export const weaknesses: Array<{ id: string; name: string }>
 
 ## Testing
 
-Tests are implemented using [mocha](https://mochajs.org/). The minimal supported Node.js version is **14**. They can be run using the following command:
+Tests are implemented using [mocha](https://mochajs.org/). The minimal supported Node.js version is **20**. They can be run using the following command:
 
 ```sh
 npm test
