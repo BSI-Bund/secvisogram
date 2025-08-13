@@ -1,3 +1,18 @@
+/**
+ * @typedef {object} CweWeakness
+ * @property {string} id
+ * @property {string} name
+ * @property {string} status
+ * @property {string} [usage]
+ */
+
+/**
+ * @typedef {object} CweCatalogue
+ * @property {string} [date]
+ * @property {CweWeakness[]} weaknesses
+ */
+
+/** @type {Map<string, () => Promise<{ default: CweCatalogue }>>} */
 export const cwecMap = new Map([
   ['4.17', () => import('./cwec/4.17.js')],
   ['4.16', () => import('./cwec/4.16.js')],

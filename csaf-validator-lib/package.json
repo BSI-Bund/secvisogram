@@ -4,9 +4,9 @@
   "license": "MIT",
   "scripts": {
     "pretest": "tsc -b .",
-    "test": "node scripts/test.js",
+    "test": "prettier --check . && node scripts/test.js",
     "pretest-report": "tsc -b .",
-    "test-report": "node scripts/test.js --reporter json > test-results.json",
+    "test-report": "prettier --check . && node scripts/test.js --reporter json > test-results.json",
     "test-coverage": "c8 node scripts/test.js",
     "test-coverage-lcov": "c8 --reporter lcovonly node scripts/test.js"
   },
@@ -37,7 +37,7 @@
     "@types/json-pointer": "^1.0.31",
     "@types/lodash": "^4.14.195",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^18.16.16",
+    "@types/node": "^24.1.0",
     "@types/prettier": "^2.7.3",
     "@types/semver": "^7.5.0",
     "@types/xml2js": "^0.4.11",
@@ -48,5 +48,5 @@
     "typescript": "^5.7.3",
     "xml2js": "^0.5.0"
   },
-  "version": "2.0.6"
+  "version": "2.0.7"
 }

@@ -138,8 +138,8 @@ export function recommendedTest_6_2_27(doc) {
     const productToCategoriesMap = new Map()
 
     const productStatus = new Map(
-        Object.entries(vulnerability.product_status || {})
-    );
+      Object.entries(vulnerability.product_status || {})
+    )
     vulnerability.remediations?.forEach((remediation, remediationIndex) => {
       const category = remediation.category
       if (!category) return
@@ -173,9 +173,9 @@ export function recommendedTest_6_2_27(doc) {
       for (const [productId, categories] of productToCategoriesMap) {
         for (const category of categories) {
           const status = discouragedRuleMap.get(category)
-          if (!status) continue// There are no discouraged rules for this category.
+          if (!status) continue // There are no discouraged rules for this category.
           status.forEach((s) => {
-            const statusList = productStatus.get(s);
+            const statusList = productStatus.get(s)
             if (Array.isArray(statusList) && statusList.includes(productId)) {
               ctx.warnings.push({
                 instancePath: `/vulnerabilities/${vulnerabilityIndex}/remediations/${remediationIndex}`,
