@@ -1,11 +1,10 @@
+import { Autocomplete, TextField } from '@mui/material'
+import { isEmpty } from 'lodash/fp.js'
 import React from 'react'
 import cwec from '../../../../../../../../../csaf-validator-lib/lib/shared/cwec.js'
-import Attribute from './shared/Attribute.js'
-import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
-import { isEmpty } from 'lodash/fp.js'
 import pruneEmpty from '../../../../../../shared/pruneEmpty.js'
-import { Autocomplete } from '@mui/material'
-import { TextField } from '@mui/material'
+import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
+import Attribute from './shared/Attribute.js'
 
 /**
  * helper function getting path and value for a child
@@ -141,6 +140,7 @@ function CwecId({
             disablePortal
             disableClearable
             autoHighlight
+            freeSolo
             forcePopupIcon={false}
             options={cwec.weaknesses.map((cwe) => cwe.id)}
             renderOption={(props, option) => (
@@ -155,6 +155,10 @@ function CwecId({
                 label=""
                 placeholder="^CWE-[1-9]\d{0,5}$"
                 size="small"
+                inputProps={{
+                  ...params.inputProps,
+                  pattern: '^CWE-[1-9]\\d{0,5}$',
+                }}
               />
             )}
             onInputChange={(event, newInputValue) => {
@@ -163,9 +167,6 @@ function CwecId({
             onChange={(event, id) => {
               handleSelect(event, id)
             }}
-            isOptionEqualToValue={(option, value) =>
-              option === value || value === ''
-            }
           />
         </div>
       </div>
