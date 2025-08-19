@@ -10,7 +10,7 @@ const path = require('path')
 /** @type {import('webpack').Configuration} */
 module.exports = {
   entry: {
-    style: ['./lib/style.css', '@reach/combobox/styles.css'],
+    style: ['./lib/style.css'],
     app: ['./lib/app.js'],
   },
   module: {

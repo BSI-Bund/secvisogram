@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider } from '@mui/material'
 import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import App from './app/App.js'
 import SecvisogramPage from './app/SecvisogramPage.js'
 import LoadingIndicator from './app/SecvisogramPage/View/LoadingIndicator.js'
@@ -16,11 +16,10 @@ const theme = createTheme({
   },
 })
 
-render(
+createRoot(root).render(
   <ThemeProvider theme={theme}>
     <React.Suspense fallback={<LoadingIndicator label="" />}>
       <App secvisogramPage={<SecvisogramPage />} />
     </React.Suspense>
-  </ThemeProvider>,
-  root
+  </ThemeProvider>
 )
