@@ -75,7 +75,7 @@ function collectProductIdRefs({ document }) {
       if (productRef) {
         entries.push({
           id: productRef,
-          instancePath: `/product_tree/relationships/${i}/product_reference`,
+          instancePath: '/product_tree/relationships/${i}/product_reference',
         })
       }
       const relToProductRef = relationshipGroup.relates_to_product_reference
