@@ -311,14 +311,9 @@ The following tests are not yet implemented and therefore missing:
 
 **Mandatory Tests**
 
-- Mandatory Test 6.1.6
-- Mandatory Test 6.1.14
-- Mandatory Test 6.1.16
 - Mandatory Test 6.1.26
 - Mandatory Test 6.1.27.13
-- Mandatory Test 6.1.27.16
 - Mandatory Test 6.1.27.18
-- Mandatory Test 6.1.27.19
 - Mandatory Test 6.1.42
 - Mandatory Test 6.1.44
 - Mandatory Test 6.1.45
@@ -328,7 +323,6 @@ The following tests are not yet implemented and therefore missing:
 - Mandatory Test 6.1.49
 - Mandatory Test 6.1.50
 - Mandatory Test 6.1.51
-- Mandatory Test 6.1.52
 - Mandatory Test 6.1.53
 - Mandatory Test 6.1.54
 - Mandatory Test 6.1.55
@@ -339,7 +333,6 @@ The following tests are not yet implemented and therefore missing:
 - Recommended Test 6.2.19
 - Recommended Test 6.2.20
 - Recommended Test 6.2.21
-- Recommended Test 6.2.23
 - Recommended Test 6.2.24
 - Recommended Test 6.2.25
 - Recommended Test 6.2.26
@@ -366,7 +359,6 @@ The following tests are not yet implemented and therefore missing:
 
 **Informative Tests**
 
-- Informative Test 6.2.12
 - Informative Test 6.2.13
 - Informative Test 6.2.14
 - Informative Test 6.2.15
@@ -390,6 +382,7 @@ export const mandatoryTest_6_1_2: DocumentTest
 export const mandatoryTest_6_1_3: DocumentTest
 export const mandatoryTest_6_1_4: DocumentTest
 export const mandatoryTest_6_1_5: DocumentTest
+export const mandatoryTest_6_1_6: DocumentTest
 export const mandatoryTest_6_1_7: DocumentTest
 export const mandatoryTest_6_1_8: DocumentTest
 export const mandatoryTest_6_1_9: DocumentTest
@@ -397,7 +390,9 @@ export const mandatoryTest_6_1_10: DocumentTest
 export const mandatoryTest_6_1_11: DocumentTest
 export const mandatoryTest_6_1_12: DocumentTest
 export const mandatoryTest_6_1_13: DocumentTest
+export const mandatoryTest_6_1_14: DocumentTest
 export const mandatoryTest_6_1_15: DocumentTest
+export const mandatoryTest_6_1_16: DocumentTest
 export const mandatoryTest_6_1_17: DocumentTest
 export const mandatoryTest_6_1_18: DocumentTest
 export const mandatoryTest_6_1_19: DocumentTest
@@ -421,7 +416,9 @@ export const mandatoryTest_6_1_27_11: DocumentTest
 export const mandatoryTest_6_1_27_12: DocumentTest
 export const mandatoryTest_6_1_27_14: DocumentTest
 export const mandatoryTest_6_1_27_15: DocumentTest
+export const mandatoryTest_6_1_27_16: DocumentTest
 export const mandatoryTest_6_1_27_17: DocumentTest
+export const mandatoryTest_6_1_27_19: DocumentTest
 export const mandatoryTest_6_1_28: DocumentTest
 export const mandatoryTest_6_1_29: DocumentTest
 export const mandatoryTest_6_1_30: DocumentTest
@@ -437,6 +434,7 @@ export const mandatoryTest_6_1_39: DocumentTest
 export const mandatoryTest_6_1_40: DocumentTest
 export const mandatoryTest_6_1_41: DocumentTest
 export const mandatoryTest_6_1_43: DocumentTest
+export const mandatoryTest_6_1_52: DocumentTest
 ```
 
 [(back to top)](#bsi-csaf-validator-lib)
@@ -462,6 +460,7 @@ export const recommendedTest_6_2_16: DocumentTest
 export const recommendedTest_6_2_17: DocumentTest
 export const recommendedTest_6_2_18: DocumentTest
 export const recommendedTest_6_2_22: DocumentTest
+export const recommendedTest_6_2_23: DocumentTest
 ```
 
 [(back to top)](#bsi-csaf-validator-lib)
@@ -480,6 +479,7 @@ export const informativeTest_6_3_8: DocumentTest
 export const informativeTest_6_3_9: DocumentTest
 export const informativeTest_6_3_10: DocumentTest
 export const informativeTest_6_3_11: DocumentTest
+export const informativeTest_6_3_12: DocumentTest
 ```
 
 [(back to top)](#bsi-csaf-validator-lib)
