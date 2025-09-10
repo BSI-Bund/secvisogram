@@ -1,5 +1,5 @@
 import Ajv from 'ajv/dist/jtd.js'
-import csafAjv from '../../lib/shared/csafAjv.js'
+import csafAjv from '../csafAjv.js'
 
 const ajv = new Ajv()
 
