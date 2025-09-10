@@ -1,4 +1,4 @@
-import csafAjv from '../../lib/shared/csafAjv.js'
+import csafAjv from '../csafAjv.js'
 import schema from './csaf_2_1_strict/schema.js'
 
 const validate = csafAjv.compile(schema)
