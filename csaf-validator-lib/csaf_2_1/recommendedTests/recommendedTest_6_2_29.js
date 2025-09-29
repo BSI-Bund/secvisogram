@@ -1,5 +1,5 @@
 import Ajv from 'ajv/dist/jtd.js'
-import {NIL_UUID} from "../sharingGroup.js";
+import { NIL_UUID } from '../sharingGroup.js'
 
 const ajv = new Ajv()
 
@@ -29,13 +29,13 @@ const validateInput = ajv.compile(inputSchema)
 /**
  * Test for the optional test 6.2.28
  * The Nil UUID should not be used as sharing group id.
- * 
+ *
  * @param {any} doc
  */
 export function recommendedTest_6_2_29(doc) {
   const ctx = {
     warnings:
-    /** @type {Array<{ instancePath: string; message: string }>} */ ([]),
+      /** @type {Array<{ instancePath: string; message: string }>} */ ([]),
   }
 
   if (!validateInput(doc)) {
