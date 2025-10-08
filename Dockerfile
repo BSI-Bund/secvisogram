@@ -9,7 +9,7 @@ RUN apk update; \
 COPY .git /work/app/.git
 
 
-# Set the working directory. If it doesn't exists, it'll be created
+# Set the working directory.
 WORKDIR /work/app
 # copy directories need for build
 COPY app /work/app
