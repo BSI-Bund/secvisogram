@@ -1,4 +1,10 @@
+// created with: python ./csaf/csaf_2.1/test/generate_strict_schema.py ./csaf/csaf_2.1/json_schema/csaf.json > ./csaf_2_1/schemaTests/csaf_2_1_strict/schema.json
 export default {
+  $id: 'https://docs.oasis-open.org/csaf/csaf/v2.1/schema/csaf.json?strict',
+  $schema: 'https://docs.oasis-open.org/csaf/csaf/v2.1/schema/meta.json',
+  additionalProperties: false,
+  description:
+    'Representation of security advisory information as a JSON document.',
   $defs: {
     acknowledgments_t: {
       description: 'Contains a list of acknowledgment elements.',
@@ -131,7 +137,7 @@ export default {
       properties: {
         name: {
           description:
-            'The value should be the product\u2019s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.',
+            'The value should be the product\u00e2\u20ac\u2122s full canonical name, including version number and other attributes, as it would be used in a human-friendly document.',
           examples: [
             'Cisco AnyConnect Secure Mobility Client 2.3.185',
             'Microsoft Host Integration Server 2006 Service Pack 1',
@@ -500,11 +506,6 @@ export default {
       type: 'string',
     },
   },
-  $id: 'https://docs.oasis-open.org/csaf/csaf/v2.1/schema/csaf.json?strict',
-  $schema: 'https://docs.oasis-open.org/csaf/csaf/v2.1/schema/meta.json',
-  additionalProperties: false,
-  description:
-    'Representation of security advisory information as a JSON document.',
   properties: {
     $schema: {
       description:
@@ -528,7 +529,7 @@ export default {
         aggregate_severity: {
           additionalProperties: false,
           description:
-            "Is a vehicle that is provided by the document producer to convey the urgency and criticality with which the one or more vulnerabilities reported should be addressed. It is a document-level metric and applied to the document as a whole \u2014 not any specific vulnerability. The range of values in this field is defined according to the document producer's policies and procedures.",
+            "Is a vehicle that is provided by the document producer to convey the urgency and criticality with which the one or more vulnerabilities reported should be addressed. It is a document-level metric and applied to the document as a whole \u00e2\u20ac\u201d not any specific vulnerability. The range of values in this field is defined according to the document producer's policies and procedures.",
           properties: {
             namespace: {
               description: 'Points to the namespace so referenced.',
@@ -651,7 +652,7 @@ export default {
             },
           },
           required: ['tlp'],
-          title: 'Rules for sharing document',
+          title: 'Rules for document sharing',
           type: 'object',
         },
         lang: {
@@ -1316,6 +1317,7 @@ export default {
                   properties: {
                     cvss_v2: {
                       $ref: 'https://www.first.org/cvss/cvss-v2.0.json',
+                      title: 'CVSS v2',
                     },
                     cvss_v3: {
                       oneOf: [
@@ -1326,9 +1328,11 @@ export default {
                           $ref: 'https://www.first.org/cvss/cvss-v3.1.json',
                         },
                       ],
+                      title: 'CVSS v3',
                     },
                     cvss_v4: {
-                      $ref: 'https://www.first.org/cvss/cvss-v4.0.json',
+                      $ref: 'https://www.first.org/cvss/cvss-v4.0.1.json',
+                      title: 'CVSS v4',
                     },
                     epss: {
                       additionalProperties: false,
@@ -1360,8 +1364,16 @@ export default {
                       title: 'EPSS',
                       type: 'object',
                     },
-                    ssvc_v1: {
-                      $ref: 'https://certcc.github.io/SSVC/data/schema/v1/Decision_Point_Value_Selection-1-0-1.schema.json',
+                    qualitative_severity_rating: {
+                      description:
+                        'Contains an assessment of the severity of the vulnerability regarding the products on a qualitative scale.',
+                      enum: ['critical', 'high', 'low', 'medium', 'none'],
+                      title: 'Qualitative Severity Rating',
+                      type: 'string',
+                    },
+                    ssvc_v2: {
+                      $ref: 'https://certcc.github.io/SSVC/data/schema/v2/Decision_Point_Value_Selection-2-0-0.schema.json',
+                      title: 'SSVC v2',
                     },
                   },
                   title: 'Content',
@@ -1520,7 +1532,7 @@ export default {
                 restart_required: {
                   additionalProperties: false,
                   description:
-                    'Provides information on category of restart is required by this remediation to become effective.',
+                    'Provides information on the category of restart required by this remediation to become effective.',
                   properties: {
                     category: {
                       description:
