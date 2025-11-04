@@ -1,3 +1,3 @@
-/** @typedef {import('#lib/app/SecvisogramPage/shared/types.js').TypedValidationError} TypedValidationError */
+/** @typedef {import('../SecvisogramPage/shared/types.js').TypedValidationError} TypedValidationError */
 
 export {}
