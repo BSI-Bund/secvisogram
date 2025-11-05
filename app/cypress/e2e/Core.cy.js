@@ -14,6 +14,8 @@ describe('Core', () => {
         const result = await core.document.validate({
           document: documentTest.content,
         })
+        cy.log("result", JSON.stringify(result))
+        console.log(JSON.stringify(result))
         expect(result.isValid).to.equal(documentTest.valid)
         if (typeof documentTest.expectedNumberOfErrors === 'number') {
           expect(
@@ -36,6 +38,8 @@ describe('Core', () => {
         const result = await core.document.validate({
           document: document.content,
         })
+        cy.log("result", JSON.stringify(result))
+        console.log(JSON.stringify(result))
         expect(result.isValid).to.equal(document.valid)
         if (document.valid) {
           expect(result.errors).to.have.lengthOf(0)

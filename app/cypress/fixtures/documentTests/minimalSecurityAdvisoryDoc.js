@@ -9,8 +9,11 @@ export default {
   product_tree: {
     full_product_names: [
       {
-        product_id: 'CSAFPID-0001',
         name: 'Some sample product',
+        product_id: 'CSAFPID-0001',
+        product_identification_helper: {
+          purl: 'pkg:maven/org.apache.commons/commons-lang3@3.12.0',
+        },
       },
     ],
   },
