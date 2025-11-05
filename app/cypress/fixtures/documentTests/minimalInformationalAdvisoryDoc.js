@@ -7,10 +7,10 @@ export default {
     csaf_version: '2.0',
     distribution: {
       tlp: {
-        "label": "AMBER"
-      }
+        label: 'AMBER',
+      },
     },
-    lang: "de",
+    lang: 'de',
     notes: [
       {
         category: 'description',
@@ -27,12 +27,12 @@ export default {
       {
         category: 'self',
         summary: 'The canonical URL.',
-        url: "https://example.com/security/data/csaf/2024/oasis_csaf_tc-1.json"
+        url: 'https://example.com/security/data/csaf/2024/oasis_csaf_tc-1.json',
       },
       {
-        category: "external",
-        summary: "A valid reference.",
-        url: "https://example.net"
+        category: 'external',
+        summary: 'A valid reference.',
+        url: 'https://example.net',
       },
     ],
     title: 'Minimal informational advisory valid',

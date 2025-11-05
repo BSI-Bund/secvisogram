@@ -4,10 +4,10 @@ export default {
     csaf_version: '2.0',
     distribution: {
       tlp: {
-        "label": "AMBER"
-      }
+        label: 'AMBER',
+      },
     },
-    lang: "de",
+    lang: 'de',
     publisher: {
       category: 'other',
       name: 'Secvisogram Automated Tester',
@@ -15,10 +15,10 @@ export default {
     },
     references: [
       {
-        category: "self",
-        summary: "A canonical URL.",
-        url: "https://example.com/security/data/csaf/2024/oasis_csaf_tc-1.json"
-      }
+        category: 'self',
+        summary: 'A canonical URL.',
+        url: 'https://example.com/security/data/csaf/2024/oasis_csaf_tc-1.json',
+      },
     ],
     title: 'Minimal valid',
     tracking: {

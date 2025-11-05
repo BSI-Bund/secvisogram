@@ -843,10 +843,8 @@ export default [
             name: 'Product A',
             product_id: 'CSAFPID-9080700',
             product_identification_helper: {
-              serial_numbers: [
-                "98765?43210-BCD*"
-              ]
-            }
+              serial_numbers: ['98765?43210-BCD*'],
+            },
           },
         ],
       },
@@ -890,10 +888,8 @@ export default [
             name: 'Product A',
             product_id: 'CSAFPID-9080700',
             product_identification_helper: {
-              serial_numbers: [
-                "98765?43210-BCD*"
-              ]
-            }
+              serial_numbers: ['98765?43210-BCD*'],
+            },
           },
         ],
       },
@@ -1440,28 +1436,22 @@ export default [
             name: 'Product A',
             product_id: 'CSAFPID-9080700',
             product_identification_helper: {
-              serial_numbers: [
-                "98765?43210-BCD*"
-              ]
-            }
+              serial_numbers: ['98765?43210-BCD*'],
+            },
           },
           {
             name: 'Product B',
             product_id: 'CSAFPID-9080701',
             product_identification_helper: {
-              serial_numbers: [
-                "98765?43210-BCE*"
-              ]
-            }
+              serial_numbers: ['98765?43210-BCE*'],
+            },
           },
           {
             name: 'Product C',
             product_id: 'CSAFPID-9080702',
             product_identification_helper: {
-              serial_numbers: [
-                "98765?43210-BCF*"
-              ]
-            }
+              serial_numbers: ['98765?43210-BCF*'],
+            },
           },
         ],
         product_groups: [
