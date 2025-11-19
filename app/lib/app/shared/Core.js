@@ -1,12 +1,16 @@
 import { compose, set } from 'lodash/fp.js'
 import * as basic from '../../../../csaf-validator-lib/basic.js'
+import * as optionalTests from '../../../../csaf-validator-lib/lib/optionalTests.js'
 import strip from '../../../../csaf-validator-lib/strip.js'
 import validate from '../../../../csaf-validator-lib/validate.js'
 import doc_max from './Core/doc-max.json'
 import doc_min from './Core/doc-min.json'
 import { DocumentEntity } from './Core/entities.js'
 
-const INSTANT_TESTS = Object.values(basic)
+const INSTANT_TESTS =
+  /** @type {import('../../../../csaf-validator-lib/lib/shared/types.js').DocumentTest[]} */ (
+    Object.values(basic)
+  ).concat(Object.values(optionalTests))
 
 const secvisogramName = 'Secvisogram'
 
@@ -31,6 +35,9 @@ const setGeneratorFields = (/** @type {Date} */ date) =>
  * Logic which can be abstracted without UI-interaction should be placed here
  * to be tested independently.
  */
+
+/** @typedef {import('./typedValidationError.js').TypedValidationError} TypedValidationError */
+
 export default function createCore() {
   return {
     document: {
@@ -39,19 +46,34 @@ export default function createCore() {
        *
        * @param {object} params
        * @param {{}} params.document
-       * @returns {Promise<{
-       *   isValid: boolean;
-       *   errors: {
-       *     message?: string | undefined;
-       *     instancePath: string;
-       *   }[];
-       * }>}
        */
       async validate({ document }) {
         const res = await validate(INSTANT_TESTS, document)
         return {
           isValid: res.isValid,
-          errors: res.tests.flatMap((t) => t.errors),
+          /** @type {TypedValidationError[]} */
+          errors: res.tests.flatMap((t) =>
+            t.errors
+              .map(
+                (e) =>
+                  /** @type {TypedValidationError} */ ({ type: 'error', ...e })
+              )
+              .concat(
+                t.warnings.map(
+                  (e) =>
+                    /** @type {TypedValidationError} */ ({
+                      type: 'warning',
+                      ...e,
+                    })
+                )
+              )
+              .concat(
+                t.infos.map(
+                  (e) =>
+                    /** @type {TypedValidationError} */ ({ type: 'info', ...e })
+                )
+              )
+          ),
         }
       },
 

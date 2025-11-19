@@ -14,6 +14,7 @@
 
 /** @type {Map<string, () => Promise<{ default: CweCatalogue }>>} */
 export const cwecMap = new Map([
+  ['4.18', () => import('./cwec/4.18.js')],
   ['4.17', () => import('./cwec/4.17.js')],
   ['4.16', () => import('./cwec/4.16.js')],
   ['4.15', () => import('./cwec/4.15.js')],
