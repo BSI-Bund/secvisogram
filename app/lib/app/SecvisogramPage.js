@@ -11,11 +11,6 @@ import HistoryContext from './shared/context/HistoryContext.js'
 import createCore from './shared/Core.js'
 import downloadFile from './shared/download.js'
 import sitemap from './shared/sitemap.js'
-
-/**
- * @typedef {import('./SecvisogramPage/shared/types').ValidationError} ValidationError
- */
-
 const core = createCore()
 
 const doc = core.document.newDocMin()
@@ -43,7 +38,8 @@ const SecvisogramPage = () => {
      *   onCancel(): void
      * } | null}
      */ (null),
-    errors: /** @type {ValidationError[]} */ ([]),
+    errors:
+      /** @type {import('./shared/typedValidationError.js').TypedValidationError[]} */ ([]),
     stripResult: /**
      * @type {{
      *    strippedPaths: Array<{ instancePath: string; message: string; error: boolean }>
@@ -180,7 +176,7 @@ const SecvisogramPage = () => {
             setState((state) => ({
               ...state,
               isLoading: false,
-              errors: /** @type {ValidationError[]} */ (result.errors),
+              errors: result.errors,
             }))
             pushState(null, '', sitemap.home.href([['tab', tab]]))
           })
@@ -193,7 +189,7 @@ const SecvisogramPage = () => {
             .then((result) => {
               setState((state) => ({
                 ...state,
-                errors: /** @type {ValidationError[]} */ (result.errors),
+                errors: result.errors,
               }))
             })
             .catch(handleError)
