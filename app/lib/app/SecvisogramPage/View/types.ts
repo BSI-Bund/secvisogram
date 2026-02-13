@@ -1,12 +1,16 @@
 import React from 'react'
-import { Advisory, AdvisoryState } from '../shared/types.js'
+import {
+  Advisory,
+  AdvisoryState,
+  TypedValidationError,
+} from '../shared/types.js'
 import CsafTab from './CsafTab.js'
 import PreviewTab from './PreviewTab.js'
 
 export interface Props {
   isLoading: boolean
   isTabLocked: boolean
-  errors: import('../shared/types.js').ValidationError[]
+  errors: TypedValidationError[]
   data: {
     doc: unknown
   } | null

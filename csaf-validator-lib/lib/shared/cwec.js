@@ -749,6 +749,10 @@ export default /** @type {const} */ ({
       id: 'CWE-1431',
       name: 'Driving Intermediate Cryptographic State/Results to Hardware Module Outputs',
     },
+    {
+      id: 'CWE-1434',
+      name: 'Insecure Setting of Generative AI/ML Model Inference Parameters',
+    },
     { id: 'CWE-144', name: 'Improper Neutralization of Line Delimiters' },
     { id: 'CWE-145', name: 'Improper Neutralization of Section Delimiters' },
     {
@@ -2130,7 +2134,7 @@ export default /** @type {const} */ ({
     },
     {
       id: 'CWE-942',
-      name: 'Permissive Cross-domain Policy with Untrusted Domains',
+      name: 'Permissive Cross-domain Security Policy with Untrusted Domains',
     },
     {
       id: 'CWE-943',

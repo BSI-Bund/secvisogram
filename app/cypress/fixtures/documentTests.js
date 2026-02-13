@@ -699,12 +699,12 @@ export default [
           ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
-              number: '1.0.0+123',
               date: '2021-01-14T00:00:00.000Z',
+              number: '1',
               summary: 'Summary',
             },
           ],
-          version: '1.0.0+234',
+          version: '1',
         },
       },
     },
@@ -720,8 +720,8 @@ export default [
           ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
-              number: '0.1.0',
               date: '2021-01-14T00:00:00.000Z',
+              number: '0.1.0',
               summary: 'Summary',
             },
           ],
@@ -742,8 +742,8 @@ export default [
           ...minimalCSAFBaseDoc.document.tracking,
           revision_history: [
             {
-              number: '1.0.0',
               date: '2021-01-14T00:00:00.000Z',
+              number: '1.0.0',
               summary: 'Initial version',
             },
           ],
@@ -832,7 +832,7 @@ export default [
     },
   },
 
-  // Passes "6.1.7 Multiple Scores with same Version per Product"
+  // Passes "6.1.7 Multiple Scores with same Version per Product" #30
   {
     valid: true,
     content: {
@@ -840,8 +840,11 @@ export default [
       product_tree: {
         full_product_names: [
           {
-            product_id: 'CSAFPID-9080700',
             name: 'Product A',
+            product_id: 'CSAFPID-9080700',
+            product_identification_helper: {
+              serial_numbers: ['98765?43210-BCD*'],
+            },
           },
         ],
       },
@@ -849,24 +852,24 @@ export default [
         {
           scores: [
             {
-              products: ['CSAFPID-9080700'],
               cvss_v2: {
-                version: '2.0',
-                vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
                 baseScore: 10,
+                vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
+                version: '2.0',
               },
+              products: ['CSAFPID-9080700'],
             },
           ],
         },
         {
           scores: [
             {
-              products: ['CSAFPID-9080700'],
               cvss_v2: {
-                version: '2.0',
-                vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
                 baseScore: 10,
+                vectorString: 'AV:N/AC:L/Au:N/C:C/I:C/A:C',
+                version: '2.0',
               },
+              products: ['CSAFPID-9080700'],
             },
           ],
         },
@@ -882,8 +885,11 @@ export default [
       product_tree: {
         full_product_names: [
           {
-            product_id: 'CSAFPID-9080700',
             name: 'Product A',
+            product_id: 'CSAFPID-9080700',
+            product_identification_helper: {
+              serial_numbers: ['98765?43210-BCD*'],
+            },
           },
         ],
       },
@@ -891,22 +897,22 @@ export default [
         {
           scores: [
             {
-              products: ['CSAFPID-9080700'],
               cvss_v3: {
-                version: '3.1',
-                vectorString: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H',
                 baseScore: 10,
                 baseSeverity: 'CRITICAL',
+                vectorString: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H',
+                version: '3.1',
               },
+              products: ['CSAFPID-9080700'],
             },
             {
-              products: ['CSAFPID-9080700'],
               cvss_v3: {
-                version: '3.0',
-                vectorString: 'CVSS:3.0/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H',
                 baseScore: 6.5,
                 baseSeverity: 'MEDIUM',
+                vectorString: 'CVSS:3.0/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H',
+                version: '3.0',
               },
+              products: ['CSAFPID-9080700'],
             },
           ],
         },
@@ -1427,16 +1433,25 @@ export default [
       product_tree: {
         full_product_names: [
           {
-            product_id: 'CSAFPID-9080700',
             name: 'Product A',
+            product_id: 'CSAFPID-9080700',
+            product_identification_helper: {
+              serial_numbers: ['98765?43210-BCD*'],
+            },
           },
           {
-            product_id: 'CSAFPID-9080701',
             name: 'Product B',
+            product_id: 'CSAFPID-9080701',
+            product_identification_helper: {
+              serial_numbers: ['98765?43210-BCE*'],
+            },
           },
           {
-            product_id: 'CSAFPID-9080702',
             name: 'Product C',
+            product_id: 'CSAFPID-9080702',
+            product_identification_helper: {
+              serial_numbers: ['98765?43210-BCF*'],
+            },
           },
         ],
         product_groups: [
@@ -1671,10 +1686,6 @@ export default [
       ...doc,
       vulnerabilities: [
         {
-          title: 'A vulnerability item without a note',
-          product_status: {
-            fixed: ['CSAFPID-0001'],
-          },
           ...(doc === minimalVexDoc
             ? {
                 ids: [
@@ -1685,6 +1696,10 @@ export default [
                 ],
               }
             : {}),
+          product_status: {
+            fixed: ['CSAFPID-0001'],
+          },
+          title: 'A vulnerability item without a note',
         },
       ],
     },
@@ -1697,13 +1712,13 @@ export default [
       ...minimalSecurityAdvisoryDoc,
       vulnerabilities: [
         {
-          title: 'A vulnerability item without a product status',
           notes: [
             {
               category: 'description',
               text: 'My note',
             },
           ],
+          title: 'A vulnerability item without a product status',
         },
       ],
     },
@@ -1712,24 +1727,24 @@ export default [
   {
     title: `Fails "6.1.27.7 VEX Product Status" (product_status attribute is missing)`,
     valid: false,
-    expectedNumberOfErrors: 1,
+    expectedNumberOfErrors: 2, // needs a product_status attribute, is not referenced
     content: {
       ...minimalVexDoc,
       vulnerabilities: [
         {
-          title: 'A vulnerability item with invalid product_status',
-          notes: [
-            {
-              category: 'description',
-              text: 'My note',
-            },
-          ],
           ids: [
             {
               system_name: 'GitHub Issue',
               text: 'oasis-tcs/csaf#210',
             },
           ],
+          notes: [
+            {
+              category: 'description',
+              text: 'My note',
+            },
+          ],
+          title: 'A vulnerability item with invalid product_status',
         },
       ],
     },
@@ -1743,23 +1758,23 @@ export default [
       ...minimalVexDoc,
       vulnerabilities: [
         {
-          title: 'A vulnerability item with invalid product_status',
-          notes: [
-            {
-              category: 'description',
-              text: 'My note',
-            },
-          ],
           ids: [
             {
               system_name: 'GitHub Issue',
               text: 'oasis-tcs/csaf#210',
             },
           ],
+          notes: [
+            {
+              category: 'description',
+              text: 'My note',
+            },
+          ],
           product_status: {
             first_fixed: ['CSAFPID-0001'],
             recommended: ['CSAFPID-0001'],
           },
+          title: 'A vulnerability item with invalid product_status',
         },
       ],
     },
@@ -1773,7 +1788,6 @@ export default [
       ...minimalVexDoc,
       vulnerabilities: [
         {
-          title: 'A vulnerability item with missing cve and id',
           notes: [
             {
               category: 'description',
@@ -1783,6 +1797,7 @@ export default [
           product_status: {
             fixed: ['CSAFPID-0001'],
           },
+          title: 'A vulnerability item with missing cve and id',
         },
       ],
     },

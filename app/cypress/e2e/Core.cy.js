@@ -38,9 +38,13 @@ describe('Core', () => {
         })
         expect(result.isValid).to.equal(document.valid)
         if (document.valid) {
-          expect(result.errors).to.have.lengthOf(0)
+          expect(
+            result.errors.filter((e) => e.type === 'error')
+          ).to.have.lengthOf(0)
         } else {
-          expect(result.errors).have.length.greaterThan(0)
+          expect(
+            result.errors.filter((e) => e.type === 'error')
+          ).have.length.greaterThan(0)
         }
       }
     })
