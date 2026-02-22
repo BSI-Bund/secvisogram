@@ -25,7 +25,7 @@
   "dependencies": {
     "@js-joda/core": "^5.6.1",
     "@js-joda/timezone": "^2.18.2",
-    "ajv": "^8.11.2",
+    "ajv": "^8.18.0",
     "ajv-formats": "^3.0.1",
     "bcp47": "^1.1.2",
     "cvss2js": "^1.1.0",
