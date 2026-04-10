@@ -30,7 +30,7 @@
     "bcp47": "^1.1.2",
     "cvss2js": "^1.1.0",
     "json-pointer": "^0.6.1",
-    "lodash": "^4.17.21",
+    "lodash": "^4.18.1",
     "packageurl-js": "^2.0.1",
     "semver": "^7.5.4",
     "temporal-polyfill": "^0.3.0",
