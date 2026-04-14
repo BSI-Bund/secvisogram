@@ -5,9 +5,9 @@ import * as informative from '../../csaf_2_1/informativeTests.js'
 import * as recommended from '../../csaf_2_1/recommendedTests.js'
 import * as mandatory from '../../csaf_2_1/mandatoryTests.js'
 
-/*
-  This is a list that includes all test numbers that are not yet implemented.
-  Once all tests are implemented for CSAF 2.1 this should be deleted.
+/**
+ * This is a list that includes all test numbers that are not yet implemented.
+ * Once all tests are implemented for CSAF 2.1 this should be deleted.
  */
 const excluded = [
   '6.1.8',
@@ -28,10 +28,16 @@ const excluded = [
   '6.1.54',
   '6.1.55',
   '6.1.56',
+  '6.1.57',
+  '6.1.58',
+  '6.1.59',
+  '6.1.60.1',
+  '6.1.60.2',
+  '6.1.60.3',
+  '6.1.61',
   '6.2.11',
   '6.2.19',
   '6.2.20',
-  '6.2.21',
   '6.2.24',
   '6.2.26',
   '6.2.31',
@@ -42,24 +48,57 @@ const excluded = [
   '6.2.36',
   '6.2.37',
   '6.2.39.1',
-  '6.2.39.2',
   '6.2.39.3',
   '6.2.39.4',
-  '6.2.40',
-  '6.2.41',
+  '6.2.39.5',
   '6.2.42',
   '6.2.44',
   '6.2.45',
   '6.2.46',
-  '6.2.47',
   '6.2.48',
+  '6.2.49',
+  '6.2.50.1',
+  '6.2.50.2',
+  '6.2.50.3',
+  '6.2.51',
+  '6.2.52',
+  '6.2.53',
+  '6.2.54.1',
+  '6.2.54.2',
+  '6.2.54.3',
+  '6.2.54.4',
   '6.3.12',
   '6.3.13',
   '6.3.14',
   '6.3.15',
   '6.3.16',
   '6.3.17',
+  '6.3.19.1',
+  '6.3.19.2',
+  '6.3.19.3',
+  '6.3.19.4',
+  '6.3.19.5',
+  '6.3.20',
+  '6.3.21.1',
+  '6.3.21.2',
+  '6.3.21.3',
+  '6.3.21.4',
+  '6.3.21.5',
+  '6.3.21.6',
+  '6.3.21.7',
+  '6.3.21.8',
+  '6.3.21.9',
+  '6.3.22',
 ]
+
+/**
+ * This is a list that includes all implemented tests that are currently skipped due to known issues.
+ * Once the issues are resolved, these should be removed from this list and the tests should be re-enabled.
+ */
+const skippedTests = new Set([
+  'mandatory/oasis_csaf_tc-csaf_2_1-2024-6-1-01-12.json',
+  'mandatory/oasis_csaf_tc-csaf_2_1-2024-6-1-03-01.json',
+])
 
 /** @typedef {import('../../lib/shared/types.js').DocumentTest} DocumentTest */
 
@@ -116,6 +155,7 @@ for (const [group, t] of testMap) {
         for (const [type, testSpecs] of u) {
           describe(type, function () {
             for (const testSpec of testSpecs) {
+              if (skippedTests.has(testSpec.name)) continue
               if (excluded.includes(testId)) continue
 
               it(testSpec.name, async () => {

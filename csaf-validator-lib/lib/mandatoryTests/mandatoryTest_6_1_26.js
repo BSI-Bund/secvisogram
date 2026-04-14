@@ -21,6 +21,10 @@ export default function mandatoryTest_6_1_26(doc) {
       'informationaladvisory',
       'securityadvisory',
       'vex',
+      'csafsecurityincidentresponse',
+      'csafinformationaladvisory',
+      'csafsecurityadvisory',
+      'csafvex',
     ]
 
     // Skip test if profile is not "CSAF Base" but one of the other profiles or matches exactly "csaf_base"
@@ -40,7 +44,7 @@ export default function mandatoryTest_6_1_26(doc) {
     // Fail on name similarity
     if (
       otherProfileValues.includes(
-        category.replace(/[_-\s]+/g, '').toLowerCase()
+        category.replaceAll(/[_\-\s]+/g, '').toLowerCase()
       )
     ) {
       isValid = false

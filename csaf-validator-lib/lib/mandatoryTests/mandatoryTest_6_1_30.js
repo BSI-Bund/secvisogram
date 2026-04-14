@@ -56,7 +56,7 @@ export default function mandatoryTest_6_1_30(doc) {
       if (versioningSchema !== revisionNumberVersioningSchema) {
         ctx.isValid = false
         ctx.errors.push({
-          instancePath: `/document/tracking/revisions/${revisionIndex}/number`,
+          instancePath: `/document/tracking/revision_history/${revisionIndex}/number`,
           message: 'mixed integer and semantic versioning',
         })
       }

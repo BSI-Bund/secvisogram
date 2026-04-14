@@ -38,7 +38,7 @@ export default function optionalTest_6_2_10(doc) {
   if (!validate(doc)) {
     ctx.warnings.push({
       message: 'missing tlp label',
-      instancePath: '/document',
+      instancePath: '/document/distribution/tlp/label',
     })
   }
 
