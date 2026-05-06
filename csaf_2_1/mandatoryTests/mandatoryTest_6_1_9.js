@@ -1,7 +1,7 @@
 import cvss2js from 'cvss2js'
 import { getEnvironmentalScoreFromVectorString } from '../../lib/shared/cvss2.js'
 import { cvss30 as CVSS30, cvss31 as CVSS31 } from '../../lib/shared/first.js'
-import Ajv from 'ajv/dist/jtd.js'
+import { Ajv } from 'ajv/dist/jtd.js'
 import { calculateCvss4_0_Score } from '../../lib/shared/cvss4.js'
 
 const ajv = new Ajv()

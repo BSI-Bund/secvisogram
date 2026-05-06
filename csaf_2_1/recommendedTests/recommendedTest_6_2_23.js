@@ -1,4 +1,4 @@
-import Ajv from 'ajv/dist/jtd.js'
+import { Ajv } from 'ajv/dist/jtd.js'
 import { cwecMap } from '../../lib/cwec.js'
 
 const ajv = new Ajv()
