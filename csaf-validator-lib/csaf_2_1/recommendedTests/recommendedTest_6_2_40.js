@@ -1,4 +1,4 @@
-import Ajv from 'ajv/dist/jtd.js'
+import { Ajv } from 'ajv/dist/jtd.js'
 import translations from '../../lib/language_specific_translation/translations.js'
 import bcp47 from 'bcp47'
 

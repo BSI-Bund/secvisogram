@@ -50,11 +50,11 @@ describe('mandatoryTest_6_1_13', function () {
     )
   })
 
-  it('validates relationships and skips invalid ones', function () {
+  it('validates product_paths and skips invalid ones', function () {
     assert.equal(
       mandatoryTest_6_1_13({
         product_tree: {
-          relationships: [
+          product_paths: [
             {
               full_product_name: {
                 purls: [

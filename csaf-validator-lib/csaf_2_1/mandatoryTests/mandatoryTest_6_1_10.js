@@ -1,7 +1,7 @@
 import * as cvss2 from '../../lib/shared/cvss2.js'
 import * as cvss3 from '../../lib/shared/cvss3.js'
 import * as cvss4 from '../../lib/shared/cvss4.js'
-import Ajv from 'ajv/dist/jtd.js'
+import { Ajv } from 'ajv/dist/jtd.js'
 
 /** @typedef {import('ajv/dist/jtd.js').JTDDataType<typeof inputSchema>} InputSchema */
 

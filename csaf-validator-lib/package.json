@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "pretest": "tsc -b .",
+    "prepublishOnly": "tsc -b .",
     "test": "prettier --check . && node scripts/test.js",
     "pretest-report": "tsc -b .",
     "test-report": "prettier --check . && node scripts/test.js --reporter json > test-results.json",
@@ -12,6 +13,100 @@
   },
   "repository": {
     "url": "https://github.com/secvisogram/csaf-validator-lib"
+  },
+  "files": [
+    "lib",
+    "schemas",
+    "build/*.d.ts",
+    "build/lib",
+    "build/schemas",
+    "build/csaf_2_1",
+    "build/shared",
+    "build/hunspell",
+    "basic.js",
+    "cwe.js",
+    "extended.js",
+    "full.js",
+    "hunspell.js",
+    "hunspell/*",
+    "informativeTests.js",
+    "mandatoryTests.js",
+    "optionalTests.js",
+    "README.md",
+    "schemaTests.js",
+    "strip.js",
+    "validate.js",
+    "validateStrict.js",
+    "csaf_2_1"
+  ],
+  "exports": {
+    "./basic.js": {
+      "types": "./build/basic.d.ts",
+      "import": "./basic.js"
+    },
+    "./cwe.js": {
+      "types": "./build/cwe.d.ts",
+      "import": "./cwe.js"
+    },
+    "./extended.js": {
+      "types": "./build/extended.d.ts",
+      "import": "./extended.js"
+    },
+    "./full.js": {
+      "types": "./build/full.d.ts",
+      "import": "./full.js"
+    },
+    "./hunspell.js": {
+      "types": "./build/hunspell.d.ts",
+      "import": "./hunspell.js"
+    },
+    "./informativeTests.js": {
+      "types": "./build/informativeTests.d.ts",
+      "import": "./informativeTests.js"
+    },
+    "./mandatoryTests.js": {
+      "types": "./build/mandatoryTests.d.ts",
+      "import": "./mandatoryTests.js"
+    },
+    "./optionalTests.js": {
+      "types": "./build/optionalTests.d.ts",
+      "import": "./optionalTests.js"
+    },
+    "./schemaTests.js": {
+      "types": "./build/schemaTests.d.ts",
+      "import": "./schemaTests.js"
+    },
+    "./strip.js": {
+      "types": "./build/strip.d.ts",
+      "import": "./strip.js"
+    },
+    "./validate.js": {
+      "types": "./build/validate.d.ts",
+      "import": "./validate.js"
+    },
+    "./validateStrict.js": {
+      "types": "./build/validateStrict.d.ts",
+      "import": "./validateStrict.js"
+    },
+    "./csaf_2_1/*.js": {
+      "types": "./build/csaf_2_1/*.d.ts",
+      "import": "./csaf_2_1/*.js"
+    },
+    "./lib/cwec.js": {
+      "types": "./build/lib/cwec.d.ts",
+      "import": "./lib/cwec.js"
+    },
+    "./lib/shared/cwec.js": {
+      "types": "./build/lib/shared/cwec.d.ts",
+      "import": "./lib/shared/cwec.js"
+    },
+    "./lib/shared/cvss2.js": {
+      "types": "./build/lib/shared/cvss2.d.ts",
+      "import": "./lib/shared/cvss2.js"
+    },
+    "./lib/shared/types.js": {
+      "types": "./build/lib/shared/types.d.ts"
+    }
   },
   "keywords": [
     "csaf",
@@ -49,8 +144,8 @@
     "chai": "^4.3.7",
     "mocha": "^12.0.0-beta-9",
     "prettier": "^2.8.1",
-    "typescript": "^5.7.3",
+    "typescript": "^6.0.3",
     "xml2js": "^0.5.0"
   },
-  "version": "2.0.22"
+  "version": "2.0.23"
 }

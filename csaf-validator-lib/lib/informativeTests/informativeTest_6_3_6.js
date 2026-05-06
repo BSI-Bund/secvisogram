@@ -1,4 +1,4 @@
-import Ajv from 'ajv/dist/jtd.js'
+import { Ajv } from 'ajv/dist/jtd.js'
 import testURL from './shared/testURL.js'
 
 const ajv = new Ajv()

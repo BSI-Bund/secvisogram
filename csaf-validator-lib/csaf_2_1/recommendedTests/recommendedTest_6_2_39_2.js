@@ -1,4 +1,4 @@
-import Ajv from 'ajv/dist/jtd.js'
+import { Ajv } from 'ajv/dist/jtd.js'
 import {
   containsOneNoteWithTitleAndCategory,
   getTranslationInDocumentLang,

@@ -1,4 +1,4 @@
-import Ajv from 'ajv/dist/jtd.js'
+import { Ajv } from 'ajv/dist/jtd.js'
 
 /*
   The maximum allowed nesting level of branches.
@@ -60,7 +60,7 @@ export function mandatoryTest_6_1_34(doc) {
    * This recursive function checks if the given branch is too deep. A maximum of 30
    * levels is allowed.
    *
-   * @param {import('./mandatoryTest_6_1_34/types').TypeOf<typeof validateBranch>} branch
+   * @param {import('./mandatoryTest_6_1_34/types.js').TypeOf<typeof validateBranch>} branch
    * @param {string} prefix The json path to the given branch.
    *    Is used to generate the error messages.
    */

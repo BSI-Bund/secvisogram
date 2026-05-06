@@ -1,4 +1,4 @@
-import Ajv from 'ajv/dist/jtd.js'
+import { Ajv } from 'ajv/dist/jtd.js'
 
 const ajv = new Ajv()
 
@@ -47,7 +47,7 @@ const inputSchema = /** @type {const} */ ({
         full_product_names: {
           elements: fullProductNameSchema,
         },
-        relationships: {
+        product_paths: {
           elements: {
             additionalProperties: true,
             optionalProperties: {
@@ -63,8 +63,8 @@ const inputSchema = /** @type {const} */ ({
 const validate = ajv.compile(inputSchema)
 
 /**
- * @typedef {import('ajv/dist/core').JTDDataType<typeof branchSchema>} Branch
- * @typedef {import('ajv/dist/core').JTDDataType<typeof fullProductNameSchema>} FullProductName
+ * @typedef {import('ajv/dist/core.js').JTDDataType<typeof branchSchema>} Branch
+ * @typedef {import('ajv/dist/core.js').JTDDataType<typeof fullProductNameSchema>} FullProductName
  */
 
 /**
@@ -136,11 +136,11 @@ export function mandatoryTest_6_1_44(doc) {
     )
   })
 
-  doc.product_tree?.relationships?.forEach((relationship, index) => {
-    const fullProductName = relationship.full_product_name
+  doc.product_tree?.product_paths?.forEach((productPath, index) => {
+    const fullProductName = productPath.full_product_name
     if (fullProductName) {
       checkFullProductName(
-        `/product_tree/relationships/${index}/full_product_name`,
+        `/product_tree/product_paths/${index}/full_product_name`,
         fullProductName
       )
     }

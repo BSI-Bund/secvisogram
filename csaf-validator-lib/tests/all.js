@@ -1,4 +1,4 @@
-import Ajv from 'ajv'
+import { Ajv } from 'ajv'
 import chai from 'chai'
 import { getGlobalDispatcher, setGlobalDispatcher } from 'undici'
 import * as informativeTests from '../informativeTests.js'

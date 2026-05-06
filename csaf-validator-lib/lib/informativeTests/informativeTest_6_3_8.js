@@ -1,4 +1,4 @@
-import Ajv from 'ajv/dist/jtd.js'
+import { Ajv } from 'ajv/dist/jtd.js'
 import { execFile } from 'node:child_process'
 import bcp47 from 'bcp47'
 

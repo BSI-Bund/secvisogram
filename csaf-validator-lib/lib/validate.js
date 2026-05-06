@@ -1,11 +1,11 @@
 /**
- * @param {Array<import('./shared/types').DocumentTest>} tests
+ * @param {Array<import('./shared/types.js').DocumentTest>} tests
  * @param {any} doc
  */
 export default async function (tests, doc) {
   let isValid = true
   const testResults =
-    /** @type {({ name: string } & import('./shared/types').Result)[]} */ ([])
+    /** @type {({ name: string } & import('./shared/types.js').Result)[]} */ ([])
 
   for (const test of tests) {
     const result = await test(doc)

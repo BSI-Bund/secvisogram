@@ -41,6 +41,29 @@ export function containsOneNoteWithTitleAndCategory(
 }
 
 /**
+ *  test whether at least one item in document references exists that starts with the given summary
+ *  and has the given category.
+ * @param {({} & { category?: string | undefined; summary?: string | undefined; } & Record<string, unknown>)[]} references
+ * @param {string} summaryStartsWith
+ * @param {string} category
+ * @returns {boolean} True if the reference was found, false otherwise
+ */
+export function existsReferenceWithSummaryAndCategory(
+  references,
+  summaryStartsWith,
+  category
+) {
+  return (
+    references.filter(
+      (reference) =>
+        reference.category === category &&
+        reference.summary &&
+        reference.summary.startsWith(summaryStartsWith)
+    ).length > 0
+  )
+}
+
+/**
  * Get the language specific translation of the given i18nKey
  * @param {{ document: { lang?: string; }; }} doc
  * @param {string} i18nKey
