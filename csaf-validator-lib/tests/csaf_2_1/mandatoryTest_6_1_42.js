@@ -11,6 +11,26 @@ describe('mandatoryTest_6_1_42', function () {
     assert.equal(mandatoryTest_6_1_42({ product_tree: 'mydoc' }).isValid, true)
   })
 
+  it('validates product_paths and skips invalid ones', function () {
+    assert.equal(
+      mandatoryTest_6_1_42({
+        product_tree: {
+          product_paths: [
+            {
+              full_product_name: {
+                purls: [
+                  'pkg:oci/product-A@sha256%3Add134261219b2?repository_url=https://registry.example.com',
+                ],
+              },
+            },
+            {},
+          ],
+        },
+      }).isValid,
+      true
+    )
+  })
+
   it('test checkPurls', function () {
     expect(checkPurls([]), 'empty purl array').to.eql([])
     expect(checkPurls(['invalid']), 'invalid PURL').to.eql([])

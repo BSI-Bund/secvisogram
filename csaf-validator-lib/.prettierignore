@@ -7,4 +7,5 @@
 /.venv
 /csaf
 **/*.json
+!package.json
 /lib/shared/first

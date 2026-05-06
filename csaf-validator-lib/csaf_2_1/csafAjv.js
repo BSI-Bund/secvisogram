@@ -1,5 +1,5 @@
 import addFormats from 'ajv-formats'
-import Ajv2020 from 'ajv/dist/2020.js'
+import { Ajv2020 } from 'ajv/dist/2020.js'
 import cvss_v2_0 from '../schemas/cvss-v2.0.js'
 import cvss_v3_0 from '../schemas/cvss-v3.0.js'
 import cvss_v3_1 from '../schemas/cvss-v3.1.js'
@@ -11,7 +11,7 @@ import ssvcDecisionPointValueSelection from './csafAjv/Decision_Point_Value_Sele
 import { timestampRegex, validateTimestamp } from './dateHelper.js'
 
 const csafAjv = new Ajv2020({ strict: false, allErrors: true })
-addFormats(csafAjv)
+addFormats.default(csafAjv)
 csafAjv.addMetaSchema(
   draft_07_schema,
   'http://json-schema.org/draft-07/schema#'

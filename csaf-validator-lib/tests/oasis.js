@@ -5,7 +5,7 @@ import * as mandatory from '../mandatoryTests.js'
 import { expect } from 'chai'
 import { readFileSync } from 'fs'
 
-/** @typedef {import('../lib/shared/types').DocumentTest} DocumentTest */
+/** @typedef {import('../lib/shared/types.js').DocumentTest} DocumentTest */
 
 /** @typedef {Map<string, DocumentTest>} TestMap */
 

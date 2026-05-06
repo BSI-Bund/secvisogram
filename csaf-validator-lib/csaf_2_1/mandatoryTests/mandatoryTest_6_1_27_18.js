@@ -1,4 +1,4 @@
-import Ajv from 'ajv/dist/jtd.js'
+import { Ajv } from 'ajv/dist/jtd.js'
 import bcp47 from 'bcp47'
 
 const ajv = new Ajv()

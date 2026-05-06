@@ -15,7 +15,7 @@ declare module 'bcp47' {
     } | null
   }
 
-  export = bcp47
+  export default bcp47
 }
 
 declare module 'cvss2js' {
@@ -25,5 +25,5 @@ declare module 'cvss2js' {
     getEnvironmentalScore: (input: string | {}) => number
   }
 
-  export = cvss2js
+  export default cvss2js
 }
