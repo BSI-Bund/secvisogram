@@ -3,6 +3,5 @@
 /app/coverage
 /app/dist
 build
-/csaf-validator-lib
 /data
 /docs/*

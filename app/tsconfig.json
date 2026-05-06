@@ -70,7 +70,6 @@
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
-  "references": [{ "path": "../csaf-validator-lib" }],
   "include": ["**/*.js", "**/*.ts", "**/*.tsx", "**/*.json"],
   "exclude": ["node_modules", "dist", "postcss.config.js", "build", "coverage"]
 }

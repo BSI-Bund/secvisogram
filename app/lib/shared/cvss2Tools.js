@@ -1,5 +1,5 @@
+import * as cvss2 from '@secvisogram/csaf-validator-lib/lib/shared/cvss2.js'
 import cvss2js from 'cvss2js'
-import * as cvss2 from '../../../csaf-validator-lib/lib/shared/cvss2.js'
 
 /** @typedef {(typeof cvss2.mapping)[number][0]} CVSSField */
 /** @typedef {(typeof cvss2.mapping)[number][1]} CVSSVectorStringKey */
