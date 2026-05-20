@@ -1,14 +1,14 @@
+import * as basic from '@secvisogram/csaf-validator-lib/csaf_2_1/basic.js'
+import * as recommendedTests from '@secvisogram/csaf-validator-lib/csaf_2_1/recommendedTests.js'
+import libStrip from '@secvisogram/csaf-validator-lib/strip.js'
+import libValidate from '@secvisogram/csaf-validator-lib/validate.js'
 import { compose, set } from 'lodash/fp.js'
-import * as basic from '../../../csaf-validator-lib/csaf_2_1/basic.js'
-import * as recommendedTests from '../../../csaf-validator-lib/csaf_2_1/recommendedTests.js'
-import libStrip from '../../../csaf-validator-lib/strip.js'
-import libValidate from '../../../csaf-validator-lib/validate.js'
 import doc_max from './v2_1/doc-max.json'
 import doc_min from './v2_1/doc-min.json'
 import { DocumentEntity } from './v2_1/entities.js'
 
 const INSTANT_TESTS =
-  /** @type {import('../../../csaf-validator-lib/lib/shared/types.js').DocumentTest[]} */ (
+  /** @type {import('@secvisogram/csaf-validator-lib/lib/shared/types.js').DocumentTest[]} */ (
     Object.values(basic)
   ).concat(Object.values(recommendedTests))
 

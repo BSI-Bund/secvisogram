@@ -1,15 +1,15 @@
 import sortObjectKeys from '#lib/app/shared/sortObjectKeys.js'
+import * as basic from '@secvisogram/csaf-validator-lib/basic.js'
+import * as optionalTests from '@secvisogram/csaf-validator-lib/optionalTests.js'
+import libStrip from '@secvisogram/csaf-validator-lib/strip.js'
+import libValidate from '@secvisogram/csaf-validator-lib/validate.js'
 import { compose, set } from 'lodash/fp.js'
-import * as basic from '../../../csaf-validator-lib/basic.js'
-import * as optionalTests from '../../../csaf-validator-lib/lib/optionalTests.js'
-import libStrip from '../../../csaf-validator-lib/strip.js'
-import libValidate from '../../../csaf-validator-lib/validate.js'
 import doc_max from './v2_0/doc-max.json'
 import doc_min from './v2_0/doc-min.json'
 import { DocumentEntity } from './v2_0/entities.js'
 
 const INSTANT_TESTS =
-  /** @type {import('../../../csaf-validator-lib/lib/shared/types.js').DocumentTest[]} */ (
+  /** @type {import('@secvisogram/csaf-validator-lib/lib/shared/types.js').DocumentTest[]} */ (
     Object.values(basic)
   ).concat(Object.values(optionalTests))
 
