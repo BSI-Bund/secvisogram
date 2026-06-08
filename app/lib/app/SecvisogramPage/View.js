@@ -943,7 +943,9 @@ function View({
                           <option key={uiVersion} value={uiVersion}>
                             {uiVersion === 'v2.1'
                               ? `${uiVersion} (Beta)`
-                              : uiVersion}
+                              : uiVersion === 'v2.0'
+                                ? `${uiVersion}-strict`
+                                : uiVersion}
                           </option>
                         ))}
                       </select>
