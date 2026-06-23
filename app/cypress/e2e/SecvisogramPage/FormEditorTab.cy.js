@@ -1,5 +1,5 @@
+import { uiSchemas } from '#lib/uiSchemas.js'
 import { getObjectMenuPaths } from '../../../lib/app/SecvisogramPage/View/FormEditor/editors/GenericEditor/ObjectEditor.js'
-import schema from '../../../lib/app/SecvisogramPage/View/FormEditor/schema.js'
 import { getLoginEnabledConfig } from '../../fixtures/appConfigData.js'
 import {
   canChangeDocument,
@@ -168,8 +168,8 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     it('can calculate the menu structure for the top level sidebar', function () {
       expect(
         getObjectMenuPaths(
-          /** @type {import('../../../lib/app/SecvisogramPage/View/FormEditor/schema.js').Property} */ (
-            schema
+          /** @type {import('#lib/app/SecvisogramPage/shared/types.js').Property} */ (
+            uiSchemas['v2.0'].content
           ),
         ),
       ).to.deep.equal([
@@ -265,6 +265,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.visit('?tab=EDITOR')
     cy.wait('@wellKnownAppConfig')
 
+    cy.get('#csafVersionSelect').select('v2.0')
     cy.get(`[data-testid="menu_entry-/vulnerabilities-add_item_button"]`).click(
       { force: true },
     )
@@ -281,18 +282,25 @@ describe('SecvisogramPage / FormEditor Tab', function () {
   })
 
   it('shows errors in sidebar according to selected path', function () {
-    cy.intercept(
-      '/.well-known/appspecific/de.bsi.secvisogram.json',
-      getLoginEnabledConfig(),
-    ).as('wellKnownAppConfig')
+    cy.intercept('/.well-known/appspecific/de.bsi.secvisogram.json', {
+      statusCode: 404,
+      body: {},
+    }).as('wellKnownAppConfig')
 
     cy.visit('?tab=EDITOR')
     cy.wait('@wellKnownAppConfig')
 
+    cy.get('#csafVersionSelect').select('v2.1')
+    cy.get('[data-testid="beta_version-confirm_button"]').click()
+
+    cy.get('[data-testid="new_document_button"]').click()
+    cy.get('[data-testid="new_document-templates-select"]').select('MINIMAL')
+    cy.get('[data-testid="new_document-create_document_button"]').click()
+
     cy.get(`[data-testid="document-tracking-infoButton"]`).click()
 
-    // there should be 6 error cards under /document/tracking for the default minimal document
-    cy.get(`[data-testid="error-cards"] div`).should('have.length', 6)
+    // there should be 6 error cards (1 warning) under /document/tracking for the default minimal document
+    cy.get(`[data-testid="error-cards"] div`).should('have.length', 7)
 
     cy.get(`[data-testid="menu_entry-/document/tracking"]`).click()
     cy.get('[data-testid="attribute-document-tracking-version"] input')
@@ -301,7 +309,9 @@ describe('SecvisogramPage / FormEditor Tab', function () {
     cy.get(`[data-testid="document-tracking-version-infoButton"]`).click()
 
     // there should be one error card for /document/tracking/version when it does not match the expected regex
-    cy.get(`[data-testid="error-cards"] div`).should('have.length', 1)
+    cy.get(`[data-testid="error-cards"] div`)
+      .should('have.length', 1)
+      .should('have.class', 'border-red-800')
     cy.get(`[data-testid="error_card-/document/tracking/version-0"]`).should(
       'exist',
     )
@@ -545,6 +555,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
 
   it('fill full product name', function () {
     cy.visit('?tab=EDITOR')
+    cy.get('#csafVersionSelect').select('v2.0')
 
     // check if branch full product name is filled with a generated name
     cy.get(
@@ -898,6 +909,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
   describe('selects first suggestion in combobox when pressing enter', function () {
     it('CWEAttribute Id', function () {
       cy.visit('?tab=EDITOR')
+      cy.get('#csafVersionSelect').select('v2.0')
 
       // create new vulnerability and select CWE section
       cy.get('[data-testid="menu_entry-/vulnerabilities-add_item_button"]')
@@ -937,6 +949,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
 
     it('CWEAttribute Name', function () {
       cy.visit('?tab=EDITOR')
+      cy.get('#csafVersionSelect').select('v2.0')
 
       // create new vulnerability and select CWE section
       cy.get('[data-testid="menu_entry-/vulnerabilities-add_item_button"]')
@@ -975,6 +988,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
 
     it('AttributeId', function () {
       cy.visit('?tab=EDITOR')
+      cy.get('#csafVersionSelect').select('v2.0')
 
       // add product
       cy.get(
@@ -1045,6 +1059,7 @@ describe('SecvisogramPage / FormEditor Tab', function () {
   describe('reconciles typed CWE values on blur', function () {
     const setupCweEditor = () => {
       cy.visit('?tab=EDITOR')
+      cy.get('#csafVersionSelect').select('v2.0')
 
       cy.get('[data-testid="menu_entry-/vulnerabilities-add_item_button"]')
         .as('addVulnerabilityButton')
@@ -1153,6 +1168,73 @@ describe('SecvisogramPage / FormEditor Tab', function () {
             expect(doc.vulnerabilities?.[0]?.cwe?.name).to.equal(expectedName)
           })
         })
+    })
+  })
+
+  describe('reconciles typed dropdown values on blur', function () {
+    const setupCvssEditor = () => {
+      cy.visit('?tab=EDITOR')
+
+      cy.get('[data-testid="menu_entry-/vulnerabilities-add_item_button"]')
+        .as('addVulnerabilityButton')
+        .parent()
+        .then((el) => {
+          el.get(0).style.display = 'flex'
+        })
+      cy.get('@addVulnerabilityButton').click()
+      cy.get('@addVulnerabilityButton')
+        .parent()
+        .then((el) => {
+          el.get(0).style.display = ''
+        })
+
+      cy.get(
+        '[data-testid="menu_entry-/vulnerabilities/0/scores-add_item_button"]',
+      ).click({ force: true })
+      cy.get(
+        '[data-testid="menu_entry-/vulnerabilities/0/scores/0/cvss_v3"]',
+      ).click()
+    }
+
+    it('keeps enum dropdown value and JSON consistent when typed value is invalid on blur', function () {
+      const expectedVersion = '3.1'
+
+      setupCvssEditor()
+
+      cy.get(
+        '[data-testid="attribute-vulnerabilities-0-scores-0-cvss_v3-version"] input',
+      )
+        .clear()
+        .type(expectedVersion)
+      cy.get(
+        '[data-testid="attribute-vulnerabilities-0-scores-0-cvss_v3-version"] input',
+      ).blur()
+
+      cy.get(
+        '[data-testid="attribute-vulnerabilities-0-scores-0-cvss_v3-version"] input',
+      ).should('have.value', expectedVersion)
+
+      cy.get(
+        '[data-testid="attribute-vulnerabilities-0-scores-0-cvss_v3-version"] input',
+      )
+        .clear()
+        .type('4.0')
+      cy.get(
+        '[data-testid="attribute-vulnerabilities-0-scores-0-cvss_v3-version"] input',
+      ).blur()
+
+      cy.get(
+        '[data-testid="attribute-vulnerabilities-0-scores-0-cvss_v3-version"] input',
+      ).should('have.value', expectedVersion)
+
+      cy.get('[data-testid="tab_button-SOURCE"]').click()
+      cy.window().should((/** @type {any} */ win) => {
+        expect(Boolean(win.MONACO_EDITOR)).to.be.true
+        const doc = JSON.parse(win.MONACO_EDITOR.getModel().getValue())
+        expect(
+          doc.vulnerabilities?.[0]?.scores?.[0]?.cvss_v3?.version,
+        ).to.equal(expectedVersion)
+      })
     })
   })
 })

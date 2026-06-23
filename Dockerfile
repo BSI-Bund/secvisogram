@@ -13,7 +13,6 @@ COPY .git /work/app/.git
 WORKDIR /work/app
 # copy directories need for build
 COPY app /work/app
-COPY csaf-validator-lib /work/csaf-validator-lib
 COPY docs /work/docs
 
 # Install the dependencies and build

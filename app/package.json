@@ -2,6 +2,9 @@
   "name": "app",
   "private": true,
   "type": "module",
+  "imports": {
+    "#*.js": "./*.js"
+  },
   "license": "MIT",
   "author": "eXXcellent solutions GmbH",
   "description": "Secvisogram is a web application tool for creating and editing security advisories in the CSAF 2.0 JSON format.",
@@ -14,7 +17,9 @@
   "scripts": {
     "test": "eslint . && cypress run",
     "build": "node scripts/build.js",
-    "dev": "node scripts/dev.js"
+    "dev": "node scripts/dev.js",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -26,6 +31,7 @@
     "@mui/lab": "^5.0.0-alpha.177",
     "@mui/material": "^5.18.0",
     "@mui/styles": "^5.18.0",
+    "@secvisogram/csaf-validator-lib": "^2.0.23",
     "ajv": "^8.18.0",
     "ajv-formats": "^2.1.1",
     "bcp47": "^1.1.2",
@@ -56,12 +62,14 @@
     "@babel/preset-env": "^7.29.0",
     "@babel/preset-react": "^7.28.5",
     "@babel/register": "^7.28.6",
-    "@cypress/code-coverage": "^4.0.0",
+    "@cypress/code-coverage": "^4.0.3",
     "@cypress/webpack-preprocessor": "^5.17.1",
     "@eslint/js": "^9.39.2",
+    "@storybook/addon-webpack5-compiler-swc": "^4.0.2",
+    "@storybook/react-webpack5": "^10.2.17",
     "@tailwindcss/typography": "^0.5.19",
     "@types/chai": "^4.3.20",
-    "@types/cypress__code-coverage": "^3.10.0",
+    "@types/cypress__code-coverage": "^3.10.2",
     "@types/git-revision-webpack-plugin": "^3.0.3",
     "@types/json-pointer": "^1.0.31",
     "@types/lodash": "^4.17.23",
@@ -80,7 +88,7 @@
     "chai": "^4.5.0",
     "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^6.11.0",
-    "cypress": "^15.10.0",
+    "cypress": "^15.14.1",
     "eslint": "^9.39.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
@@ -91,6 +99,7 @@
     "postcss": "^8.4.18",
     "postcss-loader": "^6.2.1",
     "raw-loader": "^4.0.2",
+    "storybook": "^10.2.17",
     "tailwindcss": "^3.4.19",
     "webpack": "^5.105.2",
     "webpack-cli": "^6.0.1",

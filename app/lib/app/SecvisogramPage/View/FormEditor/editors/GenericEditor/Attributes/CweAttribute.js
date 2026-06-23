@@ -1,8 +1,8 @@
 import { Autocomplete, TextField } from '@mui/material'
+import cwec from '@secvisogram/csaf-validator-lib/lib/shared/cwec.js'
 import { parse } from 'json-pointer'
 import { isEmpty, set } from 'lodash/fp.js'
 import React from 'react'
-import cwec from '../../../../../../../../../csaf-validator-lib/lib/shared/cwec.js'
 import pruneEmpty from '../../../../../../shared/pruneEmpty.js'
 import DocumentEditorContext from '../../../../shared/DocumentEditorContext.js'
 import Attribute from './shared/Attribute.js'
@@ -162,6 +162,7 @@ function CwecId({
   }
 
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setInputValue(/** @type {string} */ (value))
   }, [value])
 
@@ -289,6 +290,7 @@ function CwecName({
   }
 
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setInputValue(/** @type string */ (value))
   }, [value])
 

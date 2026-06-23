@@ -3,14 +3,16 @@ import React from 'react'
 import createFileName from '../../../shared/createFileName.js'
 import * as api from '../../shared/api.js'
 import AppErrorContext from '../../shared/context/AppErrorContext.js'
-import HTMLTemplate from './shared/HTMLTemplate.js'
 import { parseMarkdown } from './PreviewTab/markdownParser.js'
+import HTMLTemplate2_0 from './shared/HTMLTemplate2_0.js'
+import HTMLTemplate2_1 from './shared/HTMLTemplate2_1.js'
 
 export default /**
  * @param {import('./ExportDocumentDialog/types.js').Props} props
  */
 ({
   defaultSource = 'CSAFJSON',
+  uiSchemaVersion,
   advisoryState,
   documentIsValid,
   formValues,
@@ -52,9 +54,7 @@ export default /**
   const [isLocal, setIsLocal] = React.useState(
     advisoryState?.type === 'NEW_ADVISORY'
       ? true
-      : formValues !== originalValues
-        ? true
-        : false,
+      : formValues !== originalValues,
   )
 
   const exportButtonProps = {
@@ -284,9 +284,12 @@ export default /**
                     onPrepareDocumentForTemplate(formValues.doc)
                       .then(({ document: doc }) => {
                         const markdownParsedDoc = parseMarkdown(doc)
-                        const html = HTMLTemplate({
-                          document: markdownParsedDoc,
-                        })
+                        const html =
+                          uiSchemaVersion === 'v2.1'
+                            ? HTMLTemplate2_1({ document: doc })
+                            : HTMLTemplate2_0({
+                                document: markdownParsedDoc,
+                              })
                         onExportHTML(html, formValues.doc)
                       })
                       .catch(handleError)
@@ -301,9 +304,12 @@ export default /**
                           return
                         }
                         const markdownParsedDoc = parseMarkdown(doc)
-                        const html = HTMLTemplate({
-                          document: markdownParsedDoc,
-                        })
+                        const html =
+                          uiSchemaVersion === 'v2.1'
+                            ? HTMLTemplate2_1({ document: doc })
+                            : HTMLTemplate2_0({
+                                document: markdownParsedDoc,
+                              })
                         const iframeWindow = iframeRef.current.contentWindow
                         iframeRef.current.contentDocument.open()
                         iframeRef.current.contentDocument.write(html)

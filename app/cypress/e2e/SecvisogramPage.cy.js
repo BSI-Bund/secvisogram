@@ -2,9 +2,9 @@
 
 import CVSSVector from '../../lib/app/SecvisogramPage/View/FormEditor/editors/GenericEditor/Attributes/CVSS3Attribute/CVSSVector.js'
 import ViewReducer from '../../lib/app/SecvisogramPage/View/Reducer.js'
-import docMax from '../../lib/app/shared/Core/doc-max.json'
-import docMin from '../../lib/app/shared/Core/doc-min.json'
 import { canCreateDocuments } from '../../lib/app/shared/permissions.js'
+import docMax from '../../lib/core/v2_0/doc-max.json'
+import docMin from '../../lib/core/v2_0/doc-min.json'
 import { getLoginEnabledConfig } from '../fixtures/appConfigData.js'
 import {
   getAdvisories,
@@ -23,6 +23,163 @@ import sampleUploadDocument from '../fixtures/sampleUploadDocument.js'
 describe('SecvisogramPage', () => {
   beforeEach(function () {
     cy.task('rm', Cypress.config('downloadsFolder'))
+  })
+
+  describe('csaf version selection', function () {
+    it('requires confirmation before switching to v2.1 beta', function () {
+      cy.intercept('/.well-known/appspecific/de.bsi.secvisogram.json', {
+        statusCode: 404,
+        body: {},
+      }).as('wellKnownAppConfig')
+
+      cy.visit('?tab=EDITOR')
+      cy.wait('@wellKnownAppConfig')
+
+      cy.get('#csafVersionSelect').should('have.value', 'v2.0')
+      cy.get('#csafVersionSelect option[value="v2.1"]').should(
+        'have.text',
+        'v2.1 (Beta)',
+      )
+
+      cy.get('#csafVersionSelect').select('v2.1')
+      cy.get('[data-testid="beta_version_dialog"]').should('exist')
+      cy.get('[data-testid="beta_version-cancel_button"]').click()
+      cy.get('[data-testid="beta_version_dialog"]').should('not.exist')
+      cy.get('#csafVersionSelect').should('have.value', 'v2.0')
+
+      cy.get('#csafVersionSelect').select('v2.1')
+      cy.get('[data-testid="beta_version-confirm_button"]').click()
+      cy.get('[data-testid="beta_version_dialog"]').should('not.exist')
+      cy.get('#csafVersionSelect').should('have.value', 'v2.1')
+    })
+  })
+
+  describe('auto-switch to CSAF 2.1 beta mode when opening a v2.1 file', function () {
+    /** A minimal CSAF 2.1 document */
+    const csaf21Doc = {
+      $schema: 'https://docs.oasis-open.org/csaf/csaf/v2.1/schema/csaf.json',
+      document: {
+        category: 'csaf_security_advisory',
+        csaf_version: '2.1',
+        title: 'My 2.1 document',
+      },
+    }
+
+    /** A minimal CSAF 2.0 document */
+    const csaf20Doc = {
+      document: {
+        category: 'csaf_security_advisory',
+        csaf_version: '2.0',
+        title: 'My 2.0 document',
+      },
+    }
+
+    beforeEach(function () {
+      cy.intercept('/.well-known/appspecific/de.bsi.secvisogram.json', {
+        statusCode: 404,
+        body: {},
+      }).as('wellKnownAppConfig')
+      cy.visit('?tab=EDITOR')
+      cy.wait('@wellKnownAppConfig')
+
+      // Ensure we start in v2.0 mode
+      cy.get('#csafVersionSelect').should('have.value', 'v2.0')
+    })
+
+    it('shows the beta confirmation dialog when opening a v2.1 file in v2.0 mode', function () {
+      cy.get('[data-testid="new_document_button"]').click()
+      cy.get('[data-testid="new_document-file_selector_button"]').click()
+      cy.get('[data-testid="new_document-file_input"]').selectFile({
+        contents: Cypress.Buffer.from(JSON.stringify(csaf21Doc)),
+        fileName: 'csaf_2_1.json',
+        mimeType: 'application/json',
+        lastModified: Date.now(),
+      })
+      cy.get('[data-testid="new_document-create_document_button"]').click()
+      cy.get('[data-testid="beta_version_dialog"]').should('exist')
+    })
+
+    it('cancelling the dialog aborts the file open and keeps v2.0 mode', function () {
+      cy.get('[data-testid="new_document_button"]').click()
+      cy.get('[data-testid="new_document-file_selector_button"]').click()
+      cy.get('[data-testid="new_document-file_input"]').selectFile({
+        contents: Cypress.Buffer.from(JSON.stringify(csaf21Doc)),
+        fileName: 'csaf_2_1.json',
+        mimeType: 'application/json',
+        lastModified: Date.now(),
+      })
+      cy.get('[data-testid="new_document-create_document_button"]').click()
+      cy.get('[data-testid="beta_version_dialog"]').should('exist')
+
+      cy.get('[data-testid="beta_version-cancel_button"]').click()
+      cy.get('[data-testid="beta_version_dialog"]').should('not.exist')
+
+      // Mode must remain v2.0
+      cy.get('#csafVersionSelect').should('have.value', 'v2.0')
+    })
+
+    it('confirming the dialog switches to v2.1 mode and loads the document', function () {
+      cy.get('[data-testid="new_document_button"]').click()
+      cy.get('[data-testid="new_document-file_selector_button"]').click()
+      cy.get('[data-testid="new_document-file_input"]').selectFile({
+        contents: Cypress.Buffer.from(JSON.stringify(csaf21Doc)),
+        fileName: 'csaf_2_1.json',
+        mimeType: 'application/json',
+        lastModified: Date.now(),
+      })
+      cy.get('[data-testid="new_document-create_document_button"]').click()
+      cy.get('[data-testid="beta_version_dialog"]').should('exist')
+
+      cy.get('[data-testid="beta_version-confirm_button"]').click()
+      cy.get('[data-testid="beta_version_dialog"]').should('not.exist')
+
+      // Mode must have switched to v2.1
+      cy.get('#csafVersionSelect').should('have.value', 'v2.1')
+
+      // The document title from the file must now be loaded
+      cy.get('[data-testid="menu_entry-/document"]').click()
+      cy.get('[data-testid="attribute-document-title"] input').should(
+        'have.value',
+        csaf21Doc.document.title,
+      )
+    })
+
+    it('opening a v2.0 file in v2.0 mode shows no beta dialog', function () {
+      cy.get('[data-testid="new_document_button"]').click()
+      cy.get('[data-testid="new_document-file_selector_button"]').click()
+      cy.get('[data-testid="new_document-file_input"]').selectFile({
+        contents: /** @type {any} */ (Cypress.Buffer).from(
+          JSON.stringify(csaf20Doc),
+        ),
+        fileName: 'csaf_2_0.json',
+        mimeType: 'application/json',
+        lastModified: Date.now(),
+      })
+      cy.get('[data-testid="new_document-create_document_button"]').click()
+      cy.get('[data-testid="beta_version_dialog"]').should('not.exist')
+      cy.get('#csafVersionSelect').should('have.value', 'v2.0')
+    })
+
+    it('opening a v2.1 file while already in v2.1 mode shows no beta dialog', function () {
+      // Switch to v2.1 manually first
+      cy.get('#csafVersionSelect').select('v2.1')
+      cy.get('[data-testid="beta_version-confirm_button"]').click()
+      cy.get('#csafVersionSelect').should('have.value', 'v2.1')
+
+      cy.get('[data-testid="new_document_button"]').click()
+      cy.get('[data-testid="new_document-file_selector_button"]').click()
+      cy.get('[data-testid="new_document-file_input"]').selectFile({
+        contents: /** @type {any} */ (Cypress.Buffer).from(
+          JSON.stringify(csaf21Doc),
+        ),
+        fileName: 'csaf_2_1.json',
+        mimeType: 'application/json',
+        lastModified: Date.now(),
+      })
+      cy.get('[data-testid="new_document-create_document_button"]').click()
+      cy.get('[data-testid="beta_version_dialog"]').should('not.exist')
+      cy.get('#csafVersionSelect').should('have.value', 'v2.1')
+    })
   })
 
   describe('can validate the document against the rest service', function () {
@@ -107,6 +264,7 @@ describe('SecvisogramPage', () => {
 
       cy.visit('?tab=EDITOR')
       cy.wait('@wellKnownAppConfig')
+      cy.get('#csafVersionSelect').select('v2.0')
 
       cy.get('[data-testid="new_document_button"]').click()
 
@@ -223,6 +381,7 @@ describe('SecvisogramPage', () => {
 
       cy.visit('?tab=EDITOR')
 
+      cy.window().its('IS_MODIFIED').should('be.false')
       cy.get('[data-testid="new_document_button"]').click()
 
       cy.get(`[data-testid="new_document-url_button"]`).click()
@@ -243,6 +402,7 @@ describe('SecvisogramPage', () => {
       }).as('testJson')
 
       cy.visit('?tab=EDITOR')
+      cy.get('#csafVersionSelect').select('v2.0')
 
       cy.get('[data-testid="new_document_button"]').click()
 
@@ -262,6 +422,7 @@ describe('SecvisogramPage', () => {
       }).as('testJson')
 
       cy.visit('?tab=EDITOR')
+      cy.get('#csafVersionSelect').select('v2.0')
 
       cy.get('[data-testid="new_document_button"]').click()
 

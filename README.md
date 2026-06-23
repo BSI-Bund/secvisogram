@@ -1,4 +1,4 @@
-# BSI Secvisogram CSAF 2.0 Web Editor
+# BSI Secvisogram CSAF 2.0 / 2.1 Web Editor
 
 <!-- TOC depthfrom:2 depthto:3 -->
 
@@ -13,6 +13,7 @@
   - [Preview HTML view](#preview-html-view)
   - [CSAF Document JSON view](#csaf-document-json-view)
   - [Templates](#templates)
+  - [Strict CSAF 2.0 Validation](#strict-csaf-20-validation)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
   - [Developer Guide, Architecture and Technical Design](#developer-guide-architecture-and-technical-design)
@@ -230,6 +231,22 @@ You can use this view and the embedded _Export CSAF_ button to always quickly ex
 ### Templates
 
 Secvisogram provides some very basic templates. You can use your own templates by saving them as JSON files on your filesystem and load using the "Upload from filesystem" in the "Create new document" dialog of the editor.
+
+[(back to top)](#bsi-secvisogram-csaf-20-web-editor)
+
+### Strict CSAF 2.0 Validation
+
+Secvisogram validates CSAF 2.0 documents against a **strict** variant of the CSAF 2.0 JSON schema (`csaf_2_0_strict`). This strict schema sets `additionalProperties: false` on all objects, which means Secvisogram will reject any CSAF document that contains properties not defined in the CSAF 2.0 JSON schema.
+
+This corresponds to the optional spec test [6.2.20 "Additional Properties"](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html#6220-additional-properties) from the CSAF 2.0 specification, which states:
+
+> It MUST be tested that there is no additional property in any part of the CSAF document that is not defined in the CSAF JSON schema.
+
+The CSAF 2.0 specification deems it sufficient to implement this test by validating against a strict schema that sets `additionalProperties` to `false` for every object. Secvisogram applies this approach unconditionally for CSAF 2.0 documents.
+
+This is a deliberate strategic choice: CSAF 2.1 already prohibits additional properties at the schema level, and [section 2.1 of the CSAF 2.0 specification](https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html#21-construction-principles) explicitly states that even though the JSON schema does not prohibit additional properties, it is _"strongly recommended not to use them"_.
+
+**Important**: Because test 6.2.20 is an _optional_ spec test, a CSAF 2.0 document containing additional properties is still technically spec-compliant. Secvisogram intentionally applies stricter validation — a document flagged as invalid by Secvisogram due to additional properties may still be accepted by other CSAF-conformant tools.
 
 ## Documentation
 

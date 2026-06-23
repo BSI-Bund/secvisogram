@@ -2,15 +2,11 @@
 
 ## About
 
-The Secvisogram editor generates its UI based on the input from
-[schema.js](../../lib/app/SecvisogramPage/View/FormEditor/schema.js).
-This file contains information from two sources. The CSAF JSON Schema and
-additional properties from [metaData.js](metaData.js) like the order of
-elements, paths to documentation or i18n translation strings.
+The Secvisogram editor generates its UI based on the input from [uiSchemas.js](../../lib/uiSchemas.js). This file contains ui schemas for each csaf version support. A ui schema contains information from two sources. The CSAF JSON Schema and additional properties from a meta data file like the order of elements, paths to documentation or i18n translation strings.
 
-## Generating the schema file
+## Generating the ui schema files
 
-To merge the CSAF schema with metadata into the schema file required
+To merge the CSAF schemas with metadata into the schema module required
 for generating the UI, use the [importUiMetaData.js](../importUiMetaData.js)
 script.
 
@@ -18,9 +14,16 @@ script.
 $ node importUiMetaData.js
 ```
 
+## Meta data files
+
+For each csaf version exists one meta data file:
+
+- [CSAF 2.0](../../lib/uiSchemas/csaf_2_0/content.js)
+- [CSAF 2.1](../../lib/uiSchemas/csaf_2_1/content.js)
+
 ## Properties
 
-The following properties can be added in the metadata file.
+The following properties can be added in a metadata file.
 
 ### `addMenuItemsForChildObjects`
 
@@ -105,6 +108,13 @@ This would result in the following order `field_c, field_a, field_b, field_d, fi
 
 The editor will use the translation string specified here to display the
 title and description.
+
+**Information**: The import script adds a namespace to the key to distinguish between the supported CSAF version:
+
+- `v2_0`
+- `v2_1`
+
+This means that `MyTranslationString` becomes `v2_0.MyTranslationString` if it is contained in csaf 2.0 meta data file.
 
 ```json
 "i18n": {

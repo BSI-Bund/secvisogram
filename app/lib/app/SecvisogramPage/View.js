@@ -1,3 +1,4 @@
+import { uiSchemas } from '#lib/uiSchemas.js'
 import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { t } from 'i18next'
@@ -13,15 +14,15 @@ import { canCreateDocuments } from '../shared/permissions.js'
 import pruneEmpty from '../shared/pruneEmpty.js'
 import isPropertyRelevant from './shared/isPropertyRelevant.js'
 import AboutDialog from './View/AboutDialog.js'
+import BetaVersionConfirmationDialog from './View/BetaVersionConfirmationDialog.js'
 import CsafTab from './View/CsafTab.js'
 import ExportDocumentDialog from './View/ExportDocumentDialog.js'
-import schema from './View/FormEditor/schema.js'
 import RelevanceLevelContext from './View/FormEditor/shared/context/RelevanceLevelContext.js'
 import {
   useUniqueGroupId,
   useUniqueProductId,
 } from './View/FormEditor/shared/fillFieldFunctions.js'
-import FormEditor from './View/FormEditorTab.js'
+import { FormEditorTab as FormEditor } from './View/FormEditorTab.js'
 import JsonEditorTab from './View/JsonEditorTab.js'
 import LoadingIndicator from './View/LoadingIndicator.js'
 import NewDocumentDialog from './View/NewDocumentDialog.js'
@@ -41,6 +42,7 @@ import VersionSummaryDialog from './View/VersionSummaryDialog.js'
  * @param {import('./View/types.js').Props} props
  */
 function View({
+  uiSchemaVersion,
   activeTab,
   isTabLocked,
   data,
@@ -71,6 +73,10 @@ function View({
   onGetTemplates,
   onGetTemplateContent,
   onGetBackendInfo,
+  onSetUiVersion,
+  pendingBeta21Doc,
+  onConfirmBeta21Open,
+  onCancelBeta21Open,
   ...props
 }) {
   const appConfig = React.useContext(AppConfigContext)
@@ -116,6 +122,36 @@ function View({
     /** @type {JSX.Element | null} */ (null),
   )
 
+  const [betaVersionDialog, setBetaVersionDialog] = React.useState(
+    /** @type {JSX.Element | null} */ (null),
+  )
+  const betaVersionDialogRef = React.useRef(
+    /** @type {HTMLDialogElement | null} */ (null),
+  )
+  React.useEffect(() => {
+    if (betaVersionDialog) {
+      betaVersionDialogRef.current?.showModal()
+    }
+  }, [betaVersionDialog])
+
+  React.useEffect(() => {
+    if (!pendingBeta21Doc) return
+    setBetaVersionDialog(
+      <BetaVersionConfirmationDialog
+        ref={betaVersionDialogRef}
+        context="file-open"
+        onConfirm={() => {
+          onConfirmBeta21Open()
+          setBetaVersionDialog(null)
+        }}
+        onClose={() => {
+          onCancelBeta21Open()
+          setBetaVersionDialog(null)
+        }}
+      />,
+    )
+  }, [pendingBeta21Doc, onConfirmBeta21Open, onCancelBeta21Open])
+
   const [advisoryState, setAdvisoryState] = React.useState(
     /** @type {import('./shared/types.js').AdvisoryState | null} */ (
       defaultAdvisoryState ?? {
@@ -125,6 +161,7 @@ function View({
     ),
   )
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setAdvisoryState((state) =>
       data
         ? { type: 'NEW_ADVISORY', csaf: /** @type {{}} */ (data.doc) }
@@ -134,6 +171,7 @@ function View({
 
   const [isLoading, setLoading] = React.useState(props.isLoading)
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(props.isLoading)
   }, [props.isLoading])
 
@@ -145,6 +183,7 @@ function View({
     ),
   )
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setErrors(props.errors)
   }, [props.errors])
 
@@ -154,6 +193,7 @@ function View({
     ),
   )
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setAlert(props.alert ? <Alert {...props.alert} /> : null)
   }, [props.alert])
 
@@ -196,6 +236,7 @@ function View({
   )
   React.useEffect(() => {
     if (applicationError instanceof BackendUnavailableError) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setToast({
         message: backendNotAvailableTryAgain,
       })
@@ -461,6 +502,7 @@ function View({
         defaultSource={preselected}
         originalValues={originalValues}
         advisoryState={advisoryState}
+        uiSchemaVersion={uiSchemaVersion}
         formValues={formValues}
         documentIsValid={!errors.length}
         onPrepareDocumentForTemplate={onPrepareDocumentForTemplate}
@@ -551,6 +593,13 @@ function View({
    * (e.g. browser refresh).
    */
   React.useEffect(() => {
+    //
+    // Enable the cypress test to wait the settling of the document
+    //
+    /** @type {any} */
+    const win = window
+    win.IS_MODIFIED = originalValues !== formValues
+
     /**
      * @param {BeforeUnloadEvent} e
      */
@@ -730,10 +779,12 @@ function View({
         groupIds: () => onCollectGroupIds(formValues.doc),
       },
       errors,
+      uiSchemaVersion,
     }),
     [
       formValues.doc,
       errors,
+      uiSchemaVersion,
       onUpdateDoc,
       onReplaceDoc,
       onCollectProductIds,
@@ -775,7 +826,7 @@ function View({
     relevanceLevels[2],
   )
   const setSelectedRelevanceLevel = (/** @type {string} */ level) => {
-    selectClosestRelevantPath(level)
+    selectClosestRelevantPath(level, uiSchemaVersion)
     _setSelectedRelevanceLevel(level)
   }
 
@@ -807,6 +858,7 @@ function View({
             {newExportDocumentDialog}
             {versionSummaryDialog}
             {aboutDialog}
+            {betaVersionDialog}
             <Hotkeys
               keyName={getAllKeybindings()}
               onKeyDown={keyDownHandler}
@@ -847,6 +899,57 @@ function View({
                     >
                       {t('menu.about')}
                     </button>
+                    <div className="h-auto flex items-center px-4 gap-2">
+                      <label
+                        htmlFor="csafVersionSelect"
+                        className="whitespace-nowrap text-gray-300 text-sm"
+                      >
+                        CSAF Version:
+                      </label>
+                      <select
+                        id="csafVersionSelect"
+                        className="border border-gray-400 py-2 px-2 w-full shadow-inner rounded text-black bg-white"
+                        value={uiSchemaVersion}
+                        onChange={(e) => {
+                          const selectedVersion =
+                            /** @type {import('#lib/uiSchemas.js').UiSchemaVersion} */ (
+                              e.target.value
+                            )
+                          if (selectedVersion === 'v2.1') {
+                            // In case of 2.1 we open a confirmation dialog to
+                            // warn the user that the csaf 2.1 feature set is
+                            // not complete yet and therefore "beta" ...
+                            setBetaVersionDialog(
+                              <BetaVersionConfirmationDialog
+                                ref={betaVersionDialogRef}
+                                onConfirm={() => {
+                                  onSetUiVersion('v2.1')
+                                  setBetaVersionDialog(null)
+                                }}
+                                onClose={() => {
+                                  setBetaVersionDialog(null)
+                                }}
+                              />,
+                            )
+                            return
+                          } else {
+                            // ... otherwise we just switch to the requested
+                            // version.
+                            onSetUiVersion(selectedVersion)
+                          }
+                        }}
+                      >
+                        {Object.keys(uiSchemas).map((uiVersion) => (
+                          <option key={uiVersion} value={uiVersion}>
+                            {uiVersion === 'v2.1'
+                              ? `${uiVersion} (Beta)`
+                              : uiVersion === 'v2.0'
+                                ? `${uiVersion}-strict`
+                                : uiVersion}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
                   {advisoryState?.type === 'ADVISORY' && (
                     <div className="text-gray-400 p-4">
@@ -1097,13 +1200,14 @@ function View({
                   key={activeTab}
                 >
                   {activeTab === 'EDITOR' ? (
-                    <FormEditor />
+                    <FormEditor schemaVersion={uiSchemaVersion} />
                   ) : activeTab === 'SOURCE' ? (
                     <JsonEditorTab
                       originalValues={originalValues}
                       formValues={formValues}
                       validationErrors={errors}
                       sortButtonRef={sortButtonRef}
+                      uiSchemaVersion={uiSchemaVersion}
                       onChange={onReplaceDoc}
                       onLockTab={onLockTab}
                       onUnlockTab={onUnlockTab}
@@ -1112,6 +1216,7 @@ function View({
                     <PreviewTab
                       previewResult={previewResult}
                       onPreview={onPreviewCallback}
+                      schemaVersion={uiSchemaVersion}
                     />
                   ) : activeTab === 'CSAF-JSON' ? (
                     <CsafTab
@@ -1136,7 +1241,7 @@ function View({
                   ) : null}
                 </div>
                 {activeTab === 'EDITOR' || activeTab === 'SOURCE' ? (
-                  <SideBar />
+                  <SideBar uiSchemaVersion={uiSchemaVersion} />
                 ) : null}
               </div>
             </Hotkeys>
@@ -1192,10 +1297,12 @@ function View({
    * path based on the given level and selects it.
    *
    * @param {string} level
+   * @param {import('../../uiSchemas.js').UiSchemaVersion} uiSchemaVersion
    */
-  function selectClosestRelevantPath(level) {
+  function selectClosestRelevantPath(level, uiSchemaVersion) {
     const documentCategory = formValues.doc.document.category
     const path = selectedPath
+    const { content: schema } = uiSchemas[uiSchemaVersion]
 
     let property =
       /** @type {import('./shared/types.js').Property | undefined} */ (schema)
