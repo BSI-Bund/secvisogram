@@ -121,6 +121,16 @@ To provide a production release of Secvisogram, follow the following steps:
 - Deploy the content of the `app/dist` folder to a webserver
 - Configure TLS and HTTP headers according to the template (see nginx)
 
+### Publish an editor demo prerelease
+
+Demo prereleases of `@secvisogram/editor` are published to the GitHub Packages npm registry by `.github/workflows/editor-demo-publish.yml`, which exists only on the `847-embedded-mode` branch and is never merged to `main`.
+
+1. On `847-embedded-mode`, set `version` in `editor/package.json` to `<semver>-demo.N` and merge it through review.
+2. Push the tag `editor-v<semver>-demo.N` on that commit. The workflow fails if the tag differs from the package version or its commit is not reachable from `847-embedded-mode`.
+3. After the first publish, a package admin sets the package visibility to public (irreversible). Installing still needs a token with `read:packages`; `GITHUB_TOKEN` works in Actions.
+
+Published versions are immutable, so every new publish needs a new `-demo.N`. Keep `847-embedded-mode` and the demo tags (no deletion, no force-push) until the demo is torn down so the pinned artifact stays reproducible.
+
 ### Deploy to production using nginx
 
 Below you'll find an example configuration for hosting Secvisogram in a production environment. The example uses TLS and HTTP header pragmas like `Strict-Transport-Security`, `Content-Security-Policy`, `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy` and `Permissions-Policy` security hardening:
