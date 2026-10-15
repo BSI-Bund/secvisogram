@@ -1,6 +1,20 @@
-import cvssCalculator from 'ae-cvss-calculator'
+import aeCvss from 'ae-cvss-calculator'
 
-const { Cvss4P0 } = cvssCalculator
+const { Cvss4P0 } = aeCvss
+
+/**
+ * Convert a numeric CVSS score to a severity rating string.
+ *
+ * @param {number | undefined} score
+ * @returns {string}
+ */
+function ratingFromScore(score) {
+  if (score === undefined || score === 0) return 'NONE'
+  if (score < 4.0) return 'LOW'
+  if (score < 7.0) return 'MEDIUM'
+  if (score < 9.0) return 'HIGH'
+  return 'CRITICAL'
+}
 
 // list of all metrics in cvss40 mainly from  https://github.com/RedHatProductSecurity/cvss-v4-calculator/blob/main/metrics.json
 export const flatMetrics = [
@@ -961,14 +975,14 @@ function calculateName2MetricMap() {
 
 /**
  * calculate the score and severity for the given metricTypeId
- * @param {Cvss4P0} cvss40
+ * @param {import('ae-cvss-calculator').Cvss4P0} cvss40
  * @return [{{score: number, severity: string}}]
  */
 function calculateScoreObject(cvss40) {
   const score = cvss40.calculateScores().overall
   return {
     score,
-    severity: score === 0 ? 'NONE' : score < 4 ? 'LOW' : score < 7 ? 'MEDIUM' : score < 9 ? 'HIGH' : 'CRITICAL',
+    severity: ratingFromScore(score),
   }
 }
 
@@ -1038,17 +1052,33 @@ export class Cvss4JsonWrapper {
   }
 
   /**
-   * create a Cvss4P0 object from the existing _data
-   * @returns {Cvss4P0}
+   * create a Cvss4P0 object from the existing _data.
+   * Base metrics that are not present in _data are initialised to their
+   * initialOption so that the calculator always has a fully-defined base
+   * vector and returns a meaningful score
+   * @returns {import('ae-cvss-calculator').Cvss4P0}
    */
   #createCvssCalculationValuesFromData() {
     const calculation = new Cvss4P0()
+    // Apply initialOptions for all base metrics first
+    flatMetrics.forEach((metric) => {
+      if (metric.metricTypeId === 'BASE') {
+        calculation.applyComponentString(
+          metric.metricShort,
+          metric.initialOption,
+        )
+      }
+    })
+    // Override with values from _data
     for (const [key, value] of Object.entries(this.#data)) {
       const metric = name2Metric.get(key)
       if (metric && value) {
         const metricOptionValue = metric.optionsByValue.get(String(value))
         if (metricOptionValue) {
-          calculation.applyComponentString(metric.metricShort, metricOptionValue)
+          calculation.applyComponentString(
+            metric.metricShort,
+            metricOptionValue,
+          )
         }
       }
     }
@@ -1071,7 +1101,9 @@ export class Cvss4JsonWrapper {
       flatMetrics.forEach((metric) => {
         let optionsKey
         try {
-          optionsKey = calculator.getComponentByString(metric.metricShort).shortName
+          optionsKey = calculator.getComponentByString(
+            metric.metricShort,
+          )?.shortName
         } catch {
           optionsKey = undefined
         }
