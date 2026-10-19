@@ -4,8 +4,7 @@ import createFileName from '../../../shared/createFileName.js'
 import * as api from '../../shared/api.js'
 import AppErrorContext from '../../shared/context/AppErrorContext.js'
 import { parseMarkdown } from './PreviewTab/markdownParser.js'
-import HTMLTemplate2_0 from './shared/HTMLTemplate2_0.js'
-import HTMLTemplate2_1 from './shared/HTMLTemplate2_1.js'
+import { HTMLTemplate2_0, HTMLTemplate2_1 } from '@secvisogram/html-template'
 
 export default /**
  * @param {import('./ExportDocumentDialog/types.js').Props} props

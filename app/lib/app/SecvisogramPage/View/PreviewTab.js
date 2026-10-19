@@ -1,7 +1,6 @@
 import React from 'react'
 import { parseMarkdown } from './PreviewTab/markdownParser.js'
-import HTMLTemplate2_0 from './shared/HTMLTemplate2_0.js'
-import HTMLTemplate2_1 from './shared/HTMLTemplate2_1.js'
+import { HTMLTemplate2_0, HTMLTemplate2_1 } from '@secvisogram/html-template'
 
 /**
  * @type {Object.<string, function>}
