@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import HTMLTemplate2_1 from '../../../lib/app/SecvisogramPage/View/shared/HTMLTemplate2_1.js'
+import { HTMLTemplate2_1 } from '@secvisogram/html-template'
 import DocumentEntityCsaf21 from '../../../lib/core/v2_1/entities/DocumentEntity.js'
 import { testDocuments } from '../../fixtures/vulnerabilityFlagsTests.js'
 
