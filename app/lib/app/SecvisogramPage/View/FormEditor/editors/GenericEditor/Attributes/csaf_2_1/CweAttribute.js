@@ -31,6 +31,32 @@ const getChildProps = (
 ) => property.metaInfo.propertyList?.find((p) => p.key === childKey)
 
 /**
+ * Creates an onKeyDown handler that selects the first entry of the given
+ * (already filtered/sorted) results list when the user presses Enter.
+ *
+ * MUI's Autocomplete no longer selects the auto-highlighted (first) option
+ * on Enter when freeSolo is set, since it can't tell that apart from the
+ * user wanting to commit their typed text as-is. This restores the
+ * previous behavior of always selecting the first matching suggestion on
+ * Enter.
+ *
+ * @param {() => Cwec | null} getResults
+ * @param {(weakness: {id: string, name: string}) => void} onSelect
+ */
+function createEnterKeyDownHandler(getResults, onSelect) {
+  return (/** @type {React.KeyboardEvent<HTMLDivElement>} */ event) => {
+    const results = getResults()
+    if (event.key === 'Enter' && results && results.length > 0) {
+      // `defaultMuiPrevented` is a MUI-specific extension to KeyboardEvent
+      // (not part of the standard DOM/React types) that tells MUI's
+      // Autocomplete to skip its own Enter-key handling.
+      ;/** @type {any} */ (event).defaultMuiPrevented = true
+      onSelect(results[0])
+    }
+  }
+}
+
+/**
  * Custom attribute for CWE.
  *
  * @param {{
@@ -236,9 +262,12 @@ function CwecVersion({
                 label=""
                 placeholder="^[1-9]\d*\.([0-9]|([1-9]\d+))(\.\d+)?$"
                 size="small"
-                inputProps={{
-                  ...params.inputProps,
-                  pattern: '^[1-9]\\d*\\.([0-9]|([1-9]\\d+))(\\.\\d+)?$',
+                slotProps={{
+                  ...params.slotProps,
+                  htmlInput: {
+                    ...params.slotProps.htmlInput,
+                    pattern: '^[1-9]\\d*\\.([0-9]|([1-9]\\d+))(\\.\\d+)?$',
+                  },
                 }}
               />
             )}
@@ -328,6 +357,11 @@ function CwecId({
     setTerm('')
   }
 
+  const handleKeyDown = createEnterKeyDownHandler(
+    () => results,
+    (weakness) => handleSelect(weakness.id),
+  )
+
   return (
     <Attribute
       label={label}
@@ -359,9 +393,12 @@ function CwecId({
                 label=""
                 placeholder="^CWE-[1-9]\d{0,5}$"
                 size="small"
-                inputProps={{
-                  ...params.inputProps,
-                  pattern: '^CWE-[1-9]\\d{0,5}$',
+                slotProps={{
+                  ...params.slotProps,
+                  htmlInput: {
+                    ...params.slotProps.htmlInput,
+                    pattern: '^CWE-[1-9]\\d{0,5}$',
+                  },
                 }}
               />
             )}
@@ -371,6 +408,7 @@ function CwecId({
             onChange={(_event, id) => {
               handleSelect(id)
             }}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </div>
@@ -429,6 +467,11 @@ function CwecName({
     setTerm('')
   }
 
+  const handleKeyDown = createEnterKeyDownHandler(
+    () => results,
+    (weakness) => handleSelect(weakness.name),
+  )
+
   const displayIdAndName = (/** @type {string} */ name) => {
     if (!name) return ''
     const id = cwec?.find((w) => w.name === name)?.id
@@ -473,6 +516,7 @@ function CwecName({
             onChange={(_event, name) => {
               handleSelect(name)
             }}
+            onKeyDown={handleKeyDown}
             isOptionEqualToValue={(option, value) =>
               option === value || value === ''
             }
