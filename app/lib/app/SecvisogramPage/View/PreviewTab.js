@@ -1,14 +1,11 @@
 import React from 'react'
-import { parseMarkdown } from './PreviewTab/markdownParser.js'
-import { HTMLTemplate2_0, HTMLTemplate2_1 } from '@secvisogram/html-template'
-
-/**
- * @type {Object.<string, function>}
- */
-const HtmlTemplates = {
-  'v2.0': HTMLTemplate2_0,
-  'v2.1': HTMLTemplate2_1,
-}
+import {
+  enrichDocumentV2_0,
+  enrichDocumentV2_1,
+  HTMLTemplate2_0,
+  HTMLTemplate2_1,
+  renderMarkdown,
+} from '@secvisogram/html-template'
 
 /**
  * Defines the layout of the preview tab.
@@ -37,8 +34,14 @@ export default function PreviewTab({
   const iframeRef = React.useRef(null)
   const [showRendered, setShowRendered] = React.useState(true)
   const html = React.useMemo(() => {
-    const markdownParsedDoc = parseMarkdown(previewResult?.doc ?? {})
-    return HtmlTemplates[schemaVersion]({ document: markdownParsedDoc })
+    const { document: enrichedDoc } =
+      schemaVersion === 'v2.1'
+        ? enrichDocumentV2_1(previewResult?.doc ?? {})
+        : enrichDocumentV2_0(previewResult?.doc ?? {})
+    const parsedDoc = renderMarkdown(enrichedDoc)
+    return schemaVersion === 'v2.1'
+      ? HTMLTemplate2_1({ document: parsedDoc })
+      : HTMLTemplate2_0({ document: parsedDoc })
   }, [previewResult?.doc, schemaVersion])
 
   /**

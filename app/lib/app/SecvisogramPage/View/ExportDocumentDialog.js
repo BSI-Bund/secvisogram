@@ -3,8 +3,13 @@ import React from 'react'
 import createFileName from '../../../shared/createFileName.js'
 import * as api from '../../shared/api.js'
 import AppErrorContext from '../../shared/context/AppErrorContext.js'
-import { parseMarkdown } from './PreviewTab/markdownParser.js'
-import { HTMLTemplate2_0, HTMLTemplate2_1 } from '@secvisogram/html-template'
+import {
+  enrichDocumentV2_0,
+  enrichDocumentV2_1,
+  HTMLTemplate2_0,
+  HTMLTemplate2_1,
+  renderMarkdown,
+} from '@secvisogram/html-template'
 
 export default /**
  * @param {import('./ExportDocumentDialog/types.js').Props} props
@@ -282,12 +287,16 @@ export default /**
                   case 'HTMLDOCUMENT':
                     onPrepareDocumentForTemplate(formValues.doc)
                       .then(({ document: doc }) => {
-                        const markdownParsedDoc = parseMarkdown(doc)
+                        const { document: enrichedDoc } =
+                          uiSchemaVersion === 'v2.1'
+                            ? enrichDocumentV2_1(doc)
+                            : enrichDocumentV2_0(doc)
+                        const parsedDoc = renderMarkdown(enrichedDoc)
                         const html =
                           uiSchemaVersion === 'v2.1'
-                            ? HTMLTemplate2_1({ document: doc })
+                            ? HTMLTemplate2_1({ document: parsedDoc })
                             : HTMLTemplate2_0({
-                                document: markdownParsedDoc,
+                                document: parsedDoc,
                               })
                         onExportHTML(html, formValues.doc)
                       })
@@ -302,12 +311,16 @@ export default /**
                         ) {
                           return
                         }
-                        const markdownParsedDoc = parseMarkdown(doc)
+                        const { document: enrichedDoc } =
+                          uiSchemaVersion === 'v2.1'
+                            ? enrichDocumentV2_1(doc)
+                            : enrichDocumentV2_0(doc)
+                        const parsedDoc = renderMarkdown(enrichedDoc)
                         const html =
                           uiSchemaVersion === 'v2.1'
-                            ? HTMLTemplate2_1({ document: doc })
+                            ? HTMLTemplate2_1({ document: parsedDoc })
                             : HTMLTemplate2_0({
-                                document: markdownParsedDoc,
+                                document: parsedDoc,
                               })
                         const iframeWindow = iframeRef.current.contentWindow
                         iframeRef.current.contentDocument.open()
