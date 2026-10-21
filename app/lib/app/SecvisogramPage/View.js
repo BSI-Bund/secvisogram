@@ -931,7 +931,7 @@ function View({
               }}
             >
               <div
-                className="mx-auto w-full h-screen grid grid-cols-[1fr_auto] grid-rows-[53px_36px_minmax(0,1fr)]"
+                className="mx-auto w-full h-full grid grid-cols-[1fr_auto] grid-rows-[53px_36px_minmax(0,1fr)]"
                 tabIndex={0}
               >
                 <div className="col-span-2 flex justify-between bg-slate-700">
