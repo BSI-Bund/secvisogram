@@ -11,38 +11,24 @@ import {
  * Defines the layout of the preview tab.
  *
  * @param {{
- *  onPreview(): void
- *  previewResult: {
- *    doc: {}
- *  } | null
+ *  doc: {}
  *  schemaVersion: import('#lib/uiSchemas.js').UiSchemaVersion
  * }} props
  */
-export default function PreviewTab({
-  onPreview,
-  previewResult,
-  schemaVersion,
-}) {
-  /**
-   * Extend the document initially.
-   */
-  React.useEffect(() => {
-    onPreview()
-  }, [onPreview])
-
+export default function PreviewTab({ doc, schemaVersion }) {
   /** @type {React.MutableRefObject<HTMLIFrameElement | null>} */
   const iframeRef = React.useRef(null)
   const [showRendered, setShowRendered] = React.useState(true)
   const html = React.useMemo(() => {
     const { document: enrichedDoc } =
       schemaVersion === 'v2.1'
-        ? enrichDocumentV2_1(previewResult?.doc ?? {})
-        : enrichDocumentV2_0(previewResult?.doc ?? {})
+        ? enrichDocumentV2_1(doc)
+        : enrichDocumentV2_0(doc)
     const parsedDoc = renderMarkdown(enrichedDoc)
     return schemaVersion === 'v2.1'
       ? HTMLTemplate2_1({ document: parsedDoc })
       : HTMLTemplate2_0({ document: parsedDoc })
-  }, [previewResult?.doc, schemaVersion])
+  }, [doc, schemaVersion])
 
   /**
    * Updates the content of the preview iframe.

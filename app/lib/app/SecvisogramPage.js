@@ -28,7 +28,6 @@ const SecvisogramPage = () => {
       errors,
       alert,
       stripResult,
-      previewResult,
       uiSchemaVersion,
       pendingBeta21Doc,
     },
@@ -52,12 +51,6 @@ const SecvisogramPage = () => {
       /**
        * @type {{
        *    strippedPaths: Array<{ instancePath: string; message: string; error: boolean }>
-       *    doc: {}
-       * } | null}
-       */ (null),
-    previewResult:
-      /**
-       * @type {{
        *    doc: {}
        * } | null}
        */ (null),
@@ -105,7 +98,6 @@ const SecvisogramPage = () => {
       isLoading={isLoading}
       errors={errors}
       stripResult={stripResult}
-      previewResult={previewResult}
       data={data}
       alert={alert}
       DocumentsTab={DocumentsTab}
@@ -297,26 +289,6 @@ const SecvisogramPage = () => {
             .catch(handleError)
         },
         [handleError, core, setState],
-      )}
-      onPreview={React.useCallback(
-        (document) => {
-          core
-            .preview({ document })
-            .then(({ document: doc }) => {
-              setState((state) => ({
-                ...state,
-                previewResult: {
-                  doc,
-                },
-              }))
-            })
-            .catch(handleError)
-        },
-        [handleError, core, setState],
-      )}
-      onPrepareDocumentForTemplate={React.useCallback(
-        (document) => core.preview({ document }),
-        [core],
       )}
       onExportCSAF={React.useCallback(
         (document) => {

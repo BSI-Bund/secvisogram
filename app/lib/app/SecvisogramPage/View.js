@@ -49,10 +49,8 @@ function View({
   data,
   defaultAdvisoryState = null,
   stripResult,
-  previewResult,
   DocumentsTab,
   generatorEngineData,
-  onPrepareDocumentForTemplate,
   onLoadAdvisory,
   onUpdateAdvisory,
   onDownload,
@@ -63,7 +61,6 @@ function View({
   onGetDocMax,
   onCreateAdvisory,
   onStrip,
-  onPreview,
   onExportCSAF,
   onExportHTML,
   onLockTab,
@@ -541,7 +538,6 @@ function View({
         uiSchemaVersion={uiSchemaVersion}
         formValues={formValues}
         documentIsValid={!errors.length}
-        onPrepareDocumentForTemplate={onPrepareDocumentForTemplate}
         onDownload={onDownload}
         onExportCSAF={onExportCSAF}
         onExportHTML={onExportHTML}
@@ -586,10 +582,6 @@ function View({
   const onStripCallback = React.useCallback(() => {
     onStrip(formValues.doc)
   }, [formValues.doc, onStrip])
-
-  const onPreviewCallback = React.useCallback(() => {
-    onPreview(formValues.doc)
-  }, [formValues.doc, onPreview])
 
   /**
    * @param {() => void} callback
@@ -1250,8 +1242,7 @@ function View({
                     />
                   ) : activeTab === 'PREVIEW' ? (
                     <PreviewTab
-                      previewResult={previewResult}
-                      onPreview={onPreviewCallback}
+                      doc={formValues.doc}
                       schemaVersion={uiSchemaVersion}
                     />
                   ) : activeTab === 'CSAF-JSON' ? (
