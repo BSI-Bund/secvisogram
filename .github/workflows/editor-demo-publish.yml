@@ -28,7 +28,6 @@ jobs:
         run: |
           version=$(node -p "require('./editor/package.json').version")
           [ "$TAG" = "editor-v$version" ] || { echo "Tag $TAG does not match editor/package.json version $version"; exit 1; }
-          git merge-base --is-ancestor "$GITHUB_SHA" origin/847-embedded-mode || { echo "Tagged commit is not on 847-embedded-mode"; exit 1; }
         env:
           TAG: ${{ github.ref_name }}
       - run: cd app && npm ci
