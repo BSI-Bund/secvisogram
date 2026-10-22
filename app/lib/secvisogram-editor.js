@@ -22,11 +22,15 @@ const DEFAULT_LOCALE = 'en'
 // `document.head`, which is unreachable from within a shadow root.
 config.autoAddCss = false
 
+const hostStylesheet = new CSSStyleSheet()
+hostStylesheet.replaceSync(':host { display: block; height: 100%; }')
+
 class SecvisogramEditor extends HTMLElement {
   constructor() {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
     this.mountPoint = document.createElement('div')
+    this.mountPoint.style.height = '100%'
     this.shadow.append(this.mountPoint)
     /** @type {import('react-dom/client').Root | null} */
     this.root = null
@@ -101,6 +105,7 @@ class SecvisogramEditor extends HTMLElement {
 
   connectedCallback() {
     this.shadow.adoptedStyleSheets = [
+      hostStylesheet,
       appStylesheet,
       fontAwesomeStylesheet,
       monacoStylesheet,
