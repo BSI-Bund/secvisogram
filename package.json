@@ -2,7 +2,7 @@
   "name": "secvisogram",
   "private": true,
   "description": "Secvisogram build infrastructure",
-  "version": "2.6.13",
+  "version": "2.6.16",
   "scripts": {
     "dev": "cd app && npm run dev",
     "build": "cd app && npm run build",
@@ -27,7 +27,7 @@
     "Common Security Advisory Framework"
   ],
   "author": "eXXcellent solutions GmbH",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
     "prettier": "^3.8.1",
     "typescript": "^5.9.3"

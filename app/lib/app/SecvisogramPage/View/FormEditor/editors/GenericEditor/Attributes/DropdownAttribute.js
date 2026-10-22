@@ -16,7 +16,7 @@ import Attribute from './shared/Attribute.js'
  *  property: import('../../../shared/types').Property
  *  disabled: boolean
  *  disableClearable: boolean
- *  renderOption?: React.ComponentProps<typeof Autocomplete>['renderOption']
+ *  renderOption?: React.ComponentProps<typeof Autocomplete<string, false, boolean, boolean>>['renderOption']
  *  forcePopupIcon?: React.ComponentProps<typeof Autocomplete<string>>['forcePopupIcon']
  *  noOptionsText?: React.ComponentProps<typeof Autocomplete<string>>['noOptionsText']
  *  renderInput?: React.ComponentProps<typeof Autocomplete<string>>['renderInput']
@@ -77,7 +77,7 @@ export default function DropdownAttribute({
             disableClearable={disableClearable}
             options={options}
             freeSolo={!isEnum}
-            value={value}
+            value={/** @type {string | undefined} */ (value)}
             onChange={(_, newValue) => {
               updateDoc(
                 props.instancePath,
