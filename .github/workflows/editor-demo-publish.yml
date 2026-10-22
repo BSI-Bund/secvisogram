@@ -1,5 +1,4 @@
 # Publishes @secvisogram/editor demo prereleases to GitHub Packages.
-# Lives only on the long-lived 847-embedded-mode branch and is never merged to main.
 
 name: Editor Demo Package
 

@@ -125,13 +125,13 @@ To provide a production release of Secvisogram, follow the following steps:
 
 ### Publish an editor demo prerelease
 
-Demo prereleases of `@secvisogram/editor` are published to the GitHub Packages npm registry by `.github/workflows/editor-demo-publish.yml`, which exists only on the `847-embedded-mode` branch and is never merged to `main`.
+Demo prereleases of `@secvisogram/editor` are published to the GitHub Packages npm registry by `.github/workflows/editor-demo-publish.yml`.
 
-1. On `847-embedded-mode`, set `version` in `editor/package.json` to `<semver>-demo.N` and merge it through review.
-2. Push the tag `editor-v<semver>-demo.N` on that commit. The workflow fails if the tag differs from the package version or its commit is not reachable from `847-embedded-mode`.
+1. Set `version` in `editor/package.json` to `<semver>-demo.N` and merge it through review.
+2. Push the tag `editor-v<semver>-demo.N` on that commit.
 3. After the first publish, a package admin sets the package visibility to public (irreversible). Installing still needs a token with `read:packages`; `GITHUB_TOKEN` works in Actions.
 
-Published versions are immutable, so every new publish needs a new `-demo.N`. Keep `847-embedded-mode` and the demo tags (no deletion, no force-push) until the demo is torn down so the pinned artifact stays reproducible.
+Published versions are immutable, so every new publish needs a new `-demo.N`. Keep the demo tags (no deletion, no force-push) until the demo is torn down so the pinned artifact stays reproducible.
 
 ### Deploy to production using nginx
 
