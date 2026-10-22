@@ -262,6 +262,7 @@ The list can be updated using `npx license-checker-rseidelsohn --production --ma
 - [@mui/utils@9.5.0](https://github.com/mui/material-ui) - MIT
 - [@popperjs/core@2.11.8](https://github.com/popperjs/popper-core) - MIT
 - [@secvisogram/csaf-validator-lib@3.0.0](https://github.com/secvisogram/csaf-validator-lib) - MIT
+- [@secvisogram/html-template@1.0.1](https://github.com/secvisogram/html-template) - Apache-2.0
 - [@secvisogram/is-leap-second@1.0.0](https://github.com/secvisogram/is-leap-second) - Apache-2.0
 - [@secvisogram/license-deprecation-list@1.0.1](https://github.com/secvisogram/license-deprecation-list) - Apache-2.0
 - [@types/debug@4.1.13](https://github.com/DefinitelyTyped/DefinitelyTyped) - MIT

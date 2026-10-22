@@ -6,7 +6,6 @@ import {
   TypedValidationError,
 } from '../shared/types.js'
 import CsafTab from './CsafTab.js'
-import PreviewTab from './PreviewTab.js'
 
 export interface Props {
   uiSchemaVersion: UiSchemaVersion
@@ -27,7 +26,6 @@ export interface Props {
     onCancel(): void
   } | null
   stripResult: React.ComponentProps<typeof CsafTab>['stripResult']
-  previewResult: React.ComponentProps<typeof PreviewTab>['previewResult']
   pendingBeta21Doc: { document?: { csaf_version?: string } } | null
   DocumentsTab: React.ComponentType<{
     onOpenAdvisory(
@@ -72,8 +70,6 @@ export interface Props {
     legacyVersion: string
   }): Promise<{ id: string; revision: string }>
   onStrip(document: {}): void
-  onPreview(document: {}): void
-  onPrepareDocumentForTemplate(document: {}): Promise<{ document: {} }>
   onExportCSAF(doc: {}): void
   onExportHTML(html: string, doc: {}): void
   onLockTab(): void
