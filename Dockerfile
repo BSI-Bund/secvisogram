@@ -1,5 +1,5 @@
 # 1. Builder image
-FROM node:22-alpine AS compile-image
+FROM node:24-alpine AS compile-image
 
  # install git
 RUN apk update; \
@@ -16,8 +16,8 @@ COPY app /work/app
 COPY docs /work/docs
 
 # Install the dependencies and build
-RUN npm ci; \
-    npm install -D mocha; \
+RUN npm ci && \
+    npm install -D mocha && \
     npm run build
 
 # start secvisogram in docker

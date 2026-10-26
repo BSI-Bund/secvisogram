@@ -1,0 +1,18 @@
+name: Docker build
+
+on:
+  - pull_request
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: 'recursive'
+      - run: docker build -t secvisogram:latest .

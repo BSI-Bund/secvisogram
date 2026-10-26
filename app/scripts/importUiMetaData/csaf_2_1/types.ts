@@ -1,9 +1,6 @@
 export type Schema =
-  | ObjectSchema
-  | ArraySchema
-  | StringSchema
-  | NumberSchema
-  | Ref
+  ObjectSchema | ArraySchema | StringSchema | NumberSchema | BooleanSchema | Ref
+
 export type JSONSchema = Schema & { $defs?: Defs }
 
 export type Defs = Record<string, Schema | undefined>
@@ -42,6 +39,10 @@ export interface StringSchema extends CommonSchemaFields {
   examples?: string[]
   minLength?: number
   enum?: string[]
+}
+
+export interface BooleanSchema extends CommonSchemaFields {
+  type: 'boolean'
 }
 
 export interface Ref extends CommonSchemaFields {
@@ -108,9 +109,15 @@ export interface NumberUiSchema extends CommonUiSchemaFields {
   metaInfo: {}
 }
 
+export interface BooleanUiSchema extends CommonUiSchemaFields {
+  type: 'BOOLEAN'
+  metaInfo: {}
+}
+
 export type UiSchema =
   | ArrayUiSchema
   | ObjectUiSchema
   | RecursionUiSchema
   | StringUiSchema
   | NumberUiSchema
+  | BooleanUiSchema

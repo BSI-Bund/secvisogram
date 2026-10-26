@@ -35,7 +35,7 @@ export type AdvisoryState =
 export type Property = Readonly<{
   key: string
   title?: string
-  type: 'STRING' | 'ARRAY' | 'OBJECT' | 'RECURSION' | 'NUMBER'
+  type: 'STRING' | 'ARRAY' | 'OBJECT' | 'RECURSION' | 'NUMBER' | 'BOOLEAN'
   fullName: ReadonlyArray<string>
   description?: string
   mandatory?: boolean
@@ -71,6 +71,7 @@ type MetaData = Readonly<{
     | 'OBJECT_CWE'
     | 'OBJECT_CVSS_2'
     | 'OBJECT_CVSS_3'
+    | 'OBJECT_CVSS_4'
     | 'ARRAY_REVISION_HISTORY'
   relevanceLevels?: {
     csaf_base: RelevanceLevel

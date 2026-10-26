@@ -426,7 +426,7 @@ This is the full list of document properties. It reflects the structure as defin
 
 ## Full list of extended template attributes
 
-This is the full list of document properties that were added to allow the desired preview. They are implemented in `app/lib/shared/Core/entities/DocumentEntity.js`.
+This is the full list of document properties that were added to allow the desired preview. They are added by `enrichDocumentV2_0` and `enrichDocumentV2_1` in the `@secvisogram/html-template` package (`html-template/lib/enrichDocument.js`).
 
 | Attribute                                                             | Description                                                                                                                                                                                                                                                     |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

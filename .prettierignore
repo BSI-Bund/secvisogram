@@ -1,7 +1,8 @@
-/app/lib/app/SecvisogramPage/View/shared/HTMLTemplate/TemplateCsaf2_0.html
-/app/lib/app/SecvisogramPage/View/shared/HTMLTemplate/TemplateCsaf2_1.html
 /app/coverage
 /app/dist
 build
 /data
 /docs/*
+/app/.nyc_output
+/app/playwright-report
+/app/test-results
